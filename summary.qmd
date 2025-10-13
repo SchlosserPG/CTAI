@@ -3,6 +3,8 @@ title: "Summary"
 format: html
 ---
 
-# Summary
+Competing Through Artificial Intelligence course explores how organizations achieve competitive advantage through data, analytics, and artificial intelligence. Students examine how firms can leverage AI to transform their operations, structure, and strategy—not just as a technical upgrade, but as a new way of thinking and working. The class introduces the principles of business strategy in the age of AI, organizational readiness, and the shift from human- to algorithm-centered workflows, guided by case studies and the foundational ideas of Iansiti and Lakhani. Throughout, students learn how analytics, data infrastructure, and AI maturity drive performance and scalability across industries.
 
--   
+Students also explore generative AI and multimodal systems, examining how large language models (LLMs) and multimodal LLMs (MLLMs) extend AI’s capabilities into new domains. This includes understanding model architectures, fine-tuning, GPUs, and ethical design. Ethical frameworks—autonomy, justice, beneficence, non-maleficence, and explicability—guide discussions around bias, fairness, transparency, and cybersecurity risks, preparing students to identify and mitigate potential harms of AI technologies. The course emphasizes responsible innovation and governance through applied examples such as deepfakes, algorithmic bias, and data privacy issues.
+
+Finally, the course transitions from conceptual understanding to hands-on practice. Students gain technical proficiency in Python for data acquisition (APIs, web scraping), integration, visualization, and storytelling. They learn to frame analytics problems, design human-centered dashboards in Dash, and build interactive applications that communicate insights effectively. The course concludes with frameworks for preparing people and organizations for analytics transformation—developing Centers of Excellence, fostering data literacy, and embedding augmented analytics into workflows. By the end, students are equipped to lead AI-driven initiatives that combine technical skill, ethical judgment, and strategic insight.
