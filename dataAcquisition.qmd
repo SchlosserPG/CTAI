@@ -1,0 +1,242 @@
+---
+title: "Data Acquisition"
+format: 
+  html:
+    toc: true
+    number-sections: true
+editor: visual
+---
+
+## Modern Data Acquisition & Integration
+
+##### **Web Scraping vs using APIs**
+
+###### *Reference Mitchell, R. (2024). Web scraping with Python (3rd ed.). O’Reilly Media. ISBN 9781098145354.*
+
+#### Data Acquisition: Theory & Methods
+
+-   Data acquisition is the process of gathering information from various sources so it can be stored, processed, and analyzed.
+
+-   In the digital world, data often resides on external systems—accessing it efficiently is essential for analytics, automation, and decision-making.
+
+<!-- -->
+
+-   In aerospace, data acquisition helps monitor and improve aircraft performance, ensuring passenger safety.
+
+-   In research, it aids in gathering experimental data, making breakthroughs possible in fields like physics, chemistry, and biology.
+
+-   In the automotive industry, data acquisition ensures vehicle safety and performance, enhancing the driving experience.
+
+#### Types of Data Sources
+
+-   Primary data: Data collected directly (e.g., surveys, IoT sensors).
+
+-   Secondary data: Existing datasets (e.g., open data portals, commercial datasets).
+
+-   Streaming data: Real-time feeds (e.g., financial tick data, social media firehose).
+
+-   Public vs. private sources: Licensing, permissions, and costs.
+
+#### Data Acquisition Process
+
+-   Sensing: It all begins with sensors or instruments. These devices measure physical parameters like temperature, pressure, voltage, or even biological signals.
+
+-   Signal Conditioning: The raw data from sensors may need refining. Signal conditioning includes amplifying, filtering, or digitizing the data to make it suitable for processing.
+
+-   Data Conversion: Analog signals are often converted into digital format, making them compatible with computers and data analysis tools.
+
+-   Data Collection: Once the data is prepared, it's collected using data acquisition hardware and software. This is where data logging and storage take place.
+
+-   Data Analysis: After collection, data can be analyzed, visualized, and processed to extract meaningful insights.
+
+#### Data Formats
+
+-   Data acquisition encompasses a wide range of data formats, depending on the application and the specific needs of the data collection process. Here are some different types of data formats that can be acquired:
+
+-   Numerical Data:
+
+    -   Continuous Data: This includes data that can take any value within a range, such as temperature, voltage, or pressure.
+
+    -   Discrete Data: Discrete data consists of distinct, separate values, often counted in whole numbers, like the number of products sold or the results of a survey with multiple-choice questions.
+
+-   Textual Data
+
+    -   Unstructured Text: This type of data includes free-form text, such as emails, social media posts, articles, and documents. Text data can be analyzed for sentiment, topic modeling, or information extraction.
+
+    -   Structured Text: Structured text data can be found in databases, spreadsheets, or structured documents, such as XML or JSON files. It’s often used in applications like [web scraping]{style="background-color: yellow;"} or data extraction.
+
+-   Audio, Video, Sensor, Time Series Data, Biological Data, Social Media Data
+
+#### Methods of Data Acquisition
+
+-   File-based retrieval: CSV, Excel, JSON downloads.
+
+-   Database queries: SQL access to relational and NoSQL databases.
+
+-   APIs: Structured, programmatic access to data.
+
+-   Web scraping: Automated extraction from websites without an API.
+
+-   Data marketplaces: Paid access to curated datasets.
+
+#### Common Sources for Acquisition
+
+-   [Public APIs – e.g., OpenWeather, World Bank, NASA, Twitter API]{style="background-color: yellow;"}
+
+-   Private/Partner APIs – provided under contract or partnership
+
+-   [Websites (Web Scraping) – extracting data from HTML content]{style="background-color: yellow;"}
+
+-   Databases – SQL/NoSQL databases (MySQL)
+
+-   Flat Files – CSV, Excel, JSON, XML stored locally or on cloud storage
+
+-   Cloud Storage Services – Google Drive, Dropbox, AWS
+
+-   Open Data Portals – government and institutional datasets (data.gov)
+
+-   Sensor/IoT Devices – data streams from physical devices and sensors
+
+-   Logs & System Data – server logs, application logs, monitoring tools
+
+-   Surveys & Forms – collected from users directly via questionnaires
+
+-   Social Media Platforms – posts, comments, interactions via [APIs]{style="background-color: yellow;"} or exports
+
+-   Streaming Data Sources – real-time feeds (Apache Kafka)
+
+#### Challenges
+
+-   Here are some common challenges associated with acquiring data:
+
+-   Data Quality
+
+    -   Accuracy: Ensuring that the data collected is accurate and free from errors is a fundamental challenge. Inaccurate data can lead to incorrect conclusions and decisions.
+
+    -   Completeness: Data may be missing or incomplete, making it challenging to derive meaningful insights. Addressing missing data can be time-consuming and require data imputation techniques.
+
+-   Data Volume
+
+    -   Big Data: Dealing with large volumes of data, often referred to as "big data," can be overwhelming. Storing, processing, and analyzing massive datasets require specialized infrastructure and tools.
+
+-   Data Variety
+
+    -   Diverse Data Sources: Data can come from various sources, such as structured databases, unstructured text, images, and sensor readings. Integrating and making sense of diverse data types can be challenging.
+
+#### Challenges cont.
+
+-   Data Integration
+
+    -   Data Silos: Data may be scattered across different systems and departments within an organization. Integrating data from these silos can be challenging but is crucial for a comprehensive view.
+
+-   Costs
+
+    -   Acquisition Costs: Collecting data, especially in large quantities, can be costly. This includes the cost of sensors, equipment, software, and personnel.
+
+-   Scalability
+
+    -   As data grows, scaling data acquisition and storage infrastructure becomes challenging.
+
+-   Data Governance
+
+    -   Establishing clear data governance practices, including data ownership, access controls, and data lifecycle management, is essential but can be complex to implement.
+
+## Acquiring Data from The Web
+
+##### Data acquisition is the foundation for all analytics. APIs and web scraping are powerful tools when used appropriately. Next steps: Implementing these techniques in code for real-world projects.
+
+#### API vs Web Scraping
+
+-   **APIs (Application Programming Interfaces)**
+
+    -   Standardized interfaces that allow software systems to communicate and exchange data.
+
+    -   Many companies (e.g., Twitter, Google, OpenWeather) provide APIs to give developers direct, structured access to their data.
+
+    -   Returns machine-readable formats (JSON, XML) that integrate easily into analytics workflows.
+
+    -   Ensures consistent, documented, and often real-time data delivery.
+
+-   **Web Scraping**
+
+    -   Technique for extracting information from the human-readable HTML of websites.
+
+    -   Useful when no API exists or the API does not provide the needed information.
+
+    -   Involves parsing page structure, locating target elements, and cleaning raw data.
+
+    -   More fragile than APIs, as changes to page layout can break scraping scripts.
+
+#### Web Scraping
+
+-   With automated web scraping, you can write the code once, and it’ll get the information that you need many times and from many pages.
+
+    -   While some websites don’t like it when automatic scrapers gather their data, which can lead to legal issues, others don’t mind it.
+
+    -   It’s a good idea to do some research on your own to make sure you’re not violating any Terms of Service before you start a large-scale web scraping project.
+
+#### Challenges of Web Scraping
+
+-   Variety: Every website is different. While you’ll encounter general structures that repeat themselves, each website is unique and will need personal treatment if you want to extract the relevant information.
+
+<!-- -->
+
+-   Durability: Websites constantly change. Say you’ve built a shiny new web scraper that automatically cherry-picks what you want from your resource of interest. The first time you run your script, it works flawlessly. But when you run the same script a while later, you run into a discouraging and lengthy stack of tracebacks!
+
+<!-- -->
+
+-   Key Considerations
+
+    -   Unstructured source – extract data from human-oriented HTML
+
+    -   Fragile format – page structure may change without warning
+
+    -   Extra cleanup – remove footnotes, symbols, and formatting artifacts
+
+#### Beautiful Soup
+
+![Beautiful Soup](images/beautiful_soup.png)
+
+-   Beautiful Soup is a Python library designed for parsing HTML and XML documents. It creates a parse tree from page source code, allowing easy navigation and data extraction from web pages.
+
+-   Beautiful Soup is named after a song in Alice’s Adventures in Wonderland by Lewis Carroll, based on its ability to tackle poorly structured HTML known as [tag soup.]{style="background-color: yellow;"}
+
+-   You’ll often use Beautiful Soup in your web scraping pipeline when scraping static content, while you’ll need additional tools such as Selenium to handle dynamic, JavaScript-rendered pages.
+
+-   Using Beautiful Soup is legal because you only use it for parsing documents. Web scraping in general is also legal if you respect a website’s terms of service and copyright laws.
+
+#### Web Scraping Basics
+
+-   Understanding the basic structure of HTML or XML languages is crucial.
+
+-   Beautiful Soup scrapes data by reading the HTML or XML content and converting it into a parse tree of Python objects. Next, it navigates the parse tree to find elements by their tags, attributes, or text content, before extracting the data.
+
+    -   HTML and XML are tagged languages. HTML is primarily a way to visually present content to users.
+
+    -   For example, using \<p\>Hello\</p\>
+
+        -   Tags: \<p\> \</p\> means paragraph and the content in it is the text that should be in paragraph format.
+
+        -   Navigable strings: text within a tag, e.g., the text “Hello” in \<p\>Hello\</p\>, or comments
+
+#### Practical Applications of Beautiful Soup
+
+-   Competitor Analysis: Scrape product listings, prices, and reviews from competitors to uncover strategies and market trends.
+
+-   Sentiment Analysis: Collect user opinions from forums and reviews to understand public sentiment and improve offerings.
+
+-   Academic & Market Research: Aggregate data from news sites, journals, and databases to identify trends and generate insights.
+
+-   Price Monitoring: Track e-commerce prices in real-time to maintain competitive pricing strategies.
+
+-   Content Aggregation: Gather news, blogs, and social updates for curated content and industry trend tracking.
+
+#### Integrating Beautiful Soup with Other Tools
+
+-   Beautiful Soup can work with other Python libraries and tools to combine them into an even more powerful toolkit for web scraping.\
+
+-   Pandas: Used for data manipulation and analysis, it makes accessible the cleaning and organizing of the scraped data.
+
+-   lxml: Another top XML and HTML processing library within Python that Beautiful Soup can tap into for quicker parsing.
+
+-   Selenium is a popular choice for scraping dynamic content. Selenium automates a full browser and can execute JavaScript, allowing you to interact with and retrieve the fully rendered HTML response for your script

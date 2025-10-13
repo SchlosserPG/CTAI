@@ -1,0 +1,41 @@
+project:
+  type: book
+  output-dir: docs
+include-in-header: custom-head.html
+
+book:
+  title: "Competing in the Age of AI"
+  author: "Pamela Schlosser"
+  date: "9/17/2024"
+  chapters:
+    - index.qmd
+    - rethinkingfirm.qmd
+    - genAI.qmd
+    - ethics.qmd
+    - dataAcquisition.qmd
+    - storytelling.qmd
+    - analyticsproblem.qmd
+    - preparingpeople.qmd
+    - introdash.qmd
+    - crashcourse.qmd
+    - github.qmd
+#    - understandinghtml.qmd
+#    - makingcallbacks.qmd
+#    - multilayout.qmd
+#   - multipages.qmd
+    - summary.qmd
+    - references.qmd
+
+
+format:
+  html:
+    css: styles.css
+    number-sections: false 
+
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
+
+
