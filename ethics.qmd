@@ -1,12 +1,9 @@
 ---
 title: "Ethics"
-format: 
-  html:
-    toc: true
-    number-sections: true
-editor: visual
+author: "Pamela Schlosser"
+format: html
+runtime: python
 ---
-
 ## AI & Data Ethics in a Hyperconnected World
 
 ##### Ethics and Cybersecurity Issues with AI

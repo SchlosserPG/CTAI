@@ -1,10 +1,8 @@
 ---
 title: "Data Acquisition"
-format: 
-  html:
-    toc: true
-    number-sections: true
-editor: visual
+author: "Pamela Schlosser"
+format: html
+runtime: python
 ---
 
 ## Modern Data Acquisition & Integration

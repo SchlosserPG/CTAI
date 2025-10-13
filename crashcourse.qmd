@@ -1,13 +1,12 @@
 ---
 title: "Crash Python Course"
-format: 
-  html:
-    toc: true
-    number-sections: true
-editor: visual
+author: "Pamela Schlosser"
+format: html
+runtime: python
 ---
 
-# Basic Math 
+# Basic Math
+
 ```{python}
 1+1
 5-9
@@ -63,9 +62,11 @@ answer[9] # This will show the tenth character of the string in 'answer'
 answer[-1] # This will show the last character of the string in 'answer'
 ```
 
-# Slicing 
-* course[0:2] → 'C' and 'T' (includes index 0 and 1; excludes 2)
-* Python slices are start-inclusive and end-exclusive
+# Slicing
+
+-   course\[0:2\] → 'C' and 'T' (includes index 0 and 1; excludes 2)
+-   Python slices are start-inclusive and end-exclusive
+
 ```{python}
 course = "CTBA"
 len(course) # This will show the length of the string in 'course'
@@ -74,16 +75,15 @@ print(course[0:2]) # This will show the first 3 characters of the string in 'cou
 
 # Methods and Functions
 
-* Associated with a Python object/class such as strings
-     + Called by its name on the Python object
-          + Example: st.upper()
-          + (This works because st is a string)
-          + Invalid: num.upper() (won’t work unless num is a string)
+-   Associated with a Python object/class such as strings
+    -   Called by its name on the Python object
+        -   Example: st.upper()
+        -   (This works because st is a string)
+        -   Invalid: num.upper() (won’t work unless num is a string)
+-   Functions
+    -   Defined independently from a specific python object/class
+    -   Called by its name only
 
-* Functions
-     + Defined independently from a specific python object/class
-     + Called by its name only
-     
 ```{python}
 answer.upper() # This will convert the string in 'answer' to uppercase
 answer_cap = answer.upper()
@@ -91,7 +91,7 @@ print(answer_cap) # This will print the uppercase version of 'answer'
 answer.lower() # This will convert the string in 'answer' to lowercase  
 answer.find("t")
 ```
-     
+
 # New
 
 ```{python}
@@ -104,9 +104,10 @@ print(text.upper())
 
 # Adding text and f-strings
 
-* Uses + to join strings manually.The variable name must be converted to a string if it isn’t one already. More prone to formatting issues or errors if types mismatch.
+-   Uses + to join strings manually.The variable name must be converted to a string if it isn’t one already. More prone to formatting issues or errors if types mismatch.
 
-* Uses f-strings, introduced in Python 3.6. Allows you to embed variables directly inside {}.Cleaner, more readable, and better for mixing variables and text.
+-   Uses f-strings, introduced in Python 3.6. Allows you to embed variables directly inside {}.Cleaner, more readable, and better for mixing variables and text.
+
 ```{python}
 name = "Pamela Schlosser"
 print("Hello, I am " + name + ". I have been teaching at WM since 2020.")    
@@ -142,13 +143,14 @@ print(t1) # This will print the tuple t1
 ```
 
 # Dictionaries
-* A dictionary is a built-in Python data type that stores data as key-value pairs. 
-     + A key is the identifier used to access a value.
-          + Keys must be unique and immutable (like strings, numbers, or tuples).
-          + Each key maps to a corresponding value.
-          + You use the key inside square brackets or with .get() to retrieve its value.         
-     + Values can be any data type (including lists, other dictionaries, etc.).
-     + Dictionaries are unordered (prior to Python 3.7) and mutable, meaning you can add, change, or remove items.
+
+-   A dictionary is a built-in Python data type that stores data as key-value pairs.
+    -   A key is the identifier used to access a value.
+        -   Keys must be unique and immutable (like strings, numbers, or tuples).
+        -   Each key maps to a corresponding value.
+        -   You use the key inside square brackets or with .get() to retrieve its value.\
+    -   Values can be any data type (including lists, other dictionaries, etc.).
+    -   Dictionaries are unordered (prior to Python 3.7) and mutable, meaning you can add, change, or remove items.
 
 ```{python}
 d1 = {"name": "Schlosser", "age": 23, "city": "Williamsburg"} # This is a dictionary where "name", "age", and "city" are the keys
@@ -165,11 +167,13 @@ for key, value in d1.items():
 
 # Dictionary of Dictionaries
 
-* A dictionary of dictionaries is a nested data structure where each value in the outer dictionary is itself a dictionary.
-* It allows you to organize complex data in a structured, readable way.
-* Often used to represent multiple records, like a small database.
+-   A dictionary of dictionaries is a nested data structure where each value in the outer dictionary is itself a dictionary.
 
-* Each person is a nested dictionary with their own name, age, and city.
+-   It allows you to organize complex data in a structured, readable way.
+
+-   Often used to represent multiple records, like a small database.
+
+-   Each person is a nested dictionary with their own name, age, and city.
 
 ```{python}
 people = {
@@ -189,10 +193,11 @@ distances = {
 ```
 
 # If Statements in Python
-* Explanation
-     + The `if` keyword checks if a condition is `True`.
-     + If the condition `x > 5` is met, the indented code runs.
-* What happens if we change `x` to 3. 
+
+-   Explanation
+    -   The `if` keyword checks if a condition is `True`.
+    -   If the condition `x > 5` is met, the indented code runs.
+-   What happens if we change `x` to 3.
 
 ```{python}
 x = 10
@@ -203,11 +208,11 @@ if x > 5:
 
 # If–Else Statements
 
-* Explanation
-     + `%` is the modulo operator (remainder).
-     + `==` checks equality.
-     + `else` runs if the `if` condition is false.
-* Can you write this to check if `x` is divisible by 3?
+-   Explanation
+    -   `%` is the modulo operator (remainder).
+    -   `==` checks equality.
+    -   `else` runs if the `if` condition is false.
+-   Can you write this to check if `x` is divisible by 3?
 
 ```{python}
 x = 4
@@ -219,11 +224,11 @@ else:
 ```
 
 # If–Elif–Else Chains
-* Explanation
-     + Use `elif` (else if) to check multiple conditions.
-     + Only the first `True` block executes.
-* Try this with different values of `x`.
 
+-   Explanation
+    -   Use `elif` (else if) to check multiple conditions.
+    -   Only the first `True` block executes.
+-   Try this with different values of `x`.
 
 ```{python}
 x = 0
@@ -238,10 +243,10 @@ else:
 
 # For Loops
 
-* Explanation
-     + `range(5)` gives values from 0 to 4.
-     + `for i in range(5)` loops through those values.
-* Modify it to print only even numbers.
+-   Explanation
+    -   `range(5)` gives values from 0 to 4.
+    -   `for i in range(5)` loops through those values.
+-   Modify it to print only even numbers.
 
 ```{python}
 for i in range(5):
@@ -250,10 +255,10 @@ for i in range(5):
 
 # While Loop with If Statement
 
-* Explanation
-     + A `while` loop repeats while the condition is true.
-     + `x += 1` increases `x` by 1 each time.
-* What would happen if we forgot `x += 1`?
+-   Explanation
+    -   A `while` loop repeats while the condition is true.
+    -   `x += 1` increases `x` by 1 each time.
+-   What would happen if we forgot `x += 1`?
 
 ```{python}
 x = 0
@@ -288,22 +293,27 @@ sum_up(a=1, b=2)
 ```
 
 # Can set default values
-* Default values are preset values assigned to function parameters. If the caller does not provide a value for that parameter, the default is used.
-     + Many built-in and custom functions use default values to make them more flexible.
-     + They allow you to omit arguments when calling a function.
-     + Makes functions easier to use and reduces the need for overloading.
-```{python}
-def sum_up(a=1, b=1):
-     print(a+b)
-```
+
+-   Default values are preset values assigned to function parameters. If the caller does not provide a value for that parameter, the default is used.
+
+    -   Many built-in and custom functions use default values to make them more flexible.
+    -   They allow you to omit arguments when calling a function.
+    -   Makes functions easier to use and reduces the need for overloading.
+
+    ```{python}
+    def sum_up(a=1, b=1):
+         print(a+b)
+    ```
 
 # return statement
-* The return statement is used inside a function to send a value back to the caller of the function.
-     + Without return, a function returns None by default.
-     + You can return any data type: numbers, strings, lists, even other functions.
-     + You can return multiple values using commas
-* The function below  will use the default values of a and b and assign the result to a new variable 'result'
-* This will print the result of the sum_up function
+
+-   The return statement is used inside a function to send a value back to the caller of the function.
+    -   Without return, a function returns None by default.
+    -   You can return any data type: numbers, strings, lists, even other functions.
+    -   You can return multiple values using commas
+-   The function below will use the default values of a and b and assign the result to a new variable 'result'
+-   This will print the result of the sum_up function
+
 ```{python}
 def sum_up(a=1, b=1):
      return(a+b)
@@ -312,7 +322,8 @@ print(result)
 ```
 
 # If Else in a Function
-* You can use if/else inside a function to control which statements run based on the input. This lets your function make decisions and return different results depending on conditions.
+
+-   You can use if/else inside a function to control which statements run based on the input. This lets your function make decisions and return different results depending on conditions.
 
 ```{python}
 def abs_value(k):
@@ -327,22 +338,24 @@ abs(5)  # This will return 5
 ```
 
 # Using a Function from a Package
-* Print a basic Python list
+
+-   Print a basic Python list
+
 ```{python}
 
 list1 = [1,2,3,4,5]
 print(list1)
 ```
 
-* Import the NumPy library and alias it as np
+-   Import the NumPy library and alias it as np
 
 ```{python}
 import numpy as np
 ```
 
-* Create and print a NumPy array named arr1 from a list
-* list2 is a list of tuples, treated as a list of rows
-* arr2 is a 2D NumPy array that now supports array operations
+-   Create and print a NumPy array named arr1 from a list
+-   list2 is a list of tuples, treated as a list of rows
+-   arr2 is a 2D NumPy array that now supports array operations
 
 ```{python}
 arr1 = np.array([1,2,3,4,5])
@@ -353,8 +366,9 @@ arr2 = np.array([(1,2,3),(4,5,6)])
 print(arr2)
 ```
 
-* Loop 1 loops through a Python list and print elements.
-* Loop 2 using arr1 loops through a NumPy array — works the same at this level.
+-   Loop 1 loops through a Python list and print elements.
+-   Loop 2 using arr1 loops through a NumPy array — works the same at this level.
+
 ```{python}
 list = [1,2,3]
 arr1 = np.array([1,2,3])
@@ -363,11 +377,13 @@ for e in list:
 for e in arr1:
     print(e)  # Loop through a NumPy array — works the same at this level
 ```
-* Below, we are exploring how to add elements to a NumPy array, and highlighting the difference between Python lists and NumPy arrays when it comes to appending:
 
-* Use np.append() to add elements to an array
-     + arr1.append(4) does not work — unlike lists, NumPy arrays do not have an .append() method. It raises an AttributeError.
-     + arr1 = arr1 + [5] is also incorrect — adding a list to a NumPy array does not work unless the shapes are compatible, which they are not in this case.
+-   Below, we are exploring how to add elements to a NumPy array, and highlighting the difference between Python lists and NumPy arrays when it comes to appending:
+
+-   Use np.append() to add elements to an array
+
+    -   arr1.append(4) does not work — unlike lists, NumPy arrays do not have an .append() method. It raises an AttributeError.
+    -   arr1 = arr1 + \[5\] is also incorrect — adding a list to a NumPy array does not work unless the shapes are compatible, which they are not in this case.
 
 ```{python}
 arr1 = np.array([1,2,3])
@@ -381,11 +397,11 @@ for e in arr1:
 
 ```
 
-* Add two arrays element-wise
-* Print the result: each value is doubled
+-   Add two arrays element-wise
+-   Print the result: each value is doubled
+
 ```{python}
 arr2 = arr1 + arr1
 for e in arr2:
     print(e)
 ```
-

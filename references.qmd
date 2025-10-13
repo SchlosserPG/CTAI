@@ -1,8 +1,11 @@
-# Summary
+---
+title: "References"
+format: html
+---
 
-* The course presents a structured approach to introducing heuristic algorithms and optimization techniques. Beginning with a broad overview, we highlight the significance of algorithms in diverse industries and introduce foundational heuristic methods, emphasizing their value for complex problem-solving where traditional approaches fall short due to scalability or computational limits: (1Intro), (2Algorithms), (3NumpyBasics). 
-
-* The content progresses through various algorithm types: constructive methods like greedy algorithms, exhaustive search, and iterative improvement approaches, including hill climbing. Key concepts like local optima, plateaus, and ridges are explained alongside examples such as the Knapsack Problem and Traveling Salesman Problem, laying a foundation for understanding optimization challenges and strategies for improving solutions iteratively: (4Greedy); (6ExhaustiveSearch); and (7HillClimbing).
-
-* The later course material delves into advanced metaheuristic algorithms, specifically Simulated Annealing (SA) and Genetic Algorithms (GA). SA is explained with its cooling schedule and probabilistic acceptance of suboptimal solutions, which help avoid local optima. GA is described through its evolutionary process—selection, crossover, and mutation—illustrating how populations of solutions evolve toward optimality over generations. 
-* The advantages and disadvantages of each approach are covered, along with the importance of tuning parameters for effective convergence. This framework not only familiarizes students with the mechanics of each method but also stresses the trade-offs involved, preparing them to apply these techniques to benchmark problems such as the Ackley and OneMax functions: (5BenchmarkProblems); (8-9SimulatedAnnealing); and (10-11GeneticAlgorithms)
+* Chapters 3 and 4 from Ravindran, Anton. Will AI Dictate the Future? From Successful Leaders and Managers from Around the World, Marshall Cavendish International (Asia) Private Limited, 2022. ProQuest Ebook Central, Retrieved from https://ebookcentral.proquest.com/lib/cwm/detail.action?docID=29354182  
+* Chapters 1-4 from Weber, W., & Zwingmann, T. (2024). Augmented analytics. O’Reilly Media, Inc. Retrieved from https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/ 
+* Schmidt, A., Väänänen, K., Goyal, T., Kristensson, P. O., Peters, A., Mueller, S., Williamson, J. R., & Wilson, M. L. (Eds.). (2023). Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems. Association for Computing Machinery. https://doi.org/10.1145/3544548
+Additional Reading Material:
+* Wilke, C. O. (2019). Fundamentals of data visualization. O’Reilly Media. ISBN: 9781492031086.Retrieved from https://learning.oreilly.com/library/view/fundamentals-of-data/9781492031079/ 
+* Dabbas, E. (2021). Interactive dashboards and data apps with Plotly and Dash. Packt Publishing. ISBN 9781800568914. Retrieved from https://learning.oreilly.com/library/view/interactive-dashboards-and/9781800568914/ 

@@ -1,12 +1,9 @@
 ---
-title: "Crash Python Course"
-format: 
-  html:
-    toc: true
-    number-sections: true
-editor: visual
+title: "Deploying a Site"
+author: "Pamela Schlosser"
+format: html
+runtime: python
 ---
-
 
 # Overview
 
@@ -34,7 +31,7 @@ style="width:100%;height:500px;border:2px solid #115740;border-radius:6px;">
 
 -   The Gunicorn start command on Render must match your filename and server variable exactly
 
-```{python}
+```{text}
 from dash import Dash, html
 
 app = Dash(__name__)
@@ -72,7 +69,7 @@ plotly
 -   Install dependencies
 -   Test both dev mode and production mode
 
-```{bash}
+```{text}
 python -m venv .venv 
 .venv\Scripts\activate    # Windows
 
@@ -83,7 +80,7 @@ gunicorn your_filename:server  # production test
 
 4)  Push to GitHub
 
-```{bash}
+```{text}
 git init
 git add .
 git commit -m "Initial commit"
@@ -110,7 +107,7 @@ git push -u origin main
 
 -   Render this Quarto file to docs/ for GitHub Pages:
 
-```{bash}
+```{text}
 quarto render dash_to_render.qmd --to html --output-dir docs 
 git add docs 
 git commit -m "Publish HTML" 

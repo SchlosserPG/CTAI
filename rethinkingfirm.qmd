@@ -1,11 +1,10 @@
 ---
 title: "Rethinking the Firm"
-format: 
-  html:
-    toc: true
-    number-sections: true
-editor: visual
+author: "Pamela Schlosser"
+format: html
+runtime: python
 ---
+
 
 ## Chapter 2: Rethinking the Firm
 
@@ -284,7 +283,6 @@ editor: visual
 ![Figure 2-2](images/Figure_2_2.png)
 
 ###### Adapted from Figure 2-2, “Value creation and capture versus value delivery,” in Iansiti & Lakhani (2020, p. 39)
-
 
 #### What Makes A High Performer?
 

@@ -1,10 +1,8 @@
 ---
 title: "GenAI"
-format: 
-  html:
-    toc: true
-    number-sections: true
-editor: visual
+author: "Pamela Schlosser"
+format: html
+runtime: python
 ---
 
 ## Chapter 3: Multimodal Generative AI

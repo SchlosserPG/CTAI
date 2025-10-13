@@ -1,13 +1,11 @@
 ---
 title: "Index"
-format: 
-  html:
-    toc: true
-    number-sections: true
-editor: visual
+author: "Pamela Schlosser"
+format: html
+runtime: python
 ---
 
-## Chapter 1: Developing Business Acumen
+## Developing Business Acumen
 
 ###### *Reference: Chapter 6 from Iansiti and Karim (2020) in Competing in the Age of AI explains how artificial intelligence is transforming firms by digitizing activities into scalable, connectable, and self-improving systems, and outline a new strategic framework for AI-driven businesses that leverages network and learning effects while addressing concepts like multihoming, disintermediation, and network bridging through examples such as Uber and Airbnb.*
 

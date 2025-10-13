@@ -1,7 +1,7 @@
 project:
   type: book
   output-dir: docs
-include-in-header: custom-head.html
+#include-in-header: custom-head.html
 
 book:
   title: "Competing in the Age of AI"
@@ -16,7 +16,7 @@ book:
     - storytelling.qmd
     - analyticsproblem.qmd
     - preparingpeople.qmd
-    - introdash.qmd
+#    - introdash.qmd
     - crashcourse.qmd
     - github.qmd
 #    - understandinghtml.qmd
