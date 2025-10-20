@@ -1,0 +1,761 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Crash Python Course\"\n",
+        "author: \"Pamela Schlosser\"\n",
+        "format: html\n",
+        "runtime: python\n",
+        "---\n",
+        "\n",
+        "\n",
+        "# Basic Math\n"
+      ],
+      "id": "5047383d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "1+1\n",
+        "5-9\n",
+        "5*6\n",
+        "-4/2\n",
+        "1.0 + 2.5\n",
+        "2**3"
+      ],
+      "id": "11dea9fd",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Variables\n"
+      ],
+      "id": "8ed99dca"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "x=7\n",
+        "y=\"data\"\n",
+        "\n",
+        "print(x) #printing the variable x\n",
+        "print(y) #printing the variable y\n",
+        "\n",
+        "##when naming variables, do not use spaces or special characters\n",
+        "##If you want to use a space, use an underscore instead\n",
+        "##It is better to use lower case letters for variable names\n",
+        "my_variable = 10\n",
+        "print(my_variable) ##printing the variable before adding 5\n",
+        "my_variable += 5\n",
+        "print(my_variable) ##printing the variable after adding 5"
+      ],
+      "id": "0cfde956",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Working with Strings\n"
+      ],
+      "id": "88a16620"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "\"Im into Data Science\"\n",
+        "question = \"What are you studying?\"\n",
+        "answer = \"Analytics!\"\n",
+        "\n",
+        "print(question)\n",
+        "print(answer)\n",
+        "\n",
+        "print(question + \" \" + answer) # Concatenating strings with a space in between\n",
+        "\n",
+        "print(question + \"\\n\" +answer) # Concatenating strings with a newline in between\n",
+        "\n",
+        "type(answer) # This will show the type of the variable 'answer'\n",
+        "\n",
+        "len(answer) # This will show the length of the string in 'answer'"
+      ],
+      "id": "dd826b6e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Indexing Strings\n"
+      ],
+      "id": "c082c79f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "answer[0] # This will show the first character of the string in 'answer'\n",
+        "answer[2] # This will show the third character of the string in 'answer'\n",
+        "answer[9] # This will show the tenth character of the string in 'answer'\n",
+        "answer[-1] # This will show the last character of the string in 'answer'"
+      ],
+      "id": "6b2d26fd",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Slicing\n",
+        "\n",
+        "-   course\\[0:2\\] → 'C' and 'T' (includes index 0 and 1; excludes 2)\n",
+        "-   Python slices are start-inclusive and end-exclusive\n"
+      ],
+      "id": "53dcb81d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "course = \"CTBA\"\n",
+        "len(course) # This will show the length of the string in 'course'\n",
+        "print(course[0:2]) # This will show the first 3 characters of the string in 'course'"
+      ],
+      "id": "a7f6b1ac",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Methods and Functions\n",
+        "\n",
+        "-   Associated with a Python object/class such as strings\n",
+        "    -   Called by its name on the Python object\n",
+        "        -   Example: st.upper()\n",
+        "        -   (This works because st is a string)\n",
+        "        -   Invalid: num.upper() (won’t work unless num is a string)\n",
+        "-   Functions\n",
+        "    -   Defined independently from a specific python object/class\n",
+        "    -   Called by its name only\n"
+      ],
+      "id": "eaaf78ae"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "answer.upper() # This will convert the string in 'answer' to uppercase\n",
+        "answer_cap = answer.upper()\n",
+        "print(answer_cap) # This will print the uppercase version of 'answer'\n",
+        "answer.lower() # This will convert the string in 'answer' to lowercase  \n",
+        "answer.find(\"t\")"
+      ],
+      "id": "df1451c1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# New\n"
+      ],
+      "id": "cc57c459"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(\"Hello\") #Built in function\n",
+        "\n",
+        "text = \"hello\"\n",
+        "print(text.upper()) "
+      ],
+      "id": "ec033cba",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Adding text and f-strings\n",
+        "\n",
+        "-   Uses + to join strings manually.The variable name must be converted to a string if it isn’t one already. More prone to formatting issues or errors if types mismatch.\n",
+        "\n",
+        "-   Uses f-strings, introduced in Python 3.6. Allows you to embed variables directly inside {}.Cleaner, more readable, and better for mixing variables and text.\n"
+      ],
+      "id": "5c644dff"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "name = \"Pamela Schlosser\"\n",
+        "print(\"Hello, I am \" + name + \". I have been teaching at WM since 2020.\")    \n",
+        "print(f\"Hello, I am {name}. I have been teaching at WM since 2020.\") "
+      ],
+      "id": "20443107",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Lists\n"
+      ],
+      "id": "e97262a2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "l1 = [1,2,3,4,5]\n",
+        "l2 = [\"a\", \"hello\", \"c\", 2, 3.6]\n",
+        "print(l1 + l2) # This will concatenate the two lists"
+      ],
+      "id": "6e8529f8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "l1.append(6) # This will add 6 to the end of the list l1\n",
+        "print(l1) # This will print the updated list l1\n",
+        "\n",
+        "l1.pop() # This will remove the last element from the list l1\n",
+        "print(l1) # This will print the updated list l1 after popping the last element\n",
+        "\n",
+        "l1.sort() # This will sort the list l1 in ascending order"
+      ],
+      "id": "5591d051",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Tuple\n"
+      ],
+      "id": "3bbefc27"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "t1 = (1, 2, 3, 4, 5) # This is a tuple\n",
+        "print(t1) # This will print the tuple t1\n",
+        "\n",
+        "#t1[0] = 11 # This will raise an error because tuples are immutable"
+      ],
+      "id": "89d343d3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Dictionaries\n",
+        "\n",
+        "-   A dictionary is a built-in Python data type that stores data as key-value pairs.\n",
+        "    -   A key is the identifier used to access a value.\n",
+        "        -   Keys must be unique and immutable (like strings, numbers, or tuples).\n",
+        "        -   Each key maps to a corresponding value.\n",
+        "        -   You use the key inside square brackets or with .get() to retrieve its value.\\\n",
+        "    -   Values can be any data type (including lists, other dictionaries, etc.).\n",
+        "    -   Dictionaries are unordered (prior to Python 3.7) and mutable, meaning you can add, change, or remove items.\n"
+      ],
+      "id": "1d4927d8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "d1 = {\"name\": \"Schlosser\", \"age\": 23, \"city\": \"Williamsburg\"} # This is a dictionary where \"name\", \"age\", and \"city\" are the keys\n",
+        "print(d1[\"name\"])     # Output: Schlosser\n",
+        "d1[\"age\"] = 24         # Updating the age\n",
+        "d1[\"email\"] = \"pgschlosser@wm.edu\"  # Adding a new key-value pair\n",
+        "print(d1)  # Output: {'name': 'Schlosser', 'age': 24, 'city': 'Williamsburg', 'email': '\n",
+        "\n",
+        "#Print in a better format using .items method\n",
+        "for key, value in d1.items():\n",
+        "    print(key, \":\", value)\n"
+      ],
+      "id": "05e0dab8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Dictionary of Dictionaries\n",
+        "\n",
+        "-   A dictionary of dictionaries is a nested data structure where each value in the outer dictionary is itself a dictionary.\n",
+        "\n",
+        "-   It allows you to organize complex data in a structured, readable way.\n",
+        "\n",
+        "-   Often used to represent multiple records, like a small database.\n",
+        "\n",
+        "-   Each person is a nested dictionary with their own name, age, and city.\n"
+      ],
+      "id": "aff83d8d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "people = {\n",
+        "    \"person1\": {\"name\": \"Schlosser\", \"age\": 23, \"city\": \"Williamsburg\"},\n",
+        "    \"person2\": {\"name\": \"Smith\", \"age\": 30, \"city\": \"Newport News\"}\n",
+        "}\n",
+        "\n",
+        "print(people)"
+      ],
+      "id": "d0450d3b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "distances = {\n",
+        "    \"A\": {\"B\": 10, \"C\": 15},\n",
+        "    \"B\": {\"A\": 10, \"C\": 20},\n",
+        "    \"C\": {\"A\": 15, \"B\": 20}\n",
+        "}"
+      ],
+      "id": "e4513753",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# If Statements in Python\n",
+        "\n",
+        "-   Explanation\n",
+        "    -   The `if` keyword checks if a condition is `True`.\n",
+        "    -   If the condition `x > 5` is met, the indented code runs.\n",
+        "-   What happens if we change `x` to 3.\n"
+      ],
+      "id": "20fed61f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "x = 10\n",
+        "\n",
+        "if x > 5:\n",
+        "    print(\"x is greater than 5\")"
+      ],
+      "id": "d0a8c20c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# If–Else Statements\n",
+        "\n",
+        "-   Explanation\n",
+        "    -   `%` is the modulo operator (remainder).\n",
+        "    -   `==` checks equality.\n",
+        "    -   `else` runs if the `if` condition is false.\n",
+        "-   Can you write this to check if `x` is divisible by 3?\n"
+      ],
+      "id": "1a3092c7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "x = 4\n",
+        "\n",
+        "if x % 2 == 0:\n",
+        "    print(\"x is even\")\n",
+        "else:\n",
+        "    print(\"x is odd\")"
+      ],
+      "id": "e8b714a3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# If–Elif–Else Chains\n",
+        "\n",
+        "-   Explanation\n",
+        "    -   Use `elif` (else if) to check multiple conditions.\n",
+        "    -   Only the first `True` block executes.\n",
+        "-   Try this with different values of `x`.\n"
+      ],
+      "id": "3c5a8a5e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "x = 0\n",
+        "\n",
+        "if x > 0:\n",
+        "    print(\"Positive\")\n",
+        "elif x == 0:\n",
+        "    print(\"Zero\")\n",
+        "else:\n",
+        "    print(\"Negative\")"
+      ],
+      "id": "1f31772d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# For Loops\n",
+        "\n",
+        "-   Explanation\n",
+        "    -   `range(5)` gives values from 0 to 4.\n",
+        "    -   `for i in range(5)` loops through those values.\n",
+        "-   Modify it to print only even numbers.\n"
+      ],
+      "id": "f5f5cb7d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "for i in range(5):\n",
+        "    print(\"i is\", i)"
+      ],
+      "id": "2ad49abf",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# While Loop with If Statement\n",
+        "\n",
+        "-   Explanation\n",
+        "    -   A `while` loop repeats while the condition is true.\n",
+        "    -   `x += 1` increases `x` by 1 each time.\n",
+        "-   What would happen if we forgot `x += 1`?\n"
+      ],
+      "id": "be0a9829"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "x = 0\n",
+        "\n",
+        "while x < 5:\n",
+        "    if x % 2 == 0:\n",
+        "        print(x, \"is even\")\n",
+        "    else:\n",
+        "        print(x, \"is odd\")\n",
+        "    x += 1"
+      ],
+      "id": "82075d06",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Functions\n"
+      ],
+      "id": "92472f91"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "def my_first_function():\n",
+        "    \"\"\"     \n",
+        "    This is where we put the docstring\n",
+        "    including input parameters, and output\n",
+        "    \"\"\"\n",
+        "\n",
+        "    print(\"This is my first function\")"
+      ],
+      "id": "0b3fdba5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "def sum_up(a, b):\n",
+        "     print(a+b)\n",
+        "     \n",
+        "sum_up(1,2)\n",
+        "\n",
+        "sum_up(a=1, b=2)"
+      ],
+      "id": "78c2b82d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Can set default values\n",
+        "\n",
+        "-   Default values are preset values assigned to function parameters. If the caller does not provide a value for that parameter, the default is used.\n",
+        "\n",
+        "    -   Many built-in and custom functions use default values to make them more flexible.\n",
+        "    -   They allow you to omit arguments when calling a function.\n",
+        "    -   Makes functions easier to use and reduces the need for overloading.\n"
+      ],
+      "id": "cdd008dd"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "md-indent": "    "
+      },
+      "source": [
+        "def sum_up(a=1, b=1):\n",
+        "     print(a+b)"
+      ],
+      "id": "de74740d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# return statement\n",
+        "\n",
+        "-   The return statement is used inside a function to send a value back to the caller of the function.\n",
+        "    -   Without return, a function returns None by default.\n",
+        "    -   You can return any data type: numbers, strings, lists, even other functions.\n",
+        "    -   You can return multiple values using commas\n",
+        "-   The function below will use the default values of a and b and assign the result to a new variable 'result'\n",
+        "-   This will print the result of the sum_up function\n"
+      ],
+      "id": "68df7b82"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "def sum_up(a=1, b=1):\n",
+        "     return(a+b)\n",
+        "result= sum_up()  \n",
+        "print(result)   "
+      ],
+      "id": "6b2b1e43",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# If Else in a Function\n",
+        "\n",
+        "-   You can use if/else inside a function to control which statements run based on the input. This lets your function make decisions and return different results depending on conditions.\n"
+      ],
+      "id": "e5bfd572"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "def abs_value(k):\n",
+        "    \"\"\"Returns the absolute value of a number.\"\"\"\n",
+        "    if k < 0:\n",
+        "        return -k\n",
+        "    else:\n",
+        "        return k\n",
+        "    \n",
+        "abs(-5)  # This will return 5\n",
+        "abs(5)  # This will return 5"
+      ],
+      "id": "f0de6803",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Using a Function from a Package\n",
+        "\n",
+        "-   Print a basic Python list\n"
+      ],
+      "id": "c2feffe5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "list1 = [1,2,3,4,5]\n",
+        "print(list1)"
+      ],
+      "id": "6600fabe",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Import the NumPy library and alias it as np\n"
+      ],
+      "id": "a689bd44"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import numpy as np"
+      ],
+      "id": "e425335a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Create and print a NumPy array named arr1 from a list\n",
+        "-   list2 is a list of tuples, treated as a list of rows\n",
+        "-   arr2 is a 2D NumPy array that now supports array operations\n"
+      ],
+      "id": "af268395"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "arr1 = np.array([1,2,3,4,5])\n",
+        "print(arr1)\n",
+        "list2 = [(1,2,3),(4,5,6)]\n",
+        "print(list2)\n",
+        "arr2 = np.array([(1,2,3),(4,5,6)])\n",
+        "print(arr2)"
+      ],
+      "id": "4b4e464e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Loop 1 loops through a Python list and print elements.\n",
+        "-   Loop 2 using arr1 loops through a NumPy array — works the same at this level.\n"
+      ],
+      "id": "5646ca96"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "list = [1,2,3]\n",
+        "arr1 = np.array([1,2,3])\n",
+        "for e in list:\n",
+        "    print(e) #Loop through a Python list and print elements\n",
+        "for e in arr1:\n",
+        "    print(e)  # Loop through a NumPy array — works the same at this level"
+      ],
+      "id": "caf75ae5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Below, we are exploring how to add elements to a NumPy array, and highlighting the difference between Python lists and NumPy arrays when it comes to appending:\n",
+        "\n",
+        "-   Use np.append() to add elements to an array\n",
+        "\n",
+        "    -   arr1.append(4) does not work — unlike lists, NumPy arrays do not have an .append() method. It raises an AttributeError.\n",
+        "    -   arr1 = arr1 + \\[5\\] is also incorrect — adding a list to a NumPy array does not work unless the shapes are compatible, which they are not in this case.\n"
+      ],
+      "id": "b082fb24"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "arr1 = np.array([1,2,3])\n",
+        "# these do not work:\n",
+        "#arr1.append(4)\n",
+        "#arr1 = arr1 + [5]\n",
+        "arr1 = np.append(arr1,4)\n",
+        "arr1 = np.append(arr1,[5]) #Append another element\n",
+        "for e in arr1:\n",
+        "    print(e) # Prints updated array values"
+      ],
+      "id": "2ad41b3a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Add two arrays element-wise\n",
+        "-   Print the result: each value is doubled\n"
+      ],
+      "id": "6e329fc6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "arr2 = arr1 + arr1\n",
+        "for e in arr2:\n",
+        "    print(e)"
+      ],
+      "id": "cf8755a0",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
