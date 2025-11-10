@@ -1,0 +1,763 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Web Scraping and APIs\"\n",
+        "format: html\n",
+        "runtime: python\n",
+        "execute:\n",
+        "  eval: false\n",
+        "---\n",
+        "\n",
+        "\n",
+        "* This section teaches how to acquire web data two ways—by parsing human-oriented HTML (web scraping) and by calling machine-friendly endpoints (APIs)—and shows when to use each. You’ll practice inspecting sites, locating target elements, and extracting fields with requests, Beautiful Soup, and pandas, then contrast that with structured API calls that return predictable JSON (e.g., Open-Meteo). Worked examples cover end-to-end flows (URL anatomy → request → parse/clean → tabulate), common failure points (fragile page structure, missing fields), and hardening tips (headers, error handling). The section closes with an ethics lens—copyright, terms of service, and responsible use—so students can ship useful pipelines that are both technically sound and compliant.\n",
+        "\n",
+        "\n",
+        "#### Steps to Web Scraping\n",
+        "\n",
+        "##### Step 1: Inspect Your Data Source\n",
+        "\n",
+        "-   Decipher the Information in URLs: <https://www.python.org/events/>\n",
+        "\n",
+        "    -   https:// – The protocol (HyperText Transfer Protocol Secure) tells the browser to communicate securely with the server. **The protocol is how to talk to the site.**\n",
+        "\n",
+        "    -   www.python.org – The domain name, which points to the server hosting the Python website. **The domain is where to go.**\n",
+        "\n",
+        "    -   /events/ – A path on that website, indicating the “events” section. **The path is what page or section to see once you get there.**\n",
+        "\n",
+        "-   Inspect the Site Using Developer Tools to determine what tags you want to find\n",
+        "\n",
+        "    -   Use Ctrl + Shift + I ![](images/inspect_data_source.png)\n",
+        "\n",
+        "#### Web Scraping Example\n",
+        "\n",
+        "##### Source: https://github.com/SchlosserPG/ForClass\n"
+      ],
+      "id": "a36c0ac3"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import requests\n",
+        "from bs4 import BeautifulSoup\n",
+        "\n",
+        "# URL of the events page\n",
+        "url = 'https://www.python.org/events/'\n",
+        "req = requests.get(url)\n",
+        "\n",
+        "# Parse the HTML content\n",
+        "soup = BeautifulSoup(req.text, 'lxml')\n",
+        "\n",
+        "# Find the event list\n",
+        "events = soup.find('ul', {'class': 'list-recent-events'}).find_all('li')"
+      ],
+      "id": "0c6d5567",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Import requests and BeautifulSoup\n",
+        "\n",
+        "-   Make a GET HTTP request to the URL of choice\n",
+        "\n",
+        "-   Retrieve the content using the .text property.\n",
+        "\n",
+        "-   Create a BeautifulSoup object named soup and pass it the HTML.\n"
+      ],
+      "id": "11df7023"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import requests\n",
+        "from bs4 import BeautifulSoup\n",
+        "\n",
+        "#URL of the events page\n",
+        "url= 'https://www.python.org/events/'\n",
+        "req = requests.get(url)\n",
+        "\n",
+        "#parse the HTML content\n",
+        "soup = BeautifulSoup(req.text,'lxml')"
+      ],
+      "id": "0adb78b7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "<!-- -->\n",
+        "\n",
+        "-   This line **navigates to the correct section of the page** (\\<ul class=\"list-recent-events\"\\>)\n"
+      ],
+      "id": "365fae82"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#find the event list\n",
+        "events=soup.find('ul',{'class':'list-recent-events'}).find_all('li')"
+      ],
+      "id": "26843196",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "```         \n",
+        "-   Then it **collects all the \\<li\\> entries** in that section into a Python list called events.\n",
+        "\n",
+        "-   Later in the code, you loop over events to extract the title, location, and date for each event.\n",
+        "```\n",
+        "\n",
+        "#### Making a request at python.org/events\n",
+        "\n",
+        "-   events is assumed to be a list of HTML elements (likely from **BeautifulSoup**) where each element contains the HTML for one event listing from the page. The loop processes **one event at a time.**\n"
+      ],
+      "id": "8a9b2e72"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "for event in events:"
+      ],
+      "id": "dd675b0e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   .find('h3') looks inside the HTML for the **\\<h3\\> tag**, which contains the event title.\\\n",
+        "    .get_text(strip=True) pulls out just the text content (no HTML tags) and trims leading/trailing spaces.\n"
+      ],
+      "id": "40cc08b7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "   title= event.find('h3').get_text(strip=True)"
+      ],
+      "id": "56c24d79",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   .find('span', {'class': 'event-location'}) finds the **\\<span\\>** tag with a specific CSS class (event-location), which contains the location text.\\\n",
+        "    .get_text(strip=True) again pulls and cleans the text.\n"
+      ],
+      "id": "3d825f82"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "   location = event.find('span',\n",
+        "                     {'class':'event-location'}).get_text(strip=True)"
+      ],
+      "id": "4f001cf6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   .find('time') finds the **\\<time\\> tag** in the HTML, which holds the event date.\\\n",
+        "    .get_text(strip=True) returns the readable date.\n"
+      ],
+      "id": "4276bff7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "   date= event.find('time').get_text(strip=True)"
+      ],
+      "id": "0832a430",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Each print() outputs a labeled line for the title, location, and date.\\\n",
+        "    \"-\" \\* 40 prints a line of 40 dashes to visually separate events.\n"
+      ],
+      "id": "5b91914b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(f\"Title: {title}\")\n",
+        "print(f\"Location: {location}\")\n",
+        "print(f\"Date: {date}\")\n",
+        "print(\"-\"*40)"
+      ],
+      "id": "db34edf4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Full code\n"
+      ],
+      "id": "2ec23c9d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Loop through and print event details\n",
+        "for event in events:\n",
+        "    title = event.find('h3').get_text(strip=True)\n",
+        "    location = event.find('span', \n",
+        "                          {'class': 'event-location'}).get_text(strip=True)\n",
+        "    date = event.find('time').get_text(strip=True)\n",
+        "    \n",
+        "    print(f\"Title: {title}\")\n",
+        "    print(f\"Location: {location}\")\n",
+        "    print(f\"Date: {date}\")\n",
+        "    print(\"-\" * 40)"
+      ],
+      "id": "33469671",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### An Alternative to Web Scraping: APIs\n",
+        "\n",
+        "-   Some website providers offer application programming interfaces (APIs) that allow you to access their data in a predefined manner. With APIs, you can avoid parsing HTML. Instead, you can access the data directly using formats like JSON and XML.\n",
+        "\n",
+        "-   API stands for **application programming interface**. In essence, an API acts as a communication layer, or interface, that allows different systems to talk to each other without having to understand exactly what the others do.\n",
+        "\n",
+        "-   Key Advantages of Using APIs\n",
+        "\n",
+        "    -   Structured data – clean JSON or XML format\n",
+        "\n",
+        "    -   Consistent schema – predictable, labeled fields\n",
+        "\n",
+        "    -   Defined access – clear endpoints, parameters, and usage limits\n",
+        "\n",
+        "    -   Easy access – read-only data often requires no authentication\n",
+        "\n",
+        "    -   Best practice – include a descriptive User-Agent in requests\n",
+        "\n",
+        "#### Requests for Information or Data\n",
+        "\n",
+        "-   No matter the type, all APIs function mostly the same way. You usually make a request for information or data, and the API returns a response with what you requested.\n",
+        "\n",
+        "    -   For example, every time you open Twitter or scroll down your Instagram feed, you’re basically making a request to the API behind that app and getting a response in return. This is also known as calling an API.\n",
+        "\n",
+        "-   When working with APIs in Python, the go-to library is requests. It provides the core functionality needed to interact with most public APIs, covering nearly all common use cases.\n",
+        "\n",
+        "#### Working with APIs in Python\n",
+        "\n",
+        "-   Python offers versatile tools for working with a wide range of APIs, from web-based services to local system interfaces. Libraries like requests make it straightforward to send and receive data, while specialized packages exist for specific API formats and protocols.\n",
+        "\n",
+        "-   APIs can follow various architectural styles and formats—such as REST, GraphQL, SOAP, or gRPC—each with its own conventions and strengths. REST remains common for many public services, but others may be better suited for structured queries, high performance, or legacy system integration.\n",
+        "\n",
+        "-   Access to many APIs requires authentication, which can range from simple API keys to more advanced methods like OAuth or token-based systems. Python supports these through built-in libraries and third-party tools, making it easier to securely interact with protected resources.\n",
+        "\n",
+        "    -   Some APIs require you to obtain an API key by registering for an account with the API provider and generating the key through their developer portal or dashboard.\n",
+        "\n",
+        "#### Private and Public APIs\n",
+        "\n",
+        "-   Public APIs = instant start, but limited data.\n",
+        "\n",
+        "-   Private APIs = more powerful, but require sign-up and careful key storage. ![](images/private_and_public.png)\n",
+        "\n",
+        "#### API Keys\n",
+        "\n",
+        "-   An API key is a unique code (usually a long string of letters and numbers) that identifies you to an API.\n",
+        "\n",
+        "    -   Controls access, tracks usage, and prevents abuse.\n",
+        "\n",
+        "    -   Think of an API key as a library card for borrowing data — it tells the data provider who you are and how much you can “check out.”\n",
+        "\n",
+        "    -   Example: \"API_KEY\" = \"a8b3c9d1e5f7g2h4i6j8...“\n",
+        "\n",
+        "-   To get an API key for most private APIs, you’ll first need to create a free account with the data provider. Once logged in, look for a section labeled “API,” “Developers,” or “Account Settings.”\n",
+        "\n",
+        "-   Most sites have a button or link to “Generate API Key” or “Create Access Token.”\n",
+        "\n",
+        "-   Clicking this will produce a unique, long string of letters and numbers — your personal API key.\n",
+        "\n",
+        "-   Copy it and store it somewhere safe (such as a .env file) so it’s not shared publicly.\n",
+        "\n",
+        "    -   This key identifies you every time your code makes a request, allowing the provider to track usage, enforce request limits, and prevent abuse. If your key is lost or accidentally exposed (e.g., uploaded to a public GitHub repo), you should immediately delete or regenerate it through the provider’s website.\n",
+        "\n",
+        "#### Weather API Demo (Public API)\n",
+        "\n",
+        "-   We’re building a simple Python program that calls a public weather API for multiple Virginia cities, processes the JSON responses, and outputs a clean, comparable table of current conditions.\n",
+        "\n",
+        "-   Approach: Use the Open-Meteo API to send requests for each city’s latitude and longitude.\n",
+        "\n",
+        "-   Process:\n",
+        "\n",
+        "    -   Store cities and coordinates in a Python dictionary.\n",
+        "\n",
+        "    -   Loop through each city to build query parameters.\n",
+        "\n",
+        "    -   Call the API endpoint and receive structured JSON data.\n",
+        "\n",
+        "    -   Parse and extract relevant weather details (temperature, wind speed, time).\n",
+        "\n",
+        "    -   Collect all results into a list and display as a table with pandas.\n",
+        "\n",
+        "-   Outcome: Students see the full API workflow from request → response → parsed results, ready for analysis or visualization.\n",
+        "\n",
+        "Start with cities_va dictionary\n",
+        "\n",
+        "      \\|\n",
+        "\n",
+        "      v\n",
+        "\n",
+        "Loop through each city + (lat, lon)\n",
+        "\n",
+        "      \\|\n",
+        "\n",
+        "      v\n",
+        "\n",
+        "+-------------------------------+\n",
+        "\n",
+        "\\| Create params dict:           \\|\n",
+        "\n",
+        "\\| latitude, longitude,          \\|\n",
+        "\n",
+        "\\| current_weather=True           \\|\n",
+        "\n",
+        "+-------------------------------+\n",
+        "\n",
+        "      \\|\n",
+        "\n",
+        "      v\n",
+        "\n",
+        "Send GET request to API endpoint\n",
+        "\n",
+        "      \\|\n",
+        "\n",
+        "      v\n",
+        "\n",
+        "Receive JSON response from API\n",
+        "\n",
+        "      \\|\n",
+        "\n",
+        "      v\n",
+        "\n",
+        "Convert JSON -\\> Python dictionary\n",
+        "\n",
+        "      \\|\n",
+        "\n",
+        "      v\n",
+        "\n",
+        "Check if \"current_weather\" exists\n",
+        "\n",
+        "  \\|                   \\|\n",
+        "\n",
+        "  v                   v\n",
+        "\n",
+        "Yes                 No\n",
+        "\n",
+        "  \\|                   \\|\n",
+        "\n",
+        "Extract temp, wind,  Append None\n",
+        "\n",
+        "and time fields      values for city\n",
+        "\n",
+        "  \\|                   \n",
+        "\n",
+        "  v\n",
+        "\n",
+        "Append dictionary with city data to results list\n",
+        "\n",
+        "#### Using JSON and APIs\n",
+        "\n",
+        "-   JSON (JavaScript Object Notation) is a lightweight, text-based format for storing and sharing data.\n",
+        "\n",
+        "-   Data is organized as key–value pairs (like Python dictionaries) and lists.\n",
+        "\n",
+        "-   Use in APIs: Many APIs return data in JSON because it’s easy for both humans to read and computers to parse.\n",
+        "\n",
+        "    -   Essentially, we can turn JSON into dictionaries/lists using .json() and work with it just like normal Python objects.\n",
+        "\n",
+        "#### Using an API\n",
+        "\n",
+        "-   In the next example, we are using code to call the **Open-Meteo API** for each city’s coordinates to get live weather data.\n",
+        "\n",
+        "-   We won’t use a dash, but a regular py file. We will integrate the two topics later. \n",
+        "\n",
+        "<!-- -->\n",
+        "\n",
+        "-   Printed in the Terminal\n",
+        "\n",
+        "-                City    Temperature (°C)  Wind Speed (m/s)              Time\n",
+        "\n",
+        "-   0     Williamsburg              32.3               5.8  2025-08-14T17:00\n",
+        "\n",
+        "-   1         Richmond               30.1               2.3  2025-08-14T17:00\n",
+        "\n",
+        "-   2   Virginia Beach              29.6               6.8  2025-08-14T17:00\n",
+        "\n",
+        "-   3          Roanoke                 32.3               8.5  2025-08-14T17:00\n",
+        "\n",
+        "-   4  Charlottesville                31.9              4.2  2025-08-14T17:00\n",
+        "\n",
+        "#### Linking to an API: weather API to collect\n",
+        "\n",
+        "requests: Lets you send HTTP requests in Python (needed for calling the API). pandas: Used to organize and display the API results in a table-like DataFrame later on.\n"
+      ],
+      "id": "7b18f0d0"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import requests \n",
+        "import pandas as pd"
+      ],
+      "id": "01b106ad",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Creates a Python dictionary where each key is a city name and each value is a tuple containing that city’s latitude and longitude. This makes it easy to loop through and query each city’s location in the API request.\n"
+      ],
+      "id": "4a248a3d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#5 samples cities in Virginia with lat/lon\n",
+        "cities_va ={\n",
+        "   \"Williamsburg\": (37.2707, -76.7075),\n",
+        "   \"Richmond\":(37.5407,-77.4360),\n",
+        "   \"Virginia Beach\":(36.8529,-75.9780),\n",
+        "   \"Roanoke\":(37.27097,-79.94143),\n",
+        "   \"Charlottesville\":(38.0293,-78.4767)\n",
+        "}"
+      ],
+      "id": "39f13662",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "This is the base URL for the Open-Meteo weather API. Every request will be sent to this endpoint, with parameters like latitude, longitude, and weather type added later.\n"
+      ],
+      "id": "fb72f756"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "url=\"https://api.open-meteo.com/v1/forecast\""
+      ],
+      "id": "d860e4b6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Creates an empty list to store the data returned by the API for each city. Later in the script, this list will be filled with dictionaries containing weather information for each city.\n"
+      ],
+      "id": "643aced4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "results =[]"
+      ],
+      "id": "cf7aa60b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "cities_va.items() returns key-value pairs from the dictionary. city gets the city name (string). (lat, lon) unpacks the latitude and longitude tuple for that city. This lets you handle each city’s coordinates in turn\n"
+      ],
+      "id": "2caf89aa"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "for city, (lat,lon) in cities_va.items():\n",
+        "   params ={}"
+      ],
+      "id": "82e751e2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Creates a dictionary of parameters to send with the request: \"latitude\" and \"longitude\" are set to the city’s coordinates. \"current_weather\": True tells the Open-Meteo API to return the latest weather data.\n"
+      ],
+      "id": "790bb519"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "for city, (lat,lon) in cities_va.items():\n",
+        "   params ={\n",
+        "      \"latitude\":lat,\n",
+        "      \"longtitude\": lon,\n",
+        "      \"current_weather\": True\n",
+        "}"
+      ],
+      "id": "ae9ce00c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Makes an HTTP GET request to the url (https://api.open-meteo.com/v1/forecast) with those parameters. The API responds with weather data in JSON format.\n"
+      ],
+      "id": "a7476b61"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "response=requests.get(url,params=params)"
+      ],
+      "id": "01aeeec0",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Converts the JSON text from the API into a Python dictionary called data. This lets you access fields like data\\[\"current_weather\"\\] directly.\n"
+      ],
+      "id": "c75146a7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "data = response.json()"
+      ],
+      "id": "d07f3c01",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Checks if \"current_weather\" exists in the response (some APIs may not return this field if data is missing). If present: It saves the current_weather dictionary to weather. Pulls out temperature, windspeed, and time. Adds this info to the results list as a dictionary for that city.\n"
+      ],
+      "id": "e8d42f76"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "if \"current_weather\" in data:\n",
+        "   weather = data[\"current_weather\"]\n",
+        "   results.append({\n",
+        "      \"City\":city,\n",
+        "      \"Temperature (C)\": weather[\"temperature\"],\n",
+        "      \"Wind Speed (m/s)\": weather[\"windspeed\"],\n",
+        "      \"Time\":weather[\"time\"]\n",
+        "})"
+      ],
+      "id": "d70dd34f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "If the API didn’t return \"current_weather\", stores None for those fields so the final table stays consistent.\n"
+      ],
+      "id": "c91450fc"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "else:\n",
+        "   results.append({\"City\":city,\"Temperature (C)\":\"Wind Speed (m/s)\": None,\"Time\":})"
+      ],
+      "id": "cbd059bf",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Displays the final table\n"
+      ],
+      "id": "189680d7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#Display as table\n",
+        "df=pd.DataFrame(results)\n",
+        "print(df)"
+      ],
+      "id": "20674710",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Python Weather API Request with Annotations\n",
+        "\n",
+        "The following Python script uses the `requests` library to fetch current weather data for several Virginia cities from the Open-Meteo API and displays the results in a table using `pandas`.\n",
+        "\n",
+        "##### Weather Data API Request\n",
+        "\n",
+        "This Python script uses the `requests` library to fetch current weather data for several Virginia cities from the Open-Meteo API and displays the results in a table using `pandas`.\n",
+        "\n",
+        "#### Web Scraped Example\n"
+      ],
+      "id": "a53a1532"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "import requests\n",
+        "\n",
+        "# Wikipedia page\n",
+        "url = \"https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population\"\n",
+        "\n",
+        "# Fetch the page with requests (adds headers automatically)\n",
+        "headers = {\"User-Agent\": \"Mozilla/5.0\"}\n",
+        "response = requests.get(url, headers=headers)\n",
+        "response.raise_for_status()  # will throw an error if request fails\n",
+        "\n",
+        "# Parse all tables from the HTML\n",
+        "tables = pd.read_html(response.text)\n",
+        "\n",
+        "# Heuristic: pick the table with Location + Population\n",
+        "candidate = None\n",
+        "for t in tables:\n",
+        "    cols = [c.lower() for c in t.columns.astype(str)]\n",
+        "    if any(\"location\" in c for c in cols) and any(\"population\" in c for c in cols):\n",
+        "        candidate = t\n",
+        "        break\n",
+        "\n",
+        "if candidate is None:\n",
+        "    raise ValueError(\"Could not find a suitable table on the page.\")\n",
+        "\n",
+        "# Normalize column names\n",
+        "col_map = {}\n",
+        "for c in candidate.columns:\n",
+        "    cl = str(c).lower()\n",
+        "    if \"location\" in cl:\n",
+        "        col_map[c] = \"Location\"\n",
+        "    elif \"population\" in cl:\n",
+        "        col_map[c] = \"Population\"\n",
+        "\n",
+        "df_scrape = candidate.rename(columns=col_map)[[\"Location\", \"Population\"]].copy()\n",
+        "\n",
+        "# Clean Population\n",
+        "df_scrape[\"Population\"] = (\n",
+        "    df_scrape[\"Population\"]\n",
+        "    .astype(str)\n",
+        "    .str.replace(r\"\\[.*?\\]\", \"\", regex=True)   # remove footnotes\n",
+        "    .str.replace(\",\", \"\", regex=False)         # remove commas\n",
+        "    .str.extract(r\"(\\d+)\", expand=False)       # extract digits\n",
+        "    .astype(\"Int64\")\n",
+        ")\n",
+        "\n",
+        "# Top 10 countries\n",
+        "df_scrape = (\n",
+        "    df_scrape.dropna(subset=[\"Population\"])\n",
+        "             .sort_values(\"Population\", ascending=False)\n",
+        "             .head(10)\n",
+        "             .reset_index(drop=True)\n",
+        ")\n",
+        "\n",
+        "print(df_scrape)"
+      ],
+      "id": "4542b318",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "**Why this is “scraping”:**\n",
+        "\n",
+        "-   You fetch human-oriented HTML and **parse** it yourself Columns, order, or markup may change without notice Often needs extra cleaning (footnotes, commas, superscripts, etc.)\n",
+        "\n",
+        "#### API vs Web Scraping\n",
+        "\n",
+        "![](images/api_vs_web.png)\n",
+        "\n",
+        "#### Discussion Questions\n",
+        "\n",
+        "-   Much online content (text, images, code) is protected by copyright. Scraping may be legal for viewing content, but using it to train AI—a form of reproduction—can violate copyright if done without permission.\n",
+        "\n",
+        "-   [Example](https://www.nytimes.com/2023/12/27/business/media/new-york-times-open-ai-microsoft-lawsuit.html): The NYT and other publishers are suing AI companies for scraping their content without licensing.\n",
+        "\n",
+        "-   [What are the ethical and legal boundaries of scraping data for training AI models?]{style=\"background-color: yellow;\"}"
+      ],
+      "id": "ababd78d"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

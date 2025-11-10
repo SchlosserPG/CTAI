@@ -1,5 +1,5 @@
 ---
-title: "Intro to Dash"
+title: "Intro to Dash and HTML"
 format: html
 runtime: python
 execute:
@@ -133,7 +133,7 @@ if __name__ == "__main__":
 
 ![](images/hello_dash.png){fig-align="center" width="350" height="250"}
 
-##### App.title sets the **browser tab title** (like the text you see in the tab at the top of Chrome, Firefox, etc.). It's the **HTML \<title\> tag** behind the scenes.
+* App.title sets the **browser tab title** (like the text you see in the tab at the top of Chrome, Firefox, etc.). It's the **HTML \<title\> tag** behind the scenes.
 
 ##### html.Div() is a container element (\<div\> tag) to hold other elements used to group components like text, headings, graphs, etc.
 
