@@ -276,7 +276,12 @@ Available at: [https://learning.oreilly.com/library/view/augmented-analytics/978
 
 ##### Chapter 3 of Weber and Zwingmann discuss why augmented analytics (AA) is critical in today’s fast-changing business environment.
 
-###### Chapter 3 at Weber, W., & Zwingmann, T. (2024). Augmented analytics. O’Reilly Media, Inc. Available at https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/
+::: note
+###### *Reference:*  
+Chapter 3 from **Weber, W., & Zwingmann, T. (2024).** *Augmented Analytics.*  
+O’Reilly Media, Inc.  
+Available at: [https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/](https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/)
+:::
 
 #### Augmented Analytics (AA)
 
