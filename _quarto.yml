@@ -36,10 +36,6 @@ format:
     toc: true
     toc-depth: 3
     toc-title: "Table of Contents"
-  pdf:
-    documentclass: scrreprt
-    toc: true
-    toc-depth: 3
 
 editor: visual
 
