@@ -4,7 +4,14 @@ format: html
 runtime: python
 ---
 
+* This crash course provides a hands-on introduction to Python fundamentals for analytics and data science. It starts with basic arithmetic and variable assignment, then explores strings, including concatenation, indexing, slicing, and built-in methods like .upper() and .find(). Learners move on to lists, tuples, and dictionaries, understanding their structure, mutability, and use cases—culminating in nested dictionaries that model complex data relationships.The course then introduces conditional statements (if, elif, else), loops (for, while), and functions—including parameters, default values, and return statements. Practical examples demonstrate how to encapsulate logic, make decisions, and control program flow.Finally, the module transitions into NumPy, showing how arrays extend Python’s list capabilities for efficient, vectorized computation. Students learn to create arrays, loop through elements, and use np.append() and arithmetic operations to manipulate numeric data.By the end, students gain a working foundation in Python syntax, logic, and data structures, preparing them to move into applied analytics, data manipulation, and visualization.
+
+* In this crash course, all code examples are written and executed in Visual Studio Code (VS Code), but the file is saved as a Jupyter Notebook (.ipynb). A Jupyter Notebook is an interactive environment that combines code, output, and explanatory text in a single document—ideal for teaching, experimentation, and data analysis. Unlike a standard Python file (.py), which runs code sequentially as a script, a notebook lets you execute code cell by cell, view results immediately, and include Markdown notes alongside. This makes it especially useful for learning and documenting analytics workflows.
+
+In contrast, when building Dash applications, files must be saved as Python files (.py), since Dash apps require executable scripts that define layout and callbacks. Jupyter notebooks are excellent for exploration, but Dash needs Python files to run as full web applications.
+
 # Basic Math
+* Python can function as an interactive calculator, allowing you to perform arithmetic operations directly in the interpreter or notebook without writing full programs. You can type expressions like 2 + 3, 10 / 4, or 2**3 and instantly see results, making Python a powerful tool for quick mathematical exploration, data checking, and computation—far beyond the capabilities of a basic calculator. Here are some examples below. 
 
 ```{python}
 1+1

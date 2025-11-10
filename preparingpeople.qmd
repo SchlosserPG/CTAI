@@ -4,14 +4,19 @@ format: html
 runtime: python
 ---
 
+* Preparing people for Augmented Analytics (AA) means aligning technical, organizational, and human readiness. Chapter 4 of Augmented Analytics (Weber & Zwingmann, 2024) emphasizes that transformation succeeds only when analytics becomes part of everyday work—supported by leadership, literacy, and structured enablement. The chapter outlines four key personas—leaders, translators, users, and professionals—each requiring tailored skills and programs. A Center of Excellence (CoE) anchors this effort by coordinating strategy, training, and governance, ideally evolving from centralized control to a federated model that balances expertise with local ownership.
+
+* This section also introduces workflow augmentation, where insights are embedded directly into processes through copilots, adaptive assistants, and collaborative tools, rather than delivered via static dashboards. This shift demands cultural change, strong API-based infrastructure, and a curated use-case library to share lessons and scale innovation. Finally, Weber and Zwingmann highlight human barriers—bias, overconfidence, and learned helplessness—and stress that sustainable analytics maturity depends on cultivating data literacy, storytelling, and a belief that people, not just technology, drive transformation.
+
 ::: note
-###### *Reference:*  
-Chapter 4 from **Weber, W., & Zwingmann, T. (2024).** *Augmented Analytics.*  
-O’Reilly Media, Inc.  
-Available at: [https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/](https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/)
+###### *Reference:*
+
+Chapter 4 and 5 from **Weber, W., & Zwingmann, T. (2024).** *Augmented Analytics.*\
+O’Reilly Media, Inc.\
+Available at: <https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/>
 :::
 
-* Preparing people and the organization for Augmented Analytics means building both the skills and the culture needed to embed analytics into daily decision-making. Leaders must champion data-driven practices, analytics translators must bridge business and technical teams, and employees need at least analytics awareness to trust and act on insights. A Center of Excellence (CoE), executive sponsorship, and structured training ensure that AA is not just a technology upgrade but an organizational transformation that empowers all roles to benefit from data in their workflows.
+-   Preparing people and the organization for Augmented Analytics means building both the skills and the culture needed to embed analytics into daily decision-making. Leaders must champion data-driven practices, analytics translators must bridge business and technical teams, and employees need at least analytics awareness to trust and act on insights. A Center of Excellence (CoE), executive sponsorship, and structured training ensure that AA is not just a technology upgrade but an organizational transformation that empowers all roles to benefit from data in their workflows.
 
 -   Focus on roles (leaders, translators, users, professionals) and personas to structure the analytics transformation.
 

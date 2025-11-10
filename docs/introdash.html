@@ -153,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./genAI.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">GenAI</span></a>
+  <a href="./genAI.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Understanding Generative AI</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -173,12 +173,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./storytelling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Human Centered Data Story Telling</span></a>
+  <a href="./storytelling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Human-centered Storytelling</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analyticsproblem.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Analytics Problem</span></a>
+  <a href="./analyticsproblem.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">The Analytics Problem</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -198,12 +198,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">github</span></a>
+  <a href="./github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Using Git and Github</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./makingcallbacks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Callbacks and API in Dash’s</span></a>
+  <a href="./makingcallbacks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Writing Callbacks and Accessing API’s</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -231,8 +231,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#dash" id="toc-dash" class="nav-link active" data-scroll-target="#dash">Dash</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -256,6 +262,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<ul>
+<li>This section introduces Dash, a Python framework from Plotly for building interactive, web-based dashboards without requiring traditional web development skills. Dash combines Plotly for visualizations, Flask for the backend, and React for the front end, making it ideal for analysts who want to turn Python code into shareable, browser-based applications.The lesson covers Dash’s two core modules—dash.html (for HTML structure) and dash.dcc (for interactive components)—and demonstrates how to create, run, and style a basic app. It explains the difference between static and dynamic content, showing how callbacks update dashboards in real time through APIs, databases, or live streams. Students learn how to build a simple “Hello Dash” app, add headings, paragraphs, hyperlinks, and apply styling using inline Python dictionaries or external CSS stylesheets. Key design concepts such as borders, padding, margins, and hover effects are introduced to control layout and visual hierarchy. By the end, learners understand the structure of a Dash app—layout + callbacks—and how styling and interactivity work together to create polished, professional dashboards that communicate data insights effectively.</li>
+</ul>
+<section id="dash" class="level2">
+<h2 class="anchored" data-anchor-id="dash">Dash</h2>
 <div class="note">
 <p><strong>Dash</strong> is a Python library for building interactive web applications. Developed by <strong>Plotly</strong>, the company behind the Plotly visualization library, Dash allows users to create dynamic, data-driven dashboards entirely in Python. It is built on top of <strong>Plotly</strong> for visualizations, <strong>Flask</strong> for managing the web server, and <strong>React</strong> for the front-end interface.</p>
 </div>
@@ -311,20 +322,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>, etc., directly in Python</p></li>
 </ul></li>
 </ul>
-<div id="dc2cca68" class="cell" data-execution_count="1">
+<div id="a189c32f" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> Dash, html </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Dash() initializes your web application</li>
 </ul>
-<div id="f80fc70c" class="cell" data-execution_count="2">
+<div id="59726038" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>app<span class="op">=</span>Dash()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><p>Remember that there are 2 main components for dash app Layout and Callbacks</p></li>
 <li><p>To Define the layout of your app we add html.methods(““)</p></li>
 </ul>
-<div id="e1cf06a3" class="cell" data-execution_count="3">
+<div id="cc59322c" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    app.run(debug<span class="op">=</span><span class="va">True</span>, use_reloader<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -361,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>There are Python functions from the dash.html module that mimic HTML elements. They are used to build the structure of your web page in a Dash app.</li>
 </ul>
-<div id="b8779186" class="cell" data-execution_count="4">
+<div id="987e71e1" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> Dash, html</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Create the app</span></span>
@@ -401,7 +412,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>Dash Components has a hierarchical of tree of components</p>
 <ul>
-<li><p>Popular Components are Dash HTML Components dash.html and&nbsp;</p></li>
+<li><p>Popular Components are Dash HTML Components dash.html and</p></li>
 <li><p>Dash Core components dash.dcc</p></li>
 </ul></li>
 </ul>
@@ -442,7 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Works just like the HTML &lt;a&gt; tag.</p></li>
 </ul></li>
 </ul>
-<div id="c554ba2b" class="cell" data-execution_count="5">
+<div id="1addd334" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>app.layout<span class="op">=</span>html.Div([</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>   html.H1(<span class="st">"Hello Dash!"</span>),</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>   html.P(<span class="st">"This is a simple dashboard."</span>),</span>
@@ -473,7 +484,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>HTML colors are located on<a href="https://htmlcolorcodes.com/" class="uri">https://htmlcolorcodes.com/</a></p></li>
 </ul>
 <p><img src="images/style.png" class="img-fluid"></p>
-<div id="8c9444ef" class="cell" data-execution_count="6">
+<div id="eaeb5e5e" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>html.H1(<span class="st">"Hello Dash"</span>, style<span class="op">=</span>{<span class="st">'color'</span>:<span class="st">'#381D5C'</span>,</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                             <span class="st">'fontSize'</span>: <span class="st">'20px'</span>,</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                             <span class="st">'backgroundColor'</span>:<span class="st">'#E898AA'</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -519,7 +530,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>In Python, key-value pairs in dictionaries must be separated by commas.</li>
 </ul>
-<div id="384eba62" class="cell" data-execution_count="7">
+<div id="0f53b5da" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>html.P(<span class="st">"This is a simple dashboard."</span>,</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>         style<span class="op">=</span>{<span class="st">'border'</span> : <span class="st">'1px solid black'</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -533,7 +544,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>‘marginTop’, ‘marginBottom’, ‘marginLeft’, ‘marginRight’: Control sides individually</p></li>
 <li><p>{‘marginLeft’: ‘auto’, ‘marginRight’: ‘auto’} (useful for centering)</p></li>
 </ul>
-<div id="3e24482f" class="cell" data-execution_count="8">
+<div id="23d749e3" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>html.P(<span class="st">"This is a simple dashboard."</span>,</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>         style<span class="op">=</span>{<span class="st">'border'</span>:<span class="st">'1px solid black'</span>,</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                <span class="st">'padding'</span>: <span class="st">'20px'</span>, <span class="st">'margin'</span>: <span class="st">'50px'</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -609,6 +620,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -6,6 +6,8 @@ execute:
   eval: false
 ---
 
+* This section teaches how to acquire web data two ways—by parsing human-oriented HTML (web scraping) and by calling machine-friendly endpoints (APIs)—and shows when to use each. You’ll practice inspecting sites, locating target elements, and extracting fields with requests, Beautiful Soup, and pandas, then contrast that with structured API calls that return predictable JSON (e.g., Open-Meteo). Worked examples cover end-to-end flows (URL anatomy → request → parse/clean → tabulate), common failure points (fragile page structure, missing fields), and hardening tips (headers, error handling). The section closes with an ethics lens—copyright, terms of service, and responsible use—so students can ship useful pipelines that are both technically sound and compliant.
+
 
 #### Steps to Web Scraping
 

@@ -6,6 +6,12 @@ execute:
   eval: false
 ---
 
+* This module introduces how to structure and build multi-page Dash applications. Students begin by organizing a project shell with an app.py entry file, a pages/ folder for layouts, and an assets/ folder for shared CSS. Using dash.register_page(), each page is defined with a layout and a URL path, while the main app layout (in app.py) includes a navigation bar and a dynamic dash.page_container that automatically renders the selected page.The project demonstrates page-specific designs and interactions:
+     + Page 1 implements a responsive grid layout using custom CSS classes for top, middle, and footer blocks.
+     + Page 2 introduces interactivity and API integration with a callback that retrieves and displays random cat facts from a public API using requests. 
+* By the end, students can design organized, scalable Dash apps with multiple pages, shared styling, and dynamic content powered by callbacks and APIs.
+
+
 ### Building the Project Shell
 
 Before writing any Dash code, spend a few minutes setting up a clean and organized project shell. This structure will make your application easier to maintain, extend, and style as it grows. At a minimum, you’ll create folders for your pages and assets, along with a main entry file that runs the app.

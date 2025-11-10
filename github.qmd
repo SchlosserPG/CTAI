@@ -1,12 +1,18 @@
 ---
-title: "github"
+title: "Using Git and Github"
 format: html
 runtime: python
 execute:
   eval: false
 ---
 
-## Git and Git Hub
+-   This module introduces Git and GitHub as foundational tools for version control, collaboration, and deployment in analytics and programming projects. Git is a decentralized version control system that tracks file changes and manages project history locally, while GitHub is a cloud-based platform built on Git for sharing, collaborating, and managing repositories. Together, they allow multiple contributors to work efficiently through commits, branches, merges, and pull requests. GitLab offers similar features but can be self-hosted for greater organizational control.
+
+-   Students learn to set up Git and GitHub, configure user credentials, and perform essential commands (git init, git add, git commit, git push, etc.) using VS Code or GitHub Desktop. They also explore GitHub CoPilot, an AI-assisted coding tool that autocompletes and suggests code within VS Code.
+
+-   The section covers best practices such as writing clear commit messages, pulling often to stay updated, using .gitignore to exclude unnecessary files, and maintaining a stable main branch. It also outlines common troubleshooting tips for merge conflicts, authentication issues, and accidental commits.
+
+-   Finally, the module introduces Render.com, a platform that connects directly to GitHub for seamless web app deployment. Students link their GitHub repositories to Render to host and automatically update their Dash or analytics applications, gaining hands-on experience with real-world deployment workflows.
 
 ##### Understanding the prompting paradigm equips you to guide AI models effectively—skills that can be enhanced and shared by leveraging platforms like GitHub to collaborate on prompt libraries, examples, and AI-powered projects.
 

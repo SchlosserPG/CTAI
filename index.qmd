@@ -5,11 +5,13 @@ format: html
 runtime: python
 ---
 
+* This section introduces how organizations evolve from competing through business analytics to competing in the age of AI (CTAI). It explains how data-driven decision-making transforms into AI-enhanced systems that learn, scale, and adapt across business functions. The discussion connects classical frameworks—like Porter’s Five Forces and the Value Chain—to digital-era dynamics such as network effects, value capture, and platform competition. Drawing on Iansiti & Lakhani (2020), it highlights how firms achieve advantage not just through better data, but through architectures that continuously learn and connect across networks.
 
 ::: note
-###### *Reference:*  
-Chapter 6 from **Iansiti and Lakhani (2020)** in *Competing in the Age of AI* explains how **artificial intelligence transforms firms** by digitizing activities into **scalable, connectable, and self-improving systems**.  
-The chapter outlines a **strategic framework for AI-driven businesses** that leverages **network and learning effects** while addressing key concepts such as **multihoming, disintermediation, and network bridging**, using real-world examples like **Uber** and **Airbnb**.  
+###### *Reference:*
+
+Chapter 6 from **Iansiti and Lakhani (2020)** in *Competing in the Age of AI* explains how **artificial intelligence transforms firms** by digitizing activities into **scalable, connectable, and self-improving systems**.\
+The chapter outlines a **strategic framework for AI-driven businesses** that leverages **network and learning effects** while addressing key concepts such as **multihoming, disintermediation, and network bridging**, using real-world examples like **Uber** and **Airbnb**.
 :::
 
 #### Competing Through Business Analytics (CTBA)

@@ -1,8 +1,11 @@
 ---
-title: "Understanding Multimodal Generative AI"
+title: "Understanding Generative AI"
 format: html
 runtime: python
 ---
+
+* This section introduces multimodal generative AI—systems that create and reason across text, images, audio, and video—and situates them within the broader evolution from language models (LMs) to large language models (LLMs) and multimodal LLMs (MLLMs). It explains how advances in transformer architectures, GPUs, and training methods (pretraining, fine-tuning, RLHF, and cross-modal embeddings) enable cross-modal understanding and generation, while prompting techniques turn these capabilities into reliable workflows. The section also surveys high-impact applications (automation, personalization, retrieval, and decision support), highlights risks (hallucination, bias, transparency), and outlines practical guardrails—evaluation rubrics, prompt engineering, and governance—for responsible deployment in real settings.
+
 
 ###### *Reference:* Together, Chapter 1 and 3 of Multimodal Generative AI present an overview of the foundations, architectures, and ethical considerations of multimodal generative systems, and examine how emerging multimodal large language models extend these capabilities with advanced cross-modal reasoning and generation—while grappling with challenges in complexity, data integration, and responsible deployment.
 

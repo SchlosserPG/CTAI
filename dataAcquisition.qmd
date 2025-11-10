@@ -4,11 +4,14 @@ format: html
 runtime: python
 ---
 
+* This section surveys modern data acquisition—what to collect, where it lives, and how to fetch it at scale—spanning primary/secondary sources, files and databases, streaming feeds, APIs, and web scraping. It contrasts APIs (structured, reliable, governed) with scraping (flexible but fragile and compliance-sensitive), then maps the end-to-end pipeline from sensing and signal conditioning to collection, storage, and analysis. You’ll examine common formats (text, numeric, time series, media), typical challenges (quality, volume, variety, integration, governance, cost, scalability), and legal/ethical considerations. Finally, it introduces Python tooling with a focus on Beautiful Soup—how HTML parsing fits into practical projects and how to harden scrapers for changing page structures—grounded by Mitchell (2024).
+
 
 ::: note
-###### *Reference:*  
-Mitchell, R. (2024). *Web Scraping with Python* (3rd ed.).  
-O’Reilly Media. ISBN: 9781098145354.  
+###### *Reference:*
+
+Mitchell, R. (2024). *Web Scraping with Python* (3rd ed.).\
+O’Reilly Media. ISBN: 9781098145354.
 :::
 
 #### Data Acquisition: Theory & Methods

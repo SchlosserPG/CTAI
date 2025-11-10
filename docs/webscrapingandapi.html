@@ -153,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./genAI.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">GenAI</span></a>
+  <a href="./genAI.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Understanding Generative AI</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -173,12 +173,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./storytelling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Human Centered Data Story Telling</span></a>
+  <a href="./storytelling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Human-centered Storytelling</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analyticsproblem.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Analytics Problem</span></a>
+  <a href="./analyticsproblem.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">The Analytics Problem</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -198,12 +198,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">github</span></a>
+  <a href="./github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Using Git and Github</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./makingcallbacks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Callbacks and API in Dash’s</span></a>
+  <a href="./makingcallbacks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Writing Callbacks and Accessing API’s</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -262,6 +262,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<ul>
+<li>This section teaches how to acquire web data two ways—by parsing human-oriented HTML (web scraping) and by calling machine-friendly endpoints (APIs)—and shows when to use each. You’ll practice inspecting sites, locating target elements, and extracting fields with requests, Beautiful Soup, and pandas, then contrast that with structured API calls that return predictable JSON (e.g., Open-Meteo). Worked examples cover end-to-end flows (URL anatomy → request → parse/clean → tabulate), common failure points (fragile page structure, missing fields), and hardening tips (headers, error handling). The section closes with an ethics lens—copyright, terms of service, and responsible use—so students can ship useful pipelines that are both technically sound and compliant.</li>
+</ul>
 <section id="steps-to-web-scraping" class="level4">
 <h4 class="anchored" data-anchor-id="steps-to-web-scraping">Steps to Web Scraping</h4>
 <section id="step-1-inspect-your-data-source" class="level5">
@@ -284,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="web-scraping-example">Web Scraping Example</h4>
 <section id="source-httpsgithub.comschlosserpgforclass" class="level5">
 <h5 class="anchored" data-anchor-id="source-httpsgithub.comschlosserpgforclass">Source: https://github.com/SchlosserPG/ForClass</h5>
-<div id="0f5883a1" class="cell" data-execution_count="1">
+<div id="39c5b72a" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -304,7 +307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Retrieve the content using the .text property.</p></li>
 <li><p>Create a BeautifulSoup object named soup and pass it the HTML.</p></li>
 </ul>
-<div id="dc85e148" class="cell" data-execution_count="2">
+<div id="c72d8641" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -319,7 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>This line <strong>navigates to the correct section of the page</strong> (&lt;ul class=“list-recent-events”&gt;)</li>
 </ul>
-<div id="e11835df" class="cell" data-execution_count="3">
+<div id="6c9c13d1" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#find the event list</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>events<span class="op">=</span>soup.find(<span class="st">'ul'</span>,{<span class="st">'class'</span>:<span class="st">'list-recent-events'</span>}).find_all(<span class="st">'li'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -333,21 +336,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>events is assumed to be a list of HTML elements (likely from <strong>BeautifulSoup</strong>) where each element contains the HTML for one event listing from the page. The loop processes <strong>one event at a time.</strong></li>
 </ul>
-<div id="3c233e16" class="cell" data-execution_count="4">
+<div id="24b82917" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> event <span class="kw">in</span> events:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>.find(‘h3’) looks inside the HTML for the <strong>&lt;h3&gt; tag</strong>, which contains the event title.<br>
 .get_text(strip=True) pulls out just the text content (no HTML tags) and trims leading/trailing spaces.</li>
 </ul>
-<div id="923a4d76" class="cell" data-execution_count="5">
+<div id="3f0b931a" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>   title<span class="op">=</span> event.find(<span class="st">'h3'</span>).get_text(strip<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>.find(‘span’, {‘class’: ‘event-location’}) finds the <strong>&lt;span&gt;</strong> tag with a specific CSS class (event-location), which contains the location text.<br>
 .get_text(strip=True) again pulls and cleans the text.</li>
 </ul>
-<div id="e57c8ae5" class="cell" data-execution_count="6">
+<div id="5044e19b" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>   location <span class="op">=</span> event.find(<span class="st">'span'</span>,</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                     {<span class="st">'class'</span>:<span class="st">'event-location'</span>}).get_text(strip<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -355,21 +358,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>.find(‘time’) finds the <strong>&lt;time&gt; tag</strong> in the HTML, which holds the event date.<br>
 .get_text(strip=True) returns the readable date.</li>
 </ul>
-<div id="c58bb1dd" class="cell" data-execution_count="7">
+<div id="0732637d" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>   date<span class="op">=</span> event.find(<span class="st">'time'</span>).get_text(strip<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Each print() outputs a labeled line for the title, location, and date.<br>
 “-” * 40 prints a line of 40 dashes to visually separate events.</li>
 </ul>
-<div id="91e15b5f" class="cell" data-execution_count="8">
+<div id="40ff221d" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Title: </span><span class="sc">{</span>title<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Location: </span><span class="sc">{</span>location<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Date: </span><span class="sc">{</span>date<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Full code</p>
-<div id="7e8ccc0b" class="cell" data-execution_count="9">
+<div id="9251cc78" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through and print event details</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> event <span class="kw">in</span> events:</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> event.find(<span class="st">'h3'</span>).get_text(strip<span class="op">=</span><span class="va">True</span>)</span>
@@ -523,12 +526,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="linking-to-an-api-weather-api-to-collect" class="level4">
 <h4 class="anchored" data-anchor-id="linking-to-an-api-weather-api-to-collect">Linking to an API: weather API to collect</h4>
 <p>requests: Lets you send HTTP requests in Python (needed for calling the API). pandas: Used to organize and display the API results in a table-like DataFrame later on.</p>
-<div id="c4ef88d4" class="cell" data-execution_count="10">
+<div id="6df9f275" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Creates a Python dictionary where each key is a city name and each value is a tuple containing that city’s latitude and longitude. This makes it easy to loop through and query each city’s location in the API request.</p>
-<div id="545da0a4" class="cell" data-execution_count="11">
+<div id="3ba14b9f" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#5 samples cities in Virginia with lat/lon</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>cities_va <span class="op">=</span>{</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Williamsburg"</span>: (<span class="fl">37.2707</span>, <span class="op">-</span><span class="fl">76.7075</span>),</span>
@@ -539,20 +542,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This is the base URL for the Open-Meteo weather API. Every request will be sent to this endpoint, with parameters like latitude, longitude, and weather type added later.</p>
-<div id="90e6c763" class="cell" data-execution_count="12">
+<div id="ccb94f1b" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>url<span class="op">=</span><span class="st">"https://api.open-meteo.com/v1/forecast"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Creates an empty list to store the data returned by the API for each city. Later in the script, this list will be filled with dictionaries containing weather information for each city.</p>
-<div id="00adf979" class="cell" data-execution_count="13">
+<div id="1987aa9b" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span>[]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>cities_va.items() returns key-value pairs from the dictionary. city gets the city name (string). (lat, lon) unpacks the latitude and longitude tuple for that city. This lets you handle each city’s coordinates in turn</p>
-<div id="d1fe1652" class="cell" data-execution_count="14">
+<div id="81a93a8f" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> city, (lat,lon) <span class="kw">in</span> cities_va.items():</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>   params <span class="op">=</span>{}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Creates a dictionary of parameters to send with the request: “latitude” and “longitude” are set to the city’s coordinates. “current_weather”: True tells the Open-Meteo API to return the latest weather data.</p>
-<div id="652dadcb" class="cell" data-execution_count="15">
+<div id="189e0990" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> city, (lat,lon) <span class="kw">in</span> cities_va.items():</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>   params <span class="op">=</span>{</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>      <span class="st">"latitude"</span>:lat,</span>
@@ -561,15 +564,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Makes an HTTP GET request to the url (https://api.open-meteo.com/v1/forecast) with those parameters. The API responds with weather data in JSON format.</p>
-<div id="9d8a897b" class="cell" data-execution_count="16">
+<div id="98ae3d90" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>response<span class="op">=</span>requests.get(url,params<span class="op">=</span>params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Converts the JSON text from the API into a Python dictionary called data. This lets you access fields like data[“current_weather”] directly.</p>
-<div id="18139f52" class="cell" data-execution_count="17">
+<div id="7ba2b813" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> response.json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Checks if “current_weather” exists in the response (some APIs may not return this field if data is missing). If present: It saves the current_weather dictionary to weather. Pulls out temperature, windspeed, and time. Adds this info to the results list as a dictionary for that city.</p>
-<div id="69542016" class="cell" data-execution_count="18">
+<div id="f07e8266" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"current_weather"</span> <span class="kw">in</span> data:</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>   weather <span class="op">=</span> data[<span class="st">"current_weather"</span>]</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>   results.append({</span>
@@ -580,12 +583,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If the API didn’t return “current_weather”, stores None for those fields so the final table stays consistent.</p>
-<div id="b48aab6c" class="cell" data-execution_count="19">
+<div id="54ea71de" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>   results.append({<span class="st">"City"</span>:city,<span class="st">"Temperature (C)"</span>:<span class="st">"Wind Speed (m/s)"</span>: <span class="va">None</span>,<span class="st">"Time"</span>:})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Displays the final table</p>
-<div id="182dea91" class="cell" data-execution_count="20">
+<div id="50141a2d" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Display as table</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span>pd.DataFrame(results)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -600,7 +603,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="web-scraped-example" class="level4">
 <h4 class="anchored" data-anchor-id="web-scraped-example">Web Scraped Example</h4>
-<div id="9adae88b" class="cell" data-execution_count="21">
+<div id="d0df1007" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1106,8 +1109,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./storytelling.html" class="pagination-link" aria-label="Human Centered Data Story Telling">
-        <span class="nav-page-text"><span class="chapter-title">Human Centered Data Story Telling</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./storytelling.html" class="pagination-link" aria-label="Human-centered Storytelling">
+        <span class="nav-page-text"><span class="chapter-title">Human-centered Storytelling</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

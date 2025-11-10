@@ -1,14 +1,17 @@
 ---
-title: "Human Centered Data Story Telling"
+title: "Human-centered Storytelling"
 format: html
 runtime: python
 ---
 
+* This section frames data visualization as human-centered storytelling: choosing visuals that are truthful, interpretable, and purposeful for a specific audience. Building on Wilke (2019), it links aesthetic choices (position, color, shape, size) to perception, then pairs them with sound research methods—distinguishing description, prediction, and explanation while avoiding common traps (bad proportions, misleading color scales, poor aspect ratios). You’ll learn to separate correlation from causation, surface confounds and subgroup effects, and recognize reasoning errors (cherry-picking, arbitrary thresholds, misreading axes). Finally, it introduces a practical storytelling workflow—Who/What/How → Big Idea → 3-minute story—so your graphics do more than decorate: they clarify decisions and drive action.
+
 
 ::: note
-###### *Reference:*  
-Wilke, C. O. (2019). *Fundamentals of Data Visualization.*  
-O’Reilly Media. ISBN: 9781492031086.  
+###### *Reference:*
+
+Wilke, C. O. (2019). *Fundamentals of Data Visualization.*\
+O’Reilly Media. ISBN: 9781492031086.
 :::
 
 #### Data Visualization and Why Good Research Methods Matter
@@ -116,10 +119,11 @@ O’Reilly Media. ISBN: 9781492031086.
 #### Monochromatic vs Non-Monochromatic
 
 ::: note
-###### *Reference:*  
-**Data Source:** U.S. Census Bureau. (2023). *TIGER/Line Shapefiles: Counties (2023) \[Shapefile\].*  
-U.S. Department of Commerce.  
-Available at: [https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html)
+###### *Reference:*
+
+**Data Source:** U.S. Census Bureau. (2023). *TIGER/Line Shapefiles: Counties (2023) \[Shapefile\].*\
+U.S. Department of Commerce.\
+Available at: <https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html>
 :::
 
 ![Monochromatic vs Non-Monochromatic](images/mono_vs_nonmono.png)
@@ -143,9 +147,10 @@ Available at: [https://www.census.gov/geographies/mapping-files/time-series/geo/
 ![Bad Pie](images/bad_pie.png)
 
 ::: note
-###### *Reference:*  
-Yoram Reich and Steven J. Fenves, via the **UCI Machine Learning Repository**  
-(Dua & Karra Taniskidou, 2017).  
+###### *Reference:*
+
+Yoram Reich and Steven J. Fenves, via the **UCI Machine Learning Repository**\
+(Dua & Karra Taniskidou, 2017).
 :::
 
 #### Bad Proportions (Bar)
@@ -185,11 +190,12 @@ Yoram Reich and Steven J. Fenves, via the **UCI Machine Learning Repository**
     -   This approach allowed them to study how misinformation spreads through otherwise well-designed charts in a large-scale, real-world dataset.
 
 ::: note
-###### *Reference:*  
-Schmidt, A., Väänänen, K., Goyal, T., Kristensson, P. O., Peters, A., Mueller, S., Williamson, J. R., & Wilson, M. L. (Eds.). (2023).  
-*Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems.*  
-Association for Computing Machinery.  
-[https://doi.org/10.1145/3544548](https://doi.org/10.1145/3544548)
+###### *Reference:*
+
+Schmidt, A., Väänänen, K., Goyal, T., Kristensson, P. O., Peters, A., Mueller, S., Williamson, J. R., & Wilson, M. L. (Eds.). (2023).\
+*Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems.*\
+Association for Computing Machinery.\
+<https://doi.org/10.1145/3544548>
 :::
 
 #### Reasoning Errors (Schmidt et al., 2023)

@@ -153,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./genAI.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Understanding Multimodal Generative AI</span></a>
+  <a href="./genAI.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Understanding Generative AI</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -173,12 +173,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./storytelling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Human Centered Data Story Telling</span></a>
+  <a href="./storytelling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Human-centered Storytelling</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analyticsproblem.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Analytics Problem</span></a>
+  <a href="./analyticsproblem.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">The Analytics Problem</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -198,12 +198,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">github</span></a>
+  <a href="./github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Using Git and Github</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./makingcallbacks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Callbacks and API in Dash’s</span></a>
+  <a href="./makingcallbacks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Writing Callbacks and Accessing API’s</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -262,6 +262,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<ul>
+<li>This module introduces how to structure and build multi-page Dash applications. Students begin by organizing a project shell with an app.py entry file, a pages/ folder for layouts, and an assets/ folder for shared CSS. Using dash.register_page(), each page is defined with a layout and a URL path, while the main app layout (in app.py) includes a navigation bar and a dynamic dash.page_container that automatically renders the selected page.The project demonstrates page-specific designs and interactions:
+<ul>
+<li>Page 1 implements a responsive grid layout using custom CSS classes for top, middle, and footer blocks.</li>
+<li>Page 2 introduces interactivity and API integration with a callback that retrieves and displays random cat facts from a public API using requests.</li>
+</ul></li>
+<li>By the end, students can design organized, scalable Dash apps with multiple pages, shared styling, and dynamic content powered by callbacks and APIs.</li>
+</ul>
 <section id="building-the-project-shell" class="level3">
 <h3 class="anchored" data-anchor-id="building-the-project-shell">Building the Project Shell</h3>
 <p>Before writing any Dash code, spend a few minutes setting up a clean and organized project shell. This structure will make your application easier to maintain, extend, and style as it grows. At a minimum, you’ll create folders for your pages and assets, along with a main entry file that runs the app.</p>
@@ -278,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>my_dash_app/ │ ├── app.py │ ├── pages/ │ ├── home.py │ ├── page1.py │ └── page2.py │ └── assets/ └── style.css</p>
 <section id="initialize-the-app" class="level4">
 <h4 class="anchored" data-anchor-id="initialize-the-app">Initialize the App</h4>
-<div id="d7544be6" class="cell" data-execution_count="1">
+<div id="716437d4" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> dcc, html</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash_bootstrap_components <span class="im">as</span> dbc</span>
@@ -292,7 +300,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="register-each-page" class="level4">
 <h4 class="anchored" data-anchor-id="register-each-page">Register Each Page</h4>
-<div id="939fddc2" class="cell" data-execution_count="2">
+<div id="65c9be86" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -300,7 +308,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>layout <span class="op">=</span> html.Div([...])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="14b999e4" class="cell" data-execution_count="3">
+<div id="7b48820d" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -308,7 +316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>layout <span class="op">=</span> html.Div([...])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="a39c72d1" class="cell" data-execution_count="4">
+<div id="1f389f62" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -349,7 +357,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Only include</strong> the app.run(…) statement in app.py. Do not add a run command in any of the subpages. The application should be started once from app.py, and it will automatically load all registered pages from the pages/ folder.</p></li>
 </ul></li>
 </ul>
-<div id="fdee407c" class="cell" data-execution_count="5">
+<div id="f297a3d3" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> html.Div([</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>   <span class="co">#Simple navigation bar</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>   dbc.NavbarSimple(</span>
@@ -373,7 +381,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Each subpage should define its content using a <strong>layout</strong> variable, while the main file (app.py) uses <strong>app.layout</strong> to define the overall structure of the app, including navigation and the page container.</p></li>
 <li><p>You may also need an app.layout if you have callbacks, since Dash requires a defined layout to reference components in the callback functions.</p></li>
 </ul>
-<div id="f5a93985" class="cell" data-execution_count="6">
+<div id="587c804f" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -444,7 +452,7 @@ a:hover{
 <li><p>block–top / block–footer are modifier classes that adjust specific blocks (like making the top taller, the footer shorter, or giving them different visual emphasis).</p></li>
 </ul></li>
 </ul>
-<div id="9235eca0" class="cell" data-execution_count="7">
+<div id="0eac7186" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -559,7 +567,7 @@ a:hover{
 <li><p>IDs in the layout (btn-cat, cat-fact) must match the IDs in the callback.</p></li>
 </ul></li>
 </ul>
-<div id="d27573e1" class="cell" data-execution_count="8">
+<div id="2a1d7ff8" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html, register_page, dcc, callback, Output, Input</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>

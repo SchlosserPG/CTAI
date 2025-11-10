@@ -4,10 +4,12 @@ format: html
 runtime: python
 ---
 
+* This section explores how artificial intelligence is redefining what it means to be a firm in the digital era. It contrasts traditional, asset-based organizations with AI-driven enterprises that scale through data, algorithms, and continuous learning. Becoming an “AI company” is less about technology adoption and more about transforming strategy, culture, and operations to enable algorithmic decision-making and experimentation at scale. Drawing on Iansiti & Lakhani (2020), the section highlights how AI-ready firms build digital infrastructure, data maturity, and agile operating models that support learning loops, eliminate human bottlenecks, and turn intelligence into a core strategic asset.
 
 ::: note
-###### *Reference:*  
-Chapter 2 from **Iansiti and Lakhani (2020)** focuses on how **AI reshapes the boundaries, structure, and strategy of firms**.  
+###### *Reference:*
+
+Chapter 2 from **Iansiti and Lakhani (2020)** focuses on how **AI reshapes the boundaries, structure, and strategy of firms**.
 :::
 
 #### What Does It Means to Become an AI Company?

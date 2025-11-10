@@ -4,15 +4,17 @@ format: html
 runtime: python
 ---
 
+* This section surveys the ethical foundations and cybersecurity dimensions of AI, moving from first principles (autonomy, justice, beneficence, non-maleficence, explicability) to practical guardrails for responsible design. It introduces the CIA+A triad (confidentiality, integrity, accountability, availability) and maps key risk areas—bias in data/labels/algorithms, digital amplification and echo chambers, deepfakes, misuse in autonomous systems, AI-enabled fraud, and militarization. The focus then turns to governance and transparency: explainable AI, zero-trust security, human-in-the-loop oversight, and continuous auditing across demographics. Finally, it clarifies scholarly practice—how to cite generative AI and how to verify and format sources—to protect credibility while deploying AI ethically at scale.
+
 
 ::: note
-###### *Reference:*  
-Read **Chapters 3 and 4** in *Ravindran, Anton. (2022).*  
-**_Will AI Dictate the Future? From Successful Leaders and Managers from Around the World._**  
-Marshall Cavendish International (Asia) Private Limited.  
+###### *Reference:*
+
+Read **Chapters 3 and 4** in *Ravindran, Anton. (2022).*\
+***Will AI Dictate the Future? From Successful Leaders and Managers from Around the World.***\
+Marshall Cavendish International (Asia) Private Limited.\
 Available via [ProQuest Ebook Central](https://ebookcentral.proquest.com/lib/cwm/detail.action?docID=29354182).
 :::
-
 
 ##### Ethics and Cybersecurity Issues with AI
 

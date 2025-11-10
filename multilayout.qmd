@@ -6,6 +6,7 @@ execute:
   eval: false
 ---
 
+* This section demonstrates how to create grid-based layouts in Dash using Dash Bootstrap Components (dbc) to make dashboards organized, responsive, and professional. It begins by contrasting Dash’s default vertical stacking of components with the flexible row-and-column grid system provided by Bootstrap. Students learn to use dbc.Row() and dbc.Col() to arrange content horizontally, apply embedded styles or external themes, and control spacing and responsiveness.The lesson then builds a full multi-column dashboard that integrates real-world data from the Open-Meteo API. Using the requests and pandas libraries, students fetch 48-hour temperature forecasts for selected Virginia cities and visualize them with Plotly Express. Bootstrap cards are used to display key metrics (current, min, and max temperature), a line chart, and a dynamic summary table—all arranged neatly within a responsive layout. By the end, students understand how to combine layout design, API integration, and callback interactivity to produce multi-section Dash applications that look clean, adapt to screen size, and display live data through structured and reusable components.
 
 #### Dash Layout Structure
 
