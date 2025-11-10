@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>crashcourse</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="crashcourse_files/libs/clipboard/clipboard.min.js"></script>
+<script src="crashcourse_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="crashcourse_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="crashcourse_files/libs/quarto-html/popper.min.js"></script>
+<script src="crashcourse_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="crashcourse_files/libs/quarto-html/anchor.min.js"></script>
+<link href="crashcourse_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="crashcourse_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="crashcourse_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="crashcourse_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="crashcourse_files/libs/bootstrap/bootstrap-bb462d781dde1847d9e3ccf7736099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+  
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">crashcourse</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="python-basics-refresh" class="level4" data-number="0.0.1">
+<h4 data-number="0.0.1" class="anchored" data-anchor-id="python-basics-refresh"><span class="header-section-number">0.0.1</span> Python Basics (refresh)</h4>
+<table class="caption-top table">
+<caption>Basic Data Types</caption>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 17%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Basic Data Types</th>
+<th>Name</th>
+<th>Type</th>
+<th>Mutable?</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Numeric Types</td>
+<td>Integers</td>
+<td>int</td>
+<td>Immutable</td>
+<td>1 6 1000</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Floating points</td>
+<td>float</td>
+<td>Immutable</td>
+<td>1.2 1.6 100.5</td>
+</tr>
+<tr class="odd">
+<td>Text Sequence Type</td>
+<td>Strings</td>
+<td>str</td>
+<td>Immutable</td>
+<td><p>“hello world”</p>
+<p>“data science”</p>
+<p>“100”</p></td>
+</tr>
+<tr class="even">
+<td>Boolean Type</td>
+<td>Booleans</td>
+<td>bool</td>
+<td>Immutable</td>
+<td>True False</td>
+</tr>
+<tr class="odd">
+<td>Data Structures</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Sequence Types</td>
+<td>Lists</td>
+<td>list</td>
+<td>Mutable</td>
+<td>1, ‘hello’, 100.51, ‘hello’, 100.5</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Tuples</td>
+<td>tuple</td>
+<td>Immutable</td>
+<td>(1,‘hello’,100.5)</td>
+</tr>
+<tr class="even">
+<td>Mapping Type</td>
+<td>Dictionaries</td>
+<td>dict</td>
+<td>Mutable</td>
+<td><p>{“hello”:“mango”,</p>
+<p>“price”:“1}</p></td>
+</tr>
+<tr class="odd">
+<td>Set Type</td>
+<td>Sets</td>
+<td>set</td>
+<td>Mutable</td>
+<td>{1,“a”,‘b’}</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="jupyter-notebook-in-vs-code" class="level4" data-number="0.0.2">
+<h4 data-number="0.0.2" class="anchored" data-anchor-id="jupyter-notebook-in-vs-code"><span class="header-section-number">0.0.2</span> Jupyter Notebook in VS Code</h4>
+<ul>
+<li><p>Jupyter Notebooks are interactive documents that combine code, text, and visualizations in one place, making them ideal for data analysis, teaching, and sharing reproducible research.</p></li>
+<li><p>Like RMarkdown files, Jupyter Notebooks allow you to mix executable code with narrative text and visuals in a single, reproducible document.</p></li>
+<li><p>Add today’s code in a Jupyter Notebook.</p></li>
+<li><p>In VS Code, you need to the Jupyter extension installed to open, run, and edit Jupyter Notebook (.ipynb) files interactively.</p></li>
+</ul>
+</section>
+<section id="making-variables-in-python" class="level4" data-number="0.0.3">
+<h4 data-number="0.0.3" class="anchored" data-anchor-id="making-variables-in-python"><span class="header-section-number">0.0.3</span> Making Variables in Python</h4>
+<ul>
+<li><p>In both Python and R, you create a variable by assigning a value to a name, and the variable’s type is determined automatically based on the value (dynamic typing).</p></li>
+<li><p>Assignment Operator</p>
+<ul>
+<li><p>Python: Uses = (e.g., x = 5).</p></li>
+<li><p>R: Commonly uses &lt;- (e.g., x &lt;- 5), though = also works in many contexts.</p></li>
+</ul></li>
+<li><p>Printing:</p>
+<ul>
+<li><p>Python: You must use print(x) to display a value unless running interactively.</p></li>
+<li><p>R: Typing the variable name alone at the console will display its value.</p></li>
+</ul></li>
+<li><p>Scope and behavior:</p>
+<ul>
+<li><p>In Python, variables are always references to objects, and assignment does not copy the object unless explicitly requested.</p></li>
+<li><p>In R, some assignments may create copies (depending on how the variable is used and the underlying object type).</p></li>
+</ul></li>
+</ul>
+<!-- -->
+<ul>
+<li><p>When naming variables, do not use spaces or special characters</p></li>
+<li><p>If you want to use a space, use an underscore instead</p></li>
+<li><p>It is better to use lower case letters for variable names</p></li>
+</ul>
+<div id="8b7454a1" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span><span class="dv">7</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span><span class="st">"data"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x) <span class="co">#printing the variable x</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">## 7</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y) <span class="co">#printing the variable y</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">## data</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>my_variable <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_variable) <span class="co">##printing the variable before adding 5</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>my_variable <span class="op">+=</span> <span class="dv">5</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_variable) <span class="co">##printing the variable after adding 5</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">## 15</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="working-with-strings" class="level4" data-number="0.0.4">
+<h4 data-number="0.0.4" class="anchored" data-anchor-id="working-with-strings"><span class="header-section-number">0.0.4</span> Working with Strings</h4>
+<ul>
+<li>A string in Python is a sequence of characters enclosed in quotes, used to represent text.</li>
+</ul>
+<div id="f9fd4232" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>question <span class="op">=</span> <span class="st">"What are you studying?"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>answer <span class="op">=</span> <span class="st">"Analytics!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>The print() function in Python displays output to the console or screen.</li>
+</ul>
+<div id="ee8ca0d0" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(question)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">## What are you studying?</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(answer)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">## Analytics!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Concatenating strings with a space in between</li>
+</ul>
+<div id="a0230def" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(question <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> answer)  </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">## What are you studying? Analytics!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>In Python, prefixing a string with f creates an f-string (formatted string literal). This allows you to embed variables or expressions directly inside the string using curly braces {}. For example:</li>
+</ul>
+<div id="3c0dc111" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>question<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>answer<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## What are you studying? Analytics!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Concatenating strings with a newline in between</li>
+</ul>
+<div id="06635e0e" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(question <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span>answer) <span class="co">## What are you studying?</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Analytics!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>This will show the type of the variable ‘answer’</li>
+</ul>
+<div id="28fb4df9" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(answer) </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">## &lt;class 'str’&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>This will show the length of the string in ‘answer’</li>
+</ul>
+<div id="9b9d83aa" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(answer)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="indexing-strings" class="level4" data-number="0.0.5">
+<h4 data-number="0.0.5" class="anchored" data-anchor-id="indexing-strings"><span class="header-section-number">0.0.5</span> Indexing Strings</h4>
+<ul>
+<li>In Python, strings are indexed using zero-based indexing, meaning the first character is at position 0. Positive indices count from the start, and negative indices count from the end (-1 is the last character).</li>
+<li>This will show the first character of the string in ‘answer’</li>
+</ul>
+<div id="6c0ff22b" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>answer[<span class="dv">0</span>] <span class="co">## 'A'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>This will show the third character of the string in ‘answer’</li>
+</ul>
+<div id="984387b7" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>answer[<span class="dv">2</span>] <span class="co">## 'a'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>This will show the tenth character of the string in ‘answer’</li>
+</ul>
+<div id="fad28d71" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>answer[<span class="dv">9</span>] <span class="co">## '!'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>This will show the last character of the string in ‘answer’</li>
+</ul>
+<div id="184231ca" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>answer[<span class="op">-</span><span class="dv">1</span>] <span class="co">## '!'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="looking-at-strings" class="level4" data-number="0.0.6">
+<h4 data-number="0.0.6" class="anchored" data-anchor-id="looking-at-strings"><span class="header-section-number">0.0.6</span> Looking at Strings</h4>
+<ul>
+<li>Python slices are start-inclusive and end-exclusive
+<ul>
+<li>Inclusive means the character at that index is included.</li>
+<li>Exclusive means the character at that index is not included.</li>
+</ul></li>
+</ul>
+<table class="caption-top table">
+<caption>String Indexes</caption>
+<tbody>
+<tr class="odd">
+<td>Character:</td>
+<td>C</td>
+<td>T</td>
+<td>B</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td>Index</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>Reverse Index</td>
+<td>-4</td>
+<td>-3</td>
+<td>-2</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slicing" class="level4" data-number="0.0.7">
+<h4 data-number="0.0.7" class="anchored" data-anchor-id="slicing"><span class="header-section-number">0.0.7</span> Slicing</h4>
+<ul>
+<li>This makes a variable CTBA as defined on the last slide.</li>
+</ul>
+<div id="eb99da4f" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>course <span class="op">=</span> <span class="st">"CTBA"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>This will show the length of string in ‘course’.</li>
+</ul>
+<div id="692f26a5" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(course) <span class="co">## 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>This will show the first two characters of the string in ‘course’ in positions 0 and 1.</li>
+</ul>
+<div id="f13a5c21" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(course[<span class="dv">0</span>:<span class="dv">2</span>]) <span class="co">## CT</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>course[0:2] –&gt; ‘C’ and ‘T’ (includes index 0 and 1; excludes 2)</li>
+</ul>
+</section>
+<section id="methods-and-functions" class="level4" data-number="0.0.8">
+<h4 data-number="0.0.8" class="anchored" data-anchor-id="methods-and-functions"><span class="header-section-number">0.0.8</span> Methods and Functions</h4>
+<ul>
+<li><p>A function is a reusable block of code that performs a specific task. It is not tied to any object and is called using its name followed by parentheses.</p>
+<ul>
+<li>Defined independently from a specific python object/class</li>
+<li>Called by its name only</li>
+</ul>
+<div id="687b304d" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello"</span>) <span class="co">#Built in function</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Hello</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+<!-- -->
+<ul>
+<li><p>A method is a function that is associated with a specific object or class. It is called on the object, using dot notation.</p>
+<ul>
+<li><p>Associated with a Python object/class such as strings</p></li>
+<li><p>Called by its name on the Python object</p>
+<ul>
+<li><p>Example: st.upper()</p></li>
+<li><p>(This works because st is a string)</p></li>
+<li><p>Invalid: num.upper() (won’t work unless num is a string)</p></li>
+</ul></li>
+</ul>
+<div id="39a2f5a7" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"hello"</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text.upper()) </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">## HELLO</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+</section>
+<section id="some-method-examples-.upper-and-.lower" class="level4" data-number="0.0.9">
+<h4 data-number="0.0.9" class="anchored" data-anchor-id="some-method-examples-.upper-and-.lower"><span class="header-section-number">0.0.9</span> Some Method Examples (.upper and .lower)</h4>
+<ul>
+<li>This will convert the string in ‘answer’ to uppercase</li>
+</ul>
+<div id="53bae3ae" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>answer.upper() <span class="co"># ##'Analytics!'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>This will print the uppercase of ‘answer’</li>
+</ul>
+<div id="f8ea958f" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>answer_cap <span class="op">=</span> answer.upper()</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(answer_cap) <span class="co">## ANALYTICS!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>This will convert the string in ‘answer’ to lowercase</li>
+</ul>
+<div id="0ad49788" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>answer.lower()<span class="co">## 'analytics!'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="some-method-examples-.find" class="level4" data-number="0.0.10">
+<h4 data-number="0.0.10" class="anchored" data-anchor-id="some-method-examples-.find"><span class="header-section-number">0.0.10</span> Some Method Examples (.find)</h4>
+<ul>
+<li>The find() method is used with strings to search for a substring. It returns the index of the first occurence of the substring. If the substring is not found, it returns -1.</li>
+</ul>
+<div id="aae3f0e6" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>answer.find(<span class="st">"t"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">## 5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="adding-text-and-f-strings" class="level4" data-number="0.0.11">
+<h4 data-number="0.0.11" class="anchored" data-anchor-id="adding-text-and-f-strings"><span class="header-section-number">0.0.11</span> Adding Text and f-strings</h4>
+<div id="7d841386" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> <span class="st">"Pamela Schlosser"</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Uses + to join strings manually. The variable name must be converted to a string if it isn’t one already.</p></li>
+<li><p>More prone to formatting issues or errors if types mismatch.</p></li>
+</ul>
+<div id="92fbb017" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello, I am "</span> <span class="op">+</span> name <span class="op">+</span> <span class="st">". I have been teaching at WM since 2020."</span>)    </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Hello, I am Pamela Schlosser. I have been teaching at WM since 2020.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Uses f-strings, introduced in Python 3.6. Allows you to embed variables directly inside {}.</p></li>
+<li><p>Cleaner, more readable, and better for mixing variables and text.</p></li>
+</ul>
+<div id="0b0e7f26" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Hello, I am </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">. I have been teaching at WM since 2020."</span>) </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Hello, I am Pamela Schlosser. I have been teaching at WM since 2020.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tuple-example" class="level4" data-number="0.0.12">
+<h4 data-number="0.0.12" class="anchored" data-anchor-id="tuple-example"><span class="header-section-number">0.0.12</span> Tuple Example</h4>
+<ul>
+<li>A tuple is an ordered, immutable collection of items. It is created using parentheses () and can contain elements of any data type.</li>
+</ul>
+<div id="1aedfc29" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>) <span class="co"># This is a tuple</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(t1) <span class="co"># This will print the tuple t1</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">## (1, 2, 3, 4, 5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>This line raises an error because tuples are immutable. Immutable means you cannot change, add, or delete elements after the tuple is created.</li>
+</ul>
+<div id="c84492c1" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>t1[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">11</span> <span class="co"># This will raise an error because   tuples are immutable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Trying to reassign t1[0] attempts to modify the first element — but since tuples do not allow changes, Python throws a TypeError.</li>
+</ul>
+<!-- -->
+<ul>
+<li><p>Use a tuple when</p>
+<ul>
+<li><p>You want a fixed set of values.</p></li>
+<li><p>You need a read-only data structure.</p></li>
+<li><p>You want to use the collection as a key in a dictionary (only possible if it’s immutable).</p></li>
+</ul></li>
+<li><p>Tuples enhance data integrity by ensuring that the data they hold cannot be modified after creation.&nbsp;</p>
+<ul>
+<li><p>Since tuples are immutable, they can be used as keys in dictionaries — something lists cannot do.</p></li>
+<li><p>This allows for consistent hashing and indexing, which is crucial in algorithms and data structures.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="dictionaries" class="level4" data-number="0.0.13">
+<h4 data-number="0.0.13" class="anchored" data-anchor-id="dictionaries"><span class="header-section-number">0.0.13</span> Dictionaries</h4>
+<ul>
+<li><p>A dictionary is a built-in Python data type that stores data as key-value pairs.</p>
+<ul>
+<li><p>A key is the identifier used to access a value.</p>
+<ul>
+<li><p>Keys must be unique and immutable (like strings, numbers, or tuples).</p></li>
+<li><p>Each key maps to a corresponding value.</p></li>
+<li><p>You use the key inside square brackets or with .get() to retrieve its value.<br>
+<br>
+</p></li>
+</ul></li>
+<li><p>Values can be any data type (including lists, other dictionaries, etc.).</p></li>
+<li><p>Dictionaries are unordered (prior to Python 3.7) and mutable, meaning you can add, change, or remove items.</p></li>
+</ul></li>
+</ul>
+<div id="c3031c3f" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>d1 <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Schlosser"</span>, <span class="st">"age"</span>: <span class="dv">23</span>, <span class="st">"city"</span>: <span class="st">"Williamsburg"</span>} <span class="co"># This is a dictionary where "name", "age", and "city" are the keys</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="dictionary-functions" class="level4" data-number="0.0.14">
+<h4 data-number="0.0.14" class="anchored" data-anchor-id="dictionary-functions"><span class="header-section-number">0.0.14</span> Dictionary Functions</h4>
+<pre><code>-   Accesses and prints the value associated with the key 'name’</code></pre>
+<div id="1d7333ac" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d1[<span class="st">"name"</span>]) <span class="co">## Schlosser</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>-   Updates the value for the key 'age' to 24</code></pre>
+<div id="7ca7aaf9" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>d1[<span class="st">"age"</span>] <span class="op">=</span> <span class="dv">24</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>-   Adds a new key-value pair ('email', 'pgschlosser\@wm.edu') to the dictionary</code></pre>
+<div id="e6e17242" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>d1[<span class="st">"email"</span>] <span class="op">=</span> <span class="st">"pgschlosser@wm.edu"</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>-   Prints the updated dictionary</code></pre>
+<div id="9338ed7a" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d1) <span class="co">## {'name': 'Schlosser', 'age': 24, 'city': 'Williamsburg', 'email': 'pgschlosser@wm.edu'} </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="using-.items-in-for-loop" class="level4" data-number="0.0.15">
+<h4 data-number="0.0.15" class="anchored" data-anchor-id="using-.items-in-for-loop"><span class="header-section-number">0.0.15</span> Using .items in for loop</h4>
+<ul>
+<li>.items() returns a view object containing the dictionary’s (key, value) pairs. It is commonly used in loops to iterate through both the keys and values.</li>
+</ul>
+<div id="e6a8f6f0" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> d1.items():</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(key, <span class="st">":"</span>, value)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co">## name : Schlosser</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co">## age : 24</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co">## city : Williamsburg</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co">## email : pgschlosser@wm.edu</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="dictionary-of-dictionaries" class="level4" data-number="0.0.16">
+<h4 data-number="0.0.16" class="anchored" data-anchor-id="dictionary-of-dictionaries"><span class="header-section-number">0.0.16</span> Dictionary of Dictionaries</h4>
+<ul>
+<li><p>A dictionary of dictionaries is a nested data structure where each value in the outer dictionary is itself a dictionary.</p></li>
+<li><p>It allows you to organize complex data in a structured, readable way.</p></li>
+<li><p>Often used to represent multiple records, like a small database.</p></li>
+<li><p>Each person is a nested dictionary with their own name, age, and city.</p></li>
+</ul>
+<div id="a2be6c5f" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>people <span class="op">=</span> {</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"person1"</span>: {<span class="st">"name"</span>: <span class="st">"Schlosser"</span>, <span class="st">"age"</span>: <span class="dv">23</span>, <span class="st">"city"</span>: <span class="st">"Williamsburg"</span>},</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"person2"</span>: {<span class="st">"name"</span>: <span class="st">"Smith"</span>, <span class="st">"age"</span>: <span class="dv">30</span>, <span class="st">"city"</span>: <span class="st">"Newport News"</span>}</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(people)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co">## {'person1': {'name': 'Schlosser', 'age': 23, 'city': 'Williamsburg'}, 'person2': {'name': 'Smith', 'age': 30, 'city': 'New Port News'}}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="dictionary-of-dictionaries-example" class="level4" data-number="0.0.17">
+<h4 data-number="0.0.17" class="anchored" data-anchor-id="dictionary-of-dictionaries-example"><span class="header-section-number">0.0.17</span> Dictionary of Dictionaries Example</h4>
+<ul>
+<li><p>Dictionaries are extremely useful in Python for solving real-world problems like the Traveling Salesman Problem (TSP) because they provide:</p>
+<ul>
+<li><p>Fast Lookup for Distances</p></li>
+<li><p>Flexible Data Structure: Dictionaries allow you to <strong>dynamically update routes, costs, and visited status</strong>.</p></li>
+<li><p>Readability &amp; Structure: Using city names as <strong>keys</strong> makes the model easier to understand and maintain compared to raw index-based arrays.</p></li>
+<li><p>Allow you to easily model complex relationships</p></li>
+</ul></li>
+</ul>
+<div id="a406455a" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>distances <span class="op">=</span> {</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A"</span>: {<span class="st">"B"</span>: <span class="dv">10</span>, <span class="st">"C"</span>: <span class="dv">15</span>},</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B"</span>: {<span class="st">"A"</span>: <span class="dv">10</span>, <span class="st">"C"</span>: <span class="dv">20</span>},</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C"</span>: {<span class="st">"A"</span>: <span class="dv">15</span>, <span class="st">"B"</span>: <span class="dv">20</span>}</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="if-statements-in-python" class="level4" data-number="0.0.18">
+<h4 data-number="0.0.18" class="anchored" data-anchor-id="if-statements-in-python"><span class="header-section-number">0.0.18</span> If Statements in Python</h4>
+<ul>
+<li><p>Both Python and R use if statements to control the flow of code based on whether a condition is TRUE (R) or True (Python). Both can be combined with else and else if (R) / elif (Python) for multiple branches.</p></li>
+<li><p>Specifically, the if keyword checks if a condition is True.</p>
+<ul>
+<li>If the condition x &gt; 5 is met, the indented code runs.</li>
+</ul></li>
+</ul>
+<div id="86fe840e" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">5</span>:</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is greater than 5"</span>)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co">## x is greater than 5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><span style="background-color: #ffff00;"> What happens if we change x to 3? </span></li>
+</ul>
+</section>
+<section id="ifelse-statements" class="level4" data-number="0.0.19">
+<h4 data-number="0.0.19" class="anchored" data-anchor-id="ifelse-statements"><span class="header-section-number">0.0.19</span> If–Else Statements</h4>
+<ul>
+<li><p>else runs if the if condition is false.</p>
+<ul>
+<li><p>% is the modulo operator (remainder).</p></li>
+<li><p>== checks equality.</p></li>
+</ul></li>
+</ul>
+<div id="4416c522" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is even"</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is odd"</span>)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co">## x is even</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><span style="background-color: #ffff00;"> Can you write this to check if x is divisible by 3? </span></li>
+</ul>
+</section>
+<section id="if-elif-else-chains" class="level4" data-number="0.0.20">
+<h4 data-number="0.0.20" class="anchored" data-anchor-id="if-elif-else-chains"><span class="header-section-number">0.0.20</span> If-Elif-Else Chains</h4>
+<ul>
+<li><p>Use elif (else if) to check multiple conditions.</p></li>
+<li><p>Only the first True block executes.</p></li>
+</ul>
+<div id="e691da43" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Positive"</span>)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> x <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Zero"</span>)</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Negative"</span>)</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="co">## Zero</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><span style="background-color: #ffff00;"> Try this with different values of x.</span></li>
+</ul>
+</section>
+<section id="for-loops" class="level4" data-number="0.0.21">
+<h4 data-number="0.0.21" class="anchored" data-anchor-id="for-loops"><span class="header-section-number">0.0.21</span> For Loops</h4>
+<ul>
+<li><p>Both Python (and R) use for loops to iterate over elements in a sequence (list, vector, range, etc.). The loop variable takes on each element’s value in turn.</p></li>
+<li><p>In Python, the range(5) gives values from 0 to 4.</p>
+<ul>
+<li>for i in range(5) loops through those values.</li>
+</ul></li>
+</ul>
+<div id="cdf804b8" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"i is"</span>, i)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">## i is 0</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co">## i is 1</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co">## i is 2</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co">## i is 3</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co">## i is 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="while-loop-with-if-statement" class="level4" data-number="0.0.22">
+<h4 data-number="0.0.22" class="anchored" data-anchor-id="while-loop-with-if-statement"><span class="header-section-number">0.0.22</span> While Loop with If Statement</h4>
+<ul>
+<li><p>A while loop is a control structure that repeatedly executes a block of code as long as a specified condition is True (Python) or TRUE (R).</p></li>
+<li><p>Specifically, a while loop repeats while the condition is true.</p></li>
+<li><p>Modify it to print only even numbers.</p></li>
+<li><p>x += 1 increases x by 1 each time.</p></li>
+</ul>
+<div id="14264b3a" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> x <span class="op">&lt;</span> <span class="dv">5</span>:</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(x, <span class="st">"is even"</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(x, <span class="st">"is odd"</span>)</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    x <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co">## 0 is even</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co">## 1 is odd</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co">## 2 is even</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="co">## 3 is odd</span></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="co">## 4 is even</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><span style="background-color: #ffff00;"> What would happen if we forgot x += 1? </span></li>
+</ul>
+</section>
+<section id="intro-to-functions" class="level4" data-number="0.0.23">
+<h4 data-number="0.0.23" class="anchored" data-anchor-id="intro-to-functions"><span class="header-section-number">0.0.23</span> Intro to Functions</h4>
+<ul>
+<li><p>Defining Components</p>
+<ul>
+<li><p>def</p>
+<ul>
+<li>A keyword that starts the definition of a function. Tells Python that you’re about to declare a function.</li>
+</ul></li>
+<li><p>function_name</p>
+<ul>
+<li><p>The name of your function.Used to call the function later.</p></li>
+<li><p>Rules: Must follow Python naming conventions (e.g., lowercase_with_underscores, cannot start with a number).</p></li>
+</ul></li>
+<li><p>(input_parameters)</p>
+<ul>
+<li><p>The inputs or arguments the function takes. Allow the function to receive external values it can use.</p></li>
+<li><p>Examples: def greet(name): or def add(x, y):</p></li>
+</ul></li>
+<li><p>““” docstring “““</p>
+<ul>
+<li><p>A documentation string enclosed in triple quotes. Describes what the function does.</p></li>
+<li><p>Optional but recommended. Use it to explain input, output, and purpose.</p></li>
+</ul></li>
+<li><p>Statement(s)</p>
+<ul>
+<li><p>The actual body or code of the function. Contains what the function should do — print, calculate, return values, etc.</p></li>
+<li><p>Indentation is required to indicate the function body.</p></li>
+</ul></li>
+</ul></li>
+</ul>
+<div id="05d5d306" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function definition keyword</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> function_name(input_parameters): <span class="co">#Function name &amp; parameters</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>   <span class="co">"""</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co">      Docstring:</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="co">         -Describes the purpose of the function</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="co">         -Lists inputs (parameters)</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co">         -Explains outputs (return values)</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="co">   """</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>   <span class="co">#Function body:</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>   <span class="co">#  -Contains the actual statements to execute</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>   <span class="co">#  -Must be indented</span></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>      statement_1</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>      statement_2</span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>   <span class="co">#Example: return result</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="functions" class="level4" data-number="0.0.24">
+<h4 data-number="0.0.24" class="anchored" data-anchor-id="functions"><span class="header-section-number">0.0.24</span> Functions</h4>
+<div id="a1424fa8" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sum_up(a,b):</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>   <span class="co">"""</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co">   This is where we put the docstring </span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co">   including input parameters, and output</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co">   """</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>   <span class="bu">print</span>(a<span class="op">+</span>b)</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>sum_up(<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="co">## or like belo</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>sum_up(a<span class="op">=</span><span class="dv">1</span>,b<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Positional arguments</p>
+<ul>
+<li><p>sum_up(1, 2)</p></li>
+<li><p>The values are passed in order: a = 1, b = 2.</p></li>
+<li><p>The position in the parentheses determines which parameter each value is assigned to.</p></li>
+</ul></li>
+<li><p>Keyword arguments</p>
+<ul>
+<li><p>sum_up(a=1, b=2)</p></li>
+<li><p>Each value is explicitly tied to its parameter name.</p></li>
+<li><p>The order does not matter here, because you specify the names.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="can-set-default-values-in-functions" class="level4" data-number="0.0.25">
+<h4 data-number="0.0.25" class="anchored" data-anchor-id="can-set-default-values-in-functions"><span class="header-section-number">0.0.25</span> Can Set Default Values in Functions</h4>
+<ul>
+<li><p>Default values are preset values assigned to function parameters. If the caller does not provide a value for that parameter, the default is used.</p>
+<ul>
+<li><p>Many built-in and custom functions use default values to make them more flexible.</p></li>
+<li><p>They allow you to omit arguments when calling a function.</p></li>
+<li><p>Makes functions easier to use and reduces the need for overloading.</p></li>
+</ul></li>
+</ul>
+<div id="f41a000d" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sum_up(a<span class="op">=</span><span class="dv">1</span>,b<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>   <span class="bu">print</span>(a<span class="op">+</span>b)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>sum_up() <span class="co">#This will use the default values of a and b </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="return-statement" class="level4" data-number="0.0.26">
+<h4 data-number="0.0.26" class="anchored" data-anchor-id="return-statement"><span class="header-section-number">0.0.26</span> return Statement</h4>
+<ul>
+<li><p>The return statement is used inside a function to send a value back to the caller of the function.</p>
+<ul>
+<li><p>Without return, a function returns None by default.</p></li>
+<li><p>You can return any data type: numbers, strings, lists, even other functions.</p></li>
+<li><p>You can return multiple values using commas</p></li>
+</ul></li>
+<li><p>The function below will use the default values of a and b and assign the result to a new variable ‘result’. This will print the result of the sum_up function.</p></li>
+</ul>
+<div id="b73cfa7d" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sum_up(a<span class="op">=</span><span class="dv">1</span>,b<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span>(a<span class="op">+</span>b)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>result<span class="op">=</span>sum_up() <span class="co">#This will use the default values of a and b and </span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="co">#assign the result to a new variable 'result'</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result) <span class="co">#This will print the result of the sum_up function</span></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="co">##2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="if-else-in-a-function" class="level4" data-number="0.0.27">
+<h4 data-number="0.0.27" class="anchored" data-anchor-id="if-else-in-a-function"><span class="header-section-number">0.0.27</span> If Else in a Function</h4>
+<ul>
+<li>You can use if/else inside a function to control which statements run based on the input. This lets your function make decisions and return different results depending on conditions.</li>
+</ul>
+<div id="a145c14a" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> abs_value(k):</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>   <span class="co">"""Returns the absolute value of a number."""</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> k<span class="op">&lt;</span><span class="dv">0</span>:</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="op">-</span>k</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>   <span class="cf">else</span>:</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> k</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="bu">abs</span>(<span class="op">-</span><span class="dv">5</span>) <span class="co">#This will return 5</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="bu">abs</span>(<span class="dv">5</span>) <span class="co">#This will also return 5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="using-a-function-from-a-package" class="level4" data-number="0.0.28">
+<h4 data-number="0.0.28" class="anchored" data-anchor-id="using-a-function-from-a-package"><span class="header-section-number">0.0.28</span> Using a Function from a Package</h4>
+<ul>
+<li><p>We are going to take a simple list apply some numpy functions</p></li>
+<li><p>Print a basic Python list</p></li>
+</ul>
+<div id="800b6c4c" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>list1 <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(list1)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co">## [1, 2, 3, 4, 5]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>If our install functions worked in the last class, we should be able to access functions from a package. One of the pages we installed was numpy.</p></li>
+<li><p>Import the NumPy library and alias it as np</p></li>
+</ul>
+<div id="d54bfa27" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-and-print-a-numpy-array-named-arr1-from-a-list" class="level4" data-number="0.0.29">
+<h4 data-number="0.0.29" class="anchored" data-anchor-id="create-and-print-a-numpy-array-named-arr1-from-a-list"><span class="header-section-number">0.0.29</span> Create and Print a NumPy array named arr1 from a list</h4>
+<ul>
+<li>An array is a structured collection of elements (usually numbers) stored in a single variable, allowing efficient storage and manipulation; here, the code creates a NumPy array and prints it as [1 2 3 4 5].</li>
+</ul>
+<div id="49fadb6a" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>arr1 <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>])</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(arr1)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co">## [1 2 3 4 5]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>list2 is a list of tuples, treated as a list of rows</li>
+</ul>
+<div id="d971bd8b" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>list2 <span class="op">=</span> [(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)]</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(list2)</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co">## [(1, 2, 3), (4, 5, 6)]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>arr2 is a 2D NumPy array that now supports array operations</li>
+</ul>
+<div id="a4823fe3" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>arr2 <span class="op">=</span> np.array([(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)])</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(arr2)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co">## [[1 2 3]</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co">##  [4 5 6]]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="using-a-function-from-a-package-1" class="level4" data-number="0.0.30">
+<h4 data-number="0.0.30" class="anchored" data-anchor-id="using-a-function-from-a-package-1"><span class="header-section-number">0.0.30</span> Using a Function from a Package</h4>
+<div id="b97181a9" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span> <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    arr1 <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Loop 1 loops through a Python list and print elements.</li>
+</ul>
+<div id="24d13019" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> e <span class="kw">in</span> <span class="bu">list</span>:</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(e) <span class="co">#Loop through a Python list and print elements</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co">## 1</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="co">## 2</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="co">## 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Loop 2 loops through arr1, a NumPy array — works the same at this level.</li>
+</ul>
+<div id="96b31786" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> e <span class="kw">in</span> arr1:</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(e)  <span class="co"># Loop through a NumPy array — works the same at this level</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co">## 1</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co">## 2</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="co">## 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="add-elements-to-a-numpy-array" class="level4" data-number="0.0.31">
+<h4 data-number="0.0.31" class="anchored" data-anchor-id="add-elements-to-a-numpy-array"><span class="header-section-number">0.0.31</span> Add Elements to a Numpy Array</h4>
+<div id="cbbe5a87" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>arr1 <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Below, we are exploring how to add elements to a NumPy array, and highlighting the difference between Python lists and NumPy arrays when it comes to appending:</p></li>
+<li><p>Use np.append() to add elements to an array</p>
+<ul>
+<li><p>arr1.append(4) does not work — unlike lists, NumPy arrays do not have an .append() method. It raises an AttributeError.</p></li>
+<li><p>arr1 = arr1 + [5] is also incorrect — adding a list to a NumPy array does not work unless the shapes are compatible, which they are not in this case.</p></li>
+</ul></li>
+</ul>
+<div id="10417e3d" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># these do not work:</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="co">#arr1.append(4)</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="co">#arr1 = arr1 + [5]</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>arr1 <span class="op">=</span> np.append(arr1,<span class="dv">4</span>) <span class="co">#works</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>arr1 <span class="op">=</span> np.append(arr1,[<span class="dv">5</span>]) <span class="co">#Append another element</span></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> e <span class="kw">in</span> arr1:</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(e) <span class="co"># Prints updated array values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="add-two-arrays-element-wise" class="level4" data-number="0.0.32">
+<h4 data-number="0.0.32" class="anchored" data-anchor-id="add-two-arrays-element-wise"><span class="header-section-number">0.0.32</span> Add Two Arrays Element-wise</h4>
+<ul>
+<li><p>Adding two arrays element-wise means that corresponding elements from each array are added together to produce a new array of the same shape, where each position contains the sum of the matching elements.</p></li>
+<li><p>Print the result: each value is doubled</p></li>
+</ul>
+<div id="58191da1" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>arr2 <span class="op">=</span> arr1 <span class="op">+</span> arr1</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> e <span class="kw">in</span> arr2:</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(e)</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co">## 2</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="co">## 4</span></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="co">## 6</span></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 8</span></span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

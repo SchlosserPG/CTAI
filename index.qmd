@@ -1,15 +1,16 @@
 ---
-title: "Developing Competitive Advantage"
+title: "Intro to CTAI"
 author: "Pamela Schlosser"
 format: html
 runtime: python
 ---
 
-# Draft!!!!!!!!!!!!!!!!
 
-## Developing Business Acumen
-
-###### *Reference: Chapter 6 from Iansiti and Karim (2020) in Competing in the Age of AI explains how artificial intelligence is transforming firms by digitizing activities into scalable, connectable, and self-improving systems, and outline a new strategic framework for AI-driven businesses that leverages network and learning effects while addressing concepts like multihoming, disintermediation, and network bridging through examples such as Uber and Airbnb.*
+::: note
+###### *Reference:*  
+Chapter 6 from **Iansiti and Lakhani (2020)** in *Competing in the Age of AI* explains how **artificial intelligence transforms firms** by digitizing activities into **scalable, connectable, and self-improving systems**.  
+The chapter outlines a **strategic framework for AI-driven businesses** that leverages **network and learning effects** while addressing key concepts such as **multihoming, disintermediation, and network bridging**, using real-world examples like **Uber** and **Airbnb**.  
+:::
 
 #### Competing Through Business Analytics (CTBA)
 

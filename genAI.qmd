@@ -1,11 +1,8 @@
 ---
-title: "GenAI"
-author: "Pamela Schlosser"
+title: "Understanding Multimodal Generative AI"
 format: html
 runtime: python
 ---
-
-## Chapter 3: Multimodal Generative AI
 
 ###### *Reference:* Together, Chapter 1 and 3 of Multimodal Generative AI present an overview of the foundations, architectures, and ethical considerations of multimodal generative systems, and examine how emerging multimodal large language models extend these capabilities with advanced cross-modal reasoning and generation—while grappling with challenges in complexity, data integration, and responsible deployment.
 
@@ -287,7 +284,7 @@ runtime: python
 
 #### **Prompt Engineering for Model Customization**
 
-![Prompt Engineering for Model Customization](prompt_engineering.png)
+![Prompt Engineering for Model Customization](images/prompt_engineering.png)
 
 #### Prompt Engineering
 

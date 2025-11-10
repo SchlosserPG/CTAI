@@ -3,9 +3,8 @@ title: "References"
 format: html
 ---
 
-* Chapters 3 and 4 from Ravindran, Anton. Will AI Dictate the Future? From Successful Leaders and Managers from Around the World, Marshall Cavendish International (Asia) Private Limited, 2022. ProQuest Ebook Central, Retrieved from https://ebookcentral.proquest.com/lib/cwm/detail.action?docID=29354182  
-* Chapters 1-4 from Weber, W., & Zwingmann, T. (2024). Augmented analytics. O’Reilly Media, Inc. Retrieved from https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/ 
-* Schmidt, A., Väänänen, K., Goyal, T., Kristensson, P. O., Peters, A., Mueller, S., Williamson, J. R., & Wilson, M. L. (Eds.). (2023). Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems. Association for Computing Machinery. https://doi.org/10.1145/3544548
-Additional Reading Material:
-* Wilke, C. O. (2019). Fundamentals of data visualization. O’Reilly Media. ISBN: 9781492031086.Retrieved from https://learning.oreilly.com/library/view/fundamentals-of-data/9781492031079/ 
-* Dabbas, E. (2021). Interactive dashboards and data apps with Plotly and Dash. Packt Publishing. ISBN 9781800568914. Retrieved from https://learning.oreilly.com/library/view/interactive-dashboards-and/9781800568914/ 
+-   Chapters 3 and 4 from Ravindran, Anton. Will AI Dictate the Future? From Successful Leaders and Managers from Around the World, Marshall Cavendish International (Asia) Private Limited, 2022. ProQuest Ebook Central, Retrieved from https://ebookcentral.proquest.com/lib/cwm/detail.action?docID=29354182\
+-   Chapters 1-4 from Weber, W., & Zwingmann, T. (2024). Augmented analytics. O’Reilly Media, Inc. Retrieved from https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/
+-   Schmidt, A., Väänänen, K., Goyal, T., Kristensson, P. O., Peters, A., Mueller, S., Williamson, J. R., & Wilson, M. L. (Eds.). (2023). Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems. Association for Computing Machinery. https://doi.org/10.1145/3544548 Additional Reading Material:
+-   Wilke, C. O. (2019). Fundamentals of data visualization. O’Reilly Media. ISBN: 9781492031086.Retrieved from https://learning.oreilly.com/library/view/fundamentals-of-data/9781492031079/
+-   Dabbas, E. (2021). Interactive dashboards and data apps with Plotly and Dash. Packt Publishing. ISBN 9781800568914. Retrieved from https://learning.oreilly.com/library/view/interactive-dashboards-and/9781800568914/

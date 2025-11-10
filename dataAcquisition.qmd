@@ -1,15 +1,15 @@
 ---
-title: "Data Acquisition"
-author: "Pamela Schlosser"
+title: " Modern Data Acquisition"
 format: html
 runtime: python
 ---
 
-## Modern Data Acquisition & Integration
 
-##### **Web Scraping vs using APIs**
-
-###### *Reference Mitchell, R. (2024). Web scraping with Python (3rd ed.). O’Reilly Media. ISBN 9781098145354.*
+::: note
+###### *Reference:*  
+Mitchell, R. (2024). *Web Scraping with Python* (3rd ed.).  
+O’Reilly Media. ISBN: 9781098145354.  
+:::
 
 #### Data Acquisition: Theory & Methods
 

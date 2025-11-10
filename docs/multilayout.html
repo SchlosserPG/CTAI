@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Creating a Grid Layout in Dash – Competing in the Age of AI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./multipages.html" rel="next">
+<link href="./makingcallbacks.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-64b801fe9b6685c0a799f7172ecad621.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./multilayout.html"><span class="chapter-title">Creating a Grid Layout in Dash</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Competing in the Age of AI</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Intro to CTAI</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rethinkingfirm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Rethinking the Firm</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./genAI.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Understanding Multimodal Generative AI</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ethics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">AI &amp; Data Ethics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dataAcquisition.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Modern Data Acquisition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./webscrapingandapi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Web Scraping and APIs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./storytelling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Human Centered Data Story Telling</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analyticsproblem.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Analytics Problem</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preparingpeople.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Preparing People</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./introdash.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Intro to Dash</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./crashcourse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Crash Python Course</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">github</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./makingcallbacks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Callbacks and API in Dash’s</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multilayout.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Creating a Grid Layout in Dash</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multipages.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Setting Up Multiple Pages</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Summary</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Creating a Grid Layout in Dash</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="dash-layout-structure" class="level4">
+<h4 class="anchored" data-anchor-id="dash-layout-structure">Dash Layout Structure</h4>
+<ul>
+<li>Dash Default Structure</li>
+</ul>
+<p>Component 1</p>
+<pre><code>↓</code></pre>
+<p>Component 2</p>
+<pre><code>↓</code></pre>
+<p>Component 3</p>
+<ul>
+<li>What if used this horizontal layout?</li>
+</ul>
+<p>Component 1 →Component 2 → Component 3</p>
+<ul>
+<li><p>Components are stacked vertically (top to bottom).</p>
+<ul>
+<li><p>Useful for dashboards where content is consumed in a specific order (e.g., filters → charts → details).</p></li>
+<li><p>In Dash, this happens naturally when placing components inside an html.Div() without specifying a grid or flex layout.</p></li>
+<li><p>Example: A dropdown filter at the top, followed by a summary chart, then a detailed table.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="what-is-bootstrap" class="level4">
+<h4 class="anchored" data-anchor-id="what-is-bootstrap">What is Bootstrap?</h4>
+<ul>
+<li><p>Bootstrap is a popular framework for front-end web development</p></li>
+<li><p>Provides grid layout, prebuilt components, and more</p></li>
+<li><p>Dash Bootstrap Components (dbc &amp; dash-bootstrap-components):</p>
+<ul>
+<li>Dash library provides Bootstrap components (including the grid system layout), stylesheets, and more</li>
+</ul></li>
+<li><p>Bootstrap layout components</p>
+<ul>
+<li><p>Components for laying out Dash apps, including the grid system</p></li>
+<li><p>Two main layout components:</p>
+<ul>
+<li><p>Row: container for columns</p></li>
+<li><p>Col: where the content is placed</p></li>
+</ul></li>
+<li><p>Only Col components should be immediate children of the Row component</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="top-components-in-dbc" class="level4">
+<h4 class="anchored" data-anchor-id="top-components-in-dbc">Top Components in dbc</h4>
+<p><img src="images/dbc.png" class="img-fluid"></p>
+</section>
+<section id="creating-a-grid-layout-examples" class="level4">
+<h4 class="anchored" data-anchor-id="creating-a-grid-layout-examples">Creating a Grid Layout: Examples</h4>
+<ul>
+<li><p>Layout example 1</p></li>
+<li><p>Row</p>
+<ul>
+<li>| One of two coulmns | One of two columns |</li>
+</ul></li>
+</ul>
+<div id="8b1575f1" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Import Dash Bootstrap Components</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash_bootstrap_components <span class="im">as</span> dbc</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>dbc.Row(</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>   [</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      dbc.Col(html.Div(<span class="st">'One of two Columns'</span>)),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>      dbc.Col(html.Div(<span class="st">'One of two Columns'</span>))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Layout example 2</p>
+<ul>
+<li><p>Row | A single column |</p></li>
+<li><p>Row | One of two columns | One of two columns |</p></li>
+</ul></li>
+</ul>
+<div id="14c6637c" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Import Dash Bootstrap Components</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash_bootstrap_components <span class="im">as</span> dbc</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>dbc.Row(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>   dbc.Col(html.Div(<span class="st">'A single column'</span>))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>dbc.Row(</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>   [</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>      dbc.Col(html.Div(<span class="st">'One of two columns'</span>)),</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>      dbc.Col(html.Div(<span class="st">'One of two columns'</span>))</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="making-a-2-column-layout" class="level4">
+<h4 class="anchored" data-anchor-id="making-a-2-column-layout">Making a 2-column layout</h4>
+<ul>
+<li><p>dash_bootstrap_components lets you plug in a full Bootstrap theme via an external stylesheet. This instantly gives your app Bootstrap’s responsive grid, typography, and utility classes, and it styles all dbc.* components consistently—no custom CSS required.</p>
+<ul>
+<li>You can swap themes (e.g., dbc.themes.COSMO, LUX, MATERIA, CYBORG) for a new look and still override specifics in your own assets/style.css.</li>
+</ul></li>
+</ul>
+<div id="382cb525" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> Dash, html</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash_bootstrap_components <span class="im">as</span> dbc</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Dash(<span class="va">__name__</span>, external_stylesheets<span class="op">=</span>[dbc.themes.BOOTSTRAP])</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>app.title <span class="op">=</span> <span class="st">"Multi Layout App"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Embedded stylesheets in Dash are simple Python dictionaries you attach via the style prop</li>
+</ul>
+<div id="a27ca04f" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>box_style <span class="op">=</span> {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"border"</span>: <span class="st">"2px solid black"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"borderRadius"</span>: <span class="st">"5px"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"margin"</span>: <span class="st">"5px"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"padding"</span>: <span class="st">"20px"</span>, </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"backgroundColor"</span>: <span class="st">"#e0f7fa"</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Perfect for quick, local styling and prototypes.</p></li>
+<li><p>For shared, consistent styling across a multi-page app, shift most rules to an external stylesheet in assets/ and reserve embedded styles for small overrides.</p></li>
+</ul>
+<div id="60fb56e4" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> dbc.Container([</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">##first row</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    dbc.Row(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        dbc.Col(html.Div(<span class="st">"Top Row (Full Width)"</span>, style<span class="op">=</span>box_style), width<span class="op">=</span><span class="dv">12</span>)),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    dbc.Row([</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        dbc.Col(html.Div(<span class="st">"Left Column"</span>, style<span class="op">=</span>box_style)),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        dbc.Col(html.Div(<span class="st">"Right Column"</span>, style<span class="op">=</span>box_style))</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    ]),</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    dbc.Row(dbc.Col(html.Div(<span class="st">"Footer (Full Width)"</span>, style<span class="op">=</span>box_style), width<span class="op">=</span><span class="dv">12</span>))</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>], fluid<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>                   </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    app.run(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/2layout.png" class="img-fluid"></p>
+</section>
+<section id="creating-a-multi-layout-app-with-weather-api" class="level4">
+<h4 class="anchored" data-anchor-id="creating-a-multi-layout-app-with-weather-api">Creating a Multi-Layout App with Weather API</h4>
+<div id="29063403" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MultiLayoutWeather.py</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd <span class="co">#for data frame and manipulation</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> Dash, html, dcc, Input, Output </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash_bootstrap_components <span class="im">as</span> dbc <span class="co">#for bootstrap components</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px <span class="co">#for data visualization</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------- Public API helper (Open-Meteo) ----------</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#selecting the cities and their coordinates</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a dictionary mapping city names to their latitude and longitude.</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>CITY_COORDS <span class="op">=</span> {</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Williamsburg"</span>: (<span class="fl">37.2707</span>, <span class="op">-</span><span class="fl">76.7075</span>),</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Richmond"</span>: (<span class="fl">37.5407</span>, <span class="op">-</span><span class="fl">77.4360</span>),</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Virginia Beach"</span>: (<span class="fl">36.8529</span>, <span class="op">-</span><span class="fl">75.9780</span>),</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Roanoke"</span>: (<span class="fl">37.27097</span>, <span class="op">-</span><span class="fl">79.94143</span>),</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Charlottesville"</span>: (<span class="fl">38.0293</span>, <span class="op">-</span><span class="fl">78.4767</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/weatherapi.png" class="img-fluid"></p>
+</section>
+<section id="fetching-the-hourly-temperature" class="level4">
+<h4 class="anchored" data-anchor-id="fetching-the-hourly-temperature">Fetching the Hourly Temperature</h4>
+<ul>
+<li><p>Create a function fetch_hourly_temp(lat, lon) that takes a latitude/longitude and returns a Pandas DataFrame of next 48 hours of hourly temperatures.</p></li>
+<li><p>Builds API URL: Uses the Open-Meteo forecast endpoint with query params, where an endpoint is the specific URL where an API resource or service can be accessed.</p>
+<ul>
+<li><p>latitude, longitude,</p></li>
+<li><p>hourly=temperature_2m,</p></li>
+<li><p>forecast_days=2 (≈48 hours),</p></li>
+<li><p>timezone=auto.</p></li>
+</ul></li>
+<li><p>Calls the API safely:</p>
+<ul>
+<li>requests.get(…, timeout=15) and r.raise_for_status() to surface HTTP errors (raises an exception if the HTTP request failed).</li>
+</ul></li>
+<li><p>Parses JSON:</p>
+<ul>
+<li><p>Extracts the “hourly” block, specifically the arrays “time” and “temperature_2m”.</p></li>
+<li><p>The 2m means the temperature is measured (or modeled) at 2 meters above ground level.</p></li>
+<li><p>Constructs a DataFrame with two columns:<br>
+time and temp_C (temperature in °C from temperature_2m).</p></li>
+</ul></li>
+<li><p>Cleans timestamps by converting the time column to proper datetime objects with pd.to_datetime.</p></li>
+<li><p>Returns the final DataFrame of hourly timestamps and temperatures for the requested location.</p></li>
+</ul>
+<div id="0cdc7e0a" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fetch_hourly_temp(lat: <span class="bu">float</span>, lon: <span class="bu">float</span>) <span class="op">-&gt;</span> pd.DataFrame:</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Fetch next-48-hours hourly temperature."""</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> (</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"https://api.open-meteo.com/v1/forecast"</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"?latitude=</span><span class="sc">{</span>lat<span class="sc">}</span><span class="ss">&amp;longitude=</span><span class="sc">{</span>lon<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"&amp;hourly=temperature_2m&amp;forecast_days=2&amp;timezone=auto"</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> requests.get(url, timeout<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    r.raise_for_status()</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> r.json()[<span class="st">"hourly"</span>]</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame({<span class="st">"time"</span>: data[<span class="st">"time"</span>], <span class="st">"temp_C"</span>: data[<span class="st">"temperature_2m"</span>]})</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"time"</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">"time"</span>])</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="using-a-theme-for-an-external-stylesheet" class="level4">
+<h4 class="anchored" data-anchor-id="using-a-theme-for-an-external-stylesheet">Using a Theme for an External Stylesheet</h4>
+<p>![](images/externalstyle.png)</p>
+<ul>
+<li><p><a href="https://www.dash-bootstrap-components.com/docs/themes/explorer/" class="uri">https://www.dash-bootstrap-components.com/docs/themes/explorer/</a></p></li>
+<li><p>Use Ctrl + I to inspect and select a class or style you would like to apply.</p></li>
+</ul>
+</section>
+<section id="applying-classes-from-the-theme" class="level4">
+<h4 class="anchored" data-anchor-id="applying-classes-from-the-theme">Applying Classes from the Theme</h4>
+<ul>
+<li><p>A top bar (navbar) is built using a Div as the container.</p></li>
+<li><p>Inside the navbar, a large heading displays Open-Meteo Dashboard in white text.</p></li>
+<li><p>A smaller subtitle follows, showing Public API – Multi-column layout in white text.</p></li>
+<li><p>The navbar itself uses Bootstrap classes to style it with:</p></li>
+<li><p>a dark background,</p></li>
+<li><p>white text suitable for dark themes,</p></li>
+<li><p>extra padding on the sides,</p></li>
+<li><p>and spacing below to separate it from the rest of the page.</p></li>
+</ul>
+<div id="290b2ade" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------- Dash App ----------</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Dash(<span class="va">__name__</span>, external_stylesheets<span class="op">=</span>[dbc.themes.BOOTSTRAP])</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>app.title <span class="op">=</span> <span class="st">"Open-Meteo Dashboard"</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Top bar</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>navbar <span class="op">=</span> html.Div(</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        html.H3(<span class="st">"Open-Meteo Dashboard"</span>, className<span class="op">=</span><span class="st">"text-white"</span>),</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        html.Span(<span class="st">"Public API - Multi-column layout"</span>, className<span class="op">=</span><span class="st">"text-white"</span>),</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    className<span class="op">=</span><span class="st">"navbar navbar-dark bg-dark mb-4 px-3"</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="css-using-ids-vs-classes" class="level4">
+<h4 class="anchored" data-anchor-id="css-using-ids-vs-classes">CSS: Using ID’s vs Classes</h4>
+<ul>
+<li><p>In a multipage Dash app, a single external stylesheet in assets/ is best because it centralizes all styles, ensures consistent look-and-feel across pages, and keeps page files clean—change the CSS once and every page updates automatically.</p></li>
+<li><p>Bonus benefits: no duplicated inline styles, faster iteration and theming, browser caching for performance, and clear separation of concerns (layout in Python, styling in CSS).</p></li>
+<li><p>ID (id)</p>
+<ul>
+<li><p>Purpose: identifies one unique element on a page; in Dash it’s also used to wire callbacks.</p></li>
+<li><p>CSS selector: #my-id (matches id=“my-id”).</p></li>
+<li><p>Specificity: higher than a class (wins conflicts).</p></li>
+</ul></li>
+<li><p>Class (class)</p>
+<ul>
+<li><p>Purpose: labels elements for reusable styling; can be applied to many elements.</p></li>
+<li><p>CSS selector: .btn-strong (matches class=“btn-strong”)</p></li>
+<li><p>Specificity: lower than an ID.</p></li>
+</ul></li>
+<li><p>ID selectors (#…) are more specific than class selectors (….). Prefer classes for reusable styles; reserve IDs for unique elements or overrides.</p></li>
+</ul>
+</section>
+<section id="setting-the-controls" class="level4">
+<h4 class="anchored" data-anchor-id="setting-the-controls">Setting the Controls</h4>
+<div id="693f7492" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Controls (left column)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>controls <span class="op">=</span> dbc.Card([</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        dbc.CardHeader(<span class="st">"Controls"</span>),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        dbc.CardBody(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>            [</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                dbc.Label(<span class="st">"City"</span>),</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                dcc.Dropdown(</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">id</span><span class="op">=</span><span class="st">"city-dd"</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>                    options<span class="op">=</span>[{<span class="st">"label"</span>: k, <span class="st">"value"</span>: k} <span class="cf">for</span> k <span class="kw">in</span> CITY_COORDS.keys()],</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>                    value<span class="op">=</span><span class="st">"Williamsburg"</span>,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>                    clearable<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>                ),</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>                html.Br(),</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>                dbc.Button(<span class="st">"Refresh"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">"refresh"</span>, n_clicks<span class="op">=</span><span class="dv">0</span>, className<span class="op">=</span><span class="st">"w-100"</span>),</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>                html.Hr(),</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>                html.Small(</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Data source: open-meteo.com (no API key required)."</span>,</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>                    className<span class="op">=</span><span class="st">"text-muted"</span>,</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>                ),</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>            ]</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    ],className<span class="op">=</span><span class="st">"mb-3"</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>This code builds a tidy “Controls” panel—city selector and refresh button—with Bootstrap spacing/utilities and IDs ready for your Dash callbacks.</p>
+<ul>
+<li><p>Creates a “Controls” panel using a card layout: a titled header with the interactive elements grouped in the body for clarity.</p></li>
+<li><p>Presents a primary input via a labeled dropdown so the user can pick from a predefined list (with a sensible default to avoid empty states).</p>
+<ul>
+<li><p>“label” → what the user sees in the dropdown</p></li>
+<li><p>“value” → the actual value passed into callbacks</p></li>
+</ul></li>
+<li><p>Provides an explicit action with a prominent, full-width button that the user clicks to (re)run whatever update/refresh your callbacks perform.</p></li>
+<li><p>Uses simple spacing elements (line break and divider) to separate inputs from helper text and keep the panel readable.</p></li>
+<li><p>Shows lightweight helper text (e.g., attribution or instructions) in a muted, smaller style to de-emphasize it while keeping it visible.</p></li>
+<li><p>Designed for callback wiring: the dropdown supplies the selection; the button acts as the trigger; the card is easy to place as a left column in a responsive grid.</p></li>
+<li><p>Follows Bootstrap conventions for consistent styling, spacing, and accessibility (clear label, large click target, predictable layout).</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="setting-top-row-and-middle-column" class="level4">
+<h4 class="anchored" data-anchor-id="setting-top-row-and-middle-column">Setting Top Row and Middle Column</h4>
+<div id="55c4e783" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># KPI cards (top row center/right)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> kpi_card(title, id_):</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dbc.Card(</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        dbc.CardBody(</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>            [</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                html.H6(title, className<span class="op">=</span><span class="st">"text-muted mb-1"</span>),</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                html.H3(<span class="bu">id</span><span class="op">=</span>id_, className<span class="op">=</span><span class="st">"mb-0"</span>),</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>            ]</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        className<span class="op">=</span><span class="st">"h-100"</span>,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>kpi_row <span class="op">=</span> dbc.Row(</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>        dbc.Col(kpi_card(<span class="st">"Current Temp (°C)"</span>, <span class="st">"kpi-now"</span>), md<span class="op">=</span><span class="dv">4</span>),</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>        dbc.Col(kpi_card(<span class="st">"Min (°C/48h)"</span>, <span class="st">"kpi-min"</span>), md<span class="op">=</span><span class="dv">4</span>),</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        dbc.Col(kpi_card(<span class="st">"Max (°C/48h)"</span>, <span class="st">"kpi-max"</span>), md<span class="op">=</span><span class="dv">4</span>),</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    className<span class="op">=</span><span class="st">"g-3 mb-3"</span>,</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Chart (middle column)</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>chart_card <span class="op">=</span> dbc.Card(</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>        dbc.CardHeader(<span class="st">"Hourly Temperature (next 48h)"</span>),</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>        dbc.CardBody(dcc.Graph(<span class="bu">id</span><span class="op">=</span><span class="st">"temp-chart"</span>, config<span class="op">=</span>{<span class="st">"displayModeBar"</span>: <span class="va">False</span>})),</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Lines 3–12 — kpi_card function</p>
+<ul>
+<li><p>A helper function that creates a Bootstrap Card for displaying Key Performance Indicators (KPIs).</p></li>
+<li><p>Takes two parameters:</p>
+<ul>
+<li><p>title: The label for the KPI (e.g., “Current Temp (°C)”).</p></li>
+<li><p>id_: The HTML id for the numeric value so it can be updated dynamically in callbacks.</p></li>
+</ul></li>
+</ul></li>
+<li><p>The card body contains:</p>
+<ul>
+<li><p>An html.H6 for the title (muted text, small bottom margin).</p></li>
+<li><p>An html.H3 for the actual KPI value placeholder (no bottom margin).</p></li>
+<li><p>className=“h-100” ensures the card fills the column height.</p></li>
+</ul></li>
+<li><p>Lines 14–21 — kpi_row</p>
+<ul>
+<li><p>Creates a Bootstrap row with three columns, each holding one KPI card:</p>
+<ul>
+<li><p>Current temperature (id=“kpi-now”).</p></li>
+<li><p>Minimum temperature over 48h (id=“kpi-min”).</p></li>
+<li><p>Maximum temperature over 48h (id=“kpi-max”).</p></li>
+</ul></li>
+<li><p>md=4 means each column takes 4/12ths of the width on medium+ screens.</p></li>
+<li><p>className=“g-3 mb-3” adds spacing between columns (g-3) and bottom margin (mb-3).</p></li>
+</ul></li>
+<li><p>Lines 24–29 — chart_card</p>
+<ul>
+<li><p>Creates a Bootstrap card for the hourly temperature chart.</p></li>
+<li><p>The header is “Hourly Temperature (next 48h)”.</p></li>
+<li><p>The body contains a Dash Graph (dcc.Graph) with:</p>
+<ul>
+<li><p>id=“temp-chart” for callbacks.</p></li>
+<li><p>config={“displayModeBar”: False} to hide the plotly toolbar.</p></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="defining-the-app.layout" class="level4">
+<h4 class="anchored" data-anchor-id="defining-the-app.layout">Defining the App.layout</h4>
+<div id="2792b35a" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stats table (right column)</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>table_card <span class="op">=</span> dbc.Card(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        dbc.CardHeader(<span class="st">"Summary Stats"</span>),</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        dbc.CardBody(html.Div(<span class="bu">id</span><span class="op">=</span><span class="st">"stats-table"</span>)),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------- Layout: Multi-column grid ----------</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> dbc.Container(</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        navbar,</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        dbc.Row(</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>            [</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Left: controls (md=3)</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>                dbc.Col(controls, md<span class="op">=</span><span class="dv">3</span>),</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Middle: KPIs + chart (md=6)</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>                dbc.Col([kpi_row, chart_card], md<span class="op">=</span><span class="dv">6</span>),</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Right: stats table (md=3)</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>                dbc.Col(table_card, md<span class="op">=</span><span class="dv">3</span>),</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>            ],</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>            className<span class="op">=</span><span class="st">"g-3"</span>,</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>        html.Footer(</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>            html.Small(</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Built with Dash + dash-bootstrap-components • Layout uses Row/Col grid"</span>,</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>                className<span class="op">=</span><span class="st">"text-muted"</span>,</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>            ),</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>            className<span class="op">=</span><span class="st">"mt-4"</span>,</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>    fluid<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Lines 3–8 — table_card</p>
+<ul>
+<li><p>Creates a Bootstrap Card to display summary statistics.</p></li>
+<li><p>CardHeader(“Summary Stats”) is the title.</p></li>
+<li><p>CardBody contains a Div with id=“stats-table” so it can be populated dynamically via a callback.</p></li>
+</ul></li>
+<li><p>Lines 11–35 — app.layout</p>
+<ul>
+<li><p>The main page layout wrapped in a dbc.Container with fluid=True so it uses the full screen width.</p></li>
+<li><p>First element inside: navbar (the top navigation bar defined earlier).</p></li>
+<li><p>Main row (dbc.Row) divided into three columns:</p></li>
+<li><p>Left column (md=3) → contains the controls card.</p></li>
+<li><p>Middle column (md=6) → contains the KPI row (kpi_row) and the chart card (chart_card) stacked vertically.</p></li>
+<li><p>Right column (md=3) → contains the table_card for summary stats.</p></li>
+<li><p>className=“g-3” on the row adds consistent gutter spacing between columns.</p></li>
+</ul></li>
+<li><p>Lines 26–30 — Footer</p>
+<ul>
+<li><p>Adds a small, muted text footer that says:<br>
+“Built with Dash + dash-bootstrap-components • Layout uses Row/Col grid”</p></li>
+<li><p>className=“mt-4” adds margin above the footer for spacing.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="callbacks-and-chart" class="level4">
+<h4 class="anchored" data-anchor-id="callbacks-and-chart">Callbacks and Chart</h4>
+<div id="b4da6da8" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------- Callbacks ----------</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        Output(<span class="st">"temp-chart"</span>, <span class="st">"figure"</span>),</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        Output(<span class="st">"kpi-now"</span>, <span class="st">"children"</span>),</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        Output(<span class="st">"kpi-min"</span>, <span class="st">"children"</span>),</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        Output(<span class="st">"kpi-max"</span>, <span class="st">"children"</span>),</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>        Output(<span class="st">"stats-table"</span>, <span class="st">"children"</span>),</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    [Input(<span class="st">"city-dd"</span>, <span class="st">"value"</span>), Input(<span class="st">"refresh"</span>, <span class="st">"n_clicks"</span>)],</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update(city, _):</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    lat, lon <span class="op">=</span> CITY_COORDS[city]</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> fetch_hourly_temp(lat, lon)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># KPIs</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    now <span class="op">=</span> df.iloc[<span class="dv">0</span>][<span class="st">"temp_C"</span>]</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    tmin <span class="op">=</span> df[<span class="st">"temp_C"</span>].<span class="bu">min</span>()</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    tmax <span class="op">=</span> df[<span class="st">"temp_C"</span>].<span class="bu">max</span>()</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Chart</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> px.line(df, x<span class="op">=</span><span class="st">"time"</span>, y<span class="op">=</span><span class="st">"temp_C"</span>, markers<span class="op">=</span><span class="va">True</span>, title<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    fig.update_layout(margin<span class="op">=</span><span class="bu">dict</span>(l<span class="op">=</span><span class="dv">10</span>, r<span class="op">=</span><span class="dv">10</span>, t<span class="op">=</span><span class="dv">10</span>, b<span class="op">=</span><span class="dv">10</span>), yaxis_title<span class="op">=</span><span class="st">"°C"</span>, xaxis_title<span class="op">=</span><span class="st">"Time"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Lines 3–10 — Callback definition</p></li>
+<li><p>@app.callback([…], […]) defines a Dash callback with five outputs:</p>
+<ul>
+<li><p>The figure for the temperature chart (“temp-chart”).</p></li>
+<li><p>The value text for current temp KPI (“kpi-now”).</p></li>
+<li><p>The value text for min temp KPI (“kpi-min”).</p></li>
+<li><p>The value text for max temp KPI (“kpi-max”).</p></li>
+<li><p>The HTML for the stats table (“stats-table”).</p></li>
+</ul></li>
+<li><p>Inputs are:</p>
+<ul>
+<li><p>The selected city from the dropdown (“city-dd” value).</p></li>
+<li><p>The refresh button click count (“refresh” n_clicks).</p></li>
+</ul></li>
+<li><p>Lines 12–13 — Get city coordinates &amp; data</p>
+<ul>
+<li><p>Looks up the latitude/longitude for the chosen city from CITY_COORDS.</p></li>
+<li><p>Calls fetch_hourly_temp(lat, lon) to get hourly temperature data as a DataFrame (df).</p></li>
+</ul></li>
+<li><p>Lines 16–18 — KPI values</p>
+<ul>
+<li><p>now: The current temperature (first row in “temp_C” column).</p></li>
+<li><p>tmin: The minimum temperature over the dataset.</p></li>
+<li><p>tmax: The maximum temperature over the dataset.</p></li>
+</ul></li>
+<li><p>Lines 21–22 — Chart creation</p>
+<ul>
+<li><p>Uses plotly.express.line to plot “temp_C” vs “time”, with markers and no title.</p></li>
+<li><p>Adjusts margins and axis labels.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="summary-and-return" class="level4">
+<h4 class="anchored" data-anchor-id="summary-and-return">Summary and Return</h4>
+<div id="dad4ec39" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stats table</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    summary <span class="op">=</span> (</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        df.assign(Date<span class="op">=</span>df[<span class="st">"time"</span>].dt.date)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        .groupby(<span class="st">"Date"</span>)[<span class="st">"temp_C"</span>]</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        .agg([<span class="st">"min"</span>, <span class="st">"max"</span>, <span class="st">"mean"</span>])</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">round</span>(<span class="dv">1</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>        .rename(columns<span class="op">=</span>{<span class="st">"min"</span>: <span class="st">"Min °C"</span>, <span class="st">"max"</span>: <span class="st">"Max °C"</span>, <span class="st">"mean"</span>: <span class="st">"Avg °C"</span>})</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        .reset_index()</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    table <span class="op">=</span> dbc.Table.from_dataframe(summary, striped<span class="op">=</span><span class="va">True</span>, bordered<span class="op">=</span><span class="va">False</span>, hover<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    fmt <span class="op">=</span> <span class="kw">lambda</span> x: <span class="ss">f"</span><span class="sc">{</span>x<span class="sc">:.1f}</span><span class="ss">"</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fig, fmt(now), fmt(tmin), fmt(tmax), table</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    app.run(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Lines 1-9— Stats table creation</p>
+<ul>
+<li><p>Creates a daily summary table by:</p>
+<ul>
+<li><p>Extracting the date from “time”.</p></li>
+<li><p>Grouping by “Date”.</p></li>
+<li><p>Aggregating min, max, and mean temperatures.</p></li>
+<li><p>Rounding values to 1 decimal place.</p></li>
+<li><p>Renaming columns for display.</p></li>
+<li><p>Resetting the index.</p></li>
+</ul></li>
+<li><p>Converts this DataFrame into a Bootstrap table (dbc.Table.from_dataframe) with striped=True and hover=True.</p></li>
+</ul></li>
+<li><p>Line 12 — Formatting function</p>
+<ul>
+<li><p>fmt is a lambda function that formats a number to 1 decimal place with f”{x:.1f}“.</p>
+<ul>
+<li><p>lambda x: → declares a tiny function that takes one argument, x.</p></li>
+<li><p>f”{x:.1f}” → returns a formatted string showing x with one decimal place.</p></li>
+</ul></li>
+</ul></li>
+<li><p>Line 13— Callback return values</p>
+<ul>
+<li><p>The chart (fig).</p></li>
+<li><p>Formatted current temperature.</p></li>
+<li><p>Formatted min temp.</p></li>
+<li><p>Formatted max temp.</p></li>
+<li><p>The stats table.</p></li>
+</ul></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./makingcallbacks.html" class="pagination-link" aria-label="Callbacks and API in Dash's">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Callbacks and API in Dash’s</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./multipages.html" class="pagination-link" aria-label="Setting Up Multiple Pages">
+        <span class="nav-page-text"><span class="chapter-title">Setting Up Multiple Pages</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

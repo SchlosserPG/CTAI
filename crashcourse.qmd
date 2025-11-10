@@ -1,6 +1,5 @@
 ---
 title: "Crash Python Course"
-author: "Pamela Schlosser"
 format: html
 runtime: python
 ---

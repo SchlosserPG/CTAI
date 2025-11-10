@@ -1,135 +1,169 @@
 ---
-title: "Deploying a Site"
-author: "Pamela Schlosser"
+title: "github"
 format: html
 runtime: python
+execute:
+  eval: false
 ---
 
-# Overview
+## Git and Git Hub
 
--   This guide explains how to:
-    -   Prepare and run a Dash app locally
-    -   Deploy it to Render.com using Gunicorn
-    -   Fix common deployment issues
-    -   Publish an HTML version of a Python file (or this guide) via GitHub Pages
-    -   Use a docs/ folder to host HTML with GitHub Pages
+##### Understanding the prompting paradigm equips you to guide AI models effectively—skills that can be enhanced and shared by leveraging platforms like GitHub to collaborate on prompt libraries, examples, and AI-powered projects.
 
-# Live Example (Embedded Iframe)
+![](images/github.png)
 
--   This shows a hosted Dash app inside the HTML output of this page.
--   Replace the src URL with your own Render app link if different.
+#### Purpose of Git
 
-```{html}
-<iframe src="https://ctba-oror.onrender.com/" title="Live Dash App on Render" 
-style="width:100%;height:500px;border:2px solid #115740;border-radius:6px;">
-</iframe>
-```
+-   Git is a decentralized version control system for tracking file changes, especially in software projects with many small text files. It records who made changes and when, supports collaboration, and keeps all past versions and branches.
 
-1)  Prepare Your Dash App
+-   Works best with text files; less effective for binary files like Word docs, audio/video, or VM images. git Command
 
--   Ensure your main Python file defines: server = app.server
+    -   The primary way to control Git via the terminal/PowerShell.
 
--   The Gunicorn start command on Render must match your filename and server variable exactly
+    -   Tasks: download projects, commit changes, switch branches, undo edits, etc.
 
-```{text}
-from dash import Dash, html
+        -   “Git” (capitalized) = the system/concepts;
 
-app = Dash(__name__)
-server = app.server  # Required for Gunicorn in production
+        -   git (lowercase) = the command.
 
-wm_green = "#115740"
+-   IDEs (e.g., Visual Studio) and editors (e.g., VS Code) offer built-in Git tools; web platforms like GitHub/GitLab add extra features (issue tracking, automated tests).
 
-app.layout = html.Div([
-    html.H1("This is a simple Dash App!", style={"color": wm_green, "textAlign": "center"})
-    html.p("Dash can publish both static and dynamic content.", style={"color": wm_green, "textAlign": "center"})
+#### Git vs GitHub vs GitLab
 
-])
+-   Git: Works without central servers.
 
-if __name__ == "__main__":
-    app.run(debug=True)
-```
+-   GitHub: Most popular host; acquired by Microsoft in 2018; free for public and most private projects.
 
--   Example mapping:
-    -   File: LiveDash.py --\> Start command: gunicorn LiveDash:server
-    -   File: electricity.py --\> Start command: gunicorn electricity:server
+    -   A cloud-based platform for hosting and collaborating on code projects
 
-2)  Add Required Files
+    -   Built on Git (a distributed version control system)
 
--   Create a requirements.txt listing dependencies (add any others you import).
+    -   Supports version tracking, collaboration, and project management
 
-```{text}
-dash
-gunicorn
-plotly
-```
+        -   Enables teamwork on coding projects
 
-3)  Run Locally
+        -   Provides a historical record of changes
 
--   Create and activate a virtual environment
--   Install dependencies
--   Test both dev mode and production mode
+        -   Integrates with many tools
 
-```{text}
-python -m venv .venv 
-.venv\Scripts\activate    # Windows
+-   GitLab: Similar features; open-source, can be self-hosted—good for organizations that want control.
 
-pip install -r requirements.txt
-python your_filename.py  # dev mode
-gunicorn your_filename:server  # production test
-```
+#### Setting Up GitHub
 
-4)  Push to GitHub
+![](images/setup.png)
 
-```{text}
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/USERNAME/REPO.git
-git push -u origin main
-```
+-   Create an account at github.com
 
-5)  Deploy on Render.com
+-   Install Git (if using locally): <https://gitforwindows.org/>
 
--   Create a New Web Service on Render and connect your GitHub repo
--   In Settings, set the Build command to: pip install -r requirements.txt
--   In Settings, set the Start command to: gunicorn your_filename:server
--   Click Deploy and open the provided URL
+-   Configure Git
 
-6)  Troubleshooting
+    -   bash
 
--   ModuleNotFoundError: Check filename and server variable (your_filename:server)
--   Changes not showing: Clear build cache and redeploy
--   Missing packages: Confirm all imports are in requirements.txt
--   Port errors: Don’t hardcode PORT—Render sets it automatically
+    -   git config --global user.name "Your Name" git config --global user.email "you\@example.com"
 
-7)  Publish HTML via docs/ on GitHub Pages
+-   Can install GitHub Desktop (optional) for a GUI
 
--   Render this Quarto file to docs/ for GitHub Pages:
+-   Use VS Code as Editor
 
-```{text}
-quarto render dash_to_render.qmd --to html --output-dir docs 
-git add docs 
-git commit -m "Publish HTML" 
-git push 
-```
+#### CoPilot Autofill
 
-GitHub Pages setup:
+![](images/copilot.png)
 
--   Settings → Pages
--   Source: Deploy from a branch
--   Branch: main
--   Folder: /docs
--   Save
+-   To change the setting that makes Copilot ghost text appear as you type.
 
-# Your site will be available at:
+    -   Go to VS Code Settings
 
--   https://YOUR-USERNAME.github.io/YOUR-REPO/
+    -   Search for Copilot: Inline Suggest.
 
-## Appendix A: Render a Python file to HTML with Quarto
+    -   Ensure that "Editor › Inline Suggest: Enabled" is checked.
 
-Quarto can render a Python script (with outputs) to HTML.
+#### Key Git Concepts
 
-```{bash}
-quarto render your_script.py --to html --output-dir docs
-```
+-   Repository (Repo) – where your project’s code and history live
+
+-   Commit – a saved snapshot of your code
+
+-   Branch – an independent line of development
+
+-   Merge – bringing changes from one branch into another
+
+-   Pull Request (PR) – proposing changes for review
+
+-   Clone – downloading a copy of the repo to your local machine
+
+-   Push – sending your local changes to GitHub
+
+#### Creating Your First Repository
+
+-   Go to GitHub → Click New Repository
+
+-   Name your repo and choose:
+
+    -   Public or Private
+
+    -   Don’t add a README (We are going to push from VS Code, so it is better if the Repo is Blank)
+
+-   Local option: create folder → git init → link to GitHub repo
+
+-   Initial commit example within VS Code:
+
+    -   git init
+
+    -   git add .
+
+    -   git commit -m "Initial commit“
+
+    -   git branch –M main
+
+    -   git remote add origin https://github.com/USERNAME/REPO_NAME.git
+
+    -   git push -u origin main
+
+-   Also, notice the source control button on the left of VS Code that has changes to commit.
+
+#### Best Practices
+
+-   Write clear commit messages (“Fix login bug” \> “stuff”)
+
+-   Pull often to stay updated:
+
+    -   bash
+
+    -   git pull origin main
+
+-   Use .gitignore to avoid uploading sensitive or unnecessary files
+
+-   Keep main branch stable
+
+-   Use Issues and Project Boards for task tracking
+
+#### Troubleshooting Common Issues
+
+-   Merge conflicts – when two people change the same code section
+
+-   Authentication errors – fix with SSH keys or GitHub token
+
+-   Forgetting to pull – always update before pushing
+
+-   Accidental commits – use git reset or revert commits
+
+#### Render.com
+
+![](images/render.com.png)
+
+-   Easy Git-based Deployment – Connect GitHub or GitLab for automatic builds and updates.
+
+-   Full-Stack Hosting – Run web apps, APIs, static sites, and background jobs on one platform.
+
+-   Built-in Scaling & Security – Automatic HTTPS, DDoS protection, and autoscaling.
+
+-   Global Performance – CDN for static assets and low-latency infrastructure worldwide.
+
+-   Make a render account for you to link to your github account.
+
+-   Connect it to your CTBA repo.
+
+#### https://dashboard.render.com/
+
+![](images/render_example.png)

@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Pamela Schlosser">
 
 <title>Preparing People – Competing in the Age of AI</title>
 <style>
@@ -31,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./crashcourse.html" rel="next">
+<link href="./introdash.html" rel="next">
 <link href="./analyticsproblem.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -110,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Index</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Intro to CTAI</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -125,17 +124,22 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ethics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ethics</span></a>
+  <a href="./ethics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">AI &amp; Data Ethics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dataAcquisition.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Acquisition</span></a>
+  <a href="./dataAcquisition.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Modern Data Acquisition</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./storytelling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Storytelling</span></a>
+  <a href="./webscrapingandapi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Web Scraping and APIs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./storytelling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Human Centered Data Story Telling</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -150,12 +154,32 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./introdash.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Intro to Dash</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./crashcourse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Crash Python Course</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Crash Python Course</span></a>
+  <a href="./github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">github</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./makingcallbacks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Callbacks and API in Dash’s</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multilayout.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Creating a Grid Layout in Dash</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multipages.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Setting Up Multiple Pages</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -165,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Summary</span></a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">References</span></a>
   </div>
 </li>
     </ul>
@@ -173,14 +197,8 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#preparing-people-and-the-organization-for-augmented-analytics" id="toc-preparing-people-and-the-organization-for-augmented-analytics" class="nav-link active" data-scroll-target="#preparing-people-and-the-organization-for-augmented-analytics">Preparing People and the Organization for Augmented Analytics</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -194,12 +212,6 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Pamela Schlosser </p>
-          </div>
-  </div>
     
   
     
@@ -210,17 +222,14 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preparing-people-and-the-organization-for-augmented-analytics" class="level2">
-<h2 class="anchored" data-anchor-id="preparing-people-and-the-organization-for-augmented-analytics">Preparing People and the Organization for Augmented Analytics</h2>
-<section id="preparing-people-and-the-organization-for-augmented-analytics-means-building-both-the-skills-and-the-culture-needed-to-embed-analytics-into-daily-decision-making.-leaders-must-champion-data-driven-practices-analytics-translators-must-bridge-business-and-technical-teams-and-employees-need-at-least-analytics-awareness-to-trust-and-act-on-insights.-a-center-of-excellence-coe-executive-sponsorship-and-structured-training-ensure-that-aa-is-not-just-a-technology-upgrade-but-an-organizational-transformation-that-empowers-all-roles-to-benefit-from-data-in-their-workflows." class="level5">
-<h5 class="anchored" data-anchor-id="preparing-people-and-the-organization-for-augmented-analytics-means-building-both-the-skills-and-the-culture-needed-to-embed-analytics-into-daily-decision-making.-leaders-must-champion-data-driven-practices-analytics-translators-must-bridge-business-and-technical-teams-and-employees-need-at-least-analytics-awareness-to-trust-and-act-on-insights.-a-center-of-excellence-coe-executive-sponsorship-and-structured-training-ensure-that-aa-is-not-just-a-technology-upgrade-but-an-organizational-transformation-that-empowers-all-roles-to-benefit-from-data-in-their-workflows.">Preparing people and the organization for Augmented Analytics means building both the skills and the culture needed to embed analytics into daily decision-making. Leaders must champion data-driven practices, analytics translators must bridge business and technical teams, and employees need at least analytics awareness to trust and act on insights. A Center of Excellence (CoE), executive sponsorship, and structured training ensure that AA is not just a technology upgrade but an organizational transformation that empowers all roles to benefit from data in their workflows.</h5>
-<section id="reference-chapters-4-from-weber-w.-zwingmann-t.-2024.-augmented-analytics.-oreilly-media-inc.-available-at-httpslearning.oreilly.comlibraryviewaugmented-analytics9781098151713" class="level6">
-<h6 class="anchored" data-anchor-id="reference-chapters-4-from-weber-w.-zwingmann-t.-2024.-augmented-analytics.-oreilly-media-inc.-available-at-httpslearning.oreilly.comlibraryviewaugmented-analytics9781098151713">Reference: Chapters 4 from Weber, W., &amp; Zwingmann, T. (2024). Augmented analytics. O’Reilly Media, Inc.&nbsp;Available at <a href="https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/" class="uri">https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/</a></h6>
+<section id="reference" class="level6 note">
+<h6 class="anchored" data-anchor-id="reference"><em>Reference:</em></h6>
+<p>Chapter 4 from <strong>Weber, W., &amp; Zwingmann, T. (2024).</strong> <em>Augmented Analytics.</em><br>
+O’Reilly Media, Inc.<br>
+Available at: <a href="https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/">https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/</a></p>
 </section>
-</section>
-<section id="preparing-people-the-organization-for-aa" class="level4">
-<h4 class="anchored" data-anchor-id="preparing-people-the-organization-for-aa">Preparing People &amp; the Organization for AA</h4>
 <ul>
+<li><p>Preparing people and the organization for Augmented Analytics means building both the skills and the culture needed to embed analytics into daily decision-making. Leaders must champion data-driven practices, analytics translators must bridge business and technical teams, and employees need at least analytics awareness to trust and act on insights. A Center of Excellence (CoE), executive sponsorship, and structured training ensure that AA is not just a technology upgrade but an organizational transformation that empowers all roles to benefit from data in their workflows.</p></li>
 <li><p>Focus on roles (leaders, translators, users, professionals) and personas to structure the analytics transformation.</p></li>
 <li><p>Build both technical readiness (data infrastructure, processes) and human readiness (mindset, skills, awareness).</p></li>
 <li><p>Establish a Center of Excellence (CoE) to drive transformation, ideally business-anchored and federated over time.</p>
@@ -228,7 +237,6 @@ ul.task-list li input[type="checkbox"] {
 <li>A CoE is an organizational structure set up to concentrate expertise, best practices, and resources around a specific domain, technology, or strategic priority. Its main purpose is to drive consistency, innovation, and efficiency across an organization.</li>
 </ul></li>
 </ul>
-</section>
 <section id="tailoring-augmented-analytics-for-different-organizational-roles" class="level4">
 <h4 class="anchored" data-anchor-id="tailoring-augmented-analytics-for-different-organizational-roles">Tailoring Augmented Analytics for Different Organizational Roles</h4>
 <ul>
@@ -481,7 +489,6 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -912,8 +919,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./crashcourse.html" class="pagination-link" aria-label="Crash Python Course">
-        <span class="nav-page-text"><span class="chapter-title">Crash Python Course</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./introdash.html" class="pagination-link" aria-label="Intro to Dash">
+        <span class="nav-page-text"><span class="chapter-title">Intro to Dash</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

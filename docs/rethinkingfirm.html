@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Pamela Schlosser">
 
 <title>Rethinking the Firm – Competing in the Age of AI</title>
 <style>
@@ -110,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Developing Competitive Advantage</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Intro to CTAI</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -125,17 +124,22 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ethics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ethics</span></a>
+  <a href="./ethics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">AI &amp; Data Ethics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dataAcquisition.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Acquisition</span></a>
+  <a href="./dataAcquisition.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Modern Data Acquisition</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./storytelling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Storytelling</span></a>
+  <a href="./webscrapingandapi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Web Scraping and APIs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./storytelling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Human Centered Data Story Telling</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -150,12 +154,32 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./introdash.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Intro to Dash</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./crashcourse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Crash Python Course</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Deploying a Site</span></a>
+  <a href="./github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">github</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./makingcallbacks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Callbacks and API in Dash’s</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multilayout.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Creating a Grid Layout in Dash</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multipages.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Setting Up Multiple Pages</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -173,14 +197,8 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#chapter-2-rethinking-the-firm" id="toc-chapter-2-rethinking-the-firm" class="nav-link active" data-scroll-target="#chapter-2-rethinking-the-firm">Chapter 2: Rethinking the Firm</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -194,12 +212,6 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Pamela Schlosser </p>
-          </div>
-  </div>
     
   
     
@@ -210,10 +222,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="chapter-2-rethinking-the-firm" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-2-rethinking-the-firm">Chapter 2: Rethinking the Firm</h2>
-<section id="reference-chapter-2-from-lansiti-and-karim-2020-focuses-on-how-ai-reshapes-the-boundaries-structure-and-strategy-of-firms" class="level6">
-<h6 class="anchored" data-anchor-id="reference-chapter-2-from-lansiti-and-karim-2020-focuses-on-how-ai-reshapes-the-boundaries-structure-and-strategy-of-firms"><em>Reference: Chapter 2 from lansiti and Karim (2020) focuses on how AI reshapes the boundaries, structure, and strategy of firms</em></h6>
+<section id="reference" class="level6 note">
+<h6 class="anchored" data-anchor-id="reference"><em>Reference:</em></h6>
+<p>Chapter 2 from <strong>Iansiti and Lakhani (2020)</strong> focuses on how <strong>AI reshapes the boundaries, structure, and strategy of firms</strong>.</p>
 </section>
 <section id="what-does-it-means-to-become-an-ai-company" class="level4">
 <h4 class="anchored" data-anchor-id="what-does-it-means-to-become-an-ai-company">What Does It Means to Become an AI Company?</h4>
@@ -520,7 +531,6 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -946,8 +956,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Developing Competitive Advantage">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Developing Competitive Advantage</span></span>
+      <a href="./index.html" class="pagination-link" aria-label="Intro to CTAI">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Intro to CTAI</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

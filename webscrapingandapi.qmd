@@ -1,0 +1,489 @@
+---
+title: "Web Scraping and APIs"
+format: html
+runtime: python
+execute:
+  eval: false
+---
+
+
+#### Steps to Web Scraping
+
+##### Step 1: Inspect Your Data Source
+
+-   Decipher the Information in URLs: <https://www.python.org/events/>
+
+    -   https:// – The protocol (HyperText Transfer Protocol Secure) tells the browser to communicate securely with the server. **The protocol is how to talk to the site.**
+
+    -   www.python.org – The domain name, which points to the server hosting the Python website. **The domain is where to go.**
+
+    -   /events/ – A path on that website, indicating the “events” section. **The path is what page or section to see once you get there.**
+
+-   Inspect the Site Using Developer Tools to determine what tags you want to find
+
+    -   Use Ctrl + Shift + I ![](images/inspect_data_source.png)
+
+#### Web Scraping Example
+
+##### Source: https://github.com/SchlosserPG/ForClass
+
+```{python}
+
+import requests
+from bs4 import BeautifulSoup
+
+# URL of the events page
+url = 'https://www.python.org/events/'
+req = requests.get(url)
+
+# Parse the HTML content
+soup = BeautifulSoup(req.text, 'lxml')
+
+# Find the event list
+events = soup.find('ul', {'class': 'list-recent-events'}).find_all('li')
+```
+
+-   Import requests and BeautifulSoup
+
+-   Make a GET HTTP request to the URL of choice
+
+-   Retrieve the content using the .text property.
+
+-   Create a BeautifulSoup object named soup and pass it the HTML.
+
+```{python}
+import requests
+from bs4 import BeautifulSoup
+
+#URL of the events page
+url= 'https://www.python.org/events/'
+req = requests.get(url)
+
+#parse the HTML content
+soup = BeautifulSoup(req.text,'lxml')
+```
+
+<!-- -->
+
+-   This line **navigates to the correct section of the page** (\<ul class="list-recent-events"\>)
+
+```{python}
+#find the event list
+events=soup.find('ul',{'class':'list-recent-events'}).find_all('li')
+```
+
+```         
+-   Then it **collects all the \<li\> entries** in that section into a Python list called events.
+
+-   Later in the code, you loop over events to extract the title, location, and date for each event.
+```
+
+#### Making a request at python.org/events
+
+-   events is assumed to be a list of HTML elements (likely from **BeautifulSoup**) where each element contains the HTML for one event listing from the page. The loop processes **one event at a time.**
+
+```{python}
+for event in events:
+```
+
+-   .find('h3') looks inside the HTML for the **\<h3\> tag**, which contains the event title.\
+    .get_text(strip=True) pulls out just the text content (no HTML tags) and trims leading/trailing spaces.
+
+```{python}
+   title= event.find('h3').get_text(strip=True)
+```
+
+-   .find('span', {'class': 'event-location'}) finds the **\<span\>** tag with a specific CSS class (event-location), which contains the location text.\
+    .get_text(strip=True) again pulls and cleans the text.
+
+```{python}
+   location = event.find('span',
+                     {'class':'event-location'}).get_text(strip=True)
+```
+
+-   .find('time') finds the **\<time\> tag** in the HTML, which holds the event date.\
+    .get_text(strip=True) returns the readable date.
+
+```{python}
+   date= event.find('time').get_text(strip=True)
+```
+
+-   Each print() outputs a labeled line for the title, location, and date.\
+    "-" \* 40 prints a line of 40 dashes to visually separate events.
+
+```{python}
+print(f"Title: {title}")
+print(f"Location: {location}")
+print(f"Date: {date}")
+print("-"*40)
+```
+
+Full code
+
+```{python}
+# Loop through and print event details
+for event in events:
+    title = event.find('h3').get_text(strip=True)
+    location = event.find('span', 
+                          {'class': 'event-location'}).get_text(strip=True)
+    date = event.find('time').get_text(strip=True)
+    
+    print(f"Title: {title}")
+    print(f"Location: {location}")
+    print(f"Date: {date}")
+    print("-" * 40)
+```
+
+#### An Alternative to Web Scraping: APIs
+
+-   Some website providers offer application programming interfaces (APIs) that allow you to access their data in a predefined manner. With APIs, you can avoid parsing HTML. Instead, you can access the data directly using formats like JSON and XML.
+
+-   API stands for **application programming interface**. In essence, an API acts as a communication layer, or interface, that allows different systems to talk to each other without having to understand exactly what the others do.
+
+-   Key Advantages of Using APIs
+
+    -   Structured data – clean JSON or XML format
+
+    -   Consistent schema – predictable, labeled fields
+
+    -   Defined access – clear endpoints, parameters, and usage limits
+
+    -   Easy access – read-only data often requires no authentication
+
+    -   Best practice – include a descriptive User-Agent in requests
+
+#### Requests for Information or Data
+
+-   No matter the type, all APIs function mostly the same way. You usually make a request for information or data, and the API returns a response with what you requested.
+
+    -   For example, every time you open Twitter or scroll down your Instagram feed, you’re basically making a request to the API behind that app and getting a response in return. This is also known as calling an API.
+
+-   When working with APIs in Python, the go-to library is requests. It provides the core functionality needed to interact with most public APIs, covering nearly all common use cases.
+
+#### Working with APIs in Python
+
+-   Python offers versatile tools for working with a wide range of APIs, from web-based services to local system interfaces. Libraries like requests make it straightforward to send and receive data, while specialized packages exist for specific API formats and protocols.
+
+-   APIs can follow various architectural styles and formats—such as REST, GraphQL, SOAP, or gRPC—each with its own conventions and strengths. REST remains common for many public services, but others may be better suited for structured queries, high performance, or legacy system integration.
+
+-   Access to many APIs requires authentication, which can range from simple API keys to more advanced methods like OAuth or token-based systems. Python supports these through built-in libraries and third-party tools, making it easier to securely interact with protected resources.
+
+    -   Some APIs require you to obtain an API key by registering for an account with the API provider and generating the key through their developer portal or dashboard.
+
+#### Private and Public APIs
+
+-   Public APIs = instant start, but limited data.
+
+-   Private APIs = more powerful, but require sign-up and careful key storage. ![](images/private_and_public.png)
+
+#### API Keys
+
+-   An API key is a unique code (usually a long string of letters and numbers) that identifies you to an API.
+
+    -   Controls access, tracks usage, and prevents abuse.
+
+    -   Think of an API key as a library card for borrowing data — it tells the data provider who you are and how much you can “check out.”
+
+    -   Example: "API_KEY" = "a8b3c9d1e5f7g2h4i6j8...“
+
+-   To get an API key for most private APIs, you’ll first need to create a free account with the data provider. Once logged in, look for a section labeled “API,” “Developers,” or “Account Settings.”
+
+-   Most sites have a button or link to “Generate API Key” or “Create Access Token.”
+
+-   Clicking this will produce a unique, long string of letters and numbers — your personal API key.
+
+-   Copy it and store it somewhere safe (such as a .env file) so it’s not shared publicly.
+
+    -   This key identifies you every time your code makes a request, allowing the provider to track usage, enforce request limits, and prevent abuse. If your key is lost or accidentally exposed (e.g., uploaded to a public GitHub repo), you should immediately delete or regenerate it through the provider’s website.
+
+#### Weather API Demo (Public API)
+
+-   We’re building a simple Python program that calls a public weather API for multiple Virginia cities, processes the JSON responses, and outputs a clean, comparable table of current conditions.
+
+-   Approach: Use the Open-Meteo API to send requests for each city’s latitude and longitude.
+
+-   Process:
+
+    -   Store cities and coordinates in a Python dictionary.
+
+    -   Loop through each city to build query parameters.
+
+    -   Call the API endpoint and receive structured JSON data.
+
+    -   Parse and extract relevant weather details (temperature, wind speed, time).
+
+    -   Collect all results into a list and display as a table with pandas.
+
+-   Outcome: Students see the full API workflow from request → response → parsed results, ready for analysis or visualization.
+
+Start with cities_va dictionary
+
+      \|
+
+      v
+
+Loop through each city + (lat, lon)
+
+      \|
+
+      v
+
++-------------------------------+
+
+\| Create params dict:           \|
+
+\| latitude, longitude,          \|
+
+\| current_weather=True           \|
+
++-------------------------------+
+
+      \|
+
+      v
+
+Send GET request to API endpoint
+
+      \|
+
+      v
+
+Receive JSON response from API
+
+      \|
+
+      v
+
+Convert JSON -\> Python dictionary
+
+      \|
+
+      v
+
+Check if "current_weather" exists
+
+  \|                   \|
+
+  v                   v
+
+Yes                 No
+
+  \|                   \|
+
+Extract temp, wind,  Append None
+
+and time fields      values for city
+
+  \|                   
+
+  v
+
+Append dictionary with city data to results list
+
+#### Using JSON and APIs
+
+-   JSON (JavaScript Object Notation) is a lightweight, text-based format for storing and sharing data.
+
+-   Data is organized as key–value pairs (like Python dictionaries) and lists.
+
+-   Use in APIs: Many APIs return data in JSON because it’s easy for both humans to read and computers to parse.
+
+    -   Essentially, we can turn JSON into dictionaries/lists using .json() and work with it just like normal Python objects.
+
+#### Using an API
+
+-   In the next example, we are using code to call the **Open-Meteo API** for each city’s coordinates to get live weather data.
+
+-   We won’t use a dash, but a regular py file. We will integrate the two topics later. 
+
+<!-- -->
+
+-   Printed in the Terminal
+
+-                City    Temperature (°C)  Wind Speed (m/s)              Time
+
+-   0     Williamsburg              32.3               5.8  2025-08-14T17:00
+
+-   1         Richmond               30.1               2.3  2025-08-14T17:00
+
+-   2   Virginia Beach              29.6               6.8  2025-08-14T17:00
+
+-   3          Roanoke                 32.3               8.5  2025-08-14T17:00
+
+-   4  Charlottesville                31.9              4.2  2025-08-14T17:00
+
+#### Linking to an API: weather API to collect
+
+requests: Lets you send HTTP requests in Python (needed for calling the API). pandas: Used to organize and display the API results in a table-like DataFrame later on.
+
+```{python}
+import requests 
+import pandas as pd
+```
+
+Creates a Python dictionary where each key is a city name and each value is a tuple containing that city’s latitude and longitude. This makes it easy to loop through and query each city’s location in the API request.
+
+```{python}
+#5 samples cities in Virginia with lat/lon
+cities_va ={
+   "Williamsburg": (37.2707, -76.7075),
+   "Richmond":(37.5407,-77.4360),
+   "Virginia Beach":(36.8529,-75.9780),
+   "Roanoke":(37.27097,-79.94143),
+   "Charlottesville":(38.0293,-78.4767)
+}
+```
+
+This is the base URL for the Open-Meteo weather API. Every request will be sent to this endpoint, with parameters like latitude, longitude, and weather type added later.
+
+```{python}
+url="https://api.open-meteo.com/v1/forecast"
+```
+
+Creates an empty list to store the data returned by the API for each city. Later in the script, this list will be filled with dictionaries containing weather information for each city.
+
+```{python}
+results =[]
+```
+
+cities_va.items() returns key-value pairs from the dictionary. city gets the city name (string). (lat, lon) unpacks the latitude and longitude tuple for that city. This lets you handle each city’s coordinates in turn
+
+```{python}
+for city, (lat,lon) in cities_va.items():
+   params ={}
+```
+
+Creates a dictionary of parameters to send with the request: "latitude" and "longitude" are set to the city’s coordinates. "current_weather": True tells the Open-Meteo API to return the latest weather data.
+
+```{python}
+for city, (lat,lon) in cities_va.items():
+   params ={
+      "latitude":lat,
+      "longtitude": lon,
+      "current_weather": True
+}
+```
+
+Makes an HTTP GET request to the url (https://api.open-meteo.com/v1/forecast) with those parameters. The API responds with weather data in JSON format.
+
+```{python}
+response=requests.get(url,params=params)
+```
+
+Converts the JSON text from the API into a Python dictionary called data. This lets you access fields like data\["current_weather"\] directly.
+
+```{python}
+data = response.json()
+```
+
+Checks if "current_weather" exists in the response (some APIs may not return this field if data is missing). If present: It saves the current_weather dictionary to weather. Pulls out temperature, windspeed, and time. Adds this info to the results list as a dictionary for that city.
+
+```{python}
+if "current_weather" in data:
+   weather = data["current_weather"]
+   results.append({
+      "City":city,
+      "Temperature (C)": weather["temperature"],
+      "Wind Speed (m/s)": weather["windspeed"],
+      "Time":weather["time"]
+})
+```
+
+If the API didn’t return "current_weather", stores None for those fields so the final table stays consistent.
+
+```{python}
+else:
+   results.append({"City":city,"Temperature (C)":"Wind Speed (m/s)": None,"Time":})
+```
+
+Displays the final table
+
+```{python}
+#Display as table
+df=pd.DataFrame(results)
+print(df)
+```
+
+## Python Weather API Request with Annotations
+
+The following Python script uses the `requests` library to fetch current weather data for several Virginia cities from the Open-Meteo API and displays the results in a table using `pandas`.
+
+##### Weather Data API Request
+
+This Python script uses the `requests` library to fetch current weather data for several Virginia cities from the Open-Meteo API and displays the results in a table using `pandas`.
+
+#### Web Scraped Example
+
+```{python}
+import pandas as pd
+import requests
+
+# Wikipedia page
+url = "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population"
+
+# Fetch the page with requests (adds headers automatically)
+headers = {"User-Agent": "Mozilla/5.0"}
+response = requests.get(url, headers=headers)
+response.raise_for_status()  # will throw an error if request fails
+
+# Parse all tables from the HTML
+tables = pd.read_html(response.text)
+
+# Heuristic: pick the table with Location + Population
+candidate = None
+for t in tables:
+    cols = [c.lower() for c in t.columns.astype(str)]
+    if any("location" in c for c in cols) and any("population" in c for c in cols):
+        candidate = t
+        break
+
+if candidate is None:
+    raise ValueError("Could not find a suitable table on the page.")
+
+# Normalize column names
+col_map = {}
+for c in candidate.columns:
+    cl = str(c).lower()
+    if "location" in cl:
+        col_map[c] = "Location"
+    elif "population" in cl:
+        col_map[c] = "Population"
+
+df_scrape = candidate.rename(columns=col_map)[["Location", "Population"]].copy()
+
+# Clean Population
+df_scrape["Population"] = (
+    df_scrape["Population"]
+    .astype(str)
+    .str.replace(r"\[.*?\]", "", regex=True)   # remove footnotes
+    .str.replace(",", "", regex=False)         # remove commas
+    .str.extract(r"(\d+)", expand=False)       # extract digits
+    .astype("Int64")
+)
+
+# Top 10 countries
+df_scrape = (
+    df_scrape.dropna(subset=["Population"])
+             .sort_values("Population", ascending=False)
+             .head(10)
+             .reset_index(drop=True)
+)
+
+print(df_scrape)
+```
+
+**Why this is “scraping”:**
+
+-   You fetch human-oriented HTML and **parse** it yourself Columns, order, or markup may change without notice Often needs extra cleaning (footnotes, commas, superscripts, etc.)
+
+#### API vs Web Scraping
+
+![](images/api_vs_web.png)
+
+#### Discussion Questions
+
+-   Much online content (text, images, code) is protected by copyright. Scraping may be legal for viewing content, but using it to train AI—a form of reproduction—can violate copyright if done without permission.
+
+-   [Example](https://www.nytimes.com/2023/12/27/business/media/new-york-times-open-ai-microsoft-lawsuit.html): The NYT and other publishers are suing AI companies for scraping their content without licensing.
+
+-   [What are the ethical and legal boundaries of scraping data for training AI models?]{style="background-color: yellow;"}

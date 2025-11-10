@@ -1,14 +1,14 @@
 ---
 title: "Rethinking the Firm"
-author: "Pamela Schlosser"
 format: html
 runtime: python
 ---
 
 
-## Chapter 2: Rethinking the Firm
-
-###### *Reference: Chapter 2 from lansiti and Karim (2020) focuses on how AI reshapes the boundaries, structure, and strategy of firms*
+::: note
+###### *Reference:*  
+Chapter 2 from **Iansiti and Lakhani (2020)** focuses on how **AI reshapes the boundaries, structure, and strategy of firms**.  
+:::
 
 #### What Does It Means to Become an AI Company?
 

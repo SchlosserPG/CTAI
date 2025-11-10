@@ -1,16 +1,20 @@
 ---
-title: "Ethics"
-author: "Pamela Schlosser"
+title: "AI & Data Ethics"
 format: html
 runtime: python
 ---
-## AI & Data Ethics in a Hyperconnected World
+
+
+::: note
+###### *Reference:*  
+Read **Chapters 3 and 4** in *Ravindran, Anton. (2022).*  
+**_Will AI Dictate the Future? From Successful Leaders and Managers from Around the World._**  
+Marshall Cavendish International (Asia) Private Limited.  
+Available via [ProQuest Ebook Central](https://ebookcentral.proquest.com/lib/cwm/detail.action?docID=29354182).
+:::
+
 
 ##### Ethics and Cybersecurity Issues with AI
-
-###### *Reference:*Read chapter 3 and 4: Ravindran, Anton. Will AI Dictate the Future? : From Successful Leaders and Managers from Around the World, Marshall Cavendish International (Asia) Private Limited, 2022. ProQuest Ebook Central, https://ebookcentral.proquest.com/lib/cwm/detail.action?docID=29354182.
-
-#### Why Ethics Matter in AI and Cybersecurity
 
 -   The ethics of AI is a relatively new area and fast-changing as AI advances. Ethics is **sometimes** viewed as too abstract for the technical concerns of data scientists and AI specialists.
 

@@ -1,0 +1,765 @@
+---
+title: "crashcourse"
+format: 
+  html:
+    toc: true
+    number-sections: true
+editor: visual
+execute:
+  eval: false
+---
+
+#### Python Basics (refresh)
+
++--------------------+-----------------+-----------+-----------+------------------------------------+
+| Basic Data Types   | Name            | Type      | Mutable?  | Examples                           |
++====================+=================+===========+===========+====================================+
+| Numeric Types      | Integers        | int       | Immutable | 1 6 1000                           |
++--------------------+-----------------+-----------+-----------+------------------------------------+
+|                    | Floating points | float     | Immutable | 1.2 1.6 100.5                      |
++--------------------+-----------------+-----------+-----------+------------------------------------+
+| Text Sequence Type | Strings         | str       | Immutable | "hello world"                      |
+|                    |                 |           |           |                                    |
+|                    |                 |           |           | "data science"                     |
+|                    |                 |           |           |                                    |
+|                    |                 |           |           | "100"                              |
++--------------------+-----------------+-----------+-----------+------------------------------------+
+| Boolean Type       | Booleans        | bool      | Immutable | True False                         |
++--------------------+-----------------+-----------+-----------+------------------------------------+
+| Data Structures    |                 |           |           |                                    |
++--------------------+-----------------+-----------+-----------+------------------------------------+
+| Sequence Types     | Lists           | list      | Mutable   | 1, 'hello', 100.51, 'hello', 100.5 |
++--------------------+-----------------+-----------+-----------+------------------------------------+
+|                    | Tuples          | tuple     | Immutable | (1,'hello',100.5)                  |
++--------------------+-----------------+-----------+-----------+------------------------------------+
+| Mapping Type       | Dictionaries    | dict      | Mutable   | {"hello":"mango",                  |
+|                    |                 |           |           |                                    |
+|                    |                 |           |           | "price":"1}                        |
++--------------------+-----------------+-----------+-----------+------------------------------------+
+| Set Type           | Sets            | set       | Mutable   | {1,"a",'b'}                        |
++--------------------+-----------------+-----------+-----------+------------------------------------+
+
+: Basic Data Types
+
+#### Jupyter Notebook in VS Code
+
+-   Jupyter Notebooks are interactive documents that combine code, text, and visualizations in one place, making them ideal for data analysis, teaching, and sharing reproducible research.
+
+-   Like RMarkdown files, Jupyter Notebooks allow you to mix executable code with narrative text and visuals in a single, reproducible document.
+
+-   Add today's code in a Jupyter Notebook.
+
+-   In VS Code, you need to the Jupyter extension installed to open, run, and edit Jupyter Notebook (.ipynb) files interactively.
+
+#### Making Variables in Python
+
+-   In both Python and R, you create a variable by assigning a value to a name, and the variable's type is determined automatically based on the value (dynamic typing).
+
+-   Assignment Operator
+
+    -   Python: Uses = (e.g., x = 5).
+
+    -   R: Commonly uses \<- (e.g., x \<- 5), though = also works in many contexts.
+
+-   Printing:
+
+    -   Python: You must use print(x) to display a value unless running interactively.
+
+    -   R: Typing the variable name alone at the console will display its value.
+
+-   Scope and behavior:
+
+    -   In Python, variables are always references to objects, and assignment does not copy the object unless explicitly requested.
+
+    -   In R, some assignments may create copies (depending on how the variable is used and the underlying object type).
+
+<!-- -->
+
+-   When naming variables, do not use spaces or special characters
+
+-   If you want to use a space, use an underscore instead
+
+-   It is better to use lower case letters for variable names
+
+```{python}
+x=7 
+y="data"
+print(x) #printing the variable x
+## 7
+print(y) #printing the variable y
+## data
+my_variable = 10
+print(my_variable) ##printing the variable before adding 5
+## 10
+my_variable += 5
+print(my_variable) ##printing the variable after adding 5
+## 15
+```
+
+#### Working with Strings
+
+-   A string in Python is a sequence of characters enclosed in quotes, used to represent text.
+
+```{python}
+question = "What are you studying?"
+answer = "Analytics!"
+```
+
+-   The print() function in Python displays output to the console or screen.
+
+```{python}
+print(question)
+## What are you studying?
+print(answer)
+## Analytics!
+```
+
+-   Concatenating strings with a space in between
+
+```{python}
+print(question + " " + answer)  
+## What are you studying? Analytics!
+```
+
+-   In Python, prefixing a string with f creates an f-string (formatted string literal). This allows you to embed variables or expressions directly inside the string using curly braces {}. For example:
+
+```{python}
+print(f"{question} {answer}")
+	## What are you studying? Analytics!
+```
+
+-   Concatenating strings with a newline in between
+
+```{python}
+print(question + "\n" +answer) ## What are you studying?
+## Analytics!
+```
+
+-   This will show the type of the variable 'answer’
+
+```{python}
+type(answer) 
+## <class 'str’>
+```
+
+-   This will show the length of the string in 'answer’
+
+```{python}
+len(answer)
+## 10
+```
+
+#### Indexing Strings
+
+-   In Python, strings are indexed using zero-based indexing, meaning the first character is at position 0. Positive indices count from the start, and negative indices count from the end (-1 is the last character).
+-   This will show the first character of the string in 'answer’
+
+```{python}
+answer[0] ## 'A'
+```
+
+-   This will show the third character of the string in 'answer’
+
+```{python}
+answer[2] ## 'a'
+```
+
+-   This will show the tenth character of the string in 'answer’
+
+```{python}
+answer[9] ## '!'
+```
+
+-   This will show the last character of the string in 'answer’
+
+```{python}
+answer[-1] ## '!'
+```
+
+#### Looking at Strings
+
+-   Python slices are start-inclusive and end-exclusive
+    -   Inclusive means the character at that index is included.
+    -   Exclusive means the character at that index is not included.
+
+|               |     |     |     |     |
+|---------------|-----|-----|-----|-----|
+| Character:    | C   | T   | B   | A   |
+| Index         | 0   | 1   | 2   | 3   |
+| Reverse Index | -4  | -3  | -2  | -1  |
+
+: String Indexes
+
+#### Slicing
+
+-   This makes a variable CTBA as defined on the last slide.
+
+```{python}
+course = "CTBA"
+```
+
+-   This will show the length of string in 'course'.
+
+```{python}
+len(course) ## 4
+```
+
+-   This will show the first two characters of the string in 'course' in positions 0 and 1.
+
+```{python}
+print(course[0:2]) ## CT
+```
+
+-   course\[0:2\] –\> 'C' and 'T' (includes index 0 and 1; excludes 2)
+
+#### Methods and Functions
+
+-   A function is a reusable block of code that performs a specific task. It is not tied to any object and is called using its name followed by parentheses.
+
+    -   Defined independently from a specific python object/class
+    -   Called by its name only
+
+    ```{python}
+    print("Hello") #Built in function
+    ## Hello
+    ```
+
+<!-- -->
+
+-   A method is a function that is associated with a specific object or class. It is called on the object, using dot notation.
+
+    -   Associated with a Python object/class such as strings
+
+    -   Called by its name on the Python object
+
+        -   Example: st.upper()
+
+        -   (This works because st is a string)
+
+        -   Invalid: num.upper() (won’t work unless num is a string)
+
+    ```{python}
+    text = "hello"
+    print(text.upper()) 
+    ## HELLO
+    ```
+
+#### Some Method Examples (.upper and .lower)
+
+-   This will convert the string in 'answer' to uppercase
+
+```{python}
+answer.upper() # ##'Analytics!'
+```
+
+-   This will print the uppercase of 'answer'
+
+```{python}
+answer_cap = answer.upper()
+
+print(answer_cap) ## ANALYTICS!
+```
+
+-   This will convert the string in 'answer' to lowercase
+
+```{python}
+answer.lower()## 'analytics!'
+```
+
+#### Some Method Examples (.find)
+
+-   The find() method is used with strings to search for a substring. It returns the index of the first occurence of the substring. If the substring is not found, it returns -1.
+
+```{python}
+answer.find("t")
+## 5
+```
+
+#### Adding Text and f-strings
+
+```{python}
+	name = "Pamela Schlosser" 
+```
+
+-   Uses + to join strings manually. The variable name must be converted to a string if it isn’t one already.
+
+-   More prone to formatting issues or errors if types mismatch.
+
+```{python}
+print("Hello, I am " + name + ". I have been teaching at WM since 2020.")    
+	## Hello, I am Pamela Schlosser. I have been teaching at WM since 2020.
+```
+
+-   Uses f-strings, introduced in Python 3.6. Allows you to embed variables directly inside {}.
+
+-   Cleaner, more readable, and better for mixing variables and text.
+
+```{python}
+print(f"Hello, I am {name}. I have been teaching at WM since 2020.") 
+## Hello, I am Pamela Schlosser. I have been teaching at WM since 2020.
+```
+
+#### Tuple Example
+
+-   A tuple is an ordered, immutable collection of items. It is created using parentheses () and can contain elements of any data type.
+```{python}
+t1 = (1, 2, 3, 4, 5) # This is a tuple
+
+print(t1) # This will print the tuple t1
+	## (1, 2, 3, 4, 5)
+```
+
+-   This line raises an error because tuples are immutable. Immutable means you cannot change, add, or delete elements after the tuple is created.
+```{python}
+t1[0] = 11 # This will raise an error because 	tuples are immutable
+```
+
+-   Trying to reassign t1\[0\] attempts to modify the first element — but since tuples do not allow changes, Python throws a TypeError.
+
+<!-- -->
+
+-   Use a tuple when
+
+    -   You want a fixed set of values.
+
+    -   You need a read-only data structure.
+
+    -   You want to use the collection as a key in a dictionary (only possible if it’s immutable).
+
+-   Tuples enhance data integrity by ensuring that the data they hold cannot be modified after creation. 
+
+    -   Since tuples are immutable, they can be used as keys in dictionaries — something lists cannot do.
+
+    -   This allows for consistent hashing and indexing, which is crucial in algorithms and data structures.
+
+#### Dictionaries
+
+-   A dictionary is a built-in Python data type that stores data as key-value pairs.
+
+    -   A key is the identifier used to access a value.
+
+        -   Keys must be unique and immutable (like strings, numbers, or tuples).
+
+        -   Each key maps to a corresponding value.
+
+        -   You use the key inside square brackets or with .get() to retrieve its value.\
+            \
+
+    -   Values can be any data type (including lists, other dictionaries, etc.).
+
+    -   Dictionaries are unordered (prior to Python 3.7) and mutable, meaning you can add, change, or remove items.
+```{python}
+d1 = {"name": "Schlosser", "age": 23, "city": "Williamsburg"} # This is a dictionary where "name", "age", and "city" are the keys
+```
+
+#### Dictionary Functions
+
+    -   Accesses and prints the value associated with the key 'name’
+   
+```{python}
+print(d1["name"]) ## Schlosser
+```
+
+    -   Updates the value for the key 'age' to 24
+```{python}
+d1["age"] = 24
+```
+    -   Adds a new key-value pair ('email', 'pgschlosser\@wm.edu') to the dictionary
+```{python}
+d1["email"] = "pgschlosser@wm.edu" 
+```
+
+    -   Prints the updated dictionary
+```{python}
+print(d1) ## {'name': 'Schlosser', 'age': 24, 'city': 'Williamsburg', 'email': 'pgschlosser@wm.edu'} 
+```
+
+#### Using .items in for loop
+
+-   .items() returns a view object containing the dictionary’s (key, value) pairs. It is commonly used in loops to iterate through both the keys and values.
+
+```{python}
+for key, value in d1.items():
+    print(key, ":", value)
+## name : Schlosser
+## age : 24
+## city : Williamsburg
+## email : pgschlosser@wm.edu
+```
+
+#### Dictionary of Dictionaries
+
+-   A dictionary of dictionaries is a nested data structure where each value in the outer dictionary is itself a dictionary.
+
+-   It allows you to organize complex data in a structured, readable way.
+
+-   Often used to represent multiple records, like a small database.
+
+-   Each person is a nested dictionary with their own name, age, and city.
+
+```{python}
+people = {
+    "person1": {"name": "Schlosser", "age": 23, "city": "Williamsburg"},
+    "person2": {"name": "Smith", "age": 30, "city": "Newport News"}
+}
+
+print(people)
+## {'person1': {'name': 'Schlosser', 'age': 23, 'city': 'Williamsburg'}, 'person2': {'name': 'Smith', 'age': 30, 'city': 'New Port News'}}
+```
+
+#### Dictionary of Dictionaries Example
+
+-   Dictionaries are extremely useful in Python for solving real-world problems like the Traveling Salesman Problem (TSP) because they provide:
+
+    -   Fast Lookup for Distances
+
+    -   Flexible Data Structure: Dictionaries allow you to **dynamically update routes, costs, and visited status**.
+
+    -   Readability & Structure: Using city names as **keys** makes the model easier to understand and maintain compared to raw index-based arrays.
+
+    -   Allow you to easily model complex relationships
+
+```{python}
+distances = {
+    "A": {"B": 10, "C": 15},
+    "B": {"A": 10, "C": 20},
+    "C": {"A": 15, "B": 20}
+}
+```
+
+#### If Statements in Python
+
+-   Both Python and R use if statements to control the flow of code based on whether a condition is TRUE (R) or True (Python). Both can be combined with else and else if (R) / elif (Python) for multiple branches.
+
+-   Specifically, the if keyword checks if a condition is True.
+
+    -   If the condition x \> 5 is met, the indented code runs.
+```{python}
+x = 10
+if x > 5:
+    print("x is greater than 5")
+## x is greater than 5
+```
+
+-   <span style="background-color: #ffff00;"> What happens if we change x to 3? </span>
+
+#### If–Else Statements
+
+-   else runs if the if condition is false.
+
+    -   \% is the modulo operator (remainder).
+
+    -   == checks equality.
+    
+```{python}
+x = 4
+if x % 2 == 0:
+    print("x is even")
+else:
+    print("x is odd")
+## x is even
+```
+
+-   <span style="background-color: #ffff00;"> Can you write this to check if x is divisible by 3? </span>
+
+#### If-Elif-Else Chains
+
+-   Use elif (else if) to check multiple conditions.
+
+-   Only the first True block executes.
+
+```{python}
+x = 0
+if x > 0:
+    print("Positive")
+elif x == 0:
+    print("Zero")
+else:
+    print("Negative")
+## Zero
+```
+
+-   <span style="background-color: #ffff00;"> Try this with different values of x.</span>
+
+#### For Loops
+
+-   Both Python (and R) use for loops to iterate over elements in a sequence (list, vector, range, etc.). The loop variable takes on each element’s value in turn.
+
+-   In Python, the range(5) gives values from 0 to 4.
+
+    -   for i in range(5) loops through those values.
+    
+```{python}
+for i in range(5):
+    print("i is", i)
+## i is 0
+## i is 1
+## i is 2
+## i is 3
+## i is 4
+```
+
+#### While Loop with If Statement
+
+-   A while loop is a control structure that repeatedly executes a block of code as long as a specified condition is True (Python) or TRUE (R).
+
+-   Specifically, a while loop repeats while the condition is true.
+
+-   Modify it to print only even numbers.
+
+-   x += 1 increases x by 1 each time.
+```{python}
+x = 0
+while x < 5:
+    if x % 2 == 0:
+        print(x, "is even")
+    else:
+        print(x, "is odd")
+    x += 1
+## 0 is even
+## 1 is odd
+## 2 is even
+## 3 is odd
+## 4 is even
+```
+
+-   <span style="background-color: #ffff00;"> What would happen if we forgot x += 1? </span>
+
+#### Intro to Functions
+
+-   Defining Components
+
+    -   def
+
+        -   A keyword that starts the definition of a function. Tells Python that you're about to declare a function.
+
+    -   function_name
+
+        -   The name of your function.Used to call the function later.
+
+        -   Rules: Must follow Python naming conventions (e.g., lowercase_with_underscores, cannot start with a number).
+
+    -   (input_parameters)
+
+        -   The inputs or arguments the function takes. Allow the function to receive external values it can use.
+
+        -   Examples: def greet(name): or def add(x, y):
+
+    -   """ docstring ""“
+
+        -   A documentation string enclosed in triple quotes. Describes what the function does.
+
+        -   Optional but recommended. Use it to explain input, output, and purpose.
+
+    -   Statement(s)
+
+        -   The actual body or code of the function. Contains what the function should do — print, calculate, return values, etc.
+
+        -   Indentation is required to indicate the function body.
+```{python}
+#Function definition keyword
+def function_name(input_parameters): #Function name & parameters
+   """
+      Docstring:
+         -Describes the purpose of the function
+         -Lists inputs (parameters)
+         -Explains outputs (return values)
+   """
+   #Function body:
+   #  -Contains the actual statements to execute
+   #  -Must be indented
+      statement_1
+      statement_2
+   #Example: return result
+```
+
+#### Functions
+
+```{python}
+def sum_up(a,b):
+   """
+   This is where we put the docstring 
+   including input parameters, and output
+   """
+   print(a+b)
+   
+sum_up(1,2)
+## or like belo
+sum_up(a=1,b=2)
+```
+
+-   Positional arguments
+
+    -   sum_up(1, 2)
+
+    -   The values are passed in order: a = 1, b = 2.
+
+    -   The position in the parentheses determines which parameter each value is assigned to.
+
+-   Keyword arguments
+
+    -   sum_up(a=1, b=2)
+
+    -   Each value is explicitly tied to its parameter name.
+
+    -   The order does not matter here, because you specify the names.
+
+#### Can Set Default Values in Functions
+
+-   Default values are preset values assigned to function parameters. If the caller does not provide a value for that parameter, the default is used.
+
+    -   Many built-in and custom functions use default values to make them more flexible.
+
+    -   They allow you to omit arguments when calling a function.
+
+    -   Makes functions easier to use and reduces the need for overloading.
+    
+```{python}
+def sum_up(a=1,b=1):
+   print(a+b)
+   
+sum_up() #This will use the default values of a and b 
+```
+
+#### return Statement
+
+-   The return statement is used inside a function to send a value back to the caller of the function.
+
+    -   Without return, a function returns None by default.
+
+    -   You can return any data type: numbers, strings, lists, even other functions.
+
+    -   You can return multiple values using commas
+
+-   The function below will use the default values of a and b and assign the result to a new variable ‘result’. This will print the result of the sum_up function.
+
+```{python}
+def sum_up(a=1,b=1):
+   return(a+b)
+
+result=sum_up() #This will use the default values of a and b and 
+#assign the result to a new variable 'result'
+print(result) #This will print the result of the sum_up function
+##2
+```
+
+#### If Else in a Function
+
+-   You can use if/else inside a function to control which statements run based on the input. This lets your function make decisions and return different results depending on conditions.
+
+```{python}
+def abs_value(k):
+   """Returns the absolute value of a number."""
+   if k<0:
+      return -k
+   else:
+      return k
+   
+abs(-5) #This will return 5
+abs(5) #This will also return 5
+```
+
+#### Using a Function from a Package
+
+-   We are going to take a simple list apply some numpy functions
+
+-   Print a basic Python list
+
+```{python}
+list1 = [1,2,3,4,5]
+print(list1)
+## [1, 2, 3, 4, 5]
+```
+
+-   If our install functions worked in the last class, we should be able to access functions from a package. One of the pages we installed was numpy.
+
+-   Import the NumPy library and alias it as np
+```{python}
+import numpy as np
+```
+
+#### Create and Print a NumPy array named arr1 from a list
+
+-   An array is a structured collection of elements (usually numbers) stored in a single variable, allowing efficient storage and manipulation; here, the code creates a NumPy array and prints it as \[1 2 3 4 5\].
+```{python}
+arr1 = np.array([1,2,3,4,5])
+print(arr1)
+## [1 2 3 4 5]
+```
+
+-   list2 is a list of tuples, treated as a list of rows
+```{python}
+list2 = [(1,2,3),(4,5,6)]
+print(list2)
+## [(1, 2, 3), (4, 5, 6)]
+```
+
+-   arr2 is a 2D NumPy array that now supports array operations
+```{python}
+arr2 = np.array([(1,2,3),(4,5,6)])
+print(arr2)
+## [[1 2 3]
+##  [4 5 6]]
+```
+
+#### Using a Function from a Package
+```{python}
+list = [1,2,3]
+	arr1 = np.array([1,2,3])
+```
+
+-   Loop 1 loops through a Python list and print elements.
+```{python}
+for e in list:
+    print(e) #Loop through a Python list and print elements
+## 1
+## 2
+## 3
+```
+
+-   Loop 2 loops through arr1, a NumPy array — works the same at this level.
+```{python}
+for e in arr1:
+    print(e)  # Loop through a NumPy array — works the same at this level
+## 1
+## 2
+## 3
+```
+
+#### Add Elements to a Numpy Array
+```{python}
+arr1 = np.array([1,2,3])
+```
+
+-   Below, we are exploring how to add elements to a NumPy array, and highlighting the difference between Python lists and NumPy arrays when it comes to appending:
+
+-   Use np.append() to add elements to an array
+    -   arr1.append(4) does not work — unlike lists, NumPy arrays do not have an .append() method. It raises an AttributeError.
+
+    -   arr1 = arr1 + \[5\] is also incorrect — adding a list to a NumPy array does not work unless the shapes are compatible, which they are not in this case.
+```{python}
+# these do not work:
+#arr1.append(4)
+#arr1 = arr1 + [5]
+arr1 = np.append(arr1,4) #works
+arr1 = np.append(arr1,[5]) #Append another element
+for e in arr1:
+    print(e) # Prints updated array values
+```
+
+
+#### Add Two Arrays Element-wise
+
+-   Adding two arrays element-wise means that corresponding elements from each array are added together to produce a new array of the same shape, where each position contains the sum of the matching elements.
+
+-   Print the result: each value is doubled
+```{python}
+arr2 = arr1 + arr1
+for e in arr2:
+    print(e)
+## 2
+## 4
+## 6
+## 8
+## 10
+```

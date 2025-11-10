@@ -1,17 +1,17 @@
 ---
-title: "Storytelling"
-author: "Pamela Schlosser"
+title: "Human Centered Data Story Telling"
 format: html
 runtime: python
 ---
 
-## Human Centered Data Story Telling
 
-##### **And Why Good Research Methods Matter**
+::: note
+###### *Reference:*  
+Wilke, C. O. (2019). *Fundamentals of Data Visualization.*  
+O’Reilly Media. ISBN: 9781492031086.  
+:::
 
-###### *Reference:* Wilke, C. O. (2019).Fundamentals of data visualization. O’Reilly Media. ISBN: 9781492031086.
-
-#### Data Visualization
+#### Data Visualization and Why Good Research Methods Matter
 
 -   Wilke (2019) suggests that data visualization combines both art and science.
 
@@ -115,7 +115,12 @@ runtime: python
 
 #### Monochromatic vs Non-Monochromatic
 
-###### *Reference: Data Source: U.S. Census Bureau. (2023). TIGER/Line Shapefiles: Counties (2023) \[Shapefile\]. U.S. Department of Commerce. https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html*
+::: note
+###### *Reference:*  
+**Data Source:** U.S. Census Bureau. (2023). *TIGER/Line Shapefiles: Counties (2023) \[Shapefile\].*  
+U.S. Department of Commerce.  
+Available at: [https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html)
+:::
 
 ![Monochromatic vs Non-Monochromatic](images/mono_vs_nonmono.png)
 
@@ -137,7 +142,11 @@ runtime: python
 
 ![Bad Pie](images/bad_pie.png)
 
-###### *Reference: Yoram Reich and Steven J. Fenves, via the UCI Machine Learning Repository (Dua & Karra Taniskidou, 2017).*
+::: note
+###### *Reference:*  
+Yoram Reich and Steven J. Fenves, via the **UCI Machine Learning Repository**  
+(Dua & Karra Taniskidou, 2017).  
+:::
 
 #### Bad Proportions (Bar)
 
@@ -175,7 +184,13 @@ runtime: python
 
     -   This approach allowed them to study how misinformation spreads through otherwise well-designed charts in a large-scale, real-world dataset.
 
-###### *Reference: Schmidt, A., Väänänen, K., Goyal, T., Kristensson, P. O., Peters, A., Mueller, S., Williamson, J. R., & Wilson, M. L. (Eds.). (2023). Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems. Association for Computing Machinery. https://doi.org/10.1145/3544548*
+::: note
+###### *Reference:*  
+Schmidt, A., Väänänen, K., Goyal, T., Kristensson, P. O., Peters, A., Mueller, S., Williamson, J. R., & Wilson, M. L. (Eds.). (2023).  
+*Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems.*  
+Association for Computing Machinery.  
+[https://doi.org/10.1145/3544548](https://doi.org/10.1145/3544548)
+:::
 
 #### Reasoning Errors (Schmidt et al., 2023)
 

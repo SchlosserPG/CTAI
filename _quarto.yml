@@ -13,16 +13,18 @@ book:
     - genAI.qmd
     - ethics.qmd
     - dataAcquisition.qmd
+    - webscrapingandapi.qmd
+#    - callbacksandapis.qmd
     - storytelling.qmd
     - analyticsproblem.qmd
     - preparingpeople.qmd
-#    - introdash.qmd
+    - introdash.qmd
     - crashcourse.qmd
     - github.qmd
 #    - understandinghtml.qmd
-#    - makingcallbacks.qmd
-#    - multilayout.qmd
-#   - multipages.qmd
+    - makingcallbacks.qmd
+    - multilayout.qmd
+    - multipages.qmd
     - summary.qmd
     - references.qmd
 
@@ -30,10 +32,14 @@ book:
 format:
   html:
     css: styles.css
-    number-sections: false 
-
+    number-sections: false
+    toc: true
+    toc-depth: 3
+    toc-title: "Table of Contents"
   pdf:
     documentclass: scrreprt
+    toc: true
+    toc-depth: 3
 
 editor: visual
 
