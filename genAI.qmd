@@ -4,8 +4,7 @@ format: html
 runtime: python
 ---
 
-* This section introduces multimodal generative AI—systems that create and reason across text, images, audio, and video—and situates them within the broader evolution from language models (LMs) to large language models (LLMs) and multimodal LLMs (MLLMs). It explains how advances in transformer architectures, GPUs, and training methods (pretraining, fine-tuning, RLHF, and cross-modal embeddings) enable cross-modal understanding and generation, while prompting techniques turn these capabilities into reliable workflows. The section also surveys high-impact applications (automation, personalization, retrieval, and decision support), highlights risks (hallucination, bias, transparency), and outlines practical guardrails—evaluation rubrics, prompt engineering, and governance—for responsible deployment in real settings.
-
+-   This section introduces multimodal generative AI—systems that create and reason across text, images, audio, and video—and situates them within the broader evolution from language models (LMs) to large language models (LLMs) and multimodal LLMs (MLLMs). It explains how advances in transformer architectures, GPUs, and training methods (pretraining, fine-tuning, RLHF, and cross-modal embeddings) enable cross-modal understanding and generation, while prompting techniques turn these capabilities into reliable workflows. The section also surveys high-impact applications (automation, personalization, retrieval, and decision support), highlights risks (hallucination, bias, transparency), and outlines practical guardrails—evaluation rubrics, prompt engineering, and governance—for responsible deployment in real settings.
 
 ###### *Reference:* Together, Chapter 1 and 3 of Multimodal Generative AI present an overview of the foundations, architectures, and ethical considerations of multimodal generative systems, and examine how emerging multimodal large language models extend these capabilities with advanced cross-modal reasoning and generation—while grappling with challenges in complexity, data integration, and responsible deployment.
 
@@ -466,3 +465,14 @@ runtime: python
 -   Open Collaboration:
 
     -   Continued progress through open-source communities, academic-industry partnerships, and shared benchmarks.
+
+#### Food for Thought
+
+::: note
+Reference:
+
+Harvard Business Review. (2025, August). Beware the AI Experimentation Trap. Retrieved from https://hbr.org/2025/08/beware-the-ai-experimentation-trap
+:::
+
+-   Recent evidence from the MIT Media Lab’s Project NANDA report indicates that 95% of generative AI investments have yet to produce measurable returns, reflecting a growing skepticism about AI’s real-world impact. Gartner’s latest Hype Cycle places generative AI in the “trough of disillusionment,” while early reactions to OpenAI’s GPT-5 have further tempered expectations—signaling a broader shift from hype to pragmatic reassessment of AI’s business value.
+

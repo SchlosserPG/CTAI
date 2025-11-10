@@ -4,25 +4,19 @@ format: html
 runtime: python
 ---
 
-* This section introduces the “analytics problem”—the persistent gap between investment in AI/analytics and realized business value—framed through Weber and Zwingmann’s (2024) Augmented Analytics. It situates analytics within broader industrial revolutions, arguing that today’s transformation—driven by AI, IoT, and cloud—is both faster and more complex than any before. The chapter outlines why many organizations stagnate at early maturity stages: technical tools outpace culture, strategy, and people readiness. Two key frameworks anchor the solution: IPTOP (Infrastructure, People, Tools, Organization, Processes) for operational design, and SPEC (Strategy, People, Ecosystem, Culture) for strategic alignment. Together, they guide progress from data reactive to data fluent enterprises. Augmented analytics emerges as the bridge—embedding intelligence into workflows to empower non-experts, enhance insight delivery, and balance automation with human judgment. The section concludes with critical concepts such as bias types, AI archetypes, and the iterative nature of supervised machine learning, framing a holistic view of how analytics maturity, governance, and augmentation converge to drive organizational transformation.
+-   This section introduces the “analytics problem”—the persistent gap between investment in AI/analytics and realized business value—framed through Weber and Zwingmann’s (2024) Augmented Analytics. It situates analytics within broader industrial revolutions, arguing that today’s transformation—driven by AI, IoT, and cloud—is both faster and more complex than any before. The chapter outlines why many organizations stagnate at early maturity stages: technical tools outpace culture, strategy, and people readiness. Two key frameworks anchor the solution: IPTOP (Infrastructure, People, Tools, Organization, Processes) for operational design, and SPEC (Strategy, People, Ecosystem, Culture) for strategic alignment. Together, they guide progress from data reactive to data fluent enterprises. Augmented analytics emerges as the bridge—embedding intelligence into workflows to empower non-experts, enhance insight delivery, and balance automation with human judgment. The section concludes with critical concepts such as bias types, AI archetypes, and the iterative nature of supervised machine learning, framing a holistic view of how analytics maturity, governance, and augmentation converge to drive organizational transformation.
 
-
-#### Food for Thought
 
 ::: note
-Reference:
-
-Harvard Business Review. (2025, August). Beware the AI Experimentation Trap. Retrieved from https://hbr.org/2025/08/beware-the-ai-experimentation-trap
-
+###### *Reference:*  
+Chapters 1 and 2 from **Weber, W., & Zwingmann, T. (2024).** *Augmented Analytics.*  
+O’Reilly Media, Inc.  
+Available at: [https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/](https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/)
 :::
-
-* Recent evidence from the MIT Media Lab’s Project NANDA report indicates that 95% of generative AI investments have yet to produce measurable returns, reflecting a growing skepticism about AI’s real-world impact. Gartner’s latest Hype Cycle places generative AI in the “trough of disillusionment,” while early reactions to OpenAI’s GPT-5 have further tempered expectations—signaling a broader shift from hype to pragmatic reassessment of AI’s business value.
 
 ## The Analytics Problem
 
-#### Chapters 1 and 2 from Weber and Zwingmann (2024) outline the journey of building a data-driven organization—from understanding the foundations of data acquisition, APIs, and web scraping, to progressing through the data maturity stages (Reactive → Active → Progressive → Fluent) by aligning culture, strategy, people, and technology.
-
-###### Chapter 1 and 2 at Weber, W., & Zwingmann, T. (2024). Augmented analytics. O’Reilly Media, Inc. Available at https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/
+* Chapters 1 and 2 from Weber and Zwingmann (2024) outline the journey of building a data-driven organization—from understanding the foundations of data acquisition, APIs, and web scraping, to progressing through the data maturity stages (Reactive → Active → Progressive → Fluent) by aligning culture, strategy, people, and technology.
 
 #### Historical Context: Industrial Transformations
 
@@ -150,7 +144,7 @@ Harvard Business Review. (2025, August). Beware the AI Experimentation Trap. Ret
 
 #### Developing Analytical Maturity
 
-![](developing_analytical_maturity.png)
+![](images/developing_analytical_maturity.png)
 
 #### Analytical Maturity: The Four-Tier IPTOP Framework
 

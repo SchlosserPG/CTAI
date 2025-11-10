@@ -16,6 +16,8 @@ O’Reilly Media, Inc.\
 Available at: <https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/>
 :::
 
+## Preparting People 
+
 -   Preparing people and the organization for Augmented Analytics means building both the skills and the culture needed to embed analytics into daily decision-making. Leaders must champion data-driven practices, analytics translators must bridge business and technical teams, and employees need at least analytics awareness to trust and act on insights. A Center of Excellence (CoE), executive sponsorship, and structured training ensure that AA is not just a technology upgrade but an organizational transformation that empowers all roles to benefit from data in their workflows.
 
 -   Focus on roles (leaders, translators, users, professionals) and personas to structure the analytics transformation.
