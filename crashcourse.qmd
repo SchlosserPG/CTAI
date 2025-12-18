@@ -1,14 +1,17 @@
 ---
 title: "Crash Python Course"
 format: html
-runtime: python
+engine: knitr
+execute:
+  python:
+    executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
 -   This crash course provides a hands-on introduction to Python fundamentals for analytics and data science. It starts with basic arithmetic and variable assignment, then explores strings, including concatenation, indexing, slicing, and built-in methods like .upper() and .find(). Learners move on to lists, tuples, and dictionaries, understanding their structure, mutability, and use cases—culminating in nested dictionaries that model complex data relationships.The course then introduces conditional statements (if, elif, else), loops (for, while), and functions—including parameters, default values, and return statements. Practical examples demonstrate how to encapsulate logic, make decisions, and control program flow.Finally, the module transitions into NumPy, showing how arrays extend Python’s list capabilities for efficient, vectorized computation. Students learn to create arrays, loop through elements, and use np.append() and arithmetic operations to manipulate numeric data.By the end, students gain a working foundation in Python syntax, logic, and data structures, preparing them to move into applied analytics, data manipulation, and visualization.
 
 -   In this crash course, all code examples are written and executed in Visual Studio Code (VS Code), but the file is saved as a Jupyter Notebook (.ipynb). A Jupyter Notebook is an interactive environment that combines code, output, and explanatory text in a single document—ideal for teaching, experimentation, and data analysis. Unlike a standard Python file (.py), which runs code sequentially as a script, a notebook lets you execute code cell by cell, view results immediately, and include Markdown notes alongside. This makes it especially useful for learning and documenting analytics workflows.
 
-* In contrast, when building Dash applications, files must be saved as Python files (.py), since Dash apps require executable scripts that define layout and callbacks. Jupyter notebooks are excellent for exploration, but Dash needs Python files to run as full web applications.
+-   In contrast, when building Dash applications, files must be saved as Python files (.py), since Dash apps require executable scripts that define layout and callbacks. Jupyter notebooks are excellent for exploration, but Dash needs Python files to run as full web applications.
 
 # Basic Math
 
@@ -25,6 +28,10 @@ runtime: python
 
 # Variables
 
+-   Variables are created using an assignment statement with a single equals sign (=), putting the name on the left and the value on the right. Once you've stored data in a variable, you can use the the print() function to display the value that is inside the variable.
+
+-   When naming variables, do not use spaces or special characters. If you want to use a space, use an underscore instead. It is better to use lower case letters for variable names.
+
 ```{python}
 x=7
 y="data"
@@ -32,9 +39,7 @@ y="data"
 print(x) #printing the variable x
 print(y) #printing the variable y
 
-##when naming variables, do not use spaces or special characters
-##If you want to use a space, use an underscore instead
-##It is better to use lower case letters for variable names
+
 my_variable = 10
 print(my_variable) ##printing the variable before adding 5
 my_variable += 5
@@ -42,6 +47,8 @@ print(my_variable) ##printing the variable after adding 5
 ```
 
 # Working with Strings
+
+-   A string is one of the most common data types in Python, used to represent textual data. You create a string by surrounding your text with either single (') or double (") quotes. You can store strings in variables, print them, and combine them using the + operator, which is called concatenation. Python also has many built-in functions to work with them, such as len() to get the length (number of characters), type() to check the data type (which will be str), and special escape characters like \n to add a newline.
 
 ```{python}
 "Im into Data Science"
@@ -61,6 +68,8 @@ len(answer) # This will show the length of the string in 'answer'
 ```
 
 # Indexing Strings
+
+-   Strings in Python are ordered sequences of characters, meaning you can access any individual character using its position, known as its index. This process is called indexing. To access a character, you use the variable name followed by square brackets \[\] containing the index number.Python uses zero-based indexing, so the very first character is at index 0, the second at index 1, and so on. Python also supports negative indexing, which allows you to count from the end of the string, where -1 represents the last character.
 
 ```{python}
 answer[0] # This will show the first character of the string in 'answer'
@@ -123,6 +132,16 @@ print(f"Hello, I am {name}. I have been teaching at WM since 2020.")
 
 # Lists
 
+-   A list is an ordered and changeable collection of items. You create a list by placing items (which can be a mix of any data type, like numbers and strings) inside square brackets \[\], separated by commas.
+
+-   Lists are mutable, meaning you can modify it after it is created.
+
+    -   Add elements using .append()
+    -   Remove elements using .pop()
+    -   Reorder the entire list with .sort().
+
+-   You can concatenate (combine) two lists using the + operator.
+
 ```{python}
 l1 = [1,2,3,4,5]
 l2 = ["a", "hello", "c", 2, 3.6]
@@ -141,6 +160,9 @@ l1.sort() # This will sort the list l1 in ascending order
 ```
 
 # Tuple
+
+-   A tuple in Python is a data structure used to store an ordered collection of items, much like a list. You create a tuple by placing items inside parentheses (), separated by commas.
+-   Tuples are immutable, meaning that once a tuple is created, you cannot change, add, or remove any of its elements. Attempting to reassign a value at a specific index will raise an error, making tuples a reliable way to store data that you know should not be modified.
 
 ```{python}
 t1 = (1, 2, 3, 4, 5) # This is a tuple
@@ -280,6 +302,9 @@ while x < 5:
 
 # Functions
 
+-   A function is a named, reusable block of code designed to perform a specific task. You create one using the def keyword, followed by the function's name and parentheses (). The code that belongs to the function is indented underneath this line.
+-   Once a function is defined, you can "call" it—or run all the code inside it by using its name followed by parentheses.
+
 ```{python}
 def my_first_function():
     """     
@@ -345,6 +370,8 @@ abs(5)  # This will return 5
 ```
 
 # Using a Function from a Package
+
+-   To access specialized tools that are not built into standard Python, you often need to use functions from external packages or libraries. Once a package is imported, you can assign it an alias name.
 
 -   Print a basic Python list
 

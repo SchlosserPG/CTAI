@@ -1,11 +1,13 @@
 ---
 title: " Modern Data Acquisition"
 format: html
-runtime: python
+engine: knitr
+execute:
+  python:
+    executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
-* This section surveys modern data acquisition—what to collect, where it lives, and how to fetch it at scale—spanning primary/secondary sources, files and databases, streaming feeds, APIs, and web scraping. It contrasts APIs (structured, reliable, governed) with scraping (flexible but fragile and compliance-sensitive), then maps the end-to-end pipeline from sensing and signal conditioning to collection, storage, and analysis. You’ll examine common formats (text, numeric, time series, media), typical challenges (quality, volume, variety, integration, governance, cost, scalability), and legal/ethical considerations. Finally, it introduces Python tooling with a focus on Beautiful Soup—how HTML parsing fits into practical projects and how to harden scrapers for changing page structures—grounded by Mitchell (2024).
-
+-   This section surveys modern data acquisition—what to collect, where it lives, and how to fetch it at scale—spanning primary/secondary sources, files and databases, streaming feeds, APIs, and web scraping. It contrasts APIs (structured, reliable, governed) with scraping (flexible but fragile and compliance-sensitive), then maps the end-to-end pipeline from sensing and signal conditioning to collection, storage, and analysis. You’ll examine common formats (text, numeric, time series, media), typical challenges (quality, volume, variety, integration, governance, cost, scalability), and legal/ethical considerations. Finally, it introduces Python tooling with a focus on Beautiful Soup—how HTML parsing fits into practical projects and how to harden scrapers for changing page structures—grounded by Mitchell (2024).
 
 ::: note
 ###### *Reference:*

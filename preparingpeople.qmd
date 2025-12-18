@@ -1,7 +1,10 @@
 ---
 title: "Preparing People"
 format: html
-runtime: python
+engine: knitr
+execute:
+  python:
+    executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
 -   Preparing people for Augmented Analytics (AA) means aligning technical, organizational, and human readiness. Chapter 4 of Augmented Analytics (Weber & Zwingmann, 2024) emphasizes that transformation succeeds only when analytics becomes part of everyday work—supported by leadership, literacy, and structured enablement. The chapter outlines four key personas—leaders, translators, users, and professionals—each requiring tailored skills and programs. A Center of Excellence (CoE) anchors this effort by coordinating strategy, training, and governance, ideally evolving from centralized control to a federated model that balances expertise with local ownership.
@@ -16,7 +19,7 @@ O’Reilly Media, Inc.\
 Available at: <https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/>
 :::
 
-## Preparting People 
+## Preparting People
 
 -   Preparing people and the organization for Augmented Analytics means building both the skills and the culture needed to embed analytics into daily decision-making. Leaders must champion data-driven practices, analytics translators must bridge business and technical teams, and employees need at least analytics awareness to trust and act on insights. A Center of Excellence (CoE), executive sponsorship, and structured training ensure that AA is not just a technology upgrade but an organizational transformation that empowers all roles to benefit from data in their workflows.
 

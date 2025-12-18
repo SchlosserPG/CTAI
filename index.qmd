@@ -2,10 +2,11 @@
 title: "Intro to CTAI"
 author: "Pamela Schlosser"
 format: html
-runtime: python
+execute:
+  python:
+    executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
-
-* This section introduces how organizations evolve from competing through business analytics to competing in the age of AI (CTAI). It explains how data-driven decision-making transforms into AI-enhanced systems that learn, scale, and adapt across business functions. The discussion connects classical frameworks—like Porter’s Five Forces and the Value Chain—to digital-era dynamics such as network effects, value capture, and platform competition. Drawing on Iansiti & Lakhani (2020), it highlights how firms achieve advantage not just through better data, but through architectures that continuously learn and connect across networks.
+-   This section introduces how organizations evolve from competing through business analytics to competing in the age of AI (CTAI). It explains how data-driven decision-making transforms into AI-enhanced systems that learn, scale, and adapt across business functions. The discussion connects classical frameworks—like Porter’s Five Forces and the Value Chain—to digital-era dynamics such as network effects, value capture, and platform competition. Drawing on Iansiti & Lakhani (2020), it highlights how firms achieve advantage not just through better data, but through architectures that continuously learn and connect across networks.
 
 ::: note
 ###### *Reference:*

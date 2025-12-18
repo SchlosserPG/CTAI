@@ -1,7 +1,10 @@
 ---
 title: "Understanding Generative AI"
 format: html
-runtime: python
+engine: knitr
+execute:
+  python:
+    executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
 -   This section introduces multimodal generative AI—systems that create and reason across text, images, audio, and video—and situates them within the broader evolution from language models (LMs) to large language models (LLMs) and multimodal LLMs (MLLMs). It explains how advances in transformer architectures, GPUs, and training methods (pretraining, fine-tuning, RLHF, and cross-modal embeddings) enable cross-modal understanding and generation, while prompting techniques turn these capabilities into reliable workflows. The section also surveys high-impact applications (automation, personalization, retrieval, and decision support), highlights risks (hallucination, bias, transparency), and outlines practical guardrails—evaluation rubrics, prompt engineering, and governance—for responsible deployment in real settings.
@@ -475,4 +478,3 @@ Harvard Business Review. (2025, August). Beware the AI Experimentation Trap. Ret
 :::
 
 -   Recent evidence from the MIT Media Lab’s Project NANDA report indicates that 95% of generative AI investments have yet to produce measurable returns, reflecting a growing skepticism about AI’s real-world impact. Gartner’s latest Hype Cycle places generative AI in the “trough of disillusionment,” while early reactions to OpenAI’s GPT-5 have further tempered expectations—signaling a broader shift from hype to pragmatic reassessment of AI’s business value.
-

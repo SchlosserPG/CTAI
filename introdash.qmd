@@ -1,14 +1,17 @@
 ---
 title: "Intro to Dash and HTML"
 format: html
-runtime: python
+engine: knitr
 execute:
   eval: false
+  python:
+    executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
 -   This section introduces Dash, a Python framework from Plotly for building interactive, web-based dashboards without requiring traditional web development skills. Dash combines Plotly for visualizations, Flask for the backend, and React for the front end, making it ideal for analysts who want to turn Python code into shareable, browser-based applications.The lesson covers Dash’s two core modules—dash.html (for HTML structure) and dash.dcc (for interactive components)—and demonstrates how to create, run, and style a basic app. It explains the difference between static and dynamic content, showing how callbacks update dashboards in real time through APIs, databases, or live streams. Students learn how to build a simple “Hello Dash” app, add headings, paragraphs, hyperlinks, and apply styling using inline Python dictionaries or external CSS stylesheets. Key design concepts such as borders, padding, margins, and hover effects are introduced to control layout and visual hierarchy. By the end, learners understand the structure of a Dash app—layout + callbacks—and how styling and interactivity work together to create polished, professional dashboards that communicate data insights effectively.
 
 ## Dash
+
 ::: note
 **Dash** is a Python library for building interactive web applications. Developed by **Plotly**, the company behind the Plotly visualization library, Dash allows users to create dynamic, data-driven dashboards entirely in Python. It is built on top of **Plotly** for visualizations, **Flask** for managing the web server, and **React** for the front-end interface.
 :::
@@ -36,7 +39,7 @@ execute:
 
 -   Use Dash when you want to build full web apps or dashboards with charts, dropdowns, and user controls—ideal for business analytics tools or interactive data portals
 
-![](images/data_types.png)
+![](images/datatypes.png)
 
 #### Dash: Static and Dynamic Content
 
@@ -133,7 +136,7 @@ if __name__ == "__main__":
 
 ![](images/hello_dash.png){fig-align="center" width="350" height="250"}
 
-* App.title sets the **browser tab title** (like the text you see in the tab at the top of Chrome, Firefox, etc.). It's the **HTML \<title\> tag** behind the scenes.
+-   App.title sets the **browser tab title** (like the text you see in the tab at the top of Chrome, Firefox, etc.). It's the **HTML \<title\> tag** behind the scenes.
 
 ##### html.Div() is a container element (\<div\> tag) to hold other elements used to group components like text, headings, graphs, etc.
 
@@ -153,7 +156,7 @@ if __name__ == "__main__":
 
 -   Intro to HTML
 
--   HTML (HyperText Markup Language: The standard markup language for structuring Web pages. 
+-   HTML (HyperText Markup Language: The standard markup language for structuring Web pages.
 
 -   HTML document -\> web browsers -\> multimedia web pages
 
@@ -222,7 +225,7 @@ app.layout=html.Div([
 
 -   In Dash apps, the style parameter is used to directly apply CSS styling to a Dash component using a Python dictionary. This allows you to control the appearance (e.g., colors, spacing, fonts, borders) of components without needing a separate CSS file.
 
--   HTML colors are located on<https://htmlcolorcodes.com/>
+-   HTML colors are located on <https://htmlcolorcodes.com/>
 
 ![](images/style.png)
 

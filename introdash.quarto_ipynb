@@ -5,17 +5,21 @@
       "metadata": {},
       "source": [
         "---\n",
-        "title: \"Intro to Dash\"\n",
+        "title: \"Intro to Dash and HTML\"\n",
         "format: html\n",
-        "runtime: python\n",
         "execute:\n",
         "  eval: false\n",
+        "  python:\n",
+        "    executable: \"C:/Users/pamel/anaconda3/envs/CTBA/python.exe\"\n",
         "---\n",
+        "\n",
+        "\n",
         "\n",
         "\n",
         "-   This section introduces Dash, a Python framework from Plotly for building interactive, web-based dashboards without requiring traditional web development skills. Dash combines Plotly for visualizations, Flask for the backend, and React for the front end, making it ideal for analysts who want to turn Python code into shareable, browser-based applications.The lesson covers Dash’s two core modules—dash.html (for HTML structure) and dash.dcc (for interactive components)—and demonstrates how to create, run, and style a basic app. It explains the difference between static and dynamic content, showing how callbacks update dashboards in real time through APIs, databases, or live streams. Students learn how to build a simple “Hello Dash” app, add headings, paragraphs, hyperlinks, and apply styling using inline Python dictionaries or external CSS stylesheets. Key design concepts such as borders, padding, margins, and hover effects are introduced to control layout and visual hierarchy. By the end, learners understand the structure of a Dash app—layout + callbacks—and how styling and interactivity work together to create polished, professional dashboards that communicate data insights effectively.\n",
         "\n",
         "## Dash\n",
+        "\n",
         "::: note\n",
         "**Dash** is a Python library for building interactive web applications. Developed by **Plotly**, the company behind the Plotly visualization library, Dash allows users to create dynamic, data-driven dashboards entirely in Python. It is built on top of **Plotly** for visualizations, **Flask** for managing the web server, and **React** for the front-end interface.\n",
         ":::\n",
@@ -43,7 +47,7 @@
         "\n",
         "-   Use Dash when you want to build full web apps or dashboards with charts, dropdowns, and user controls—ideal for business analytics tools or interactive data portals\n",
         "\n",
-        "![](images/data_types.png)\n",
+        "![](images/datatypes.png)\n",
         "\n",
         "#### Dash: Static and Dynamic Content\n",
         "\n",
@@ -75,7 +79,7 @@
         "\n",
         "    -   , etc., directly in Python\n"
       ],
-      "id": "dd857bce"
+      "id": "293cce49"
     },
     {
       "cell_type": "code",
@@ -83,7 +87,7 @@
       "source": [
         "from dash import Dash, html "
       ],
-      "id": "5e1c3741",
+      "id": "857093da",
       "execution_count": null,
       "outputs": []
     },
@@ -93,7 +97,7 @@
       "source": [
         "-   Dash() initializes your web application\n"
       ],
-      "id": "2711a2a7"
+      "id": "420cbcba"
     },
     {
       "cell_type": "code",
@@ -101,7 +105,7 @@
       "source": [
         "app=Dash()"
       ],
-      "id": "e8f3320f",
+      "id": "8c4f7bd9",
       "execution_count": null,
       "outputs": []
     },
@@ -113,7 +117,7 @@
         "\n",
         "-   To Define the layout of your app we add html.methods(““)\n"
       ],
-      "id": "03526d5c"
+      "id": "ee54f5e5"
     },
     {
       "cell_type": "code",
@@ -122,7 +126,7 @@
         "if __name__ == '__main__':\n",
         "    app.run(debug=True, use_reloader=False)"
       ],
-      "id": "8a606bc3",
+      "id": "00572bed",
       "execution_count": null,
       "outputs": []
     },
@@ -156,7 +160,7 @@
         "\n",
         "-   There are Python functions from the dash.html module that mimic HTML elements. They are used to build the structure of your web page in a Dash app.\n"
       ],
-      "id": "14f85dfd"
+      "id": "af9d3d66"
     },
     {
       "cell_type": "code",
@@ -178,7 +182,7 @@
         "   app.run(debug=True)\n",
         "])"
       ],
-      "id": "0574ce08",
+      "id": "31c736a9",
       "execution_count": null,
       "outputs": []
     },
@@ -188,7 +192,7 @@
       "source": [
         "![](images/hello_dash.png){fig-align=\"center\" width=\"350\" height=\"250\"}\n",
         "\n",
-        "##### App.title sets the **browser tab title** (like the text you see in the tab at the top of Chrome, Firefox, etc.). It's the **HTML \\<title\\> tag** behind the scenes.\n",
+        "-   App.title sets the **browser tab title** (like the text you see in the tab at the top of Chrome, Firefox, etc.). It's the **HTML \\<title\\> tag** behind the scenes.\n",
         "\n",
         "##### html.Div() is a container element (\\<div\\> tag) to hold other elements used to group components like text, headings, graphs, etc.\n",
         "\n",
@@ -208,7 +212,7 @@
         "\n",
         "-   Intro to HTML\n",
         "\n",
-        "-   HTML (HyperText Markup Language: The standard markup language for structuring Web pages. \n",
+        "-   HTML (HyperText Markup Language: The standard markup language for structuring Web pages.\n",
         "\n",
         "-   HTML document -\\> web browsers -\\> multimedia web pages\n",
         "\n",
@@ -246,7 +250,7 @@
         "\n",
         "    -   Works just like the HTML \\<a\\> tag.\n"
       ],
-      "id": "0a8a88bd"
+      "id": "6b33a076"
     },
     {
       "cell_type": "code",
@@ -259,7 +263,7 @@
         "   html.A(\"Click here\", href=\"https://example.com\")\n",
         "])"
       ],
-      "id": "907167c2",
+      "id": "9875bc2e",
       "execution_count": null,
       "outputs": []
     },
@@ -289,11 +293,11 @@
         "\n",
         "-   In Dash apps, the style parameter is used to directly apply CSS styling to a Dash component using a Python dictionary. This allows you to control the appearance (e.g., colors, spacing, fonts, borders) of components without needing a separate CSS file.\n",
         "\n",
-        "-   HTML colors are located on<https://htmlcolorcodes.com/>\n",
+        "-   HTML colors are located on <https://htmlcolorcodes.com/>\n",
         "\n",
         "![](images/style.png)\n"
       ],
-      "id": "ade467a6"
+      "id": "ec6f33fc"
     },
     {
       "cell_type": "code",
@@ -303,7 +307,7 @@
         "                             'fontSize': '20px',\n",
         "                             'backgroundColor':'#E898AA'})"
       ],
-      "id": "166d390e",
+      "id": "a03a99c9",
       "execution_count": null,
       "outputs": []
     },
@@ -351,7 +355,7 @@
         "\n",
         "-   In Python, key-value pairs in dictionaries must be separated by commas.\n"
       ],
-      "id": "0172ea80"
+      "id": "ffb328dd"
     },
     {
       "cell_type": "code",
@@ -360,7 +364,7 @@
         "html.P(\"This is a simple dashboard.\",\n",
         "         style={'border' : '1px solid black'})"
       ],
-      "id": "425f7026",
+      "id": "a4b050ca",
       "execution_count": null,
       "outputs": []
     },
@@ -380,7 +384,7 @@
         "\n",
         "-   {'marginLeft': 'auto', 'marginRight': 'auto'} (useful for centering)\n"
       ],
-      "id": "031c5e9f"
+      "id": "c2568e23"
     },
     {
       "cell_type": "code",
@@ -390,7 +394,7 @@
         "         style={'border':'1px solid black',\n",
         "                'padding': '20px', 'margin': '50px'})"
       ],
-      "id": "609bf234",
+      "id": "fca67f83",
       "execution_count": null,
       "outputs": []
     },
@@ -421,6 +425,8 @@
         "![](images/general_styled.png)\n",
         "\n",
         "\n",
+        "\n",
+        "\n",
         "```{css}\n",
         "body,html{\n",
         "   padding: 40px; /* increased padding around context */\n",
@@ -431,12 +437,18 @@
         "```\n",
         "\n",
         "\n",
+        "\n",
+        "\n",
         "#### Change the Paragraph Background Color\n",
+        "\n",
+        "\n",
         "\n",
         "\n",
         "```{css}\n",
         "p{background-color: #d4cece;}\n",
         "```\n",
+        "\n",
+        "\n",
         "\n",
         "\n",
         "![](images/adjusted_dash.png)\n",
@@ -479,7 +491,7 @@
         "\n",
         "-   **:active → the moment the element is being clicked (mouse pressed down but not released yet)**"
       ],
-      "id": "f9b66e49"
+      "id": "daec5bfd"
     }
   ],
   "metadata": {

@@ -1,9 +1,11 @@
 ---
 title: "Using Multiple Callbacks"
 format: html
-runtime: python
+engine: knitr
 execute:
   eval: false
+  python:
+    executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
 -   Callbacks can have multiple inputs/outputs, allowing you to update several components in response to a single input event.

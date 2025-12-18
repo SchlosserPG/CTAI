@@ -1,16 +1,19 @@
 ---
 title: "Writing Callbacks and Accessing API's"
 format: html
-runtime: python
+engine: knitr
 execute:
   eval: false
+  python:
+    executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
-* This module explains how callbacks make Dash apps interactive and how to connect them to external APIs. A callback function automatically runs when a user changes an input, such as typing text or selecting a date, and updates outputs like graphs or images in real time. Using the @app.callback() decorator, students learn to link inputs and outputs, handle multiple components, and structure interactive workflows with Dash Core Components such as dcc.Input and dcc.DatePickerSingle.
+-   This module explains how callbacks make Dash apps interactive and how to connect them to external APIs. A callback function automatically runs when a user changes an input, such as typing text or selecting a date, and updates outputs like graphs or images in real time. Using the @app.callback() decorator, students learn to link inputs and outputs, handle multiple components, and structure interactive workflows with Dash Core Components such as dcc.Input and dcc.DatePickerSingle.
 
 The lesson concludes with a hands-on example using NASA’s Astronomy Picture of the Day (APOD) API. Students build a Dash app that lets users select a date, retrieves NASA’s image or video for that day using the requests library, and displays the title, media, and explanation. Through this exercise, they learn how to combine callbacks, APIs, and conditional logic to create dynamic, data-driven dashboards.
 
 ## Callbacks
+
 -   A callback function in Python is a function that is automatically executed (“called back”) in response to a specific event or change.
 -   In Dash (and similar frameworks), callback functions link inputs and outputs — when an input component’s property changes (for example, a dropdown selection or slider value), the callback function runs automatically to update the output component’s property (such as a graph or text display).
 -   These functions act as the “glue” between user interaction and dynamic updates in an app.

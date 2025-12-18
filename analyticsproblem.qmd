@@ -1,22 +1,25 @@
 ---
 title: "The Analytics Problem"
 format: html
-runtime: python
+engine: knitr
+execute:
+  python:
+    executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
 -   This section introduces the “analytics problem”—the persistent gap between investment in AI/analytics and realized business value—framed through Weber and Zwingmann’s (2024) Augmented Analytics. It situates analytics within broader industrial revolutions, arguing that today’s transformation—driven by AI, IoT, and cloud—is both faster and more complex than any before. The chapter outlines why many organizations stagnate at early maturity stages: technical tools outpace culture, strategy, and people readiness. Two key frameworks anchor the solution: IPTOP (Infrastructure, People, Tools, Organization, Processes) for operational design, and SPEC (Strategy, People, Ecosystem, Culture) for strategic alignment. Together, they guide progress from data reactive to data fluent enterprises. Augmented analytics emerges as the bridge—embedding intelligence into workflows to empower non-experts, enhance insight delivery, and balance automation with human judgment. The section concludes with critical concepts such as bias types, AI archetypes, and the iterative nature of supervised machine learning, framing a holistic view of how analytics maturity, governance, and augmentation converge to drive organizational transformation.
 
-
 ::: note
-###### *Reference:*  
-Chapters 1 and 2 from **Weber, W., & Zwingmann, T. (2024).** *Augmented Analytics.*  
-O’Reilly Media, Inc.  
-Available at: [https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/](https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/)
+###### *Reference:*
+
+Chapters 1 and 2 from **Weber, W., & Zwingmann, T. (2024).** *Augmented Analytics.*\
+O’Reilly Media, Inc.\
+Available at: <https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/>
 :::
 
 ## The Analytics Problem
 
-* Chapters 1 and 2 from Weber and Zwingmann (2024) outline the journey of building a data-driven organization—from understanding the foundations of data acquisition, APIs, and web scraping, to progressing through the data maturity stages (Reactive → Active → Progressive → Fluent) by aligning culture, strategy, people, and technology.
+-   Chapters 1 and 2 from Weber and Zwingmann (2024) outline the journey of building a data-driven organization—from understanding the foundations of data acquisition, APIs, and web scraping, to progressing through the data maturity stages (Reactive → Active → Progressive → Fluent) by aligning culture, strategy, people, and technology.
 
 #### Historical Context: Industrial Transformations
 
@@ -277,10 +280,11 @@ Available at: [https://learning.oreilly.com/library/view/augmented-analytics/978
 ##### Chapter 3 of Weber and Zwingmann discuss why augmented analytics (AA) is critical in today’s fast-changing business environment.
 
 ::: note
-###### *Reference:*  
-Chapter 3 from **Weber, W., & Zwingmann, T. (2024).** *Augmented Analytics.*  
-O’Reilly Media, Inc.  
-Available at: [https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/](https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/)
+###### *Reference:*
+
+Chapter 3 from **Weber, W., & Zwingmann, T. (2024).** *Augmented Analytics.*\
+O’Reilly Media, Inc.\
+Available at: <https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/>
 :::
 
 #### Augmented Analytics (AA)

@@ -1,11 +1,13 @@
 ---
 title: "Human-centered Storytelling"
 format: html
-runtime: python
+engine: knitr
+execute:
+  python:
+    executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
-* This section frames data visualization as human-centered storytelling: choosing visuals that are truthful, interpretable, and purposeful for a specific audience. Building on Wilke (2019), it links aesthetic choices (position, color, shape, size) to perception, then pairs them with sound research methods—distinguishing description, prediction, and explanation while avoiding common traps (bad proportions, misleading color scales, poor aspect ratios). You’ll learn to separate correlation from causation, surface confounds and subgroup effects, and recognize reasoning errors (cherry-picking, arbitrary thresholds, misreading axes). Finally, it introduces a practical storytelling workflow—Who/What/How → Big Idea → 3-minute story—so your graphics do more than decorate: they clarify decisions and drive action.
-
+-   This section frames data visualization as human-centered storytelling: choosing visuals that are truthful, interpretable, and purposeful for a specific audience. Building on Wilke (2019), it links aesthetic choices (position, color, shape, size) to perception, then pairs them with sound research methods—distinguishing description, prediction, and explanation while avoiding common traps (bad proportions, misleading color scales, poor aspect ratios). You’ll learn to separate correlation from causation, surface confounds and subgroup effects, and recognize reasoning errors (cherry-picking, arbitrary thresholds, misreading axes). Finally, it introduces a practical storytelling workflow—Who/What/How → Big Idea → 3-minute story—so your graphics do more than decorate: they clarify decisions and drive action.
 
 ::: note
 ###### *Reference:*

@@ -1,11 +1,14 @@
 ---
 title: "AI & Data Ethics"
 format: html
-runtime: python
+engine: knitr
+execute:
+  python:
+    executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
-* This section surveys the ethical foundations and cybersecurity dimensions of AI, moving from first principles (autonomy, justice, beneficence, non-maleficence, explicability) to practical guardrails for responsible design. It introduces the CIA+A triad (confidentiality, integrity, accountability, availability) and maps key risk areas—bias in data/labels/algorithms, digital amplification and echo chambers, deepfakes, misuse in autonomous systems, AI-enabled fraud, and militarization. The focus then turns to governance and transparency: explainable AI, zero-trust security, human-in-the-loop oversight, and continuous auditing across demographics. Finally, it clarifies scholarly practice—how to cite generative AI and how to verify and format sources—to protect credibility while deploying AI ethically at scale.
 
+-   This section surveys the ethical foundations and cybersecurity dimensions of AI, moving from first principles (autonomy, justice, beneficence, non-maleficence, explicability) to practical guardrails for responsible design. It introduces the CIA+A triad (confidentiality, integrity, accountability, availability) and maps key risk areas—bias in data/labels/algorithms, digital amplification and echo chambers, deepfakes, misuse in autonomous systems, AI-enabled fraud, and militarization. The focus then turns to governance and transparency: explainable AI, zero-trust security, human-in-the-loop oversight, and continuous auditing across demographics. Finally, it clarifies scholarly practice—how to cite generative AI and how to verify and format sources—to protect credibility while deploying AI ethically at scale.
 
 ::: note
 ###### *Reference:*

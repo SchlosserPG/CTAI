@@ -1,13 +1,15 @@
 ---
 title: "Web Scraping and APIs"
 format: html
-runtime: python
+engine: knitr
 execute:
   eval: false
+  python:
+    executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
-* This section teaches how to acquire web data two ways—by parsing human-oriented HTML (web scraping) and by calling machine-friendly endpoints (APIs)—and shows when to use each. You’ll practice inspecting sites, locating target elements, and extracting fields with requests, Beautiful Soup, and pandas, then contrast that with structured API calls that return predictable JSON (e.g., Open-Meteo). Worked examples cover end-to-end flows (URL anatomy → request → parse/clean → tabulate), common failure points (fragile page structure, missing fields), and hardening tips (headers, error handling). The section closes with an ethics lens—copyright, terms of service, and responsible use—so students can ship useful pipelines that are both technically sound and compliant.
 
+-   This section teaches how to acquire web data two ways—by parsing human-oriented HTML (web scraping) and by calling machine-friendly endpoints (APIs)—and shows when to use each. You’ll practice inspecting sites, locating target elements, and extracting fields with requests, Beautiful Soup, and pandas, then contrast that with structured API calls that return predictable JSON (e.g., Open-Meteo). Worked examples cover end-to-end flows (URL anatomy → request → parse/clean → tabulate), common failure points (fragile page structure, missing fields), and hardening tips (headers, error handling). The section closes with an ethics lens—copyright, terms of service, and responsible use—so students can ship useful pipelines that are both technically sound and compliant.
 
 #### Steps to Web Scraping
 
@@ -28,9 +30,7 @@ execute:
 #### Web Scraping Example
 
 ##### Source: https://github.com/SchlosserPG/ForClass
-
 ```{python}
-
 import requests
 from bs4 import BeautifulSoup
 
@@ -65,7 +65,6 @@ req = requests.get(url)
 soup = BeautifulSoup(req.text,'lxml')
 ```
 
-<!-- -->
 
 -   This line **navigates to the correct section of the page** (\<ul class="list-recent-events"\>)
 
@@ -74,11 +73,11 @@ soup = BeautifulSoup(req.text,'lxml')
 events=soup.find('ul',{'class':'list-recent-events'}).find_all('li')
 ```
 
-```         
+       
 -   Then it **collects all the \<li\> entries** in that section into a Python list called events.
 
 -   Later in the code, you loop over events to extract the title, location, and date for each event.
-```
+
 
 #### Making a request at python.org/events
 
@@ -218,69 +217,8 @@ for event in events:
 
 -   Outcome: Students see the full API workflow from request → response → parsed results, ready for analysis or visualization.
 
-Start with cities_va dictionary
 
-      \|
 
-      v
-
-Loop through each city + (lat, lon)
-
-      \|
-
-      v
-
-+-------------------------------+
-
-\| Create params dict:           \|
-
-\| latitude, longitude,          \|
-
-\| current_weather=True           \|
-
-+-------------------------------+
-
-      \|
-
-      v
-
-Send GET request to API endpoint
-
-      \|
-
-      v
-
-Receive JSON response from API
-
-      \|
-
-      v
-
-Convert JSON -\> Python dictionary
-
-      \|
-
-      v
-
-Check if "current_weather" exists
-
-  \|                   \|
-
-  v                   v
-
-Yes                 No
-
-  \|                   \|
-
-Extract temp, wind,  Append None
-
-and time fields      values for city
-
-  \|                   
-
-  v
-
-Append dictionary with city data to results list
 
 #### Using JSON and APIs
 
@@ -296,23 +234,9 @@ Append dictionary with city data to results list
 
 -   In the next example, we are using code to call the **Open-Meteo API** for each city’s coordinates to get live weather data.
 
--   We won’t use a dash, but a regular py file. We will integrate the two topics later. 
+-   We won’t use a dash, but a regular py file. We will integrate the two topics later.
 
-<!-- -->
 
--   Printed in the Terminal
-
--                City    Temperature (°C)  Wind Speed (m/s)              Time
-
--   0     Williamsburg              32.3               5.8  2025-08-14T17:00
-
--   1         Richmond               30.1               2.3  2025-08-14T17:00
-
--   2   Virginia Beach              29.6               6.8  2025-08-14T17:00
-
--   3          Roanoke                 32.3               8.5  2025-08-14T17:00
-
--   4  Charlottesville                31.9              4.2  2025-08-14T17:00
 
 #### Linking to an API: weather API to collect
 
@@ -417,6 +341,7 @@ This Python script uses the `requests` library to fetch current weather data for
 #### Web Scraped Example
 
 ```{python}
+
 import pandas as pd
 import requests
 
