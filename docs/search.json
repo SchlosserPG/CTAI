@@ -84,9 +84,9 @@
     "href": "index.html",
     "title": "Competing in the Age of AI",
     "section": "",
-    "text": "Reference:\nThis section introduces how organizations evolve from competing through business analytics to competing in the age of AI. It explains how data-driven decision-making transforms into AI-enhanced systems that learn, scale, and adapt across business functions. The discussion connects classical frameworks — like Porter’s Five Forces and the Value Chain — to digital-era dynamics such as network effects, value capture, and platform competition. Drawing on Iansiti and Lakhani (2020), it highlights how firms achieve advantage not just through better data, but through architectures that continuously learn and connect across networks.\nChapter 6 from Iansiti, M., & Lakhani, K. R. (2020) in Competing in the Age of AI explains how artificial intelligence transforms firms by digitizing activities into scalable, connectable, and self-improving systems. The chapter outlines a strategic framework for AI-driven businesses that leverages network and learning effects while addressing key concepts such as multihoming, disintermediation, and network bridging, using real-world examples like Uber and Airbnb.",
+    "text": "About This Course\nBUAD 5012 — Competing in the Age of AI (CTAI) is a three-credit graduate course in the Mason School of Business at the College of William & Mary, taught by Dr. Pamela Galluch Schlosser. It runs as an intensive three-week course during the Fall semester.\nThis course explores how organizations compete and innovate through business analytics and artificial intelligence. The curriculum moves from foundational strategy and economic theory — how AI reshapes firm boundaries, operating models, and competitive advantage — through the technical and human dimensions of making AI actually work inside an organization. You will learn to apply data-driven models, generative AI, ethical frameworks, and modern data acquisition techniques to real-world business problems. Practical emphasis is placed on augmented analytics, human-centered data storytelling, and developing both technical and organizational readiness for AI adoption. Programming skills in Python are developed throughout, culminating in the ability to build interactive, data-driven dashboards deployed as live web applications.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Competing in the Age of AI</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
     ]
   },
   {
@@ -1446,7 +1446,7 @@
     "section": "Where Is the AI in CTBA?",
     "text": "Where Is the AI in CTBA?\nCTBA traditionally relies on a hierarchy of analytics types, each answering a progressively more actionable question:\n\n\n\n\n\n\n\n\nAnalytics Type\nQuestion Answered\nExample\n\n\n\n\nDescriptive\nWhat happened?\nSales dashboard, monthly report\n\n\nDiagnostic\nWhy did it happen?\nRoot cause of a revenue drop\n\n\nPredictive\nWhat will happen?\nCustomer churn forecast\n\n\nPrescriptive\nWhat should we do?\nOptimal pricing recommendation\n\n\nKPIs\nAre we on track?\nRevenue vs. target\n\n\n\nAI does not replace analytics — it supercharges it by making analysis faster, deeper, and more dynamic, allowing businesses to compete not just with better data, but with better learning.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Competing in the Age of AI</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
     ]
   },
   {
@@ -1456,7 +1456,7 @@
     "section": "What Does AI Bring to Business?",
     "text": "What Does AI Bring to Business?\nAI adds automation, scale, and adaptability to analytics, allowing businesses to:\n\nContinuously learn from new data through machine learning — models improve as more data flows through them, without manual reprogramming.\nMake real-time decisions through streaming analytics — reacting to events as they happen rather than in batch reports the next day.\nPersonalize at scale through recommendation systems — delivering individualized experiences to millions of customers simultaneously.\nGo beyond prediction to causal and autonomous decision-making — not just forecasting what will happen, but taking action automatically when it does.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Competing in the Age of AI</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
     ]
   },
   {
@@ -1466,7 +1466,7 @@
     "section": "Understanding AI’s Impact in Specific Business Domains",
     "text": "Understanding AI’s Impact in Specific Business Domains\nAI is reshaping decision-making across every major business function:\n\nMarketing — customer segmentation, personalization, and targeting.\n\nCustomer segmentation: grouping customers based on shared characteristics to tailor marketing or product strategies.\nPersonalization: delivering individualized experiences, often powered by AI recommendation systems. Example: Netflix’s “Because you watched…” suggestions.\n\nOperations — inventory management, route optimization, demand forecasting.\n\nDemand forecasting: predicting future customer demand using historical data and AI models to optimize inventory and supply chain.\n\nFinance — risk modeling, algorithmic trading, fraud detection.\n\nAlgorithmic trading: automated financial trading using pre-defined AI rules and models that execute at speeds no human trader can match.\nFraud detection: using machine learning to identify unusual transaction patterns that may indicate fraud in real time.\n\nHR — resume screening, performance prediction, talent analytics.\nHealthcare — diagnostic tools, patient risk prediction.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Competing in the Age of AI</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
     ]
   },
   {
@@ -1476,7 +1476,7 @@
     "section": "How AI-Driven Decision-Making Is Transforming Industries",
     "text": "How AI-Driven Decision-Making Is Transforming Industries\nAI-driven decision-making is transforming industries by enabling faster, more accurate, and more scalable decisions than were previously possible with traditional methods. AI transforms how firms compete on speed and scale, create personalized experiences, operate with greater efficiency and agility, and continuously learn and improve from data.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Competing in the Age of AI</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
     ]
   },
   {
@@ -1486,7 +1486,7 @@
     "section": "Strong vs. Weak AI",
     "text": "Strong vs. Weak AI\nUnderstanding the distinction between strong and weak AI is important for setting realistic expectations about what today’s AI systems can and cannot do.\nStrong AI (also called Artificial General Intelligence, or AGI) refers to hypothetical computer systems that replicate or simulate human reasoning and behavior across any domain — for example, a single system that can tutor calculus, negotiate a business deal, write a novel, and suggest a recipe, all using the same underlying general intelligence. Strong AI does not currently exist.\nWeak AI (also called narrow AI) refers to systems designed to perform specific tasks traditionally done by humans, without replicating human consciousness or general reasoning. All AI in widespread use today is weak AI:\n\nSiri, Alexa, and Google Assistant — can recognize voice commands, set alarms, or fetch weather updates, but cannot engage in the broad, general reasoning a human uses across unrelated tasks.\nChatGPT (current models) — excellent at generating language, but does not “understand” the world in any meaningful sense; it predicts which tokens are statistically likely to follow given the input.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Competing in the Age of AI</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
     ]
   },
   {
@@ -1496,7 +1496,7 @@
     "section": "Exploring Weak AI Further",
     "text": "Exploring Weak AI Further\nWeak AI is not a limitation to work around — for most business applications, it is entirely sufficient. Transformative change does not require human-like general intelligence; it only requires systems that can perform specific tasks better, faster, or more consistently than humans.\nTasks like prioritizing content feeds, dynamic pricing, anomaly detection, or analyzing customer behavior can be handled effectively by narrow, imperfect AI. Even without replicating human reasoning, weak AI is already reshaping how firms function and compete across every major industry.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Competing in the Age of AI</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
     ]
   },
   {
@@ -1506,7 +1506,7 @@
     "section": "Transforming Competition",
     "text": "Transforming Competition\nThe evolution of photography offers a useful analogy for understanding how AI is disrupting industries. Kodak did not fail because a better film company came along — it was displaced by companies (smartphones, digital cameras) operating on entirely different rules with entirely different cost structures.\n\nFrom disruption to reinvention — traditional tech disruptions (e.g., film vs. digital photography) replaced older models one-for-one; AI redefines entire industries and operating models simultaneously.\nDigital operating models — AI enables firms to scale, learn, and expand scope rapidly at near-zero marginal cost through algorithmic execution. Adding one million new users costs almost nothing when the product is software.\nA new breed of competitors — companies like Facebook, Tencent, and Amazon were never direct rivals to players like Kodak; they operated on fundamentally different rules and displaced incumbents indirectly by making whole categories of products obsolete.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Competing in the Age of AI</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
     ]
   },
   {
@@ -1516,7 +1516,7 @@
     "section": "Strategic Implications of AI-Driven Firms",
     "text": "Strategic Implications of AI-Driven Firms\nAI-driven firms gain structural advantage through three interconnected shifts:\n\nValue creation shift — AI firms extract value from data, networks, and user interactions, not just products or services. The more users interact, the more data is generated, which improves the AI, which attracts more users — a self-reinforcing cycle.\nOperating model advantage — digital firms overcome traditional complexity limits, enabling near-infinite scalability and adaptability without proportional increases in cost.\nCompetitive collision — traditional firms face existential threats not from better versions of themselves, but from companies with fundamentally different architectures and strategies.\n\n\nThe collision between traditional and digital operating models\n\n\n\nDigital vs Traditional",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Competing in the Age of AI</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
     ]
   },
   {
@@ -1526,7 +1526,7 @@
     "section": "Business Strategy and Competitive Advantage",
     "text": "Business Strategy and Competitive Advantage\nAI changes how firms create and sustain competitive advantage. Four foundational concepts anchor this discussion:\n\nCompetitive advantage — a condition or circumstance that puts a company in a favorable or superior business position relative to competitors.\nPorter’s Five Forces — a framework for analyzing a company’s competitive environment: industry rivalry, threat of new entrants, threat of substitutes, and the bargaining power of buyers and suppliers.\nNetwork effects — the phenomenon where the value of a product, service, or platform increases as more people use it. Example: a messaging app with 10 users is far less valuable than one with 10 million.\nValue capture dynamics — how a firm retains and monetizes the value it creates (e.g., through pricing, data control, or platform fees) rather than having it flow to users or competitors.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Competing in the Age of AI</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
     ]
   },
   {
@@ -1536,7 +1536,7 @@
     "section": "Competitive Advantage",
     "text": "Competitive Advantage\nCompetitive advantage is increasingly defined by the ability to shape and control networks and harvest the volume and variety of transactions they carry. As Iansiti and Lakhani (2020) argue, advantage moves toward organizations that are most central in connecting businesses, aggregating the data that flows between them, and extracting value through powerful analytics and AI.\nStrategy is therefore shifting from industry analysis (Porter’s Five Forces) to network analysis — from managing internal resources to managing the firm’s external networks and leveraging the data that flows through them.\n\nDiscussion: How do firms gain competitive advantage in the market? What makes them unique?",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Competing in the Age of AI</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
     ]
   },
   {
@@ -1546,7 +1546,7 @@
     "section": "Porter’s Five Forces Model",
     "text": "Porter’s Five Forces Model\n\n\n\nPorter’s Five Forces\n\n\nPorter’s Five Forces is a strategic framework for analyzing the competitive forces that shape an industry and influence its profitability. It helps businesses assess their market position and develop effective competitive strategies.\n\nCompetitive rivalry — the intensity of competition among existing firms. High rivalry limits profitability. Example: the airline industry, where price competition is fierce.\nThreat of new entrants — how easy or difficult it is for new competitors to enter the market. High barriers to entry (capital requirements, regulation, brand loyalty) reduce the threat.\nBargaining power of suppliers — how much power suppliers have to drive up prices or reduce quality. Example: semiconductor suppliers have high bargaining power over electronics manufacturers.\nBargaining power of buyers — the ability of customers to influence pricing and terms. Powerful buyers (large retailers, government clients) can demand lower prices or higher quality.\nThreat of substitutes — the availability of alternative products or services that perform the same function. More substitutes increase competitive pressure. Example: ride-sharing substitutes for taxi services.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Competing in the Age of AI</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
     ]
   },
   {
@@ -1556,7 +1556,7 @@
     "section": "The Value Chain and Network Effects",
     "text": "The Value Chain and Network Effects\nValue creation dynamics describe how a platform generates and expands value for its participants — users, complementors, and the platform owner — through interactions, data flows, and network effects. These dynamics reinforce each other, creating self-sustaining growth loops:\n\nDirect network effects — value increases as more users join the same side of the platform. Example: more people on WhatsApp make it more valuable to each existing user.\nIndirect network effects — value increases as participation grows on the other side of the platform. Example: more app developers make iOS more valuable to iPhone users, and vice versa.\nLearning effects — value grows as data accumulates and systems improve. Example: Netflix recommendations improve as viewing data expands — the platform gets better the more you use it.\nComplementor contributions — external firms or individuals add value by creating content, apps, or services that enhance the platform. Example: app developers on Apple’s App Store increase platform stickiness and user value.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Competing in the Age of AI</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
     ]
   },
   {
@@ -1566,7 +1566,7 @@
     "section": "Value Capture Dynamics",
     "text": "Value Capture Dynamics\nThe appropriability of value refers to the extent to which a firm can capture and retain the economic value created by its platform, rather than having that value flow to users, complementors, or competitors. Even if a platform generates enormous value through network effects, the critical strategic question is: who gets to keep that value?\nThree examples illustrate different appropriation strategies:\n\nApple’s App Store — Apple charges developers a commission (historically 30%) on sales. While developers benefit from access to Apple’s user base, Apple captures a large share of the total value created.\nGoogle Search — the platform creates value for users (free search) and advertisers (targeted audiences), but Google appropriates most of the economic value by monetizing through advertising and controlling data flows.\nRide-sharing (Uber/Lyft) — drivers create much of the service value, but the platform appropriates value by taking a percentage of each fare — without owning the cars or employing the drivers.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Competing in the Age of AI</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
     ]
   },
   {
@@ -1576,7 +1576,7 @@
     "section": "Factors Affecting Appropriability",
     "text": "Factors Affecting Appropriability\nThe degree to which a firm can appropriate value depends on three key factors:\n\nControl of key assets (data, algorithms, user base) — Google Search captures enormous value because it controls the search algorithm, the user base, and the data flows. Without control of these assets, the ability to appropriate value weakens.\nSwitching and multihoming costs — Apple’s iOS ecosystem locks users in through high switching costs (iPhones, AirPods, iCloud, App Store purchases). Moving to Android means losing all of this investment. By contrast, ride-hailing switching costs are low — riders can open both Uber and Lyft and choose the cheaper option — so platforms capture less value per transaction.\nRegulation and bargaining power — Apple historically charged a 30% App Store commission, but regulatory pressure and developer pushback (notably from Epic Games and the EU Digital Markets Act) have forced fee reductions in certain cases, demonstrating how external pressure constrains appropriation.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Competing in the Age of AI</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
     ]
   },
   {
@@ -1586,7 +1586,7 @@
     "section": "Multihoming and Value Capture",
     "text": "Multihoming and Value Capture\nMultihoming refers to users or firms participating in more than one competing platform simultaneously, rather than committing exclusively to one.\nExamples of multihoming behavior:\n\nA consumer uses both Uber and Lyft to compare prices or availability before requesting a ride.\nA content creator posts on both YouTube and TikTok to reach different audience segments.\nA merchant lists products on both Amazon and eBay to capture different customer demographics.\n\nMultihoming matters strategically because:\n\nWhen multihoming costs are low (easy to join multiple platforms), competition between platforms intensifies and each platform’s power to capture value weakens.\nWhen multihoming costs are high (due to switching fees, data lock-in, proprietary formats, or exclusive contracts), platforms gain more power to retain users and appropriate a larger share of value.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Competing in the Age of AI</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
     ]
   },
   {
@@ -1596,7 +1596,7 @@
     "section": "Disintermediation and Value Capture",
     "text": "Disintermediation and Value Capture\nDisintermediation occurs when platforms eliminate the middleman, creating direct producer-to-consumer connections and reshaping industries in the process.\n\nTravel booking — Expedia and Airbnb disintermediate traditional travel agents by letting consumers book directly, eliminating the agent’s margin.\nMusic industry — Spotify and Apple Music reduce the role of physical distributors and record stores, while also diminishing the leverage of record labels as gatekeepers.\nRetail — direct-to-consumer brands like Warby Parker and Glossier bypass traditional retailers by selling directly through their own platforms, capturing the retailer’s margin and owning the customer relationship.\n\nDisintermediation affects appropriability in three ways. First, it threatens control of key assets — bypassed intermediaries lose access to user data and customer relationships. Second, it reduces switching and multihoming costs by enabling direct connections between producers and consumers, weakening platform pricing power. Third, regulation can force disintermediation — open banking rules requiring banks to give fintechs direct access to customer data are a current example.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Competing in the Age of AI</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
     ]
   },
   {
@@ -1606,7 +1606,7 @@
     "section": "Network Bridging and Value Capture",
     "text": "Network Bridging and Value Capture\nNetwork bridging refers to a platform connecting two or more otherwise separate networks, allowing value to flow between them and creating new growth opportunities. Rather than deepening one network, bridging links distinct user groups, industries, or ecosystems.\n\nLinkedIn bridges professional networks across industries, enabling recruiters, job seekers, and companies to interact in ways that no single firm’s internal HR system could facilitate. A recruiter in finance can find a software engineer in healthcare because LinkedIn spans both networks.\nAmazon Marketplace bridges sellers from diverse industries with millions of global buyers, transforming a retail platform into a multi-industry ecosystem. Sellers gain distribution; buyers gain selection; Amazon captures value from both sides.\nApple’s App Store bridges app developers and iPhone users, creating cross-side network effects that amplify the value of both groups simultaneously. More developers mean more apps; more apps mean more valuable iPhones.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Competing in the Age of AI</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
     ]
   },
   {
@@ -2097,6 +2097,26 @@
     "text": "Competing Through Business Analytics\nCompeting through business analytics (CTBA) means using data, statistical analysis, and predictive modeling to gain a strategic advantage over competitors. It involves making better, faster, and more informed decisions by systematically analyzing data across all areas of the business.\nFirms that compete through analytics build capabilities in data collection, storage, analysis, and interpretation, making data a strategic asset. These firms develop a culture of testing, learning, and optimization across the entire organization, expressed through four core capabilities:\n\nData-driven decisions — relying on insights from data rather than intuition or guesswork.\nPerformance improvement — enhancing efficiency, productivity, and outcomes using measurable evidence.\nPredictive power — forecasting future trends or behaviors (e.g., customer churn, sales, demand).\nCompetitive differentiation — gaining an edge through smarter operations, marketing, customer targeting, or innovation.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Competing in the Age of AI</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#about-this-course",
+    "href": "index.html#about-this-course",
+    "title": "Competing in the Age of AI",
+    "section": "",
+    "text": "What You Will Be Able to Do\nBy the end of this course, you will be able to:\n\nExplain how business analytics and AI create competitive advantage across industries, drawing on frameworks from Iansiti and Lakhani (2020) and Weber and Zwingmann (2024).\nEvaluate the ethical and cybersecurity implications of AI systems — including bias, hallucination, deepfakes, and autonomous decision-making — and recommend responsible practices.\nAcquire and integrate data from APIs, web scraping, and other sources for analysis, using Python libraries including requests, BeautifulSoup, and pandas.\nDevelop human-centered data stories that translate analytical results into actionable business insights, applying Wilke’s (2019) principles of visualization and Knaflic’s storytelling framework.\nBuild interactive analytics tools in Python using Dash and Plotly, including multi-page dashboards with live API integrations and responsive Bootstrap layouts.\nAssess organizational readiness for AI adoption and recommend strategies for transformation, using the IPTOP and SPEC frameworks from augmented analytics.\n\n\n\nTools and Software\nAll practical work in this course uses Python via Anaconda3 and VS Code. You will use Git and GitHub for version control and deployment, and host your final dashboard project on Render.com. No prior web development experience is required.\n\n\nCourse Materials\nThe course draws on a curated set of readings spanning strategy, organizational change, ethics, visualization, and applied Python development. Core texts include:\n\nIansiti, M., & Lakhani, K. R. (2020). Competing in the Age of AI. Harvard Business Review Press.\nWeber, W., & Zwingmann, T. (2024). Augmented Analytics. O’Reilly Media.\nRavindran, S., & Anton, F. (2022). Will AI Dictate the Future? Marshall Cavendish.\nWilke, C. O. (2019). Fundamentals of Data Visualization. O’Reilly Media.\nBrindha et al. (2025). Multimodal Generative AI. Springer.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#chapter-overview",
+    "href": "index.html#chapter-overview",
+    "title": "Competing in the Age of AI",
+    "section": "Chapter Overview",
+    "text": "Chapter Overview\nThis chapter introduces how organizations evolve from competing through business analytics to competing in the age of AI (CTAI). It explains how data-driven decision-making transforms into AI-enhanced systems that learn, scale, and adapt across business functions. The discussion connects classical frameworks — like Porter’s Five Forces and the Value Chain — to digital-era dynamics such as network effects, value capture, and platform competition. Drawing on Iansiti and Lakhani (2020), it highlights how firms achieve advantage not just through better data, but through architectures that continuously learn and connect across networks.\n\nReference:\nChapter 6 from Iansiti, M., & Lakhani, K. R. (2020) in Competing in the Age of AI explains how artificial intelligence transforms firms by digitizing activities into scalable, connectable, and self-improving systems. The chapter outlines a strategic framework for AI-driven businesses that leverages network and learning effects while addressing key concepts such as multihoming, disintermediation, and network bridging, using real-world examples like Uber and Airbnb.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro to CTAI</span>"
     ]
   }
 ]
