@@ -9,20 +9,27 @@ book:
   date: "10/13/2025"
   chapters:
     - index.qmd
-    - rethinkingfirm.qmd
-    - genAI.qmd
-    - ethics.qmd
-    - crashcourse.qmd
-    - dataAcquisition.qmd
-    - webscrapingandapi.qmd
-    - storytelling.qmd
-    - analyticsproblem.qmd
-    - preparingpeople.qmd
-    - introdash.qmd
-    - github.qmd
-    - makingcallbacks.qmd
-    - multilayout.qmd
-    - multipages.qmd
+
+    - part: "AI in Business"
+      chapters:
+        - rethinkingfirm.qmd
+        - genAI.qmd
+        - ethics.qmd
+        - analyticsproblem.qmd
+        - preparingpeople.qmd
+        - storytelling.qmd
+
+    - part: "Python & Analytics Tools"
+      chapters:
+        - crashcourse.qmd
+        - dataAcquisition.qmd
+        - webscrapingandapi.qmd
+        - introdash.qmd
+        - makingcallbacks.qmd
+        - multilayout.qmd
+        - multipages.qmd
+        - github.qmd
+
     - summary.qmd
     - references.qmd
 
@@ -36,6 +43,3 @@ format:
     toc-title: "Table of Contents"
 
 editor: visual
-
-
-
