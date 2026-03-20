@@ -124,7 +124,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ethics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">AI &amp; Data Ethics</span></a>
+  <a href="./ethics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">AI and Data Ethics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./crashcourse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Crash Python Course</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -139,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./storytelling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Human-centered Storytelling</span></a>
+  <a href="./storytelling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Human-Centered Storytelling</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -159,17 +164,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./crashcourse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Crash Python Course</span></a>
+  <a href="./github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Using Git and GitHub</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Using Git and Github</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./makingcallbacks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Writing Callbacks and Accessing API’s</span></a>
+  <a href="./makingcallbacks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Writing Callbacks and Accessing APIs</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -202,7 +202,34 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of Contents</h2>
    
   <ul>
-  <li><a href="#preparting-people" id="toc-preparting-people" class="nav-link active" data-scroll-target="#preparting-people">Preparting People</a></li>
+  <li><a href="#preparing-people-and-the-organization" id="toc-preparing-people-and-the-organization" class="nav-link active" data-scroll-target="#preparing-people-and-the-organization">Preparing People and the Organization</a></li>
+  <li><a href="#the-four-analytics-personas" id="toc-the-four-analytics-personas" class="nav-link" data-scroll-target="#the-four-analytics-personas">The Four Analytics Personas</a>
+  <ul class="collapse">
+  <li><a href="#tailoring-augmented-analytics-for-different-roles" id="toc-tailoring-augmented-analytics-for-different-roles" class="nav-link" data-scroll-target="#tailoring-augmented-analytics-for-different-roles">Tailoring Augmented Analytics for Different Roles</a></li>
+  </ul></li>
+  <li><a href="#the-center-of-excellence" id="toc-the-center-of-excellence" class="nav-link" data-scroll-target="#the-center-of-excellence">The Center of Excellence</a>
+  <ul class="collapse">
+  <li><a href="#what-a-coe-does" id="toc-what-a-coe-does" class="nav-link" data-scroll-target="#what-a-coe-does">What a CoE Does</a></li>
+  <li><a href="#approaches-to-organizing-a-coe" id="toc-approaches-to-organizing-a-coe" class="nav-link" data-scroll-target="#approaches-to-organizing-a-coe">Approaches to Organizing a CoE</a></li>
+  </ul></li>
+  <li><a href="#human-barriers-to-analytics-adoption" id="toc-human-barriers-to-analytics-adoption" class="nav-link" data-scroll-target="#human-barriers-to-analytics-adoption">Human Barriers to Analytics Adoption</a></li>
+  <li><a href="#cultivating-data-literacy" id="toc-cultivating-data-literacy" class="nav-link" data-scroll-target="#cultivating-data-literacy">Cultivating Data Literacy</a>
+  <ul class="collapse">
+  <li><a href="#the-four-competencies" id="toc-the-four-competencies" class="nav-link" data-scroll-target="#the-four-competencies">The Four Competencies</a></li>
+  <li><a href="#enablement-programs-by-role" id="toc-enablement-programs-by-role" class="nav-link" data-scroll-target="#enablement-programs-by-role">Enablement Programs by Role</a></li>
+  </ul></li>
+  <li><a href="#workflow-augmentation" id="toc-workflow-augmentation" class="nav-link" data-scroll-target="#workflow-augmentation">Workflow Augmentation</a>
+  <ul class="collapse">
+  <li><a href="#what-augmented-workflows-are" id="toc-what-augmented-workflows-are" class="nav-link" data-scroll-target="#what-augmented-workflows-are">What Augmented Workflows Are</a></li>
+  <li><a href="#five-types-of-workflow-augmentation" id="toc-five-types-of-workflow-augmentation" class="nav-link" data-scroll-target="#five-types-of-workflow-augmentation">Five Types of Workflow Augmentation</a></li>
+  </ul></li>
+  <li><a href="#finding-workflows-to-augment" id="toc-finding-workflows-to-augment" class="nav-link" data-scroll-target="#finding-workflows-to-augment">Finding Workflows to Augment</a>
+  <ul class="collapse">
+  <li><a href="#the-analytics-use-case-approach" id="toc-the-analytics-use-case-approach" class="nav-link" data-scroll-target="#the-analytics-use-case-approach">The Analytics Use-Case Approach</a></li>
+  <li><a href="#automation-vs.-integration" id="toc-automation-vs.-integration" class="nav-link" data-scroll-target="#automation-vs.-integration">Automation vs.&nbsp;Integration</a></li>
+  </ul></li>
+  <li><a href="#the-use-case-library" id="toc-the-use-case-library" class="nav-link" data-scroll-target="#the-use-case-library">The Use-Case Library</a></li>
+  <li><a href="#technical-and-organizational-requirements" id="toc-technical-and-organizational-requirements" class="nav-link" data-scroll-target="#technical-and-organizational-requirements">Technical and Organizational Requirements</a></li>
   </ul>
 </nav>
     </div>
@@ -228,39 +255,32 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<ul>
-<li><p>Preparing people for Augmented Analytics (AA) means aligning technical, organizational, and human readiness. Chapter 4 of Augmented Analytics (Weber &amp; Zwingmann, 2024) emphasizes that transformation succeeds only when analytics becomes part of everyday work—supported by leadership, literacy, and structured enablement. The chapter outlines four key personas—leaders, translators, users, and professionals—each requiring tailored skills and programs. A Center of Excellence (CoE) anchors this effort by coordinating strategy, training, and governance, ideally evolving from centralized control to a federated model that balances expertise with local ownership.</p></li>
-<li><p>This section also introduces workflow augmentation, where insights are embedded directly into processes through copilots, adaptive assistants, and collaborative tools, rather than delivered via static dashboards. This shift demands cultural change, strong API-based infrastructure, and a curated use-case library to share lessons and scale innovation. Finally, Weber and Zwingmann highlight human barriers—bias, overconfidence, and learned helplessness—and stress that sustainable analytics maturity depends on cultivating data literacy, storytelling, and a belief that people, not just technology, drive transformation.</p></li>
-</ul>
+<p>Preparing people for Augmented Analytics (AA) means aligning technical, organizational, and human readiness. Chapter 4 of <em>Augmented Analytics</em> (Weber &amp; Zwingmann, 2024) emphasizes that transformation succeeds only when analytics becomes part of everyday work — supported by leadership, literacy, and structured enablement. The chapter outlines four key personas — leaders, translators, users, and professionals — each requiring tailored skills and programs. A <strong>Center of Excellence (CoE)</strong> anchors this effort by coordinating strategy, training, and governance, ideally evolving from a centralized model to a federated structure that balances expertise with local ownership.</p>
+<p>This section also introduces <strong>workflow augmentation</strong>, where insights are embedded directly into processes through copilots, adaptive assistants, and collaborative tools, rather than delivered via static dashboards. This shift demands cultural change, strong API-based infrastructure, and a curated use-case library to share lessons and scale innovation. Finally, Weber and Zwingmann highlight human barriers — bias, overconfidence, and learned helplessness — and stress that sustainable analytics maturity depends on cultivating data literacy, storytelling, and a belief that people, not just technology, drive transformation.</p>
 <section id="reference" class="level6 note">
 <h6 class="anchored" data-anchor-id="reference"><em>Reference:</em></h6>
-<p>Chapter 4 and 5 from <strong>Weber, W., &amp; Zwingmann, T. (2024).</strong> <em>Augmented Analytics.</em><br>
+<p>Chapters 4 and 5 from <strong>Weber, W., &amp; Zwingmann, T. (2024).</strong> <em>Augmented Analytics.</em><br>
 O’Reilly Media, Inc.<br>
 Available at: <a href="https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/" class="uri">https://learning.oreilly.com/library/view/augmented-analytics/9781098151713/</a></p>
 </section>
-<section id="preparting-people" class="level2">
-<h2 class="anchored" data-anchor-id="preparting-people">Preparting People</h2>
+<section id="preparing-people-and-the-organization" class="level2">
+<h2 class="anchored" data-anchor-id="preparing-people-and-the-organization">Preparing People and the Organization</h2>
+<p>Preparing people and the organization for Augmented Analytics means building both the skills and the culture needed to embed analytics into daily decision-making. Leaders must champion data-driven practices, analytics translators must bridge business and technical teams, and employees need at least analytics awareness to trust and act on insights. A Center of Excellence (CoE), executive sponsorship, and structured training ensure that AA is not just a technology upgrade but an organizational transformation.</p>
+<p>Three principles guide this work:</p>
 <ul>
-<li><p>Preparing people and the organization for Augmented Analytics means building both the skills and the culture needed to embed analytics into daily decision-making. Leaders must champion data-driven practices, analytics translators must bridge business and technical teams, and employees need at least analytics awareness to trust and act on insights. A Center of Excellence (CoE), executive sponsorship, and structured training ensure that AA is not just a technology upgrade but an organizational transformation that empowers all roles to benefit from data in their workflows.</p></li>
-<li><p>Focus on roles (leaders, translators, users, professionals) and personas to structure the analytics transformation.</p></li>
-<li><p>Build both technical readiness (data infrastructure, processes) and human readiness (mindset, skills, awareness).</p></li>
-<li><p>Establish a Center of Excellence (CoE) to drive transformation, ideally business-anchored and federated over time.</p>
-<ul>
-<li>A CoE is an organizational structure set up to concentrate expertise, best practices, and resources around a specific domain, technology, or strategic priority. Its main purpose is to drive consistency, innovation, and efficiency across an organization.</li>
-</ul></li>
+<li>Focus on <strong>roles and personas</strong> — leaders, translators, users, and professionals — to structure the analytics transformation. Different roles need different skills; a one-size training program does not work.</li>
+<li>Build both <strong>technical readiness</strong> (data infrastructure and processes) and <strong>human readiness</strong> (mindset, skills, and awareness). Technology without cultural change fails; cultural change without infrastructure also fails.</li>
+<li>Establish a <strong>Center of Excellence (CoE)</strong> to drive transformation, ideally business-anchored and federated over time. A CoE is an organizational unit set up to concentrate expertise, best practices, and resources around a specific domain or strategic priority.</li>
 </ul>
-<section id="tailoring-augmented-analytics-for-different-organizational-roles" class="level4">
-<h4 class="anchored" data-anchor-id="tailoring-augmented-analytics-for-different-organizational-roles">Tailoring Augmented Analytics for Different Organizational Roles</h4>
-<ul>
-<li><p>Analytics Leader – Champions data-driven culture, aligns insights with strategy.</p></li>
-<li><p>Analytics Translator – Bridges gap between business and technical teams, ensures use cases deliver value.</p></li>
-<li><p>Analytics User – Consumes insights for better decisions; majority of workforce.</p></li>
-<li><p>Analytics Professional – Technical experts building and maintaining analytics solutions.</p></li>
-</ul>
+</section>
+<section id="the-four-analytics-personas" class="level2">
+<h2 class="anchored" data-anchor-id="the-four-analytics-personas">The Four Analytics Personas</h2>
+<section id="tailoring-augmented-analytics-for-different-roles" class="level3">
+<h3 class="anchored" data-anchor-id="tailoring-augmented-analytics-for-different-roles">Tailoring Augmented Analytics for Different Roles</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/figure_4_1.png" class="img-fluid figure-img"></p>
-<figcaption>Figure 4-1.Analytics transformation personas in the three skill categories (Weber &amp; Zwingmann, 2024)</figcaption>
+<figcaption>Figure 4-1. Analytics transformation personas in the three skill categories (Weber &amp; Zwingmann, 2024)</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -269,215 +289,188 @@ Available at: <a href="https://learning.oreilly.com/library/view/augmented-analy
 <figcaption>Figure 4-2. The four top-level roles in the analytics transformation (Weber &amp; Zwingmann, 2024)</figcaption>
 </figure>
 </div>
+<p>Four distinct personas shape the analytics transformation. Each requires a different investment in training, tools, and enablement:</p>
+<ul>
+<li><span style="background-color: yellow;"><strong>Analytics Leader</strong></span> — champions a data-driven culture and aligns insights with organizational strategy. Needs to understand AI’s strategic potential without necessarily building models themselves.</li>
+<li><span style="background-color: yellow;"><strong>Analytics Translator</strong></span> — bridges the gap between business and technical teams, identifying valuable use cases and ensuring they deliver measurable business value. Often the most critical — and hardest to develop — role.</li>
+<li><span style="background-color: yellow;"><strong>Analytics User</strong></span> — the majority of the workforce. Consumes insights to make better day-to-day decisions. Does not need deep technical skills, but does need enough analytics awareness to trust and act on data.</li>
+<li><span style="background-color: yellow;"><strong>Analytics Professional</strong></span> — the technical experts who build, deploy, and maintain analytics solutions. Includes data engineers, data scientists, and BI developers.</li>
+</ul>
 </section>
-<section id="center-of-excellence-coe" class="level4">
-<h4 class="anchored" data-anchor-id="center-of-excellence-coe">Center of Excellence (CoE)</h4>
+</section>
+<section id="the-center-of-excellence" class="level2">
+<h2 class="anchored" data-anchor-id="the-center-of-excellence">The Center of Excellence</h2>
+<section id="what-a-coe-does" class="level3">
+<h3 class="anchored" data-anchor-id="what-a-coe-does">What a CoE Does</h3>
+<p>A CoE is the organizational unit dedicated to coordinating the analytics transformation. During the <strong>Data Active</strong> maturity phase, it collects and connects the loose threads of analytics activity that emerge organically across the organization — before they become silos.</p>
+<p>Core responsibilities include:</p>
 <ul>
-<li><p>A CoE is a unit dedicated to organizing the analytics transformation.</p></li>
-<li><p>During the Data Active maturity phase, it collects and connects all the loose threads of analytics activities that emerge.</p>
-<ul>
-<li>Purpose: Organize and guide analytics transformation, connect business units, build culture.</li>
-</ul></li>
-<li><p>Core responsibilities:</p>
-<ul>
-<li><p>Promoting data literacy and liberalization.</p></li>
-<li><p>Building quick-win use cases (“lighthouse” projects).</p></li>
-<li><p>Creating shared governance and culture.</p></li>
-<li><p>Supporting business units and connecting their strategies.</p></li>
-<li><p>Inspiring people across the company to take ownership of analytics</p></li>
-</ul></li>
+<li>Promoting <span style="background-color: yellow;"><strong>data literacy</strong></span> and data liberalization across the organization — making data accessible to more people.</li>
+<li>Building quick-win use cases — often called <span style="background-color: yellow;"><strong>“lighthouse” projects</strong></span> — that demonstrate visible, early value and build momentum.</li>
+<li>Creating shared governance frameworks and a data-driven culture.</li>
+<li>Supporting business units and connecting their analytics strategies into a coherent whole.</li>
+<li>Inspiring people across the company to take ownership of analytics rather than treating it as the IT department’s job.</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/figure_4_4.png" class="img-fluid figure-img"></p>
-<figcaption>Figure 4-4. A center of excellence drawn from both IT and business units (Weber &amp; Zwingmann, 2024)</figcaption>
+<figcaption>Figure 4-4. A Center of Excellence drawn from both IT and business units (Weber &amp; Zwingmann, 2024)</figcaption>
 </figure>
 </div>
 </section>
-<section id="approaches-to-organizing-a-coe" class="level4">
-<h4 class="anchored" data-anchor-id="approaches-to-organizing-a-coe">Approaches to Organizing a CoE</h4>
+<section id="approaches-to-organizing-a-coe" class="level3">
+<h3 class="anchored" data-anchor-id="approaches-to-organizing-a-coe">Approaches to Organizing a CoE</h3>
+<p>Three structural models exist, each suited to a different stage of organizational maturity:</p>
+<p><strong>Decentralized approach</strong> — common in early-stage, Data Reactive organizations. Business units develop analytics independently, often using ad hoc tools (Excel, VBA, Python, R). Each team has high autonomy and domain knowledge but no coordination. The result: duplicated effort, inconsistent data definitions, and no shared infrastructure. This approach is tempting but unsustainable without stronger coordination.</p>
+<p><strong>Centralized approach</strong> — a single CoE or IT unit manages analytics, reporting, and infrastructure for the entire organization. This produces efficient, consistent solutions but creates a bottleneck: business units wait for the central team, which lacks deep domain knowledge and produces generic outputs. Works for early stages or small organizations, but limits growth and responsiveness over time.</p>
+<p><strong>Federated approach</strong> — a hybrid that balances centralized expertise with decentralized ownership. The CoE starts as a strong driver, then gradually shifts routine analytics responsibility to business units as data literacy grows, while retaining a center for advanced challenges, governance, and standards. This model builds a stronger data culture and faster responsiveness, but requires strong governance and patience. It is the most effective path to <strong>Data Progressive</strong> (stage 3) maturity.</p>
+</section>
+</section>
+<section id="human-barriers-to-analytics-adoption" class="level2">
+<h2 class="anchored" data-anchor-id="human-barriers-to-analytics-adoption">Human Barriers to Analytics Adoption</h2>
+<p>Three psychological barriers consistently slow analytics adoption — and they cannot be solved by better technology alone:</p>
 <ul>
-<li><p>Decentralized Approach</p>
-<ul>
-<li><p>Common in early-stage, Data Reactive organizations.</p></li>
-<li><p>Business units develop analytics independently, often using ad hoc tools (Excel, VBA, Python, R, etc.).</p></li>
-<li><p>Pros: High independence and agility within business domains.</p></li>
-<li><p>Cons: Lack of governance, scalability issues, silos, and inefficiencies.</p></li>
-<li><p>Bottom line: Tempting but unsustainable without stronger coordination.</p></li>
-</ul></li>
-<li><p>Centralized Approach</p>
-<ul>
-<li><p>Common in smaller organizations or when business units lack analytical skills.</p></li>
-<li><p>A single CoE or IT unit manages analytics, reporting, and infrastructure.</p></li>
-<li><p>Pros: Efficient, well-designed solutions and processes.</p></li>
-<li><p>Cons: Bottlenecks, slow responsiveness, weak business insight, lack of shared ownership.</p></li>
-<li><p>Bottom line: Works for early stages or small orgs but limits growth and responsiveness.</p></li>
-</ul></li>
-</ul>
-<!-- -->
-<ul>
-<li><p>Federated Approach</p>
-<ul>
-<li><p>A hybrid model that balances centralized expertise with decentralized ownership.</p></li>
-<li><p>CoE starts as a strong driver, then gradually shifts responsibility to business units as data literacy grows.</p></li>
-<li><p>Pros:</p>
-<ul>
-<li><p>Encourages shared responsibility and democratization of data.</p></li>
-<li><p>Business units handle routine analytics while the CoE tackles advanced challenges.</p></li>
-<li><p>Builds a stronger data culture and faster responsiveness.</p></li>
-</ul></li>
-<li><p>Cons: Requires strong governance, collaboration, and patience.</p></li>
-<li><p>Bottom line: The most effective model for achieving Data Progressive (stage 3) maturity.</p></li>
-</ul></li>
+<li><span style="background-color: yellow;"><strong>Inherent bias</strong></span> — we are often unaware of our own knowledge gaps because of the Dunning-Kruger effect: the less we know, the more confident we tend to be that we know it. We don’t know what we don’t know, which makes it hard to ask the right questions.</li>
+<li><span style="background-color: yellow;"><strong>Perceived solvability</strong></span> — people often assume that complex problems can be solved without rigorously testing approaches. In AI environments this is especially common, because the technology produces impressive-seeming results in ways that feel like magic. Organizations must help people understand that finding the right solution involves structured iteration, validation, and often failure before success.</li>
+<li><span style="background-color: yellow;"><strong>Learned helplessness</strong></span> — repeated mistakes or negative experiences can lead individuals to believe they are incapable of improving. This often develops when people are asked to work with data tools that are not designed for their skill level. Organizations must create early wins and build on them to instill the belief that effort leads to progress.</li>
 </ul>
 </section>
-<section id="difficulties-preparing-people" class="level4">
-<h4 class="anchored" data-anchor-id="difficulties-preparing-people">Difficulties Preparing People</h4>
-<ul>
-<li><p>Inherent bias</p>
-<ul>
-<li>Many of us are unaware of our knowledge gaps because we are inherently biased. We don’t know what we don’t know.</li>
-</ul></li>
-<li><p>Perceived solvability</p>
-<ul>
-<li>People often assume that complex problems can be solved somehow, without actually tackling them and testing the approaches. This is particularly true in the AI environment, where the underlying technology accomplishes wonderful things in vaguely understood ways. It’s important that people understand how problem solving actually works, because finding a solution usually involves a lot of hard work.</li>
-</ul></li>
-<li><p>Learned helplessness</p>
-<ul>
-<li>Repeated mistakes or negative experiences can lead individuals to believe that they cannot change, creating a state of “learned helplessness.” Organizations must instill the belief that effort can lead to improvement. With the advent of analytics, there are more opportunities than ever to demonstrate this in action.</li>
-</ul></li>
-</ul>
-</section>
-<section id="cultivating-data-literacy" class="level4">
-<h4 class="anchored" data-anchor-id="cultivating-data-literacy">Cultivating Data Literacy</h4>
-<ul>
-<li><p>Key Competencies</p>
-<ul>
-<li><p>Analytics Awareness</p>
-<ul>
-<li><p>Helps non-specialists understand data processes, quality, visualization, and core AI/ML concepts.</p></li>
-<li><p>Fosters effective communication with data professionals and realistic expectations for AI projects.</p></li>
-</ul></li>
-<li><p>Storytelling with Data</p>
-<ul>
-<li><p>Translates complex insights into clear narratives for different audiences.</p></li>
-<li><p>Requires mastering visualization, decluttering, and tailoring tone/context to make data compelling and actionable.</p></li>
-</ul></li>
-<li><p>Data-Driven Management</p>
-<ul>
-<li><p>Managers must commit to analytics strategy, ensure data integrity, and integrate analytics into decision-making.</p></li>
-<li><p>Focus on aligning analytics with business goals, fostering ownership, and promoting a culture of continuous learning.</p></li>
-</ul></li>
-<li><p>Leading in the Age of AI</p>
-<ul>
-<li><p>Leaders need to progress from AI awareness to active engagement.</p></li>
-<li><p>Competencies include identifying AI opportunities, managing AI project lifecycles, and integrating AI into business strategy.</p></li>
-<li><p>Goal: build organizational capacity to leverage AI for transformation and innovation.</p></li>
-</ul></li>
-</ul></li>
-</ul>
+<section id="cultivating-data-literacy" class="level2">
+<h2 class="anchored" data-anchor-id="cultivating-data-literacy">Cultivating Data Literacy</h2>
+<section id="the-four-competencies" class="level3">
+<h3 class="anchored" data-anchor-id="the-four-competencies">The Four Competencies</h3>
+<p>Weber and Zwingmann identify four key competencies that collectively constitute organizational data literacy:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/figure_4_7.png" class="img-fluid figure-img"></p>
 <figcaption>Figure 4-7. Four key aspects of data literacy (Weber &amp; Zwingmann, 2024)</figcaption>
 </figure>
 </div>
-</section>
-<section id="enablement-programs" class="level4">
-<h4 class="anchored" data-anchor-id="enablement-programs">Enablement Programs</h4>
 <ul>
-<li><p>Analytics adoption requires different levels of data literacy depending on role.</p>
-<ul>
-<li><p>Analytics translators need high literacy to identify and develop use cases.</p></li>
-<li><p>Analytics users need analytics awareness—a general understanding of data’s value, processes, and visualization—to effectively use workflows without being experts.</p></li>
-<li><p>Analytics leaders and practitioners need awareness, storytelling, and role-specific competencies.</p></li>
-</ul></li>
-<li><p>For Leaders</p>
-<ul>
-<li>Initial workshops, executive roundtables, ThinkLabs, annual leadership summits.</li>
-</ul></li>
-<li><p>For Translators</p>
-<ul>
-<li>Deep-dives into tools/methods, cross-disciplinary ThinkLabs, mentoring, project presentations</li>
-</ul></li>
-<li><p>For Professionals</p>
-<ul>
-<li>Ongoing technical training (SQL, Python, R, statistics, ML).</li>
-</ul></li>
+<li><span style="background-color: yellow;"><strong>Analytics awareness</strong></span> — helps non-specialists understand data processes, quality, visualization, and core AI/ML concepts. Fosters realistic expectations for AI projects and effective communication with data professionals. <em>This is the minimum floor for every employee.</em></li>
+<li><span style="background-color: yellow;"><strong>Storytelling with data</strong></span> — translates complex insights into clear, audience-appropriate narratives. Requires mastering visualization, decluttering, and tailoring tone and context to make data compelling and actionable. <em>Essential for translators and analysts who present to decision-makers.</em></li>
+<li><span style="background-color: yellow;"><strong>Data-driven management</strong></span> — managers must commit to analytics strategy, ensure data integrity, and integrate analytics into decision-making rather than overriding it with intuition. <em>Essential for all managers.</em></li>
+<li><span style="background-color: yellow;"><strong>Leading in the age of AI</strong></span> — leaders need to progress from AI awareness to active engagement. Competencies include identifying AI opportunities, managing AI project lifecycles, and integrating AI into business strategy. <em>Essential for executives and senior leaders.</em></li>
 </ul>
 </section>
-<section id="workflow-augmentation" class="level4">
-<h4 class="anchored" data-anchor-id="workflow-augmentation">Workflow Augmentation</h4>
+<section id="enablement-programs-by-role" class="level3">
+<h3 class="anchored" data-anchor-id="enablement-programs-by-role">Enablement Programs by Role</h3>
+<p>Different roles require different levels of investment in data literacy:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Role</th>
+<th>Minimum Literacy Level</th>
+<th>Program Types</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Analytics user</td>
+<td>Analytics awareness</td>
+<td>Workshops, e-learning, onboarding modules</td>
+</tr>
+<tr class="even">
+<td>Analytics translator</td>
+<td>High literacy</td>
+<td>Deep dives, ThinkLabs, mentoring, project presentations</td>
+</tr>
+<tr class="odd">
+<td>Analytics leader</td>
+<td>Awareness + storytelling + leadership AI</td>
+<td>Executive roundtables, leadership summits, peer learning</td>
+</tr>
+<tr class="even">
+<td>Analytics professional</td>
+<td>Full technical competency</td>
+<td>SQL, Python, R, statistics, ML, ongoing technical training</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="workflow-augmentation" class="level2">
+<h2 class="anchored" data-anchor-id="workflow-augmentation">Workflow Augmentation</h2>
+<section id="what-augmented-workflows-are" class="level3">
+<h3 class="anchored" data-anchor-id="what-augmented-workflows-are">What Augmented Workflows Are</h3>
+<p>A <strong>workflow</strong> is the repeatable sequence of steps, tasks, and decisions employees follow to achieve a business outcome. Augmented Analytics succeeds only when insights are <strong>embedded inside workflows</strong>, not delivered separately in dashboards that require users to seek them out.</p>
+<p>The difference matters: a static dashboard that a sales rep must open and interpret is a tool; an alert that surfaces inside the CRM at the moment the rep opens an account record is augmentation.</p>
+</section>
+<section id="five-types-of-workflow-augmentation" class="level3">
+<h3 class="anchored" data-anchor-id="five-types-of-workflow-augmentation">Five Types of Workflow Augmentation</h3>
+<p>The five types represent a progression from simple rule-following to sophisticated human-AI collaboration:</p>
 <ul>
-<li><p>A workflow is the repeatable sequence of steps, tasks, and decisions employees follow to achieve a business outcome.</p></li>
-<li><p>Augmented Analytics succeeds only when insights are embedded inside workflows, not delivered separately in dashboards or reports.</p></li>
-</ul>
-<!-- -->
-<ul>
-<li><p>Types of Workflow Augmentation</p>
-<ul>
-<li><p>Fixed-Rule, High-Confidence Augmentation</p>
-<ul>
-<li><p>Automated actions when preset conditions are met.</p></li>
-<li><p>Works best for routine, well-defined tasks.</p></li>
-<li><p>Example: routing claims or prepopulating CRM entries.</p></li>
-</ul></li>
-</ul></li>
-</ul>
-<!-- -->
-<ul>
-<li><p>Idea &amp; Insight Enrichment</p>
-<ul>
-<li><p>Supports human decision-making with predictions, benchmarks, and visualizations.</p></li>
-<li><p>Acts as a “copilot,” surfacing trends or comparisons.</p></li>
-<li><p>Example: benchmarking risks in insurance underwriting.</p></li>
-</ul></li>
-<li><p>Conversational Augmentation</p>
-<ul>
-<li><p>Uses GenAI/LLMs in interactive assistants.</p></li>
-<li><p>Example: GitHub Copilot for coding, or AI chat tools for summarizing contracts.</p></li>
-</ul></li>
-<li><p>Contextual (Adaptive) Augmentation</p>
-<ul>
-<li><p>Learns from users’ context, tailoring responses to role, history, or task.</p></li>
-<li><p>Example: adaptive email or recommendation systems.</p></li>
-</ul></li>
-<li><p>Collaborative Augmentation</p>
-<ul>
-<li><p>Enhances teamwork through shared dashboards, repositories, and chatbots.</p></li>
-<li><p>Example: Azure chatbot integrated into Microsoft Teams for compliance support.</p></li>
-</ul></li>
+<li><span style="background-color: yellow;"><strong>Fixed-rule, high-confidence augmentation</strong></span> — automated actions triggered when preset conditions are met. Works best for routine, well-defined tasks with clear right answers. <em>Example: automatically routing a claims form when a risk score exceeds a threshold.</em></li>
+<li><span style="background-color: yellow;"><strong>Idea and insight enrichment</strong></span> — surfaces predictions, benchmarks, and visualizations to support human decision-making. Acts as a “copilot” that shows relevant context without making the final call. <em>Example: showing an underwriter a benchmark risk score alongside a new application.</em></li>
+<li><span style="background-color: yellow;"><strong>Conversational augmentation</strong></span> — uses generative AI and LLMs in interactive assistants that respond to natural language queries. <em>Example: GitHub Copilot for coding; an AI chat tool for summarizing a complex contract.</em></li>
+<li><span style="background-color: yellow;"><strong>Contextual (adaptive) augmentation</strong></span> — learns from users’ role, history, and current task to tailor what it surfaces. <em>Example: a recommendation system that adapts to a user’s past decisions.</em></li>
+<li><span style="background-color: yellow;"><strong>Collaborative augmentation</strong></span> — enhances teamwork through shared dashboards, repositories, and integrated chatbots. <em>Example: an Azure chatbot integrated into Microsoft Teams for real-time compliance support.</em></li>
 </ul>
 </section>
-<section id="finding-workflows-to-augment" class="level4">
-<h4 class="anchored" data-anchor-id="finding-workflows-to-augment">Finding Workflows to Augment</h4>
-<ul>
-<li><p>Use the Analytics Use-Case Approach: a structured pipeline from idea → concept → proof of concept → prototype → pilot → product.</p>
-<ul>
-<li><p>Each phase evaluates risk, ROI, and maturity before committing resources.</p></li>
-<li><p>Success depends on validating assumptions iteratively.</p></li>
-</ul></li>
-<li><p>Balancing Automation &amp; Integration</p>
-<ul>
-<li>Workflows vary by automation (how much is done without humans) and integration (how deeply embedded in systems).</li>
-</ul></li>
-<li><p>Four categories:</p>
+</section>
+<section id="finding-workflows-to-augment" class="level2">
+<h2 class="anchored" data-anchor-id="finding-workflows-to-augment">Finding Workflows to Augment</h2>
+<section id="the-analytics-use-case-approach" class="level3">
+<h3 class="anchored" data-anchor-id="the-analytics-use-case-approach">The Analytics Use-Case Approach</h3>
+<p>Use the <strong>Analytics Use-Case Approach</strong>: a structured pipeline that moves an initiative from idea to production, with formal evaluation gates at each stage:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Idea</td>
+<td>Identify the opportunity and business problem</td>
+</tr>
+<tr class="even">
+<td>Concept</td>
+<td>Define scope, stakeholders, and expected value</td>
+</tr>
+<tr class="odd">
+<td>Proof of concept</td>
+<td>Test the approach on a small scale with real data</td>
+</tr>
+<tr class="even">
+<td>Prototype</td>
+<td>Build a working version with a limited user group</td>
+</tr>
+<tr class="odd">
+<td>Pilot</td>
+<td>Deploy to a broader audience and measure impact</td>
+</tr>
+<tr class="even">
+<td>Product</td>
+<td>Scale to full production with monitoring and maintenance</td>
+</tr>
+</tbody>
+</table>
+<p>Each phase evaluates <strong>risk</strong>, <strong>ROI</strong>, and <strong>maturity</strong> before committing additional resources. The approach prevents organizations from investing heavily in use cases that fail at a basic proof-of-concept level.</p>
+</section>
+<section id="automation-vs.-integration" class="level3">
+<h3 class="anchored" data-anchor-id="automation-vs.-integration">Automation vs.&nbsp;Integration</h3>
+<p>Workflows also vary along two dimensions — the degree of <strong>automation</strong> (how much is done without human involvement) and the depth of <strong>integration</strong> (how deeply embedded in existing systems). These two axes produce four categories of AI workflow:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/AI_types.png" class="img-fluid figure-img"></p>
-<figcaption>Four Categories</figcaption>
+<figcaption>Four Categories of AI Workflow Augmentation</figcaption>
 </figure>
-</div></li>
-<li><p>Best to start with assistants and copilots before scaling to autopilots and agents.</p></li>
-</ul>
+</div>
+<p>The recommended approach is to start with <strong>assistants and copilots</strong> — which support humans without replacing them — before scaling to autopilots and fully autonomous agents. This builds organizational trust and allows time to validate the AI’s judgment before increasing its autonomy.</p>
 </section>
-<section id="the-use-case-library" class="level4">
-<h4 class="anchored" data-anchor-id="the-use-case-library">The Use-Case Library</h4>
-<ul>
-<li><p>A central repository that tracks all analytics use cases from idea to deployment.</p></li>
-<li><p>Benefits: transparency, monitoring, innovation sharing, cultural motivation, visibility of stakeholders.</p></li>
-<li><p>Often includes <strong>Kanban boards</strong>, evaluation matrices, and documentation to foster collaboration and standardization.</p></li>
-</ul>
+</section>
+<section id="the-use-case-library" class="level2">
+<h2 class="anchored" data-anchor-id="the-use-case-library">The Use-Case Library</h2>
+<p>A <strong>use-case library</strong> is a central repository that tracks all analytics initiatives from idea to deployment. It creates organizational memory: when a business unit builds a successful use case, the library captures the approach so others can replicate or adapt it rather than starting from scratch.</p>
+<p>Benefits include transparency, ongoing monitoring, cross-team innovation sharing, cultural motivation, and stakeholder visibility. Well-run libraries typically include <span style="background-color: yellow;"><strong>Kanban boards</strong></span> for tracking progress across stages, evaluation matrices for comparing use-case ROI, and documentation templates to standardize how lessons are captured.</p>
+<p>A <strong>Kanban board</strong> is a visual workflow management tool that represents work items as cards on columns (e.g., Backlog → In Progress → Review → Done). It makes bottlenecks immediately visible and helps teams prioritize without lengthy status meetings.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/kanban_img.png" class="img-fluid figure-img"></p>
@@ -485,23 +478,21 @@ Available at: <a href="https://learning.oreilly.com/library/view/augmented-analy
 </figure>
 </div>
 </section>
-<section id="technical-organizational-requirements" class="level4">
-<h4 class="anchored" data-anchor-id="technical-organizational-requirements">Technical &amp; Organizational Requirements</h4>
+<section id="technical-and-organizational-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="technical-and-organizational-requirements">Technical and Organizational Requirements</h2>
+<p>Flexible, vendor-independent integration is best achieved through <strong>APIs and microservices</strong> using REST, Python, or R.</p>
+<p><span style="background-color: yellow;"><strong>REST (Representational State Transfer)</strong></span> is an architectural style for designing web services that communicate over HTTP. Its key benefit is <strong>decoupling</strong>: the front-end application (a Dash dashboard, a mobile app, an IoT device) does not need to know how the back-end analytics engine works — it just makes a request and receives a response. This allows analytics capabilities to be consumed by any application without rebuilding the core logic each time.</p>
+<p>In the context of augmented workflows, REST APIs are recommended because they are <strong>modular</strong> (each endpoint does one thing well), <strong>secure</strong> (authentication and authorization are well-established), and <strong>reusable</strong> (the same API can power a dashboard, a chatbot, and a mobile alert simultaneously).</p>
+<p>Common implementation challenges include:</p>
 <ul>
-<li><p>APIs &amp; microservices (REST, Python, R) are recommended for flexible, vendor-independent integration.</p>
-<ul>
-<li><p><strong>REST stands for Representational State Transfer. It’s an architectural style for designing web services and APIs that allow systems to communicate over the internet.</strong></p>
-<ul>
-<li><strong>It decouples front-end and back-end, letting different apps (web, mobile, IoT) consume the same API.</strong></li>
-</ul></li>
-<li><p>In the Augmented Workflows chapter, REST APIs are recommended to integrate analytics into business workflows because they are <strong>modular, secure, and reusable</strong>.</p></li>
-</ul></li>
-<li><p>Challenges: legacy systems, IT dependencies, governance, security, and compliance.</p></li>
-<li><p>Analytics contracts (similar to data contracts) are proposed to ensure discoverability, trust, interoperability, and responsible use.</p></li>
+<li><strong>Legacy systems</strong> — older enterprise software often lacks modern API interfaces.</li>
+<li><strong>IT dependencies</strong> — analytics teams frequently depend on IT gatekeepers for infrastructure changes.</li>
+<li><strong>Governance and security</strong> — ensuring that API access is logged, audited, and permissioned appropriately.</li>
+<li><strong>Regulatory compliance</strong> — particularly in healthcare and finance, data cannot flow freely between systems.</li>
 </ul>
+<p>To address these, Weber and Zwingmann propose <strong>analytics contracts</strong> — formal agreements, similar to data contracts, that define how an analytics capability can be discovered, accessed, consumed, and trusted. They bring the discipline of software engineering (versioning, documentation, SLAs) to analytics integrations.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

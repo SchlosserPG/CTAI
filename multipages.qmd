@@ -8,204 +8,194 @@ execute:
     executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
--   This module introduces how to structure and build multi-page Dash applications. Students begin by organizing a project shell with an app.py entry file, a pages/ folder for layouts, and an assets/ folder for shared CSS. Using dash.register_page(), each page is defined with a layout and a URL path, while the main app layout (in app.py) includes a navigation bar and a dynamic dash.page_container that automatically renders the selected page.The project demonstrates page-specific designs and interactions:
-    -   Page 1 implements a responsive grid layout using custom CSS classes for top, middle, and footer blocks.
-    -   Page 2 introduces interactivity and API integration with a callback that retrieves and displays random cat facts from a public API using requests.
--   By the end, students can design organized, scalable Dash apps with multiple pages, shared styling, and dynamic content powered by callbacks and APIs.
+This section introduces how to structure and build **multi-page Dash applications**. Students begin by organizing a project shell with an `app.py` entry file, a `pages/` folder for page layouts, and an `assets/` folder for shared CSS. Using `dash.register_page()`, each page is defined with a layout and a URL path, while the main app layout in `app.py` includes a navigation bar and a `dash.page_container` that automatically renders the selected page.
+
+The project demonstrates two distinct page designs:
+
+-   **Page 1** implements a responsive grid layout using custom CSS classes for top, middle, and footer blocks.
+-   **Page 2** introduces interactivity and API integration with a callback that retrieves and displays random cat facts from a public API using `requests`.
+
+By the end, students can design organized, scalable Dash apps with multiple pages, shared styling, and dynamic content powered by callbacks and APIs.
+
+## Project Structure
 
 ### Building the Project Shell
 
-Before writing any Dash code, spend a few minutes setting up a clean and organized project shell. This structure will make your application easier to maintain, extend, and style as it grows. At a minimum, you’ll create folders for your pages and assets, along with a main entry file that runs the app.
+Before writing any Dash code, set up a clean and organized project structure. A well-organized project makes the application easier to maintain, extend, and style as it grows.
 
--   Place your main entry file (`app.py`) at the **root** of the project.\
--   Create a `pages/` folder to store your **individual page layouts**.\
--   Add an `assets/` folder for **custom CSS** or other static files — Dash automatically loads files from this directory.\
--   Optionally include additional helper scripts or configuration files as needed.
+```
+my_dash_app/
+│
+├── app.py           ← main entry point; run this file to start the app
+├── pages/           ← one .py file per page
+│   ├── home.py
+│   ├── page1.py
+│   └── page2.py
+│
+└── assets/          ← Dash automatically loads CSS from here
+    └── style.css
+```
 
-**Project Structure:**
+Key rules:
 
-my_dash_app/ │ ├── app.py │ ├── pages/ │ ├── home.py │ ├── page1.py │ └── page2.py │ └── assets/ └── style.css
+-   `app.py` lives at the **root** of the project.
+-   `pages/` holds one Python file per page; Dash scans this folder automatically when `use_pages=True`.
+-   `assets/` holds CSS, images, and other static files; Dash loads them automatically without any import statements.
+-   Only `app.py` should contain `app.run(...)` — **never** add a run command inside a page file.
 
-#### Initialize the App
+### Initializing the App
 
 ```{python}
 import dash
 from dash import dcc, html
 import dash_bootstrap_components as dbc
 
-#Initialize app
-app = dash.Dash(__name__, use_pages=True, supress_callback_exceptions=True, title="Multi-Page-App")
-server = app.server #for deployment
+app = dash.Dash(
+    __name__,
+    use_pages=True,                       # scan pages/ folder for registered pages
+    suppress_callback_exceptions=True,    # prevent errors for components not yet on screen
+    title="Multi-Page-App"
+)
+
+server = app.server   # expose the Flask server — required for Render/gunicorn deployment
 ```
 
-use_pages=True tells Dash to scan the pages/ folder for registered pages.
+-   [**`use_pages=True`**]{style="background-color: yellow;"} — tells Dash to automatically discover and register all pages in the `pages/` folder. Without this, Dash is a single-page app.
+-   [**`suppress_callback_exceptions=True`**]{style="background-color: yellow;"} — when a user is on Page 1, Page 2's components do not exist in the DOM yet. Without this flag, Dash raises errors for callbacks that reference those absent components.
+-   [**`server = app.server`**]{style="background-color: yellow;"} — exposes the underlying Flask server object so that gunicorn (and Render.com) can start the app. This line is required for deployment.
 
-suppress_callback_exceptions=True helps when callbacks span multiple pages.
+::: note
+The original code had `supress_callback_exceptions=True` (one `p`). The correct spelling is `suppress_callback_exceptions=True`. A misspelled keyword argument is silently ignored by Python — exception suppression would not be active.
+:::
 
-#### Register Each Page
+## Registering Pages
+
+### `dash.register_page()`
+
+Each file in `pages/` calls `dash.register_page()` to declare itself as a page, then defines a `layout` variable with its content.
 
 ```{python}
+# home.py — the app's home page (root URL)
 import dash
 from dash import html
 
-dash.register_page(__name_,path="/")
+dash.register_page(__name__, path="/")
+
+layout = html.Div([
+    html.H2("Welcome to the Home Page"),
+    html.P("This is a simple multipage Dash project.")
+])
+```
+
+```{python}
+# page1.py
+import dash
+from dash import html
+
+dash.register_page(__name__, path="/page1", name="Page 1")
 
 layout = html.Div([...])
 ```
 
 ```{python}
+# page2.py
 import dash
 from dash import html
 
-dash.register_page(__name_,path="/page1", name ="Page 1")
+dash.register_page(__name__, path="/page2", name="Page 2")
 
 layout = html.Div([...])
 ```
 
-```{python}
-import dash
-from dash import html
+::: note
+The original code used `__name_` (single trailing underscore). `__name__` (double underscore on each side) is the correct built-in Python variable. `__name_` is undefined and raises a `NameError` at import time.
+:::
 
-dash.register_page(__name_,path="/page2", name ="Page 2")
+Key arguments to `dash.register_page()`:
 
-layout = html.Div([...])
-```
+| Argument | Purpose | Example |
+|---|---|---|
+| `__name__` | Uniquely identifies the page by its module | `__name__` |
+| `path` | Sets the URL for this page | `path="/page1"` |
+| `name` | Sets the display name for navigation links | `name="Page 1"` |
 
-dash.register_page() is used to **register a Python file as a page** in a multipage Dash app. It tells Dash the page’s name, URL path, and optional settings like order, title, or description.
+## The App Layout (`app.py`)
 
--   For example, dash.register_page(\_\_name\_\_, path="/") tells Dash that this file represents a page in the app.
+### Navigation and Page Container
 
--   \_\_name\_\_ ensures the page is uniquely identified.
-
--   path="/" makes this page the **home page** (root URL).
-
--   Each page file in the pages/ folder needs this call plus a layout variable that defines the page’s content.
-
-#### Create the Layout in app.py
-
--   This layout ties everything together: a navigation bar for switching pages and a container to render them dynamically.
-
--   Navigation Bar (dbc.NavbarSimple)
-
-    -   Creates a simple top navigation bar with links to each page.
-
-    -   dbc.NavLink("Home", href="/", active="exact") defines clickable links.
-
--   active="exact"
-
-    -   Ensures a link is highlighted only when the current URL matches exactly.
-
-    -   Prevents the Home link ("/") from being active on all pages.
-
--   dash.page_container
-
-    -   This is where the content of the current page (registered with dash.register_page) is displayed.
-
-    -   Acts as a placeholder that updates automatically when the user clicks a link.
-
--   app.run(debug=True)
-
-    -   Runs the app locally with hot-reload, so changes appear immediately without restarting.
-
-    -   **Only include** the app.run(...) statement in app.py. Do not add a run command in any of the subpages. The application should be started once from app.py, and it will automatically load all registered pages from the pages/ folder.
+The `app.py` layout ties everything together: a **navigation bar** for switching between pages, and a **page container** that automatically renders whichever page the user has navigated to.
 
 ```{python}
 app.layout = html.Div([
-   #Simple navigation bar
-   dbc.NavbarSimple(
-      children=[
-         dbc.NavLink("Home",href="/",active="exact"),
-         dbc.NavLink("Page 1",href="/page1",active="exact"),
-         dbc.NavLink("Page 2",href="/page2",active="exact")
-      ],
-      brand="Multi-Page App",
-   ),
-   dash.page_container
+    dbc.NavbarSimple(
+        children=[
+            dbc.NavLink("Home",   href="/",      active="exact"),
+            dbc.NavLink("Page 1", href="/page1", active="exact"),
+            dbc.NavLink("Page 2", href="/page2", active="exact"),
+        ],
+        brand="Multi-Page App",
+    ),
+    dash.page_container
+    # This is where each page's layout variable is rendered
+    # It updates automatically when the user clicks a navigation link
 ])
 
 if __name__ == "__main__":
-   app.run(debug=True)
+    app.run(debug=True)
 ```
 
-#### Add a Layout to home.py
+-   [**`dbc.NavbarSimple`**]{style="background-color: yellow;"} — creates a top navigation bar. `brand=` sets the app name displayed on the left side of the bar.
+-   [**`dbc.NavLink(..., active="exact")`**]{style="background-color: yellow;"} — a clickable nav link. `active="exact"` highlights the link only when the URL matches exactly — without this, the Home link (`"/"`) would appear active on every page because all paths start with `/`.
+-   [**`dash.page_container`**]{style="background-color: yellow;"} — a special Dash component that acts as a slot: it renders the `layout` variable of whatever page the user is currently viewing.
 
--   Each subpage should define its content using a **layout** variable, while the main file (app.py) uses **app.layout** to define the overall structure of the app, including navigation and the page container.
+## Styling with `style.css`
 
--   You may also need an app.layout if you have callbacks, since Dash requires a defined layout to reference components in the callback functions.
+### Global Styles
 
-```{python}
-import dash
-from dash import html
+The `assets/style.css` file applies to every page in the app. The stylesheet below sets a background color, typography defaults, and transforms plain hyperlinks into styled button-like elements.
 
-dash.register_page(__name__,path="/")
-
-layout = html.Div([
-   html.H2("Welcome to the Home Page"),
-   html.P("This is a simple multipage Dash project.")
-])
-```
-
-#### Add Styles to style.css
-
--   The stylesheet customizes the hyperlinks (a tags) to look like styled buttons instead of plain links — giving them spacing, a border, background color, rounded corners, and hover effects for better visibility and user interaction.
-
--   In CSS, !important is used to **override normal style rules and priority**. When applied to a property, it tells the browser: “use this style no matter what, even if other rules conflict.”
+In CSS, [**`!important`**]{style="background-color: yellow;"} forces a property to override any conflicting rules, regardless of selector specificity. Use it only when necessary — overuse makes stylesheets difficult to reason about.
 
 ![](images/add_style_pages.png)
 
 ```{css}
 body {
-    background-color: #DFEBE0 !important;
+    background-color: #DFEBE0 !important;   /* force green-tint background even if Bootstrap overrides it */
     font-family: Arial, sans-serif;
 }
 
-h2{
+h2 {
     color: #2c3e50;
 }
-p{
+
+p {
     font-size: 16px;
     line-height: 1.4;
 }
 
+/* Style all <a> tags as button-like elements */
 a {
-    display:inline-block;
-    margin:18px;
-    text-decoration: none;
+    display: inline-block;   /* allow padding to apply */
+    margin: 18px;
+    text-decoration: none;   /* remove underline */
     border: 2px solid #ffffff;
-    border-radius:6px;
+    border-radius: 6px;
     padding: 10px 20px;
     background-color: #2c3e50;
     color: #ffffff;
-
 }
 
-a:hover{
+a:hover {
     text-decoration: underline;
-    background-color: #65Ab6E;
+    background-color: #65Ab6E;   /* green on hover */
 }
 ```
 
-#### Add Multi-Item Layout to page1.py
+## Page 1: Grid Layout
 
--   Organizing the layout into 1 column at the top, 2 columns in the middle, and a footer.
+### Layout File
 
--   Top Section
-
-    -   One full-width block ("Top (1 column)").
-
--   Middle Section
-
-    -   Two side-by-side blocks: "Middle Left" and "Middle Right".
-
--   Footer
-
-    -   A single full-width block labeled "Footer".
-
--   CSS Classes
-
-    -   className="block" and className="row-2" connect to the stylesheet in assets/ to control layout and style.
-
-    -   block--top / block--footer are modifier classes that adjust specific blocks (like making the top taller, the footer shorter, or giving them different visual emphasis).
+Page 1 organizes content into three zones using a combination of **Flexbox** (for vertical stacking) and **CSS Grid** (for the two-column middle section).
 
 ```{python}
 import dash
@@ -214,122 +204,71 @@ from dash import html
 dash.register_page(__name__, path="/page1", name="Page 1")
 
 layout = html.Div([
-    ##Top Row
-    html.Div("Top Row: with 1 Column", className="block block-top"), 
-    
-    ##Middle 2 column
+    html.Div("Top Row: with 1 Column",  className="block block-top"),
+
     html.Div([
-        html.Div("Middle Left", className="block"),
+        html.Div("Middle Left",  className="block"),
         html.Div("Middle Right", className="block")
     ], className="row-2"),
-    
-    ##Footer
+
     html.Div("Footer", className="block block-footer")
-    
+
 ], className="page1-grid")
 ```
 
-#### Style Page 1 Classes
-
--   This CSS is defining the visual layout for your Page 1:
-
-    -   A flexbox column layout (.page1-grid) that stacks major sections (top, middle, footer).
-
-        -   display: flex turns the container into a flexbox, giving flexible alignment and spacing for child elements.
-
-        -   flex-direction: column stacks children vertically (like top → middle → footer) which is useful for high-level page sections.
-
-    -   A grid layout (.row-2) that splits the middle section into two side-by-side blocks, which creates a visual block styling to make the layout easy to see.
-
-        -   display: grid turns the container into a grid layout system.
-
-        -   grid-template-columns: 1fr 1fr splits into two equal columns (1fr = one “fraction” of available space).
-
-        -   Used here for the middle row, so “Middle Left” and “Middle Right” sit side by side.
-
-    -   The \@media adjusts for small screens.
-
-        -   Responsive behavior: the two-column grid collapses into one column on narrow screens.
+### CSS Classes for Page 1
 
 ```{css}
-/*Page 1 styles for blocking elements */
-.page1-grid{
-    display:flex;
-    flex-direction: column;
+/* Outer container: stacks the three zones (top, middle, footer) vertically */
+.page1-grid {
+    display: flex;
+    flex-direction: column;   /* stack children top → middle → footer */
     padding: 12px;
-    gap:12px;
+    gap: 12px;                /* space between zones */
 }
 
+/* Middle zone: splits into two equal side-by-side columns */
 .row-2 {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;   /* two equal fractions of available width */
     gap: 12px;
 }
 
-.block{
+/* Shared block appearance */
+.block {
     border: 2px dashed #cbd5e1;
     border-radius: 8px;
-    background-color: #F5F7Fa;
+    background-color: #F5F7FA;
     color: #334155;
     min-height: 120px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center;        /* vertically center content */
+    justify-content: center;    /* horizontally center content */
     font-weight: 600;
 }
 
-.block-top{
-    min-height: 150px;
-}
+/* Modifier classes — adjust height only */
+.block-top    { min-height: 150px; }
+.block-footer { min-height: 80px;  }
 
-.block-footer{
-    min-height: 80px;
-}
-
-@media (max-width:768px){
-    .row-2{grid-template-columns: 1fr;}
+/* Responsive: collapse to single column on screens narrower than 768px (tablets/phones) */
+@media (max-width: 768px) {
+    .row-2 { grid-template-columns: 1fr; }
 }
 ```
 
-#### Adjust page2.py to have a callback and a link to an API
+CSS concepts used here:
 
--   Layout
+-   [**`.page1-grid`**]{style="background-color: yellow;"} — `display: flex; flex-direction: column` stacks the three zones vertically with consistent gaps.
+-   [**`.row-2`**]{style="background-color: yellow;"} — `display: grid; grid-template-columns: 1fr 1fr` splits the middle section into two equal columns. `1fr` means "one fraction of available space."
+-   [**`.block`**]{style="background-color: yellow;"} — shared styling applied to all content zones: dashed border, rounded corners, centered content.
+-   [**`@media (max-width: 768px)`**]{style="background-color: yellow;"} — a media query that collapses the two-column layout to a single column on narrow screens (tablets and phones).
 
-    -   A header (H2), a short description (P), and a button (id="btn-cat").
+## Page 2: Callback and API
 
-    -   A dcc.Loading wraps a Div(id="cat-fact") so you get a spinner while data loads.
+### Layout and Callback
 
-    -   Notice there is no app.run(...) here—only in app.py.
-
--   Callback wiring
-
-    -   \@callback(Output("cat-fact", "children"), Input("btn-cat", "n_clicks"), prevent_initial_call=True)
-
-    -   When the button is clicked, the callback runs.
-
-    -   prevent_initial_call=True stops an API call on first page load.
-
-    -   The callback returns content for the children of #cat-fact.
-
--   API call & response
-
-    -   requests.get("https://catfact.ninja/fact", timeout=5) fetches a random cat fact.
-
-    -   r.raise_for_status() throws if the HTTP status indicates an error.
-
-    -   r.json().get("fact", "No fact found.") extracts the text.
-
-    -   Returns html.Div(fact) to display the fact.
-
--   Error handling
-
-    -   except requests.RequestException catches network/HTTP timeouts or failures and shows a readable error message.
-
--   Notes
-
-    -   Requires pip install requests.
-
-    -   IDs in the layout (btn-cat, cat-fact) must match the IDs in the callback.
+Page 2 demonstrates a live API call triggered by a button click. The entire page — layout and callback — lives in a single `page2.py` file, with no `app.run(...)`.
 
 ```{python}
 from dash import html, register_page, dcc, callback, Output, Input
@@ -339,100 +278,86 @@ register_page(__name__, path="/page2", name="Page 2")
 
 layout = html.Div([
     html.H2("Page 2", className="page-title"),
-    html.P("Click to fetch a random cat fact from a public API", className="page-subtitle"),
+    html.P("Click to fetch a random cat fact from a public API",
+           className="page-subtitle"),
     html.Button("Get Cat Fact", id="btn-cat", n_clicks=0),
-    dcc.Loading(html.Div(id="cat-fact")) 
+    dcc.Loading(html.Div(id="cat-fact"))
+    # dcc.Loading wraps the output — shows a spinner while the callback is running
 ], className="page2-wrap")
 
 
 @callback(
     Output("cat-fact", "children"),
-    Input("btn-cat", "n_clicks")
+    Input("btn-cat", "n_clicks"),
+    prevent_initial_call=True   # do NOT fire on page load (n_clicks=0); wait for a real click
 )
-
 def get_cat_fact(n):
     try:
         r = requests.get("https://catfact.ninja/fact", timeout=5)
-        r.raise_for_status()
-        fact = r.json().get("fact", "no fact found")
+        r.raise_for_status()                              # raise on HTTP error
+        fact = r.json().get("fact", "No fact found.")    # safely extract the fact
         return html.Div(fact)
     except requests.RequestException as e:
-        return html.Div(f"Error contacting API: {e}")
+        return html.Div(f"Error contacting API: {e}")   # show a readable error message
 ```
 
-#### Add Styles for page 2
+::: note
+`prevent_initial_call=True` is essential here. Without it, Dash fires the callback immediately on page load with `n_clicks=0` — calling the API before the user has done anything. Adding `prevent_initial_call=True` ensures the callback only runs on an actual button click.
+:::
 
--   Creating the overall blocking of the page
-
--   Defines a centered page container with a reasonable max width and padding.
-
--   Styles a primary title to be larger and more prominent for hierarchy.
-
--   Styles a subtitle/lead with lighter color and added spacing below the title.
-
--   Uses reusable utility classes to separate layout from content, so the look can be reused across pages.
+### Page 2 CSS
 
 ```{css}
-/* ---Page 2 strong "blocked" look ---*/
-.page2-wrap{
-   max-width: 840px;
-   margin: 0 auto;
-   padding: 16px;
+/* Page 2 container */
+.page2-wrap {
+    max-width: 840px;
+    margin: 0 auto;    /* horizontally center the content */
+    padding: 16px;
 }
 
-.page-title{
-   font-size: 28px;
-   color: #1f2937;   /*dark slate*/
-   margin-top: 6px;
+.page-title {
+    font-size: 28px;
+    color: #1f2937;    /* dark slate */
+    margin-top: 6px;
 }
 
-.page-subtitle{
-   color: #475569;  /*slate*/
-   margin-top: 14px;
+.page-subtitle {
+    color: #475569;    /* medium slate — lighter than the title */
+    margin-top: 14px;
 }
 ```
 
-#### Style the Button and the Cat-fact id's
+### Styling the Button and Result Area
 
--   Styles the primary action (button) and the result area as clear, block-like UI elements with strong borders, padding, and small corner radii for emphasis and readability.
-
--   Establishes interactive feedback (hover/active states) so users see immediate visual responses to clicks/rollovers.
-
--   Uses IDs for unique elements (e.g., one result container) and classes for reusable behaviors (e.g., button hover/active styling).
-
--   Increases legibility and touch targets with larger font sizes, adequate spacing, and a minimum height to prevent layout jumpiness as content loads.
-
--   Keeps styling centralized in an external stylesheet, separating presentation from Dash layout/callback code and ensuring consistency across pages.
+ID selectors (`#id`) are used here because these are **unique elements** — there is only one button and one result container on this page. Classes would be appropriate if the same style needed to apply to multiple elements.
 
 ```{css}
-/*cat fact id styling --- id's are styled with the #id while classes have the decimal. 
-before the class*/
+/* ID selectors: # prefix for IDs, . prefix for classes */
 
-#btn-cat{
-    display:inline-block;
+#btn-cat {
+    display: inline-block;
     font-size: 18px;
     padding: 10px 18px;
     border: 2px solid #1f2937;
     border-radius: 8px;
-    background-color: #0ea5e9;
-    color:#ffffff;
+    background-color: #0ea5e9;   /* blue */
+    color: #ffffff;
 }
 
-#btn-cat:hover{
-    background-color: #1b4355;
+#btn-cat:hover {
+    background-color: #1b4355;   /* darker blue on hover */
 }
 
-#cat-fact{
-    display:block;
-    margin-top:14px;
+#cat-fact {
+    display: block;
+    margin-top: 14px;
     padding: 14px 16px;
     background-color: #ffffff;
     color: #0f172a;
-    font-size:18px;
+    font-size: 18px;
     line-height: 1.5;
     border: 2px solid #1f2937;
     border-radius: 8px;
-    min-height: 72px;
-
+    min-height: 72px;   /* prevents layout shift when the box is empty */
 }
 ```

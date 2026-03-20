@@ -124,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ethics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">AI &amp; Data Ethics</span></a>
+  <a href="./ethics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">AI and Data Ethics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -139,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./storytelling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Human-centered Storytelling</span></a>
+  <a href="./storytelling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Human-Centered Storytelling</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -164,12 +164,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Using Git and Github</span></a>
+  <a href="./github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Using Git and GitHub</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./makingcallbacks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Writing Callbacks and Accessing API’s</span></a>
+  <a href="./makingcallbacks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Writing Callbacks and Accessing APIs</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -202,7 +202,52 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of Contents</h2>
    
   <ul>
-  <li><a href="#prompting-using-gen-ai" id="toc-prompting-using-gen-ai" class="nav-link active" data-scroll-target="#prompting-using-gen-ai">Prompting Using Gen AI</a></li>
+  <li><a href="#generative-ai" id="toc-generative-ai" class="nav-link active" data-scroll-target="#generative-ai">Generative AI</a></li>
+  <li><a href="#from-language-models-to-large-language-models" id="toc-from-language-models-to-large-language-models" class="nav-link" data-scroll-target="#from-language-models-to-large-language-models">From Language Models to Large Language Models</a></li>
+  <li><a href="#multimodal-large-language-models-mllms" id="toc-multimodal-large-language-models-mllms" class="nav-link" data-scroll-target="#multimodal-large-language-models-mllms">Multimodal Large Language Models (MLLMs)</a></li>
+  <li><a href="#why-it-matters-now" id="toc-why-it-matters-now" class="nav-link" data-scroll-target="#why-it-matters-now">Why It Matters Now</a></li>
+  <li><a href="#ai-evolution" id="toc-ai-evolution" class="nav-link" data-scroll-target="#ai-evolution">AI Evolution</a></li>
+  <li><a href="#how-generative-ai-works" id="toc-how-generative-ai-works" class="nav-link" data-scroll-target="#how-generative-ai-works">How Generative AI Works</a>
+  <ul class="collapse">
+  <li><a href="#game-theory-and-generative-adversarial-networks" id="toc-game-theory-and-generative-adversarial-networks" class="nav-link" data-scroll-target="#game-theory-and-generative-adversarial-networks">Game Theory and Generative Adversarial Networks</a></li>
+  <li><a href="#the-data-driven-workflow" id="toc-the-data-driven-workflow" class="nav-link" data-scroll-target="#the-data-driven-workflow">The Data-Driven Workflow</a></li>
+  <li><a href="#early-ai-and-the-rise-of-chatbots" id="toc-early-ai-and-the-rise-of-chatbots" class="nav-link" data-scroll-target="#early-ai-and-the-rise-of-chatbots">Early AI and the Rise of Chatbots</a></li>
+  <li><a href="#the-importance-of-gpu-innovation" id="toc-the-importance-of-gpu-innovation" class="nav-link" data-scroll-target="#the-importance-of-gpu-innovation">The Importance of GPU Innovation</a></li>
+  <li><a href="#open-source-generative-ai-genos" id="toc-open-source-generative-ai-genos" class="nav-link" data-scroll-target="#open-source-generative-ai-genos">Open-Source Generative AI: GenOS</a></li>
+  </ul></li>
+  <li><a href="#training-methodologies-for-llms" id="toc-training-methodologies-for-llms" class="nav-link" data-scroll-target="#training-methodologies-for-llms">Training Methodologies for LLMs</a>
+  <ul class="collapse">
+  <li><a href="#data-collection-and-pretraining" id="toc-data-collection-and-pretraining" class="nav-link" data-scroll-target="#data-collection-and-pretraining">Data Collection and Pretraining</a></li>
+  <li><a href="#fine-tuning-supervised-training" id="toc-fine-tuning-supervised-training" class="nav-link" data-scroll-target="#fine-tuning-supervised-training">Fine-Tuning (Supervised Training)</a></li>
+  <li><a href="#reinforcement-learning-with-human-feedback-rlhf" id="toc-reinforcement-learning-with-human-feedback-rlhf" class="nav-link" data-scroll-target="#reinforcement-learning-with-human-feedback-rlhf">Reinforcement Learning with Human Feedback (RLHF)</a></li>
+  <li><a href="#cross-modal-embeddings" id="toc-cross-modal-embeddings" class="nav-link" data-scroll-target="#cross-modal-embeddings">Cross-Modal Embeddings</a></li>
+  <li><a href="#llms-vs.-rule-based-systems" id="toc-llms-vs.-rule-based-systems" class="nav-link" data-scroll-target="#llms-vs.-rule-based-systems">LLMs vs.&nbsp;Rule-Based Systems</a></li>
+  </ul></li>
+  <li><a href="#prompting-and-prompt-engineering" id="toc-prompting-and-prompt-engineering" class="nav-link" data-scroll-target="#prompting-and-prompt-engineering">Prompting and Prompt Engineering</a>
+  <ul class="collapse">
+  <li><a href="#rlhf-vs.-prompt-engineering" id="toc-rlhf-vs.-prompt-engineering" class="nav-link" data-scroll-target="#rlhf-vs.-prompt-engineering">RLHF vs.&nbsp;Prompt Engineering</a></li>
+  <li><a href="#prompt-engineering" id="toc-prompt-engineering" class="nav-link" data-scroll-target="#prompt-engineering">Prompt Engineering</a></li>
+  </ul></li>
+  <li><a href="#the-prompting-paradigm" id="toc-the-prompting-paradigm" class="nav-link" data-scroll-target="#the-prompting-paradigm">The Prompting Paradigm</a>
+  <ul class="collapse">
+  <li><a href="#in-context-learning" id="toc-in-context-learning" class="nav-link" data-scroll-target="#in-context-learning">In-Context Learning</a></li>
+  <li><a href="#prompt-types" id="toc-prompt-types" class="nav-link" data-scroll-target="#prompt-types">Prompt Types</a></li>
+  <li><a href="#prompt-engineering-iterations-and-patterns" id="toc-prompt-engineering-iterations-and-patterns" class="nav-link" data-scroll-target="#prompt-engineering-iterations-and-patterns">Prompt Engineering Iterations and Patterns</a></li>
+  <li><a href="#principles-of-prompting" id="toc-principles-of-prompting" class="nav-link" data-scroll-target="#principles-of-prompting">Principles of Prompting</a></li>
+  <li><a href="#splitting-complex-tasks-into-subtasks" id="toc-splitting-complex-tasks-into-subtasks" class="nav-link" data-scroll-target="#splitting-complex-tasks-into-subtasks">Splitting Complex Tasks into Subtasks</a></li>
+  <li><a href="#prompting-the-model-to-give-an-explanation" id="toc-prompting-the-model-to-give-an-explanation" class="nav-link" data-scroll-target="#prompting-the-model-to-give-an-explanation">Prompting the Model to Give an Explanation</a></li>
+  <li><a href="#asking-for-justification" id="toc-asking-for-justification" class="nav-link" data-scroll-target="#asking-for-justification">Asking for Justification</a></li>
+  <li><a href="#continuing-with-an-unclear-example" id="toc-continuing-with-an-unclear-example" class="nav-link" data-scroll-target="#continuing-with-an-unclear-example">Continuing with an Unclear Example</a></li>
+  </ul></li>
+  <li><a href="#llm-hallucinations" id="toc-llm-hallucinations" class="nav-link" data-scroll-target="#llm-hallucinations">LLM Hallucinations</a>
+  <ul class="collapse">
+  <li><a href="#reducing-hallucination-with-prompt-engineering" id="toc-reducing-hallucination-with-prompt-engineering" class="nav-link" data-scroll-target="#reducing-hallucination-with-prompt-engineering">Reducing Hallucination with Prompt Engineering</a></li>
+  <li><a href="#spotting-hallucinations" id="toc-spotting-hallucinations" class="nav-link" data-scroll-target="#spotting-hallucinations">Spotting Hallucinations</a></li>
+  <li><a href="#why-prompting-does-not-guarantee-mathematical-accuracy" id="toc-why-prompting-does-not-guarantee-mathematical-accuracy" class="nav-link" data-scroll-target="#why-prompting-does-not-guarantee-mathematical-accuracy">Why Prompting Does Not Guarantee Mathematical Accuracy</a></li>
+  <li><a href="#using-a-prompt-evaluation-rubric" id="toc-using-a-prompt-evaluation-rubric" class="nav-link" data-scroll-target="#using-a-prompt-evaluation-rubric">Using a Prompt Evaluation Rubric</a></li>
+  </ul></li>
+  <li><a href="#paths-forward-in-generative-ai" id="toc-paths-forward-in-generative-ai" class="nav-link" data-scroll-target="#paths-forward-in-generative-ai">Paths Forward in Generative AI</a></li>
+  <li><a href="#food-for-thought" id="toc-food-for-thought" class="nav-link" data-scroll-target="#food-for-thought">Food for Thought</a></li>
   </ul>
 </nav>
     </div>
@@ -228,277 +273,140 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<ul>
-<li>This section introduces multimodal generative AI—systems that create and reason across text, images, audio, and video—and situates them within the broader evolution from language models (LMs) to large language models (LLMs) and multimodal LLMs (MLLMs). It explains how advances in transformer architectures, GPUs, and training methods (pretraining, fine-tuning, RLHF, and cross-modal embeddings) enable cross-modal understanding and generation, while prompting techniques turn these capabilities into reliable workflows. The section also surveys high-impact applications (automation, personalization, retrieval, and decision support), highlights risks (hallucination, bias, transparency), and outlines practical guardrails—evaluation rubrics, prompt engineering, and governance—for responsible deployment in real settings.</li>
-</ul>
-<section id="reference-together-chapter-1-and-3-of-multimodal-generative-ai-present-an-overview-of-the-foundations-architectures-and-ethical-considerations-of-multimodal-generative-systems-and-examine-how-emerging-multimodal-large-language-models-extend-these-capabilities-with-advanced-cross-modal-reasoning-and-generationwhile-grappling-with-challenges-in-complexity-data-integration-and-responsible-deployment." class="level6">
-<h6 class="anchored" data-anchor-id="reference-together-chapter-1-and-3-of-multimodal-generative-ai-present-an-overview-of-the-foundations-architectures-and-ethical-considerations-of-multimodal-generative-systems-and-examine-how-emerging-multimodal-large-language-models-extend-these-capabilities-with-advanced-cross-modal-reasoning-and-generationwhile-grappling-with-challenges-in-complexity-data-integration-and-responsible-deployment."><em>Reference:</em> Together, Chapter 1 and 3 of Multimodal Generative AI present an overview of the foundations, architectures, and ethical considerations of multimodal generative systems, and examine how emerging multimodal large language models extend these capabilities with advanced cross-modal reasoning and generation—while grappling with challenges in complexity, data integration, and responsible deployment.</h6>
+<p>This section introduces multimodal generative AI — systems that create and reason across text, images, audio, and video — and situates them within the broader evolution from language models (LMs) to large language models (LLMs) and multimodal LLMs (MLLMs). It explains how advances in transformer architectures, GPUs, and training methods (pretraining, fine-tuning, RLHF, and cross-modal embeddings) enable cross-modal understanding and generation, while prompt engineering turns these capabilities into reliable workflows. The section also surveys high-impact applications (automation, personalization, retrieval, and decision support), highlights key risks (hallucination, bias, and transparency), and outlines practical guardrails — evaluation rubrics, prompt engineering, and governance — for responsible deployment.</p>
+<section id="reference" class="level6 note">
+<h6 class="anchored" data-anchor-id="reference"><em>Reference:</em></h6>
+<p>Chapters 1 and 3 of <em>Multimodal Generative AI</em> present an overview of the foundations, architectures, and ethical considerations of multimodal generative systems, and examine how emerging multimodal large language models extend these capabilities with advanced cross-modal reasoning and generation — while addressing challenges in complexity, data integration, and responsible deployment.</p>
 </section>
-<section id="generative-ai" class="level4">
-<h4 class="anchored" data-anchor-id="generative-ai">Generative AI</h4>
-<ul>
-<li><p>Generative AI refers to a type of AI that creates new content (text, audio, images) based on patterns learned from training data. It contrasts with predictive AI, which forecasts outcomes from historical data.</p></li>
-<li><p>Some Examples:</p>
-<ul>
-<li><p>ChatGPT – conversational text generation</p></li>
-<li><p>Codex / GitHub Copilot – code generation and completion</p></li>
-<li><p>DALL·E – image generation from text prompts</p></li>
-<li><p>Perplexity AI – conversational search + generative synthesis</p></li>
-</ul></li>
-</ul>
+<section id="generative-ai" class="level2">
+<h2 class="anchored" data-anchor-id="generative-ai">Generative AI</h2>
+<p><strong>Generative AI</strong> refers to a category of AI that creates new content — text, audio, images, video, and code — based on patterns learned from training data. It contrasts with <strong>predictive AI</strong>, which forecasts outcomes from historical data without creating new content.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Goal</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Generative AI</td>
+<td>Create new content</td>
+<td>ChatGPT, DALL·E, Copilot</td>
+</tr>
+<tr class="even">
+<td>Predictive AI</td>
+<td>Forecast outcomes</td>
+<td>Churn models, demand forecasts</td>
+</tr>
+</tbody>
+</table>
+<p>Notable generative AI tools include <strong>ChatGPT</strong> (conversational text generation), <strong>Codex and GitHub Copilot</strong> (code generation and completion), <strong>DALL·E</strong> (image generation from text prompts), and <strong>Perplexity AI</strong> (conversational search combined with generative synthesis).</p>
 </section>
-<section id="what-is-generative-ai" class="level4">
-<h4 class="anchored" data-anchor-id="what-is-generative-ai">What is Generative AI?</h4>
+<section id="from-language-models-to-large-language-models" class="level2">
+<h2 class="anchored" data-anchor-id="from-language-models-to-large-language-models">From Language Models to Large Language Models</h2>
+<p>Generative AI is the broad field encompassing AI systems that create new content across modalities. Within that field, <strong>language models (LMs)</strong> are a core branch focused on predicting and generating text. An LM estimates the likelihood of words or phrases in a sequence, enabling it to generate text, complete sentences, and suggest ideas based on context. For example, given the prompt “The stock market is…,” a language model predicts plausible continuations.</p>
+<p>A <strong>large language model (LLM)</strong> is a scaled-up language model trained on massive datasets with billions of parameters. This scale enables advanced capabilities in reasoning, summarization, translation, and dialogue. LLMs — such as GPT-3 and GPT-4 — use deep learning, particularly transformer architectures, to understand complex patterns across large text corpora and generate human-like responses across a wide variety of tasks.</p>
+<div class="note">
+<p>The jump from LM to LLM is not just a size increase — it is a capability threshold. Researchers have observed that certain abilities (multi-step reasoning, in-context learning) only emerge reliably above a certain parameter count, a phenomenon called <strong>emergent behavior</strong>.</p>
+</div>
 </section>
-<section id="generative-ai-represents-a-paradigm-shift" class="level4">
-<h4 class="anchored" data-anchor-id="generative-ai-represents-a-paradigm-shift"><strong>Generative AI represents a Paradigm Shift</strong></h4>
+<section id="multimodal-large-language-models-mllms" class="level2">
+<h2 class="anchored" data-anchor-id="multimodal-large-language-models-mllms">Multimodal Large Language Models (MLLMs)</h2>
+<p>A <strong>Multimodal Large Language Model (MLLM)</strong> is a specialized LLM that can process and produce more than just text — it works across images, audio, and video as well. MLLMs are capable of tasks like describing images, interpreting memes, or generating website code from a visual mockup.</p>
+<p>These emergent capabilities are rarely seen in conventional single-modality models and are widely viewed as steps toward <strong>Artificial General Intelligence (AGI)</strong> — the hypothetical point at which an AI system can perform any intellectual task a human can. Researchers across academia and industry are rapidly developing MLLMs that aim to match or surpass models like GPT-4V.</p>
 </section>
-<section id="lm-vs-llm" class="level4">
-<h4 class="anchored" data-anchor-id="lm-vs-llm">LM vs LLM</h4>
-<ul>
-<li><p>From Generative AI to LLMs</p>
-<ul>
-<li>Generative AI is the broad field of AI that can create new content (text, images, audio, video, code).</li>
-</ul></li>
-</ul>
-<!-- -->
-<ul>
-<li><p>A Language Model (LM) is a core branch of GenAI focused on predicting and generating text based on patterns in language data.</p>
-<ul>
-<li><p>LM are designed to predict the likelihood of words or phrases in a sentence.</p></li>
-<li><p>Its main tasks include generating text, completing sentences, and suggesting new ideas based on context.</p></li>
-<li><p>Example, “The stock market is…”</p></li>
-</ul></li>
-</ul>
-<!-- -->
-<ul>
-<li><p>A Large Language Model (LLM) is a scaled-up LMs trained on massive datasets with billions of parameters, enabling advanced capabilities in reasoning, summarization, translation, and dialogue.</p>
-<ul>
-<li><p>You can refer to an LLM as an advanced type of language model that uses deep learning, especially transformer architectures, to understand complex patterns in large text datasets.</p></li>
-<li><p>LLMs, like GPT-3 and GPT-4, can generate human-like text and handle a wide variety of language tasks.</p></li>
-</ul></li>
-</ul>
+<section id="why-it-matters-now" class="level2">
+<h2 class="anchored" data-anchor-id="why-it-matters-now">Why It Matters Now</h2>
+<p>The recent explosion of LLMs and MLLMs — including GPT-4, Gemini, and Claude — reflects a convergence of content generation and automated decision-making across business, healthcare, security, and creative work. AI carries transformational potential: it automates workflows and enhances productivity at scale. At the same time, it introduces new risks around bias, explainability, and control that organizations must actively manage.</p>
 </section>
-<section id="mllm" class="level4">
-<h4 class="anchored" data-anchor-id="mllm">MLLM</h4>
-<ul>
-<li><p>A <strong>Multimodal Large Language Model</strong> (MLLM) refers to a special kind of LLM that can work with more than just text—it can also process and produce images, audio, and video. MLLMs combine different types of data and are capable of tasks like describing images, understanding memes, or generating website code from a visual prompt.</p></li>
-<li><p>These emergent capabilities of MLLMs are rarely seen in conventional models and are viewed as steps toward Artificial General Intelligence (AGI).</p></li>
-<li><p>Researchers across academia and industry are rapidly developing MLLMs that aim to match or surpass the capabilities of models like GPT-4V.</p></li>
-</ul>
+<section id="ai-evolution" class="level2">
+<h2 class="anchored" data-anchor-id="ai-evolution">AI Evolution</h2>
+<p>The history of AI stretches from Pascal’s mechanical calculator (1642) and Ada Lovelace’s foundational work on analytical engines (1837) to the modern era. These early inventions established the basis for automated computation and logic. Progress accelerated through neural networks, statistical machine learning, and deep learning — each step enabled by advances in hardware, particularly GPUs, which made training large, complex models feasible.</p>
+<p>Today, generative AI breakthroughs — including GPT-4, DALL·E 2, and GitHub Copilot — have redefined content creation and automation, with applications spanning IT helpdesks, creative arts, medical guidance, and beyond. The economic stakes are significant: generative AI is projected to increase global GDP by 7% while potentially displacing up to 300 million knowledge worker roles.</p>
 </section>
-<section id="why-it-matters-now" class="level4">
-<h4 class="anchored" data-anchor-id="why-it-matters-now">Why It Matters Now</h4>
+<section id="how-generative-ai-works" class="level2">
+<h2 class="anchored" data-anchor-id="how-generative-ai-works">How Generative AI Works</h2>
+<section id="game-theory-and-generative-adversarial-networks" class="level3">
+<h3 class="anchored" data-anchor-id="game-theory-and-generative-adversarial-networks">Game Theory and Generative Adversarial Networks</h3>
+<p>Game theory inspires generative AI by modeling competition, cooperation, and strategic decision-making — core elements in adversarial training, multi-agent learning, and safe interactive AI design.</p>
+<p>The clearest example is the <strong>Generative Adversarial Network (GAN)</strong>, in which two neural networks compete:</p>
 <ul>
-<li><p>There has recently been an explosion of LLMs and MLLM (e.g., GPT-4, Gemini, Claude)</p></li>
-<li><p>There is a convergence of content generation and decision-making in business, healthcare, security, and creative work</p></li>
-<li><p>AI brings transformational potential but introduces new risks</p>
-<ul>
-<li><p>Automates workflows</p></li>
-<li><p>Enhances productivity</p></li>
-<li><p>Introduces bias, explainability, control</p></li>
-</ul></li>
+<li>The <strong>generator</strong> tries to create realistic synthetic data (e.g., a fake photograph).</li>
+<li>The <strong>discriminator</strong> tries to distinguish that synthetic data from real examples.</li>
 </ul>
+<p>This mirrors a non-cooperative game in which both players improve iteratively through feedback. Equilibrium is reached when the generator fools the discriminator perfectly — at which point the synthetic output is indistinguishable from real data.</p>
 </section>
-<section id="ai-evolution" class="level4">
-<h4 class="anchored" data-anchor-id="ai-evolution">AI Evolution</h4>
+<section id="the-data-driven-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="the-data-driven-workflow">The Data-Driven Workflow</h3>
+<p>Generative AI development follows a data-driven pipeline. The process begins with diverse datasets — text, images, audio, and more — from which the model iteratively learns patterns during training. <strong>Fine-tuning</strong> then adapts the pretrained foundation model to a specific task or domain using additional labeled data, improving relevance and reliability for industry-specific applications.</p>
+<p>After training and fine-tuning, the model enters <strong>inference</strong> — the stage at which it generates outputs (such as answering a question or completing a sentence) in response to new inputs. These outputs can power applications, APIs, and digital platforms.</p>
+</section>
+<section id="early-ai-and-the-rise-of-chatbots" class="level3">
+<h3 class="anchored" data-anchor-id="early-ai-and-the-rise-of-chatbots">Early AI and the Rise of Chatbots</h3>
+<p>The earliest chatbots (1960s) were rule-based systems relying on predefined keyword responses from expert knowledge bases — ELIZA being the canonical example. These systems were neither scalable nor flexible, failing in open-ended or dynamic conversations.</p>
+<p>The rise of statistical AI in the 1990s introduced machine learning for pattern recognition from labeled text, enabling more adaptive and context-aware text classification. Neural network breakthroughs in the 2010s — particularly deep learning and Recurrent Neural Networks (RNNs) — significantly enhanced language understanding and contextual awareness at the sentence level.</p>
+<p>The pivotal shift came around 2017 with the introduction of the <strong>transformer architecture</strong>: a neural network design that processes sequences using attention mechanisms, enabling context-aware and parallelized language generation. Two foundational concepts underpin transformers:</p>
 <ul>
-<li><p>Early Beginnings: Origins trace back to Pascal’s mechanical calculator (1642) and Ada Lovelace’s work on analytical engines (1837).</p></li>
-<li><p>These inventions paved the way for automated computation and logic-based operations.</p></li>
-<li><p>Modern AI Milestones: Progressed through neural networks, statistical machine learning, and deep learning.</p></li>
-<li><p>Advances in hardware (e.g., GPUs) enabled training of large, complex models.</p></li>
-<li><p>Generative AI Breakthroughs: Tools like GPT-4, DALL·E 2, and Copilot have redefined content creation and automation.</p></li>
-<li><p>Applications span IT helpdesks, creative arts, medical advice, and recipe suggestions.</p></li>
-<li><p>Economic Impact: Generative AI is projected to increase global GDP by 7% and could replace up to 300 million knowledge worker jobs.</p></li>
+<li><span style="background-color: yellow;"><strong>Tokenization</strong></span> — the process of breaking text into tokens (subwords or characters) that serve as inputs for the model. For example, the word “unbelievable” might be split into <code>["un", "believ", "able"]</code>.</li>
+<li><span style="background-color: yellow;"><strong>Attention mechanisms</strong></span> — allow the model to assign different weights to different parts of an input when generating outputs, focusing on the most relevant context regardless of position. This is what allows a model to understand that “bank” means something different in “river bank” vs.&nbsp;“savings bank.”</li>
 </ul>
+<p>These advances powered tools like ChatGPT and Bing Chat (from 2020), capable of multi-turn conversations and creative output.</p>
 </section>
-<section id="inspiration-for-game-theory-in-gen-ai" class="level4">
-<h4 class="anchored" data-anchor-id="inspiration-for-game-theory-in-gen-ai">Inspiration for Game Theory in Gen AI</h4>
+<section id="the-importance-of-gpu-innovation" class="level3">
+<h3 class="anchored" data-anchor-id="the-importance-of-gpu-innovation">The Importance of GPU Innovation</h3>
+<p>A <strong>GPU (Graphics Processing Unit)</strong> is a specialized processor originally designed to accelerate image and video rendering. Unlike a CPU, which handles a wide variety of general tasks sequentially, a GPU is optimized for performing massive numbers of mathematical operations — especially vector and matrix calculations — in parallel.</p>
+<p>This parallel processing capability is exactly what neural network training requires: at each training step, millions of floating-point operations must be performed across the model’s parameters simultaneously. GPUs make this tractable in hours rather than years.</p>
+<p>GPU advancements have been central to the rise of LLMs like GPT-4, enabling faster training at lower cost. Efficient GPU-based architectures now allow even smaller models to run on mobile devices (such as Google’s PaLM 2). More broadly, cheaper and more powerful chips have democratized AI: a wider range of organizations — not just large technology companies — can now build, fine-tune, and deploy models, encouraging open-source participation and innovation at scale.</p>
+</section>
+<section id="open-source-generative-ai-genos" class="level3">
+<h3 class="anchored" data-anchor-id="open-source-generative-ai-genos">Open-Source Generative AI: GenOS</h3>
+<p>The <strong>Generative Open-Source Index (GenOS)</strong> is a comprehensive tracker that ranks and evaluates open-source generative AI projects across modalities and applications. It helps developers, researchers, and organizations discover, compare, and leverage leading open-source tools, encouraging transparency, collaboration, and accessibility in the GenAI ecosystem. Projects are evaluated on GitHub popularity (stars, forks, and issues), recency of updates, community contributions, and technical features.</p>
+<p>GPUs alone do not create value — they require systems to organize, orchestrate, and scale AI capabilities across applications. A <strong>Generative AI Operating System (GenOS)</strong> provides exactly this: a layer that manages foundation models, prompt engineering, data pipelines, safety mechanisms, and deployment. If GPUs are the engines, GenOS is the driver’s dashboard — turning raw compute into usable, business-ready intelligence.</p>
+</section>
+</section>
+<section id="training-methodologies-for-llms" class="level2">
+<h2 class="anchored" data-anchor-id="training-methodologies-for-llms">Training Methodologies for LLMs</h2>
+<section id="data-collection-and-pretraining" class="level3">
+<h3 class="anchored" data-anchor-id="data-collection-and-pretraining">Data Collection and Pretraining</h3>
+<p>Training begins with collecting massive, diverse, high-quality datasets from sources like web text, books, code, and forums. The model then undergoes <strong>pretraining</strong> via unsupervised learning — using objectives such as next-word prediction (causal language modeling, as in GPT) or masked word prediction (as in BERT) — to develop broad language understanding.</p>
+<p>In <strong>masked word prediction</strong>, certain words are hidden and the model learns to recover them from context:</p>
 <ul>
-<li><p>Game Theory inspires Generative AI by modeling competition, cooperation, and strategic decision-making—core elements in adversarial training, multi-agent learning, and safe, interactive AI design like in Generative Adversarial Networks (GANs).</p></li>
-<li><p>In GANs, two players—the generator and the discriminator—compete:</p>
-<ul>
-<li><p>The generator tries to create realistic data.</p></li>
-<li><p>The discriminator tries to distinguish real data from generated (fake) data.</p></li>
-</ul></li>
-<li><p>This dynamic mirrors a non-cooperative game, where both improve over time through feedback.</p></li>
-<li><p>The equilibrium of this game is when the Generator fools the Discriminator perfectly.</p></li>
+<li>Input: “The cat sat on the <code>[MASK]</code>.”</li>
+<li>The model learns to predict: “mat”</li>
 </ul>
+<p>This forces the model to develop deep contextual understanding rather than simply memorizing sequences.</p>
 </section>
-<section id="game-theory-in-gen-ai" class="level4">
-<h4 class="anchored" data-anchor-id="game-theory-in-gen-ai">Game Theory in Gen AI</h4>
+<section id="fine-tuning-supervised-training" class="level3">
+<h3 class="anchored" data-anchor-id="fine-tuning-supervised-training">Fine-Tuning (Supervised Training)</h3>
+<p>After pretraining on broad general data, <strong>fine-tuning</strong> specializes the model by training on smaller, labeled datasets aligned to specific tasks such as summarization, question answering, translation, or sentiment analysis.</p>
+<p>Fine-tuning uses supervised learning — providing input–output pairs (e.g., an article paired with its summary) — and adjusts the pretrained model’s weights slightly rather than retraining from scratch. The key benefit: the model already understands language; fine-tuning teaches it to apply that understanding to a specific job.</p>
+<p>Variants include:</p>
 <ul>
-<li><p>Data-Driven Workflow:</p>
-<ul>
-<li><p>The process starts with diverse datasets (text, image, sound, etc.).</p></li>
-<li><p>Training involves iterative learning of patterns from this data.</p></li>
-<li><p>Fine-tuning further adapts models to specific tasks or domains.</p>
-<ul>
-<li>Fine-Tuning refers to the process of taking a pretrained foundational model and adapting it to a specific task or domain using additional labeled data. Essential for industry-specific applications of Generative AI.</li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="real-world-application-path" class="level4">
-<h4 class="anchored" data-anchor-id="real-world-application-path">Real-World Application Path</h4>
-<ul>
-<li><p>After training and fine-tuning, the model is used for inference—i.e., generating outputs from new inputs.</p>
-<ul>
-<li>Inference refers to the stage where a trained AI model is used to generate outputs (e.g., answering a question, completing a sentence) based on new input.</li>
-</ul></li>
-<li><p>These outputs can power apps, APIs, and digital platforms.</p></li>
+<li><strong>Full fine-tuning</strong> — all parameters are updated (expensive but thorough).</li>
+<li><strong>Parameter-efficient fine-tuning</strong> (e.g., LoRA or adapters) — only a small fraction of parameters change (faster and cheaper; widely used in practice).</li>
 </ul>
 </section>
-<section id="early-ai-chatbots-beginnings" class="level4">
-<h4 class="anchored" data-anchor-id="early-ai-chatbots-beginnings">Early AI: Chatbots Beginnings</h4>
+<section id="reinforcement-learning-with-human-feedback-rlhf" class="level3">
+<h3 class="anchored" data-anchor-id="reinforcement-learning-with-human-feedback-rlhf">Reinforcement Learning with Human Feedback (RLHF)</h3>
+<p><strong>RLHF</strong> is a specialized fine-tuning methodology applied after pretraining (and often after supervised fine-tuning). Human evaluators rate model outputs, rewarding helpful, safe, and aligned responses while discouraging toxic, incoherent, or misleading ones. This feedback loop shapes the model to be more aligned with human values and conversational needs — not merely good at predicting the next token.</p>
+<p>RLHF is the technique behind assistant models like GPT-3.5-turbo and ChatGPT. Without RLHF, a base model trained only on internet text would also learn to reproduce harmful, biased, or incoherent content at the same rate it appeared in training data.</p>
+</section>
+<section id="cross-modal-embeddings" class="level3">
+<h3 class="anchored" data-anchor-id="cross-modal-embeddings">Cross-Modal Embeddings</h3>
+<p><strong>Cross-modal embeddings</strong> are representations in a shared vector space that connect different modalities — text, images, audio, and video — by their semantic meaning. An image of a dog and the word “dog” are mapped close to each other in this space, even though one is pixels and the other is text.</p>
+<p>This enables powerful applications:</p>
 <ul>
-<li><p>1960s Origins: The earliest chatbots were rule-based systems using predefined keyword responses from expert knowledge bases (e.g., ELIZA).</p>
-<ul>
-<li>Not scalable or flexible—responses were rigid and failed in open-ended or dynamic conversations.</li>
-</ul></li>
-<li><p>Rise of Statistical AI (1990s):</p>
-<ul>
-<li><p>Introduced machine learning for <span style="background-color: yellow;">pattern recognition from labeled text.</span></p></li>
-<li><p>Enabled more adaptive and context-aware text classification.</p></li>
-</ul></li>
-<li><p>Neural Networks &amp; NLP Breakthroughs (2010s):</p>
-<ul>
-<li><p>Deep learning and Recurrent Neural Networks (RNNs) enhanced language understanding.</p></li>
-<li><p><span style="background-color: yellow;">Improved contextual awareness in sentence-level processing.</span></p></li>
-</ul></li>
+<li>Search for images using text queries (“golden retriever playing frisbee”).</li>
+<li>Generate captions from images automatically.</li>
+<li>Cross-lingual video search (find a video in English using a French query).</li>
+<li>Multimodal reasoning (answer questions about an image using natural language).</li>
 </ul>
 </section>
-<section id="early-ai-chatbots-beginnings-transformers-llms" class="level4">
-<h4 class="anchored" data-anchor-id="early-ai-chatbots-beginnings-transformers-llms">Early AI: Chatbots Beginnings: Transformers &amp; LLMs:</h4>
-<ul>
-<li><p>The introduction of transformer models (e.g., GPT) revolutionized chatbot capabilities (≈2017).</p>
-<ul>
-<li>Transformer Architecture is a neural network design that allows models to process sequences (like text) with attention mechanisms, enabling context-aware and parallelized language generation.</li>
-</ul></li>
-<li><p>Transformers are based on attention mechanisms that allow models to <span style="background-color: yellow;">give different weights</span> to inputs they receive, giving “more attention” to the most relevant information centered in the text sequence, regardless of the order in which it is placed.</p>
-<ul>
-<li><p><span style="background-color: yellow;">Tokenization</span> is the process of breaking text into tokens (subwords or characters), which are then used as inputs for LLMs to understand and generate language.</p></li>
-<li><p><span style="background-color: yellow;">Attention Mechanisms</span> allow models to focus on the most relevant parts of an input when generating outputs—critical for LLMs and multimodal systems.</p></li>
-</ul></li>
-<li><p>Powered tools like ChatGPT and Bing Chat, capable of multi-turn conversations and creative output (2020).</p></li>
-</ul>
-</section>
-<section id="importance-of-gpu-innovation" class="level4">
-<h4 class="anchored" data-anchor-id="importance-of-gpu-innovation">Importance of GPU Innovation</h4>
-<ul>
-<li>A GPU (Graphics Processing Unit) is a specialized processor designed to accelerate the rendering of images, animations, and video for display on a computer screen. Unlike a CPU (Central Processing Unit), which handles a wide variety of tasks, a GPU is optimized for performing many mathematical operations in parallel—especially those involving vectors and matrices.</li>
-</ul>
-<!-- -->
-<ul>
-<li><p>Enabling Large-Scale Models:</p>
-<ul>
-<li><p>GPU (Graphics Processing Unit) advancements have been critical in enabling the training and deployment of large language models (LLMs) like GPT-4.</p></li>
-<li><p>Faster computation and greater efficiency have made AI more accessible and cost-effective.</p></li>
-</ul></li>
-<li><p>Model Accessibility:</p>
-<ul>
-<li>Even smaller models can now be deployed on mobile devices, thanks to efficient GPU-based architectures (e.g., Google’s Palm Prompt2).</li>
-</ul></li>
-<li><p>Democratization of AI:</p>
-<ul>
-<li><p>Cheaper, more powerful chips allow a broader range of organizations (not just big tech) to build and fine-tune AI models.</p></li>
-<li><p>Encourages open-source participation and innovation at scale.</p></li>
-</ul></li>
-</ul>
-</section>
-<section id="open-source-generative-ai-index-genos" class="level4">
-<h4 class="anchored" data-anchor-id="open-source-generative-ai-index-genos">Open-Source Generative AI Index (GenOS)</h4>
-<ul>
-<li><p>The Generative Open-Source Index (GenOS) is a comprehensive tracker that ranks and evaluates open-source generative AI projects across various modalities and applications.</p>
-<ul>
-<li><p>GenOS helps developers, researchers, and organizations discover, compare, and leverage top-performing open-source GenAI tools.</p></li>
-<li><p>This encourages transparency, collaboration, and accessibility in the generative AI ecosystem.</p></li>
-</ul></li>
-<li><p><span style="background-color: yellow;">Uses Ranking Criteria:</span> The index evaluates projects based on multiple factors including:</p>
-<ul>
-<li><p>GitHub popularity (stars, forks, issues)</p></li>
-<li><p>Recency of updates</p></li>
-<li><p>Community contributions and forks</p></li>
-<li><p>Technical features and use cases</p></li>
-</ul></li>
-</ul>
-</section>
-<section id="connecting-gpus-to-genos" class="level4">
-<h4 class="anchored" data-anchor-id="connecting-gpus-to-genos">Connecting GPU’s to GenOS</h4>
-<ul>
-<li><p>GPUs alone don’t create value — Instead, we need systems that organize, orchestrate, and scale AI capabilities across applications.</p>
-<ul>
-<li>A Generative AI Operating System (GenOS) builds on GPU-enabled model power. It provides the layer that manages foundation models, prompt engineering, data pipelines, safety mechanisms, and deployment — much like how traditional operating systems manage applications and hardware.</li>
-</ul></li>
-<li><p>If GPUs are the engines, then GenOS is the driver’s dashboard and control system — turning raw compute into usable, business-ready intelligence.</p></li>
-</ul>
-</section>
-<section id="training-methodologies-for-llms" class="level4">
-<h4 class="anchored" data-anchor-id="training-methodologies-for-llms">Training Methodologies for LLMs</h4>
-<ul>
-<li><p>Data Collection:</p>
-<ul>
-<li>Training begins with collecting massive, diverse, and high-quality datasets from sources like web text, books, code, and forums to ensure the model learns varied language patterns.</li>
-</ul></li>
-<li><p>Pretraining:</p>
-<ul>
-<li><p>The model undergoes <strong>unsupervised learning</strong> using objectives like next-word prediction (causal language modeling) or masked word prediction (as in BERT), enabling it to learn general language understanding.</p>
-<ul>
-<li><p>Masked word prediction refers to a training technique where certain words in a sentence are intentionally hidden (or “masked”) and the model is trained to predict the missing words based on the surrounding context.</p>
-<ul>
-<li><p>Input to the model: “The cat sat on the <strong>[MASK]</strong>.”</p></li>
-<li><p>The model learns to predict: “mat”</p></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="training-methodologies-for-llms-cont.-fine-tuning-supervised-training" class="level4">
-<h4 class="anchored" data-anchor-id="training-methodologies-for-llms-cont.-fine-tuning-supervised-training">Training Methodologies for LLMs Cont. Fine-Tuning (Supervised Training)</h4>
-<ul>
-<li><p>After a large model is pretrained on broad, general data (often self-supervised), fine-tuning specializes it by training on smaller, labeled datasets.</p></li>
-<li><p>Aligns the pretrained model with specific tasks (e.g., summarization, question answering, translation, sentiment analysis).</p></li>
-<li><p>How it works:</p>
-<ul>
-<li><p>Uses supervised learning: input–output pairs are provided (e.g., an article with its summary).</p></li>
-<li><p>Adjusts the weights of the pretrained model slightly (compared to full retraining).</p></li>
-</ul></li>
-<li><p>Variants:</p>
-<ul>
-<li><p>Full fine-tuning (all parameters updated).</p></li>
-<li><p>Parameter-efficient fine-tuning (e.g., LoRA, adapters), where only a fraction of parameters are updated.</p></li>
-</ul></li>
-<li><p>Benefit: Much cheaper and faster than pretraining from scratch, while tailoring the model to domain or task.</p></li>
-</ul>
-</section>
-<section id="training-methodologies-for-llms-cross-modal-embeddings" class="level4">
-<h4 class="anchored" data-anchor-id="training-methodologies-for-llms-cross-modal-embeddings">Training Methodologies for LLMs Cross-Modal Embeddings</h4>
-<ul>
-<li><p>What they are: Representations in a shared vector space that connect different modalities (like text, images, audio, video) by their semantic meaning.</p></li>
-<li><p>Example:</p>
-<ul>
-<li><p>An image of a dog and the word “dog” map close to each other in the embedding space.</p></li>
-<li><p>Enables searching for images with text queries (“golden retriever playing frisbee”) or generating captions from images.</p></li>
-</ul></li>
-<li><p>Why it matters:</p>
-<ul>
-<li><p>Breaks down the barrier between modalities.</p></li>
-<li><p>Powers applications like multimodal retrieval, captioning, cross-lingual video search, and multimodal reasoning.</p></li>
-</ul></li>
-</ul>
-</section>
-<section id="training-methodologies-for-llms-cont." class="level4">
-<h4 class="anchored" data-anchor-id="training-methodologies-for-llms-cont.">Training Methodologies for LLMs Cont.</h4>
-<ul>
-<li><p>Reinforcement Learning with Human Feedback (RLHF): A feedback loop where human preferences guide the model’s responses—used to make assistant models more aligned, coherent, and safe (e.g., GPT-3.5-turbo, ChatGPT).</p>
-<ul>
-<li><p>RLHF is a specialized fine-tuning methodology that comes after pretraining (and often after supervised fine-tuning). Human feedback is used to adjust the model’s outputs, rewarding “good” responses (helpful, safe, aligned) and discouraging “bad” ones (toxic, incoherent, misleading).</p></li>
-<li><p>The goal is to make models more aligned with human values and conversational needs, not just good at predicting the next token.</p></li>
-</ul></li>
-</ul>
-</section>
-<section id="in-what-ways-do-llms-handle-unstructured-messy-web-data-differently-than-traditional-rule-based-systems" class="level4">
-<h4 class="anchored" data-anchor-id="in-what-ways-do-llms-handle-unstructured-messy-web-data-differently-than-traditional-rule-based-systems">In what ways do LLMs handle unstructured, messy web data differently than traditional rule-based systems?</h4>
+<section id="llms-vs.-rule-based-systems" class="level3">
+<h3 class="anchored" data-anchor-id="llms-vs.-rule-based-systems">LLMs vs.&nbsp;Rule-Based Systems</h3>
+<p>A key question in deploying LLMs is how they handle unstructured, messy web data differently than traditional rule-based systems.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/LLM_vs_Rule.png" class="img-fluid figure-img"></p>
@@ -506,30 +414,20 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </section>
-<section id="prompting-using-gen-ai" class="level3">
-<h3 class="anchored" data-anchor-id="prompting-using-gen-ai">Prompting Using Gen AI</h3>
-<section id="for-extra-information-review-oreilly-video-on-prompt-engineering-httpslearning.oreilly.comvideosprompt-engineering97818358815219781835881521-video1_1" class="level6">
-<h6 class="anchored" data-anchor-id="for-extra-information-review-oreilly-video-on-prompt-engineering-httpslearning.oreilly.comvideosprompt-engineering97818358815219781835881521-video1_1"><strong><em>F</em>or extra information review O’Reilly Video on Prompt Engineering: <a href="#0">https://learning.oreilly.com/videos/prompt-engineering/9781835881521/9781835881521-video1_1/</a></strong></h6>
 </section>
-<section id="rlhf-vs-prompt-engineering" class="level4">
-<h4 class="anchored" data-anchor-id="rlhf-vs-prompt-engineering">RLHF vs Prompt Engineering</h4>
+<section id="prompting-and-prompt-engineering" class="level2">
+<h2 class="anchored" data-anchor-id="prompting-and-prompt-engineering">Prompting and Prompt Engineering</h2>
+<div class="note">
+<p>For additional information, review the O’Reilly Video on Prompt Engineering: <a href="https://learning.oreilly.com/videos/prompt-engineering/9781835881521/9781835881521-video1_1/" class="uri">https://learning.oreilly.com/videos/prompt-engineering/9781835881521/9781835881521-video1_1/</a></p>
+</div>
+<section id="rlhf-vs.-prompt-engineering" class="level3">
+<h3 class="anchored" data-anchor-id="rlhf-vs.-prompt-engineering">RLHF vs.&nbsp;Prompt Engineering</h3>
+<p>RLHF and prompt engineering operate at different layers of the AI stack:</p>
 <ul>
-<li>Prompt engineering builds on RLHF: Once the model has been aligned with RLHF, prompt engineering is how users leverage that alignment in real-world queries.</li>
+<li><strong>RLHF</strong> is part of model training — it shapes how a model responds by making it more instruction-following and aligned with human intent. It happens before the model is deployed.</li>
+<li><strong>Prompt engineering</strong> is how users leverage that alignment in real-world queries, after the model has already been trained.</li>
 </ul>
-<!-- -->
-<ul>
-<li><p>RLHF is part of model training and fine tuning: It shapes the foundation of how the model responds to prompts by making it more “instruction-following” and aligned.</p>
-<ul>
-<li>RLHF = tuning the car’s steering system so it follows directions well.</li>
-</ul></li>
-<li><p>Prompt engineering builds on RLHF: Once the model has been aligned with RLHF, prompt engineering is how users leverage that alignment in real-world queries.</p>
-<ul>
-<li>Prompt engineering = how you, the driver, actually steer it with the wheel.</li>
-</ul></li>
-</ul>
-</section>
-<section id="prompt-engineering-for-model-customization" class="level4">
-<h4 class="anchored" data-anchor-id="prompt-engineering-for-model-customization"><strong>Prompt Engineering for Model Customization</strong></h4>
+<p>Using a driving analogy: RLHF tunes the car’s steering system so it follows directions well; prompt engineering is how the driver actually steers with the wheel.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/prompt_engineering.png" class="img-fluid figure-img"></p>
@@ -537,55 +435,40 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </section>
-<section id="prompt-engineering" class="level4">
-<h4 class="anchored" data-anchor-id="prompt-engineering">Prompt Engineering</h4>
-<ul>
-<li><p>A well-crafted prompt can function like a “program” for the LLM, guiding it to generate structured outputs, perform reasoning, or simulate specific roles.</p></li>
-<li><p>Prompt Engineering is the art and science of crafting inputs to get desired outputs from AI systems</p>
-<ul>
-<li><p>Core idea: “Garbage in, garbage out”</p></li>
-<li><p>Crucial for improving reliability, tone, and relevance of LLM responses</p></li>
-</ul></li>
-</ul>
+<section id="prompt-engineering" class="level3">
+<h3 class="anchored" data-anchor-id="prompt-engineering">Prompt Engineering</h3>
+<p><strong>Prompt engineering</strong> is the art and science of crafting inputs to elicit desired outputs from AI systems. A well-crafted prompt can function like a program for an LLM — guiding it to generate structured outputs, perform multi-step reasoning, or simulate a specific role.</p>
+<p>The core principle is <strong>“garbage in, garbage out”</strong>: the quality of the prompt directly determines the reliability, tone, and relevance of the model’s response. A vague prompt produces a vague answer; a specific, well-structured prompt produces a specific, useful answer.</p>
 </section>
-<section id="prompting-paradigm" class="level4">
-<h4 class="anchored" data-anchor-id="prompting-paradigm">Prompting Paradigm</h4>
-<ul>
-<li><p>Prompting Paradigm refers to the method of adapting LLMs through natural language instructions rather than retraining.</p>
-<ul>
-<li><p>Base models, such as GPT-3 or LLaMA-2, are pretrained on massive amounts of text data. This pretraining allows them to perform a wide variety of general tasks just from prompting.</p></li>
-<li><p>Assistant models, like ChatGPT or Claude, take this a step further. They are fine-tuned using Reinforcement Learning with Human Feedback. That means humans guide the model by rewarding helpful responses and discouraging unhelpful ones, shaping it to respond in a more conversational and task-specific way.</p></li>
-</ul></li>
-<li><p>Why it matters</p>
-<ul>
-<li><p>Prompts shape how LLMs behave</p></li>
-<li><p>Better prompts = better outcomes</p></li>
-<li><p>Useful across industries</p></li>
-</ul></li>
-</ul>
 </section>
-<section id="understanding-the-prompting-paradigm" class="level4">
-<h4 class="anchored" data-anchor-id="understanding-the-prompting-paradigm">Understanding the Prompting Paradigm</h4>
+<section id="the-prompting-paradigm" class="level2">
+<h2 class="anchored" data-anchor-id="the-prompting-paradigm">The Prompting Paradigm</h2>
+<p>The <strong>prompting paradigm</strong> refers to the method of adapting LLMs through natural language instructions rather than retraining. This is a fundamentally new way of programming:</p>
 <ul>
-<li><p>Prompting is foundational to in-context learning, where the model draws on prompt examples to infer new tasks dynamically.</p>
-<ul>
-<li><p>Chain of Thought refers to a prompting strategy where the model is encouraged to generate step-by-step reasoning before arriving at a conclusion, improving accuracy in logic-based tasks.</p></li>
-<li><p>Few-Shot In-Context Learning refers to the ability of LLMs to learn patterns or tasks at inference time based solely on the context provided in a prompt, without requiring additional model training.</p></li>
-</ul></li>
-<li><p>Prompting is increasingly used as an interface layer between users and LLMs—minimizing the need for retraining while enabling flexible task execution.</p></li>
+<li><strong>Base models</strong> (such as GPT-3 or LLaMA-2), pretrained on massive text corpora, can perform a wide variety of tasks from prompting alone — no fine-tuning required.</li>
+<li><strong>Assistant models</strong> (such as ChatGPT or Claude) take this further: they are fine-tuned using RLHF, shaping the model to respond in a more conversational and task-specific way.</li>
 </ul>
+<p>Better prompts consistently produce better outcomes across virtually every industry and use case.</p>
+<section id="in-context-learning" class="level3">
+<h3 class="anchored" data-anchor-id="in-context-learning">In-Context Learning</h3>
+<p>Prompting is foundational to <strong>in-context learning</strong>, where the model draws on examples provided directly in the prompt to infer new tasks dynamically — without any additional training. Two key strategies build on this:</p>
+<ul>
+<li><span style="background-color: yellow;"><strong>Chain-of-thought prompting</strong></span> — encourages the model to generate step-by-step reasoning before arriving at a conclusion. <em>Example: “Think through this step by step before answering: if a train travels at 60 mph for 2.5 hours…”</em> This significantly improves accuracy on logic, math, and multi-step reasoning tasks.</li>
+<li><span style="background-color: yellow;"><strong>Few-shot in-context learning</strong></span> — provides a small number of input–output examples directly in the prompt, enabling the model to infer the target pattern without retraining. <em>Example: providing three labeled sentiment examples before asking the model to classify a fourth.</em></li>
+</ul>
+<p>Prompting is increasingly used as an interface layer between users and LLMs, minimizing the need for expensive retraining while enabling flexible task execution.</p>
 </section>
-<section id="prompt-types" class="level4">
-<h4 class="anchored" data-anchor-id="prompt-types">Prompt Types</h4>
+<section id="prompt-types" class="level3">
+<h3 class="anchored" data-anchor-id="prompt-types">Prompt Types</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/prompt_types.png" class="img-fluid figure-img"></p>
-<figcaption>Prompt Type</figcaption>
+<figcaption>Prompt Types</figcaption>
 </figure>
 </div>
 </section>
-<section id="prompt-engineering-iterations-and-patterns" class="level4">
-<h4 class="anchored" data-anchor-id="prompt-engineering-iterations-and-patterns">Prompt Engineering Iterations and Patterns</h4>
+<section id="prompt-engineering-iterations-and-patterns" class="level3">
+<h3 class="anchored" data-anchor-id="prompt-engineering-iterations-and-patterns">Prompt Engineering Iterations and Patterns</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/prompt_iteration.png" class="img-fluid figure-img"></p>
@@ -593,8 +476,8 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </section>
-<section id="principles-of-prompting" class="level4">
-<h4 class="anchored" data-anchor-id="principles-of-prompting"><strong>Principles of Prompting</strong></h4>
+<section id="principles-of-prompting" class="level3">
+<h3 class="anchored" data-anchor-id="principles-of-prompting">Principles of Prompting</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/principles_of_prompting.png" class="img-fluid figure-img"></p>
@@ -602,80 +485,58 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </section>
-<section id="split-complex-tasks-into-subtasks" class="level4">
-<h4 class="anchored" data-anchor-id="split-complex-tasks-into-subtasks"><strong>Split Complex Tasks into Subtasks</strong></h4>
-<ul>
-<li><p><strong>Meta Prompt</strong><br>
-You are an AI assistant that explains prompting paradigms, specifically: <strong>instructional, role-based, chain-of-thought, few-shot, and zero-shot.</strong><br>
-Follow these steps:</p>
-<ol type="1">
-<li><p>Identify which prompting paradigm is relevant to the user’s request.</p></li>
-<li><p>Explain the purpose of that paradigm and how it improves responses.</p></li>
-<li><p>Provide a short illustrative example showing the paradigm in action.</p></li>
-<li><p>If asked, find an article related to prompting and summarize it concisely in 3–4 sentences.</p></li>
-</ol></li>
-<li><p><strong>User</strong><br>
-Can you find an article about the chain-of-thought prompting paradigm and summarize it in 3 sentences with a reference link?</p></li>
-<li><p><strong>Answer</strong><br>
-I found the article “Chain-of-Thought Prompting Elicits Reasoning in Large Language Models” by Google Research. The paper introduces chain-of-thought prompting as a method where models generate intermediate reasoning steps before producing a final answer, which greatly improves performance on arithmetic, commonsense, and symbolic reasoning tasks. It demonstrates that this method is especially powerful when combined with large models, as reasoning accuracy scales with model size.</p></li>
-<li><p>📖 Reference: Wei, J. et al.&nbsp;(2022). Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. <a href="https://arxiv.org/abs/2201.11903" class="uri">https://arxiv.org/abs/2201.11903</a></p></li>
-</ul>
+<section id="splitting-complex-tasks-into-subtasks" class="level3">
+<h3 class="anchored" data-anchor-id="splitting-complex-tasks-into-subtasks">Splitting Complex Tasks into Subtasks</h3>
+<p>One of the most effective prompting strategies is decomposing a complex request into a sequence of subtasks using a <strong>meta prompt</strong> — a system-level instruction that defines the AI’s role and the steps it should follow.</p>
+<p><strong>Meta prompt:</strong></p>
+<blockquote class="blockquote">
+<p>You are an AI assistant that explains prompting paradigms, specifically: instructional, role-based, chain-of-thought, few-shot, and zero-shot. Follow these steps: 1. Identify which prompting paradigm is relevant to the user’s request. 2. Explain the purpose of that paradigm and how it improves responses. 3. Provide a short illustrative example showing the paradigm in action. 4. If asked, find a related article and summarize it concisely in 3–4 sentences.</p>
+</blockquote>
+<p><strong>User:</strong> Can you find an article about the chain-of-thought prompting paradigm and summarize it in 3 sentences with a reference link?</p>
+<p><strong>Answer:</strong> I found the article “Chain-of-Thought Prompting Elicits Reasoning in Large Language Models” by Google Research. The paper introduces chain-of-thought prompting as a method where models generate intermediate reasoning steps before producing a final answer, which greatly improves performance on arithmetic, commonsense, and symbolic reasoning tasks. It demonstrates that this method is especially powerful when combined with large models, as reasoning accuracy scales with model size.</p>
+<p><strong>Reference:</strong> Wei, J. et al.&nbsp;(2022). Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. <a href="https://arxiv.org/abs/2201.11903" class="uri">https://arxiv.org/abs/2201.11903</a></p>
 </section>
-<section id="prompt-the-model-to-give-an-explanation" class="level4">
-<h4 class="anchored" data-anchor-id="prompt-the-model-to-give-an-explanation">Prompt the Model to Give an Explanation</h4>
-<ul>
-<li><p>Meta prompt</p>
-<ul>
-<li>You are a Dash expert that helps users build interactive dashboards in Python. You extract the necessary context from the user’s request and provide both natural-language explanations and code examples. ALWAYS explain what each part of the code is doing so the user understands how the app works. Take note that app.run_server is deprecated.</li>
-</ul></li>
-<li><p>User</p>
-<ul>
-<li>Can you make a dashboard that shows the top 3 countries by sales revenue in a bar chart?</li>
-</ul></li>
-<li><p>Answer</p>
-<ul>
-<li>Here’s a simple Dash app that displays the top 3 countries by sales revenue in a bar chart. To achieve this, I first created a small pandas DataFrame with sample data for countries and sales revenue. Then I sorted it and selected the top 3 entries. Finally, I built a bar chart using Plotly Express and served it in a Dash layout.</li>
-</ul></li>
-<li><p>**Provides code to include in python</p></li>
-</ul>
+<section id="prompting-the-model-to-give-an-explanation" class="level3">
+<h3 class="anchored" data-anchor-id="prompting-the-model-to-give-an-explanation">Prompting the Model to Give an Explanation</h3>
+<p>This example shows how a <strong>role-based meta prompt</strong> shapes the model’s output style — instructing it to always explain code, not just produce it.</p>
+<p><strong>Meta prompt:</strong></p>
+<blockquote class="blockquote">
+<p>You are a Dash expert that helps users build interactive dashboards in Python. Extract the necessary context from the user’s request and provide both natural-language explanations and code examples. Always explain what each part of the code is doing so the user understands how the app works. Note that <code>app.run_server</code> is deprecated — use <code>app.run</code> instead.</p>
+</blockquote>
+<p><strong>User:</strong> Can you make a dashboard that shows the top 3 countries by sales revenue in a bar chart?</p>
+<p><strong>Answer:</strong> Here’s a simple Dash app that displays the top 3 countries by sales revenue in a bar chart. I first created a small pandas DataFrame with sample data for countries and sales revenue. Then I sorted it and selected the top 3 entries. Finally, I built a bar chart using Plotly Express and served it in a Dash layout. <em>(Code provided separately in the accompanying notebook.)</em></p>
 </section>
-<section id="ask-for-justification" class="level4">
-<h4 class="anchored" data-anchor-id="ask-for-justification">Ask for Justification</h4>
-<ul>
-<li><p>Meta prompt</p>
-<p>You are an AI assistant that decides whether a passage demonstrates statistical reasoning by its authors. Classify the passage as one of: Used statistical reasoning, No statistical reasoning, or Unclear. ALWAYS provide a justification that identifies the specific features in the passage that support your decision. Cite the exact part(s) of the passage where the sample size and treatment effect are stated.</p></li>
-<li><p>User</p>
-<p>Read the following passage and decide whether the authors used statistical reasoning. Justify your answer with evidence from the passage, and include citations to the text where the sample size and treatment effect are reported: “In a randomized controlled trial with 240 participants, the treatment group’s recovery rate was 12% higher than control (95% CI: 4%–20%, p = 0.01).”</p></li>
-<li><p>Answer</p>
-<p>Decision: Used statistical reasoning.<br>
-Justification: The passage demonstrates statistical reasoning by referencing an experimental design (“randomized controlled trial”), providing a sample size (“240 participants”), reporting a quantified treatment effect (“12% higher than control”), and presenting inferential measures (“95% CI: 4%–20%, p = 0.01”). Together, these show systematic use of statistics to draw conclusions.</p></li>
-</ul>
+<section id="asking-for-justification" class="level3">
+<h3 class="anchored" data-anchor-id="asking-for-justification">Asking for Justification</h3>
+<p>This example uses a <strong>classification prompt with mandatory justification</strong> — a pattern useful whenever you need traceable, evidence-based AI decisions rather than bare labels.</p>
+<p><strong>Meta prompt:</strong></p>
+<blockquote class="blockquote">
+<p>You are an AI assistant that decides whether a passage demonstrates statistical reasoning. Classify the passage as one of: <em>Used statistical reasoning</em>, <em>No statistical reasoning</em>, or <em>Unclear</em>. Always provide a justification that identifies specific features in the passage supporting your decision. Cite the exact parts where sample size and treatment effect are stated.</p>
+</blockquote>
+<p><strong>User:</strong> <em>“In a randomized controlled trial with 240 participants, the treatment group’s recovery rate was 12% higher than control (95% CI: 4%–20%, p = 0.01).”</em></p>
+<p><strong>Answer:</strong><br>
+Decision: Used statistical reasoning.<br>
+Justification: The passage references an experimental design (“randomized controlled trial”), a sample size (“240 participants”), a quantified treatment effect (“12% higher than control”), and inferential measures (“95% CI: 4%–20%, p = 0.01”). Together these confirm systematic use of statistics to draw conclusions.</p>
 </section>
-<section id="continuing-with-an-unclear-example" class="level4">
-<h4 class="anchored" data-anchor-id="continuing-with-an-unclear-example">Continuing with an Unclear Example</h4>
-<ul>
-<li><p>User<br>
-Read the following passage and decide whether the authors used statistical reasoning. Justify your answer with evidence from the passage, and include citations (or explain their absence) for the sample size and treatment effect: “The treatment group recovered more often than the control group.”</p></li>
-<li><p>Answer<br>
+<section id="continuing-with-an-unclear-example" class="level3">
+<h3 class="anchored" data-anchor-id="continuing-with-an-unclear-example">Continuing with an Unclear Example</h3>
+<p><strong>User:</strong> <em>“The treatment group recovered more often than the control group.”</em></p>
+<p><strong>Answer:</strong><br>
 Decision: Unclear.<br>
-Justification: The passage makes a comparative statement (“recovered more often”), but it does not include statistical details such as the sample size (not provided) or the magnitude of the treatment effect (not quantified). Without these, it is impossible to confirm whether statistical reasoning was applied; the authors only make a descriptive claim rather than presenting inferential evidence.</p></li>
-</ul>
+Justification: The passage makes a comparative statement (“recovered more often”) but provides no statistical details — neither sample size nor effect magnitude is given. Without these, it is impossible to confirm whether statistical reasoning was applied; the authors make only a descriptive claim rather than presenting inferential evidence.</p>
 </section>
-<section id="llm-hallucinations" class="level4">
-<h4 class="anchored" data-anchor-id="llm-hallucinations">LLM Hallucinations</h4>
-<ul>
-<li><p>LLM Hallucinations refer to situations where the model generates plausible but false or fabricated content, often due to gaps in training data or the probabilistic nature of text prediction.</p>
-<ul>
-<li><p>Prompt from lawyer: “Can you provide legal cases where the U.S. Supreme Court ruled that AI-generated evidence is inadmissible in court?“</p></li>
-<li><p>ChatGPT: “Yes. In the case of Smith v. United States, 2022, the Supreme Court ruled that evidence generated by an AI system without human oversight was inadmissible, citing concerns over transparency and accountability.“</p>
-<ul>
-<li>There is no case called Smith v. United States (2022) that involves AI-generated evidence. The model fabricated a plausible-sounding court case based on the prompt. It may even invent quotes or legal reasoning that sound real but do not exist in any official ruling.</li>
-</ul></li>
-</ul></li>
-</ul>
 </section>
-<section id="reduce-hallucination-with-prompt-engineering" class="level4">
-<h4 class="anchored" data-anchor-id="reduce-hallucination-with-prompt-engineering"><strong>Reduce Hallucination with Prompt Engineering</strong></h4>
+<section id="llm-hallucinations" class="level2">
+<h2 class="anchored" data-anchor-id="llm-hallucinations">LLM Hallucinations</h2>
+<p><strong>LLM hallucinations</strong> occur when a model generates plausible-sounding but false or fabricated content, typically due to gaps in training data or the probabilistic nature of text prediction. The model does not “know” it is wrong — it produces the most statistically likely continuation of the prompt, which can be entirely fictitious.</p>
+<p>The following example illustrates the risk in a high-stakes professional context:</p>
+<p><strong>Prompt (from a lawyer):</strong> “Can you provide legal cases where the U.S. Supreme Court ruled that AI-generated evidence is inadmissible in court?”</p>
+<p><strong>ChatGPT:</strong> “Yes. In the case of <em>Smith v. United States</em>, 2022, the Supreme Court ruled that evidence generated by an AI system without human oversight was inadmissible, citing concerns over transparency and accountability.”</p>
+<div class="note">
+<p>No such case exists. The model fabricated a plausible-sounding court ruling — including the case name, year, and legal reasoning — none of which appear in any official court record. This type of hallucination has led to real disciplinary proceedings against lawyers who submitted AI-fabricated citations to courts.</p>
+</div>
+<section id="reducing-hallucination-with-prompt-engineering" class="level3">
+<h3 class="anchored" data-anchor-id="reducing-hallucination-with-prompt-engineering">Reducing Hallucination with Prompt Engineering</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/reducing_hallucination.png" class="img-fluid figure-img"></p>
@@ -683,78 +544,62 @@ Justification: The passage makes a comparative statement (“recovered more ofte
 </figure>
 </div>
 </section>
-<section id="spotting-hallucinations" class="level4">
-<h4 class="anchored" data-anchor-id="spotting-hallucinations">Spotting Hallucinations</h4>
+<section id="spotting-hallucinations" class="level3">
+<h3 class="anchored" data-anchor-id="spotting-hallucinations">Spotting Hallucinations</h3>
+<p>Hallucinations are factually incorrect responses delivered with unwarranted confidence. Watch for these warning signs:</p>
 <ul>
-<li><p>Hallucinations are confident but <span style="background-color: yellow;">factually incorrect</span> responses generated by LLMs. To spot them look for These Red Flags:</p>
-<ul>
-<li><p>Too specific without source: “The GDP of Argentina in Q3 2023 was exactly $347.2 billion” (without citation).</p></li>
-<li><p>Invented sources or references: Fake articles, court cases, or journal titles.</p></li>
-<li><p>Contradictions or inconsistencies within a response.</p></li>
-<li><p>Overly confident language in uncertain or speculative topics: “This is definitely true.”</p></li>
-<li><p>Missing common sense: “The Eiffel Tower is 1,200 miles tall.”</p></li>
-</ul></li>
+<li><span style="background-color: yellow;"><strong>Unverified specificity</strong></span> — highly precise claims without a cited source (e.g., “The GDP of Argentina in Q3 2023 was exactly $347.2 billion”).</li>
+<li><span style="background-color: yellow;"><strong>Invented sources</strong></span> — fake articles, court cases, or journal titles that do not exist. Always verify citations independently.</li>
+<li><span style="background-color: yellow;"><strong>Internal contradictions</strong></span> — statements within the same response that conflict with each other.</li>
+<li><span style="background-color: yellow;"><strong>Overconfident language</strong></span> — definitive framing on uncertain or speculative topics (“This is definitely true,” “There is no doubt that…”).</li>
+<li><span style="background-color: yellow;"><strong>Failures of common sense</strong></span> — physically or logically impossible claims (e.g., “The Eiffel Tower is 1,200 miles tall”).</li>
 </ul>
 </section>
-<section id="why-prompting-doesnt-guarantee-generative-ai-is-good-at-math" class="level4">
-<h4 class="anchored" data-anchor-id="why-prompting-doesnt-guarantee-generative-ai-is-good-at-math">Why Prompting Doesn’t Guarantee Generative AI Is Good at Math</h4>
+<section id="why-prompting-does-not-guarantee-mathematical-accuracy" class="level3">
+<h3 class="anchored" data-anchor-id="why-prompting-does-not-guarantee-mathematical-accuracy">Why Prompting Does Not Guarantee Mathematical Accuracy</h3>
+<p>Even a well-crafted prompt cannot make a generative AI model reliably solve mathematical problems. The root cause is fundamental: LLMs predict language — they do not compute logic. When a model writes <code>2 + 2 = 4</code>, it is not calculating; it is recognizing that this string frequently follows arithmetic prompts in training data.</p>
+<p>Consequences:</p>
 <ul>
-<li><p>Even if you give a well-crafted prompt, that doesn’t mean generative AI will solve math problems correctly.</p>
-<ul>
-<li><p>Generative AI can imitate math, but it doesn’t understand it.</p></li>
-<li><p>Fluency does not necessarily equal Accuracy</p></li>
-<li><p>LLMs Predict Language, Not Compute Logic</p></li>
-</ul></li>
-<li><p>LLMs Lack Internal Verification</p>
-<ul>
-<li><p>LLMs don’t check their answers unless explicitly prompted to do so.</p></li>
-<li><p>Unlike specific math engines, they don’t “know” math rules—they approximate them from training examples.</p></li>
-</ul></li>
-<li><p>Errors Increase with Complexity</p></li>
+<li>Fluency in expressing mathematical notation does not equate to mathematical accuracy.</li>
+<li>LLMs approximate math rules from training examples rather than applying verified algorithms.</li>
+<li>They do not self-check answers unless explicitly prompted with “verify your work step by step.”</li>
+<li>Errors compound as problem complexity increases — a small mistake in step 2 cascades through all subsequent steps.</li>
 </ul>
+<p>For reliable computation, use a proper calculator, Python, or a tool-augmented LLM that can call a code interpreter.</p>
 </section>
-<section id="give-ai-a-prompt-evaluation-rubric" class="level4">
-<h4 class="anchored" data-anchor-id="give-ai-a-prompt-evaluation-rubric">Give AI a Prompt Evaluation Rubric</h4>
+<section id="using-a-prompt-evaluation-rubric" class="level3">
+<h3 class="anchored" data-anchor-id="using-a-prompt-evaluation-rubric">Using a Prompt Evaluation Rubric</h3>
+<p>A structured evaluation rubric helps assess prompt quality and model output consistency before deploying prompts in production workflows.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/evaluation_rubric.png" class="img-fluid figure-img"></p>
-<figcaption>Evaluation_Rubric</figcaption>
+<figcaption>Evaluation Rubric</figcaption>
 </figure>
 </div>
 </section>
-<section id="paths-forward-in-generative-ai" class="level4">
-<h4 class="anchored" data-anchor-id="paths-forward-in-generative-ai">Paths Forward in Generative AI</h4>
+</section>
+<section id="paths-forward-in-generative-ai" class="level2">
+<h2 class="anchored" data-anchor-id="paths-forward-in-generative-ai">Paths Forward in Generative AI</h2>
+<p>Several directions are shaping the responsible evolution of generative AI:</p>
 <ul>
-<li><p>Fine-Tuning &amp; Domain Adaptation:</p>
-<ul>
-<li>Tailoring general models to specific industry or task domains by training it on labeled datasets to improve relevance and reliability.</li>
-</ul></li>
-<li><p>Hybrid Approaches:</p>
-<ul>
-<li>Combining symbolic AI (rules-based) with generative models may boost explainability and control.</li>
-</ul></li>
-<li><p>Regulation &amp; Ethical Frameworks:</p>
-<ul>
-<li>Encouraging responsible use through AI governance, transparency, and auditable AI practices.</li>
-</ul></li>
-<li><p>Open Collaboration:</p>
-<ul>
-<li>Continued progress through open-source communities, academic-industry partnerships, and shared benchmarks.</li>
-</ul></li>
+<li><span style="background-color: yellow;"><strong>Fine-tuning and domain adaptation</strong></span> — tailoring general-purpose models to specific industries or tasks using labeled datasets to improve relevance and reliability (e.g., a medical LLM fine-tuned on clinical notes).</li>
+<li><span style="background-color: yellow;"><strong>Hybrid approaches</strong></span> — combining symbolic (rules-based) AI with generative models to improve explainability and control over outputs.</li>
+<li><span style="background-color: yellow;"><strong>Regulation and ethical frameworks</strong></span> — encouraging responsible use through AI governance, transparency requirements, and auditable AI practices (e.g., the EU AI Act).</li>
+<li><span style="background-color: yellow;"><strong>Open collaboration</strong></span> — advancing progress through open-source communities, academic-industry partnerships, and shared benchmarks that allow independent evaluation of model claims.</li>
 </ul>
 </section>
-<section id="food-for-thought" class="level4">
-<h4 class="anchored" data-anchor-id="food-for-thought">Food for Thought</h4>
-<div class="note">
-<p>Reference:</p>
-<p>Harvard Business Review. (2025, August). Beware the AI Experimentation Trap. Retrieved from https://hbr.org/2025/08/beware-the-ai-experimentation-trap</p>
-</div>
-<ul>
-<li>Recent evidence from the MIT Media Lab’s Project NANDA report indicates that 95% of generative AI investments have yet to produce measurable returns, reflecting a growing skepticism about AI’s real-world impact. Gartner’s latest Hype Cycle places generative AI in the “trough of disillusionment,” while early reactions to OpenAI’s GPT-5 have further tempered expectations—signaling a broader shift from hype to pragmatic reassessment of AI’s business value.</li>
-</ul>
-
-
+<section id="food-for-thought" class="level2">
+<h2 class="anchored" data-anchor-id="food-for-thought">Food for Thought</h2>
+<section id="reference-1" class="level6 note">
+<h6 class="anchored" data-anchor-id="reference-1"><em>Reference:</em></h6>
+<p>Harvard Business Review. (2025, August). Beware the AI Experimentation Trap. Retrieved from <a href="https://hbr.org/2025/08/beware-the-ai-experimentation-trap" class="uri">https://hbr.org/2025/08/beware-the-ai-experimentation-trap</a></p>
 </section>
+<p>Recent evidence from the MIT Media Lab’s Project NANDA report indicates that 95% of generative AI investments have yet to produce measurable returns, reflecting growing skepticism about AI’s real-world impact. Gartner’s latest Hype Cycle places generative AI in the “trough of disillusionment,” and early reactions to OpenAI’s GPT-5 have further tempered expectations — signaling a broader shift from hype to pragmatic reassessment of AI’s business value.</p>
+<blockquote class="blockquote">
+<p><strong>Discussion:</strong> What would it take for an organization to move a generative AI pilot from experimentation to measurable business return? What metrics would you use to evaluate success?</p>
+</blockquote>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -1185,8 +1030,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ethics.html" class="pagination-link" aria-label="AI &amp; Data Ethics">
-        <span class="nav-page-text"><span class="chapter-title">AI &amp; Data Ethics</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ethics.html" class="pagination-link" aria-label="AI and Data Ethics">
+        <span class="nav-page-text"><span class="chapter-title">AI and Data Ethics</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

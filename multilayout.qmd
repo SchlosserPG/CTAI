@@ -1,448 +1,315 @@
 ---
 title: "Creating a Grid Layout in Dash"
 format: html
-runtime: python
+engine: knitr
 execute:
   eval: false
+  python:
+    executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
-* This section demonstrates how to create grid-based layouts in Dash using Dash Bootstrap Components (dbc) to make dashboards organized, responsive, and professional. It begins by contrasting Dash’s default vertical stacking of components with the flexible row-and-column grid system provided by Bootstrap. Students learn to use dbc.Row() and dbc.Col() to arrange content horizontally, apply embedded styles or external themes, and control spacing and responsiveness.The lesson then builds a full multi-column dashboard that integrates real-world data from the Open-Meteo API. Using the requests and pandas libraries, students fetch 48-hour temperature forecasts for selected Virginia cities and visualize them with Plotly Express. Bootstrap cards are used to display key metrics (current, min, and max temperature), a line chart, and a dynamic summary table—all arranged neatly within a responsive layout. By the end, students understand how to combine layout design, API integration, and callback interactivity to produce multi-section Dash applications that look clean, adapt to screen size, and display live data through structured and reusable components.
+This section demonstrates how to create grid-based layouts in Dash using **Dash Bootstrap Components (dbc)** to make dashboards organized, responsive, and professional. It begins by contrasting Dash's default vertical stacking of components with the flexible row-and-column grid system provided by Bootstrap. Students learn to use `dbc.Row()` and `dbc.Col()` to arrange content horizontally, apply embedded styles or external themes, and control spacing and responsiveness. The lesson then builds a full multi-column dashboard integrating real-world data from the **Open-Meteo API**. Using the `requests` and `pandas` libraries, students fetch 48-hour temperature forecasts for selected Virginia cities and visualize them with Plotly Express. Bootstrap cards display key metrics — current, minimum, and maximum temperature — alongside a line chart and a dynamic summary table, all arranged within a responsive grid.
 
-#### Dash Layout Structure
+## Dash Layout and Bootstrap
 
--   Dash Default Structure
+### Default vs. Grid Layouts
 
+By default, Dash stacks components **vertically** (top to bottom) when you place them inside an `html.Div()` without any grid or flex styling:
+
+```         
 Component 1
-
-```         
-↓
-```
-
+    ↓
 Component 2
-
-```         
-↓
+    ↓
+Component 3
 ```
 
-Component 3
+This is useful for dashboards where content is consumed in a specific order (filters → charts → details). For side-by-side layouts, you need a grid system:
 
--   What if used this horizontal layout?
+```         
+Component 1 | Component 2 | Component 3
+```
 
-Component 1 →Component 2 → Component 3
+### What Is Bootstrap?
 
--   Components are stacked vertically (top to bottom).
+**Bootstrap** is a popular front-end framework that provides a responsive grid layout, prebuilt UI components, and utility classes. **Dash Bootstrap Components** (`dash-bootstrap-components`, imported as `dbc`) makes Bootstrap available inside Dash apps.
 
-    -   Useful for dashboards where content is consumed in a specific order (e.g., filters → charts → details).
+Bootstrap's grid system is built on **12 equal units per row**. You control each column's width with `md=N`, where `N` is the number of units that column occupies:
 
-    -   In Dash, this happens naturally when placing components inside an html.Div() without specifying a grid or flex layout.
+| `md=` value | Width                   | Common use                            |
+|------------------------|------------------------|------------------------|
+| `md=12`     | Full width (100%)       | Title rows, footers                   |
+| `md=6`      | Half width (50%)        | Two equal columns                     |
+| `md=4`      | One-third width (33%)   | Three equal columns (e.g., KPI cards) |
+| `md=3`      | One-quarter width (25%) | Narrow sidebars                       |
 
-    -   Example: A dropdown filter at the top, followed by a summary chart, then a detailed table.
+The two core layout components are:
 
-#### What is Bootstrap?
+-   [**`dbc.Row()`**]{style="background-color: yellow;"} — a horizontal container. Only `dbc.Col()` components should be its direct children.
+-   [**`dbc.Col()`**]{style="background-color: yellow;"} — where content actually lives. Its `md=N` parameter controls its share of the 12-column grid.
 
--   Bootstrap is a popular framework for front-end web development
-
--   Provides grid layout, prebuilt components, and more
-
--   Dash Bootstrap Components (dbc & dash-bootstrap-components):
-
-    -   Dash library provides Bootstrap components (including the grid system layout), stylesheets, and more
-
--   Bootstrap layout components
-
-    -   Components for laying out Dash apps, including the grid system
-
-    -   Two main layout components:
-
-        -   Row: container for columns
-
-        -   Col: where the content is placed
-
-    -   Only Col components should be immediate children of the Row component
-
-#### Top Components in dbc
+### Top Components in `dbc`
 
 ![](images/dbc.png)
 
-#### Creating a Grid Layout: Examples
+## Grid Layout Examples
 
--   Layout example 1
+### Example 1 — Two Equal Columns
 
--   Row
+When no `md=` is specified, Bootstrap divides the space equally among the columns.
 
-    -   \| One of two coulmns \| One of two columns \|
+![Two equal Bootstrap columns](images/2col.png)
 
 ```{python}
-#Import Dash Bootstrap Components
 import dash_bootstrap_components as dbc
 from dash import html
 
-dbc.Row(
-   [
-      dbc.Col(html.Div('One of two Columns')),
-      dbc.Col(html.Div('One of two Columns'))
-]
-)
+dbc.Row([
+    dbc.Col(html.Div('One of two columns')),   # no md set → splits evenly (effectively md=6 each)
+    dbc.Col(html.Div('One of two columns'))
+])
 ```
 
--   Layout example 2
+### Example 2 — One Full-Width Row, Then Two Columns
 
-    -   Row \| A single column \|
-
-    -   Row \| One of two columns \| One of two columns \|
+![Single column then two columns](images/2row.png)
 
 ```{python}
-#Import Dash Bootstrap Components
 import dash_bootstrap_components as dbc
 from dash import html
 
 dbc.Row(
-   dbc.Col(html.Div('A single column'))
+    dbc.Col(html.Div('A single column'))   # one Col inside → takes full 12-column width
 ),
-dbc.Row(
-   [
-      dbc.Col(html.Div('One of two columns')),
-      dbc.Col(html.Div('One of two columns'))
-]
-)
+dbc.Row([
+    dbc.Col(html.Div('One of two columns')),
+    dbc.Col(html.Div('One of two columns'))
+])
 ```
 
-#### Making a 2-column layout
+## Building a Two-Column App
 
--   dash_bootstrap_components lets you plug in a full Bootstrap theme via an external stylesheet. This instantly gives your app Bootstrap’s responsive grid, typography, and utility classes, and it styles all dbc.\* components consistently—no custom CSS required.
+### Applying a Bootstrap Theme
 
-    -   You can swap themes (e.g., dbc.themes.COSMO, LUX, MATERIA, CYBORG) for a new look and still override specifics in your own assets/style.css.
+`dash_bootstrap_components` lets you apply a full Bootstrap theme via an external stylesheet, instantly giving your app Bootstrap's grid, typography, and utility classes — no custom CSS required. Swap themes (e.g., `dbc.themes.COSMO`, `LUX`, `MATERIA`, `CYBORG`) for a different visual style while still overriding specifics in `assets/style.css`.
 
 ```{python}
 from dash import Dash, html
 import dash_bootstrap_components as dbc
 
-
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 app.title = "Multi Layout App"
 ```
 
--   Embedded stylesheets in Dash are simple Python dictionaries you attach via the style prop
+### Embedded Styles
+
+**Embedded styles** are Python dictionaries passed directly to the `style` prop. Use them for quick, component-specific overrides. For consistent app-wide styling, use an external stylesheet in `assets/` instead.
 
 ```{python}
 box_style = {
-    "border": "2px solid black",
-    "borderRadius": "5px",
-    "margin": "5px",
-    "padding": "20px", 
+    "border":          "2px solid black",
+    "borderRadius":    "5px",
+    "margin":          "5px",
+    "padding":         "20px",
     "backgroundColor": "#e0f7fa"
 }
 ```
 
--   Perfect for quick, local styling and prototypes.
-
--   For shared, consistent styling across a multi-page app, shift most rules to an external stylesheet in assets/ and reserve embedded styles for small overrides.
+### Full Two-Column Layout
 
 ```{python}
 app.layout = dbc.Container([
-    ##first row
+    # Row 1: full width — width=12 uses all 12 Bootstrap columns
     dbc.Row(
         dbc.Col(html.Div("Top Row (Full Width)", style=box_style), width=12)),
+
+    # Row 2: two equal columns — Bootstrap splits automatically when md is not set
     dbc.Row([
-        dbc.Col(html.Div("Left Column", style=box_style)),
+        dbc.Col(html.Div("Left Column",  style=box_style)),
         dbc.Col(html.Div("Right Column", style=box_style))
     ]),
+
+    # Row 3: full-width footer
     dbc.Row(dbc.Col(html.Div("Footer (Full Width)", style=box_style), width=12))
-    
-], fluid=True)
-                   
-  
+
+], fluid=True)  # fluid=True = full browser width; omit for a fixed max-width container
+
 if __name__ == "__main__":
     app.run(debug=True)
 ```
 
 ![](images/2layout.png)
 
-#### Creating a Multi-Layout App with Weather API
+::: note
+`dbc.Container(fluid=True)` makes the layout span the full browser width. Without `fluid=True`, Bootstrap applies a fixed maximum width with padding on both sides — appropriate for text-heavy pages but not for dashboards that should fill the screen.
+:::
+
+## Multi-Layout Weather App
+
+### Imports and City Coordinates
 
 ```{python}
 # MultiLayoutWeather.py
 import requests
-import pandas as pd #for data frame and manipulation
-from dash import Dash, html, dcc, Input, Output 
-import dash_bootstrap_components as dbc #for bootstrap components
-import plotly.express as px #for data visualization
+import pandas as pd
+from dash import Dash, html, dcc, Input, Output
+import dash_bootstrap_components as dbc
+import plotly.express as px
 
-
-# ---------- Public API helper (Open-Meteo) ----------
-#selecting the cities and their coordinates
-# This is a dictionary mapping city names to their latitude and longitude.
+# Each city maps to (latitude, longitude) — used to call the weather API
 CITY_COORDS = {
-    "Williamsburg": (37.2707, -76.7075),
-    "Richmond": (37.5407, -77.4360),
-    "Virginia Beach": (36.8529, -75.9780),
-    "Roanoke": (37.27097, -79.94143),
-    "Charlottesville": (38.0293, -78.4767)
+    "Williamsburg":    (37.2707,  -76.7075),
+    "Richmond":        (37.5407,  -77.4360),
+    "Virginia Beach":  (36.8529,  -75.9780),
+    "Roanoke":         (37.27097, -79.94143),
+    "Charlottesville": (38.0293,  -78.4767)
 }
 ```
 
 ![](images/weatherapi.png)
 
-#### Fetching the Hourly Temperature
+### Fetching the Hourly Temperature
 
--   Create a function fetch_hourly_temp(lat, lon) that takes a latitude/longitude and returns a Pandas DataFrame of next 48 hours of hourly temperatures.
-
--   Builds API URL: Uses the Open-Meteo forecast endpoint with query params, where an endpoint is the specific URL where an API resource or service can be accessed.
-
-    -   latitude, longitude,
-
-    -   hourly=temperature_2m,
-
-    -   forecast_days=2 (≈48 hours),
-
-    -   timezone=auto.
-
--   Calls the API safely:
-
-    -   requests.get(..., timeout=15) and r.raise_for_status() to surface HTTP errors (raises an exception if the HTTP request failed).
-
--   Parses JSON:
-
-    -   Extracts the "hourly" block, specifically the arrays "time" and "temperature_2m".
-
-    -   The 2m means the temperature is measured (or modeled) at 2 meters above ground level.
-
-    -   Constructs a DataFrame with two columns:\
-        time and temp_C (temperature in °C from temperature_2m).
-
--   Cleans timestamps by converting the time column to proper datetime objects with pd.to_datetime.
-
--   Returns the final DataFrame of hourly timestamps and temperatures for the requested location.
+`fetch_hourly_temp(lat, lon)` returns a 48-row DataFrame — one row per hour — of forecast temperature data for a given location.
 
 ```{python}
 def fetch_hourly_temp(lat: float, lon: float) -> pd.DataFrame:
-    """Fetch next-48-hours hourly temperature."""
+    """Fetch next-48-hours hourly temperature from Open-Meteo (no API key required)."""
     url = (
         "https://api.open-meteo.com/v1/forecast"
         f"?latitude={lat}&longitude={lon}"
         "&hourly=temperature_2m&forecast_days=2&timezone=auto"
     )
     r = requests.get(url, timeout=15)
-    r.raise_for_status()
-    data = r.json()["hourly"]
-    df = pd.DataFrame({"time": data["time"], "temp_C": data["temperature_2m"]})
-    df["time"] = pd.to_datetime(df["time"])
+    r.raise_for_status()                             # raise exception on HTTP error (4xx/5xx)
+    data = r.json()["hourly"]                        # extract the nested hourly block from JSON
+    df = pd.DataFrame({
+        "time":   data["time"],
+        "temp_C": data["temperature_2m"]             # _2m = measured 2 meters above ground level
+    })
+    df["time"] = pd.to_datetime(df["time"])          # convert ISO 8601 strings to datetime objects
     return df
 ```
 
-#### Using a Theme for an External Stylesheet
+## Theme, Navbar, and CSS
 
-\![\](images/externalstyle.png)
+### Theme Explorer
 
--   <https://www.dash-bootstrap-components.com/docs/themes/explorer/>
+Browse available Bootstrap themes at [dash-bootstrap-components.com/docs/themes/explorer](https://www.dash-bootstrap-components.com/docs/themes/explorer/). Use **Ctrl + I** (browser inspector) to identify specific Bootstrap class names or CSS values you want to apply or override.
 
--   Use Ctrl + I to inspect and select a class or style you would like to apply.
+![](images/externalstyle.png)
 
-#### Applying Classes from the Theme
+### CSS: IDs vs. Classes
 
--   A top bar (navbar) is built using a Div as the container.
+A single external stylesheet in `assets/` is best practice for multi-page apps: centralized, consistent, and updated in one place.
 
--   Inside the navbar, a large heading displays Open-Meteo Dashboard in white text.
+|              | **ID**                  | **Class**             |
+|--------------|-------------------------|-----------------------|
+| CSS selector | `#my-id`                | `.my-class`           |
+| Applied to   | One unique element      | Many elements         |
+| Specificity  | Higher (wins conflicts) | Lower                 |
+| In Dash      | Also wires callbacks    | Shared visual styling |
 
--   A smaller subtitle follows, showing Public API – Multi-column layout in white text.
+Prefer **classes** for reusable styles; reserve **IDs** for unique elements or callback targets.
 
--   The navbar itself uses Bootstrap classes to style it with:
+### Building the Navbar
 
--   a dark background,
-
--   white text suitable for dark themes,
-
--   extra padding on the sides,
-
--   and spacing below to separate it from the rest of the page.
+Bootstrap utility classes let you style elements without writing custom CSS:
 
 ```{python}
-# ---------- Dash App ----------
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 app.title = "Open-Meteo Dashboard"
 
-# Top bar
 navbar = html.Div(
     [
         html.H3("Open-Meteo Dashboard", className="text-white"),
-        html.Span("Public API - Multi-column layout", className="text-white"),
+        html.Span("Public API – Multi-column layout", className="text-white"),
     ],
     className="navbar navbar-dark bg-dark mb-4 px-3"
+    #          ↑ base     ↑ light text  ↑ dark bg ↑ bottom margin ↑ horizontal padding
 )
 ```
 
-#### CSS: Using ID's vs Classes
+## Building Dashboard Components
 
--   In a multipage Dash app, a single external stylesheet in assets/ is best because it centralizes all styles, ensures consistent look-and-feel across pages, and keeps page files clean—change the CSS once and every page updates automatically.
-
--   Bonus benefits: no duplicated inline styles, faster iteration and theming, browser caching for performance, and clear separation of concerns (layout in Python, styling in CSS).
-
--   ID (id)
-
-    -   Purpose: identifies one unique element on a page; in Dash it’s also used to wire callbacks.
-
-    -   CSS selector: #my-id (matches id=“my-id").
-
-    -   Specificity: higher than a class (wins conflicts).
-
--   Class (class)
-
-    -   Purpose: labels elements for reusable styling; can be applied to many elements.
-
-    -   CSS selector: .btn-strong (matches class=“btn-strong")
-
-    -   Specificity: lower than an ID.
-
--   ID selectors (#...) are more specific than class selectors (....). Prefer classes for reusable styles; reserve IDs for unique elements or overrides.
-
-#### Setting the Controls
+### Controls Panel
 
 ```{python}
-# Controls (left column)
 controls = dbc.Card([
-        dbc.CardHeader("Controls"),
-        dbc.CardBody(
-            [
-                dbc.Label("City"),
-                dcc.Dropdown(
-                    id="city-dd",
-                    options=[{"label": k, "value": k} for k in CITY_COORDS.keys()],
-                    value="Williamsburg",
-                    clearable=False,
-                ),
-                html.Br(),
-                dbc.Button("Refresh", id="refresh", n_clicks=0, className="w-100"),
-                html.Hr(),
-                html.Small(
-                    "Data source: open-meteo.com (no API key required).",
-                    className="text-muted",
-                ),
-            ]
+    dbc.CardHeader("Controls"),
+    dbc.CardBody([
+        dbc.Label("City"),
+        dcc.Dropdown(
+            id="city-dd",
+            options=[{"label": k, "value": k} for k in CITY_COORDS.keys()],
+            # "label" = what the user sees; "value" = what the callback receives
+            value="Williamsburg",
+            clearable=False,
         ),
-    ],className="mb-3",)
+        html.Br(),
+        dbc.Button("Refresh", id="refresh", n_clicks=0, className="w-100"),
+        # w-100 = Bootstrap class: full width within the parent container
+        html.Hr(),
+        html.Small(
+            "Data source: open-meteo.com (no API key required).",
+            className="text-muted",
+        ),
+    ])
+], className="mb-3")   # mb-3 = Bootstrap margin-bottom spacing utility
 ```
 
--   This code builds a tidy “Controls” panel—city selector and refresh button—with Bootstrap spacing/utilities and IDs ready for your Dash callbacks.
+### KPI Cards and Chart
 
-    -   Creates a “Controls” panel using a card layout: a titled header with the interactive elements grouped in the body for clarity.
-
-    -   Presents a primary input via a labeled dropdown so the user can pick from a predefined list (with a sensible default to avoid empty states).
-
-        -   "label" → what the user sees in the dropdown
-
-        -   "value" → the actual value passed into callbacks
-
-    -   Provides an explicit action with a prominent, full-width button that the user clicks to (re)run whatever update/refresh your callbacks perform.
-
-    -   Uses simple spacing elements (line break and divider) to separate inputs from helper text and keep the panel readable.
-
-    -   Shows lightweight helper text (e.g., attribution or instructions) in a muted, smaller style to de-emphasize it while keeping it visible.
-
-    -   Designed for callback wiring: the dropdown supplies the selection; the button acts as the trigger; the card is easy to place as a left column in a responsive grid.
-
-    -   Follows Bootstrap conventions for consistent styling, spacing, and accessibility (clear label, large click target, predictable layout).
-
-#### Setting Top Row and Middle Column
+A **KPI card** is a small Bootstrap card that displays a single summary metric — a label and a large number. Each card's `id_` is updated by the callback.
 
 ```{python}
-# KPI cards (top row center/right)
 def kpi_card(title, id_):
+    """Creates a Bootstrap Card to display a single KPI value."""
     return dbc.Card(
-        dbc.CardBody(
-            [
-                html.H6(title, className="text-muted mb-1"),
-                html.H3(id=id_, className="mb-0"),
-            ]
-        ),
-        className="h-100",
+        dbc.CardBody([
+            html.H6(title, className="text-muted mb-1"),   # muted label text
+            html.H3(id=id_, className="mb-0"),              # large value updated by callback
+        ]),
+        className="h-100",   # stretch to match the tallest card in the row
     )
 
 kpi_row = dbc.Row(
     [
         dbc.Col(kpi_card("Current Temp (°C)", "kpi-now"), md=4),
-        dbc.Col(kpi_card("Min (°C/48h)", "kpi-min"), md=4),
-        dbc.Col(kpi_card("Max (°C/48h)", "kpi-max"), md=4),
+        dbc.Col(kpi_card("Min (°C/48h)",      "kpi-min"), md=4),
+        dbc.Col(kpi_card("Max (°C/48h)",      "kpi-max"), md=4),
     ],
     className="g-3 mb-3",
+    # g-3 = gutter spacing between columns; mb-3 = margin below this row
 )
 
-# Chart (middle column)
-chart_card = dbc.Card(
-    [
-        dbc.CardHeader("Hourly Temperature (next 48h)"),
-        dbc.CardBody(dcc.Graph(id="temp-chart", config={"displayModeBar": False})),
-    ]
-)
+chart_card = dbc.Card([
+    dbc.CardHeader("Hourly Temperature (next 48h)"),
+    dbc.CardBody(dcc.Graph(
+        id="temp-chart",
+        config={"displayModeBar": False}   # hide the Plotly modebar toolbar
+    )),
+])
 ```
 
--   Lines 3–12 — kpi_card function
-
-    -   A helper function that creates a Bootstrap Card for displaying Key Performance Indicators (KPIs).
-
-    -   Takes two parameters:
-
-        -   title: The label for the KPI (e.g., "Current Temp (°C)").
-
-        -   id\_: The HTML id for the numeric value so it can be updated dynamically in callbacks.
-
--   The card body contains:
-
-    -   An html.H6 for the title (muted text, small bottom margin).
-
-    -   An html.H3 for the actual KPI value placeholder (no bottom margin).
-
-    -   className="h-100" ensures the card fills the column height.
-
--   Lines 14–21 — kpi_row
-
-    -   Creates a Bootstrap row with three columns, each holding one KPI card:
-
-        -   Current temperature (id="kpi-now").
-
-        -   Minimum temperature over 48h (id="kpi-min").
-
-        -   Maximum temperature over 48h (id="kpi-max").
-
-    -   md=4 means each column takes 4/12ths of the width on medium+ screens.
-
-    -   className="g-3 mb-3" adds spacing between columns (g-3) and bottom margin (mb-3).
-
--   Lines 24–29 — chart_card
-
-    -   Creates a Bootstrap card for the hourly temperature chart.
-
-    -   The header is "Hourly Temperature (next 48h)".
-
-    -   The body contains a Dash Graph (dcc.Graph) with:
-
-        -   id="temp-chart" for callbacks.
-
-        -   config={"displayModeBar": False} to hide the plotly toolbar.
-
-#### Defining the App.layout
+### Stats Table and Full Layout
 
 ```{python}
-# Stats table (right column)
-table_card = dbc.Card(
-    [
-        dbc.CardHeader("Summary Stats"),
-        dbc.CardBody(html.Div(id="stats-table")),
-    ]
-)
+table_card = dbc.Card([
+    dbc.CardHeader("Summary Stats"),
+    dbc.CardBody(html.Div(id="stats-table")),   # filled dynamically by the callback
+])
 
-# ---------- Layout: Multi-column grid ----------
 app.layout = dbc.Container(
     [
         navbar,
         dbc.Row(
             [
-                # Left: controls (md=3)
-                dbc.Col(controls, md=3),
-                # Middle: KPIs + chart (md=6)
-                dbc.Col([kpi_row, chart_card], md=6),
-                # Right: stats table (md=3)
-                dbc.Col(table_card, md=3),
+                dbc.Col(controls,              md=3),   # left:   3/12
+                dbc.Col([kpi_row, chart_card], md=6),   # center: 6/12 (KPIs above chart)
+                dbc.Col(table_card,            md=3),   # right:  3/12
             ],
+            # 3 + 6 + 3 = 12 — columns must sum to 12 (or leave unset for auto-equal split)
             className="g-3",
         ),
         html.Footer(
@@ -450,168 +317,71 @@ app.layout = dbc.Container(
                 "Built with Dash + dash-bootstrap-components • Layout uses Row/Col grid",
                 className="text-muted",
             ),
-            className="mt-4",
+            className="mt-4",   # top margin separating footer from content
         ),
     ],
     fluid=True,
 )
 ```
 
--   Lines 3–8 — table_card
+## Callbacks and Data
 
-    -   Creates a Bootstrap Card to display summary statistics.
-
-    -   CardHeader("Summary Stats") is the title.
-
-    -   CardBody contains a Div with id="stats-table" so it can be populated dynamically via a callback.
-
--   Lines 11–35 — app.layout
-
-    -   The main page layout wrapped in a dbc.Container with fluid=True so it uses the full screen width.
-
-    -   First element inside: navbar (the top navigation bar defined earlier).
-
-    -   Main row (dbc.Row) divided into three columns:
-
-    -   Left column (md=3) → contains the controls card.
-
-    -   Middle column (md=6) → contains the KPI row (kpi_row) and the chart card (chart_card) stacked vertically.
-
-    -   Right column (md=3) → contains the table_card for summary stats.
-
-    -   className="g-3" on the row adds consistent gutter spacing between columns.
-
--   Lines 26–30 — Footer
-
-    -   Adds a small, muted text footer that says:\
-        "Built with Dash + dash-bootstrap-components • Layout uses Row/Col grid"
-
-    -   className="mt-4" adds margin above the footer for spacing.
-
-#### Callbacks and Chart
+### The Update Callback
 
 ```{python}
-# ---------- Callbacks ----------
 @app.callback(
     [
-        Output("temp-chart", "figure"),
-        Output("kpi-now", "children"),
-        Output("kpi-min", "children"),
-        Output("kpi-max", "children"),
-        Output("stats-table", "children"),
+        Output("temp-chart",  "figure"),    # 1. line chart figure
+        Output("kpi-now",     "children"),  # 2. current temp text
+        Output("kpi-min",     "children"),  # 3. min temp text
+        Output("kpi-max",     "children"),  # 4. max temp text
+        Output("stats-table", "children"),  # 5. daily summary table
     ],
     [Input("city-dd", "value"), Input("refresh", "n_clicks")],
 )
 def update(city, _):
+    # _ is the Python convention for "I receive this argument but don't use it"
+    # The refresh button triggers a re-run, but the click count itself is not needed
     lat, lon = CITY_COORDS[city]
     df = fetch_hourly_temp(lat, lon)
 
-    # KPIs
-    now = df.iloc[0]["temp_C"]
-    tmin = df["temp_C"].min()
-    tmax = df["temp_C"].max()
+    # KPI values extracted from the DataFrame
+    now  = df.iloc[0]["temp_C"]     # first row = current hour's temperature
+    tmin = df["temp_C"].min()       # minimum over the full 48-hour forecast
+    tmax = df["temp_C"].max()       # maximum over the full 48-hour forecast
 
-    # Chart
+    # Line chart
     fig = px.line(df, x="time", y="temp_C", markers=True, title=None)
-    fig.update_layout(margin=dict(l=10, r=10, t=10, b=10), yaxis_title="°C", xaxis_title="Time")
+    fig.update_layout(
+        margin=dict(l=10, r=10, t=10, b=10),
+        yaxis_title="°C",
+        xaxis_title="Time"
+    )
 ```
 
--   Lines 3–10 — Callback definition
-
--   \@app.callback(\[...\], \[...\]) defines a Dash callback with five outputs:
-
-    -   The figure for the temperature chart ("temp-chart").
-
-    -   The value text for current temp KPI ("kpi-now").
-
-    -   The value text for min temp KPI ("kpi-min").
-
-    -   The value text for max temp KPI ("kpi-max").
-
-    -   The HTML for the stats table ("stats-table").
-
--   Inputs are:
-
-    -   The selected city from the dropdown ("city-dd" value).
-
-    -   The refresh button click count ("refresh" n_clicks).
-
--   Lines 12–13 — Get city coordinates & data
-
-    -   Looks up the latitude/longitude for the chosen city from CITY_COORDS.
-
-    -   Calls fetch_hourly_temp(lat, lon) to get hourly temperature data as a DataFrame (df).
-
--   Lines 16–18 — KPI values
-
-    -   now: The current temperature (first row in "temp_C" column).
-
-    -   tmin: The minimum temperature over the dataset.
-
-    -   tmax: The maximum temperature over the dataset.
-
--   Lines 21–22 — Chart creation
-
-    -   Uses plotly.express.line to plot "temp_C" vs "time", with markers and no title.
-
-    -   Adjusts margins and axis labels.
-
-#### Summary and Return
+### Building the Stats Table and Returning Results
 
 ```{python}
-# Stats table
+    # Aggregate hourly data into a daily summary table
     summary = (
-        df.assign(Date=df["time"].dt.date)
+        df.assign(Date=df["time"].dt.date)    # extract just the date from each datetime
         .groupby("Date")["temp_C"]
         .agg(["min", "max", "mean"])
         .round(1)
         .rename(columns={"min": "Min °C", "max": "Max °C", "mean": "Avg °C"})
         .reset_index()
     )
-    table = dbc.Table.from_dataframe(summary, striped=True, bordered=False, hover=True)
+    table = dbc.Table.from_dataframe(
+        summary,
+        striped=True,    # alternating row shading for readability
+        bordered=False,
+        hover=True       # highlight row on mouse hover
+    )
 
-    fmt = lambda x: f"{x:.1f}"
+    fmt = lambda x: f"{x:.1f}"   # format a float to 1 decimal place (e.g., 22.3456 → "22.3")
     return fig, fmt(now), fmt(tmin), fmt(tmax), table
-
+    # Return order must match Output order: chart, kpi-now, kpi-min, kpi-max, stats-table
 
 if __name__ == "__main__":
     app.run(debug=True)
 ```
-
--   Lines 1-9— Stats table creation
-
-    -   Creates a daily summary table by:
-
-        -   Extracting the date from "time".
-
-        -   Grouping by "Date".
-
-        -   Aggregating min, max, and mean temperatures.
-
-        -   Rounding values to 1 decimal place.
-
-        -   Renaming columns for display.
-
-        -   Resetting the index.
-
-    -   Converts this DataFrame into a Bootstrap table (dbc.Table.from_dataframe) with striped=True and hover=True.
-
--   Line 12 — Formatting function
-
-    -   fmt is a lambda function that formats a number to 1 decimal place with f"{x:.1f}".
-
-        -   lambda x: → declares a tiny function that takes one argument, x.
-
-        -   f"{x:.1f}" → returns a formatted string showing x with one decimal place.
-
--   Line 13— Callback return values
-
-    -   The chart (fig).
-
-    -   Formatted current temperature.
-
-    -   Formatted min temp.
-
-    -   Formatted max temp.
-
-    -   The stats table.

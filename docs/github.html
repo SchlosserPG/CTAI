@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Using Git and Github – Competing in the Age of AI</title>
+<title>Using Git and GitHub – Competing in the Age of AI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./makingcallbacks.html" rel="next">
-<link href="./crashcourse.html" rel="prev">
+<link href="./introdash.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./github.html"><span class="chapter-title">Using Git and Github</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./github.html"><span class="chapter-title">Using Git and GitHub</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -124,7 +158,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ethics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">AI &amp; Data Ethics</span></a>
+  <a href="./ethics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">AI and Data Ethics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./crashcourse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Crash Python Course</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -139,7 +178,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./storytelling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Human-centered Storytelling</span></a>
+  <a href="./storytelling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Human-Centered Storytelling</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -159,17 +198,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./crashcourse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Crash Python Course</span></a>
+  <a href="./github.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Using Git and GitHub</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./github.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Using Git and Github</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./makingcallbacks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Writing Callbacks and Accessing API’s</span></a>
+  <a href="./makingcallbacks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Writing Callbacks and Accessing APIs</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -197,15 +231,39 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#git-purpose-and-core-concepts" id="toc-git-purpose-and-core-concepts" class="nav-link active" data-scroll-target="#git-purpose-and-core-concepts">Git: Purpose and Core Concepts</a></li>
+  <li><a href="#git-vs.-github-vs.-gitlab" id="toc-git-vs.-github-vs.-gitlab" class="nav-link" data-scroll-target="#git-vs.-github-vs.-gitlab">Git vs.&nbsp;GitHub vs.&nbsp;GitLab</a></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a>
+  <ul class="collapse">
+  <li><a href="#setting-up-github" id="toc-setting-up-github" class="nav-link" data-scroll-target="#setting-up-github">Setting Up GitHub</a></li>
+  <li><a href="#github-copilot" id="toc-github-copilot" class="nav-link" data-scroll-target="#github-copilot">GitHub Copilot</a></li>
+  </ul></li>
+  <li><a href="#working-with-git" id="toc-working-with-git" class="nav-link" data-scroll-target="#working-with-git">Working with Git</a>
+  <ul class="collapse">
+  <li><a href="#key-git-concepts" id="toc-key-git-concepts" class="nav-link" data-scroll-target="#key-git-concepts">Key Git Concepts</a></li>
+  <li><a href="#creating-your-first-repository" id="toc-creating-your-first-repository" class="nav-link" data-scroll-target="#creating-your-first-repository">Creating Your First Repository</a></li>
+  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices">Best Practices</a></li>
+  <li><a href="#troubleshooting-common-issues" id="toc-troubleshooting-common-issues" class="nav-link" data-scroll-target="#troubleshooting-common-issues">Troubleshooting Common Issues</a></li>
+  </ul></li>
+  <li><a href="#deployment-with-render.com" id="toc-deployment-with-render.com" class="nav-link" data-scroll-target="#deployment-with-render.com">Deployment with Render.com</a>
+  <ul class="collapse">
+  <li><a href="#render-dashboard" id="toc-render-dashboard" class="nav-link" data-scroll-target="#render-dashboard">Render Dashboard</a></li>
+  <li><a href="#before-you-deploy-required-files" id="toc-before-you-deploy-required-files" class="nav-link" data-scroll-target="#before-you-deploy-required-files">Before You Deploy: Required Files</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Using Git and Github</span></h1>
+<h1 class="title"><span class="chapter-title">Using Git and GitHub</span></h1>
 </div>
 
 
@@ -222,151 +280,187 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<ul>
-<li><p>This module introduces Git and GitHub as foundational tools for version control, collaboration, and deployment in analytics and programming projects. Git is a decentralized version control system that tracks file changes and manages project history locally, while GitHub is a cloud-based platform built on Git for sharing, collaborating, and managing repositories. Together, they allow multiple contributors to work efficiently through commits, branches, merges, and pull requests. GitLab offers similar features but can be self-hosted for greater organizational control.</p></li>
-<li><p>Students learn to set up Git and GitHub, configure user credentials, and perform essential commands (git init, git add, git commit, git push, etc.) using VS Code or GitHub Desktop. They also explore GitHub CoPilot, an AI-assisted coding tool that autocompletes and suggests code within VS Code.</p></li>
-<li><p>The section covers best practices such as writing clear commit messages, pulling often to stay updated, using .gitignore to exclude unnecessary files, and maintaining a stable main branch. It also outlines common troubleshooting tips for merge conflicts, authentication issues, and accidental commits.</p></li>
-<li><p>Finally, the module introduces Render.com, a platform that connects directly to GitHub for seamless web app deployment. Students link their GitHub repositories to Render to host and automatically update their Dash or analytics applications, gaining hands-on experience with real-world deployment workflows.</p></li>
-</ul>
-<section id="understanding-the-prompting-paradigm-equips-you-to-guide-ai-models-effectivelyskills-that-can-be-enhanced-and-shared-by-leveraging-platforms-like-github-to-collaborate-on-prompt-libraries-examples-and-ai-powered-projects." class="level5">
-<h5 class="anchored" data-anchor-id="understanding-the-prompting-paradigm-equips-you-to-guide-ai-models-effectivelyskills-that-can-be-enhanced-and-shared-by-leveraging-platforms-like-github-to-collaborate-on-prompt-libraries-examples-and-ai-powered-projects.">Understanding the prompting paradigm equips you to guide AI models effectively—skills that can be enhanced and shared by leveraging platforms like GitHub to collaborate on prompt libraries, examples, and AI-powered projects.</h5>
+<p>This module introduces <strong>Git</strong> and <strong>GitHub</strong> as foundational tools for <strong>version control</strong>, <strong>collaboration</strong>, and <strong>deployment</strong> in analytics and programming projects. Git is a decentralized version control system that tracks file changes and manages project history locally, while GitHub is a cloud-based platform built on Git for sharing, collaborating, and managing repositories. Together, they allow multiple contributors to work efficiently through commits, branches, merges, and pull requests. GitLab offers similar features but can be self-hosted for greater organizational control.</p>
+<p>Students learn to set up Git and GitHub, configure user credentials, and perform essential commands (<code>git init</code>, <code>git add</code>, <code>git commit</code>, <code>git push</code>, and others) using VS Code or GitHub Desktop. The module also introduces <strong>GitHub Copilot</strong>, an AI-assisted coding tool that autocompletes and suggests code directly within VS Code.</p>
+<p>Best practices covered include writing clear commit messages, pulling frequently to stay synchronized, using <code>.gitignore</code> to exclude unnecessary files, and maintaining a stable main branch. Common troubleshooting scenarios are also addressed, including merge conflicts, authentication issues, and accidental commits.</p>
+<p>Finally, the module introduces <strong>Render.com</strong>, a platform that connects directly to GitHub for seamless web application deployment. Students link their GitHub repositories to Render to host and automatically update their Dash or analytics applications, gaining hands-on experience with real-world deployment workflows.</p>
+<div class="note">
+<p>Understanding the prompting paradigm equips you to guide AI models effectively — skills that can be enhanced and shared by leveraging platforms like GitHub to collaborate on prompt libraries, examples, and AI-powered projects.</p>
+</div>
 <p><img src="images/github.png" class="img-fluid"></p>
+<section id="git-purpose-and-core-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="git-purpose-and-core-concepts">Git: Purpose and Core Concepts</h2>
+<p>Git is a <strong>decentralized version control system</strong> (VCS) designed for tracking file changes, particularly in software projects composed of many small text files. Think of it as a sophisticated “undo history” for your entire project: it records who made each change, when, and why — and lets you travel back to any previous state at any time.</p>
+<p>Git works best with plain text files (code, Markdown, CSV). It is less effective for binary files such as Word documents, audio and video files, or virtual machine images, because it cannot show meaningful line-by-line differences for those formats.</p>
+<p>The primary way to interact with Git is through the terminal or PowerShell using the <code>git</code> command. Note the important distinction: <strong>Git</strong> (capitalized) refers to the system and its concepts, while <code>git</code> (lowercase) refers to the command-line tool. IDEs such as Visual Studio and editors such as VS Code offer built-in Git tools; web platforms like GitHub and GitLab add further features including issue tracking, code review, and automated testing pipelines.</p>
 </section>
-<section id="purpose-of-git" class="level4">
-<h4 class="anchored" data-anchor-id="purpose-of-git">Purpose of Git</h4>
+<section id="git-vs.-github-vs.-gitlab" class="level2">
+<h2 class="anchored" data-anchor-id="git-vs.-github-vs.-gitlab">Git vs.&nbsp;GitHub vs.&nbsp;GitLab</h2>
+<p>These three tools are related but distinct — a common source of confusion for beginners:</p>
 <ul>
-<li><p>Git is a decentralized version control system for tracking file changes, especially in software projects with many small text files. It records who made changes and when, supports collaboration, and keeps all past versions and branches.</p></li>
-<li><p>Works best with text files; less effective for binary files like Word docs, audio/video, or VM images. git Command</p>
-<ul>
-<li><p>The primary way to control Git via the terminal/PowerShell.</p></li>
-<li><p>Tasks: download projects, commit changes, switch branches, undo edits, etc.</p>
-<ul>
-<li><p>“Git” (capitalized) = the system/concepts;</p></li>
-<li><p>git (lowercase) = the command.</p></li>
-</ul></li>
-</ul></li>
-<li><p>IDEs (e.g., Visual Studio) and editors (e.g., VS Code) offer built-in Git tools; web platforms like GitHub/GitLab add extra features (issue tracking, automated tests).</p></li>
+<li><span style="background-color: yellow;"><strong>Git</strong></span> — the underlying version control system. It runs entirely on your local machine and works without any internet connection or central server.</li>
+<li><span style="background-color: yellow;"><strong>GitHub</strong></span> — acquired by Microsoft in 2018, GitHub is the most popular cloud-based platform for hosting and collaborating on Git repositories. It adds a web interface, pull requests, code review, issue tracking, and integrations with hundreds of tools. Free for public and most private projects.</li>
+<li><span style="background-color: yellow;"><strong>GitLab</strong></span> — similar capabilities to GitHub but open-source and can be self-hosted on your organization’s own servers, making it a strong choice for organizations with strict data privacy or compliance requirements.</li>
 </ul>
+<p><strong>Analogy:</strong> Git is Microsoft Word (the software); GitHub is Google Drive (the cloud storage and sharing layer built on top of it).</p>
 </section>
-<section id="git-vs-github-vs-gitlab" class="level4">
-<h4 class="anchored" data-anchor-id="git-vs-github-vs-gitlab">Git vs GitHub vs GitLab</h4>
-<ul>
-<li><p>Git: Works without central servers.</p></li>
-<li><p>GitHub: Most popular host; acquired by Microsoft in 2018; free for public and most private projects.</p>
-<ul>
-<li><p>A cloud-based platform for hosting and collaborating on code projects</p></li>
-<li><p>Built on Git (a distributed version control system)</p></li>
-<li><p>Supports version tracking, collaboration, and project management</p>
-<ul>
-<li><p>Enables teamwork on coding projects</p></li>
-<li><p>Provides a historical record of changes</p></li>
-<li><p>Integrates with many tools</p></li>
-</ul></li>
-</ul></li>
-<li><p>GitLab: Similar features; open-source, can be self-hosted—good for organizations that want control.</p></li>
-</ul>
-</section>
-<section id="setting-up-github" class="level4">
-<h4 class="anchored" data-anchor-id="setting-up-github">Setting Up GitHub</h4>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
+<section id="setting-up-github" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-github">Setting Up GitHub</h3>
 <p><img src="images/setup.png" class="img-fluid"></p>
+<p>To get started with GitHub, follow these steps:</p>
 <ul>
-<li><p>Create an account at github.com</p></li>
-<li><p>Install Git (if using locally): <a href="https://gitforwindows.org/" class="uri">https://gitforwindows.org/</a></p></li>
-<li><p>Configure Git</p>
+<li>Create a free account at <a href="https://github.com">github.com</a>.</li>
+<li>If working locally, install Git from <a href="https://gitforwindows.org/">gitforwindows.org</a>.</li>
+<li>Configure your identity so commits are attributed to you correctly. Run these two commands once — they set your name and email globally for all repositories on your machine:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Your Name"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"you@example.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
-<li><p>bash</p></li>
-<li><p>git config –global user.name “Your Name” git config –global user.email “you@example.com”</p></li>
-</ul></li>
-<li><p>Can install GitHub Desktop (optional) for a GUI</p></li>
-<li><p>Use VS Code as Editor</p></li>
+<li>Optionally, install <strong>GitHub Desktop</strong> for a graphical point-and-click interface instead of the command line — useful when getting started.</li>
+<li>Set <strong>VS Code</strong> as your preferred editor so Git uses it for commit messages and diff views.</li>
 </ul>
 </section>
-<section id="copilot-autofill" class="level4">
-<h4 class="anchored" data-anchor-id="copilot-autofill">CoPilot Autofill</h4>
+<section id="github-copilot" class="level3">
+<h3 class="anchored" data-anchor-id="github-copilot">GitHub Copilot</h3>
 <p><img src="images/copilot.png" class="img-fluid"></p>
+<p><strong>GitHub Copilot</strong> is an AI coding assistant that suggests code completions as you type in VS Code. It uses a large language model trained on public code to predict what you are likely to write next, offering “ghost text” suggestions that you can accept with <code>Tab</code> or ignore by continuing to type.</p>
+<p>To enable Copilot’s inline ghost-text suggestions:</p>
 <ul>
-<li><p>To change the setting that makes Copilot ghost text appear as you type.</p>
-<ul>
-<li><p>Go to VS Code Settings</p></li>
-<li><p>Search for Copilot: Inline Suggest.</p></li>
-<li><p>Ensure that “Editor › Inline Suggest: Enabled” is checked.</p></li>
-</ul></li>
+<li>Open <strong>VS Code Settings</strong> (Ctrl + ,).</li>
+<li>Search for <strong>Copilot: Inline Suggest</strong>.</li>
+<li>Ensure that <span style="background-color: yellow;"><strong>Editor › Inline Suggest: Enabled</strong></span> is checked.</li>
 </ul>
 </section>
-<section id="key-git-concepts" class="level4">
-<h4 class="anchored" data-anchor-id="key-git-concepts">Key Git Concepts</h4>
+</section>
+<section id="working-with-git" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-git">Working with Git</h2>
+<section id="key-git-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="key-git-concepts">Key Git Concepts</h3>
+<p>Before working through the commands, it helps to understand the core vocabulary. These seven terms come up constantly:</p>
 <ul>
-<li><p>Repository (Repo) – where your project’s code and history live</p></li>
-<li><p>Commit – a saved snapshot of your code</p></li>
-<li><p>Branch – an independent line of development</p></li>
-<li><p>Merge – bringing changes from one branch into another</p></li>
-<li><p>Pull Request (PR) – proposing changes for review</p></li>
-<li><p>Clone – downloading a copy of the repo to your local machine</p></li>
-<li><p>Push – sending your local changes to GitHub</p></li>
+<li><span style="background-color: yellow;"><strong>Repository (repo)</strong></span> — the container for your project. It holds all your files <em>and</em> the complete history of every change ever made. Local repos live on your machine; remote repos live on GitHub.</li>
+<li><span style="background-color: yellow;"><strong>Commit</strong></span> — a saved snapshot of your project at a specific point in time. Every commit has a unique ID (a hash like <code>a3f9b21</code>) and a message explaining what changed.</li>
+<li><span style="background-color: yellow;"><strong>Branch</strong></span> — an independent line of development. Creating a branch lets you work on a new feature without touching the stable <code>main</code> branch until you are ready.</li>
+<li><span style="background-color: yellow;"><strong>Merge</strong></span> — the process of integrating changes from one branch into another. Git attempts to do this automatically; when it cannot (merge conflict), it asks you to resolve the overlap manually.</li>
+<li><span style="background-color: yellow;"><strong>Pull request (PR)</strong></span> — a GitHub-specific feature: a proposal to merge your branch into another, submitted for team review. PRs are the standard code review workflow on collaborative projects.</li>
+<li><span style="background-color: yellow;"><strong>Clone</strong></span> — downloading a full copy of a remote repository (including its entire history) to your local machine. <code>git clone &lt;url&gt;</code> is how you start working on an existing project.</li>
+<li><span style="background-color: yellow;"><strong>Push</strong></span> — sending your committed local changes up to the remote repository on GitHub so others can see and use them.</li>
 </ul>
 </section>
-<section id="creating-your-first-repository" class="level4">
-<h4 class="anchored" data-anchor-id="creating-your-first-repository">Creating Your First Repository</h4>
+<section id="creating-your-first-repository" class="level3">
+<h3 class="anchored" data-anchor-id="creating-your-first-repository">Creating Your First Repository</h3>
+<p>To create a new repository on GitHub, go to your profile, click <strong>New Repository</strong>, and give it a name. Choose whether it should be <strong>public</strong> (visible to everyone) or <strong>private</strong> (visible only to you and collaborators). Do not add a README at this stage — since you will be pushing an existing project from VS Code, starting with a blank repository avoids merge conflicts on the first push.</p>
+<p>The full sequence of commands to create and push a project for the first time:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init                    <span class="co"># initialize a new Git repo in the current folder</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .                   <span class="co"># stage ALL files for the first commit</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># (the dot means "everything in the current folder")</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Initial commit"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># save the snapshot with a descriptive message</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-M</span> main          <span class="co"># rename the default branch to "main"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/USERNAME/REPO_NAME.git</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># link your local repo to the GitHub remote</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main     <span class="co"># push to GitHub</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># -u sets "origin main" as the default so future</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># pushes only need: git push</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Once your files are committed and pushed, notice the <strong>Source Control</strong> button on the left sidebar of VS Code (the branch icon with a number badge) — it shows how many files have uncommitted changes.</p>
+</section>
+<section id="best-practices" class="level3">
+<h3 class="anchored" data-anchor-id="best-practices">Best Practices</h3>
+<p>Adopting good habits early makes collaboration and troubleshooting much easier:</p>
 <ul>
-<li><p>Go to GitHub → Click New Repository</p></li>
-<li><p>Name your repo and choose:</p>
-<ul>
-<li><p>Public or Private</p></li>
-<li><p>Don’t add a README (We are going to push from VS Code, so it is better if the Repo is Blank)</p></li>
-</ul></li>
-<li><p>Local option: create folder → git init → link to GitHub repo</p></li>
-<li><p>Initial commit example within VS Code:</p>
-<ul>
-<li><p>git init</p></li>
-<li><p>git add .</p></li>
-<li><p>git commit -m “Initial commit“</p></li>
-<li><p>git branch –M main</p></li>
-<li><p>git remote add origin https://github.com/USERNAME/REPO_NAME.git</p></li>
-<li><p>git push -u origin main</p></li>
-</ul></li>
-<li><p>Also, notice the source control button on the left of VS Code that has changes to commit.</p></li>
+<li><span style="background-color: yellow;"><strong>Write clear commit messages</strong></span> — commit messages are the history of your project. A message like <code>"Fix login bug"</code> is far more useful than <code>"stuff"</code> or <code>"update"</code> when you are debugging six months later.</li>
+<li><span style="background-color: yellow;"><strong>Pull frequently</strong></span> — run <code>git pull origin main</code> before starting new work to stay synchronized with your team’s latest changes. Pulling early prevents large, painful merge conflicts later.</li>
+<li><span style="background-color: yellow;"><strong>Use <code>.gitignore</code></strong></span> — exclude sensitive credentials (API keys, <code>.env</code> files), large data files, and generated output from being tracked or uploaded. GitHub provides <code>.gitignore</code> templates for common project types.</li>
+<li><span style="background-color: yellow;"><strong>Keep the main branch stable</strong></span> — develop new features on separate branches (<code>git checkout -b feature/my-feature</code>) and only merge into <code>main</code> when the code is tested and reviewed.</li>
+<li><span style="background-color: yellow;"><strong>Use Issues and Project Boards</strong></span> — GitHub’s built-in task tracking tools help teams coordinate work, track bugs, and maintain visibility across a project without leaving the platform.</li>
 </ul>
 </section>
-<section id="best-practices" class="level4">
-<h4 class="anchored" data-anchor-id="best-practices">Best Practices</h4>
+<section id="troubleshooting-common-issues" class="level3">
+<h3 class="anchored" data-anchor-id="troubleshooting-common-issues">Troubleshooting Common Issues</h3>
+<p>A few problems come up regularly when working with Git and GitHub:</p>
 <ul>
-<li><p>Write clear commit messages (“Fix login bug” &gt; “stuff”)</p></li>
-<li><p>Pull often to stay updated:</p>
-<ul>
-<li><p>bash</p></li>
-<li><p>git pull origin main</p></li>
-</ul></li>
-<li><p>Use .gitignore to avoid uploading sensitive or unnecessary files</p></li>
-<li><p>Keep main branch stable</p></li>
-<li><p>Use Issues and Project Boards for task tracking</p></li>
+<li><strong>Merge conflicts</strong> — occur when two contributors change the same section of the same file. Git flags the conflict with <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> / <code>=======</code> / <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> markers in the file. Open the file, choose which version to keep (or combine them), save, then <code>git add</code> and <code>git commit</code> to complete the merge.</li>
+<li><strong>Authentication errors</strong> — if you see “permission denied” when pushing, the most common fixes are setting up an <strong>SSH key</strong> (preferred) or generating a <strong>personal access token</strong> in your GitHub account settings to use as your password.</li>
+<li><strong>Forgetting to pull</strong> — always run <code>git pull</code> before starting new work. If you push without pulling first, Git may reject your push because the remote has commits your local repo does not know about.</li>
+<li><strong>Accidental commits</strong> — use <code>git reset HEAD~1</code> to unstage the last commit while keeping your file changes, or <code>git revert &lt;commit-hash&gt;</code> to safely undo a specific commit without rewriting history. Avoid <code>git reset --hard</code> on shared branches — it rewrites history and will cause problems for other contributors.</li>
 </ul>
 </section>
-<section id="troubleshooting-common-issues" class="level4">
-<h4 class="anchored" data-anchor-id="troubleshooting-common-issues">Troubleshooting Common Issues</h4>
-<ul>
-<li><p>Merge conflicts – when two people change the same code section</p></li>
-<li><p>Authentication errors – fix with SSH keys or GitHub token</p></li>
-<li><p>Forgetting to pull – always update before pushing</p></li>
-<li><p>Accidental commits – use git reset or revert commits</p></li>
-</ul>
 </section>
-<section id="render.com" class="level4">
-<h4 class="anchored" data-anchor-id="render.com">Render.com</h4>
+<section id="deployment-with-render.com" class="level2">
+<h2 class="anchored" data-anchor-id="deployment-with-render.com">Deployment with Render.com</h2>
 <p><img src="images/render.com.png" class="img-fluid"></p>
+<p><strong>Render.com</strong> is a cloud hosting platform that connects directly to GitHub or GitLab for automatic builds and deployments whenever you push new code. Key features:</p>
 <ul>
-<li><p>Easy Git-based Deployment – Connect GitHub or GitLab for automatic builds and updates.</p></li>
-<li><p>Full-Stack Hosting – Run web apps, APIs, static sites, and background jobs on one platform.</p></li>
-<li><p>Built-in Scaling &amp; Security – Automatic HTTPS, DDoS protection, and autoscaling.</p></li>
-<li><p>Global Performance – CDN for static assets and low-latency infrastructure worldwide.</p></li>
-<li><p>Make a render account for you to link to your github account.</p></li>
-<li><p>Connect it to your CTBA repo.</p></li>
+<li><span style="background-color: yellow;"><strong>Git-based deployment</strong></span> — connect your repository and Render automatically rebuilds and redeploys on every push to the linked branch.</li>
+<li><span style="background-color: yellow;"><strong>Full-stack hosting</strong></span> — run web applications, APIs, static sites, and background jobs on a single platform.</li>
+<li><span style="background-color: yellow;"><strong>Built-in security and scaling</strong></span> — automatic HTTPS, DDoS protection, and autoscaling are included at no extra configuration cost.</li>
+<li><span style="background-color: yellow;"><strong>Global performance</strong></span> — a CDN for static assets and low-latency infrastructure worldwide.</li>
 </ul>
-</section>
-<section id="httpsdashboard.render.com" class="level4">
-<h4 class="anchored" data-anchor-id="httpsdashboard.render.com">https://dashboard.render.com/</h4>
+<p>To connect Render to your course project, create a free account at <a href="https://dashboard.render.com/">dashboard.render.com</a>, then link it to your course GitHub repository. Once connected, any push to your repository will trigger an automatic redeploy of your Dash application.</p>
+<section id="render-dashboard" class="level3">
+<h3 class="anchored" data-anchor-id="render-dashboard">Render Dashboard</h3>
 <p><img src="images/render_example.png" class="img-fluid"></p>
+</section>
+<section id="before-you-deploy-required-files" class="level3">
+<h3 class="anchored" data-anchor-id="before-you-deploy-required-files">Before You Deploy: Required Files</h3>
+<p>Before Render can build your application, your GitHub repository must contain <strong>three specific files</strong>. Render reads these to understand how to install your dependencies and run your app. Without them, the deployment will fail.</p>
+<section id="requirements.txt" class="level4">
+<h4 class="anchored" data-anchor-id="requirements.txt"><code>requirements.txt</code></h4>
+<p>This file tells Render which Python packages to install before starting your app. Each package goes on its own line, optionally pinned to a specific version for reproducibility.</p>
+<p>For a standard Dash application:</p>
+<pre><code>dash
+pandas
+plotly
+gunicorn</code></pre>
+<div class="note">
+<p><code>gunicorn</code> is a production-grade Python web server. It is not needed when running locally, but Render requires it to serve your app in a hosted environment. Without it, Render will not know how to start your server.</p>
+</div>
+</section>
+<section id="app.py-or-your-main-python-file" class="level4">
+<h4 class="anchored" data-anchor-id="app.py-or-your-main-python-file"><code>app.py</code> (or your main Python file)</h4>
+<p>This is the <strong>entry point</strong> of your Dash application. Two changes are required from your development version:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>server <span class="op">=</span> app.server   <span class="co"># expose the Flask server object — gunicorn needs this to start the app</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    app.run(debug<span class="op">=</span><span class="va">False</span>)   <span class="co"># debug=False for production security</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="note">
+<p><code>app.run_server()</code> is deprecated in recent versions of Dash. Use <code>app.run()</code> instead. Always set <code>debug=False</code> before deploying — leaving debug mode on exposes internal error details and is a security risk in a live environment.</p>
+</div>
+</section>
+<section id="render.yaml-optional-but-recommended" class="level4">
+<h4 class="anchored" data-anchor-id="render.yaml-optional-but-recommended"><code>render.yaml</code> (optional but recommended)</h4>
+<p>This file gives Render explicit, version-controlled instructions for how to build and start your app.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">type</span><span class="kw">:</span><span class="at"> web</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> my-dash-app</span><span class="co">           # replace with your app's name</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">env</span><span class="kw">:</span><span class="at"> python</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">buildCommand</span><span class="kw">:</span><span class="at"> </span><span class="st">"pip install -r requirements.txt"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">startCommand</span><span class="kw">:</span><span class="at"> </span><span class="st">"gunicorn app:server"</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">                                # "app" = your filename (app.py)</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">                                # "server" = the variable name from server = app.server</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="deployment-checklist" class="level4">
+<h4 class="anchored" data-anchor-id="deployment-checklist">Deployment Checklist</h4>
+<p>Before pushing to GitHub and triggering a Render deploy, confirm all of the following:</p>
+<ul>
+<li><span style="background-color: yellow;"><strong><code>requirements.txt</code> is present</strong></span> and includes <code>gunicorn</code>.</li>
+<li><span style="background-color: yellow;"><strong><code>app.run_server()</code> has been replaced</strong></span> with <code>app.run(debug=False)</code>.</li>
+<li><span style="background-color: yellow;"><strong><code>server = app.server</code> is defined</strong></span> in your <code>app.py</code> so gunicorn can find the entry point.</li>
+<li><span style="background-color: yellow;"><strong>Your repository is linked to Render</strong></span> and auto-deploy is enabled on the correct branch.</li>
+<li><span style="background-color: yellow;"><strong>No secrets or API keys are hardcoded</strong></span> — store them in Render’s <strong>Environment Variables</strong> settings and access them in Python with <code>os.environ["KEY_NAME"]</code>.</li>
+</ul>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -792,13 +886,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./crashcourse.html" class="pagination-link" aria-label="Crash Python Course">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Crash Python Course</span></span>
+      <a href="./introdash.html" class="pagination-link" aria-label="Intro to Dash and HTML">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Intro to Dash and HTML</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./makingcallbacks.html" class="pagination-link" aria-label="Writing Callbacks and Accessing API's">
-        <span class="nav-page-text"><span class="chapter-title">Writing Callbacks and Accessing API’s</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./makingcallbacks.html" class="pagination-link" aria-label="Writing Callbacks and Accessing APIs">
+        <span class="nav-page-text"><span class="chapter-title">Writing Callbacks and Accessing APIs</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

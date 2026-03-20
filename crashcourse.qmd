@@ -3,215 +3,245 @@ title: "Crash Python Course"
 format: html
 engine: knitr
 execute:
+  eval: TRUE
   python:
     executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
--   This crash course provides a hands-on introduction to Python fundamentals for analytics and data science. It starts with basic arithmetic and variable assignment, then explores strings, including concatenation, indexing, slicing, and built-in methods like .upper() and .find(). Learners move on to lists, tuples, and dictionaries, understanding their structure, mutability, and use cases—culminating in nested dictionaries that model complex data relationships.The course then introduces conditional statements (if, elif, else), loops (for, while), and functions—including parameters, default values, and return statements. Practical examples demonstrate how to encapsulate logic, make decisions, and control program flow.Finally, the module transitions into NumPy, showing how arrays extend Python’s list capabilities for efficient, vectorized computation. Students learn to create arrays, loop through elements, and use np.append() and arithmetic operations to manipulate numeric data.By the end, students gain a working foundation in Python syntax, logic, and data structures, preparing them to move into applied analytics, data manipulation, and visualization.
-
--   In this crash course, all code examples are written and executed in Visual Studio Code (VS Code), but the file is saved as a Jupyter Notebook (.ipynb). A Jupyter Notebook is an interactive environment that combines code, output, and explanatory text in a single document—ideal for teaching, experimentation, and data analysis. Unlike a standard Python file (.py), which runs code sequentially as a script, a notebook lets you execute code cell by cell, view results immediately, and include Markdown notes alongside. This makes it especially useful for learning and documenting analytics workflows.
-
--   In contrast, when building Dash applications, files must be saved as Python files (.py), since Dash apps require executable scripts that define layout and callbacks. Jupyter notebooks are excellent for exploration, but Dash needs Python files to run as full web applications.
-
-# Basic Math
-
--   Python can function as an interactive calculator, allowing you to perform arithmetic operations directly in the interpreter or notebook without writing full programs. You can type expressions like 2 + 3, 10 / 4, or 2\*\*3 and instantly see results, making Python a powerful tool for quick mathematical exploration, data checking, and computation—far beyond the capabilities of a basic calculator. Here are some examples below.
-
-```{python}
-1+1
-5-9
-5*6
--4/2
-1.0 + 2.5
-2**3
+```{r, include=FALSE, warning=FALSE}
+library(reticulate)
+use_python("C:/Users/pamel/anaconda3/envs/CTBA/python.exe", required = TRUE)
 ```
 
-# Variables
+This crash course provides a hands-on introduction to Python fundamentals for analytics and data science. It begins with basic arithmetic and variable assignment, then explores strings — including concatenation, indexing, slicing, and built-in methods like `.upper()` and `.find()`. From there, learners move on to lists, tuples, and dictionaries, understanding their structure, mutability, and use cases — culminating in nested dictionaries that model complex data relationships. The course then introduces conditional statements (`if`, `elif`, `else`), loops (`for`, `while`), and functions — including parameters, default values, and return statements. Practical examples demonstrate how to encapsulate logic, make decisions, and control program flow. Finally, the module transitions into NumPy, showing how arrays extend Python's list capabilities for efficient, vectorized computation. By the end, students will have a working foundation in Python syntax, logic, and data structures — preparing them to move into applied analytics, data manipulation, visualization, and dashboard development with Dash.
 
--   Variables are created using an assignment statement with a single equals sign (=), putting the name on the left and the value on the right. Once you've stored data in a variable, you can use the the print() function to display the value that is inside the variable.
+All code examples follow along with a Jupyter Notebook (`.ipynb`) provided in class. A Jupyter Notebook is an interactive environment that combines code, output, and explanatory text in a single document — ideal for teaching, experimentation, and data analysis. Unlike a standard Python file (`.py`), which runs code sequentially as a script, a notebook lets you execute code cell by cell, view results immediately, and include Markdown notes alongside your code. This makes it especially useful for learning and documenting analytics workflows.
 
--   When naming variables, do not use spaces or special characters. If you want to use a space, use an underscore instead. It is better to use lower case letters for variable names.
+As you progress through the course, you will also learn to build Dash applications — interactive web dashboards written in Python. Dash apps must be saved as Python files (`.py`), since they require executable scripts that define layout and callbacks. Jupyter Notebooks are excellent for exploration and learning, but Dash requires a `.py` file to run as a full web application.
 
-```{python}
-x=7
-y="data"
+## Python Fundamentals
 
-print(x) #printing the variable x
-print(y) #printing the variable y
+### Basic Math
 
+Python can function as an interactive calculator. You can type arithmetic expressions directly into a notebook cell and see results immediately — no need to write a full program first.
+
+```{python, eval=FALSE}
+1 + 1     # addition        → 2
+5 - 9     # subtraction     → -4
+5 * 6     # multiplication  → 30
+-4 / 2    # division        → -2.0  (always returns a float)
+1.0 + 2.5 # float addition  → 3.5
+2 ** 3    # exponentiation  → 8  (2 to the power of 3)
+```
+
+::: note
+Division (`/`) in Python 3 always returns a float, even when dividing two integers. Use `//` for integer (floor) division: `7 // 2` returns `3`.
+:::
+
+### Variables
+
+A variable is a named container for storing a value. You create one with a single equals sign (`=`): the name goes on the left, the value on the right.
+
+**Naming rules:**
+
+-   Use only letters, numbers, and underscores — no spaces or special characters.
+-   Use underscores to separate words: `my_variable`, not `my variable` or `myVariable`.
+-   Use lowercase — Python is case-sensitive, so `Score` and `score` are different variables.
+
+```{python, eval=TRUE}
+x = 7
+y = "data"
+
+print(x)   # → 7
+print(y)   # → data
 
 my_variable = 10
-print(my_variable) ##printing the variable before adding 5
-my_variable += 5
-print(my_variable) ##printing the variable after adding 5
+print(my_variable)    # → 10  (before adding 5)
+my_variable += 5      # += means "add 5 to the current value"
+print(my_variable)    # → 15  (after adding 5)
 ```
 
-# Working with Strings
+## Strings
 
--   A string is one of the most common data types in Python, used to represent textual data. You create a string by surrounding your text with either single (') or double (") quotes. You can store strings in variables, print them, and combine them using the + operator, which is called concatenation. Python also has many built-in functions to work with them, such as len() to get the length (number of characters), type() to check the data type (which will be str), and special escape characters like \n to add a newline.
+### Working with Strings
+
+A **string** is a sequence of characters enclosed in single (`'`) or double (`"`) quotes. Strings can represent names, sentences, file paths, or any textual data. The two quote styles are interchangeable — use whichever makes the content easier to read.
+
+Key string operations:
+
+| Operation     | Syntax   | Example              | Result          |
+|---------------|----------|----------------------|-----------------|
+| Concatenation | `+`      | `"Hello" + " World"` | `"Hello World"` |
+| Length        | `len()`  | `len("Python")`      | `6`             |
+| Type check    | `type()` | `type("hi")`         | `<class 'str'>` |
+| Newline       | `\n`     | `"line1\nline2"`     | two lines       |
 
 ```{python}
-"Im into Data Science"
 question = "What are you studying?"
-answer = "Analytics!"
+answer   = "Analytics!"
 
 print(question)
 print(answer)
 
-print(question + " " + answer) # Concatenating strings with a space in between
+print(question + " " + answer)   # joins with a space
+print(question + "\n" + answer)  # joins with a line break
 
-print(question + "\n" +answer) # Concatenating strings with a newline in between
-
-type(answer) # This will show the type of the variable 'answer'
-
-len(answer) # This will show the length of the string in 'answer'
+type(answer)   # → <class 'str'>
+len(answer)    # → 10
 ```
 
-# Indexing Strings
+### Indexing Strings
 
--   Strings in Python are ordered sequences of characters, meaning you can access any individual character using its position, known as its index. This process is called indexing. To access a character, you use the variable name followed by square brackets \[\] containing the index number.Python uses zero-based indexing, so the very first character is at index 0, the second at index 1, and so on. Python also supports negative indexing, which allows you to count from the end of the string, where -1 represents the last character.
+Every character in a string has a numbered **index** starting at `0`. You access a character by placing its index inside square brackets `[]`.
+
+```         
+  A  n  a  l  y  t  i  c  s  !
+  0  1  2  3  4  5  6  7  8  9   ← positive indices
+-10 -9 -8 -7 -6 -5 -4 -3 -2 -1   ← negative indices (count from end)
+```
 
 ```{python}
-answer[0] # This will show the first character of the string in 'answer'
-answer[2] # This will show the third character of the string in 'answer'
-answer[9] # This will show the tenth character of the string in 'answer'
-answer[-1] # This will show the last character of the string in 'answer'
+answer[0]    # → 'A'  (first character)
+answer[2]    # → 'a'  (third character — zero-based)
+answer[9]    # → '!'  (tenth character)
+answer[-1]   # → '!'  (last character, same result as answer[9])
 ```
 
-# Slicing
+### Slicing
 
--   course\[0:2\] → 'C' and 'T' (includes index 0 and 1; excludes 2)
--   Python slices are start-inclusive and end-exclusive
+Slicing extracts a **portion** of a string using `[start:end]`. The start index is **included**; the end index is **excluded**.
+
+```         
+course = "CTBA"
+          ↑↑
+          01   ← course[0:2] returns indices 0 AND 1, but NOT 2
+```
 
 ```{python}
 course = "CTBA"
-len(course) # This will show the length of the string in 'course'
-print(course[0:2]) # This will show the first 3 characters of the string in 'course'
+len(course)          # → 4
+print(course[0:2])   # → 'CT'  (characters at index 0 and 1)
+print(course[2:])    # → 'BA'  (from index 2 to the end)
+print(course[:2])    # → 'CT'  (from the start up to — but not including — index 2)
 ```
 
-# Methods and Functions
+### Methods and Functions
 
--   Associated with a Python object/class such as strings
-    -   Called by its name on the Python object
-        -   Example: st.upper()
-        -   (This works because st is a string)
-        -   Invalid: num.upper() (won’t work unless num is a string)
--   Functions
-    -   Defined independently from a specific python object/class
-    -   Called by its name only
+A **method** is a function attached to a specific object type and called using dot notation. A **function** is standalone and called by name alone.
+
+|          | Syntax               | Example          |
+|----------|----------------------|------------------|
+| Method   | `object.method()`    | `answer.upper()` |
+| Function | `function(argument)` | `len(answer)`    |
 
 ```{python}
-answer.upper() # This will convert the string in 'answer' to uppercase
-answer_cap = answer.upper()
-print(answer_cap) # This will print the uppercase version of 'answer'
-answer.lower() # This will convert the string in 'answer' to lowercase  
-answer.find("t")
+answer.upper()           # → 'ANALYTICS!'  (new string — orignal unchanged)
+answer_upper = answer.upper()
+print(answer_upper)      # → 'ANALYTICS!'
+
+answer.lower()           # → 'analytics!'
+answer.find("y")         # → 4  (index of first 'y'; returns -1 if not found)
 ```
 
-# New
+### Built-in Functions vs. String Methods
 
 ```{python}
-print("Hello") #Built in function
+print("Hello")       # print() is a built-in function — it works on any type
 
 text = "hello"
-print(text.upper()) 
-
+print(text.upper())  # .upper() is a string method — it only works on strings
 ```
 
-# Adding text and f-strings
+### Adding Text and F-Strings
 
--   Uses + to join strings manually.The variable name must be converted to a string if it isn’t one already. More prone to formatting issues or errors if types mismatch.
-
--   Uses f-strings, introduced in Python 3.6. Allows you to embed variables directly inside {}.Cleaner, more readable, and better for mixing variables and text.
+There are two ways to embed variables inside printed output. **F-strings** (formatted string literals), introduced in Python 3.6, are the modern, preferred approach.
 
 ```{python}
 name = "Pamela Schlosser"
-print("Hello, I am " + name + ". I have been teaching at WM since 2020.")    
-print(f"Hello, I am {name}. I have been teaching at WM since 2020.") 
+
+# Old way: manual concatenation — verbose and error-prone
+print("Hello, I am " + name + ". I have been teaching at WM since 2020.")
+
+# Modern way: f-string — cleaner and safer
+print(f"Hello, I am {name}. I have been teaching at WM since 2020.")
 ```
 
-# Lists
+::: note
+An f-string is prefixed with the letter `f` before the opening quote. Any expression inside `{}` is evaluated and inserted directly into the string. You can also do math: `f"Two plus two is {2 + 2}"` → `"Two plus two is 4"`.
+:::
 
--   A list is an ordered and changeable collection of items. You create a list by placing items (which can be a mix of any data type, like numbers and strings) inside square brackets \[\], separated by commas.
+## Data Structures
 
--   Lists are mutable, meaning you can modify it after it is created.
+### Lists
 
-    -   Add elements using .append()
-    -   Remove elements using .pop()
-    -   Reorder the entire list with .sort().
-
--   You can concatenate (combine) two lists using the + operator.
+A **list** is an ordered, mutable collection of items enclosed in square brackets `[]`. Lists can hold any mix of data types and can be modified after creation.
 
 ```{python}
-l1 = [1,2,3,4,5]
-l2 = ["a", "hello", "c", 2, 3.6]
-print(l1 + l2) # This will concatenate the two lists
+l1 = [1, 2, 3, 4, 5]
+l2 = ["a", "hello", "c", 2, 3.6]   # mixed types are allowed
+
+print(l1 + l2)   # concatenation → [1, 2, 3, 4, 5, 'a', 'hello', 'c', 2, 3.6]
 ```
 
+Common list operations:
+
 ```{python}
-l1.append(6) # This will add 6 to the end of the list l1
-print(l1) # This will print the updated list l1
+l1.append(6)   # adds 6 to the END of the list
+print(l1)      # → [1, 2, 3, 4, 5, 6]
 
-l1.pop() # This will remove the last element from the list l1
-print(l1) # This will print the updated list l1 after popping the last element
+l1.pop()       # removes and returns the LAST element
+print(l1)      # → [1, 2, 3, 4, 5]
 
-l1.sort() # This will sort the list l1 in ascending order
-
+l1.sort()      # sorts IN PLACE (modifies l1 directly)
+print(l1)      # → [1, 2, 3, 4, 5]  (already sorted in this case)
 ```
 
-# Tuple
+### Tuples
 
--   A tuple in Python is a data structure used to store an ordered collection of items, much like a list. You create a tuple by placing items inside parentheses (), separated by commas.
--   Tuples are immutable, meaning that once a tuple is created, you cannot change, add, or remove any of its elements. Attempting to reassign a value at a specific index will raise an error, making tuples a reliable way to store data that you know should not be modified.
+A **tuple** is like a list but **immutable** — once created, it cannot be changed. Tuples use parentheses `()` instead of square brackets. Use a tuple when the data should not be modified (e.g., coordinates, RGB color values, database row keys).
 
 ```{python}
-t1 = (1, 2, 3, 4, 5) # This is a tuple
-print(t1) # This will print the tuple t1
+t1 = (1, 2, 3, 4, 5)
+print(t1)          # → (1, 2, 3, 4, 5)
+print(t1[0])       # → 1  (indexing works the same as lists)
 
-#t1[0] = 11 # This will raise an error because tuples are immutable
+# t1[0] = 11       # ← this would raise: TypeError: 'tuple' object does not support item assignment
 ```
 
-# Dictionaries
+### Dictionaries
 
--   A dictionary is a built-in Python data type that stores data as key-value pairs.
-    -   A key is the identifier used to access a value.
-        -   Keys must be unique and immutable (like strings, numbers, or tuples).
-        -   Each key maps to a corresponding value.
-        -   You use the key inside square brackets or with .get() to retrieve its value.\
-    -   Values can be any data type (including lists, other dictionaries, etc.).
-    -   Dictionaries are unordered (prior to Python 3.7) and mutable, meaning you can add, change, or remove items.
+A **dictionary** stores data as **key–value pairs** inside curly braces `{}`. Keys must be unique and immutable (strings, numbers, or tuples); values can be anything.
+
+Think of a dictionary as a lookup table: given a key, you instantly retrieve its value — like looking up a word (key) in a glossary to find its definition (value).
 
 ```{python}
-d1 = {"name": "Schlosser", "age": 23, "city": "Williamsburg"} # This is a dictionary where "name", "age", and "city" are the keys
-print(d1["name"])     # Output: Schlosser
-d1["age"] = 24         # Updating the age
-d1["email"] = "pgschlosser@wm.edu"  # Adding a new key-value pair
-print(d1)  # Output: {'name': 'Schlosser', 'age': 24, 'city': 'Williamsburg', 'email': '
+d1 = {"name": "Schlosser", "age": 23, "city": "Williamsburg"}
 
-#Print in a better format using .items method
+print(d1["name"])                    # → Schlosser
+d1["age"] = 24                       # update an existing value
+d1["email"] = "pgschlosser@wm.edu"   # add a new key-value pair
+print(d1)
+
+# Iterate over all key-value pairs with .items()
 for key, value in d1.items():
     print(key, ":", value)
-    
 ```
 
-# Dictionary of Dictionaries
+### Dictionary of Dictionaries
 
--   A dictionary of dictionaries is a nested data structure where each value in the outer dictionary is itself a dictionary.
-
--   It allows you to organize complex data in a structured, readable way.
-
--   Often used to represent multiple records, like a small database.
-
--   Each person is a nested dictionary with their own name, age, and city.
+A **nested dictionary** is a dictionary where each value is itself a dictionary. This pattern is useful for representing records with multiple fields — similar to rows in a database table.
 
 ```{python}
 people = {
     "person1": {"name": "Schlosser", "age": 23, "city": "Williamsburg"},
-    "person2": {"name": "Smith", "age": 30, "city": "Newport News"}
+    "person2": {"name": "Smith",     "age": 30, "city": "Newport News"}
 }
 
+print(people["person1"]["name"])   # → Schlosser  (access nested values with chained keys)
 print(people)
 ```
+
+The same pattern can represent a **graph** or **distance matrix**, where each outer key is a node and each inner dictionary maps neighboring nodes to their edge weights:
 
 ```{python}
 distances = {
@@ -219,75 +249,73 @@ distances = {
     "B": {"A": 10, "C": 20},
     "C": {"A": 15, "B": 20}
 }
+
+print(distances["A"]["B"])   # → 10  (distance from A to B)
 ```
 
-# If Statements in Python
+## Control Flow
 
--   Explanation
-    -   The `if` keyword checks if a condition is `True`.
-    -   If the condition `x > 5` is met, the indented code runs.
--   What happens if we change `x` to 3.
+Control flow structures let you make decisions and repeat actions — two of the most fundamental programming patterns.
+
+### If Statements
+
+An `if` statement checks a condition. If the condition evaluates to `True`, the indented code block runs; if `False`, it is skipped entirely.
 
 ```{python}
 x = 10
 
 if x > 5:
-    print("x is greater than 5")
+    print("x is greater than 5")   # runs because 10 > 5 is True
 ```
 
-# If–Else Statements
+*Try changing `x = 3` and re-running — the condition becomes `False` and nothing prints.*
 
--   Explanation
-    -   `%` is the modulo operator (remainder).
-    -   `==` checks equality.
-    -   `else` runs if the `if` condition is false.
--   Can you write this to check if `x` is divisible by 3?
+### If–Else Statements
+
+An `else` clause provides a fallback that runs when the `if` condition is `False`.
 
 ```{python}
 x = 4
 
-if x % 2 == 0:
+if x % 2 == 0:      # % is the modulo operator — it returns the remainder
     print("x is even")
 else:
-    print("x is odd")
+    print("x is odd")   # runs when x % 2 is not 0
 ```
 
-# If–Elif–Else Chains
+*Can you modify this to check whether `x` is divisible by 3?*
 
--   Explanation
-    -   Use `elif` (else if) to check multiple conditions.
-    -   Only the first `True` block executes.
--   Try this with different values of `x`.
+### If–Elif–Else Chains
+
+Use `elif` ("else if") to test multiple conditions in sequence. Python evaluates each condition from top to bottom and executes only the **first** block that is `True`.
 
 ```{python}
 x = 0
 
 if x > 0:
     print("Positive")
-elif x == 0:
+elif x == 0:          # only checked if x > 0 was False
     print("Zero")
-else:
+else:                 # runs only if all conditions above were False
     print("Negative")
 ```
 
-# For Loops
+*Try `x = 5`, `x = -3`, and `x = 0` to see all three branches.*
 
--   Explanation
-    -   `range(5)` gives values from 0 to 4.
-    -   `for i in range(5)` loops through those values.
--   Modify it to print only even numbers.
+### For Loops
+
+A `for` loop iterates over a sequence, executing the loop body once for each item. `range(n)` generates integers from `0` to `n-1`.
 
 ```{python}
-for i in range(5):
+for i in range(5):       # i takes values 0, 1, 2, 3, 4
     print("i is", i)
 ```
 
-# While Loop with If Statement
+*Can you modify this to print only even numbers? Hint: use `if i % 2 == 0`.*
 
--   Explanation
-    -   A `while` loop repeats while the condition is true.
-    -   `x += 1` increases `x` by 1 each time.
--   What would happen if we forgot `x += 1`?
+### While Loops
+
+A `while` loop repeats as long as its condition remains `True`. Always ensure the loop has a way to terminate — forgetting the increment (`x += 1`) creates an infinite loop.
 
 ```{python}
 x = 0
@@ -297,145 +325,164 @@ while x < 5:
         print(x, "is even")
     else:
         print(x, "is odd")
-    x += 1
+    x += 1   # critical: without this line, x never changes and the loop runs forever
 ```
 
-# Functions
+## Functions
 
--   A function is a named, reusable block of code designed to perform a specific task. You create one using the def keyword, followed by the function's name and parentheses (). The code that belongs to the function is indented underneath this line.
--   Once a function is defined, you can "call" it—or run all the code inside it by using its name followed by parentheses.
+### Defining Functions
+
+A **function** is a named, reusable block of code. Define it with `def`, then **call** it by name whenever you need it. Functions help you avoid repeating the same code in multiple places.
 
 ```{python}
 def my_first_function():
-    """     
-    This is where we put the docstring
-    including input parameters, and output
     """
-
+    A docstring describes what the function does.
+    Good practice: always include one.
+    """
     print("This is my first function")
+
+my_first_function()   # call the function — nothing happens until you call it
 ```
+
+Functions can accept **parameters** (inputs) and can be called with **positional** or **keyword** arguments:
 
 ```{python}
 def sum_up(a, b):
-     print(a+b)
-     
-sum_up(1,2)
+    print(a + b)
 
-sum_up(a=1, b=2)
+sum_up(1, 2)       # positional: a=1, b=2 → prints 3
+sum_up(a=1, b=2)   # keyword: same result, but more explicit
 ```
 
-# Can set default values
+### Default Parameter Values
 
--   Default values are preset values assigned to function parameters. If the caller does not provide a value for that parameter, the default is used.
+**Default values** allow a parameter to be optional — if the caller does not supply it, the default is used.
 
-    -   Many built-in and custom functions use default values to make them more flexible.
-    -   They allow you to omit arguments when calling a function.
-    -   Makes functions easier to use and reduces the need for overloading.
+```{python}
+def sum_up(a=1, b=1):   # both parameters default to 1
+    print(a + b)
 
-    ```{python}
-    def sum_up(a=1, b=1):
-         print(a+b)
-    ```
+sum_up()        # → 2  (uses both defaults)
+sum_up(5)       # → 6  (a=5, b defaults to 1)
+sum_up(3, 4)    # → 7  (overrides both defaults)
+```
 
-# return statement
+### The Return Statement
 
--   The return statement is used inside a function to send a value back to the caller of the function.
-    -   Without return, a function returns None by default.
-    -   You can return any data type: numbers, strings, lists, even other functions.
-    -   You can return multiple values using commas
--   The function below will use the default values of a and b and assign the result to a new variable 'result'
--   This will print the result of the sum_up function
+`return` sends a value back to the caller. Without it, a function returns `None` by default. Storing the return value lets you use the result in further calculations.
 
 ```{python}
 def sum_up(a=1, b=1):
-     return(a+b)
-result= sum_up()  
-print(result)   
+    return a + b   # sends the result back to whoever called the function
+
+result = sum_up()        # result now holds 2
+result_2 = sum_up(3, 4)  # result_2 now holds 7
+print(result, result_2)  # → 2 7
 ```
 
-# If Else in a Function
+### If–Else Inside a Function
 
--   You can use if/else inside a function to control which statements run based on the input. This lets your function make decisions and return different results depending on conditions.
+Functions can contain any control flow logic, making them adaptable to different inputs.
 
 ```{python}
 def abs_value(k):
-    """Returns the absolute value of a number."""
+    """Returns the absolute value of a number without using Python's built-in abs()."""
     if k < 0:
-        return -k
+        return -k   # flip the sign if negative
     else:
-        return k
-    
-abs(-5)  # This will return 5
-abs(5)  # This will return 5
+        return k    # return as-is if zero or positive
+
+print(abs_value(-5))   # → 5
+print(abs_value(5))    # → 5
+print(abs_value(0))    # → 0
 ```
 
-# Using a Function from a Package
+## NumPy
 
--   To access specialized tools that are not built into standard Python, you often need to use functions from external packages or libraries. Once a package is imported, you can assign it an alias name.
+### Using External Packages
 
--   Print a basic Python list
+Python's power comes partly from its ecosystem of third-party libraries. **NumPy** is the foundation of numerical computing in Python — it provides arrays that are faster and more memory-efficient than plain Python lists for mathematical operations.
 
-```{python}
-
-list1 = [1,2,3,4,5]
-print(list1)
-```
-
--   Import the NumPy library and alias it as np
+Import a package with `import`. Using `as np` creates a short alias so you write `np.array()` instead of `numpy.array()`.
 
 ```{python}
 import numpy as np
 ```
 
--   Create and print a NumPy array named arr1 from a list
--   list2 is a list of tuples, treated as a list of rows
--   arr2 is a 2D NumPy array that now supports array operations
+### Creating Arrays
+
+A NumPy **array** is like a list, but it can only hold one data type and supports vectorized math operations.
 
 ```{python}
-arr1 = np.array([1,2,3,4,5])
-print(arr1)
-list2 = [(1,2,3),(4,5,6)]
-print(list2)
-arr2 = np.array([(1,2,3),(4,5,6)])
+# 1D array from a list
+arr1 = np.array([1, 2, 3, 4, 5])
+print(arr1)          # → [1 2 3 4 5]
+print(type(arr1))    # → <class 'numpy.ndarray'>
+
+# 2D array from a list of tuples (treated as rows)
+list2 = [(1, 2, 3), (4, 5, 6)]
+arr2  = np.array(list2)
 print(arr2)
+# → [[1 2 3]
+#    [4 5 6]]
 ```
 
--   Loop 1 loops through a Python list and print elements.
--   Loop 2 using arr1 loops through a NumPy array — works the same at this level.
+### Python Lists vs. NumPy Arrays
+
+For simple iteration, lists and arrays behave identically:
 
 ```{python}
-list = [1,2,3]
-arr1 = np.array([1,2,3])
-for e in list:
-    print(e) #Loop through a Python list and print elements
+my_list = [1, 2, 3]
+arr1    = np.array([1, 2, 3])
+
+for e in my_list:
+    print(e)   # prints 1, 2, 3
+
 for e in arr1:
-    print(e)  # Loop through a NumPy array — works the same at this level
+    print(e)   # same output
 ```
 
--   Below, we are exploring how to add elements to a NumPy array, and highlighting the difference between Python lists and NumPy arrays when it comes to appending:
-
--   Use np.append() to add elements to an array
-
-    -   arr1.append(4) does not work — unlike lists, NumPy arrays do not have an .append() method. It raises an AttributeError.
-    -   arr1 = arr1 + \[5\] is also incorrect — adding a list to a NumPy array does not work unless the shapes are compatible, which they are not in this case.
+The key differences appear with math operations:
 
 ```{python}
-arr1 = np.array([1,2,3])
-# these do not work:
-#arr1.append(4)
-#arr1 = arr1 + [5]
-arr1 = np.append(arr1,4)
-arr1 = np.append(arr1,[5]) #Append another element
+# Python list: + concatenates (does NOT add element-wise)
+print([1, 2, 3] + [1, 2, 3])   # → [1, 2, 3, 1, 2, 3]
+
+# NumPy array: + adds element-wise
+arr = np.array([1, 2, 3])
+print(arr + arr)                 # → [2 4 6]
+```
+
+### Appending to Arrays
+
+NumPy arrays do **not** have an `.append()` method — use `np.append()` instead, which returns a new array.
+
+```{python}
+arr1 = np.array([1, 2, 3])
+
+# These do NOT work:
+# arr1.append(4)        ← AttributeError: 'ndarray' object has no attribute 'append'
+# arr1 = arr1 + [5]     ← TypeError: can't add a list to an ndarray
+
+# This is the correct approach:
+arr1 = np.append(arr1, 4)    # returns a new array: [1 2 3 4]
+arr1 = np.append(arr1, [5])  # returns a new array: [1 2 3 4 5]
+
 for e in arr1:
-    print(e) # Prints updated array values
-
-```
-
--   Add two arrays element-wise
--   Print the result: each value is doubled
-
-```{python}
-arr2 = arr1 + arr1
-for e in arr2:
     print(e)
 ```
+
+### Element-Wise Arithmetic
+
+NumPy arrays support **vectorized** arithmetic — operations apply to every element simultaneously, with no loop required:
+
+```{python}
+arr2 = arr1 + arr1   # adds each element to itself (equivalent to arr1 * 2)
+print(arr2)          # → [ 2  4  6  8 10]
+
+arr3 = arr1 * 3      # multiply every element by 3
+print(arr3)          # → [ 3  6  9 12 15]
+```
+
+This vectorized behavior is what makes NumPy dramatically faster than equivalent Python loops for large numerical datasets.

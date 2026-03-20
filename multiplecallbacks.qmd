@@ -8,402 +8,277 @@ execute:
     executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
--   Callbacks can have multiple inputs/outputs, allowing you to update several components in response to a single input event.
+Callbacks can have **multiple inputs and outputs**, allowing you to update several components in response to a single input event — or to wire several independent interactions into one coordinated function. The general pattern: declare all Outputs first, then all Inputs, then write the function whose arguments correspond to the Inputs and whose return values correspond to the Outputs.
 
 ```{python}
 @app.callback(
-   Output(output_id1,output_property1),
-   Output(output_id2,output_property2),
-   Output(output_id3,output_property3),
-   Input(input_id1,input_property1),
-   Input(input_id2,input_property2),
-   Input(input_id3,input_property3)
+    Output(output_id1, output_property1),   # output 1
+    Output(output_id2, output_property2),   # output 2
+    Output(output_id3, output_property3),   # output 3
+    Input(input_id1,  input_property1),     # input 1 → first argument
+    Input(input_id2,  input_property2),     # input 2 → second argument
+    Input(input_id3,  input_property3)      # input 3 → third argument
 )
-
 def function_name(input_value1, input_value2, input_value3):
-   #Perform some operations based on the inputs
-   result1= some_operation(input_value1)
-   result2= another_operation(input_value2)
-   result3= yet_another_operation(input_value3)
-   
-   #Return the results to update the outputs
-   return result1, result2, result3
-
-
+    result1 = some_operation(input_value1)
+    result2 = another_operation(input_value2)
+    result3 = yet_another_operation(input_value3)
+    return result1, result2, result3   # must match Output order
 ```
 
 ![](images/callbacks_multiple.png)
 
--   Above is an example of an App with 3 callbacks
+## A Simple App with Three Callbacks
 
-#### Making a Simple App with 3 Callbacks
+This example builds a minimal Dash app with three input boxes — two for numbers and one for text — and three output `Div`s that update in real time. The key rules:
 
--   Imports Dash pieces: app object, HTML/core components, and callback utilities.
-
--   Creates a Dash app: app = Dash().
-
--   Setting up 3 callbacks with 3 input boxes: 2 numbers, and 1 text.
-
-    -   three inputs (input1, input2, input3) and three empty Divs (output1–3) to display results.
-
--   Callback wiring: declares three **Outputs** (the children text of output1–3) and three **Inputs** (the value of input1–3).
-
--   Behavior: whenever **any** input value changes, Dash will call the (shown on next slide) callback function with the three values and expect it to **return three results** in the same order to update output1, output2, and output3.
+-   Each `dcc.Input` component has a unique `id` (`'input1'`, `'input2'`, `'input3'`).
+-   Each `html.Div` has a unique `id` (`'output1'`, `'output2'`, `'output3'`).
+-   The `@app.callback` decorator declares three [**Outputs**]{style="background-color: yellow;"} (the `children` property of each output `Div`) and three [**Inputs**]{style="background-color: yellow;"} (the `value` property of each input box).
+-   Whenever **any** input value changes, Dash calls the function and expects **three return values** in the same order as the declared Outputs.
 
 ```{python}
 from dash import Dash, html, dcc, Input, Output, callback
 
-app= Dash()
+app = Dash()
 
-app.layout= html.Div([
-   dcc.Input(id='input1',type='number',placeholder='Enter a number'),
-   dcc.Input(id='input2',type='number',placeholder='Enter another number'),
-   dcc.Input(id='input3',type='text',placeholder='Enter some text'),
-   
-   html.Div(id='output1',style={'marginTop':'20px'}),
-   html.Div(id='output2'),
-   html.Div(id='output3')
+app.layout = html.Div([
+    dcc.Input(id='input1', type='number', placeholder='Enter a number'),
+    dcc.Input(id='input2', type='number', placeholder='Enter another number'),
+    dcc.Input(id='input3', type='text',   placeholder='Enter some text'),
+
+    html.Div(id='output1', style={'marginTop': '20px'}),
+    html.Div(id='output2'),
+    html.Div(id='output3')
 ])
+
 @app.callback(
-   Output(output_id1,output_property1),
-   Output(output_id2,output_property2),
-   Output(output_id3,output_property3),
-   Input(input_id1,input_property1),
-   Input(input_id2,input_property2),
-   Input(input_id3,input_property3)
+    Output('output1', 'children'),   # result1 → output1
+    Output('output2', 'children'),   # result2 → output2
+    Output('output3', 'children'),   # result3 → output3
+    Input('input1',  'value'),       # num1 ← input1
+    Input('input2',  'value'),       # num2 ← input2
+    Input('input3',  'value')        # text ← input3
 )
 ```
 
-#### Updating Outputs
+### Handling None Values and Computing Results
 
--   Takes three inputs from Dash: num1, num2, and text.
-
--   Replaces missing values: num1 and num2 = 0 if blank, text = text or "" to avoid errors.
-
--   Computes three results: sum of numbers, product of numbers, and reversed text (text\[::-1\]).
-
--   Formats each result as a readable string and returns all three to update the app’s outputs.
+When a `dcc.Input` box is empty, Dash passes `None` as the argument value — not `0` or `""`. Always guard against `None` before doing arithmetic or string operations.
 
 ```{python}
-def update_outputs(num1,num2,text):
-   #Handle None values to avoid errors
-   num1 = num1 or 0
-   num2 = num2 or 0
-   text = text or ""
-   
-   #Perform some operations
-   result1 = f"The Sum of the first 2 numbers is: {num1 + num2}"
-   result2 = f"The Product of the first 2 numbers is: {num1 * num2}"
-   result3 = f"The Reversed Text of the third cell is: {text[::-1]}"
-   
-   #Return the results to update the outputs
-   return result1,result2, result3
+def update_outputs(num1, num2, text):
+    # Replace None with safe defaults before any computation
+    num1 = num1 or 0    # None → 0; any number stays as-is
+    num2 = num2 or 0
+    text = text or ""   # None → empty string
+
+    result1 = f"Sum of the two numbers: {num1 + num2}"
+    result2 = f"Product of the two numbers: {num1 * num2}"
+    result3 = f"Reversed text: {text[::-1]}"
+    # text[::-1] is Python slice notation for reversing a sequence
+    # "hello" → "olleh"
+
+    return result1, result2, result3
 
 if __name__ == '__main__':
-   app.run(debug=True)
+    app.run(debug=True)
 ```
 
-#### Starting a World Happiness App With a Link
+## The World Happiness App
 
--   html.A() is the Dash component equivalent of the HTML \<a\> tag (anchor tag), used to create hyperlinks. It renders a clickable text that links to an external or internal webpage.
+### Starting with a Hyperlink
 
-    -   This is the link text shown on the dashboard: “World Happiness Report Data Source”
-
-    -   This is the URL the link points to: href="https://worldhappiness.report/
-
-    -   target=“\_blank”
-
-        -   This makes the link open in a new browser tab.
-
-        -   (If omitted, the link opens in the current tab.)
+**`html.A()`** is the Dash equivalent of the HTML `<a>` anchor tag, used to create hyperlinks.
 
 ```{python}
 from dash import Dash, html
 
 app = Dash()
 
-#The layout can include a single component (string, number, or element)
-#or a list of components
 app.layout = html.Div([
-   html.H1("World Happiness Dashboard"),
-   html.P("This dashboard visualizes world happiness score."),
-   html.Br(),
-   html.A("World Happiness Report",
-         href="https://worldhappiness.report/",
-         target="_blank",
-         style={'color':'#6065a3','textDecoration':'underline'})
+    html.H1("World Happiness Dashboard"),
+    html.P("This dashboard visualizes world happiness scores."),
+    html.Br(),
+    html.A(
+        "World Happiness Report",           # visible link text
+        href="https://worldhappiness.report/",
+        target="_blank",                    # open in a new tab; omit to open in current tab
+        style={'color': '#6065a3', 'textDecoration': 'underline'}
+    )
 ])
 ```
 
-#### Adding Style
+### Inline Styling Reminder
 
--   This inline styling controls how the hyperlink appears visually in the Dash app.
+Inline styling uses a Python dictionary. Two CSS rules to remember:
 
--   The values (e.g., ‘#6065a3’ is a color and 'underline') are strings, just like in CSS.
+-   CSS property names are written in [**camelCase**]{style="background-color: yellow;"} in Python (`textDecoration`) rather than kebab-case (`text-decoration`) as in CSS files.
+-   Values are strings: `'#6065a3'`, `'underline'`, `'20px'`.
 
--   The keys (e.g., 'textDecoration') are written in camelCase, not kebab-case (text-decoration) as in regular CSS. Underline gives it an underline text decoration.
-
-```{python}
-   html.A("World Happiness Report",
-         href="https://worldhappiness.report/",
-         target="_blank",
-         style={'color':'#6065a3','textDecoration':'underline'})
-```
-
-#### World Happiness App.
+### Full Initial Layout
 
 ```{python}
 from dash import Dash, html
 
 app = Dash()
 
-#The layout can include a single component (string, number, or element)
-#or a list of components
 app.layout = html.Div([
-   html.H1("World Happiness Dashboard"),
-   html.P("This dashboard visualizes world happiness score."),
-   html.Br(),
-   html.A("World Happiness Report",
-         href="https://worldhappiness.report/",
-         target="_blank",
-         style={'color':'#6065a3','textDecoration':'underline'})
+    html.H1("World Happiness Dashboard"),
+    html.P("This dashboard visualizes world happiness scores."),
+    html.Br(),
+    html.A("World Happiness Report",
+           href="https://worldhappiness.report/",
+           target="_blank",
+           style={'color': '#6065a3', 'textDecoration': 'underline'})
 ])
 
-#Run the server
 if __name__ == '__main__':
-   app.run(debug=True, use_reloader=False)
+    app.run(debug=True, use_reloader=False)
 ```
 
 ![](images/world_happiness.png)
 
-#### Extending the World Happiness Dash Setting up App and Layout
+## Extending the App: Data, Layout, and Callbacks
+
+### Imports and Data Preparation
 
 ```{python}
 from dash import Dash, html, dcc, Input, Output
 import pandas as pd
-import plotly.express ass px
+import plotly.express as px
 
-#Load your dataset (adjust the apth or filename as needed)
+# Load the dataset — adjust the path if needed
 df = pd.read_csv('data/world_happiness.csv')
 
-#Clean and prepare the dataset
+# Rename columns for clarity and consistent casing
 df = df.rename(columns={
-   "country":"Country",
-   "year":"Year",
-   "Life Ladder":"Happiness Score"
+    "country":     "Country",
+    "year":        "Year",
+    "Life Ladder": "Happiness Score"   # "Life Ladder" is the raw column name in the dataset
 })
 
-df['Year'] = df['Year'].astype(int)
-
-#Create app
+df['Year'] = df['Year'].astype(int)    # ensure Year is an integer for sorting and dropdown use
 
 app = Dash(__name__)
 app.title = "World Happiness Dashboard"
 ```
 
--   Imports libraries:
-
-    -   dash components (Dash, html, dcc, Input, Output) for building the web app.
-
-    -   pandas for data handling.
-
-    -   plotly.express for creating interactive charts.
-
--   Loads the dataset:
-
-    -   Reads world_happiness.csv from the data folder into a DataFrame df.
-
--   Cleans and renames columns:
-
-    -   Changes "country" to "Country", "year" to "Year", and "Life Ladder" to "Happiness Score" for clarity and consistent naming.
-
-    -   Ensures correct data type: Converts "Year" to integers so it can be sorted and used in dropdowns/filters.
-
--   Creates the Dash app:
-
-    -   app = Dash(\_\_name\_\_) initializes the web app.
-
-    -   app.title sets the browser tab title to World Happiness Dashboard.
-
-#### Layout
+### App Layout
 
 ```{python}
-#App Layout
+app.layout = html.Div(
+    style={'padding': '20px', 'backgroundColor': '#FAF3DD'},
+    children=[
+        html.H1("World Happiness Dashboard", style={'textAlign': 'center'}),
+        html.P("Explore global happiness trends by year.", style={'textAlign': 'center'}),
 
-app.layout = html.Div(style={'padding': '20px', 'backgroundColor': '#FAF3DD'},children=[
-   html.H1("World Happiness Dashboard",style={'textAlign':'center'}),
-   html.P("Explore global happiness trends by year.",style={'textAlign':'center'}),
-   
-   html.Div([
-      dcc.Dropdown(
-         id='year-dropdown',
-         options=[{'label':str(year),'value':year} for year in sorted(df['Year'.unique())],
-         value=df['Year'].max(),
-         clearable=False,
-         style={'width':'50%'}
-         )
-      ], style={'textAlign':'center','marginBottom':'30px'}),
-  
-   dcc.Graph(id='happiness-map'),
-   dcc.Graph(id='top-bottom-bar'),
-   
-   html.Dive([
-      html.A("World Happiness Report Data Source",
-            href="https://worldhappiness.report/",
-            target="_blank",
-            stye={'textAlign':'center','display':'block','marginTop':'20px'})
-            ])
-   ])
-]
+        html.Div([
+            dcc.Dropdown(
+                id='year-dropdown',
+                options=[{'label': str(year), 'value': year}
+                         for year in sorted(df['Year'].unique())],
+                # sorted() ensures years appear in chronological order in the dropdown
+                value=df['Year'].max(),   # default: most recent year in the dataset
+                clearable=False,
+                style={'width': '50%'}
+            )
+        ], style={'textAlign': 'center', 'marginBottom': '30px'}),
+
+        dcc.Graph(id='happiness-map'),      # choropleth map — populated by callback
+        dcc.Graph(id='top-bottom-bar'),     # bar chart — populated by callback
+
+        html.Div([
+            html.A("World Happiness Report Data Source",
+                   href="https://worldhappiness.report/",
+                   target="_blank",
+                   style={'textAlign': 'center', 'display': 'block', 'marginTop': '20px'})
+        ])
+    ]
+)
 ```
 
--   In your dashboard, html.Div elements group and style related components—like the dropdown, graphs, and link—so they’re visually organized and can be positioned or styled as a single block.
+The `id` values (`'year-dropdown'`, `'happiness-map'`, `'top-bottom-bar'`) are the contract between layout and callbacks. If you change an `id` here, you must update it in the callback too.
 
--   The IDs (year-dropdown, happiness-map, top-bottom-bar) are contract points for your \@callback. If any ID changes, the callback wiring must change too.
-
--   dcc.Graph(id='happiness-map') and dcc.Graph(id='top-bottom-bar') don’t have figure= yet; they’re targets for callbacks. Our callback will return figures that populate these by matching the IDs.
-
-    -   Having two separate graphs lets you update them together (single callback with two outputs) or independently.
-
-#### @app.callback
+### The Callback
 
 ```{python}
-#Callback for updating map and bar chart
 @app.callback(
-   [Output('happiness-map','figure'),
-   Output('top-bottom-bar','figure')],
-   [Input('year-dropdown','value')]
+    [Output('happiness-map',  'figure'),   # output 1: choropleth map figure
+     Output('top-bottom-bar', 'figure')],  # output 2: bar chart figure
+    [Input('year-dropdown',   'value')]    # trigger: whenever the selected year changes
 )
+def update_charts(selected_year):
+    # Filter the full dataset to only the selected year
+    filtered_df = df[df['Year'] == selected_year]
 ```
 
--   These lines are setting up a Dash callback that:
+::: note
+`filtered_df` is defined inside the callback function using the `selected_year` input. It is not a global variable — it is created fresh each time the user selects a different year. This is the standard pattern: filter or transform the global `df` DataFrame inside the callback based on user inputs.
+:::
 
-    -   Listens for changes to the year-dropdown’s selected value (Input('year-dropdown', 'value')),
+### Making the Choropleth Map
 
-    -   Runs a function whenever that value changes,
-
-    -   Outputs two results
-
-        -   one to the figure property of the component with ID happiness-map and
-
-        -   the other to the figure property of the component with ID top-bottom-bar — so both the map and bar chart update together.
-
-#### Making Choropleth Map
+A **choropleth map** shades geographic regions in proportion to a statistical variable — darker or more intense colors indicate higher values. It is ideal for showing spatial distribution and geographic trends at a glance.
 
 ```{python}
-#Chorpleth map
+    map_fig = px.choropleth(
+        filtered_df,
+        locations="Country",
+        locationmode="country names",       # match country names to Plotly's built-in geography
+        color="Happiness Score",
+        hover_name="Country",               # show country name on hover
+        color_continuous_scale="viridis",   # perceptually uniform color scale
+        title=f"Happiness Score by Country — {selected_year}"
+    )
 
-map_fig = px.choropleth(
-   filtered_df,
-   locations="Country",
-   locationmode="country names",
-   color="Happiness Score",
-   hover_name="Country",
-   color_continuous_scale="viridis",
-   title=f"Happiness Score by Country - {selected_year}"
-)
-
-#Removes left,right, and bottom margins (1=0,r=0,b=0)
-# so the map fills more space.
-map_fig.update_layout(margin=dict(1=0,r=0,t=40,b=0))
+    # Tight margins so the map fills the card area
+    map_fig.update_layout(margin=dict(l=0, r=0, t=40, b=0))
 ```
 
--   Using plotly express (px) to make a choropleth, which is a type of map where geographic areas (such as countries, states, or counties) are shaded or colored in proportion to a statistical variable. Darker or more intense colors usually indicate higher values, while lighter shades indicate lower values. The purpose is to make spatial patterns in the data easy to see at a glance.
-
-    -   Data is aggregated over defined regions (not individual data points).
-
-    -   Colors represent relative magnitudes.
-
-    -   Useful for showing geographic trends and spatial distribution.
-
-#### Filtering by Low and High
+### Filtering Top and Bottom Countries
 
 ```{python}
-#Bar chart for top 10 and bottom 10
-
-top_bottom = pd.concat([
-   filtered_df.nlargest(10, 'Happiness Score'),
-   filtered_df.nsmallest(10, 'Happiness Score')
-])
+    # Combine the 10 highest and 10 lowest scorers into one DataFrame
+    top_bottom = pd.concat([
+        filtered_df.nlargest(10,  'Happiness Score'),   # 10 highest scores
+        filtered_df.nsmallest(10, 'Happiness Score')    # 10 lowest scores
+    ])
+    # pd.concat stacks them vertically — result has 20 rows
 ```
 
-Uses Pandas (pd) to create a new filtered data frame containing data for a specific year (selected_year).
-
--   nlargest(10, 'Happiness Score') picks the 10 countries with the highest Happiness Scores.
-
--   nsmallest(10, 'Happiness Score') picks the 10 with the lowest scores.
-
--   pd.concat(\[...\]) combines these two filtered dataframes into one, giving a list of the 20 countries (top 10 + bottom 10).
-
-#### Updating Bar Plot Based on Top/Bottom
+### Building the Bar Chart
 
 ```{python}
-bar_fig = px.bar(
-   top_bottom.sort_values('Happiness Score'),
-   x='Happiness Score',
-   y='Country',
-   orientation='h',
-   color='Happiness Score',
-   title=f"Top and Bottom 10 Countries by Happiness Score - {selected_year}",
-   color_continuous_scale='BrBG'
-)
+    bar_fig = px.bar(
+        top_bottom.sort_values('Happiness Score'),   # sort so bars go low → high
+        x='Happiness Score',
+        y='Country',
+        orientation='h',                             # horizontal bars: countries on y-axis
+        color='Happiness Score',
+        color_continuous_scale='BrBG',               # brown–white–green diverging scale
+        title=f"Top and Bottom 10 Countries by Happiness Score — {selected_year}"
+    )
+    bar_fig.update_layout(yaxis={'categoryorder': 'total ascending'})
+    # 'total ascending' ensures the chart renders bars in score order (not alphabetical)
 
-bar_fig.update_layout(yaxis={'categoryorder': 'total ascending'})
-```
-
--   In the bar chart figure, we are using plotly express (px) to do the following:
-
-    -   top_bottom.sort_values('Happiness Score') sorts so that bars appear in score order (low to high).
-
-    -   px.bar() creates a bar chart with:
-
-        -   x='Happiness Score’: bar length = Happiness Score.
-
-    -   y='Country’: each bar corresponds to a country.
-
-    -   orientation=‘h’: horizontal bars instead of vertical.
-
-    -   color='Happiness Score’: bar color depends on score.
-
-    -   color_continuous_scale='RdYlGn’ where red–yellow–green gradient, where red = low, green = high.
-
-    -   title=... dynamic chart title showing the selected year.
-
-#### Run Server
-
--   Return both map and bar chart update
-
-    -   In Dash, callbacks return figure objects, which are then displayed in the app’s layout inside components.
-
--   if \_\_name\_\_ == '\_\_main\_\_':
-
-    -   This is a Python idiom meaning:\
-        “Only run the following code if this script is being executed directly, not if it’s being imported as a module in another script.”
-
-    -   Prevents your server from starting automatically when the file is imported elsewhere.
-
-```{python}
-
-   return map_fig, bar_fig
-
-#Run server
+    return map_fig, bar_fig   # two return values match the two declared Outputs
 
 if __name__ == '__main__':
-   app.run(debug=True)
+    app.run(debug=True)
 ```
 
-app.run(debug=True)
+### Running the Server
 
-This starts the Dash web server so the app runs in your browser.
+`app.run(debug=True)` starts the Dash development server. With `debug=True`:
 
-debug=True:
+-   The server **hot-reloads** automatically when you save code changes.
+-   **Detailed error messages** appear in the browser if something breaks.
 
--   Enables automatic reloading when you change the code (hot reload).
+The `if __name__ == '__main__'` guard ensures the server only starts when the script is run directly, not when it is imported as a module by another file — this is a standard Python idiom.
 
--   Shows detailed error messages in your browser if something breaks.
+## Using DataLab for Working with Groups
 
-Without debug=True, you’d have to restart the server manually after change
-
-#### Using Data Lab for Working With Groups
+DataLab provides tools for collaborative data exploration, allowing teams to work with and analyze grouped data across shared notebooks and dashboards.
 
 ![](images/datalabs.png)

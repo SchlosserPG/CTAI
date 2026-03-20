@@ -1,5 +1,5 @@
 ---
-title: "Writing Callbacks and Accessing API's"
+title: "Writing Callbacks and Accessing APIs"
 format: html
 engine: knitr
 execute:
@@ -8,124 +8,108 @@ execute:
     executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
--   This module explains how callbacks make Dash apps interactive and how to connect them to external APIs. A callback function automatically runs when a user changes an input, such as typing text or selecting a date, and updates outputs like graphs or images in real time. Using the @app.callback() decorator, students learn to link inputs and outputs, handle multiple components, and structure interactive workflows with Dash Core Components such as dcc.Input and dcc.DatePickerSingle.
+This module explains how callbacks make Dash apps interactive and how to connect them to external APIs. A callback function automatically runs when a user changes an input — such as typing text or selecting a date — and updates outputs like graphs or images in real time. Using the `@app.callback()` decorator, students learn to link inputs and outputs, handle multiple components, and structure interactive workflows with Dash Core Components such as `dcc.Input` and `dcc.DatePickerSingle`.
 
-The lesson concludes with a hands-on example using NASA’s Astronomy Picture of the Day (APOD) API. Students build a Dash app that lets users select a date, retrieves NASA’s image or video for that day using the requests library, and displays the title, media, and explanation. Through this exercise, they learn how to combine callbacks, APIs, and conditional logic to create dynamic, data-driven dashboards.
+The lesson concludes with a hands-on example using NASA's Astronomy Picture of the Day (APOD) API. Students build a Dash app that lets users select a date, retrieves NASA's image or video for that day using the `requests` library, and displays the title, media, and explanation. Through this exercise, students learn how to combine callbacks, APIs, and conditional logic to create dynamic, data-driven dashboards.
 
 ## Callbacks
 
--   A callback function in Python is a function that is automatically executed (“called back”) in response to a specific event or change.
--   In Dash (and similar frameworks), callback functions link inputs and outputs — when an input component’s property changes (for example, a dropdown selection or slider value), the callback function runs automatically to update the output component’s property (such as a graph or text display).
--   These functions act as the “glue” between user interaction and dynamic updates in an app.
--   Example (conceptually):
-    -   “If the user changes the dropdown, automatically run the callback function to update the graph.”
+A **callback function** in Python is a function that is automatically executed in response to a specific event or change. In Dash, callback functions link inputs and outputs — when an input component's property changes (for example, a dropdown selection or slider value), the callback runs automatically to update the output component (such as a graph or text display).
+
+Think of callbacks as the nervous system of your Dash app: the layout defines what the user sees; callbacks define how the app responds to what the user does.
+
+> *"If the user changes the dropdown, automatically run the callback function to update the graph."*
+
+The basic structure of a callback function:
 
 ```{python}
 def function_name(inputs):
-   #body of the function
-   return outputs
+    # process the input values
+    return outputs   # return value(s) that update the output component(s)
 ```
 
--   Flow:
+The data flow is always:
 
-    -   Input component's property
+[**Input component property**]{style="background-color: yellow;"} → **callback function runs** → [**Output component property updated**]{style="background-color: yellow;"}
 
-    -   Callback function(input) -\> return output
-
-    -   Output component's property
-
-#### Callbacks in Dash: The Basics
+## Callbacks in Dash: The Basics
 
 ```{python}
-Callback syntax
-
+# Callback syntax template
 from dash import Input, Output
 
 @app.callback(
-   Output(component_id,component_property), ##Decorator
-   Input(component_id,component_property) ##Decorator
+    Output(component_id, component_property),  # where to send the result
+    Input(component_id, component_property)    # what triggers the function
 )
-def function_name(input_object):    ##Function
-   ''''''                             ## body of the function
-   return output_object             ##End of the function
+def function_name(input_object):
+    # process the input
+    return output_object   # must match the Output(s) declared above
 ```
 
--   In Dash, a callback is a Python function automatically triggered when an Input property changes, updating one or more Output properties in your app.
+Breaking down the parts:
 
-    -   The \@app.callback decorator links Input(s) to Output(s). This special line tells Dash which component to update and what triggers the update.
+-   [**`@app.callback`**]{style="background-color: yellow;"} — the **decorator** that registers this function as a callback. It tells Dash: "when the Input changes, run the function below and send the return value to the Output."
+-   [**`Input`**]{style="background-color: yellow;"} — specifies which component and which property will trigger the function when it changes.
+-   [**`Output`**]{style="background-color: yellow;"} — specifies which component and which property should be updated with the function's return value.
+-   [**`component_id`**]{style="background-color: yellow;"} — the `id` string you assigned to a layout component (e.g., `id="my-dropdown"`).
+-   [**`component_property`**]{style="background-color: yellow;"} — a specific property of that component (e.g., `"value"` for a dropdown, `"children"` for a Div, `"figure"` for a Graph).
 
-    -   The Inputs describes which component’s property will trigger the function when it changes.
-
-    -   The Outputs describe where the result will be sent (which component and which property)
-
-    -   component_id refers either to the id property or the variable name of the component.
-
-    -   component_property = one of the properties of the component (e.g., children of the html.Div figure of a dcc.Graph).
-
-#### The Function
+## The Callback Function
 
 ![](images/flow_chart.png){fig-align="center" width="260" height="400"}
 
--   The function arguments match the order of the Inputs. The return value(s) match the order of the Outputs.
-
--   function_name(input_object) receives the value from the Input.
-
-    -   Inside the function, you process that value and create the desired output.
-
-    -   return output_object sends that processed output back to the Output you specified.
-
-```{python}
-    Callback syntax
-
-    from dash import Input, Output
-
-    @app.callback(
-       Output(component_id,component_property), ##Decorator
-       Input(component_id,component_property) ##Decorator
-    )
-    def function_name(input_object):    ##Function
-       ''''''                             ## body of the function
-       return output_object             ##End of the function
-    )
-```
-
-#### Multiple Inputs and Outputs
-
--   **Multiple Inputs:**
-
-    -   **You can pass several Input() objects to a single callback.**
-
-    -   **The function will run whenever any of those inputs change.**
-
--   **Multiple Outputs:**
-
-    -   **Return a tuple/list with one value for each Output() in the order declared.**
+The function arguments correspond to the `Input`s **in order**, and the return values correspond to the `Output`s **in order**. If you have two Inputs, the function receives two arguments; if you have two Outputs, the function must return two values.
 
 ```{python}
 @app.callback(
-   [Output('graph','figure'),
-   Output('summary','children')],
-   [Input('dropdown','value'),
-   Input('slider','value')]
+    Output("result-div", "children"),   # first (and only) output
+    Input("my-input",    "value")       # first (and only) input
 )
-
-def update_graph(selected_category, slider_value):
-   fig=make_figure(selected_category, slider_value)
-   text= f"Selected: {selected_category}, Value: {slider_value}"
-   return fig, text
+def update_result(user_input):          # receives Input value as argument
+    processed = user_input.upper()      # do something with it
+    return processed                    # returned value goes to Output
 ```
 
-#### Using dcc
+## Multiple Inputs and Outputs
 
--   What is dcc?
+A single callback can handle multiple inputs and outputs:
 
-    -   dcc is short for dash.dcc, which stands for Dash Core Components.
+-   **Multiple Inputs** — the function runs whenever *any* of the listed inputs change. The arguments arrive in the same order the Inputs are declared.
+-   **Multiple Outputs** — return a tuple or list with one value per Output, in the same order they are declared.
 
-    -   It’s a module in Dash that provides interactive UI elements like input boxes, sliders, dropdowns, graphs, etc.
+```{python}
+@app.callback(
+    [Output('graph',   'figure'),    # output 1: update the chart
+     Output('summary', 'children')], # output 2: update the text summary
+    [Input('dropdown', 'value'),     # input 1: dropdown selection
+     Input('slider',   'value')]     # input 2: slider position
+)
+def update_dashboard(selected_category, slider_value):
+    # arguments match Input order: selected_category ← dropdown, slider_value ← slider
+    fig  = make_figure(selected_category, slider_value)
+    text = f"Showing: {selected_category} | Threshold: {slider_value}"
+    return fig, text   # return values match Output order
+```
 
-#### Callback Example
+## Dash Core Components (`dcc`)
+
+**`dcc`** (Dash Core Components) is a module providing interactive UI elements that users can manipulate to trigger callbacks. Common components include:
+
+| Component | Purpose | Key property |
+|---|---|---|
+| `dcc.Input` | Text or number input box | `value` |
+| `dcc.Dropdown` | Select from a list | `value` |
+| `dcc.Slider` | Numeric range selector | `value` |
+| `dcc.DatePickerSingle` | Pick a single date | `date` |
+| `dcc.Graph` | Plotly chart container | `figure` |
+| `dcc.Interval` | Trigger callbacks on a timer | `n_intervals` |
+
+## Callback Example
 
 ![](images/callback_example.png)
+
+The complete app below creates a text input box whose value is mirrored in real time to a large display `Div` — the simplest possible demonstration of a callback in action.
 
 ```{python}
 # callback_example.py
@@ -139,282 +123,208 @@ app.layout = html.Div(
     children=[
         html.H1("Callback Example"),
         html.Ul([
-            html.Li(["Input box’s ", html.Code("value"), " property updates output text"])
+            html.Li(["Input box's ", html.Code("value"), " property updates output text"])
         ]),
         dcc.Input(
-            id="text-in",
+            id="text-in",           # ID used in the callback Input()
             type="text",
             placeholder="type here…",
             style={"width": "100%", "fontSize": "48px", "padding": "8px"},
         ),
-        html.Div(id="text-out", style={"fontSize": "64px", "marginTop": "20px"}),
+        html.Div(id="text-out",     # ID used in the callback Output()
+                 style={"fontSize": "64px", "marginTop": "20px"}),
     ],
 )
 
-@callback(Output(component_id="text-out", component_property="children"),
-          Input(component_id="text-in", component_property="value"))
+@callback(
+    Output(component_id="text-out", component_property="children"),
+    Input(component_id="text-in",  component_property="value")
+)
 def show_text(value):
-    return f"Text: {value or ''}"
+    return f"Text: {value or ''}"   # value or '' prevents an error when the box is empty
 
 if __name__ == "__main__":
     app.run(debug=True)
 ```
 
-#### dcc.Input
+## `dcc.Input`
 
--   What is dcc.Input?
-
-    -   dcc.Input is a Dash Core Component that creates an HTML input box inside your app.
-
-    -   It lets the user type in text, numbers, or other data.
-
-    -   The key property of dcc.Input is value — this holds whatever the user typed.
-
--   You can connect the value to a callback so that your app reacts instantly when the user types something.
+**`dcc.Input`** renders an HTML input box inside your app. The most important property is `value` — it holds whatever the user has typed and is what you connect to a callback.
 
 ```{python}
-app.layout = html.Div(
-    style={"maxWidth": 900, "margin": "40px auto", "fontFamily": "Georgia, serif"},
-    children=[
-        html.H1("Callback Example"),
-        html.Ul([
-            html.Li(["Input box’s ", html.Code("value"), " property updates output text"])
-        ]),
-        dcc.Input(
-            id="text-in",
-            type="text",
-            placeholder="type here…",
-            style={"width": "100%", "fontSize": "48px", "padding": "8px"},
-        ),
-        html.Div(id="text-out", style={"fontSize": "64px", "marginTop": "20px"}),
-    ],
+dcc.Input(
+    id="text-in",        # unique ID for callback wiring
+    type="text",         # "text", "number", "password", "email", etc.
+    placeholder="type here…",
+    debounce=False,      # if True, only fires callback when user presses Enter or clicks away
+    style={"width": "100%", "fontSize": "48px", "padding": "8px"},
 )
 ```
 
-##### Note, in Dash (and Plotly’s underlying dash.html components), children is the default first argument, so you can omit “children=“ if you want
+::: note
+`children` is the default first positional argument for `dash.html` components, so `html.Div("Hello")` is equivalent to `html.Div(children="Hello")`. You can omit `children=` when passing it as the first argument.
+:::
 
-#### Connecting the dcc to the Callback
+## Connecting the `dcc` to the Callback
 
 ```{python}
-@callback(Output(component_id="text-out", component_property="children"),
-          Input(component_id="text-in", component_property="value"))
+@callback(
+    Output("text-out", "children"),   # update the text inside the Div with id="text-out"
+    Input("text-in",  "value")        # trigger when the value of the Input with id="text-in" changes
+)
 def show_text(value):
     return f"Text: {value or ''}"
 ```
 
--   \@callback(...)
+Breaking this down:
 
-    -   This is a Dash decorator that links components together.
+-   [**`@callback(...)`**]{style="background-color: yellow;"} — registers the function. When `text-in`'s `value` changes, run `show_text` and send the return value to `text-out`'s `children`.
+-   [**`Output("text-out", "children")`**]{style="background-color: yellow;"} — `"text-out"` is the component to update; `"children"` is its text content property.
+-   [**`Input("text-in", "value")`**]{style="background-color: yellow;"} — `"text-in"` is the component to watch; `"value"` is the property that changes when the user types.
+-   **`value or ''`** — `value` is `None` when the input box is empty (the user has not typed anything). The `or ''` pattern safely substitutes an empty string, preventing errors from calling `.upper()` or other string methods on `None`.
 
-    -   It says: “When the input changes, run the function below, and send its return value to the output.”
+::: note
+You do not need to write `component_id=` and `component_property=` explicitly. Dash accepts positional arguments: `Output("text-out", "children")` is equivalent to `Output(component_id="text-out", component_property="children")`. Positional syntax is more concise and more commonly seen in practice.
+:::
 
--   Output("text-out", "children")
+## Making a Callback Using NASA's API
 
-    -   Output specifies where the result goes.
+### Overview
 
-    -   "text-out" refers to the ID of the component you want to update (in this case, an html.Div).
+The goal is to build a Dash app that connects to **NASA's Astronomy Picture of the Day (APOD) API**, letting users pick a date and instantly see the image or video NASA published for that day, along with its title and description.
 
-    -   "children" refers to the property of that component you want to change (the inside text of the Div).
+APOD is a free, public API — no sign-up required for testing with the `DEMO_KEY`, though the demo key has rate limits (30 requests/hour). For heavier use, register for a free key at [api.nasa.gov](https://api.nasa.gov).
 
--   Input("text-in", "value")
-
-    -   Input specifies what triggers the function.
-
-    -   "text-in" refers to the ID of the component to watch (here, a dcc.Input box).
-
-    -   "value" refers to the property to monitor (what the user typed in).
-
--   The function show_text(value)
-
-    -   This function receives the input value from the dcc.Input box.
-
-    -   It returns a string that will replace the children of "text-out".
-
-    -   value or '' means: if value exists, use it, otherwise, if value is none or empty, use an empty string to avoid errors.
-
--   Note, you don’t have to say “component_id =“ and “component_property =“ if you are using the same order because the parameters are listed first and second.
-
-#### Making a Callback Using NASA’s API
-
--   Our goal is to build a **Dash app** that connects to **NASA’s Astronomy Picture of the Day (APOD) API** so the user can pick a date and instantly see the image or video NASA published for that day, along with its title and description.
-
-    -   import datetime as dt – built-in Python module for working with dates/times; as dt is just a short alias.
-
-    -   import requests – library for making HTTP requests to APIs.
-
-    -   from dash import we imported core Dash classes
-
-    -   API_KEY is NASA’s public API key ("DEMO_KEY").
-
-    -   APOD_URL refers to NASA Astronomy Picture of the Day endpoint.
-
-    -   MIN_DATE – first APOD date (June 16, 1995).
-
-    -   TODAY – today’s date.
-
-![](images/nasa_example.png)
+### Imports and Constants
 
 ```{python}
 import datetime as dt
 import requests
 from dash import Dash, html, dcc, Input, Output, exceptions
 
-API_KEY= "DEMO_KEY"  # Replace with your own if you have one
-APOD_URL= "https://api.nasa.gov/planetary/apod"
-MIN_DATE=dt.date(1995,6,16)
-TODAY= dt.date.today()
+API_KEY  = "DEMO_KEY"                           # replace with your own for higher rate limits
+APOD_URL = "https://api.nasa.gov/planetary/apod"
+MIN_DATE = dt.date(1995, 6, 16)                 # first APOD was published June 16, 1995
+TODAY    = dt.date.today()                      # computed at runtime, not hardcoded
 ```
 
-#### Setting the Layout
+![](images/nasa_example.png)
 
--   In Dash, the layout is the blueprint of your app’s user interface — it defines what components appear on the page and how they’re arranged.
+### Setting the Layout
 
-<!-- -->
-
--   The layout is static in structure but can hold placeholders (components with ids) that get updated dynamically by callbacks.
-
--   You can nest components, style them, and set their initial properties here — the visual skeleton of your app.
-
-    -   html.Div(...) – main container for the app layout with max width, centered on the page, and padding.
-
-    -   html.H1(...) – page title.
-
-    -   dcc.DatePickerSingle(...) – lets the user select a date between MIN_DATE and TODAY; defaults to today’s date.
-
-    -   dcc.Loading(...) – shows a spinner while the media content is loading; wraps a Div (id="media") where the NASA image or video will appear.
-
-    -   html.Div(id="caption") – placeholder for the APOD’s text description, styled with spacing and readable line height.
+The layout defines what the user sees. Static in structure but contains placeholder components (identified by `id`) that callbacks will populate with live data.
 
 ```{python}
 app = Dash(__name__)
 app.title = "NASA APOD"
 
 app.layout = html.Div(
-    style={"margin": "0 auto", "padding":20},
+    style={"margin": "0 auto", "padding": 20},
     children=[
         html.H1("NASA Astronomy Picture of the Day"),
+
+        # Date picker: user selects which date to view
         dcc.DatePickerSingle(
             id="apod-date",
-            min_date_allowed=MIN_DATE,
-            max_date_allowed=TODAY,
-            date=TODAY,
+            min_date_allowed=MIN_DATE,       # earliest valid date
+            max_date_allowed=TODAY,          # cannot pick a future date
+            date=TODAY,                      # default selection: today
             display_format="YYYY-MM-DD",
-            clearable=False,
+            clearable=False,                 # prevent the user from clearing the date
         ),
-        dcc.Loading(html.Div(id="media", style={"marginTop": 16, 
-                                                "textAlign": "center"})),
+
+        # Spinner shown while media is loading; wraps the image/video placeholder
+        dcc.Loading(html.Div(id="media",
+                             style={"marginTop": 16, "textAlign": "center"})),
+
+        # Placeholder for the text description
         html.Div(id="caption"),
     ],
 )
 ```
 
-#### Making the Callback
+Key layout components:
 
--   \@app.callback(...) if a decorator that tells Dash to run the function below it whenever specified Inputs change, and to send the function’s return values to specified Outputs.
+-   [**`dcc.DatePickerSingle`**]{style="background-color: yellow;"} — renders a calendar date picker. Its `date` property (a string in `YYYY-MM-DD` format) is what the callback listens to.
+-   [**`dcc.Loading`**]{style="background-color: yellow;"} — wraps a component and shows a loading spinner automatically whenever a callback is updating that component.
+-   **`id="media"` and `id="caption"`** — these are empty placeholders; callbacks will fill them with content.
 
--   There are Two Ouputs
-
-    -   \[Output("media", "children"), Output("caption", "children")\]
-
-    -   Update the contents (children) of the component with id="media" (the image/video placeholder).
-
-    -   Update the contents (children) of the component with id="caption" (the text description).
-
--   Input("apod-date", "date") – the function will run whenever the date property of the component with id="apod-date" (the date picker) changes.
-
--   In short, this callback listens for a date change in the date picker and updates both the media display and the caption with the NASA APOD content for that date.
+### Making the Callback
 
 ```{python}
 @app.callback(
-    [Output("media", "children"), Output("caption", "children")],
-    Input("apod-date", "date"),
+    [Output("media",   "children"),   # will receive the image or video component
+     Output("caption", "children")],  # will receive the explanation text
+    Input("apod-date", "date"),        # triggers when the selected date changes
 )
 ```
 
-#### show(apod) function
+### The `show_apod` Function
 
 ```{python}
 def show_apod(date_str):
+    # Guard: if no date is selected, do nothing
     if not date_str:
         raise exceptions.PreventUpdate
 
+    # Convert the date string to a Python date object
+    # [:10] slices "2024-01-15T00:00:00" down to "2024-01-15"
     try:
         date_obj = dt.date.fromisoformat(date_str[:10])
     except Exception:
         return "Invalid date.", ""
 
+    # Build query parameters and call the API
     params = {"api_key": API_KEY, "date": date_obj.isoformat()}
     try:
         r = requests.get(APOD_URL, params=params, timeout=10)
-        r.raise_for_status()
-        data = r.json()
+        r.raise_for_status()   # raises an exception if status code is not 200
+        data = r.json()        # parse JSON response into a Python dictionary
     except requests.RequestException as e:
         return f"API error: {e}", ""
 ```
 
--   Overall, the show_apod function takes the user-selected date from the date picker, validates it, calls NASA’s Astronomy Picture of the Day API for that date, and returns either the APOD data (image/video and caption) or an error message if the date is invalid or the API request fails.
+What each part does:
 
-    -   def show_apod(date_str): – Defines the callback function, which will run when the date picker changes and receives the selected date as a string (date_str).
+-   [**`exceptions.PreventUpdate`**]{style="background-color: yellow;"} — a special Dash exception that stops the callback from running without updating any outputs. Use this instead of returning `None` when there is genuinely nothing to update.
+-   [**`date_str[:10]`**]{style="background-color: yellow;"} — the date picker sometimes includes a time component (`T00:00:00`). Slicing to the first 10 characters ensures we always get just `YYYY-MM-DD`.
+-   [**`r.raise_for_status()`**]{style="background-color: yellow;"} — raises a `requests.HTTPError` if the server returned an error code (4xx or 5xx). Without this, a failed request would appear to succeed.
+-   [**`timeout=10`**]{style="background-color: yellow;"} — prevents the app from hanging indefinitely if the API is slow. 10 seconds is a reasonable threshold.
 
-    -   if not date_str: raise exceptions.PreventUpdate – If no date is provided, stop the callback without changing anything on the page.
-
-    -   try: date_obj = dt.date.fromisoformat(date_str\[:10\]) – Tries to convert the incoming date string (YYYY-MM-DD) into a Python date object. The :10 is because of the size of the date given the date format.
-
-    -   except Exception: – If conversion fails, return "Invalid date." for the media section and an empty string for the caption.
-
-    -   params = {"api_key": API_KEY, "date": date_obj.isoformat()} – Creates the query parameters for the NASA APOD API request: the API key and the selected date in YYYY-MM-DD format.
-
-    -   try: r = requests.get(APOD_URL, params=params, timeout=10) – Sends a GET request to the NASA API with those parameters, allowing up to 10 seconds before timing out.
-
-    -   r.raise_for_status() – Raises an error if the HTTP response status code isn’t 200 (OK).
-
-    -   data = r.json() – Parses the API response JSON into a Python dictionary.
-
-    -   except requests.RequestException as e: – If any network or request error occurs, return an error message for the media section and leave the caption empty.
+### Rendering the Media
 
 ```{python}
- media_type = data.get("media_type", "")
-    url = data.get("url", "")
-    title = data.get("title", "APOD")
+    # Extract fields safely using .get() with defaults
+    media_type  = data.get("media_type", "")   # "image" or "video"
+    url         = data.get("url", "")
+    title       = data.get("title", "APOD")
     explanation = data.get("explanation", "")
 
+    # Render the appropriate component based on media type
     if media_type == "image":
-        media = html.Img(src=url, style={"maxWidth": "100%", "borderRadius": 8}, alt=title)
+        media = html.Img(
+            src=url,
+            style={"maxWidth": "100%", "borderRadius": 8},
+            alt=title   # alt text for accessibility
+        )
     elif media_type == "video":
-        media = html.Iframe(src=url, style={"width": "100%", "height": 500, "border": 0})
+        media = html.Iframe(
+            src=url,
+            style={"width": "100%", "height": 500, "border": 0}
+        )
     else:
         media = html.Div("Unsupported media type.")
 
-    header = html.H3(f"{title} — {date_obj.isoformat()}", style={"marginBottom": 8})
+    header = html.H3(f"{title} — {date_obj.isoformat()}",
+                     style={"marginBottom": 8})
+
+    # Return TWO values — one for each Output in the callback
     return html.Div([header, media]), explanation
 
 if __name__ == "__main__":
     app.run(debug=True)
-
 ```
 
--   Extracts data from the API response using .get() so a default value is returned if the key is missing:
+Why `.get()` with defaults? The NASA API may not include every field for every date (especially very early APOD entries). Using `.get("key", default)` prevents `KeyError` exceptions when a field is absent — a form of **defensive programming** essential for any code calling external APIs.
 
--   media_type refers to "image" or "video" (empty string if missing).
-
--   url will link to the media.
-
--   title will link to the APOD title (defaults to "APOD").
-
--   explanation refers to the description text (empty string if missing).
-
--   The next set chooses how to display the media based on media_type:
-
-    -   If "image“, it creates an html.Img component with the URL and styling.
-
-    -   If "video“, then it creates an html.Iframe to embed the video.
-
-    -   Otherwise it shows a Div saying the type is unsupported.
-
--   Creates a header (html.H3) with the title and selected date.
-
--   Returns two things for the callback’s Outputs:
-
-    -   A Div containing the header and media.
-
-    -   The explanation text for the caption section.
+The function returns **two values** separated by a comma, matching the two `Output`s declared in `@app.callback`. The order matters: the first return value goes to `"media"`, the second to `"caption"`.

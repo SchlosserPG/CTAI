@@ -1,5 +1,5 @@
 ---
-title: "Using Git and Github"
+title: "Using Git and GitHub"
 format: html
 engine: knitr
 execute:
@@ -8,170 +8,199 @@ execute:
     executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
--   This module introduces Git and GitHub as foundational tools for version control, collaboration, and deployment in analytics and programming projects. Git is a decentralized version control system that tracks file changes and manages project history locally, while GitHub is a cloud-based platform built on Git for sharing, collaborating, and managing repositories. Together, they allow multiple contributors to work efficiently through commits, branches, merges, and pull requests. GitLab offers similar features but can be self-hosted for greater organizational control.
+This module introduces **Git** and **GitHub** as foundational tools for **version control**, **collaboration**, and **deployment** in analytics and programming projects. Git is a decentralized version control system that tracks file changes and manages project history locally, while GitHub is a cloud-based platform built on Git for sharing, collaborating, and managing repositories. Together, they allow multiple contributors to work efficiently through commits, branches, merges, and pull requests. GitLab offers similar features but can be self-hosted for greater organizational control.
 
--   Students learn to set up Git and GitHub, configure user credentials, and perform essential commands (git init, git add, git commit, git push, etc.) using VS Code or GitHub Desktop. They also explore GitHub CoPilot, an AI-assisted coding tool that autocompletes and suggests code within VS Code.
+Students learn to set up Git and GitHub, configure user credentials, and perform essential commands (`git init`, `git add`, `git commit`, `git push`, and others) using VS Code or GitHub Desktop. The module also introduces **GitHub Copilot**, an AI-assisted coding tool that autocompletes and suggests code directly within VS Code.
 
--   The section covers best practices such as writing clear commit messages, pulling often to stay updated, using .gitignore to exclude unnecessary files, and maintaining a stable main branch. It also outlines common troubleshooting tips for merge conflicts, authentication issues, and accidental commits.
+Best practices covered include writing clear commit messages, pulling frequently to stay synchronized, using `.gitignore` to exclude unnecessary files, and maintaining a stable main branch. Common troubleshooting scenarios are also addressed, including merge conflicts, authentication issues, and accidental commits.
 
--   Finally, the module introduces Render.com, a platform that connects directly to GitHub for seamless web app deployment. Students link their GitHub repositories to Render to host and automatically update their Dash or analytics applications, gaining hands-on experience with real-world deployment workflows.
+Finally, the module introduces **Render.com**, a platform that connects directly to GitHub for seamless web application deployment. Students link their GitHub repositories to Render to host and automatically update their Dash or analytics applications, gaining hands-on experience with real-world deployment workflows.
 
-##### Understanding the prompting paradigm equips you to guide AI models effectively—skills that can be enhanced and shared by leveraging platforms like GitHub to collaborate on prompt libraries, examples, and AI-powered projects.
+::: note
+Understanding the prompting paradigm equips you to guide AI models effectively — skills that can be enhanced and shared by leveraging platforms like GitHub to collaborate on prompt libraries, examples, and AI-powered projects.
+:::
 
 ![](images/github.png)
 
-#### Purpose of Git
+## Git: Purpose and Core Concepts
 
--   Git is a decentralized version control system for tracking file changes, especially in software projects with many small text files. It records who made changes and when, supports collaboration, and keeps all past versions and branches.
+Git is a **decentralized version control system** (VCS) designed for tracking file changes, particularly in software projects composed of many small text files. Think of it as a sophisticated "undo history" for your entire project: it records who made each change, when, and why — and lets you travel back to any previous state at any time.
 
--   Works best with text files; less effective for binary files like Word docs, audio/video, or VM images. git Command
+Git works best with plain text files (code, Markdown, CSV). It is less effective for binary files such as Word documents, audio and video files, or virtual machine images, because it cannot show meaningful line-by-line differences for those formats.
 
-    -   The primary way to control Git via the terminal/PowerShell.
+The primary way to interact with Git is through the terminal or PowerShell using the `git` command. Note the important distinction: **Git** (capitalized) refers to the system and its concepts, while `git` (lowercase) refers to the command-line tool. IDEs such as Visual Studio and editors such as VS Code offer built-in Git tools; web platforms like GitHub and GitLab add further features including issue tracking, code review, and automated testing pipelines.
 
-    -   Tasks: download projects, commit changes, switch branches, undo edits, etc.
+## Git vs. GitHub vs. GitLab
 
-        -   “Git” (capitalized) = the system/concepts;
+These three tools are related but distinct — a common source of confusion for beginners:
 
-        -   git (lowercase) = the command.
+- [**Git**]{style="background-color: yellow;"} — the underlying version control system. It runs entirely on your local machine and works without any internet connection or central server.
+- [**GitHub**]{style="background-color: yellow;"} — acquired by Microsoft in 2018, GitHub is the most popular cloud-based platform for hosting and collaborating on Git repositories. It adds a web interface, pull requests, code review, issue tracking, and integrations with hundreds of tools. Free for public and most private projects.
+- [**GitLab**]{style="background-color: yellow;"} — similar capabilities to GitHub but open-source and can be self-hosted on your organization's own servers, making it a strong choice for organizations with strict data privacy or compliance requirements.
 
--   IDEs (e.g., Visual Studio) and editors (e.g., VS Code) offer built-in Git tools; web platforms like GitHub/GitLab add extra features (issue tracking, automated tests).
+**Analogy:** Git is Microsoft Word (the software); GitHub is Google Drive (the cloud storage and sharing layer built on top of it).
 
-#### Git vs GitHub vs GitLab
+## Getting Started
 
--   Git: Works without central servers.
-
--   GitHub: Most popular host; acquired by Microsoft in 2018; free for public and most private projects.
-
-    -   A cloud-based platform for hosting and collaborating on code projects
-
-    -   Built on Git (a distributed version control system)
-
-    -   Supports version tracking, collaboration, and project management
-
-        -   Enables teamwork on coding projects
-
-        -   Provides a historical record of changes
-
-        -   Integrates with many tools
-
--   GitLab: Similar features; open-source, can be self-hosted—good for organizations that want control.
-
-#### Setting Up GitHub
+### Setting Up GitHub
 
 ![](images/setup.png)
 
--   Create an account at github.com
+To get started with GitHub, follow these steps:
 
--   Install Git (if using locally): <https://gitforwindows.org/>
+- Create a free account at [github.com](https://github.com).
+- If working locally, install Git from [gitforwindows.org](https://gitforwindows.org/).
+- Configure your identity so commits are attributed to you correctly. Run these two commands once — they set your name and email globally for all repositories on your machine:
 
--   Configure Git
+```{bash}
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
 
-    -   bash
+- Optionally, install **GitHub Desktop** for a graphical point-and-click interface instead of the command line — useful when getting started.
+- Set **VS Code** as your preferred editor so Git uses it for commit messages and diff views.
 
-    -   git config --global user.name "Your Name" git config --global user.email "you\@example.com"
-
--   Can install GitHub Desktop (optional) for a GUI
-
--   Use VS Code as Editor
-
-#### CoPilot Autofill
+### GitHub Copilot
 
 ![](images/copilot.png)
 
--   To change the setting that makes Copilot ghost text appear as you type.
+**GitHub Copilot** is an AI coding assistant that suggests code completions as you type in VS Code. It uses a large language model trained on public code to predict what you are likely to write next, offering "ghost text" suggestions that you can accept with `Tab` or ignore by continuing to type.
 
-    -   Go to VS Code Settings
+To enable Copilot's inline ghost-text suggestions:
 
-    -   Search for Copilot: Inline Suggest.
+- Open **VS Code Settings** (Ctrl + ,).
+- Search for **Copilot: Inline Suggest**.
+- Ensure that [**Editor › Inline Suggest: Enabled**]{style="background-color: yellow;"} is checked.
 
-    -   Ensure that "Editor › Inline Suggest: Enabled" is checked.
+## Working with Git
 
-#### Key Git Concepts
+### Key Git Concepts
 
--   Repository (Repo) – where your project’s code and history live
+Before working through the commands, it helps to understand the core vocabulary. These seven terms come up constantly:
 
--   Commit – a saved snapshot of your code
+- [**Repository (repo)**]{style="background-color: yellow;"} — the container for your project. It holds all your files *and* the complete history of every change ever made. Local repos live on your machine; remote repos live on GitHub.
+- [**Commit**]{style="background-color: yellow;"} — a saved snapshot of your project at a specific point in time. Every commit has a unique ID (a hash like `a3f9b21`) and a message explaining what changed.
+- [**Branch**]{style="background-color: yellow;"} — an independent line of development. Creating a branch lets you work on a new feature without touching the stable `main` branch until you are ready.
+- [**Merge**]{style="background-color: yellow;"} — the process of integrating changes from one branch into another. Git attempts to do this automatically; when it cannot (merge conflict), it asks you to resolve the overlap manually.
+- [**Pull request (PR)**]{style="background-color: yellow;"} — a GitHub-specific feature: a proposal to merge your branch into another, submitted for team review. PRs are the standard code review workflow on collaborative projects.
+- [**Clone**]{style="background-color: yellow;"} — downloading a full copy of a remote repository (including its entire history) to your local machine. `git clone <url>` is how you start working on an existing project.
+- [**Push**]{style="background-color: yellow;"} — sending your committed local changes up to the remote repository on GitHub so others can see and use them.
 
--   Branch – an independent line of development
+### Creating Your First Repository
 
--   Merge – bringing changes from one branch into another
+To create a new repository on GitHub, go to your profile, click **New Repository**, and give it a name. Choose whether it should be **public** (visible to everyone) or **private** (visible only to you and collaborators). Do not add a README at this stage — since you will be pushing an existing project from VS Code, starting with a blank repository avoids merge conflicts on the first push.
 
--   Pull Request (PR) – proposing changes for review
+The full sequence of commands to create and push a project for the first time:
 
--   Clone – downloading a copy of the repo to your local machine
+```{bash}
+git init                    # initialize a new Git repo in the current folder
+git add .                   # stage ALL files for the first commit
+                            # (the dot means "everything in the current folder")
+git commit -m "Initial commit"
+                            # save the snapshot with a descriptive message
+git branch -M main          # rename the default branch to "main"
+git remote add origin https://github.com/USERNAME/REPO_NAME.git
+                            # link your local repo to the GitHub remote
+git push -u origin main     # push to GitHub
+                            # -u sets "origin main" as the default so future
+                            # pushes only need: git push
+```
 
--   Push – sending your local changes to GitHub
+Once your files are committed and pushed, notice the **Source Control** button on the left sidebar of VS Code (the branch icon with a number badge) — it shows how many files have uncommitted changes.
 
-#### Creating Your First Repository
+### Best Practices
 
--   Go to GitHub → Click New Repository
+Adopting good habits early makes collaboration and troubleshooting much easier:
 
--   Name your repo and choose:
+- [**Write clear commit messages**]{style="background-color: yellow;"} — commit messages are the history of your project. A message like `"Fix login bug"` is far more useful than `"stuff"` or `"update"` when you are debugging six months later.
+- [**Pull frequently**]{style="background-color: yellow;"} — run `git pull origin main` before starting new work to stay synchronized with your team's latest changes. Pulling early prevents large, painful merge conflicts later.
+- [**Use `.gitignore`**]{style="background-color: yellow;"} — exclude sensitive credentials (API keys, `.env` files), large data files, and generated output from being tracked or uploaded. GitHub provides `.gitignore` templates for common project types.
+- [**Keep the main branch stable**]{style="background-color: yellow;"} — develop new features on separate branches (`git checkout -b feature/my-feature`) and only merge into `main` when the code is tested and reviewed.
+- [**Use Issues and Project Boards**]{style="background-color: yellow;"} — GitHub's built-in task tracking tools help teams coordinate work, track bugs, and maintain visibility across a project without leaving the platform.
 
-    -   Public or Private
+### Troubleshooting Common Issues
 
-    -   Don’t add a README (We are going to push from VS Code, so it is better if the Repo is Blank)
+A few problems come up regularly when working with Git and GitHub:
 
--   Local option: create folder → git init → link to GitHub repo
+- **Merge conflicts** — occur when two contributors change the same section of the same file. Git flags the conflict with `<<<<<<<` / `=======` / `>>>>>>>` markers in the file. Open the file, choose which version to keep (or combine them), save, then `git add` and `git commit` to complete the merge.
+- **Authentication errors** — if you see "permission denied" when pushing, the most common fixes are setting up an **SSH key** (preferred) or generating a **personal access token** in your GitHub account settings to use as your password.
+- **Forgetting to pull** — always run `git pull` before starting new work. If you push without pulling first, Git may reject your push because the remote has commits your local repo does not know about.
+- **Accidental commits** — use `git reset HEAD~1` to unstage the last commit while keeping your file changes, or `git revert <commit-hash>` to safely undo a specific commit without rewriting history. Avoid `git reset --hard` on shared branches — it rewrites history and will cause problems for other contributors.
 
--   Initial commit example within VS Code:
-
-    -   git init
-
-    -   git add .
-
-    -   git commit -m "Initial commit“
-
-    -   git branch –M main
-
-    -   git remote add origin https://github.com/USERNAME/REPO_NAME.git
-
-    -   git push -u origin main
-
--   Also, notice the source control button on the left of VS Code that has changes to commit.
-
-#### Best Practices
-
--   Write clear commit messages (“Fix login bug” \> “stuff”)
-
--   Pull often to stay updated:
-
-    -   bash
-
-    -   git pull origin main
-
--   Use .gitignore to avoid uploading sensitive or unnecessary files
-
--   Keep main branch stable
-
--   Use Issues and Project Boards for task tracking
-
-#### Troubleshooting Common Issues
-
--   Merge conflicts – when two people change the same code section
-
--   Authentication errors – fix with SSH keys or GitHub token
-
--   Forgetting to pull – always update before pushing
-
--   Accidental commits – use git reset or revert commits
-
-#### Render.com
+## Deployment with Render.com
 
 ![](images/render.com.png)
 
--   Easy Git-based Deployment – Connect GitHub or GitLab for automatic builds and updates.
+**Render.com** is a cloud hosting platform that connects directly to GitHub or GitLab for automatic builds and deployments whenever you push new code. Key features:
 
--   Full-Stack Hosting – Run web apps, APIs, static sites, and background jobs on one platform.
+- [**Git-based deployment**]{style="background-color: yellow;"} — connect your repository and Render automatically rebuilds and redeploys on every push to the linked branch.
+- [**Full-stack hosting**]{style="background-color: yellow;"} — run web applications, APIs, static sites, and background jobs on a single platform.
+- [**Built-in security and scaling**]{style="background-color: yellow;"} — automatic HTTPS, DDoS protection, and autoscaling are included at no extra configuration cost.
+- [**Global performance**]{style="background-color: yellow;"} — a CDN for static assets and low-latency infrastructure worldwide.
 
--   Built-in Scaling & Security – Automatic HTTPS, DDoS protection, and autoscaling.
+To connect Render to your course project, create a free account at [dashboard.render.com](https://dashboard.render.com/), then link it to your course GitHub repository. Once connected, any push to your repository will trigger an automatic redeploy of your Dash application.
 
--   Global Performance – CDN for static assets and low-latency infrastructure worldwide.
-
--   Make a render account for you to link to your github account.
-
--   Connect it to your CTBA repo.
-
-#### https://dashboard.render.com/
+### Render Dashboard
 
 ![](images/render_example.png)
+
+### Before You Deploy: Required Files
+
+Before Render can build your application, your GitHub repository must contain **three specific files**. Render reads these to understand how to install your dependencies and run your app. Without them, the deployment will fail.
+
+#### `requirements.txt`
+
+This file tells Render which Python packages to install before starting your app. Each package goes on its own line, optionally pinned to a specific version for reproducibility.
+
+For a standard Dash application:
+
+```
+dash
+pandas
+plotly
+gunicorn
+```
+
+::: note
+`gunicorn` is a production-grade Python web server. It is not needed when running locally, but Render requires it to serve your app in a hosted environment. Without it, Render will not know how to start your server.
+:::
+
+#### `app.py` (or your main Python file)
+
+This is the **entry point** of your Dash application. Two changes are required from your development version:
+
+```{python, eval=FALSE}
+server = app.server   # expose the Flask server object — gunicorn needs this to start the app
+
+if __name__ == "__main__":
+    app.run(debug=False)   # debug=False for production security
+```
+
+::: note
+`app.run_server()` is deprecated in recent versions of Dash. Use `app.run()` instead. Always set `debug=False` before deploying — leaving debug mode on exposes internal error details and is a security risk in a live environment.
+:::
+
+#### `render.yaml` (optional but recommended)
+
+This file gives Render explicit, version-controlled instructions for how to build and start your app.
+
+```yaml
+services:
+  - type: web
+    name: my-dash-app           # replace with your app's name
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:server"
+                                # "app" = your filename (app.py)
+                                # "server" = the variable name from server = app.server
+```
+
+#### Deployment Checklist
+
+Before pushing to GitHub and triggering a Render deploy, confirm all of the following:
+
+- [**`requirements.txt` is present**]{style="background-color: yellow;"} and includes `gunicorn`.
+- [**`app.run_server()` has been replaced**]{style="background-color: yellow;"} with `app.run(debug=False)`.
+- [**`server = app.server` is defined**]{style="background-color: yellow;"} in your `app.py` so gunicorn can find the entry point.
+- [**Your repository is linked to Render**]{style="background-color: yellow;"} and auto-deploy is enabled on the correct branch.
+- [**No secrets or API keys are hardcoded**]{style="background-color: yellow;"} — store them in Render's **Environment Variables** settings and access them in Python with `os.environ["KEY_NAME"]`.

@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./crashcourse.html" rel="next">
+<link href="./github.html" rel="next">
 <link href="./preparingpeople.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -158,7 +158,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ethics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">AI &amp; Data Ethics</span></a>
+  <a href="./ethics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">AI and Data Ethics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./crashcourse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Crash Python Course</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -173,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./storytelling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Human-centered Storytelling</span></a>
+  <a href="./storytelling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Human-Centered Storytelling</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -193,17 +198,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./crashcourse.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Crash Python Course</span></a>
+  <a href="./github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Using Git and GitHub</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Using Git and Github</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./makingcallbacks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Writing Callbacks and Accessing API’s</span></a>
+  <a href="./makingcallbacks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Writing Callbacks and Accessing APIs</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -237,6 +237,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#dash" id="toc-dash" class="nav-link active" data-scroll-target="#dash">Dash</a></li>
+  <li><a href="#choosing-a-visualization-tool" id="toc-choosing-a-visualization-tool" class="nav-link" data-scroll-target="#choosing-a-visualization-tool">Choosing a Visualization Tool</a></li>
+  <li><a href="#static-and-dynamic-content" id="toc-static-and-dynamic-content" class="nav-link" data-scroll-target="#static-and-dynamic-content">Static and Dynamic Content</a></li>
+  <li><a href="#creating-your-first-dashboard" id="toc-creating-your-first-dashboard" class="nav-link" data-scroll-target="#creating-your-first-dashboard">Creating Your First Dashboard</a>
+  <ul class="collapse">
+  <li><a href="#importing-dash" id="toc-importing-dash" class="nav-link" data-scroll-target="#importing-dash">Importing Dash</a></li>
+  <li><a href="#initializing-the-app" id="toc-initializing-the-app" class="nav-link" data-scroll-target="#initializing-the-app">Initializing the App</a></li>
+  <li><a href="#running-the-app" id="toc-running-the-app" class="nav-link" data-scroll-target="#running-the-app">Running the App</a></li>
+  </ul></li>
+  <li><a href="#my-first-dashboard" id="toc-my-first-dashboard" class="nav-link" data-scroll-target="#my-first-dashboard">My First Dashboard</a></li>
+  <li><a href="#adjusting-the-layout" id="toc-adjusting-the-layout" class="nav-link" data-scroll-target="#adjusting-the-layout">Adjusting the Layout</a></li>
+  <li><a href="#html-components-overview" id="toc-html-components-overview" class="nav-link" data-scroll-target="#html-components-overview">HTML Components Overview</a></li>
+  <li><a href="#adding-a-line-break-and-a-hyperlink" id="toc-adding-a-line-break-and-a-hyperlink" class="nav-link" data-scroll-target="#adding-a-line-break-and-a-hyperlink">Adding a Line Break and a Hyperlink</a></li>
+  <li><a href="#html-elements" id="toc-html-elements" class="nav-link" data-scroll-target="#html-elements">HTML Elements</a></li>
+  <li><a href="#styling-in-dash" id="toc-styling-in-dash" class="nav-link" data-scroll-target="#styling-in-dash">Styling in Dash</a></li>
+  <li><a href="#borders" id="toc-borders" class="nav-link" data-scroll-target="#borders">Borders</a></li>
+  <li><a href="#padding" id="toc-padding" class="nav-link" data-scroll-target="#padding">Padding</a></li>
+  <li><a href="#margin" id="toc-margin" class="nav-link" data-scroll-target="#margin">Margin</a></li>
+  <li><a href="#css-in-dash-external-stylesheets" id="toc-css-in-dash-external-stylesheets" class="nav-link" data-scroll-target="#css-in-dash-external-stylesheets">CSS in Dash: External Stylesheets</a></li>
+  <li><a href="#styling-the-body" id="toc-styling-the-body" class="nav-link" data-scroll-target="#styling-the-body">Styling the Body</a></li>
+  <li><a href="#changing-the-paragraph-background-color" id="toc-changing-the-paragraph-background-color" class="nav-link" data-scroll-target="#changing-the-paragraph-background-color">Changing the Paragraph Background Color</a></li>
+  <li><a href="#styling-the-hyperlink" id="toc-styling-the-hyperlink" class="nav-link" data-scroll-target="#styling-the-hyperlink">Styling the Hyperlink</a></li>
+  <li><a href="#adding-a-hover-effect" id="toc-adding-a-hover-effect" class="nav-link" data-scroll-target="#adding-a-hover-effect">Adding a Hover Effect</a></li>
   </ul>
 </nav>
     </div>
@@ -262,292 +284,282 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<ul>
-<li>This section introduces Dash, a Python framework from Plotly for building interactive, web-based dashboards without requiring traditional web development skills. Dash combines Plotly for visualizations, Flask for the backend, and React for the front end, making it ideal for analysts who want to turn Python code into shareable, browser-based applications.The lesson covers Dash’s two core modules—dash.html (for HTML structure) and dash.dcc (for interactive components)—and demonstrates how to create, run, and style a basic app. It explains the difference between static and dynamic content, showing how callbacks update dashboards in real time through APIs, databases, or live streams. Students learn how to build a simple “Hello Dash” app, add headings, paragraphs, hyperlinks, and apply styling using inline Python dictionaries or external CSS stylesheets. Key design concepts such as borders, padding, margins, and hover effects are introduced to control layout and visual hierarchy. By the end, learners understand the structure of a Dash app—layout + callbacks—and how styling and interactivity work together to create polished, professional dashboards that communicate data insights effectively.</li>
-</ul>
+<p>This section introduces <strong>Dash</strong>, a Python framework from Plotly for building interactive, web-based dashboards without requiring traditional web development skills. Dash combines <strong>Plotly</strong> for visualizations, <strong>Flask</strong> for the backend, and <strong>React</strong> for the front end, making it ideal for analysts who want to turn Python code into shareable, browser-based applications. The lesson covers Dash’s two core modules — <code>dash.html</code> (for HTML structure) and <code>dash.dcc</code> (for interactive components) — and demonstrates how to create, run, and style a basic app. It explains the difference between static and dynamic content, showing how callbacks update dashboards in real time through APIs, databases, or live streams. Students learn how to build a simple “Hello Dash” app, add headings, paragraphs, and hyperlinks, and apply styling using inline Python dictionaries or external CSS stylesheets. Key design concepts such as borders, padding, margins, and hover effects are introduced to control layout and visual hierarchy.</p>
 <section id="dash" class="level2">
 <h2 class="anchored" data-anchor-id="dash">Dash</h2>
 <div class="note">
-<p><strong>Dash</strong> is a Python library for building interactive web applications. Developed by <strong>Plotly</strong>, the company behind the Plotly visualization library, Dash allows users to create dynamic, data-driven dashboards entirely in Python. It is built on top of <strong>Plotly</strong> for visualizations, <strong>Flask</strong> for managing the web server, and <strong>React</strong> for the front-end interface.</p>
+<p><strong>Dash</strong> is a Python library for building interactive web applications. Developed by <strong>Plotly</strong>, Dash allows users to create dynamic, data-driven dashboards entirely in Python — no JavaScript, HTML knowledge, or web development background required. It is built on top of <strong>Plotly</strong> for visualizations, <strong>Flask</strong> for managing the web server, and <strong>React</strong> for the front-end interface.</p>
 </div>
+<p>Dash is designed for <strong>data analysts and data scientists</strong> with a basic knowledge of Python. It is ideal for creating <strong>visualizations and dashboards</strong> that can be easily <strong>shared with customers, executives, and other stakeholders</strong> — without needing to email static files or screenshots.</p>
+<p>Every Dash app is built on two things:</p>
 <ul>
-<li>Dash is designed for <strong>data analysts and data scientists</strong> with a <strong>basic knowledge of Python</strong>—no need for advanced web-development skills.<br>
-</li>
-<li>It’s ideal for creating <strong>visualizations and dashboards</strong> that can be easily <strong>shared with customers, executives, and other stakeholders</strong>.</li>
+<li><span style="background-color: yellow;"><strong><code>dcc</code> — Dash Core Components</strong></span> — interactive UI elements like dropdowns, sliders, date pickers, and graphs. These are what users interact with.</li>
+<li><span style="background-color: yellow;"><strong><code>html</code> — Dash HTML Components</strong></span> — Python representations of standard HTML elements (headings, paragraphs, divs) used to structure and organize the page.</li>
 </ul>
-<!-- -->
-<ul>
-<li><p>Dash layout is built on 2 things</p>
-<ul>
-<li><p>Dcc: Dash Core Components</p></li>
-<li><p>HTML : Dash HTML Components</p></li>
-</ul></li>
-<li><p>Interactive features: callback functions</p></li>
-</ul>
-<section id="exploring-visualizations" class="level4">
-<h4 class="anchored" data-anchor-id="exploring-visualizations">Exploring Visualizations</h4>
-<ul>
-<li><p>Dash vs.&nbsp;Matplotlib vs.&nbsp;Plotly</p></li>
-<li><p>Use Matplotlib when you want quick, static visualizations (e.g., for academic papers or PDFs).</p></li>
-<li><p>Use Plotly for interactive, browser-based graphs without building full dashboards.</p></li>
-<li><p>Use Dash when you want to build full web apps or dashboards with charts, dropdowns, and user controls—ideal for business analytics tools or interactive data portals</p></li>
-</ul>
+<p>Interactivity is powered by <strong>callback functions</strong>, which automatically update output components when a user changes an input component.</p>
+</section>
+<section id="choosing-a-visualization-tool" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-a-visualization-tool">Choosing a Visualization Tool</h2>
+<p>The right tool depends on your goal:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Best for</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Matplotlib</strong></td>
+<td>Quick, static charts for reports or PDFs</td>
+<td>Static image</td>
+</tr>
+<tr class="even">
+<td><strong>Plotly</strong></td>
+<td>Interactive browser-based charts without a full app</td>
+<td>Standalone chart</td>
+</tr>
+<tr class="odd">
+<td><strong>Dash</strong></td>
+<td>Full web apps with controls, dropdowns, and callbacks</td>
+<td>Hosted application</td>
+</tr>
+</tbody>
+</table>
 <p><img src="images/datatypes.png" class="img-fluid"></p>
 </section>
-<section id="dash-static-and-dynamic-content" class="level4">
-<h4 class="anchored" data-anchor-id="dash-static-and-dynamic-content">Dash: Static and Dynamic Content</h4>
+<section id="static-and-dynamic-content" class="level2">
+<h2 class="anchored" data-anchor-id="static-and-dynamic-content">Static and Dynamic Content</h2>
+<p>Dash handles both static and dynamic content:</p>
 <ul>
-<li><p>Dash can handle static content: Files that do not change on the server side — e.g., images, PDFs, CSS, JavaScript.</p></li>
-<li><p>Dash can handle dynamic content: Data or components that change depending on user interaction, database queries, API calls, or real-time streaming.</p></li>
-<li><p>How Dash handles it:</p>
+<li><span style="background-color: yellow;"><strong>Static content</strong></span> — files that do not change on the server side: images, PDFs, CSS, and JavaScript. These are served once and do not respond to user interaction.</li>
+<li><span style="background-color: yellow;"><strong>Dynamic content</strong></span> — data or components that update in response to user interaction, database queries, API calls, or real-time streaming. This is what makes Dash apps interactive.</li>
+</ul>
+<p>Dynamic updates are powered by <strong>callbacks</strong>: Python functions decorated with <code>@app.callback()</code> that listen for changes in input components and push new values to output components. Data sources for dynamic content include:</p>
 <ul>
-<li><p>Callbacks: Functions decorated with @app.callback() listen for changes in user inputs and update outputs dynamically.</p></li>
-<li><p>You can generate HTML dynamically in Python — Dash doesn’t pre-render your pages, it builds them at runtime.</p></li>
-<li><p>Data sources:</p>
-<ul>
-<li><p>APIs (fetch fresh data in callbacks)</p></li>
-<li><p>Databases (query and return results dynamically)</p></li>
-<li><p>Live data streams (e.g., WebSocket integrations, or polling APIs with dcc.Interval)</p></li>
-</ul></li>
-</ul></li>
+<li><strong>APIs</strong> — fetch fresh external data inside callback functions (e.g., weather, stock prices).</li>
+<li><strong>Databases</strong> — query and return results dynamically based on user selections.</li>
+<li><strong>Live data streams</strong> — real-time feeds using WebSocket integrations or periodic polling with <code>dcc.Interval</code>.</li>
 </ul>
 </section>
-<section id="creating-your-first-dashboard" class="level4">
-<h4 class="anchored" data-anchor-id="creating-your-first-dashboard">Creating your First Dashboard</h4>
-<ul>
-<li><p>Imports the Dash framework components</p>
-<ul>
-<li><p>Dash is the main class used to initialize your web app</p></li>
-<li><p>html lets you create HTML elements like</p></li>
-<li><p>, etc., directly in Python</p></li>
-</ul></li>
-</ul>
+<section id="creating-your-first-dashboard" class="level2">
+<h2 class="anchored" data-anchor-id="creating-your-first-dashboard">Creating Your First Dashboard</h2>
+<section id="importing-dash" class="level3">
+<h3 class="anchored" data-anchor-id="importing-dash">Importing Dash</h3>
+<p><code>Dash</code> is the main class used to initialize your web app. <code>html</code> provides access to HTML components like <code>html.H1</code>, <code>html.P</code>, and <code>html.Div</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> Dash, html </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> Dash, html</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ul>
-<li>Dash() initializes your web application</li>
-</ul>
+</section>
+<section id="initializing-the-app" class="level3">
+<h3 class="anchored" data-anchor-id="initializing-the-app">Initializing the App</h3>
+<p><code>Dash()</code> creates a new web application instance. You store it in a variable named <code>app</code> by convention — most Dash documentation and examples use this name, making it easy to follow along.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>app<span class="op">=</span>Dash()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Dash()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ul>
-<li><p>Remember that there are 2 main components for dash app Layout and Callbacks</p></li>
-<li><p>To Define the layout of your app we add html.methods(““)</p></li>
-</ul>
+</section>
+<section id="running-the-app" class="level3">
+<h3 class="anchored" data-anchor-id="running-the-app">Running the App</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    app.run(debug<span class="op">=</span><span class="va">True</span>, use_reloader<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><p>name == ‘main’ ensures the server starts only when you run this file directly</p></li>
-<li><p>app.run(…) starts the local server</p>
-<ul>
-<li>debug=True enables hot reloading, so you can see changes without restarting the server</li>
-</ul></li>
+<li><code>if __name__ == '__main__'</code> — ensures the server starts only when you run this file directly (not when it is imported by another module). This is a standard Python idiom.</li>
+<li><code>app.run()</code> — starts the local development server.</li>
+<li><code>debug=True</code> — enables hot reloading so you can see code changes in the browser without restarting the server.</li>
+<li><code>use_reloader=False</code> — prevents the reloader from running a second process, which can cause issues in some Jupyter/VS Code environments.</li>
 </ul>
 </section>
-<section id="my-first-dashboard" class="level4">
-<h4 class="anchored" data-anchor-id="my-first-dashboard">My First Dashboard</h4>
+</section>
+<section id="my-first-dashboard" class="level2">
+<h2 class="anchored" data-anchor-id="my-first-dashboard">My First Dashboard</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/first_dash.png" class="quarto-figure quarto-figure-center figure-img" width="350" height="250"></p>
 </figure>
 </div>
-<ul>
-<li><p>When you run the code, it will start a local server and you can access the app in your web browser because debug is set to TRUE</p>
-<ul>
-<li><p>Notice that it says that Dash is running on <a href="http://127.0.0.1:8050/" class="uri">http://127.0.0.1:8050/</a> in the terminal after you run the code.</p>
-<ul>
-<li>You can also use <a href="http://localhost:8050/" class="uri">http://localhost:8050/</a></li>
-</ul></li>
-<li><p>You will see a debug menu on the browser.</p></li>
-</ul></li>
-<li><p>Push control + C in the terminal to stop the server when you are done testing the app.</p></li>
-<li><p>When putting the apps to production, set debug=False to hide the debug menu and improves security and performance</p></li>
-</ul>
+<p>When you run the code, Dash starts a local development server. You will see a message in the terminal:</p>
+<blockquote class="blockquote">
+<p>Dash is running on <a href="http://127.0.0.1:8050/" class="uri">http://127.0.0.1:8050/</a></p>
+</blockquote>
+<p><code>127.0.0.1</code> is the <strong>loopback address</strong> — it always refers to your own machine. Port <code>8050</code> is Dash’s default port. You can also access the app at <a href="http://localhost:8050/" class="uri">http://localhost:8050/</a> — these two addresses are equivalent.</p>
+<p>A debug menu will appear in the bottom-right corner of the browser while <code>debug=True</code> is set. Press <strong>Ctrl + C</strong> in the terminal to stop the server when you are done testing.</p>
+<div class="note">
+<p>When deploying to production, set <code>debug=False</code> to hide the debug menu and improve security and performance. The debug menu is a development convenience — never leave it on in a live app.</p>
+</div>
 </section>
-<section id="adjust-the-layout-to-include-a-title-and-a-paragraph" class="level4">
-<h4 class="anchored" data-anchor-id="adjust-the-layout-to-include-a-title-and-a-paragraph">Adjust the layout to include a title and a paragraph</h4>
-<ul>
-<li>There are Python functions from the dash.html module that mimic HTML elements. They are used to build the structure of your web page in a Dash app.</li>
-</ul>
+<section id="adjusting-the-layout" class="level2">
+<h2 class="anchored" data-anchor-id="adjusting-the-layout">Adjusting the Layout</h2>
+<p>Python functions from the <code>dash.html</code> module mirror standard HTML elements and are used to build the visual structure of your Dash app. <code>app.layout</code> defines everything the user will see.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> Dash, html</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Create the app</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Dash(<span class="va">__name__</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>app.title <span class="op">=</span> <span class="st">"My First Dash App"</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Define the layout</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> html.Div([</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>   html.H1(<span class="st">"Hello Dash!"</span>),</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>   html.P(<span class="st">"This is a simple dashboard."</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Run the app</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>   app.run(debug<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Dash(<span class="va">__name__</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>app.title <span class="op">=</span> <span class="st">"My First Dash App"</span>   <span class="co"># sets the browser tab title</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> html.Div([</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>   html.H1(<span class="st">"Hello Dash!"</span>),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>   html.P(<span class="st">"This is a simple dashboard."</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>   app.run(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/hello_dash.png" class="quarto-figure quarto-figure-center figure-img" width="350" height="250"></p>
 </figure>
 </div>
+<p><code>app.title</code> sets the <strong>browser tab title</strong> — the text you see in the tab at the top of Chrome or Firefox. It corresponds to the HTML <code>&lt;title&gt;</code> tag. Note: this is different from <code>html.H1</code>, which is the visible heading inside the page.</p>
+<p>Key layout components:</p>
 <ul>
-<li>App.title sets the <strong>browser tab title</strong> (like the text you see in the tab at the top of Chrome, Firefox, etc.). It’s the <strong>HTML &lt;title&gt; tag</strong> behind the scenes.</li>
-</ul>
-<section id="html.div-is-a-container-element-div-tag-to-hold-other-elements-used-to-group-components-like-text-headings-graphs-etc." class="level5">
-<h5 class="anchored" data-anchor-id="html.div-is-a-container-element-div-tag-to-hold-other-elements-used-to-group-components-like-text-headings-graphs-etc.">html.Div() is a container element (&lt;div&gt; tag) to hold other elements used to group components like text, headings, graphs, etc.</h5>
-</section>
-<section id="html.h1-creates-a-large-heading-h1-tag-used-for-titles-or-main-headlines" class="level5">
-<h5 class="anchored" data-anchor-id="html.h1-creates-a-large-heading-h1-tag-used-for-titles-or-main-headlines">html.H1() creates a large heading (&lt;h1&gt; tag), used for titles or main headlines</h5>
-</section>
-<section id="html.p-creates-a-paragraph-p-tag-used-for-regular-body-text" class="level5">
-<h5 class="anchored" data-anchor-id="html.p-creates-a-paragraph-p-tag-used-for-regular-body-text">html.P() creates a paragraph (&lt;p&gt; tag), used for regular body text</h5>
-</section>
-</section>
-<section id="html-components-overview" class="level4">
-<h4 class="anchored" data-anchor-id="html-components-overview">HTML Components Overview</h4>
-<ul>
-<li><p>Dash Components has a hierarchical of tree of components</p>
-<ul>
-<li><p>Popular Components are Dash HTML Components dash.html and</p></li>
-<li><p>Dash Core components dash.dcc</p></li>
-</ul></li>
-</ul>
-<!-- -->
-<ul>
-<li><p>Intro to HTML</p></li>
-<li><p>HTML (HyperText Markup Language: The standard markup language for structuring Web pages.</p></li>
-<li><p>HTML document -&gt; web browsers -&gt; multimedia web pages</p></li>
-</ul>
-<!-- -->
-<ul>
-<li><p>HTML documents contain HTML elements such as:</p>
-<ul>
-<li><p>Section Headings: h1, h2, h3, h4, h5, h6</p></li>
-<li><p>Paragraph: p</p></li>
-<li><p>Content division: div</p></li>
-<li><p>Line Break: br</p></li>
-<li><p>Anchor: a – to hyperlink to other pages.</p></li>
-</ul></li>
+<li><span style="background-color: yellow;"><strong><code>html.Div()</code></strong></span> — a container element (<code>&lt;div&gt;</code> tag) used to group and organize other components. Think of it as an invisible box.</li>
+<li><span style="background-color: yellow;"><strong><code>html.H1()</code></strong></span> — creates a large heading (<code>&lt;h1&gt;</code> tag). Use <code>H2</code> through <code>H6</code> for progressively smaller headings.</li>
+<li><span style="background-color: yellow;"><strong><code>html.P()</code></strong></span> — creates a paragraph (<code>&lt;p&gt;</code> tag) for regular body text.</li>
 </ul>
 </section>
-<section id="dash-html-component" class="level4">
-<h4 class="anchored" data-anchor-id="dash-html-component">Dash HTML Component</h4>
+<section id="html-components-overview" class="level2">
+<h2 class="anchored" data-anchor-id="html-components-overview">HTML Components Overview</h2>
+<p>Dash components are organized in a <strong>hierarchical tree</strong> — containers hold other components, which can themselves hold components. The two most commonly used modules are:</p>
+<ul>
+<li><span style="background-color: yellow;"><strong><code>dash.html</code></strong></span> — Dash HTML Components for page structure.</li>
+<li><span style="background-color: yellow;"><strong><code>dash.dcc</code></strong></span> — Dash Core Components for interactivity (introduced when we cover callbacks).</li>
+</ul>
+<p><strong>HTML (HyperText Markup Language)</strong> is the standard markup language for structuring web pages. In Dash, you write HTML using Python functions rather than raw HTML tags — <code>html.P("Hello")</code> in Python is equivalent to <code>&lt;p&gt;Hello&lt;/p&gt;</code> in HTML.</p>
+<p>Common HTML elements available in <code>dash.html</code>:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 39%">
+<col style="width: 34%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Python</th>
+<th>HTML equivalent</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>html.H1("text")</code></td>
+<td><code>&lt;h1&gt;text&lt;/h1&gt;</code></td>
+<td>Largest heading</td>
+</tr>
+<tr class="even">
+<td><code>html.P("text")</code></td>
+<td><code>&lt;p&gt;text&lt;/p&gt;</code></td>
+<td>Paragraph</td>
+</tr>
+<tr class="odd">
+<td><code>html.Div([...])</code></td>
+<td><code>&lt;div&gt;...&lt;/div&gt;</code></td>
+<td>Container/grouping</td>
+</tr>
+<tr class="even">
+<td><code>html.Br()</code></td>
+<td><code>&lt;br&gt;</code></td>
+<td>Line break</td>
+</tr>
+<tr class="odd">
+<td><code>html.A("text", href="url")</code></td>
+<td><code>&lt;a href="url"&gt;text&lt;/a&gt;</code></td>
+<td>Hyperlink</td>
+</tr>
+</tbody>
+</table>
 <p><img src="images/html_components.png" class="img-fluid"></p>
 </section>
-<section id="adding-a-line-break-and-a-hyperlink" class="level4">
-<h4 class="anchored" data-anchor-id="adding-a-line-break-and-a-hyperlink">Adding a Line Break and a Hyperlink</h4>
+<section id="adding-a-line-break-and-a-hyperlink" class="level2">
+<h2 class="anchored" data-anchor-id="adding-a-line-break-and-a-hyperlink">Adding a Line Break and a Hyperlink</h2>
 <ul>
-<li><p>html.Br() creates a line break in the layout, similar to the &lt;br&gt; tag in HTML.</p>
-<ul>
-<li>It doesn’t display any text—it just moves the next element to a new line.</li>
-</ul></li>
-<li><p>html.A(“Click here”, href=“https://example.com”)</p>
-<ul>
-<li><p>Creates a hyperlink.</p></li>
-<li><p>“Click here” is the visible text.</p></li>
-<li><p>href=“https://example.com” tells the browser where to go when clicked.</p></li>
-<li><p>Works just like the HTML &lt;a&gt; tag.</p></li>
-</ul></li>
+<li><p><span style="background-color: yellow;"><strong><code>html.Br()</code></strong></span> — inserts a line break, equivalent to <code>&lt;br&gt;</code> in HTML. It adds vertical spacing between elements without starting a new paragraph.</p></li>
+<li><p><span style="background-color: yellow;"><strong><code>html.A("Click here", href="https://example.com")</code></strong></span> — creates a clickable hyperlink. The first argument is the visible link text; <code>href</code> specifies the destination URL. <code>target="_blank"</code> opens the link in a new tab.</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>app.layout<span class="op">=</span>html.Div([</span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> html.Div([</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>   html.H1(<span class="st">"Hello Dash!"</span>),</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>   html.P(<span class="st">"This is a simple dashboard."</span>),</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>   html.Br(),</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>   html.A(<span class="st">"Click here"</span>, href<span class="op">=</span><span class="st">"https://example.com"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>   html.A(<span class="st">"Click here"</span>, href<span class="op">=</span><span class="st">"https://example.com"</span>, target<span class="op">=</span><span class="st">"_blank"</span>)</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="html-elements" class="level4">
-<h4 class="anchored" data-anchor-id="html-elements">HTML Elements</h4>
-<ul>
-<li><p>In regular HTML, tags define the structure of a web page using this pattern: &lt;tagname&gt; content &lt;/tagname&gt;</p></li>
-<li><p>Examples:</p>
-<ul>
-<li><p>Start tag content end tag</p></li>
-<li><p>&lt;p&gt; This is a paragraph &lt;/p&gt;</p></li>
-<li><p>&lt;h1&gt; This is a Heading 1 &lt;/h1&gt;</p></li>
-</ul></li>
-<li><p>In Dash, you use the dash.html module to create the same HTML elements using Python syntax.</p>
-<p>From dash import html</p></li>
-</ul>
+<section id="html-elements" class="level2">
+<h2 class="anchored" data-anchor-id="html-elements">HTML Elements</h2>
+<p>In standard HTML, tags define the structure of a web page using the pattern <code>&lt;tagname&gt;content&lt;/tagname&gt;</code>. In Dash, you use the <code>dash.html</code> module to create the same elements in Python — the two are directly equivalent:</p>
+<pre><code>HTML:   &lt;p&gt;This is a paragraph&lt;/p&gt;
+Python: html.P("This is a paragraph")
+
+HTML:   &lt;h1&gt;This is a Heading&lt;/h1&gt;
+Python: html.H1("This is a Heading")</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p><img src="images/html_elements.png" class="img-fluid"></p>
 </section>
-<section id="style" class="level4">
-<h4 class="anchored" data-anchor-id="style">Style</h4>
-<ul>
-<li><p>In Dash apps, the style parameter is used to directly apply CSS styling to a Dash component using a Python dictionary. This allows you to control the appearance (e.g., colors, spacing, fonts, borders) of components without needing a separate CSS file.</p></li>
-<li><p>HTML colors are located on <a href="https://htmlcolorcodes.com/" class="uri">https://htmlcolorcodes.com/</a></p></li>
-</ul>
-<p><img src="images/style.png" class="img-fluid"></p>
+<section id="styling-in-dash" class="level2">
+<h2 class="anchored" data-anchor-id="styling-in-dash">Styling in Dash</h2>
+<p>In Dash apps, the <code>style</code> parameter applies CSS styling directly to a component using a <strong>Python dictionary</strong>. The keys are CSS property names written in <strong>camelCase</strong> (e.g., <code>fontSize</code> instead of <code>font-size</code>), and the values are strings.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>html.H1(<span class="st">"Hello Dash"</span>, style<span class="op">=</span>{<span class="st">'color'</span>:<span class="st">'#381D5C'</span>,</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                             <span class="st">'fontSize'</span>: <span class="st">'20px'</span>,</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                             <span class="st">'backgroundColor'</span>:<span class="st">'#E898AA'</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>html.H1(<span class="st">"Hello Dash"</span>, style<span class="op">=</span>{</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'color'</span>: <span class="st">'#381D5C'</span>,          <span class="co"># hex color code for text</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'fontSize'</span>: <span class="st">'20px'</span>,          <span class="co"># font size</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'backgroundColor'</span>: <span class="st">'#E898AA'</span> <span class="co"># background color behind the heading</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>HTML color codes and hex values are available at <a href="https://htmlcolorcodes.com/">htmlcolorcodes.com</a>.</p>
+<p><img src="images/style.png" class="img-fluid"></p>
 <p><img src="images/styled_dash.png" class="img-fluid"></p>
 </section>
-<section id="borders" class="level4">
-<h4 class="anchored" data-anchor-id="borders">Borders</h4>
+<section id="borders" class="level2">
+<h2 class="anchored" data-anchor-id="borders">Borders</h2>
+<p>The <code>style</code> dictionary accepts the following border-related keys:</p>
 <ul>
-<li><p>Here are some key Dash HTML component style parameters for controlling borders, padding, and margin—all written in Python dictionary format for use in Dash:</p></li>
-<li><p>‘border’: Shorthand for setting all border properties (width, style, color)</p>
-<ul>
-<li>{‘border’: ‘1px solid black’}</li>
-</ul></li>
-<li><p>‘borderWidth’: Sets width of the border</p>
-<ul>
-<li>{‘borderWidth’: ‘2px’}</li>
-</ul></li>
-<li><p>‘borderStyle’: Sets line style (e.g., solid, dashed)</p>
-<ul>
-<li>{‘borderStyle’: ‘dotted’}</li>
-</ul></li>
-<li><p>‘borderColor’: Sets color of the border</p>
-<ul>
-<li>{‘borderColor’: ‘gray’}</li>
-</ul></li>
-<li><p>‘borderRadius’: Rounds corners of the border</p>
-<ul>
-<li>{‘borderRadius’: ‘10px’}</li>
-</ul></li>
+<li><span style="background-color: yellow;"><strong><code>'border'</code></strong></span> — shorthand for all border properties at once: <code>{'border': '1px solid black'}</code> (width, style, color)</li>
+<li><span style="background-color: yellow;"><strong><code>'borderWidth'</code></strong></span> — sets the border thickness: <code>{'borderWidth': '2px'}</code></li>
+<li><span style="background-color: yellow;"><strong><code>'borderStyle'</code></strong></span> — sets the line style: <code>{'borderStyle': 'dotted'}</code> (options: <code>solid</code>, <code>dashed</code>, <code>dotted</code>, <code>double</code>)</li>
+<li><span style="background-color: yellow;"><strong><code>'borderColor'</code></strong></span> — sets the border color: <code>{'borderColor': 'gray'}</code></li>
+<li><span style="background-color: yellow;"><strong><code>'borderRadius'</code></strong></span> — rounds the corners: <code>{'borderRadius': '10px'}</code> (larger = rounder)</li>
 </ul>
 </section>
-<section id="padding" class="level4">
-<h4 class="anchored" data-anchor-id="padding">Padding</h4>
+<section id="padding" class="level2">
+<h2 class="anchored" data-anchor-id="padding">Padding</h2>
+<p><strong>Padding</strong> is the space <em>inside</em> the element, between its content and its border — like the margin of a page inside the cover.</p>
 <ul>
-<li><p><strong>Padding refers to the space inside the element</strong></p></li>
-<li><p>‘padding’: Sets padding on all sides<br>
-→ {‘padding’: ‘15px’}</p></li>
-<li><p>‘paddingTop’, ‘paddingBottom’, ‘paddingLeft’, ‘paddingRight’: Control sides individually<br>
-→ {‘paddingTop’: ‘20px’, ‘paddingBottom’: ‘5px’}</p></li>
-</ul>
-<!-- -->
-<ul>
-<li>In Python, key-value pairs in dictionaries must be separated by commas.</li>
+<li><span style="background-color: yellow;"><strong><code>'padding'</code></strong></span> — sets equal padding on all four sides: <code>{'padding': '15px'}</code></li>
+<li><span style="background-color: yellow;"><strong><code>'paddingTop'</code>, <code>'paddingBottom'</code>, <code>'paddingLeft'</code>, <code>'paddingRight'</code></strong></span> — control each side individually.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>html.P(<span class="st">"This is a simple dashboard."</span>,</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>         style<span class="op">=</span>{<span class="st">'border'</span> : <span class="st">'1px solid black'</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>html.P(<span class="st">"This is a simple dashboard."</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>       style<span class="op">=</span>{<span class="st">'border'</span>: <span class="st">'1px solid black'</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">'padding'</span>: <span class="st">'10px'</span>})   <span class="co"># adds space between the text and the border</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/simple_dash.png" class="img-fluid"></p>
+<div class="note">
+<p>In Python, all key-value pairs in a dictionary must be separated by commas. Forgetting a comma between style properties is a common source of syntax errors.</p>
+</div>
 </section>
-<section id="margin" class="level4">
-<h4 class="anchored" data-anchor-id="margin">Margin</h4>
+<section id="margin" class="level2">
+<h2 class="anchored" data-anchor-id="margin">Margin</h2>
+<p><strong>Margin</strong> is the space <em>outside</em> the element, between its border and neighboring elements — like the white space between paragraphs on a page.</p>
 <ul>
-<li><p>Margin refers to the space outside the element</p></li>
-<li><p>‘margin’: Sets margin on all sides: {‘margin’: ‘20px’}</p></li>
-<li><p>‘marginTop’, ‘marginBottom’, ‘marginLeft’, ‘marginRight’: Control sides individually</p></li>
-<li><p>{‘marginLeft’: ‘auto’, ‘marginRight’: ‘auto’} (useful for centering)</p></li>
+<li><span style="background-color: yellow;"><strong><code>'margin'</code></strong></span> — sets equal margin on all four sides: <code>{'margin': '20px'}</code></li>
+<li><span style="background-color: yellow;"><strong><code>'marginTop'</code>, <code>'marginBottom'</code>, <code>'marginLeft'</code>, <code>'marginRight'</code></strong></span> — control each side individually.</li>
+<li><code>{'marginLeft': 'auto', 'marginRight': 'auto'}</code> — horizontally centers a block element within its parent container.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>html.P(<span class="st">"This is a simple dashboard."</span>,</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>         style<span class="op">=</span>{<span class="st">'border'</span>:<span class="st">'1px solid black'</span>,</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                <span class="st">'padding'</span>: <span class="st">'20px'</span>, <span class="st">'margin'</span>: <span class="st">'50px'</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>html.P(<span class="st">"This is a simple dashboard."</span>,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>       style<span class="op">=</span>{<span class="st">'border'</span>: <span class="st">'1px solid black'</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">'padding'</span>: <span class="st">'20px'</span>,   <span class="co"># space inside (between text and border)</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">'margin'</span>: <span class="st">'50px'</span>})   <span class="co"># space outside (between border and page edge)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -555,76 +567,95 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="css-in-dash-external-stylesheets" class="level4">
-<h4 class="anchored" data-anchor-id="css-in-dash-external-stylesheets">CSS in Dash: External Stylesheets</h4>
-<ul>
-<li><p>Tells Dash to load extra CSS files in addition to the default styles</p></li>
-<li><p>You can make a styles.css for the entire app</p></li>
-<li><p>Also accepts a list of URLs or dictionaries pointing to CSS resources</p></li>
-<li><p>How it works</p>
-<ul>
-<li><p>The browser loads the CSS when the app starts</p></li>
-<li><p>Styles from these files apply to all app components</p></li>
-</ul></li>
-<li><p>If you make an assets folder within your working directory, and drop a .css file in that, python will automatically use it with the dash app.</p></li>
-</ul>
+<section id="css-in-dash-external-stylesheets" class="level2">
+<h2 class="anchored" data-anchor-id="css-in-dash-external-stylesheets">CSS in Dash: External Stylesheets</h2>
+<p>Inline <code>style={}</code> dictionaries are convenient for quick, component-specific adjustments. For consistent, app-wide styling, use an <strong>external CSS file</strong> in Dash’s <code>assets/</code> folder.</p>
+<p>If you create an <code>assets/</code> folder in your working directory and place a <code>.css</code> file inside it, Dash automatically loads and applies it to the entire app — no extra configuration needed.</p>
+<p><strong>When to use each approach:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Approach</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Inline <code>style={}</code></td>
+<td>Small, one-off overrides on a single component</td>
+</tr>
+<tr class="even">
+<td>External CSS in <code>assets/</code></td>
+<td>Consistent styling across the whole app or multiple pages</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="give-general-stylings-for-the-body" class="level4">
-<h4 class="anchored" data-anchor-id="give-general-stylings-for-the-body">Give General Stylings for the Body</h4>
+<section id="styling-the-body" class="level2">
+<h2 class="anchored" data-anchor-id="styling-the-body">Styling the Body</h2>
+<p>The CSS below sets global defaults for the entire page:</p>
 <p><img src="images/general_styled.png" class="img-fluid"></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>body<span class="op">,</span>html{</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>   <span class="kw">padding</span><span class="ch">:</span> <span class="dv">40</span><span class="dt">px</span><span class="op">;</span> <span class="co">/* increased padding around context */</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>   <span class="kw">background</span><span class="ch">:</span> <span class="cn">#dfe9e1</span> <span class="co">/*light gray background */</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>   <span class="dv">color</span>: <span class="cn">#1f1e1e</span><span class="op">;</span> <span class="co">/*dark text color */</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>   <span class="kw">font</span><span class="ch">:</span> <span class="dv">16</span><span class="dt">px</span> <span class="dv">Arial</span><span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span> <span class="co">/*increased base font size */</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>body<span class="op">,</span> html {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>   <span class="kw">padding</span><span class="ch">:</span> <span class="dv">40</span><span class="dt">px</span><span class="op">;</span>                    <span class="co">/* breathing room around all content */</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>   <span class="kw">background</span><span class="ch">:</span> <span class="cn">#dfe9e1</span><span class="op">;</span>             <span class="co">/* light green-gray background */</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">color</span><span class="ch">:</span> <span class="cn">#1f1e1e</span><span class="op">;</span>                  <span class="co">/* dark text color */</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>   <span class="kw">font</span><span class="ch">:</span> <span class="dv">16</span><span class="dt">px</span> <span class="dv">Arial</span><span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span>    <span class="co">/* base font size and family */</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="change-the-paragraph-background-color" class="level4">
-<h4 class="anchored" data-anchor-id="change-the-paragraph-background-color">Change the Paragraph Background Color</h4>
+<section id="changing-the-paragraph-background-color" class="level2">
+<h2 class="anchored" data-anchor-id="changing-the-paragraph-background-color">Changing the Paragraph Background Color</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>p{<span class="kw">background-color</span><span class="ch">:</span> <span class="cn">#d4cece</span><span class="op">;</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>   <span class="kw">background-color</span><span class="ch">:</span> <span class="cn">#d4cece</span><span class="op">;</span>   <span class="co">/* applies to ALL &lt;p&gt; elements in the app */</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/adjusted_dash.png" class="img-fluid"></p>
 </section>
-<section id="give-stylings-to-the-hyperlink" class="level4">
-<h4 class="anchored" data-anchor-id="give-stylings-to-the-hyperlink">Give Stylings to the Hyperlink</h4>
+<section id="styling-the-hyperlink" class="level2">
+<h2 class="anchored" data-anchor-id="styling-the-hyperlink">Styling the Hyperlink</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/pill.png" class="quarto-figure quarto-figure-center figure-img" width="350" height="300"></p>
 </figure>
 </div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* Rounded, colored hyperlink box */</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>a{</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>   <span class="kw">display</span><span class="ch">:</span> <span class="dv">inline-block</span><span class="op">;</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">padding</span><span class="ch">:</span> <span class="dv">25</span><span class="dt">px</span><span class="op">;</span> <span class="co">/*increased padding inside box */</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>   <span class="kw">border-radius</span><span class="ch">:</span> <span class="dv">9999</span><span class="dt">px</span><span class="op">;</span>         <span class="co">/*pill shape */</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>   <span class="kw">background-color</span><span class="ch">:</span> <span class="cn">#3b82f6</span><span class="op">;</span>     <span class="co">/*blue*/</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>   <span class="kw">color</span><span class="ch">:</span> <span class="cn">#ffffff</span><span class="op">;</span>                <span class="co">/*white text*/</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>   <span class="kw">text-decoration</span><span class="ch">:</span> <span class="dv">none</span><span class="op">;</span>   <span class="co">/*remove underline*/</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>   <span class="kw">font-size</span><span class="ch">:</span> <span class="dv">24</span><span class="dt">px</span><span class="op">;</span>     <span class="co">/*larger text */</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>} </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li><p>Notice comments in css are made with /* and */</p></li>
-<li><p>This makes the hyperlink rounded</p></li>
-</ul>
+<p>The CSS below transforms a plain underlined link into a styled pill-shaped button:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* Rounded, colored hyperlink box */</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>a {</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>   <span class="kw">display</span><span class="ch">:</span> <span class="dv">inline-block</span><span class="op">;</span>           <span class="co">/* allows padding and width to apply */</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">padding</span><span class="ch">:</span> <span class="dv">25</span><span class="dt">px</span><span class="op">;</span>                   <span class="co">/* space inside the button */</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>   <span class="kw">border-radius</span><span class="ch">:</span> <span class="dv">9999</span><span class="dt">px</span><span class="op">;</span>           <span class="co">/* large value = pill/capsule shape */</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>   <span class="kw">background-color</span><span class="ch">:</span> <span class="cn">#3b82f6</span><span class="op">;</span>       <span class="co">/* blue background */</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>   <span class="kw">color</span><span class="ch">:</span> <span class="cn">#ffffff</span><span class="op">;</span>                  <span class="co">/* white text */</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>   <span class="kw">text-decoration</span><span class="ch">:</span> <span class="dv">none</span><span class="op">;</span>           <span class="co">/* removes the default underline */</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>   <span class="kw">font-size</span><span class="ch">:</span> <span class="dv">24</span><span class="dt">px</span><span class="op">;</span>                 <span class="co">/* larger text */</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>CSS comments use the <code>/* comment */</code> syntax. They are ignored by the browser and are useful for documenting your style choices.</p>
 </section>
-<section id="adding-a-change-in-style-on-hover" class="level4">
-<h4 class="anchored" data-anchor-id="adding-a-change-in-style-on-hover">Adding a Change in Style on Hover</h4>
-<div class="sourceCode" id="cb12"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* Hover style change */</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>a<span class="in">:hover</span>{</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>   <span class="kw">background-color</span><span class="ch">:</span> <span class="cn">#474d59</span><span class="op">;</span>   <span class="co">/*darker gray on hover */</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="adding-a-hover-effect" class="level2">
+<h2 class="anchored" data-anchor-id="adding-a-hover-effect">Adding a Hover Effect</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* Change background color when the mouse hovers over the link */</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>a<span class="in">:hover</span> {</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>   <span class="kw">background-color</span><span class="ch">:</span> <span class="cn">#474d59</span><span class="op">;</span>   <span class="co">/* darker gray on hover */</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>CSS offers four <strong>link pseudo-classes</strong> that let you style an anchor element at different interaction states. They should be defined in this order (the LVHA order) to work correctly:</p>
 <ul>
-<li><p><strong>:link → default style of an unvisited link.</strong></p></li>
-<li><p><strong>:visited → style for a link the user has already clicked (and the browser remembers in history).</strong></p></li>
-<li><p><strong>:hover → when the pointer (mouse, stylus, etc.) is over the element.</strong></p></li>
-<li><p><strong>:active → the moment the element is being clicked (mouse pressed down but not released yet)</strong></p></li>
+<li><span style="background-color: yellow;"><strong><code>:link</code></strong></span> — default style of an unvisited link (the user has never clicked it).</li>
+<li><span style="background-color: yellow;"><strong><code>:visited</code></strong></span> — style for a link the user has already clicked (stored in browser history).</li>
+<li><span style="background-color: yellow;"><strong><code>:hover</code></strong></span> — applied while the pointer is over the element. This is the most commonly used.</li>
+<li><span style="background-color: yellow;"><strong><code>:active</code></strong></span> — applied at the instant the element is being clicked (mouse button pressed but not yet released). Useful for visual “press” feedback.</li>
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1055,8 +1086,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./crashcourse.html" class="pagination-link" aria-label="Crash Python Course">
-        <span class="nav-page-text"><span class="chapter-title">Crash Python Course</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./github.html" class="pagination-link" aria-label="Using Git and GitHub">
+        <span class="nav-page-text"><span class="chapter-title">Using Git and GitHub</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

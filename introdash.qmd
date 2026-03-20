@@ -8,369 +8,312 @@ execute:
     executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
--   This section introduces Dash, a Python framework from Plotly for building interactive, web-based dashboards without requiring traditional web development skills. Dash combines Plotly for visualizations, Flask for the backend, and React for the front end, making it ideal for analysts who want to turn Python code into shareable, browser-based applications.The lesson covers Dash’s two core modules—dash.html (for HTML structure) and dash.dcc (for interactive components)—and demonstrates how to create, run, and style a basic app. It explains the difference between static and dynamic content, showing how callbacks update dashboards in real time through APIs, databases, or live streams. Students learn how to build a simple “Hello Dash” app, add headings, paragraphs, hyperlinks, and apply styling using inline Python dictionaries or external CSS stylesheets. Key design concepts such as borders, padding, margins, and hover effects are introduced to control layout and visual hierarchy. By the end, learners understand the structure of a Dash app—layout + callbacks—and how styling and interactivity work together to create polished, professional dashboards that communicate data insights effectively.
+This section introduces **Dash**, a Python framework from Plotly for building interactive, web-based dashboards without requiring traditional web development skills. Dash combines **Plotly** for visualizations, **Flask** for the backend, and **React** for the front end, making it ideal for analysts who want to turn Python code into shareable, browser-based applications. The lesson covers Dash's two core modules — `dash.html` (for HTML structure) and `dash.dcc` (for interactive components) — and demonstrates how to create, run, and style a basic app. It explains the difference between static and dynamic content, showing how callbacks update dashboards in real time through APIs, databases, or live streams. Students learn how to build a simple "Hello Dash" app, add headings, paragraphs, and hyperlinks, and apply styling using inline Python dictionaries or external CSS stylesheets. Key design concepts such as borders, padding, margins, and hover effects are introduced to control layout and visual hierarchy.
 
 ## Dash
 
 ::: note
-**Dash** is a Python library for building interactive web applications. Developed by **Plotly**, the company behind the Plotly visualization library, Dash allows users to create dynamic, data-driven dashboards entirely in Python. It is built on top of **Plotly** for visualizations, **Flask** for managing the web server, and **React** for the front-end interface.
+**Dash** is a Python library for building interactive web applications. Developed by **Plotly**, Dash allows users to create dynamic, data-driven dashboards entirely in Python — no JavaScript, HTML knowledge, or web development background required. It is built on top of **Plotly** for visualizations, **Flask** for managing the web server, and **React** for the front-end interface.
 :::
 
--   Dash is designed for **data analysts and data scientists** with a **basic knowledge of Python**—no need for advanced web-development skills.\
--   It’s ideal for creating **visualizations and dashboards** that can be easily **shared with customers, executives, and other stakeholders**.
+Dash is designed for **data analysts and data scientists** with a basic knowledge of Python. It is ideal for creating **visualizations and dashboards** that can be easily **shared with customers, executives, and other stakeholders** — without needing to email static files or screenshots.
 
-<!-- -->
+Every Dash app is built on two things:
 
--   Dash layout is built on 2 things
+-   [**`dcc` — Dash Core Components**]{style="background-color: yellow;"} — interactive UI elements like dropdowns, sliders, date pickers, and graphs. These are what users interact with.
+-   [**`html` — Dash HTML Components**]{style="background-color: yellow;"} — Python representations of standard HTML elements (headings, paragraphs, divs) used to structure and organize the page.
 
-    -   Dcc: Dash Core Components
+Interactivity is powered by **callback functions**, which automatically update output components when a user changes an input component.
 
-    -   HTML : Dash HTML Components
+## Choosing a Visualization Tool
 
--   Interactive features: callback functions
+The right tool depends on your goal:
 
-#### Exploring Visualizations
-
--   Dash vs. Matplotlib vs. Plotly
-
--   Use Matplotlib when you want quick, static visualizations (e.g., for academic papers or PDFs).
-
--   Use Plotly for interactive, browser-based graphs without building full dashboards.
-
--   Use Dash when you want to build full web apps or dashboards with charts, dropdowns, and user controls—ideal for business analytics tools or interactive data portals
+| Tool | Best for | Output |
+|----|----|----|
+| **Matplotlib** | Quick, static charts for reports or PDFs | Static image |
+| **Plotly** | Interactive browser-based charts without a full app | Standalone chart |
+| **Dash** | Full web apps with controls, dropdowns, and callbacks | Hosted application |
 
 ![](images/datatypes.png)
 
-#### Dash: Static and Dynamic Content
+## Static and Dynamic Content
 
--   Dash can handle static content: Files that do not change on the server side — e.g., images, PDFs, CSS, JavaScript.
+Dash handles both static and dynamic content:
 
--   Dash can handle dynamic content: Data or components that change depending on user interaction, database queries, API calls, or real-time streaming.
+-   [**Static content**]{style="background-color: yellow;"} — files that do not change on the server side: images, PDFs, CSS, and JavaScript. These are served once and do not respond to user interaction.
+-   [**Dynamic content**]{style="background-color: yellow;"} — data or components that update in response to user interaction, database queries, API calls, or real-time streaming. This is what makes Dash apps interactive.
 
--   How Dash handles it:
+Dynamic updates are powered by **callbacks**: Python functions decorated with `@app.callback()` that listen for changes in input components and push new values to output components. Data sources for dynamic content include:
 
-    -   Callbacks: Functions decorated with \@app.callback() listen for changes in user inputs and update outputs dynamically.
+-   **APIs** — fetch fresh external data inside callback functions (e.g., weather, stock prices).
+-   **Databases** — query and return results dynamically based on user selections.
+-   **Live data streams** — real-time feeds using WebSocket integrations or periodic polling with `dcc.Interval`.
 
-    -   You can generate HTML dynamically in Python — Dash doesn’t pre-render your pages, it builds them at runtime.
+## Creating Your First Dashboard
 
-    -   Data sources:
+### Importing Dash
 
-        -   APIs (fetch fresh data in callbacks)
-
-        -   Databases (query and return results dynamically)
-
-        -   Live data streams (e.g., WebSocket integrations, or polling APIs with dcc.Interval)
-
-#### Creating your First Dashboard
-
--   Imports the Dash framework components
-
-    -   Dash is the main class used to initialize your web app
-
-    -   html lets you create HTML elements like
-
-    -   , etc., directly in Python
+`Dash` is the main class used to initialize your web app. `html` provides access to HTML components like `html.H1`, `html.P`, and `html.Div`.
 
 ```{python}
-from dash import Dash, html 
+from dash import Dash, html
 ```
 
--   Dash() initializes your web application
+### Initializing the App
+
+`Dash()` creates a new web application instance. You store it in a variable named `app` by convention — most Dash documentation and examples use this name, making it easy to follow along.
 
 ```{python}
-app=Dash()
+app = Dash()
 ```
 
--   Remember that there are 2 main components for dash app Layout and Callbacks
-
--   To Define the layout of your app we add html.methods(““)
+### Running the App
 
 ```{python}
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
 ```
 
--   name == ‘main’ ensures the server starts only when you run this file directly
+-   `if __name__ == '__main__'` — ensures the server starts only when you run this file directly (not when it is imported by another module). This is a standard Python idiom.
+-   `app.run()` — starts the local development server.
+-   `debug=True` — enables hot reloading so you can see code changes in the browser without restarting the server.
+-   `use_reloader=False` — prevents the reloader from running a second process, which can cause issues in some Jupyter/VS Code environments.
 
--   app.run(…) starts the local server
-
-    -   debug=True enables hot reloading, so you can see changes without restarting the server
-
-#### My First Dashboard
+## My First Dashboard
 
 ![](images/first_dash.png){fig-align="center" width="350" height="250"}
 
--   When you run the code, it will start a local server and you can access the app in your web browser because debug is set to TRUE
+When you run the code, Dash starts a local development server. You will see a message in the terminal:
 
-    -   Notice that it says that Dash is running on <http://127.0.0.1:8050/> in the terminal after you run the code.
+> Dash is running on <http://127.0.0.1:8050/>
 
-        -   You can also use <http://localhost:8050/>
+`127.0.0.1` is the **loopback address** — it always refers to your own machine. Port `8050` is Dash's default port. You can also access the app at <http://localhost:8050/> — these two addresses are equivalent.
 
-    -   You will see a debug menu on the browser.
+A debug menu will appear in the bottom-right corner of the browser while `debug=True` is set. Press **Ctrl + C** in the terminal to stop the server when you are done testing.
 
--   Push control + C in the terminal to stop the server when you are done testing the app.
+::: note
+When deploying to production, set `debug=False` to hide the debug menu and improve security and performance. The debug menu is a development convenience — never leave it on in a live app.
+:::
 
--   When putting the apps to production, set debug=False to hide the debug menu and improves security and performance
+## Adjusting the Layout
 
-#### Adjust the layout to include a title and a paragraph
-
--   There are Python functions from the dash.html module that mimic HTML elements. They are used to build the structure of your web page in a Dash app.
+Python functions from the `dash.html` module mirror standard HTML elements and are used to build the visual structure of your Dash app. `app.layout` defines everything the user will see.
 
 ```{python}
 from dash import Dash, html
 
-#Create the app
 app = Dash(__name__)
-app.title = "My First Dash App"
+app.title = "My First Dash App"   # sets the browser tab title
 
-#Define the layout
 app.layout = html.Div([
    html.H1("Hello Dash!"),
    html.P("This is a simple dashboard.")
-   
-#Run the app
+])
+
 if __name__ == "__main__":
    app.run(debug=True)
-])
 ```
 
 ![](images/hello_dash.png){fig-align="center" width="350" height="250"}
 
--   App.title sets the **browser tab title** (like the text you see in the tab at the top of Chrome, Firefox, etc.). It's the **HTML \<title\> tag** behind the scenes.
+`app.title` sets the **browser tab title** — the text you see in the tab at the top of Chrome or Firefox. It corresponds to the HTML `<title>` tag. Note: this is different from `html.H1`, which is the visible heading inside the page.
 
-##### html.Div() is a container element (\<div\> tag) to hold other elements used to group components like text, headings, graphs, etc.
+Key layout components:
 
-##### html.H1() creates a large heading (\<h1\> tag), used for titles or main headlines
+-   [**`html.Div()`**]{style="background-color: yellow;"} — a container element (`<div>` tag) used to group and organize other components. Think of it as an invisible box.
+-   [**`html.H1()`**]{style="background-color: yellow;"} — creates a large heading (`<h1>` tag). Use `H2` through `H6` for progressively smaller headings.
+-   [**`html.P()`**]{style="background-color: yellow;"} — creates a paragraph (`<p>` tag) for regular body text.
 
-##### html.P() creates a paragraph (\<p\> tag), used for regular body text
+## HTML Components Overview
 
-#### HTML Components Overview
+Dash components are organized in a **hierarchical tree** — containers hold other components, which can themselves hold components. The two most commonly used modules are:
 
--   Dash Components has a hierarchical of tree of components
+-   [**`dash.html`**]{style="background-color: yellow;"} — Dash HTML Components for page structure.
+-   [**`dash.dcc`**]{style="background-color: yellow;"} — Dash Core Components for interactivity (introduced when we cover callbacks).
 
-    -   Popular Components are Dash HTML Components dash.html and
+**HTML (HyperText Markup Language)** is the standard markup language for structuring web pages. In Dash, you write HTML using Python functions rather than raw HTML tags — `html.P("Hello")` in Python is equivalent to `<p>Hello</p>` in HTML.
 
-    -   Dash Core components dash.dcc
+Common HTML elements available in `dash.html`:
 
-<!-- -->
-
--   Intro to HTML
-
--   HTML (HyperText Markup Language: The standard markup language for structuring Web pages.
-
--   HTML document -\> web browsers -\> multimedia web pages
-
-<!-- -->
-
--   HTML documents contain HTML elements such as:
-
-    -   Section Headings: h1, h2, h3, h4, h5, h6
-
-    -   Paragraph: p
-
-    -   Content division: div
-
-    -   Line Break: br
-
-    -   Anchor: a – to hyperlink to other pages.
-
-#### Dash HTML Component
+| Python                       | HTML equivalent          | Purpose            |
+|------------------------------|--------------------------|--------------------|
+| `html.H1("text")`            | `<h1>text</h1>`          | Largest heading    |
+| `html.P("text")`             | `<p>text</p>`            | Paragraph          |
+| `html.Div([...])`            | `<div>...</div>`         | Container/grouping |
+| `html.Br()`                  | `<br>`                   | Line break         |
+| `html.A("text", href="url")` | `<a href="url">text</a>` | Hyperlink          |
 
 ![](images/html_components.png)
 
-#### Adding a Line Break and a Hyperlink
+## Adding a Line Break and a Hyperlink
 
--   html.Br() creates a line break in the layout, similar to the \<br\> tag in HTML.
+-   [**`html.Br()`**]{style="background-color: yellow;"} — inserts a line break, equivalent to `<br>` in HTML. It adds vertical spacing between elements without starting a new paragraph.
 
-    -   It doesn’t display any text—it just moves the next element to a new line.
-
--   html.A("Click here", href="https://example.com")
-
-    -   Creates a hyperlink.
-
-    -   "Click here" is the visible text.
-
-    -   href="https://example.com" tells the browser where to go when clicked.
-
-    -   Works just like the HTML \<a\> tag.
+-   [**`html.A("Click here", href="https://example.com")`**]{style="background-color: yellow;"} — creates a clickable hyperlink. The first argument is the visible link text; `href` specifies the destination URL. `target="_blank"` opens the link in a new tab.
 
 ```{python}
-app.layout=html.Div([
+app.layout = html.Div([
    html.H1("Hello Dash!"),
    html.P("This is a simple dashboard."),
    html.Br(),
-   html.A("Click here", href="https://example.com")
+   html.A("Click here", href="https://example.com", target="_blank")
 ])
 ```
 
-#### HTML Elements
+## HTML Elements
 
--   In regular HTML, tags define the structure of a web page using this pattern: \<tagname\> content \</tagname\>
+In standard HTML, tags define the structure of a web page using the pattern `<tagname>content</tagname>`. In Dash, you use the `dash.html` module to create the same elements in Python — the two are directly equivalent:
 
--   Examples:
+```         
+HTML:   <p>This is a paragraph</p>
+Python: html.P("This is a paragraph")
 
-    -   Start tag content end tag
+HTML:   <h1>This is a Heading</h1>
+Python: html.H1("This is a Heading")
+```
 
-    -   \<p\> This is a paragraph \</p\>
-
-    -   \<h1\> This is a Heading 1 \</h1\>
-
--   In Dash, you use the dash.html module to create the same HTML elements using Python syntax.
-
-    From dash import html
+```{python}
+from dash import html
+```
 
 ![](images/html_elements.png)
 
-#### Style
+## Styling in Dash
 
--   In Dash apps, the style parameter is used to directly apply CSS styling to a Dash component using a Python dictionary. This allows you to control the appearance (e.g., colors, spacing, fonts, borders) of components without needing a separate CSS file.
+In Dash apps, the `style` parameter applies CSS styling directly to a component using a **Python dictionary**. The keys are CSS property names written in **camelCase** (e.g., `fontSize` instead of `font-size`), and the values are strings.
 
--   HTML colors are located on <https://htmlcolorcodes.com/>
+```{python}
+html.H1("Hello Dash", style={
+    'color': '#381D5C',          # hex color code for text
+    'fontSize': '20px',          # font size
+    'backgroundColor': '#E898AA' # background color behind the heading
+})
+```
+
+HTML color codes and hex values are available at [htmlcolorcodes.com](https://htmlcolorcodes.com/).
 
 ![](images/style.png)
 
-```{python}
-html.H1("Hello Dash", style={'color':'#381D5C',
-                             'fontSize': '20px',
-                             'backgroundColor':'#E898AA'})
-```
-
 ![](images/styled_dash.png)
 
-#### Borders
+## Borders
 
--   Here are some key Dash HTML component style parameters for controlling borders, padding, and margin—all written in Python dictionary format for use in Dash:
+The `style` dictionary accepts the following border-related keys:
 
--   'border': Shorthand for setting all border properties (width, style, color)
+-   [**`'border'`**]{style="background-color: yellow;"} — shorthand for all border properties at once: `{'border': '1px solid black'}` (width, style, color)
+-   [**`'borderWidth'`**]{style="background-color: yellow;"} — sets the border thickness: `{'borderWidth': '2px'}`
+-   [**`'borderStyle'`**]{style="background-color: yellow;"} — sets the line style: `{'borderStyle': 'dotted'}` (options: `solid`, `dashed`, `dotted`, `double`)
+-   [**`'borderColor'`**]{style="background-color: yellow;"} — sets the border color: `{'borderColor': 'gray'}`
+-   [**`'borderRadius'`**]{style="background-color: yellow;"} — rounds the corners: `{'borderRadius': '10px'}` (larger = rounder)
 
-    -   {'border': '1px solid black'}
+## Padding
 
--   'borderWidth': Sets width of the border
+**Padding** is the space *inside* the element, between its content and its border — like the margin of a page inside the cover.
 
-    -   {'borderWidth': '2px'}
-
--   'borderStyle': Sets line style (e.g., solid, dashed)
-
-    -   {'borderStyle': 'dotted'}
-
--   'borderColor': Sets color of the border
-
-    -   {'borderColor': 'gray'}
-
--   'borderRadius': Rounds corners of the border
-
-    -   {'borderRadius': '10px’}
-
-#### Padding
-
--   **Padding refers to the space inside the element**
-
--   'padding': Sets padding on all sides\
-    → {'padding': '15px'}
-
--   'paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight': Control sides individually\
-    → {'paddingTop': ‘20px', 'paddingBottom': '5px’}
-
-<!-- -->
-
--   In Python, key-value pairs in dictionaries must be separated by commas.
+-   [**`'padding'`**]{style="background-color: yellow;"} — sets equal padding on all four sides: `{'padding': '15px'}`
+-   [**`'paddingTop'`, `'paddingBottom'`, `'paddingLeft'`, `'paddingRight'`**]{style="background-color: yellow;"} — control each side individually.
 
 ```{python}
 html.P("This is a simple dashboard.",
-         style={'border' : '1px solid black'})
+       style={'border': '1px solid black',
+              'padding': '10px'})   # adds space between the text and the border
 ```
 
 ![](images/simple_dash.png)
 
-#### Margin
+::: note
+In Python, all key-value pairs in a dictionary must be separated by commas. Forgetting a comma between style properties is a common source of syntax errors.
+:::
 
--   Margin refers to the space outside the element
+## Margin
 
--   'margin': Sets margin on all sides: {'margin': '20px'}
+**Margin** is the space *outside* the element, between its border and neighboring elements — like the white space between paragraphs on a page.
 
--   'marginTop', 'marginBottom', 'marginLeft', 'marginRight’: Control sides individually
-
--   {'marginLeft': 'auto', 'marginRight': 'auto'} (useful for centering)
+-   [**`'margin'`**]{style="background-color: yellow;"} — sets equal margin on all four sides: `{'margin': '20px'}`
+-   [**`'marginTop'`, `'marginBottom'`, `'marginLeft'`, `'marginRight'`**]{style="background-color: yellow;"} — control each side individually.
+-   `{'marginLeft': 'auto', 'marginRight': 'auto'}` — horizontally centers a block element within its parent container.
 
 ```{python}
 html.P("This is a simple dashboard.",
-         style={'border':'1px solid black',
-                'padding': '20px', 'margin': '50px'})
+       style={'border': '1px solid black',
+              'padding': '20px',   # space inside (between text and border)
+              'margin': '50px'})   # space outside (between border and page edge)
 ```
 
 ![](images/margin_dash.png){fig-align="center"}
 
-#### CSS in Dash: External Stylesheets
+## CSS in Dash: External Stylesheets
 
--   Tells Dash to load extra CSS files in addition to the default styles
+Inline `style={}` dictionaries are convenient for quick, component-specific adjustments. For consistent, app-wide styling, use an **external CSS file** in Dash's `assets/` folder.
 
--   You can make a styles.css for the entire app
+If you create an `assets/` folder in your working directory and place a `.css` file inside it, Dash automatically loads and applies it to the entire app — no extra configuration needed.
 
--   Also accepts a list of URLs or dictionaries pointing to CSS resources
+**When to use each approach:**
 
--   How it works
+| Approach | Best for |
+|----|----|
+| Inline `style={}` | Small, one-off overrides on a single component |
+| External CSS in `assets/` | Consistent styling across the whole app or multiple pages |
 
-    -   The browser loads the CSS when the app starts
+## Styling the Body
 
-    -   Styles from these files apply to all app components
-
--   If you make an assets folder within your working directory, and drop a .css file in that, python will automatically use it with the dash app.
-
-#### Give General Stylings for the Body
+The CSS below sets global defaults for the entire page:
 
 ![](images/general_styled.png)
 
 ```{css}
-body,html{
-   padding: 40px; /* increased padding around context */
-   background: #dfe9e1 /*light gray background */
-   color: #1f1e1e; /*dark text color */
-   font: 16px Arial, sans-serif; /*increased base font size */
+body, html {
+   padding: 40px;                    /* breathing room around all content */
+   background: #dfe9e1;             /* light green-gray background */
+   color: #1f1e1e;                  /* dark text color */
+   font: 16px Arial, sans-serif;    /* base font size and family */
 }
 ```
 
-#### Change the Paragraph Background Color
+## Changing the Paragraph Background Color
 
 ```{css}
-p{background-color: #d4cece;}
+p {
+   background-color: #d4cece;   /* applies to ALL <p> elements in the app */
+}
 ```
 
 ![](images/adjusted_dash.png)
 
-#### Give Stylings to the Hyperlink
+## Styling the Hyperlink
 
 ![](images/pill.png){fig-align="center" width="350" height="300"}
 
-``` css
+The CSS below transforms a plain underlined link into a styled pill-shaped button:
+
+```{css}
 /* Rounded, colored hyperlink box */
-a{
-   display: inline-block;
-   padding: 25px; /*increased padding inside box */
-   border-radius: 9999px;         /*pill shape */
-   background-color: #3b82f6;     /*blue*/
-   color: #ffffff;                /*white text*/
-   text-decoration: none;   /*remove underline*/
-   font-size: 24px;     /*larger text */
-} 
-```
-
--   Notice comments in css are made with /\* and \*/
-
--   This makes the hyperlink rounded
-
-#### Adding a Change in Style on Hover
-
-``` css
-/* Hover style change */
-a:hover{
-   background-color: #474d59;   /*darker gray on hover */
+a {
+   display: inline-block;           /* allows padding and width to apply */
+   padding: 25px;                   /* space inside the button */
+   border-radius: 9999px;           /* large value = pill/capsule shape */
+   background-color: #3b82f6;       /* blue background */
+   color: #ffffff;                  /* white text */
+   text-decoration: none;           /* removes the default underline */
+   font-size: 24px;                 /* larger text */
 }
 ```
 
--   **:link → default style of an unvisited link.**
+CSS comments use the `/* comment */` syntax. They are ignored by the browser and are useful for documenting your style choices.
 
--   **:visited → style for a link the user has already clicked (and the browser remembers in history).**
+## Adding a Hover Effect
 
--   **:hover → when the pointer (mouse, stylus, etc.) is over the element.**
+```{css}
+/* Change background color when the mouse hovers over the link */
+a:hover {
+   background-color: #474d59;   /* darker gray on hover */
+}
+```
 
--   **:active → the moment the element is being clicked (mouse pressed down but not released yet)**
+CSS offers four **link pseudo-classes** that let you style an anchor element at different interaction states. They should be defined in this order (the LVHA order) to work correctly:
+
+-   [**`:link`**]{style="background-color: yellow;"} — default style of an unvisited link (the user has never clicked it).
+-   [**`:visited`**]{style="background-color: yellow;"} — style for a link the user has already clicked (stored in browser history).
+-   [**`:hover`**]{style="background-color: yellow;"} — applied while the pointer is over the element. This is the most commonly used.
+-   [**`:active`**]{style="background-color: yellow;"} — applied at the instant the element is being clicked (mouse button pressed but not yet released). Useful for visual "press" feedback.

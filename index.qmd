@@ -1,298 +1,204 @@
 ---
-title: "Intro to CTAI"
+title: "Competing in the Age of AI"
 author: "Pamela Schlosser"
 format: html
 execute:
   python:
     executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
--   This section introduces how organizations evolve from competing through business analytics to competing in the age of AI (CTAI). It explains how data-driven decision-making transforms into AI-enhanced systems that learn, scale, and adapt across business functions. The discussion connects classical frameworks—like Porter’s Five Forces and the Value Chain—to digital-era dynamics such as network effects, value capture, and platform competition. Drawing on Iansiti & Lakhani (2020), it highlights how firms achieve advantage not just through better data, but through architectures that continuously learn and connect across networks.
+
+This section introduces how organizations evolve from competing through business analytics to competing in the age of AI. It explains how data-driven decision-making transforms into AI-enhanced systems that learn, scale, and adapt across business functions. The discussion connects classical frameworks — like Porter's Five Forces and the Value Chain — to digital-era dynamics such as network effects, value capture, and platform competition. Drawing on Iansiti and Lakhani (2020), it highlights how firms achieve advantage not just through better data, but through architectures that continuously learn and connect across networks.
 
 ::: note
 ###### *Reference:*
 
-Chapter 6 from **Iansiti and Lakhani (2020)** in *Competing in the Age of AI* explains how **artificial intelligence transforms firms** by digitizing activities into **scalable, connectable, and self-improving systems**.\
-The chapter outlines a **strategic framework for AI-driven businesses** that leverages **network and learning effects** while addressing key concepts such as **multihoming, disintermediation, and network bridging**, using real-world examples like **Uber** and **Airbnb**.
+Chapter 6 from **Iansiti, M., & Lakhani, K. R. (2020)** in *Competing in the Age of AI* explains how **artificial intelligence transforms firms** by digitizing activities into **scalable, connectable, and self-improving systems**. The chapter outlines a **strategic framework for AI-driven businesses** that leverages **network and learning effects** while addressing key concepts such as **multihoming, disintermediation, and network bridging**, using real-world examples like **Uber** and **Airbnb**.
 :::
 
-#### Competing Through Business Analytics (CTBA)
+## Competing Through Business Analytics 
 
--   Competing through business analytics (CTBA) means using data, statistical analysis, and predictive modeling to gain a strategic advantage over competitor.
+**Competing through business analytics (CTBA)** means using data, statistical analysis, and predictive modeling to gain a strategic advantage over competitors. It involves making better, faster, and more informed decisions by systematically analyzing data across all areas of the business.
 
--   It involves making better, faster, and more informed decisions by systematically analyzing data across all areas of the business.
+Firms that compete through analytics build capabilities in data collection, storage, analysis, and interpretation, making **data a strategic asset**. These firms develop a culture of testing, learning, and optimization across the entire organization, expressed through four core capabilities:
 
-#### CTBA and the Organization
+-   [**Data-driven decisions**]{style="background-color: yellow;"} — relying on insights from data rather than intuition or guesswork.
+-   [**Performance improvement**]{style="background-color: yellow;"} — enhancing efficiency, productivity, and outcomes using measurable evidence.
+-   [**Predictive power**]{style="background-color: yellow;"} — forecasting future trends or behaviors (e.g., customer churn, sales, demand).
+-   [**Competitive differentiation**]{style="background-color: yellow;"} — gaining an edge through smarter operations, marketing, customer targeting, or innovation.
 
--   Firms that compete through analytics build capabilities in data collection, storage, analysis, and interpretation, making data a strategic asset. These firms often **develop a culture of testing, learning, and optimization across the entire organization**.
+## Where Is the AI in CTBA?
 
-    -   Data-Driven Decisions: Relying on insights from data rather than intuition or guesswork.
+CTBA traditionally relies on a hierarchy of analytics types, each answering a progressively more actionable question:
 
-    -   Performance Improvement: Enhancing efficiency, productivity, and outcomes using measurable evidence.
+| Analytics Type | Question Answered  | Example                         |
+|----------------|--------------------|---------------------------------|
+| Descriptive    | What happened?     | Sales dashboard, monthly report |
+| Diagnostic     | Why did it happen? | Root cause of a revenue drop    |
+| Predictive     | What will happen?  | Customer churn forecast         |
+| Prescriptive   | What should we do? | Optimal pricing recommendation  |
+| KPIs           | Are we on track?   | Revenue vs. target              |
 
-    -   Predictive Power: Forecasting future trends or behaviors (e.g., customer churn, sales, demand).
+AI does not replace analytics — it **supercharges** it by making analysis faster, deeper, and more dynamic, allowing businesses to compete not just with better data, but with **better learning**.
 
-    -   Competitive Differentiation: Gaining an edge through smarter operations, marketing, customer targeting, or innovation.
+## What Does AI Bring to Business?
 
-#### Where is the AI in CTBA?
+AI adds **automation, scale, and adaptability** to analytics, allowing businesses to:
 
--   CTBA is about using data and analysis to drive smarter decisions and outperform competitors. It traditionally involves:
+-   **Continuously learn** from new data through machine learning — models improve as more data flows through them, without manual reprogramming.
+-   **Make real-time decisions** through streaming analytics — reacting to events as they happen rather than in batch reports the next day.
+-   **Personalize at scale** through recommendation systems — delivering individualized experiences to millions of customers simultaneously.
+-   **Go beyond prediction** to causal and autonomous decision-making — not just forecasting what will happen, but taking action automatically when it does.
 
-    -   Descriptive analytics - what happened (reports, stats, visualizations)
+## Understanding AI's Impact in Specific Business Domains
 
-    -   Diagnostic analytics - why it happened (causal inference vs. correlation)
+AI is reshaping decision-making across every major business function:
 
-    -   Predictive analytics - what will happen (forecast models)
+-   **Marketing** — customer segmentation, personalization, and targeting.
 
-    -   Prescriptive analytics - what should we do ((e.g., dynamic pricing recommendations, optimal supply chain routes)
+    -   [**Customer segmentation**]{style="background-color: yellow;"}: grouping customers based on shared characteristics to tailor marketing or product strategies.
+    -   [**Personalization**]{style="background-color: yellow;"}: delivering individualized experiences, often powered by AI recommendation systems. *Example: Netflix's "Because you watched…" suggestions.*
 
-    -   KPIs - Are we achieving business goals?
+-   **Operations** — inventory management, route optimization, demand forecasting.
 
--   AI doesn't replace analytics –it supercharges it by making it faster, deeper, and more dynamic, allowing business to compete not just with better data - but with better learning.
+    -   [**Demand forecasting**]{style="background-color: yellow;"}: predicting future customer demand using historical data and AI models to optimize inventory and supply chain.
 
-#### What does AI Bring to Business?
+-   **Finance** — risk modeling, algorithmic trading, fraud detection.
 
--   AI brings to automation, scale, and adaptability to analytics, allowing business to:
+    -   [**Algorithmic trading**]{style="background-color: yellow;"}: automated financial trading using pre-defined AI rules and models that execute at speeds no human trader can match.
+    -   [**Fraud detection**]{style="background-color: yellow;"}: using machine learning to identify unusual transaction patterns that may indicate fraud in real time.
 
-    -   Continuously learn from new data (machine learning).
+-   **HR** — resume screening, performance prediction, talent analytics.
 
-    -   Make real-time decisions (streaming analytics).
+-   **Healthcare** — diagnostic tools, patient risk prediction.
 
-    -   Personalize at scale (recommendation systems).
+## How AI-Driven Decision-Making Is Transforming Industries
 
-    -   Go beyond prediction to causal and autonomous decision-making.
+AI-driven decision-making is transforming industries by **enabling faster, more accurate, and more scalable decisions** than were previously possible with traditional methods. AI transforms how firms compete on speed and scale, create personalized experiences, operate with greater efficiency and agility, and continuously learn and improve from data.
 
-#### Understanding AI's Impact In Specific Business Domains
+## Strong vs. Weak AI
 
--   Marketing: Customer segmentation, personalization, targeting.
+Understanding the distinction between strong and weak AI is important for setting realistic expectations about what today's AI systems can and cannot do.
 
-    -   Customer Segmentation: Grouping customers based on shared characteristics to tailoring marketing or product strategies.
+[**Strong AI**]{style="background-color: yellow;"} (also called Artificial General Intelligence, or AGI) refers to hypothetical computer systems that replicate or simulate human reasoning and behavior across any domain — for example, a single system that can tutor calculus, negotiate a business deal, write a novel, and suggest a recipe, all using the same underlying general intelligence. **Strong AI does not currently exist.**
 
-    -   Personalization: Delivering individualized experiences, often powered by AI recommendations.
+[**Weak AI**]{style="background-color: yellow;"} (also called narrow AI) refers to systems designed to perform specific tasks traditionally done by humans, without replicating human consciousness or general reasoning. **All AI in widespread use today is weak AI:**
 
--   Operations: Inventory management, route optimization, demand forecasting.
+-   **Siri, Alexa, and Google Assistant** — can recognize voice commands, set alarms, or fetch weather updates, but cannot engage in the broad, general reasoning a human uses across unrelated tasks.
+-   **ChatGPT (current models)** — excellent at generating language, but does not "understand" the world in any meaningful sense; it predicts which tokens are statistically likely to follow given the input.
 
-    -   Demand Forecasting: Predicting future customer demand using historical data and AI models.
+## Exploring Weak AI Further
 
--   Finance: Risk modeling, algorithmic trading, fraud detection.
+Weak AI is not a limitation to work around — for most business applications, it is entirely **sufficient**. Transformative change does not require human-like general intelligence; it only requires systems that can perform *specific* tasks better, faster, or more consistently than humans.
 
-    -   Algorithmic Trading: Automated financial trading using pre-defined AI rules and models.
+Tasks like prioritizing content feeds, dynamic pricing, anomaly detection, or analyzing customer behavior can be handled effectively by narrow, imperfect AI. Even without replicating human reasoning, weak AI is already reshaping how firms function and compete across every major industry.
 
-    -   Fraud Detection: Using data and machine learning to identify unusual patterns that may indicate fraud.
+## Transforming Competition
 
--   HR: Resume screening, performance prediction, talent analytics.
+The evolution of *photography* offers a useful analogy for understanding how AI is disrupting industries. Kodak did not fail because a better film company came along — it was displaced by companies (smartphones, digital cameras) operating on entirely different rules with entirely different cost structures.
 
--   Healthcare: Diagnostic tools, patient risk prediction.
+-   **From disruption to reinvention** — traditional tech disruptions (e.g., film vs. digital photography) replaced older models one-for-one; AI redefines entire industries and operating models simultaneously.
+-   **Digital operating models** — AI enables firms to scale, learn, and expand scope rapidly at near-zero marginal cost through algorithmic execution. Adding one million new users costs almost nothing when the product is software.
+-   **A new breed of competitors** — companies like Facebook, Tencent, and Amazon were never direct rivals to players like Kodak; they operated on fundamentally different rules and displaced incumbents indirectly by making whole categories of products obsolete.
 
-#### How AI-driven Decision-Making is Transforming Industries
+## Strategic Implications of AI-Driven Firms
 
--   AI-driven decision-making is transforming industries by **enabling faster, more accurate, and more scalable decisions** than were previously possible with traditional methods.
+AI-driven firms gain structural advantage through three interconnected shifts:
 
--   AI transforms how firms:
-
-    -   Compete on speed and scale
-
-    -   Create personalized experiences
-
-    -   Operate with greater efficiency and agility
-
-    -   Continuously learn and improve from data
-
-#### Strong vs. Weak AI
-
--   Strong AI refers to computer systems that replicate or simulate human reasoning and behavior, aiming to match or exceed human cognitive abilities.
-
-    -   A system that can tutor you in calculus, negotiate a business deal, write a novel in your style, and then cook up a new recipe – all with the same underlying intelligence.
-
--   Weak AI refers to computer systems designed to perform specific tasks traditionally done by humans, without replicating human consciousness or general reasoning.
-
-    -   Siri, Alexa, or Google Assistant: Can recognize voice commands, set alarms, or fetch weather updates, but cannot engage in deep reasoning in awareness.
-
-    -   ChatGPT (today's models): Excellent at generating language, but it doesn't "understand" the world – it predicts patterns in text.
-
-#### Exploring Weak AI Further
-
--   Weak AI can be sufficient for an Organization
-
--   Transformative change doesn't require human-like "strong AI" – just systems that can perform tasks traditionally done by humans.
-
--   Practical applications matter
-
-    -   Tasks like prioritizing content, pricing, or analyzing behavior can be effectively handled by imperfect AI.
-
--   Business impact is already real
-
-    -   Even without perfect replication of human reasoning, weak AI is reshaping how firms function and compete
-
-#### Transforming Competition
-
--   Think of evolution of *photography* over time
-
--   From Disruption to Reinvention: Traditional tech disruptions ( e.g., films vs. digital photography) replaced older models - AI redefines entire industries and operating models.
-
--   Digital Operating Models: AI enables firms to scale, learn, and expand scope rapidly - at near-zero marginal cost - through algorithmic execution.
-
--   New Breed of Competitors: Companies like Facebook, Tencent, and Amazon weren't direct rivals to traditional players like Kodak–they operated on new rules and displaced them indirectly.
-
-#### Strategic Implications of AI-Driven Firms
-
--   Value Creation Shift:
-
-    -   AI firms extract value from data, networks, and user interactions, not just products or services.
-
--   Operating Model Advantage:
-
-    -   Digital firms overcome traditional limits of complexity, allowing infinite scalability and adaptability.
-
--   Competitive Collision:
-
-    -   Traditional firms face existential threats — not from better versions of themselves, but from companies with fundamentally different architectures and strategies.
+-   [**Value creation shift**]{style="background-color: yellow;"} — AI firms extract value from data, networks, and user interactions, not just products or services. The more users interact, the more data is generated, which improves the AI, which attracts more users — a self-reinforcing cycle.
+-   [**Operating model advantage**]{style="background-color: yellow;"} — digital firms overcome traditional complexity limits, enabling near-infinite scalability and adaptability without proportional increases in cost.
+-   [**Competitive collision**]{style="background-color: yellow;"} — traditional firms face existential threats not from better versions of themselves, but from companies with fundamentally different architectures and strategies.
 
 ##### The collision between traditional and digital operating models
 
 ![Digital vs Traditional](images/Digital_vs_traditional.png)
 
-#### Business Strategy & Competitive Advantage
+## Business Strategy and Competitive Advantage
 
--   AI changes how firms create and sustain competitive advantage (e.g., data network effects, faster innovation).
+AI changes how firms create and sustain competitive advantage. Four foundational concepts anchor this discussion:
 
--   Key concepts to understand:
+-   [**Competitive advantage**]{style="background-color: yellow;"} — a condition or circumstance that puts a company in a favorable or superior business position relative to competitors.
+-   [**Porter's Five Forces**]{style="background-color: yellow;"} — a framework for analyzing a company's competitive environment: industry rivalry, threat of new entrants, threat of substitutes, and the bargaining power of buyers and suppliers.
+-   [**Network effects**]{style="background-color: yellow;"} — the phenomenon where the value of a product, service, or platform increases as more people use it. *Example: a messaging app with 10 users is far less valuable than one with 10 million.*
+-   [**Value capture dynamics**]{style="background-color: yellow;"} — how a firm retains and monetizes the value it creates (e.g., through pricing, data control, or platform fees) rather than having it flow to users or competitors.
 
-    -   Competitive Advantage: A condition or circumstance that puts a company in a favorable or superior business position.
+## Competitive Advantage
 
-    -   Porter's Five Forces: A framework for analyzing a company's competitive environment: industry rivalry, threat of new entrants, threat of substitutes, bargaining power of buyers, and bargaining power of suppliers.
+Competitive advantage is increasingly defined by the ability to shape and control networks and harvest the volume and variety of transactions they carry. As Iansiti and Lakhani (2020) argue, advantage moves toward organizations that are most central in connecting businesses, aggregating the data that flows between them, and extracting value through powerful analytics and AI.
 
-    -   Network Effects: Network effects occur when the value of a product, service, or platform increases as more people use it.
+Strategy is therefore shifting from **industry analysis** (Porter's Five Forces) to **network analysis** — from managing internal resources to managing the firm's external networks and leveraging the data that flows through them.
 
-    -   Value Capture Dynamics: How a firm retains and monetizes the value created (e.g., pricing, data control, platform fees).
+> **Discussion:** How do firms gain competitive advantage in the market? What makes them unique?
 
-#### Competitive Advantage
-
--   Competitive advantage is increasingly defined by the ability to shape and control these networks and harvest the volume and variety of the transactions they carry. Competitive advantage therefore moves toward the organizations that are most central in connecting businesses, aggregating the data that flows between them, and extracting value through powerful analytics and AI (lansiti et al., 2020).
-
--   Now strategy is shifting to the art of managing the firm's networks and leveraging the data that flows through them. Just as industry analysis dominated strategy over the past few decades, we believe that network analysis will increasingly shape strategic thinking in the future. (lansiti et al., 2020).
-
--   **Discussion Point: How do firms gain competitive advantage in the market? What makes them unique?**
-
-#### Porter's Five Forces Model
+## Porter's Five Forces Model
 
 ![Porter's Five Forces](images/porters_five_forces.png)
 
--   Porter's Five Forces model is a strategic framework used to analyze the competitive forces that shape every industry and influence its profitability, helping businesses assess their market position and develop effective strategies.
+Porter's Five Forces is a strategic framework for analyzing the competitive forces that shape an industry and influence its profitability. It helps businesses assess their market position and develop effective competitive strategies.
 
-    -   Competitive Rivalry: Assesses the intensity of competition among existing firms in the industry. High rivalry can limit profitability.
+-   [**Competitive rivalry**]{style="background-color: yellow;"} — the intensity of competition among existing firms. High rivalry limits profitability. *Example: the airline industry, where price competition is fierce.*
+-   [**Threat of new entrants**]{style="background-color: yellow;"} — how easy or difficult it is for new competitors to enter the market. High barriers to entry (capital requirements, regulation, brand loyalty) reduce the threat.
+-   [**Bargaining power of suppliers**]{style="background-color: yellow;"} — how much power suppliers have to drive up prices or reduce quality. *Example: semiconductor suppliers have high bargaining power over electronics manufacturers.*
+-   [**Bargaining power of buyers**]{style="background-color: yellow;"} — the ability of customers to influence pricing and terms. Powerful buyers (large retailers, government clients) can demand lower prices or higher quality.
+-   [**Threat of substitutes**]{style="background-color: yellow;"} — the availability of alternative products or services that perform the same function. More substitutes increase competitive pressure. *Example: ride-sharing substitutes for taxi services.*
 
-    -   Threat of New Entrants: Looks at how easy or difficult it is for new competitors to enter the market. Barriers to entry affect the threat level.
+## The Value Chain and Network Effects
 
-    -   Bargaining Power of Suppliers: Evaluates how much power suppliers have to drive up prices or reduce the quality of goods/services.
+**Value creation dynamics** describe how a platform generates and expands value for its participants — users, complementors, and the platform owner — through interactions, data flows, and network effects. These dynamics reinforce each other, creating self-sustaining growth loops:
 
-    -   Bargaining Power of Buyers: Measures the ability of customers to influence pricing and terms. Powerful buyers can demand lower prices or higher quality.
+-   [**Direct network effects**]{style="background-color: yellow;"} — value increases as more users join the *same* side of the platform. *Example: more people on WhatsApp make it more valuable to each existing user.*
+-   [**Indirect network effects**]{style="background-color: yellow;"} — value increases as participation grows on the *other* side of the platform. *Example: more app developers make iOS more valuable to iPhone users, and vice versa.*
+-   [**Learning effects**]{style="background-color: yellow;"} — value grows as data accumulates and systems improve. *Example: Netflix recommendations improve as viewing data expands — the platform gets better the more you use it.*
+-   [**Complementor contributions**]{style="background-color: yellow;"} — external firms or individuals add value by creating content, apps, or services that enhance the platform. *Example: app developers on Apple's App Store increase platform stickiness and user value.*
 
-    -   Threat of Substitutes: Considers the availability of alternative products or services that can perform the same function. More substitutes increase competitive pressure.
+## Value Capture Dynamics
 
-#### The Value Chain and Network Effects
+The **appropriability of value** refers to the extent to which a firm can capture and retain the economic value created by its platform, rather than having that value flow to users, complementors, or competitors. Even if a platform generates enormous value through network effects, the critical strategic question is: **who gets to keep that value?**
 
--   Value Creation Dynamics describe how a platform generates and expands value for its participants – users, complementors, and the platform owner – through interactions, data flows, and network effects. These dynamics reinforce each other, creating self-sustaining growth loops:
+Three examples illustrate different appropriation strategies:
 
-    -   Direct Network Effects
+-   **Apple's App Store** — Apple charges developers a commission (historically 30%) on sales. While developers benefit from access to Apple's user base, Apple captures a large share of the total value created.
+-   **Google Search** — the platform creates value for users (free search) and advertisers (targeted audiences), but Google appropriates most of the economic value by monetizing through advertising and controlling data flows.
+-   **Ride-sharing (Uber/Lyft)** — drivers create much of the service value, but the platform appropriates value by taking a percentage of each fare — without owning the cars or employing the drivers.
 
-        -   Value increases as more users join the same side of the platform (e.g., more people on WhatsApp make it more valuable to each user).
+## Factors Affecting Appropriability
 
-    -   Indirect Network Effects
+The degree to which a firm can appropriate value depends on three key factors:
 
-        -   Value increases as participation grows on the other side of the platform (e.g., more app developers make iOS more valuable to iPhone users, and vice verse).
+-   [**Control of key assets**]{style="background-color: yellow;"} (data, algorithms, user base) — Google Search captures enormous value because it controls the search algorithm, the user base, and the data flows. Without control of these assets, the ability to appropriate value weakens.
 
-    -   Learning Effects
+-   [**Switching and multihoming costs**]{style="background-color: yellow;"} — Apple's iOS ecosystem locks users in through high switching costs (iPhones, AirPods, iCloud, App Store purchases). Moving to Android means losing all of this investment. By contrast, ride-hailing switching costs are low — riders can open both Uber and Lyft and choose the cheaper option — so platforms capture less value per transaction.
 
-        -   Value grows as data accumulates and systems improve (e.g., Netflix recommendations improving as viewing data expands.)
+-   [**Regulation and bargaining power**]{style="background-color: yellow;"} — Apple historically charged a 30% App Store commission, but regulatory pressure and developer pushback (notably from Epic Games and the EU Digital Markets Act) have forced fee reductions in certain cases, demonstrating how external pressure constrains appropriation.
 
-    -   Complementor Contributions
+## Multihoming and Value Capture
 
-        -   External firms or individuals add value by creating content, apps, or services that enhance the platform. (e.g., App developers on Apple's App Store add value to the iPhone ecosystem by creating apps that enhance user experience and increase platform stickiness.)
+**Multihoming** refers to users or firms participating in more than one competing platform simultaneously, rather than committing exclusively to one.
 
-#### Value Capture Dynamics
+Examples of multihoming behavior:
 
--   The appropriability of value refers to the extent to which a firm can capture and retain the economic value created by its platform, rather than having that value flow to users, complementors, or competitors.
+-   A consumer uses both Uber and Lyft to compare prices or availability before requesting a ride.
+-   A content creator posts on both YouTube and TikTok to reach different audience segments.
+-   A merchant lists products on both Amazon and eBay to capture different customer demographics.
 
--   In other words, even if a platform generates a lot of value through network effects, **who gets to keep that value?**
+Multihoming matters strategically because:
 
--   For example:
+-   When multihoming costs are **low** (easy to join multiple platforms), competition between platforms intensifies and each platform's power to capture value weakens.
+-   When multihoming costs are **high** (due to switching fees, data lock-in, proprietary formats, or exclusive contracts), platforms gain more power to retain users and appropriate a larger share of value.
 
-    -   Apple's App Store: Apple appropriates value by charging app developers a commission (historically 30%) on sales. While developers benefit from access to users, Apple captures a large share of the value.
+## Disintermediation and Value Capture
 
-    -   Google Search: While the search platform creates value for users and advertisers, Google appropriates much of it by monetizing through ads and controlling data.
+**Disintermediation** occurs when platforms eliminate the middleman, creating direct producer-to-consumer connections and reshaping industries in the process.
 
-    -   Ride-sharing (Uber/Lyft): Drivers create much of the service value, but the platform appropriates value by taking a percentage of each fare.
+-   **Travel booking** — Expedia and Airbnb disintermediate traditional travel agents by letting consumers book directly, eliminating the agent's margin.
+-   **Music industry** — Spotify and Apple Music reduce the role of physical distributors and record stores, while also diminishing the leverage of record labels as gatekeepers.
+-   **Retail** — direct-to-consumer brands like Warby Parker and Glossier bypass traditional retailers by selling directly through their own platforms, capturing the retailer's margin and owning the customer relationship.
 
-#### Some Factors Affecting Appropriability
+Disintermediation affects appropriability in three ways. First, it threatens **control of key assets** — bypassed intermediaries lose access to user data and customer relationships. Second, it **reduces switching and multihoming costs** by enabling direct connections between producers and consumers, weakening platform pricing power. Third, **regulation can force disintermediation** — open banking rules requiring banks to give fintechs direct access to customer data are a current example.
 
--   The degree of appropriability depends on factors like:
+## Network Bridging and Value Capture
 
-    -   Control of key assets (data, algorithms, user base).
+**Network bridging** refers to a platform connecting two or more otherwise separate networks, allowing value to flow between them and creating new growth opportunities. Rather than deepening one network, bridging links distinct user groups, industries, or ecosystems.
 
-        -   Google Search captures enormous value because it controls the search algorithms, the user base, and the data flows. Competitors may create value in the search market, but Google appropriates most of it due to its asset control.
-
-    -   Switching and multihoming costs (if users or suppliers can easily move elsewhere, appropriation is weaker).
-
-        -   Apple's iOS ecosystem locks users in through high switching costs: once you've invested in iPhones, AirPods, iCloud, and App Store purchases , moving to Android is costly. This allows Apple to appropriate more value from users and developers. By contrast, in ride-hailing (Uber vs. Lyft), switching costs are low- riders can open both apps and choose the cheaper option- so platforms capture less value.
-
-    -   Regulation and bargaining power (governments or complementors can limit how much value a platform extracts).
-
-        -   App Store fees show how regulation and complementor power affect appropriation. Apple historically took a 30% commission, but regulatory pressure and bargaining by large developers like Epic Games have forced Apple to reduce or modify fees in certain cases, limiting how much value it can appropriate.
-
-#### Multihoming and Value Capture
-
--   Multihoming refers to the practice of users or firms participating in more than one platform at the same time, rather than committing exclusively to a single one.
-
--   For example:
-
-    -   A consumer might use both Uber and Lyft to compare prices or availability.
-
-    -   A content creator might post videos on both YouTube and TikTok to reach a wider audience.
-
-    -   A merchant might list products on Amazon and eBay to capture different customer segments.
-
--   Multihoming matters strategically because:
-
-    -   If multihoming costs are low (easy to join multiple platforms), competition between platforms is fiercer.
-
-    -   If multihoming costs are high (due to switching fees, data lock-in, or exclusive contracts), platforms gain more power to capture and retain users.
-
-#### Disintermediation and Value Capture
-
--   Disintermediation is when platforms cut out middleman, creating direct producer- consumer connections and often reshaping entire industries.
-
--   Examples:
-
-    -   Travel booking: Online platforms like Expedia or Airbnb disintermediate traditional travel agents by letting consumers book directly.
-
-    -   Music Industry: Streaming services like Spotify or Apple Music reduce the need for record stores and even diminish the role of distributors.
-
-    -   Retail: Direct-to-consumer brands (like Warby Parker or Glossier) bypass traditional retailers by selling directly through online platforms.
-
-#### Disintermediation and Factors Affecting Appropriability
-
--   Control of key assets
-
-    -   Disintermediation threatens this. If intermediaries (like platforms, marketplaces, or distributors) can be bypassed, then the incumbent loses some of its control over user data, algorithms, or relationships.
-
--   Switching and multihoming costs
-
-    -   Disintermediation often reduces these costs by enabling direct connections between producers and consumers (e.g., a brand selling directly through its website or app instead of through Amazon). Lower switching/multihoming costs weaken appropriability.
-
--   Regulation and bargaining power
-
-    -   In some cases, regulation forces disintermediation (e.g., open banking rules requiring banks to let fintechs directly access customer data), thereby reducing how much value the incumbent can appropriate.
-
-#### Network Bridging and Value Capture
-
--   Network bridging refers to when a platform (or a firm using the platform) connects two or more otherwise separate networks, allowing value to flow between them and creating new opportunities for growth.
-
--   Instead of just strengthening one network, bridging links distinct user groups, industries, or ecosystems together.
-
--   Examples:
-
-    -   LinkedIn bridges professional networks across industries, letting recruiters, job seekers, and companies interact in ways that wouldn't happen within a single firm's HR system.
-
-    -   Amazon Marketplace bridges sellers from diverse industries with millions of global buyers, turning a retail platform into a multi-industry ecosystem.
-
-    -   Apple's App Store bridges app developers and iPhone users, creating cross-side network effects that amplify the value of both groups.
+-   **LinkedIn** bridges professional networks across industries, enabling recruiters, job seekers, and companies to interact in ways that no single firm's internal HR system could facilitate. A recruiter in finance can find a software engineer in healthcare because LinkedIn spans both networks.
+-   **Amazon Marketplace** bridges sellers from diverse industries with millions of global buyers, transforming a retail platform into a multi-industry ecosystem. Sellers gain distribution; buyers gain selection; Amazon captures value from both sides.
+-   **Apple's App Store** bridges app developers and iPhone users, creating cross-side network effects that amplify the value of both groups simultaneously. More developers mean more apps; more apps mean more valuable iPhones.

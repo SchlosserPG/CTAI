@@ -12,13 +12,13 @@ book:
     - rethinkingfirm.qmd
     - genAI.qmd
     - ethics.qmd
+    - crashcourse.qmd
     - dataAcquisition.qmd
     - webscrapingandapi.qmd
     - storytelling.qmd
     - analyticsproblem.qmd
     - preparingpeople.qmd
     - introdash.qmd
-    - crashcourse.qmd
     - github.qmd
     - makingcallbacks.qmd
     - multilayout.qmd

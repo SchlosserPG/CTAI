@@ -1,5 +1,5 @@
 ---
-title: "Human-centered Storytelling"
+title: "Human-Centered Storytelling"
 format: html
 engine: knitr
 execute:
@@ -7,189 +7,117 @@ execute:
     executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
--   This section frames data visualization as human-centered storytelling: choosing visuals that are truthful, interpretable, and purposeful for a specific audience. Building on Wilke (2019), it links aesthetic choices (position, color, shape, size) to perception, then pairs them with sound research methods—distinguishing description, prediction, and explanation while avoiding common traps (bad proportions, misleading color scales, poor aspect ratios). You’ll learn to separate correlation from causation, surface confounds and subgroup effects, and recognize reasoning errors (cherry-picking, arbitrary thresholds, misreading axes). Finally, it introduces a practical storytelling workflow—Who/What/How → Big Idea → 3-minute story—so your graphics do more than decorate: they clarify decisions and drive action.
+This section frames data visualization as human-centered storytelling: choosing visuals that are truthful, interpretable, and purposeful for a specific audience. Building on Wilke (2019), it links aesthetic choices — position, color, shape, and size — to human perception, then pairs them with sound research methods. It distinguishes description, prediction, and explanation while identifying common pitfalls such as bad proportions, misleading color scales, and poor aspect ratios. The section also addresses how to separate correlation from causation, surface confounds and subgroup effects, and recognize reasoning errors including cherry-picking, arbitrary thresholds, and misread axes. Finally, it introduces a practical storytelling workflow — Who/What/How → Big Idea → 3-Minute Story — so that graphics do more than decorate: they clarify decisions and drive action.
 
 ::: note
 ###### *Reference:*
 
 Wilke, C. O. (2019). *Fundamentals of Data Visualization.*\
-O’Reilly Media. ISBN: 9781492031086.
+O'Reilly Media. ISBN: 9781492031086.
 :::
 
-#### Data Visualization and Why Good Research Methods Matter
+## Data Visualization and Why Good Research Methods Matter
 
--   Wilke (2019) suggests that data visualization combines both art and science.
+Wilke (2019) argues that data visualization combines both art and science. A visualization must accurately represent the data without misleading, while also being visually appealing and interpretable. These two requirements are in tension: misrepresentation — such as making unequal values appear similar — undermines the scientific integrity of the work, while poor aesthetics — distracting colors or imbalanced design — obscure the message and hinder interpretation.
 
--   It must accurately represent the data without misleading, while also being visually appealing.
+## The Role of Research Methods in Data Visualization
 
--   Misrepresentation, like making unequal values appear similar, undermines the science.
+Good visualization is inseparable from good research methodology. The purpose of the analysis shapes every design decision:
 
--   Poor aesthetics, such as distracting colors or imbalanced design, can hinder interpretation and obscure the message.
+-   [**Describe behavior**]{style="background-color: yellow;"} — identify trends, patterns, and outcomes in data. Use visualizations to summarize patterns clearly for a specific audience. *Example: a bar chart of weekly active users across product features.*
+-   [**Predict behavior**]{style="background-color: yellow;"} — use past data to anticipate future actions or outcomes. Design visuals that highlight trends and forecasts to support informed decisions. *Example: a line chart projecting next quarter's sales based on the past 12 months.*
+-   [**Explain behavior**]{style="background-color: yellow;"} — go beyond correlation to investigate causal relationships. Ground visualizations in methods that distinguish causation from correlation and avoid misleading graphics. *Example: a side-by-side chart comparing control vs. treatment group outcomes with confidence intervals labeled.*
+-   [**Understand behavior**]{style="background-color: yellow;"} — build a deeper, contextual understanding of why patterns occur. Use storytelling and layered visuals to clarify motivations, environments, or external influences. *Example: a dashboard combining time, geography, and user segment to explain why sales dropped in one region.*
 
-#### Importance of Research Methods in Data Visualizations
+![](images/visualization.png)
 
--   Describe behavior
+## Aesthetics and Types of Data
 
-    -   Identify trends, patterns, and outcomes in data.
+Visual properties — called **aesthetics** — are the perceptual channels through which data values are communicated to the viewer:
 
-    -   Use visualizations to summarize patterns in a clear, audience-friendly way (e.g., bar charts of user activity).
+-   [**Position**]{style="background-color: yellow;"} — the most perceptually precise aesthetic; data points are placed at specific locations along perpendicular, evenly-spaced axes. Humans are more accurate at judging position than any other visual property.
+-   [**Size**]{style="background-color: yellow;"} — represents magnitude through the area or diameter of elements. *Example: bubble charts where larger circles represent larger populations.*
+-   [**Color**]{style="background-color: yellow;"} — encodes categories or values using distinct hues or continuous scales.
+-   [**Shape**]{style="background-color: yellow;"} — differentiates groups using markers such as circles, squares, diamonds, and triangles. Particularly useful for black-and-white or color-blind-accessible charts.
+-   [**Line width**]{style="background-color: yellow;"} — encodes values through thickness, from thin to thick.
+-   [**Line type**]{style="background-color: yellow;"} — distinguishes categories using solid, dashed, dotted, or dash-dot styles.
 
--   Predict behavior
+![](images/aesthetics.png)
 
-    -   Use past data to anticipate future actions or outcomes.
+## Color in Data Visualization
 
-    -   Design visuals that highlight trends and forecasts, helping stakeholders make informed decisions (e.g., line charts showing sales projections).
+Color serves three fundamental purposes in data visualization:
 
--   Explain behavior
+-   [**Distinguish groups**]{style="background-color: yellow;"} — use color to separate categories without a natural order, such as countries on a map or product brands. *Each category gets a distinct, equally prominent hue.*
+-   [**Represent values**]{style="background-color: yellow;"} — use continuous color scales to show quantitative data such as income, temperature, or speed. *Lighter = lower, darker = higher (or vice versa).*
+-   [**Highlight**]{style="background-color: yellow;"} — use a single accent color to draw attention to the key element that supports the narrative, leaving everything else muted.
 
-    -   Go beyond correlation to investigate causal relationships.
+![](images/data_viz.png)
 
-    -   Ground visualizations in methods that distinguish causation from correlation, avoiding misleading graphics (e.g., control vs. treatment comparison with appropriate labels).
+## Common Pitfalls of Color Use
 
--   Understand behavior
+Color is powerful but must be purposeful, clear, and non-distracting. Poor color choices obscure or distort data:
 
-    -   Build a deeper theoretical and contextual understanding of why patterns occur.
+-   [**Encoding too much information**]{style="background-color: yellow;"} — assigning unique colors to more than about six or seven categories overwhelms the viewer. Use direct labeling or group categories instead.
+-   [**Distracting color choices**]{style="background-color: yellow;"} — coloring for decoration or using overly saturated hues draws attention away from the data. *Example: rainbow-colored bars where each bar is a different hue for no analytical reason.*
+-   [**Misleading color scales**]{style="background-color: yellow;"} — nonmonotonic scales like rainbow distort value differences and emphasize arbitrary features of the data. A **monochromatic** scheme (different shades of one hue) encodes ordered data honestly; a **non-monochromatic** scheme (multiple distinct hues) is better suited to categorical data with no natural ordering.
+-   [**Not designing for color-vision deficiency**]{style="background-color: yellow;"} — approximately 8% of men and 0.5% of women have some form of color-vision deficiency. Always test your palette with a simulator. Common deficiencies include red–green (deuteranomaly/protanomaly) and, less commonly, blue–yellow (tritanomaly).
 
-    -   Use storytelling and layered visuals to provide context that clarifies motivations, environments, or external influences (e.g., dashboards that combine time, geography, and user type).
+## The Good, The Bad, The Ugly, and The Wrong
 
-![Visualization](images/visualization.png)
+Wilke (2019) offers a useful taxonomy for evaluating visualization quality:
 
-#### Aesthetics and Types of Data
+-   [**Good**]{style="background-color: yellow;"} — the chart is clear, accurate, and honest. The aesthetic choices serve the data.
+-   [**Ugly**]{style="background-color: yellow;"} — aesthetic problems exist (poor color, cluttered axes, low-resolution fonts), but the chart is otherwise clear and correct.
+-   [**Bad**]{style="background-color: yellow;"} — perception problems: the chart is unclear, confusing, overly complicated, or unintentionally misleading in how it represents the data.
+-   [**Wrong**]{style="background-color: yellow;"} — mathematical or factual problems: the chart is objectively incorrect (e.g., a pie chart whose slices sum to more than 100%).
 
--   Line Width: Lines ranging from thin to thick.
+![](images/thegood_theugly.png)
 
--   Line Type: Solid, dashed, dotted, and dash-dot styles.
-
--   Shape: Examples of circle, square, diamond, and triangle markers.
-
--   Size: Circles of increasing size.
-
--   Color: A palette of orange, blue, green, and yellow.
-
--   Position: A coordinate system with x and y axes.
-
-    -   Axes are perpendicular and evenly spaced.
-
-    -   Simple visualizations need data points placed in distinct locations.
-
-![Aesthetics](images/aesthetics.png)
-
-#### Color in Data Viz
-
--   There are three fundamental use cases for color in data visualizations: we can use color to distinguish groups of data from each other, to represent data values, and to highlight.
-
-    -   Distinguish groups: Use color to separate categories without a natural order, like countries on a map or product brands.
-
-    -   Represent values: Use color scales to show quantitative data such as income, temperature, or speed.
-
-    -   Highlight: Use color to draw attention to key elements or categories that support the story.
-
-![Data_Viz](images/data_viz.png)
-
-#### Common Pitfalls of Color Use
-
--   Color is powerful but must be purposeful, clear, and non-distracting.
-
--   Poor color choices can obscure or distort data rather than illuminate it.
-
-    -   Encoding Too Much Information – Don’t assign unique colors to too many categories; use direct labeling or groupings instead.
-
-    -   Distracting Color Choices – Avoid coloring for decoration or using overly saturated hues that obscure the data.
-
-        -   Example: rainbow-colored bars — visually striking but purposeless.
-
-    -   Misleading Color Scales – Don’t use nonmonotonic scales like rainbow, which distort value differences and emphasize arbitrary features.
-
-        -   A monochromatic color scheme uses different shades, tints, or tones of a single hue, while a non-monochromatic color scheme uses multiple distinct hues.
-
-    -   Not Designing for Color-Vision Deficiency – Always choose color schemes that remain clear for color-blind viewers and test with simulators.
-
-        -   Red–green (deuteranomaly/deuteranopia, protanomaly/protanopia).
-
-        -   Blue–yellow (tritanomaly/tritanopia).
-
-#### The Good, The Bad, The Ugly, and the Just Wrong
-
--   Ugly: A figure that has aesthetic problems but otherwise is clear and informative
-
--   Bad: A figure that has problems related to perception; it may be unclear, confusing, overly complicated, or deceiving
-
--   Wrong: A figure that has problems related to mathematics; it is objectively incorrect
-
-![Different Data Visualization](images/thegood_theugly.png)
-
-#### Monochromatic vs Non-Monochromatic
+## Monochromatic vs. Non-Monochromatic Color Scales
 
 ::: note
-###### *Reference:*
+###### *Data Source:*
 
-**Data Source:** U.S. Census Bureau. (2023). *TIGER/Line Shapefiles: Counties (2023) \[Shapefile\].*\
+U.S. Census Bureau. (2023). *TIGER/Line Shapefiles: Counties (2023) \[Shapefile\].*\
 U.S. Department of Commerce.\
 Available at: <https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html>
 :::
 
-![Monochromatic vs Non-Monochromatic](images/mono_vs_nonmono.png)
+A **monochromatic** scale (varying shades of one hue) encodes a single ordered dimension honestly — the viewer's eye naturally reads darker as "more." A **non-monochromatic** scale (multiple hues) is better for distinguishing unordered categories where no shade should appear more important than another.
 
-#### Bad Proportions (Pie)
+![Monochromatic vs. Non-Monochromatic](images/mono_vs_nonmono.png)
 
--   The figure combines **two variables**:
+## Bad Proportions: Pie Chart
 
-    -   Construction material (steel, wood, iron)
+The figure combines **two variables** — construction material (steel, wood, iron) and era of construction (crafts = before 1870, modern = after 1940). The chart is **wrong** because the percentages add up to more than 100%. The problem arises from overlap between the two variables: all modern bridges are made of steel, and most crafts bridges are made of wood. When overlapping categories are mixed into a pie chart, the slices cannot represent mutually exclusive parts of a whole — making the visualization mathematically invalid.
 
-    -   Date of construction (crafts = before 1870, modern = after 1940)
-
--   The chart is **invalid** because the percentages add up to **more than 100%**.
-
-    -   The issue arises from **overlap** between the two variables:
-
-        -   All modern bridges are made of steel.
-
-        -   Most crafts bridges are made of wood.
-
-![Bad Pie](images/bad_pie.png)
+![](images/bad_pie.png)
 
 ::: note
-###### *Reference:*
+###### *Data Source:*
 
-Yoram Reich and Steven J. Fenves, via the **UCI Machine Learning Repository**\
-(Dua & Karra Taniskidou, 2017).
+Yoram Reich and Steven J. Fenves, via the UCI Machine Learning Repository (Dua & Karra Taniskidou, 2017).
 :::
 
-#### Bad Proportions (Bar)
+## Bad Proportions: Bar Chart
 
--   Same data displayed as a bar plot instead of a pie chart.
+Displaying the same data as a bar chart avoids the mathematical invalidity — bar heights do not need to add up to 100% — but the chart is still **bad** because it fails to show the overlap between groups. The viewer cannot see that modern bridges are also steel, or that most crafts bridges are wood. The relationship between the two variables — era and material — is invisible.
 
--   Unlike the pie, this chart is not technically wrong because bar heights don’t have to add up to 100%.
+![](images/bad_bar.png)
 
--   However, it still fails to show overlap between groups (e.g., modern bridges are also steel, crafts are mostly wood).
+## How to Fix That Chart
 
--   For that reason, it is labeled “bad.”
+To correctly visualize the relationship between construction material and era, the designer should:
 
-![Bad Bar graphs](images/bad_bar.png)
+-   **Separate the two variables** rather than mixing them into a single chart.
+-   **Use a visualization that shows joint distributions** — such as a grouped bar chart, stacked bar chart, or mosaic plot — that displays how the categories overlap.
+-   **Make overlaps explicit** — clarify in a title or annotation that some categories share membership.
+-   **Ensure proportions are mutually exclusive** — within each grouping, values should sum correctly.
 
-#### To Make that Chart Better
+## Reasoning Errors in Data Visualization
 
--   Separate construction material and era of construction instead of mixing them.
-
--   Use a visualization that shows joint distributions or overlaps (e.g., grouped bar chart, stacked bar chart, or mosaic plot).
-
--   Make it clear that some categories overlap (e.g., most modern bridges are steel, most crafts bridges are wood).
-
--   Ensure percentages or proportions are mutually exclusive and add up properly within each grouping.
-
--   Helps viewers accurately understand relationships between material and construction period.
-
-#### Reasoning Errors in Data Visualization
-
--   A paper by Schmidt et al. (2023) examines how individuals mislead with charts through strategies that go beyond visual distortions, focusing on logical and interpretive manipulations in data presentation.
-
-    -   Schmidt et al. (2023) collected 9,958 Twitter posts containing data visualizations related to the COVID-19 pandemic.
-
-    -   These posts were gathered to analyze real-world examples of how charts are used in online discourse.
-
-    -   The researchers then categorized and examined these posts for reasoning errors and misleading practices, focusing on arguments and interpretations rather than just visual design flaws.
-
-    -   This approach allowed them to study how misinformation spreads through otherwise well-designed charts in a large-scale, real-world dataset.
+Schmidt et al. (2023) examined how individuals mislead with charts through logical and interpretive manipulations — going beyond simple visual distortions. The researchers collected 9,958 Twitter posts containing COVID-19 data visualizations and categorized real-world examples of misleading argumentation strategies.
 
 ::: note
 ###### *Reference:*
@@ -200,241 +128,192 @@ Association for Computing Machinery.\
 <https://doi.org/10.1145/3544548>
 :::
 
-#### Reasoning Errors (Schmidt et al., 2023)
+Seven reasoning errors were identified:
 
--   Reasoning Error: Commonly occurring logical attributes that can form the basis of a misleading argument
+1.  [**Misreading charts**]{style="background-color: yellow;"} — drawing incorrect conclusions due to visual distortions or misinterpretation of chart elements.
+2.  [**Cherry-picking**]{style="background-color: yellow;"} — selecting only certain data points so the conclusion fits the limited evidence, even though it would not hold with a more complete dataset.
+3.  [**Arbitrary thresholds**]{style="background-color: yellow;"} — judging a phenomenon against a benchmark chosen without clear justification, either as a number or as a visual marker on the chart.
+4.  [**Data quality issues**]{style="background-color: yellow;"} — using data that is incomplete, inconsistent, or uncertain without communicating those limitations to the audience.
+5.  [**Ignoring statistical nuance**]{style="background-color: yellow;"} — overlooking key statistical details to make an argument appear stronger than it is.
+6.  [**Misrepresenting scientific research**]{style="background-color: yellow;"} — misusing or oversimplifying scientific studies, undermining public understanding and trust.
+7.  [**False causal claims**]{style="background-color: yellow;"} — inferring cause-and-effect from visual patterns without proper experimental or statistical support, especially dangerous when combined with cherry-picked data.
 
-1.  Misreading Charts– Drawing incorrect conclusions due to visual distortions or misinterpretation of chart elements.
+## Misreading Charts: Coordinate Systems and Axes
 
-2.  Cherry-Picking– Selecting only certain data points so the conclusion fits the limited evidence, even though it wouldn’t hold with a more complete dataset.
+Misreading charts means drawing incorrect conclusions due to visual distortions or misinterpretation of chart elements. Two key factors determine how clearly viewers read a chart:
 
-3.  Arbitrary Thresholds– Judging a phenomenon against a threshold that is chosen without clear justification, either as a number or a visual marker on a chart.
+**Coordinate systems** — whether axes are linear, logarithmic, or polar changes the apparent shape of the data. A linear y-axis that does not start at zero can visually exaggerate small differences; a log scale compresses large differences that might otherwise dominate the chart.
 
-4.  Data Quality Issues– Using data that may be incomplete, inconsistent, or uncertain, particularly during fast-changing situations, without communicating these limitations.
+**Aspect ratio** — the ratio of a chart's width to its height. This matters because human perception is more sensitive to angles and slopes than to absolute lengths. The same dataset presented as a wide, flat chart reads as "slow, gradual change," while the same dataset as a tall, narrow chart reads as "rapid, dramatic change" — even though the numbers are identical.
 
-5.  Ignoring Statistical Nuance– Overlooking key statistical details (e.g., comparing only one group in an experiment) to make an argument appear stronger than it is.
+*Example:* A line chart showing monthly website visits with an aspect ratio of 10:1 (very wide) might appear nearly flat — suggesting stable growth. The same chart with an aspect ratio of 2:1 (taller) would show a steep upward slope for the same data. Neither is "wrong," but the choice shapes the story the viewer walks away with. Wilke recommends using the **banking to 45°** principle: choose the aspect ratio so that the average slope of the lines in the chart is approximately 45 degrees, which gives the most accurate visual impression of the rate of change.
 
-6.  Misrepresenting Scientific Research– Misusing or oversimplifying scientific studies, which undermines public understanding and trust in science.
+![](images/misreading_chart.png)
 
-7.  False Causal Claims– Inferring cause-and-effect relationships from visual patterns, often without proper evidence, which can be especially misleading when combined with cherry-picked data.
+## Cherry-Picking
 
-#### Misreading Charts: Coordinate Systems and Axes
+Cherry-picking involves selecting only certain data points so that the conclusion fits the limited evidence, even though it would not hold with a more complete dataset. It takes two common forms:
 
--   Misreading charts refers to drawing incorrect conclusions due to visual distortions or misinterpretation of chart elements.
+-   **Cherry-picking individual data points** — *Example: citing one study that shows a treatment works while ignoring five studies that show it does not.*
+-   **Cherry-picking the time frame** — *Example: showing stock market performance only from the trough of a recession to the peak of a recovery to make returns look spectacular, omitting the preceding crash.*
 
--   Data visualization requires position scales to determine where data values appear.
+![](images/cherry_picking.png)
 
--   We want to choose an aspect ratio that ensures that any important differences in position are noticeable.
+## Arbitrary Thresholds
 
-![Misreading Charts](images/misreading_chart.png)
+An arbitrary threshold is a benchmark chosen without clear, principled justification — either as a specific number or as a visual marker on a chart — used to make a pattern appear significant when no objective threshold exists. *Example: drawing a horizontal line on a chart at the number 100 to imply that values below it represent "failure," when 100 was chosen for convenience rather than any analytical or regulatory reason.*
 
-#### Cherry-Picking
+![](images/arbitrary.png)
 
--   Cherry-Picking– Selecting only certain data points so the conclusion fits the limited evidence, even though it wouldn’t hold with a more complete dataset.
+## Data Quality Issues
 
-    -   Cherry-picking of the data points
+Data quality issues arise when data is incomplete, inconsistent, or uncertain — particularly during fast-changing situations — and these limitations are not communicated to the viewer. A prominent example is the Johns Hopkins COVID-19 dashboard: it became a critical pandemic-tracking tool but faced significant early challenges from inconsistent and incomplete case reporting across U.S. counties and international jurisdictions, which created apparent "spikes" that were artifacts of reporting delays rather than actual surges in infections.
 
-    -   Cherry-picking of the time frame
+## Misrepresenting Scientific Research
 
-![Cherry Picking](images/cherry_picking.png)
+**Scientific literacy** is the ability to understand and evaluate scientific information well enough to make informed judgments as a non-expert. Its goal is calibrated trust — neither accepting all scientific claims uncritically nor rejecting science entirely.
 
-#### Arbitrary Thresholds
+Misrepresentation occurs when research findings are oversimplified, cherry-picked, or presented without proper context, leading non-experts to draw misleading conclusions. *Example: a headline claiming "Scientists discover coffee prevents cancer" based on a single observational study, when the study actually found a weak correlation in one specific population and explicitly did not establish causation.* A scientifically literate reader would ask: Was this a randomized controlled trial or an observational study? How large was the effect? Has it been replicated?
 
-Arbitrary Thresholds– Judging a phenomenon against a threshold that is chosen without clear justification, either as a number or a visual marker on a chart.
+## Ignoring Statistical Nuance
 
-![Thresholds](images/arbitrary.png)
+Ignoring statistical nuance means presenting an overall summary that obscures important variation. Three forms are especially common:
 
-#### Data Quality Issues
+-   [**Subgroup differences**]{style="background-color: yellow;"} — variations across age, sex, geography, or health status that may be obscured by overall averages. *Example: a medication that lowers blood pressure by 10 points on average may lower it by 15 points in younger adults but by only 3 points in older adults — the average conceals a clinically significant difference.*
+-   [**Causation vs. correlation**]{style="background-color: yellow;"} — correlation means two variables move together; it does not prove that one causes the other. Observational studies can identify associations but cannot reliably establish causation without additional evidence or experimental design.
+-   [**Confounding factors**]{style="background-color: yellow;"} — variables related to both the independent variable and the outcome that create misleading associations. *Example: if coffee drinkers also tend to be employed full-time and have better access to healthcare, a longer lifespan in that group might have nothing to do with coffee.*
 
--   Data Quality Issues– Using data that may be incomplete, inconsistent, or uncertain, particularly during fast-changing situations, without communicating these limitations.
+## Correlation vs. Causation
 
-<!-- -->
+**Correlation** measures the strength and direction of the linear relationship between two variables. Intuitively, a correlation of +1.0 means the two variables move in perfect lockstep upward; -1.0 means one rises exactly as the other falls; 0 means no linear relationship.
 
--   A notable example of data quality issues is the case of the COVID-19 dashboard developed by Johns Hopkins University. This dashboard became a critical tool for tracking the pandemic's progression, but it faced significant challenges early on related to incomplete and inconsistent data reporting.
+More formally: correlation is calculated as the covariance of two variables divided by the product of their standard deviations. The result is always a number between -1 and +1 called the **correlation coefficient** (often written as *r*). In plain terms, covariance tells you whether the variables tend to move in the same direction; dividing by the standard deviations rescales the result to a consistent range so that correlations from different datasets can be compared fairly.
 
-#### Misrepresenting Scientific Research
+*Reading correlation coefficients:*
 
--   Scientific literacy is the ability to understand and evaluate scientific information well enough to make informed judgments, especially as a non-expert.
+| *r* value | Rough interpretation |
+|---|---|
+| ±0.9 to ±1.0 | Very strong relationship |
+| ±0.7 to ±0.9 | Strong relationship |
+| ±0.5 to ±0.7 | Moderate relationship |
+| ±0.3 to ±0.5 | Weak relationship |
+| 0.0 to ±0.3 | Little to no linear relationship |
 
-    -   Its goal is to help people cautiously trust science, striking a balance between blindly accepting all scientific claims and rejecting science entirely
+Two important caveats: correlation is sensitive to outliers (a single extreme data point can inflate or deflate *r* substantially), and even a very high correlation does not imply causation.
 
--   Misrepresentation occurs when research findings are oversimplified, cherry-picked, or presented without proper context, leading non-experts to draw misleading conclusions.
+![](images/correlation_Vs_causation.png)
 
-    -   A scientifically literate audience is less likely to be misled because they can recognize when data are being exaggerated, causation is implied without evidence, or important nuances are ignored.
+To establish **causation**, three conditions must be met: a statistically significant relationship between the variables; no other factors that could account for the relationship (ruling out confounds); and correct temporal ordering — the cause must precede the effect.
 
-#### Ignoring Statistical Nuance
+People are often tempted to interpret correlation as causation because the causal story feels intuitive, because they hold pre-existing beliefs that favor the interpretation, or because their theoretical framework points in that direction. Intuition is not a substitute for experimental evidence.
 
--   Ignoring Statistical Nuance– Overlooking key statistical details (e.g., comparing only one group in an experiment) to make an argument appear stronger than it is.
+![](images/fixed.png)
 
-    -   Subgroup differences – Variations in effects or outcomes across different categories within the population, such as age, sex, health status, or other demographic factors.
+## Confounding Variables and the Third Variable Problem
 
-        -   Ignoring these differences can oversimplify results, since the effect seen in the overall average may not apply to all subgroups.
+The **third variable problem** (also called **confounding**) refers to any variable that is extraneous to the two variables being studied but influences or explains the observed relationship between them. It creates **spurious relationships** — apparent associations that are actually due to an unseen factor.
 
-        -   Example: A new medication may lower blood pressure more in younger adults than older adults.
+Two classic historical examples:
 
-    -   Causation vs. correlation – Correlation means two variables are related or move together, but it does not prove that one causes the other. Causation means a change in one variable directly produces a change in another.
+-   **1975 Taiwan Study** — a correlation between electrical appliance ownership and contraceptive use was largely explained by a third variable: socioeconomic status. Wealthier households were more likely to own both appliances and to use modern contraception; there was no direct relationship between the two variables themselves.
+-   **Early 1900s pellagra in the U.S. South** — cases were initially attributed entirely to diet, but the real explanation involved a specific vitamin deficiency (niacin) compounded by poor sanitation and food distribution patterns. The apparently simple dietary correlation concealed a more complex causal picture.
 
-        -   Observational studies can identify correlations but cannot reliably establish causation.
+Read more: <https://hbr.org/2015/06/beware-spurious-correlations>
 
-    -   Confounding factors – Variables that are related to both the independent variable and the outcome that can create a misleading association.
+![](images/corr_vs_cause_2.png)
 
-        -   For example, if coffee drinkers also tend to exercise more, the longer lifespan might be due to exercise rather than coffee.
+## False Causal Claims
 
-#### Correlation vs. Causation
+A **false causal claim** occurs when someone interprets a visual pattern — or any correlation — as evidence of cause and effect without proper experimental or statistical support. Cherry-picking exacerbates the problem: selecting only data that fits a desired story makes the misleading pattern look more convincing and reinforces the false causal inference.
 
--   Correlation is a standardized measure of the relationship between two variables, expressed in terms of covariance divided by the product of their standard deviations.
+*Example: A chart showing that ice cream sales and drowning rates both rise in summer might be presented to suggest ice cream causes drowning. The actual confounder is temperature — both rise in hot weather, but one does not cause the other.*
 
-    -   Measures linear relationship between two variables describing both the strength and direction of the linear relationship.
+![](images/false_causal_claims.png)
 
-    -   The correlation coefficient may not be a reliable measure in the presence of outliers.
+## The Directionality Problem
 
-    -   Even if two variables are highly correlated, one does not necessarily cause the other.
+The **directionality problem** arises when, in a correlation between X and Y, it is unclear which variable — if either — is causing the other. Understanding **temporal precedence** (which variable came first) is essential for establishing causation, but even temporal precedence is not sufficient if the two variables influence each other in a cycle.
 
-![Correlation vs Causation](images/correlation_Vs_causation.png)
+Common examples where directionality is genuinely ambiguous:
 
-#### Correlation vs. Causation
+-   **Happiness and exercise** — does exercise make people happier, or do happier people exercise more? Probably both.
+-   **Physical exercise and self-esteem** — improvement in fitness may raise self-esteem, but higher self-esteem may also motivate more exercise.
+-   **Aggression and video game use** — aggressive people may be more drawn to violent games, or violent games may increase aggression — the observational data cannot distinguish these.
 
--   What do we need to determine causation?
+## Bias in Data and Interpretation
 
-    -   Statistically significant relationship between the variables.
+Bias distorts data or its interpretation, making a causal relationship appear stronger, weaker, or entirely different than it really is. Four forms are especially relevant:
 
-    -   No other factors can account for the cause.
+-   [**Sample bias**]{style="background-color: yellow;"} — the sample does not represent the population of interest. *Example: surveying only gym-goers to study the effect of exercise on happiness — the most sedentary people, who might benefit most, are excluded.*
+-   [**Measurement bias**]{style="background-color: yellow;"} — the way data is collected introduces systematic distortion. *Example: self-reported exercise data consistently overestimates actual activity levels compared to accelerometer measurements.*
+-   [**Confirmation bias**]{style="background-color: yellow;"} — selectively highlighting evidence that supports a preferred conclusion. *Example: citing only studies where coffee drinkers show better health outcomes while ignoring null results.*
+-   [**Publication bias**]{style="background-color: yellow;"} — studies showing significant or "interesting" results are more likely to be published than null results, skewing the perceived body of evidence toward positive findings.
 
-        -   Eliminate Confounds
+## Storytelling with Data
 
-    -   Causal variable occurred prior to the other variable.
+### The Foundation: Who, What, How
 
-        -   We understand and have the correct directionality (X → Y).
+Effective data storytelling begins with three questions that must be answered before opening any charting tool:
 
--   Why are we tempted to interpret findings as causal?
+-   [**Who**]{style="background-color: yellow;"} is the audience? Specificity matters — a chart designed for a data scientist reads completely differently than one designed for a board of directors. Different audiences have different baseline knowledge, different questions, and different thresholds for detail.
+-   [**What**]{style="background-color: yellow;"} should they know or do after seeing this visualization? This is the *one thing* the chart must communicate. If you cannot state it in a sentence, the chart is not ready.
+-   [**How**]{style="background-color: yellow;"} will the data support that message? What chart type, what level of detail, what emphasis?
 
-    -   Causal link seems obvious.
+Two tools force clarity in the answer:
 
-    -   Have a pre-existing bias.
+-   [**The Big Idea**]{style="background-color: yellow;"} — a single, complete sentence that states the point of view *and* the stakes. It must be specific enough to guide every design decision. A weak Big Idea: "Sales are down." A strong Big Idea: "Enterprise software sales fell 23% in Q3 because of three lost accounts that together represent 40% of the division's revenue — and retaining the remaining at-risk accounts requires immediate action on pricing."
+-   [**The 3-Minute Story**]{style="background-color: yellow;"} — a brief, structured narrative that distills the message to its essentials. Designed for the scenario where you have only 3 minutes with a decision-maker: what are the three things they absolutely must leave the room knowing?
 
-    -   Interpretations dominated by theoretical orientation.
+### Exploratory vs. Explanatory Analysis
 
-![Correlation vs Causation](images/fixed.png)
+A critical distinction shapes every design decision:
 
-#### Confounding Variables and The Third Variable Problem
+**Exploratory analysis** is what you do *for yourself* — scanning data, testing hypotheses, looking for patterns. The charts are fast, rough, and numerous. You might produce 50 charts to find the 2 that reveal something meaningful. Exploratory charts are not meant to be shown to anyone else; they are your thinking tools.
 
--   The Third Variable Problem
+**Explanatory analysis** is what you do *for your audience* — communicating a specific, already-discovered finding as clearly and honestly as possible. The chart is polished, focused, and annotated. Every element serves the message.
 
-    -   Definition: Any variable that is extraneous to the two variables being studied, which may influence or explain the observed relationship.
+*Example:* An HR analyst notices that voluntary departures spiked in Q3. She explores dozens of cuts of the data — by department, tenure, manager, role type — and discovers that the spike was concentrated in mid-level editorial roles reporting to one particular business unit. The exploratory work is done; now she builds one explanatory chart that tells the editorial spike story to the leadership team, annotated with the key observation: "Departures from editorial roles tripled in Q3, concentrated in three teams."
 
-    -   Also known as: Confounding variables
+The common mistake is presenting exploratory charts to an explanatory audience — showing leadership 50 charts "to be thorough" when they need one chart that drives a decision.
 
--   Spurious relationships: Apparent associations that are actually due to coincidence or the presence of a third, unseen factor (a confounding variable).
+### The "Two Pearls" Principle
 
-    -   1975 Taiwan Study: Correlation between electrical appliance ownership and contraceptive use, influenced by socioeconomic status.
+Knaflic (whose work builds on Wilke's foundation) describes the goal of explanatory visualization with the phrase: **focus on the two pearls, not the hundred oysters**.
 
-    -   Early 1900s Pellagra in the Southern U.S.: Cases initially linked to diet, but ultimately explained by poor sanitation and nutrient deficiencies.
+An oyster bed has hundreds of oysters. Most contain nothing. A few contain pearls. When you present exploratory data to an audience, you are making them wade through every oyster themselves — exhausting and unfocused. When you present explanatory data, you have already found the pearls and are handing them directly to the audience. Your job is not to show all the data; it is to surface the two or three findings that matter and make them impossible to miss.
 
-\
-Read more here <https://hbr.org/2015/06/beware-spurious-correlations>
+*Applied:* If your workforce analysis surfaces 12 interesting patterns, your explanatory chart shows the two that directly answer the decision at hand — not all 12.
 
-![Correlation vs Causal](images/corr_vs_cause_2.png)
+## Success in Data Storytelling Begins Before Visualizing
 
-#### False Causal Claims
+For example, using [Live Data Technologies](https://www.livedatatechnologies.com/account-tracking), we can analyze patterns in employee arrivals vs. departures over time to tell a clear workforce story. The *exploratory* phase might involve dozens of cuts by department, role, and tenure. The *explanatory* deliverable is a focused chart showing the key trend — annotated, titled, and designed for the specific audience who needs to act on it.
 
--   False causal claims refers to when someone interprets a visual pattern (or any correlation) as evidence of cause-and-effect without proper experimental or statistical support, they are making a false causal claim.
+::: note
+###### *Reference:*
 
--   Cherry-picking exacerbates the issue: Selecting only data that fits a desired story can make the misleading visual pattern look more convincing, reinforcing the false causal inference.
+<https://www.livedatatechnologies.com/account-tracking>
+:::
 
-![False Causal Claims](images/false_causal_claims.png)
+![](images/live_data.png)
 
-#### The Directionality Problem
+## A Six-Step Storytelling Workflow
 
--   Directionality problem: In a correlation between two variables X and Y, it can be unclear which variable, if either, is causing the other.
+1.  [**Understand the context**]{style="background-color: yellow;"} — define the audience, their needs, and what decision the visualization should support. *Who will see this? What do they already know? What do they need to decide?*
+2.  [**Choose the right visual**]{style="background-color: yellow;"} — select a chart type appropriate to the data and the message. *Time trend → line chart. Comparison across categories → bar chart. Part-to-whole → stacked bar or treemap. Distribution → histogram or box plot.*
+3.  [**Eliminate clutter**]{style="background-color: yellow;"} — remove gridlines, excess tick marks, legends that can be replaced by direct labels, and any element that does not add information. Every ink mark should earn its place.
+4.  [**Focus attention**]{style="background-color: yellow;"} — highlight the most important element using color, annotation, or bold text. Everything else should be muted so the eye goes immediately to the point.
+5.  [**Design with purpose**]{style="background-color: yellow;"} — every aesthetic choice (color, font size, axis range, chart aspect ratio) should serve the message, not just fill space.
+6.  [**Tell a story**]{style="background-color: yellow;"} — annotate the chart with the observation the viewer should take away. Do not make them figure it out; tell them: *"Departures from editorial roles tripled in Q3."*
 
-    -   We need to understand Temporal Precedence to understand Causation.
+### Worked Example: Applying the Six Steps
 
--   The directionality problem is a common reason people make false causal claims. If you ignore which variable comes first—or whether a third variable explains the correlation—you may wrongly assert that one variable causes the other.
+Suppose an HR team wants to present employee turnover data to the executive leadership team:
 
-    -   Happiness and Exercise
-
-    -   Physical Exercise and Self Esteem
-
-    -   Aggression and video games
-
-#### Bias
-
--   Bias is closely related to false causal claims because it can distort the data or the interpretation of data, making a causal relationship appear stronger, weaker, or entirely different than it really is.
-
-    -   Sample Bias:
-
-        -   i.e., Surveying only gym-goers to conclude that exercise increases happiness ignores people who exercise less but are happy.
-
-    -   Measurement Bias:
-
-        -   i.e., Using self-reported exercise without verification may overestimate its effect on health outcomes.
-
-    -   Confirmation Bias: Researchers or communicators may focus on data that supports their expected causal story and ignore data that contradicts it.
-
-        -   i.e., Highlighting only studies where coffee drinkers live longer, while ignoring studies showing no effect or harmful effects.
-
-    -   Publication Bias: Studies showing significant or “interesting” causal effects are more likely to be published, skewing the perceived evidence.
-
-#### Story Telling with Data
-
--   Who, What, How Framework
-
-    -   Who: Know your audience—specificity matters
-
-    -   What: Define what they should know or do
-
-    -   How: Determine how data will support the message
-
-<!-- -->
-
--   The Big Idea & 3-Minute Story
-
-    -   Big Idea: A concise, complete sentence with stakes and point of view
-
-    -   3-Minute Story: Boil your message down for brief delivery
-
-    -   These force clarity and support human-centered understanding
-
-#### Success in data storytelling begins before visualizing data.
-
--   Clarify purpose, audience, and message
-
--   Differentiate exploratory vs. explanatory analysis
-
--   Use explanatory: Focus on the two pearls, not the 100 oysters
-
-    -   For example, using [livedatatechnologies](https://www.livedatatechnologies.com/account-tracking).com, we can analyze patterns in arrivals vs. departures over time
-
-###### *Reference: https://www.livedatatechnologies.com/account-tracking*
-
--   Clarify purpose, audience, and message
-
--   Differentiate exploratory vs. explanatory analysis
-
--   Use explanatory: Focus on the two pearls, not the 100 oysters
-
-    -   For example, using [livedatatechnologies](https://www.livedatatechnologies.com/account-tracking).com, we can analyze patterns in arrivals vs. departures over time
-
-![Live Data Tracking](images/live_data.png)
-
-#### Understand the Context
-
--   Step 1: Understand the Context
-
-    -   Analyze patterns in arrivals vs. departures over time
-
--   Step 2: Choose the Right Visual
-
-    -   Time-series bar chart or line graph
-
--   Step 3: Eliminate Clutter
-
-    -   Use minimal colors and direct labels
-
--   Step 4: Focus Attention
-
-    -   Highlight remote-relevant roles or high-turnover functions
-
--   Step 5–6: Design & Tell a Story
-
-    -   Annotate with observations (e.g., “Spike in departures from editorial roles”)
+| Step | What you do |
+|---|---|
+| **1. Context** | Audience: CFO and CHRO. Decision: whether to fund a retention program for mid-level editorial staff. They need the magnitude of the problem and which teams are affected. |
+| **2. Visual** | Horizontal bar chart showing departure rates by department for Q3 — bars make it easy to rank and compare across categories. |
+| **3. Eliminate clutter** | Remove the legend (label bars directly). Remove gridlines. Remove the y-axis title if bars are already labeled. |
+| **4. Focus attention** | Color three editorial department bars in red; leave all others gray. Add a dashed line at the company average departure rate. |
+| **5. Design with purpose** | Set the x-axis to start at 0 (never truncate a bar chart axis — it exaggerates differences). Choose a title that states the finding, not the topic: *"Editorial Departures Ran 3× the Company Average in Q3."* |
+| **6. Tell a story** | Add a single annotation arrow pointing to the highest bar: *"Fiction editorial: 42% departure rate — up from 14% in Q2."* The chart now drives action, not just awareness. |
