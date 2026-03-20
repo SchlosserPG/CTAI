@@ -7,7 +7,7 @@ execute:
     executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
-Preparing people for Augmented Analytics (AA) means aligning technical, organizational, and human readiness. Chapter 4 of *Augmented Analytics* (Weber & Zwingmann, 2024) emphasizes that transformation succeeds only when analytics becomes part of everyday work — supported by leadership, literacy, and structured enablement. The chapter outlines four key personas — leaders, translators, users, and professionals — each requiring tailored skills and programs. A **Center of Excellence (CoE)** anchors this effort by coordinating strategy, training, and governance, ideally evolving from a centralized model to a federated structure that balances expertise with local ownership.
+This section introduces the concept Augmented Analytics (AA) in relationship to preparing people. Preparing people for AA means aligning technical, organizational, and human readiness. Chapter 4 of *Augmented Analytics* (Weber & Zwingmann, 2024) emphasizes that transformation succeeds only when analytics becomes part of everyday work — supported by leadership, literacy, and structured enablement. The chapter outlines four key personas — leaders, translators, users, and professionals — each requiring tailored skills and programs. A **Center of Excellence (CoE)** anchors this effort by coordinating strategy, training, and governance, ideally evolving from a centralized model to a federated structure that balances expertise with local ownership.
 
 This section also introduces **workflow augmentation**, where insights are embedded directly into processes through copilots, adaptive assistants, and collaborative tools, rather than delivered via static dashboards. This shift demands cultural change, strong API-based infrastructure, and a curated use-case library to share lessons and scale innovation. Finally, Weber and Zwingmann highlight human barriers — bias, overconfidence, and learned helplessness — and stress that sustainable analytics maturity depends on cultivating data literacy, storytelling, and a belief that people, not just technology, drive transformation.
 
@@ -96,7 +96,7 @@ Weber and Zwingmann identify four key competencies that collectively constitute 
 Different roles require different levels of investment in data literacy:
 
 | Role | Minimum Literacy Level | Program Types |
-|---|---|---|
+|------------------------|------------------------|------------------------|
 | Analytics user | Analytics awareness | Workshops, e-learning, onboarding modules |
 | Analytics translator | High literacy | Deep dives, ThinkLabs, mentoring, project presentations |
 | Analytics leader | Awareness + storytelling + leadership AI | Executive roundtables, leadership summits, peer learning |
@@ -126,14 +126,14 @@ The five types represent a progression from simple rule-following to sophisticat
 
 Use the **Analytics Use-Case Approach**: a structured pipeline that moves an initiative from idea to production, with formal evaluation gates at each stage:
 
-| Stage | Purpose |
-|---|---|
-| Idea | Identify the opportunity and business problem |
-| Concept | Define scope, stakeholders, and expected value |
-| Proof of concept | Test the approach on a small scale with real data |
-| Prototype | Build a working version with a limited user group |
-| Pilot | Deploy to a broader audience and measure impact |
-| Product | Scale to full production with monitoring and maintenance |
+| Stage            | Purpose                                                  |
+|------------------|----------------------------------------------------------|
+| Idea             | Identify the opportunity and business problem            |
+| Concept          | Define scope, stakeholders, and expected value           |
+| Proof of concept | Test the approach on a small scale with real data        |
+| Prototype        | Build a working version with a limited user group        |
+| Pilot            | Deploy to a broader audience and measure impact          |
+| Product          | Scale to full production with monitoring and maintenance |
 
 Each phase evaluates **risk**, **ROI**, and **maturity** before committing additional resources. The approach prevents organizations from investing heavily in use cases that fail at a basic proof-of-concept level.
 
