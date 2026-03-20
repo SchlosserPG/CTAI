@@ -10,12 +10,12 @@ execute:
 ::: callout-important
 ## A Note on These Materials
 
-This course book is a living document. Content, code examples, readings, and tools are reviewed and updated each year to reflect the rapidly evolving landscape of AI and business analytics. The version you are reading reflects the most recent revision at the time of publication, but specific chapters, libraries, or examples may be updated before or during the semester. Always refer to the version posted on Blackboard for the most current content. If you notice an error or have a suggested improvement, please let your instructor know.
+This course book is a living document. Content, code examples, readings, and tools are reviewed and updated each year to reflect the rapidly evolving landscape of AI and business analytics. The version you are reading reflects the most recent revision at the time of publication, but specific chapters, libraries, or examples may be updated before or during the semester. Always refer to the version posted on Blackboard for the most current content. If you notice an error or have a suggested improvement, please let your instructor know. And note that many aspects of this material will be further clarified and expanded upon during class discussions to help address any gaps.
 :::
 
 ## About This Course
 
-**BUAD 5012 — Competing in the Age of AI (CTAI)** is a three-credit graduate course in the Mason School of Business at the College of William & Mary, taught by Dr. Pamela Galluch Schlosser. It runs as an intensive three-week course during the Fall semester.
+**BUAD 5012 — Competing in the Age of AI (CTAI)** is a three-credit MSBA graduate course in the Mason School of Business at the College of William & Mary, taught by Dr. Pamela Galluch Schlosser. It runs as an intensive three-week course during the Fall semester.
 
 This course explores how organizations compete and innovate through business analytics and artificial intelligence. The curriculum moves from foundational strategy and economic theory — how AI reshapes firm boundaries, operating models, and competitive advantage — through the technical and human dimensions of making AI actually work inside an organization. You will learn to apply data-driven models, generative AI, ethical frameworks, and modern data acquisition techniques to real-world business problems. Practical emphasis is placed on augmented analytics, human-centered data storytelling, and developing both technical and organizational readiness for AI adoption. Programming skills in Python are developed throughout, culminating in the ability to build interactive, data-driven dashboards deployed as live web applications.
 
