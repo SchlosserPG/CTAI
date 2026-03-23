@@ -110,7 +110,7 @@ The IPTOP framework is **operational** in nature — it guides data teams on *ho
 
 The diagram below shows how IPTOP capabilities map onto each stage of the maturity journey — illustrating which operational investments are most critical at each level.
 
-![](IPTOP.png)
+![](images/IPTOP.png)
 
 ### The SPEC Framework for Transformation
 
@@ -132,7 +132,7 @@ Moving from **Data Reactive** to **Data Active** requires coordinated progress a
 -   **People & Organization** — raise awareness of data literacy as a necessary competency across the workforce, not just within the data team.
 -   **Data Ecosystem** — establish initial governance (clear rules, data ownership, and access processes) and focus analytics effort on specific, high-value use cases rather than broad abstract projects.
 
-![Figure 2-3. Actions on the path from Data Reactive to Data Active. Reprinted from Weber & Zwingmann (2024).](figure_2_3.png)
+![Figure 2-3. Actions on the path from Data Reactive to Data Active. Reprinted from Weber & Zwingmann (2024).](images/figure_2_3.png)
 
 ### Moving to Data Progressive
 
