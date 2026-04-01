@@ -19,9 +19,9 @@ All code examples follow along with a Jupyter Notebook (`.ipynb`) provided in cl
 
 As you progress through the course, you will also learn to build Dash applications — interactive web dashboards written in Python. Dash apps must be saved as Python files (`.py`), since they require executable scripts that define layout and callbacks. Jupyter Notebooks are excellent for exploration and learning, but Dash requires a `.py` file to run as a full web application.
 
-## Python Fundamentals
+# Python Fundamentals
 
-### Basic Math
+## Basic Math
 
 Python can function as an interactive calculator. You can type arithmetic expressions directly into a notebook cell and see results immediately — no need to write a full program first.
 
@@ -38,7 +38,7 @@ Python can function as an interactive calculator. You can type arithmetic expres
 Division (`/`) in Python 3 always returns a float, even when dividing two integers. Use `//` for integer (floor) division: `7 // 2` returns `3`.
 :::
 
-### Variables
+## Variables
 
 A variable is a named container for storing a value. You create one with a single equals sign (`=`): the name goes on the left, the value on the right.
 
@@ -169,7 +169,7 @@ answer[-1]   # → '!'  (last character, same result as answer[9])
 
 ### Slicing
 
-Slicing extracts a **portion** of a string using `[start:end]`. The start index is **included**; the end index is **excluded**.
+Slicing extracts a **portion** of a string (or list) using `[start:end]`. The start index is **included**; the end index is **excluded** — a rule sometimes called "half-open intervals."
 
 ```         
 course = "CTBA"
@@ -177,40 +177,100 @@ course = "CTBA"
           01   ← course[0:2] returns indices 0 AND 1, but NOT 2
 ```
 
+The full slice syntax is `[start:end:step]`:
+
+-   `start` — where to begin (default: 0, the first character).
+-   `end` — where to stop, **not included** (default: end of string).
+-   `step` — how many positions to advance each time (default: 1). A step of `-1` reverses the string.
+
 ```{python}
 course = "CTBA"
 len(course)          # → 4
 print(course[0:2])   # → 'CT'  (characters at index 0 and 1)
 print(course[2:])    # → 'BA'  (from index 2 to the end)
 print(course[:2])    # → 'CT'  (from the start up to — but not including — index 2)
+print(course[:])     # → 'CTBA' (full copy)
+print(course[::-1])  # → 'ABTC' (reversed — step of -1 walks backwards)
 ```
+
+::: note
+The same slice syntax works identically on **lists**: `my_list[1:4]` returns a new list containing elements at indices 1, 2, and 3. You will use this constantly when working with data — for example, `df.iloc[0:5]` in pandas uses the same half-open interval logic.
+:::
 
 ### Methods and Functions
 
-A **method** is a function attached to a specific object type and called using dot notation. A **function** is standalone and called by name alone.
+A **method** is a function that is attached to a specific object type and called using **dot notation** (`object.method()`). A **function** is standalone and called by name alone (`function(argument)`). The key difference is ownership: a method belongs to a particular type (like strings), while a function belongs to no specific type.
 
-|          | Syntax               | Example          |
-|----------|----------------------|------------------|
-| Method   | `object.method()`    | `answer.upper()` |
-| Function | `function(argument)` | `len(answer)`    |
+|          | Syntax               | Example          | Notes                        |
+|---------------|------------------------|-------------------|---------------|
+| Method   | `object.method()`    | `answer.upper()` | Works only on its owner type |
+| Function | `function(argument)` | `len(answer)`    | Works on many types          |
+
+String methods return a new modified string — they never change the original. This is because strings in Python are **immutable**: once created, the characters cannot be altered. Every method call produces a brand-new string object.
+
+You can **chain** methods together — Python evaluates left to right, applying each method to the result of the previous one:
 
 ```{python}
-answer.upper()           # → 'ANALYTICS!'  (new string — orignal unchanged)
+answer = "Analytics!"
+
+answer.upper()           # → 'ANALYTICS!'  (new string — original unchanged)
 answer_upper = answer.upper()
 print(answer_upper)      # → 'ANALYTICS!'
+print(answer)            # → 'Analytics!'  (original is still unchanged)
 
 answer.lower()           # → 'analytics!'
 answer.find("y")         # → 4  (index of first 'y'; returns -1 if not found)
+
+# Method chaining: strip whitespace, then convert to title case
+messy = "  hello world  "
+clean = messy.strip().title()
+print(clean)             # → 'Hello World'
 ```
+
+Common string methods you will use frequently:
+
+| Method | What it does | Example |
+|------------------------|------------------------|------------------------|
+| `.upper()` | All uppercase | `"hi".upper()` → `"HI"` |
+| `.lower()` | All lowercase | `"HI".lower()` → `"hi"` |
+| `.strip()` | Remove leading/trailing whitespace | `"  hi  ".strip()` → `"hi"` |
+| `.replace(old, new)` | Swap substrings | `"cat".replace("c","b")` → `"bat"` |
+| `.split(sep)` | Split into a list | `"a,b,c".split(",")` → `["a","b","c"]` |
+| `.find(sub)` | Index of first match | `"hello".find("l")` → `2` |
+| `.startswith(sub)` | Check prefix | `"hello".startswith("he")` → `True` |
 
 ### Built-in Functions vs. String Methods
 
-```{python}
-print("Hello")       # print() is a built-in function — it works on any type
+Python has two distinct ways to perform operations on data, and knowing which is which prevents confusion as you read and write code.
 
-text = "hello"
-print(text.upper())  # .upper() is a string method — it only works on strings
+A **built-in function** is a standalone function that comes with Python and works on many different types of objects. You call it by writing its name followed by the argument in parentheses: `function(object)`. Examples include `print()`, `len()`, `type()`, `min()`, `max()`, and `sum()`.
+
+A **string method** is a function that belongs specifically to the `str` data type. You call it using **dot notation**: `object.method()`. Methods only work on the type they belong to — calling `.upper()` on an integer raises a `TypeError`. Examples include `.upper()`, `.lower()`, `.strip()`, `.find()`, `.replace()`, and `.split()`.
+
+|   | Syntax | Works on | Example |
+|------------------|------------------|------------------|------------------|
+| Built-in function | `function(object)` | Many types | `len("hello")` → `5` |
+| String method | `object.method()` | Strings only | `"hello".upper()` → `"HELLO"` |
+
+```{python}
+# Built-in functions — work on any compatible type
+print("Hello")            # works on strings
+print(42)                 # works on integers
+print([1, 2, 3])          # works on lists
+print(len("hello"))       # len() counts characters in a string
+print(len([1, 2, 3]))     # len() also counts items in a list
+
+# String methods — only work on strings, called with dot notation
+text = "hello world"
+print(text.upper())       # → 'HELLO WORLD'
+print(text.capitalize())  # → 'Hello world'  (only first letter)
+print(text.replace("world", "Python"))  # → 'hello Python'
+print(text.split(" "))    # → ['hello', 'world']  (splits into a list)
 ```
+
+::: note
+String methods **never modify the original string** — strings in Python are immutable. They always return a **new string**. If you want to keep the result, assign it to a variable: `clean = text.strip()`.
+:::
 
 ### Adding Text and F-Strings
 
@@ -230,7 +290,7 @@ print(f"Hello, I am {name}. I have been teaching at WM since 2020.")
 An f-string is prefixed with the letter `f` before the opening quote. Any expression inside `{}` is evaluated and inserted directly into the string. You can also do math: `f"Two plus two is {2 + 2}"` → `"Two plus two is 4"`.
 :::
 
-## Strings Lab
+### Strings Lab
 
 **1.** Given `s = "Business Analytics"`, write expressions to produce each of the following outputs — one expression per line, using indexing, slicing, or a string method.
 
@@ -244,7 +304,7 @@ True
 ```
 
 ::: {.callout-note collapse="true"}
-### Show Answer
+#### Show Answer
 
 ``` python
 s = "Business Analytics"
@@ -260,7 +320,7 @@ print(s.startswith("Business"))  # → True
 **2.** A data file contains customer names with inconsistent formatting: `"  alice SMITH  "`. Write the chain of string methods needed to produce `"Alice Smith"` — properly capitalized with no leading or trailing whitespace.
 
 ::: {.callout-note collapse="true"}
-### Show Answer
+#### Show Answer
 
 ``` python
 name = "  alice SMITH  "
@@ -274,7 +334,7 @@ print(clean)   # → Alice Smith
 **3.** An analytics script receives a raw product code as a string: `code = "  SKU-2024-AB  "`. Write code to (a) strip whitespace, (b) extract just the year portion `"2024"` using slicing on the cleaned string, and (c) check whether the code contains `"AB"` — printing `True` or `False`.
 
 ::: {.callout-note collapse="true"}
-### Show Answer
+#### Show Answer
 
 ``` python
 code = "  SKU-2024-AB  "
@@ -292,7 +352,7 @@ The slice `[4:8]` works because after stripping, the string is `"SKU-2024-AB"`: 
 
 ### Lists
 
-A **list** is an ordered, mutable collection of items enclosed in square brackets `[]`. Lists can hold any mix of data types and can be modified after creation.
+A **list** is an ordered, mutable collection of items enclosed in square brackets `[]`. Lists can hold any mix of data types and can be modified after creation — adding, removing, or reordering items.
 
 ```{python}
 l1 = [1, 2, 3, 4, 5]
@@ -301,18 +361,43 @@ l2 = ["a", "hello", "c", 2, 3.6]   # mixed types are allowed
 print(l1 + l2)   # concatenation → [1, 2, 3, 4, 5, 'a', 'hello', 'c', 2, 3.6]
 ```
 
-Common list operations:
+Common list operations — pay attention to which ones modify the list **in place** (no return value needed) and which ones **return a new value**:
 
 ```{python}
-l1.append(6)   # adds 6 to the END of the list
+l1.append(6)   # IN PLACE: adds 6 to the END of the list — l1 is now [1,2,3,4,5,6]
 print(l1)      # → [1, 2, 3, 4, 5, 6]
 
-l1.pop()       # removes and returns the LAST element
+l1.pop()       # IN PLACE: removes and returns the LAST element
 print(l1)      # → [1, 2, 3, 4, 5]
 
-l1.sort()      # sorts IN PLACE (modifies l1 directly)
-print(l1)      # → [1, 2, 3, 4, 5]  (already sorted in this case)
+l1.remove(3)   # IN PLACE: removes the first occurrence of the VALUE 3 (not the index)
+print(l1)      # → [1, 2, 4, 5]
+
+l1.sort()      # IN PLACE: sorts the list — l1 itself changes, nothing is returned
+print(l1)      # → [1, 2, 4, 5]
+
+print(len(l1)) # RETURNS a value: length of the list (len() does not modify l1)
+print(l1[0])   # RETURNS a value: first element by index
+print(l1[-1])  # RETURNS a value: last element using negative indexing
 ```
+
+::: note
+**In place vs. return value** is one of the most common sources of bugs for new Python programmers. `l1.sort()` modifies `l1` directly and returns `None` — so writing `l1 = l1.sort()` accidentally sets `l1` to `None`. If you need a sorted copy without changing the original, use `sorted(l1)` instead, which returns a new list.
+:::
+
+Useful list functions and methods at a glance:
+
+| Operation          | Syntax           | Notes                      |
+|--------------------|------------------|----------------------------|
+| Add to end         | `l.append(x)`    | In place                   |
+| Insert at position | `l.insert(i, x)` | In place                   |
+| Remove by value    | `l.remove(x)`    | In place, first match only |
+| Remove by index    | `l.pop(i)`       | Returns removed element    |
+| Sort               | `l.sort()`       | In place                   |
+| Sort (new copy)    | `sorted(l)`      | Returns new list           |
+| Count occurrences  | `l.count(x)`     | Returns integer            |
+| Find index         | `l.index(x)`     | Returns first index        |
+| Length             | `len(l)`         | Returns integer            |
 
 ### Tuples
 
@@ -328,22 +413,42 @@ print(t1[0])       # → 1  (indexing works the same as lists)
 
 ### Dictionaries
 
-A **dictionary** stores data as **key–value pairs** inside curly braces `{}`. Keys must be unique and immutable (strings, numbers, or tuples); values can be anything.
+A **dictionary** stores data as **key–value pairs** inside curly braces `{}`. Keys must be unique and immutable (strings, numbers, or tuples); values can be anything — numbers, strings, lists, or even other dictionaries.
 
-Think of a dictionary as a lookup table: given a key, you instantly retrieve its value — like looking up a word (key) in a glossary to find its definition (value).
+Think of a dictionary as a lookup table: given a key, you instantly retrieve its value — like looking up a word (key) in a glossary to find its definition (value). Unlike a list where items are accessed by numeric position, a dictionary lets you access items by a meaningful name.
 
 ```{python}
 d1 = {"name": "Schlosser", "age": 23, "city": "Williamsburg"}
 
-print(d1["name"])                    # → Schlosser
+print(d1["name"])                    # → Schlosser  (access value by key)
 d1["age"] = 24                       # update an existing value
-d1["email"] = "pgschlosser@wm.edu"   # add a new key-value pair
+d1["email"] = "pgschlosser@wm.edu"   # add a new key-value pair — just assign to it
 print(d1)
+
+# Check whether a key exists before accessing it
+if "email" in d1:
+    print("Email found:", d1["email"])
+
+# Safely get a value with a default if the key is missing
+phone = d1.get("phone", "not provided")   # returns "not provided" instead of raising KeyError
+print(phone)
 
 # Iterate over all key-value pairs with .items()
 for key, value in d1.items():
     print(key, ":", value)
 ```
+
+Key dictionary operations:
+
+| Operation | Syntax | Notes |
+|------------------------|------------------------|------------------------|
+| Access value | `d["key"]` | Raises `KeyError` if key absent |
+| Safe access | `d.get("key", default)` | Returns default instead of error |
+| Add / update | `d["key"] = value` | Creates if new, overwrites if existing |
+| Delete | `del d["key"]` | Removes key-value pair |
+| All keys | `d.keys()` | Returns view of all keys |
+| All values | `d.values()` | Returns view of all values |
+| All pairs | `d.items()` | Returns view of `(key, value)` tuples |
 
 ### Dictionary of Dictionaries
 
@@ -371,12 +476,12 @@ distances = {
 print(distances["A"]["B"])   # → 10  (distance from A to B)
 ```
 
-## Data Structures Lab
+### Data Structures Lab
 
 **1.** You have a list `scores = [88, 74, 95, 61, 82, 55, 91]`. Write code to (a) add the value `79` to the end, (b) remove the value `61`, and (c) print only the first three elements using slicing.
 
 ::: {.callout-note collapse="true"}
-### Show Answer
+#### Show Answer
 
 ``` python
 scores = [88, 74, 95, 61, 82, 55, 91]
@@ -391,7 +496,7 @@ print(scores[:3])        # (c) → [88, 74, 95]
 **2.** Why can't you change a value in a tuple after it is created? Give one practical scenario in analytics where a tuple is the better choice over a list.
 
 ::: {.callout-note collapse="true"}
-### Show Answer
+#### Show Answer
 
 Tuples are **immutable** — Python does not allow item assignment after creation. Attempting `t[0] = 99` raises a `TypeError`. **Practical scenario:** storing geographic coordinates for a fixed location, such as `coordinates = (37.2707, -76.7075)` for Williamsburg, VA. The latitude and longitude should never change once defined — using a tuple instead of a list signals to anyone reading the code that these values are fixed, and prevents accidental modification by downstream functions that might otherwise append or reassign elements.
 :::
@@ -399,7 +504,7 @@ Tuples are **immutable** — Python does not allow item assignment after creatio
 **3.** Create a dictionary that stores three employees: Alice (salary 62000), Bob (salary 95000), and Carol (salary 67000). Then write code to (a) print Bob's salary, (b) add a new employee Diana with salary 71000, and (c) print all employee names using a loop.
 
 ::: {.callout-note collapse="true"}
-### Show Answer
+#### Show Answer
 
 ``` python
 employees = {
@@ -469,20 +574,63 @@ else:                 # runs only if all conditions above were False
 
 ### For Loops
 
-A `for` loop iterates over a sequence, executing the loop body once for each item. `range(n)` generates integers from `0` to `n-1`.
+A `for` loop iterates over a sequence, executing the loop body once for each item. `range(n)` generates integers from `0` to `n-1`. The loop variable (here `i`) is automatically assigned each value in the sequence — you do not need to manage it yourself.
 
-```{python}
-for i in range(5):       # i takes values 0, 1, 2, 3, 4
-    print("i is", i)
+The general pattern is:
+
+``` python
+for variable in sequence:
+    # code that runs once per item
 ```
 
-*Can you modify this to print only even numbers? Hint: use `if i % 2 == 0`.*
+You can iterate over `range()`, a list, a string, a tuple, a dictionary's keys, or any other iterable object:
+
+```{python}
+# Loop over a range of integers
+for i in range(5):       # i takes values 0, 1, 2, 3, 4
+    print("i is", i)
+
+# Loop over a list directly
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(fruit)
+
+# Loop over a string — iterates one character at a time
+for char in "CTAI":
+    print(char)
+```
+
+`range()` accepts up to three arguments: `range(start, stop, step)`. The stop value is always **excluded**:
+
+```{python}
+for i in range(1, 10, 2):   # start=1, stop=10, step=2
+    print(i)                 # → 1, 3, 5, 7, 9
+```
+
+*Can you modify the first loop to print only even numbers? Hint: use `if i % 2 == 0`.*
 
 ### While Loops
 
-A `while` loop repeats as long as its condition remains `True`. Always ensure the loop has a way to terminate — forgetting the increment (`x += 1`) creates an infinite loop.
+A `while` loop repeats a block of code **as long as a condition remains `True`**. Unlike a `for` loop — which runs a fixed number of times based on a sequence — a `while` loop runs an unknown number of times until something changes. This makes it the right choice when you do not know in advance how many iterations you need.
+
+The general pattern is:
+
+``` python
+while condition:
+    # code that runs as long as condition is True
+    # something here must eventually make condition False
+```
+
+Always ensure the loop has a way to terminate. The most common mistake is forgetting to update the variable being tested — this creates an **infinite loop** that hangs your program.
 
 ```{python}
+# Basic while loop — counts from 0 to 4
+count = 0
+while count < 5:
+    print("count is", count)
+    count += 1    # without this line, count never changes → infinite loop
+
+# While loop with conditional logic inside
 x = 0
 
 while x < 5:
@@ -493,12 +641,21 @@ while x < 5:
     x += 1   # critical: without this line, x never changes and the loop runs forever
 ```
 
+**When to use `for` vs. `while`:**
+
+| Situation                                           | Use          |
+|-----------------------------------------------------|--------------|
+| You know exactly how many times to repeat           | `for` loop   |
+| You are stepping through a list, range, or string   | `for` loop   |
+| You need to keep going until a condition changes    | `while` loop |
+| You are waiting for user input or an external event | `while` loop |
+
 ### Control Flow Lab
 
 **1.** Write an `if`/`elif`/`else` block that takes a variable `score` and prints a letter grade: `"A"` for 90 and above, `"B"` for 80–89, `"C"` for 70–79, and `"F"` for anything below. Test it with `score = 83`.
 
 ::: {.callout-note collapse="true"}
-### Show Answer
+#### Show Answer
 
 ``` python
 score = 83
@@ -520,7 +677,7 @@ Python evaluates conditions top to bottom and executes the first branch that is 
 **2.** Use a `for` loop to iterate over `prices = [10.99, 24.50, 5.75, 18.00, 32.99]` and print only the prices above `$15.00`. Then use a second loop to calculate and print the total of all prices.
 
 ::: {.callout-note collapse="true"}
-### Show Answer
+#### Show Answer
 
 ``` python
 prices = [10.99, 24.50, 5.75, 18.00, 32.99]
@@ -551,7 +708,7 @@ while x <= 5:
 ```
 
 ::: {.callout-note collapse="true"}
-### Show Answer
+#### Show Answer
 
 **Bug:** `x` is never incremented inside the loop. The condition `x <= 5` is checked at the start of every iteration — but since `x` stays `1` forever, the condition is always `True` and the loop never terminates.
 
@@ -572,7 +729,21 @@ Every `while` loop must contain logic that eventually makes its condition `False
 
 ### Defining Functions
 
-A **function** is a named, reusable block of code. Define it with `def`, then **call** it by name whenever you need it. Functions help you avoid repeating the same code in multiple places.
+A **function** is a named, reusable block of code. Define it with `def`, then **call** it by name whenever you need it. Functions help you avoid repeating the same code in multiple places — write it once, test it once, use it everywhere.
+
+The anatomy of a function definition:
+
+``` python
+def function_name(parameter1, parameter2):
+    """Docstring: describes what this function does."""
+    # function body — the code that runs when called
+    return result
+```
+
+-   **`def`** — the keyword that starts every function definition.
+-   **Parameters** — the variable names listed in the parentheses. They act as placeholders for the values the caller will provide.
+-   **Docstring** — the triple-quoted string immediately after the `def` line. It is optional but strongly encouraged — it documents what the function does, what its parameters mean, and what it returns. You can read a function's docstring with `help(function_name)`.
+-   **`return`** — sends a value back to the caller. Without it, the function returns `None`.
 
 ```{python}
 def my_first_function():
@@ -585,15 +756,21 @@ def my_first_function():
 my_first_function()   # call the function — nothing happens until you call it
 ```
 
-Functions can accept **parameters** (inputs) and can be called with **positional** or **keyword** arguments:
+Functions can accept **parameters** (inputs). When you call a function, the values you supply are called **arguments**. Arguments can be passed **positionally** (matched by order) or by **keyword** (matched by name):
 
 ```{python}
 def sum_up(a, b):
+    """Returns the sum of a and b."""
     print(a + b)
 
 sum_up(1, 2)       # positional: a=1, b=2 → prints 3
-sum_up(a=1, b=2)   # keyword: same result, but more explicit
+sum_up(a=1, b=2)   # keyword: same result, but more explicit and readable
+sum_up(b=2, a=1)   # keyword: order does not matter when using names
 ```
+
+::: note
+Keyword arguments improve readability in function calls with many parameters. A call like `create_report(title="Q3", pages=10, landscape=True)` is far clearer than `create_report("Q3", 10, True)` — you do not have to look up the function definition to know what each argument means.
+:::
 
 ### Default Parameter Values
 
@@ -610,7 +787,7 @@ sum_up(3, 4)    # → 7  (overrides both defaults)
 
 ### The Return Statement
 
-`return` sends a value back to the caller. Without it, a function returns `None` by default. Storing the return value lets you use the result in further calculations.
+`return` sends a value back to the caller. Without `return`, a function implicitly returns `None` — Python's way of representing "no value." This is a common source of bugs: the function runs and displays output with `print()`, but the result is not available for further use.
 
 ```{python}
 def sum_up(a=1, b=1):
@@ -619,6 +796,34 @@ def sum_up(a=1, b=1):
 result = sum_up()        # result now holds 2
 result_2 = sum_up(3, 4)  # result_2 now holds 7
 print(result, result_2)  # → 2 7
+
+# Why return matters — compare these two versions:
+def add_with_print(a, b):
+    print(a + b)        # shows the result but returns None
+
+def add_with_return(a, b):
+    return a + b        # returns the result for further use
+
+x = add_with_print(3, 4)    # prints 7, but x = None
+y = add_with_return(3, 4)   # y = 7
+
+# This fails because x is None:
+# total = x * 2    → TypeError: unsupported operand type(s) for *: 'NoneType' and 'int'
+
+# This works:
+total = y * 2
+print(total)             # → 14
+```
+
+A function can also return **multiple values** as a tuple, which you can unpack into separate variables:
+
+```{python}
+def min_max(numbers):
+    """Returns both the minimum and maximum of a list."""
+    return min(numbers), max(numbers)
+
+low, high = min_max([5, 3, 9, 1, 7])
+print(low, high)   # → 1 9
 ```
 
 ### If–Else Inside a Function
@@ -638,12 +843,12 @@ print(abs_value(5))    # → 5
 print(abs_value(0))    # → 0
 ```
 
-## Functions Lab
+### Functions Lab
 
 **1.** Write a function called `apply_tax(price, rate=0.08)` that returns a price with tax applied. The tax rate should default to 8% if not provided. Call it twice — once with the default rate and once with a 12% rate — on a price of `$49.99`.
 
 ::: {.callout-note collapse="true"}
-### Show Answer
+#### Show Answer
 
 ``` python
 def apply_tax(price, rate=0.08):
@@ -659,7 +864,7 @@ The default parameter `rate=0.08` is used when the caller provides no second arg
 **2.** Write a function called `summarize(numbers)` that returns the minimum, maximum, and average of a list as three separate values. Unpack the return values into variables and print each with a label.
 
 ::: {.callout-note collapse="true"}
-### Show Answer
+#### Show Answer
 
 ``` python
 def summarize(numbers):
@@ -688,7 +893,7 @@ def add(a, b):
 ```
 
 ::: {.callout-note collapse="true"}
-### Show Answer
+#### Show Answer
 
 A function that **prints** sends output to the console but returns `None` — the result is not available for further computation. A function that **returns** sends the value back to the caller, where it can be assigned, passed to another function, or used in an expression.
 
@@ -703,19 +908,39 @@ print(total)
 With the original `print` version, `add(3, 4)` returns `None`, so `None * 2` raises a `TypeError`. The `return` version passes `7` back to the caller, making `7 * 2 = 14` work correctly.
 :::
 
-## NumPy
+# NumPy
 
-### Using External Packages
+## Using External Packages
 
-Python's power comes partly from its ecosystem of third-party libraries. **NumPy** is the foundation of numerical computing in Python — it provides arrays that are faster and more memory-efficient than plain Python lists for mathematical operations.
+Python's power comes partly from its ecosystem of third-party libraries. **NumPy** (Numerical Python) is the foundation of numerical computing in Python — it provides arrays that are faster and more memory-efficient than plain Python lists for mathematical operations.
 
-Import a package with `import`. Using `as np` creates a short alias so you write `np.array()` instead of `numpy.array()`.
+To use a package, you first **import** it. Using `as np` creates a short alias so you write `np.array()` instead of the longer `numpy.array()`. This alias is a universal convention — you will see it in virtually every data science tutorial and production codebase.
 
 ```{python}
 import numpy as np
 ```
 
-### Creating Arrays
+::: note
+NumPy must be installed before you can import it. In the Anaconda environment used in this course it is already available. In a new environment, install it with `pip install numpy` in your terminal.
+:::
+
+**What is vectorization?** In plain Python, to add 10 to every element in a list, you need a loop:
+
+``` python
+prices = [10, 20, 30]
+adjusted = [p + 10 for p in prices]   # must iterate — one operation per element
+```
+
+NumPy **vectorization** applies the operation to the entire array at once — no loop required. Under the hood, NumPy executes the operation in compiled C code, which is orders of magnitude faster than a Python loop for large datasets:
+
+``` python
+prices = np.array([10, 20, 30])
+adjusted = prices + 10   # adds 10 to every element simultaneously → [20 30 40]
+```
+
+This difference is negligible for three elements but critical when working with millions of rows — the kind of data common in analytics and machine learning.
+
+## Creating Arrays
 
 A NumPy **array** is like a list, but it can only hold one data type and supports vectorized math operations.
 
@@ -733,7 +958,7 @@ print(arr2)
 #    [4 5 6]]
 ```
 
-### Python Lists vs. NumPy Arrays
+## Python Lists vs. NumPy Arrays
 
 For simple iteration, lists and arrays behave identically:
 
@@ -759,7 +984,7 @@ arr = np.array([1, 2, 3])
 print(arr + arr)                 # → [2 4 6]
 ```
 
-### Appending to Arrays
+## Appending to Arrays
 
 NumPy arrays do **not** have an `.append()` method — use `np.append()` instead, which returns a new array.
 
@@ -778,7 +1003,7 @@ for e in arr1:
     print(e)
 ```
 
-### Element-Wise Arithmetic
+## Element-Wise Arithmetic
 
 NumPy arrays support **vectorized** arithmetic — operations apply to every element simultaneously, with no loop required:
 
