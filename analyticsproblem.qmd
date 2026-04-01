@@ -153,6 +153,40 @@ As organizations progress through maturity stages, both complexity and market es
 
 Successfully crossing each gulf and chasm requires overcoming organizational, technical, and cultural barriers simultaneously — with every stage demanding higher sophistication and broader adoption than the last.
 
+## The Analytics Problem Lab
+
+**1.** The chapter describes the current digital transformation as different "in kind, not just degree" from previous industrial revolutions. What three forces make it uniquely complex, and why does that complexity create a challenge for business leaders specifically?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+The three forces are the **simultaneous convergence** of AI, cloud computing, and IoT — combined with advanced analytics. Earlier revolutions were each driven by a single technology (steam, electricity, computers), which allowed organizations decades to adapt. Today's convergence is multidimensional: disruption comes from multiple directions at once, faster than human or organizational response cycles. For business leaders, this means decisions must be made under uncertainty and at speeds that traditional planning cycles cannot accommodate.
+:::
+
+**2.** What is the "analytics adoption gap," and what historical analogy does Weber and Zwingmann use to explain why simplicity — not just technical power — is what drives widespread adoption?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+The analytics adoption gap is the persistent disconnect between the sophistication of analytics tools and the actual business value organizations extract from them — often because tools are too technical for the average employee. The authors draw an analogy to computing history: the graphical user interface, the mouse, and the touchscreen each democratized computing not by making the underlying technology simpler, but by making its results accessible to everyday users. Augmented analytics aims to do the same for data — embedding insights where people already work.
+:::
+
+**3.** Compare and contrast the IPTOP and SPEC frameworks. Which is operational and which is strategic, and what does each one say about *why* so many organizations get stuck at early maturity stages?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**IPTOP** (Infrastructure, People, Tools, Organization, Processes) is operational — it guides *how* analytics capability is built and sustained day-to-day. **SPEC** (Strategy, People, Ecosystem, Culture) is strategic — it guides *why* analytics is pursued and who drives it from the top. Organizations stall because IPTOP investments (tools, pipelines) frequently outpace SPEC alignment (culture, strategic buy-in). A data warehouse without executive sponsorship or a culture of curiosity is just infrastructure — it generates activity, not value.
+:::
+
+**4.** What distinguishes a "data-driven" organization from an "insight-driven" one? Give a concrete example of what each looks like in practice for a mid-size retailer.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+A **data-driven** organization collects and analyzes data — it has dashboards, reports, and analytics teams. An **insight-driven** organization goes further: it delivers actionable, user-friendly insights to the majority of employees at the moment they make decisions. For a mid-size retailer, data-driven might mean a central analyst team producing weekly sales reports. Insight-driven means a store manager's inventory app surfaces a restock recommendation automatically when she opens it Monday morning — no data skills required.
+:::
+
 ## Augmented Analytics
 
 Chapter 3 of Weber and Zwingmann (2024) explains why augmented analytics (AA) is the critical next step for organizations that have built basic data capabilities but struggle to scale them across the business.
@@ -244,3 +278,69 @@ Supervised learning is the most widely used AI archetype in business analytics. 
 This process is a **loop**, not a line. After monitoring, teams routinely return to earlier steps as new data arrives or business conditions change.
 
 ![Figure 3-5. The supervised ML workflow. Reprinted from Weber & Zwingmann (2024).](images/figure_3_5.png)
+
+## Augmented Analytics Lab
+
+**1.** Weber and Zwingmann describe augmented analytics as finding the right "sweet spot between full automation and unaided human judgment." What could go wrong if an organization tips too far in either direction?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Too much automation:** decisions are made without human review, errors propagate at scale, accountability disappears, and edge cases the model was not trained on produce harmful outcomes. **Too little augmentation:** employees are overwhelmed by data they cannot interpret, decision-making remains slow and intuition-driven, and the analytics investment generates reports no one acts on. The sweet spot — augmented workflows and augmented frames — delivers insight at the moment of decision without removing the human from the loop.
+:::
+
+**2.** What is the difference between an "augmented workflow" and an "augmented frame"? Give a business example of each.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+An **augmented workflow** embeds analytics directly inside an existing process — the user does not need to switch tools or run a separate analysis. *Example: a CRM that surfaces a churn risk score automatically when a salesperson logs a call with a long-tenured client.* An **augmented frame** delivers context-specific insight at the moment of a decision. *Example: a purchasing system that alerts a buyer that a supplier's delivery performance has declined 15% over the last 30 days just as the buyer is about to reorder.*
+:::
+
+**3.** Which of the five AI archetypes — Automation, Supervised ML, NLP, Speech, Computer Vision, or Generative AI — is most directly aligned with augmented analytics as Weber and Zwingmann define it? Justify your choice with reference to the five "I" traits.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Supervised machine learning** is most directly aligned because it learns from labeled business data to make predictions and recommendations — the core of augmented analytics. It maps cleanly to all five traits: *Insightful* (surfaces predictions users could not compute manually), *Integrated* (embedded in dashboards and workflows), *Invisible* (runs in the background), *Indispensable* (users rely on the recommendation), and *Inclusive* (non-experts receive actionable output without needing to understand the model). Generative AI is adjacent but more focused on content creation than embedded decision support.
+:::
+
+**4.** Using the supervised learning workflow, trace what steps a retail company would follow to build a model that predicts which customers will churn in the next 30 days. Be specific about what the features and label would be.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+1. **Collect data** — purchase history, recency, frequency, average order value, customer service contacts, email open rates, returns. 2. **Define features and label** — features: all variables above; label: churned (1) or retained (0) within 30 days after the observation window. 3. **Train/test split** — hold out the most recent period as a test set; train on historical data. 4. **Find the best model** — compare logistic regression, gradient boosting, and random forest. 5. **Evaluate** — use recall (minimizing missed churners is more costly than false positives) and AUC. 6. **Deploy** — surface predictions in the CRM for the retention team. 7. **Monitor** — retrain monthly as new purchase data arrives; watch for data drift.
+:::
+
+# Summary and Review
+
+## Using AI
+
+Use the following prompts with a generative AI tool to explore the analytics problem and augmented analytics further.
+
+- What is the difference between descriptive, diagnostic, predictive, and prescriptive analytics? Give a business example of each that a mid-size retail company might actually use.
+- How do the IPTOP and SPEC frameworks complement each other? Why would using IPTOP alone be insufficient for a company trying to scale its analytics culture?
+- What makes the current wave of digital transformation different from previous industrial revolutions? Is the "data as oil" analogy useful or misleading?
+- A company has a data team, modern BI dashboards, and a data warehouse — but executives still make decisions based on gut feel. Which SPEC pillar is most likely failing, and what would you recommend?
+- What are the five "I" traits of effective augmented analytics, and how does each one address a specific barrier that prevents non-expert employees from using data?
+- Why does the supervised ML workflow described in the chapter end with a monitoring step that loops back to earlier stages? What business conditions trigger a retraining cycle?
+
+## Summary
+
+This chapter introduced the analytics problem — the persistent gap between analytics investment and realized business value — and the frameworks organizations use to close it.
+
+| Topic | Key concepts |
+|---|---|
+| Industrial context | Three prior revolutions; current transformation driven by AI, IoT, cloud simultaneously |
+| Why businesses transform | Speed of change, technology convergence, data as strategic asset, shifting consumer expectations |
+| Analytics adoption gap | Tools outpace culture and people; simplicity drives adoption historically |
+| IPTOP framework | Infrastructure, People, Tools, Organization, Processes — operational capability building |
+| SPEC framework | Strategy, People & Org, Ecosystem, Culture — strategic alignment and leadership |
+| Data maturity stages | Reactive → Active → Progressive → Fluent; gulfs within stages, chasms between them |
+| Augmented analytics | Human-centric augmentation; augmented workflows and frames; five "I" traits |
+| Types of bias | Survivorship, confirmation, sample, availability, outlier, selection, cognitive, anchoring, historical |
+| Five AI archetypes | Automation, Supervised ML, NLP, Speech, Computer Vision, Generative AI |
+| Supervised learning | Collect → features/labels → train/test split → model → evaluate → deploy → monitor |
+
+**What comes next:** The AI and Data Ethics chapter examines the ethical and cybersecurity dimensions of deploying these AI archetypes in real organizations — including bias, explainability, governance, and responsible design.

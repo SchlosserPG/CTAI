@@ -115,6 +115,32 @@ To correctly visualize the relationship between construction material and era, t
 -   **Make overlaps explicit** — clarify in a title or annotation that some categories share membership.
 -   **Ensure proportions are mutually exclusive** — within each grouping, values should sum correctly.
 
+### Visualization Fundamentals Lab
+
+**1.** A colleague creates a pie chart showing the market share of five smartphone brands that sums to 112%. Using Wilke's taxonomy (Good, Ugly, Bad, Wrong), classify this chart and explain why — then describe what the correct fix would be.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+This is **Wrong** — it contains a mathematical error. A pie chart represents parts of a whole; slices must be mutually exclusive and sum to 100%. A chart summing to 112% means either the categories overlap (a brand appearing in two slices), the percentages were calculated incorrectly, or the data source conflates different measurement periods. **Fix:** verify the underlying data first. If the categories genuinely overlap (e.g., some customers use multiple brands), a pie chart is the wrong chart type entirely — use a grouped bar chart showing each brand's share independently. If the data is simply miscalculated, correct the percentages and ensure they sum to 100%. If market share data is unavailable and the percentages represent survey responses (where respondents could choose multiple brands), display them as a bar chart with a note that values do not sum to 100%.
+:::
+
+**2.** A business intelligence chart shows monthly website visits over 12 months. The y-axis runs from 94,000 to 98,000, making a 2% growth look like a near-vertical spike. Which of the six aesthetics is being manipulated, and does this make the chart Wrong, Bad, or Ugly? What is the correct fix?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Position** is the manipulated aesthetic — the y-axis origin is truncated rather than starting at zero, compressing the scale so small absolute differences appear large. This makes the chart **Bad** (not Wrong) — it is not mathematically incorrect (the numbers are accurate) but it is **perceptually misleading**: it creates a false impression of rapid growth where the actual change is modest. The chart is still interpretable if the viewer reads the axis carefully, but most viewers do not — they read the visual pattern first. **Fix:** for a bar chart, always start the y-axis at zero — truncating a bar chart axis is never acceptable. For a line chart showing a trend over time, starting the y-axis at a non-zero value can be appropriate, but the truncation should be visually signaled (a broken axis symbol) and the title should not imply dramatic change if the actual growth is small.
+:::
+
+**3.** A marketing team creates a chart using eight distinct bright colors to represent eight product categories. Which color pitfall does this violate, and what two alternatives would be more effective?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+This violates **encoding too much information** with color — more than six or seven distinct hues overwhelm viewers' ability to distinguish and remember which color represents which category, especially in smaller chart elements. Two more effective alternatives: (1) **Direct labeling:** remove the legend entirely and label each data series or bar directly with its category name — the label and the data element are in the same place, eliminating the need to match colors to a legend. (2) **Highlight + mute:** if the story focuses on one or two categories (e.g., "our top two products drove 60% of growth"), color those two in distinct accent colors and render all other categories in the same neutral gray — the viewer's eye goes immediately to what matters and the comparison is unambiguous.
+:::
+
 ## Reasoning Errors in Data Visualization
 
 Schmidt et al. (2023) examined how individuals mislead with charts through logical and interpretive manipulations — going beyond simple visual distortions. The researchers collected 9,958 Twitter posts containing COVID-19 data visualizations and categorized real-world examples of misleading argumentation strategies.
@@ -249,6 +275,32 @@ Bias distorts data or its interpretation, making a causal relationship appear st
 -   [**Confirmation bias**]{style="background-color: yellow;"} — selectively highlighting evidence that supports a preferred conclusion. *Example: citing only studies where coffee drinkers show better health outcomes while ignoring null results.*
 -   [**Publication bias**]{style="background-color: yellow;"} — studies showing significant or "interesting" results are more likely to be published than null results, skewing the perceived body of evidence toward positive findings.
 
+### Reasoning Errors and Causal Inference Lab
+
+**1.** A chart shows that cities with more hospitals have higher death rates. A commentator concludes that hospitals cause death. Identify which reasoning errors from Schmidt et al.'s list are present, name the specific type of confounding, and explain the correct interpretation.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Reasoning errors present:** (1) **False causal claims** — concluding that hospitals cause death from a correlation between hospital density and death rates. (2) **Ignoring statistical nuance** — failing to account for the obvious confounding variable. **Type of confounding:** classic **third variable problem** — the confounder is *illness severity and population size*. Cities have more hospitals because they have larger, denser, and often sicker populations. People who are dying go to hospitals; hospitals do not make people die. The correlation runs from underlying illness burden → hospital construction AND illness burden → deaths. Hospitals and deaths co-occur because they share a common cause, not because one causes the other. **Correct interpretation:** when controlling for population size and illness severity, more hospitals are associated with *lower* death rates — the correlation reverses once the confounder is removed.
+:::
+
+**2.** A data analyst at a retail company presents a chart showing that stores with loyalty program members have 40% higher average transaction values. She concludes that the loyalty program drives higher spending. What is the directionality problem here, and what research design would you need to establish causation?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Directionality problem:** the correlation between loyalty membership and high transaction values is genuinely ambiguous in direction. Do loyalty members spend more *because* of the program (benefits like discounts and points incentivize larger purchases)? Or do high-spending customers self-select into the loyalty program because they shop frequently enough that the benefits are worth signing up for? The observational data cannot distinguish these explanations — both are plausible. **Research design for causation:** a **randomized controlled trial (A/B test)**. Randomly assign a sample of newly enrolled customers to two groups: Group A receives standard enrollment (control); Group B receives accelerated points or an exclusive early benefit (treatment). Measure transaction values for both groups over six months. If Group B spends significantly more than Group A — with all other factors equal because of random assignment — you have evidence that the program *causes* higher spending, not just that high spenders join it. The random assignment eliminates self-selection as an explanation.
+:::
+
+**3.** A health journalist writes: "A new study of 200 gym members found that those who exercise more than four hours per week have significantly lower rates of anxiety." List three specific methodological concerns that a scientifically literate reader should raise before accepting this finding.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+(1) **Sample bias:** the study surveyed only gym members — a population that has already self-selected for exercise engagement, health motivation, and likely higher socioeconomic status (gym memberships cost money). The most sedentary, most anxious, and least affluent individuals are entirely absent from the sample. The finding may not generalize to the broader population. (2) **Directionality and confounding:** does exercise reduce anxiety, or do lower-anxiety people find it easier to commit to a regular exercise routine? Anxiety itself is a known barrier to starting and maintaining exercise habits. Multiple confounders — social support (gym as a social environment), baseline physical health, access to leisure time, and income — could explain the association without exercise being the cause. (3) **Sample size and replication:** 200 participants is a modest sample for a behavioral health study. With a small sample, statistically significant results can arise by chance at meaningful rates, especially if multiple subgroup analyses were run. A scientifically literate reader asks: has this been replicated in a larger, more representative sample, and was this a pre-registered hypothesis or one identified after looking at the data?
+:::
+
 ## Storytelling with Data
 
 ### The Foundation: Who, What, How
@@ -317,3 +369,73 @@ Suppose an HR team wants to present employee turnover data to the executive lead
 | **4. Focus attention** | Color three editorial department bars in red; leave all others gray. Add a dashed line at the company average departure rate. |
 | **5. Design with purpose** | Set the x-axis to start at 0 (never truncate a bar chart axis — it exaggerates differences). Choose a title that states the finding, not the topic: *"Editorial Departures Ran 3× the Company Average in Q3."* |
 | **6. Tell a story** | Add a single annotation arrow pointing to the highest bar: *"Fiction editorial: 42% departure rate — up from 14% in Q2."* The chart now drives action, not just awareness. |
+
+### Data Storytelling Lab
+
+**1.** Write a strong "Big Idea" sentence for the following scenario: a financial services firm's data team has discovered that customers who use the mobile app at least once per week have a 3-year retention rate of 82%, compared to 41% for customers who do not. The team wants the Chief Marketing Officer to approve funding for a mobile engagement campaign.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Strong Big Idea:** "Weekly mobile app users retain at twice the rate of non-users — and a targeted engagement campaign to convert low-frequency users could recover an estimated $4.2M in revenue that would otherwise be lost to churn over the next 18 months."
+
+**Why this is strong:** it states a specific finding (82% vs. 41% retention), expresses a clear point of view (the gap is actionable), and articulates the stakes (revenue at risk) — all in one sentence. A weak Big Idea would be: "Mobile engagement affects retention" — it is vague, contains no point of view, and gives the CMO nothing to act on.
+:::
+
+**2.** An analyst presents the following chart to a board meeting: a line chart with 12 lines (one per product category), no annotations, a legend in the bottom-right corner, and a title that reads "Product Performance Over Time." Apply the six-step storytelling workflow to critique this chart and describe what the improved version would look like.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Step 1 — Context failure:** the title "Product Performance Over Time" does not state what the audience should know or do — it describes the topic, not the finding. **Step 2 — Visual:** a line chart is appropriate for time trends, but 12 lines is too many for a single chart. **Step 3 — Eliminate clutter:** the legend forces viewers to match 12 colors to 12 categories — a slow, error-prone cognitive task. **Step 4 — Focus attention:** no element is highlighted; the viewer does not know which line matters. **Step 5 — Design with purpose:** the aspect ratio and axis range are unstated — key choices that shape how trends appear. **Step 6 — Tell a story:** no annotation explains what the viewer should take away. **Improved version:** identify the one or two product lines that tell the relevant story (e.g., the one category that declined while all others grew). Color those lines in a distinct accent color; render all others in light gray. Label the highlighted lines directly at their end points. Annotate the key inflection point. Title: "Premium Accessories Grew 34% While All Other Categories Plateaued — Q3 2023 to Q3 2024." The audience now has one clear takeaway and can verify it against the muted context lines.
+:::
+
+**3.** A colleague argues: "Exploratory charts are fine to show executives — it is more transparent to show all the data." Write a counter-argument using the "two pearls" principle and the exploratory vs. explanatory distinction.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+Showing executives exploratory charts is not transparency — it is transferring the analyst's cognitive work to the people least equipped and least available to do it. An executive in a one-hour board meeting cannot wade through 15 charts with no annotations, figure out which findings are meaningful, assess which patterns are artifacts of data quality issues, and arrive at a decision — all while managing their other agenda items. The **two pearls** principle makes the distinction concrete: an oyster bed has hundreds of oysters, but most contain nothing. Handing an executive all 200 oysters and saying "the pearls are in here somewhere" is not transparency; it is an abdication of the analyst's primary responsibility, which is to find the pearls. True transparency means being honest about what the data shows and what it does not — including uncertainty and caveats — in the context of a focused, annotated explanatory chart. Exploratory charts belong in the analyst's working notebook, not in the board deck.
+:::
+
+# Summary and Review
+
+## Using AI
+
+Use the following prompts with a generative AI tool to explore data visualization and storytelling further.
+
+- What is the difference between exploratory and explanatory analysis? Give a concrete example of each from an HR analytics context.
+- What are the six aesthetics in data visualization, and which is the most perceptually precise? How do you decide which aesthetic to use for which type of data?
+- What are the four purposes of color in data visualization: distinguish, represent values, and highlight? Give an example where the wrong color purpose degrades the chart.
+- What is the difference between a chart that is Bad vs. Wrong vs. Ugly in Wilke's taxonomy? Give an example of each from business reporting.
+- What are the three conditions required to establish causation? Why is correlation alone — no matter how strong — insufficient?
+- What is the third variable problem, and how does it create spurious correlations? Give an example where a confounder reverses the apparent relationship between two variables.
+- What is the "Big Idea" in data storytelling, and what distinguishes a strong Big Idea from a weak one? Write one for a scenario of your choice.
+
+## Summary
+
+This chapter covered the principles of honest, effective data visualization and the storytelling workflow that turns data into decisions.
+
+| Topic | Key concepts |
+|---|---|
+| Visualization purpose | Describe, predict, explain, understand behavior |
+| Six aesthetics | Position (most precise), size, color, shape, line width, line type |
+| Color purposes | Distinguish categories, represent values, highlight key element |
+| Color pitfalls | Too many categories, distracting choices, nonmonotonic scales, color-vision deficiency |
+| Good/Ugly/Bad/Wrong | Good: accurate + clear; Ugly: aesthetic flaws only; Bad: perceptually misleading; Wrong: mathematically incorrect |
+| Monochromatic vs. non-mono | Monochromatic: ordered quantitative data; non-monochromatic: unordered categories |
+| Aspect ratio | Banking to 45° principle; same data reads differently at different width-to-height ratios |
+| Seven reasoning errors | Misreading, cherry-picking, arbitrary thresholds, data quality, ignoring nuance, misrepresenting research, false causal claims |
+| Correlation coefficient | r between -1 and +1; measures linear relationship; sensitive to outliers; does not imply causation |
+| Three conditions for causation | Significant relationship, no confounds, correct temporal ordering |
+| Third variable / confounding | Spurious correlations explained by an unseen variable related to both X and Y |
+| Directionality problem | Unclear which variable — if either — causes the other |
+| Four bias types | Sample, measurement, confirmation, publication |
+| Who/What/How | Three questions before opening any charting tool |
+| Big Idea | One sentence: point of view + stakes; specific enough to guide every design decision |
+| 3-Minute Story | Three things the decision-maker must leave the room knowing |
+| Exploratory vs. explanatory | Exploratory: for yourself (many rough charts); explanatory: for your audience (one polished finding) |
+| Two pearls principle | Find the meaningful findings first; present those, not all the data |
+| Six-step workflow | Context → Visual → Eliminate clutter → Focus attention → Design with purpose → Tell a story |
+
+**What comes next:** The Web Scraping and APIs chapter moves from communication to data collection — building the technical skills to acquire the raw data that feeds visualizations and analytical models.

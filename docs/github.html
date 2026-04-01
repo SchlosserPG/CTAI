@@ -265,6 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#setting-up-github" id="toc-setting-up-github" class="nav-link" data-scroll-target="#setting-up-github">Setting Up GitHub</a></li>
   <li><a href="#github-copilot" id="toc-github-copilot" class="nav-link" data-scroll-target="#github-copilot">GitHub Copilot</a></li>
   </ul></li>
+  <li><a href="#git-and-github-lab" id="toc-git-and-github-lab" class="nav-link" data-scroll-target="#git-and-github-lab">Git and GitHub Lab</a></li>
   <li><a href="#working-with-git" id="toc-working-with-git" class="nav-link" data-scroll-target="#working-with-git">Working with Git</a>
   <ul class="collapse">
   <li><a href="#key-git-concepts" id="toc-key-git-concepts" class="nav-link" data-scroll-target="#key-git-concepts">Key Git Concepts</a></li>
@@ -272,10 +273,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices">Best Practices</a></li>
   <li><a href="#troubleshooting-common-issues" id="toc-troubleshooting-common-issues" class="nav-link" data-scroll-target="#troubleshooting-common-issues">Troubleshooting Common Issues</a></li>
   </ul></li>
+  <li><a href="#working-with-git-lab" id="toc-working-with-git-lab" class="nav-link" data-scroll-target="#working-with-git-lab">Working with Git Lab</a></li>
   <li><a href="#deployment-with-render.com" id="toc-deployment-with-render.com" class="nav-link" data-scroll-target="#deployment-with-render.com">Deployment with Render.com</a>
   <ul class="collapse">
   <li><a href="#render-dashboard" id="toc-render-dashboard" class="nav-link" data-scroll-target="#render-dashboard">Render Dashboard</a></li>
   <li><a href="#before-you-deploy-required-files" id="toc-before-you-deploy-required-files" class="nav-link" data-scroll-target="#before-you-deploy-required-files">Before You Deploy: Required Files</a></li>
+  </ul></li>
+  <li><a href="#deployment-with-render.com-lab" id="toc-deployment-with-render.com-lab" class="nav-link" data-scroll-target="#deployment-with-render.com-lab">Deployment with Render.com Lab</a></li>
+  <li><a href="#summary-and-review" id="toc-summary-and-review" class="nav-link" data-scroll-target="#summary-and-review">Summary and Review</a>
+  <ul class="collapse">
+  <li><a href="#using-ai" id="toc-using-ai" class="nav-link" data-scroll-target="#using-ai">Using AI</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -302,7 +310,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This module introduces <strong>Git</strong> and <strong>GitHub</strong> as foundational tools for <strong>version control</strong>, <strong>collaboration</strong>, and <strong>deployment</strong> in analytics and programming projects. Git is a decentralized version control system that tracks file changes and manages project history locally, while GitHub is a cloud-based platform built on Git for sharing, collaborating, and managing repositories. Together, they allow multiple contributors to work efficiently through commits, branches, merges, and pull requests. GitLab offers similar features but can be self-hosted for greater organizational control.</p>
+<p>This section introduces <strong>Git</strong> and <strong>GitHub</strong> as foundational tools for <strong>version control</strong>, <strong>collaboration</strong>, and <strong>deployment</strong> in analytics and programming projects. Git is a decentralized version control system that tracks file changes and manages project history locally, while GitHub is a cloud-based platform built on Git for sharing, collaborating, and managing repositories. Together, they allow multiple contributors to work efficiently through commits, branches, merges, and pull requests. GitLab offers similar features but can be self-hosted for greater organizational control.</p>
 <p>Students learn to set up Git and GitHub, configure user credentials, and perform essential commands (<code>git init</code>, <code>git add</code>, <code>git commit</code>, <code>git push</code>, and others) using VS Code or GitHub Desktop. The module also introduces <strong>GitHub Copilot</strong>, an AI-assisted coding tool that autocompletes and suggests code directly within VS Code.</p>
 <p>Best practices covered include writing clear commit messages, pulling frequently to stay synchronized, using <code>.gitignore</code> to exclude unnecessary files, and maintaining a stable main branch. Common troubleshooting scenarios are also addressed, including merge conflicts, authentication issues, and accidental commits.</p>
 <p>Finally, the module introduces <strong>Render.com</strong>, a platform that connects directly to GitHub for seamless web application deployment. Students link their GitHub repositories to Render to host and automatically update their Dash or analytics applications, gaining hands-on experience with real-world deployment workflows.</p>
@@ -357,6 +365,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Ensure that <span style="background-color: yellow;"><strong>Editor › Inline Suggest: Enabled</strong></span> is checked.</li>
 </ul>
 </section>
+</section>
+<section id="git-and-github-lab" class="level2">
+<h2 class="anchored" data-anchor-id="git-and-github-lab">Git and GitHub Lab</h2>
+<p><strong>1.</strong> Using the Word/Google Drive analogy from this section, explain what each of the following represents in that analogy: <code>git commit</code>, <code>git push</code>, <code>git pull</code>, and a merge conflict.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong><code>git commit</code></strong> — saving a version of your Word document locally with a note about what changed. The file is preserved on your machine but not yet shared anywhere.</li>
+<li><strong><code>git push</code></strong> — uploading that saved version from your computer to Google Drive so collaborators can see it.</li>
+<li><strong><code>git pull</code></strong> — downloading the latest version of the shared document from Google Drive to your local machine so your copy is current.</li>
+<li><strong>Merge conflict</strong> — the equivalent of two people editing the same sentence in a shared Google Doc simultaneously and then trying to combine their changes. One version must be chosen or both manually reconciled before the document can be finalized.</li>
+</ul>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> When would an organization choose GitLab over GitHub? Identify two industries where self-hosted version control would be a compliance or security requirement rather than just a preference.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Organizations choose GitLab when they cannot allow source code or data to reside on a third-party cloud platform. <strong>Defense and government contracting</strong> — classified or controlled-unclassified information (CUI) often cannot leave government-approved infrastructure; a self-hosted GitLab instance on premises satisfies data residency requirements that GitHub (a Microsoft cloud service) does not. <strong>Healthcare and financial services</strong> — HIPAA and PCI-DSS regulations may require that code interacting with protected health or financial data be stored on infrastructure the organization controls, audits, and owns, making self-hosted GitLab the compliant choice over a public SaaS platform.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="working-with-git" class="level2">
 <h2 class="anchored" data-anchor-id="working-with-git">Working with Git</h2>
@@ -414,6 +464,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
+<section id="working-with-git-lab" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-git-lab">Working with Git Lab</h2>
+<p><strong>1.</strong> A teammate pushes a change to <code>main</code> while you are working on a new feature in the same repository. You have not pulled since yesterday. Walk through the exact sequence of Git commands you should run before pushing your own work, and explain what would happen if you pushed without pulling first.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Correct sequence:</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"describe your changes"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull           <span class="co"># fetch and merge the teammate's changes into your local branch</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push           <span class="co"># now safe to push — remote and local are reconciled</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>If you push without pulling:</strong> Git compares your local commit history to the remote and detects that the remote has commits your local repo does not know about. It rejects the push with a message like “Updates were rejected because the remote contains work that you do not have locally.” You would then need to pull, resolve any conflicts, and push again — the same steps, just forced on you rather than chosen proactively. Pulling first keeps the process clean.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> You committed a sensitive API key to your repository by accident and then pushed it to GitHub. <code>git reset HEAD~1</code> is not enough — the key is already in the remote history. What should you do, and why is simply deleting the key from the file and committing again insufficient?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Deleting the key from the file and committing a new version is insufficient because Git preserves every prior commit — anyone who clones the repo or browses the commit history on GitHub can still see the exposed key in the old commit. <strong>Correct steps:</strong> (1) immediately revoke or rotate the API key in the service that issued it — assume it is compromised the moment it was pushed publicly; (2) use <code>git filter-repo</code> (or BFG Repo Cleaner) to rewrite history and permanently remove the key from all commits; (3) force-push the cleaned history to GitHub with <code>git push --force</code>; (4) add the key file or pattern to <code>.gitignore</code> to prevent recurrence; (5) store secrets in environment variables or a secrets manager, never in tracked files.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> What is the purpose of a <code>.gitignore</code> file, and why would a data analytics project specifically need one? Name three categories of files an analytics project should always exclude.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>.gitignore</code> lists file paths and patterns that Git should never track or commit. <strong>Why analytics projects need it:</strong> analytics work generates large, sensitive, or environment-specific files that should never enter version control. Three categories to always exclude: (1) <strong>Data files</strong> — raw CSVs, Excel files, and database files can be hundreds of megabytes; Git is not designed for binary or large file storage and storing data in a repo can expose sensitive information. (2) <strong>Credentials and secrets</strong> — <code>.env</code> files, API keys, and config files containing passwords must never be committed. (3) <strong>Environment and cache files</strong> — virtual environment folders (<code>venv/</code>, <code>__pycache__/</code>), Jupyter checkpoint folders (<code>.ipynb_checkpoints/</code>), and IDE config folders (<code>.vscode/</code>) are machine-specific and bloat the repository without providing value to collaborators.</p>
+</div>
+</div>
+</div>
+</section>
 <section id="deployment-with-render.com" class="level2">
 <h2 class="anchored" data-anchor-id="deployment-with-render.com">Deployment with Render.com</h2>
 <p><img src="images/render.com.png" class="img-fluid"></p>
@@ -448,10 +557,10 @@ gunicorn</code></pre>
 <h4 class="anchored" data-anchor-id="app.py-or-your-main-python-file"><code>app.py</code> (or your main Python file)</h4>
 <p>This is the <strong>entry point</strong> of your Dash application. Two changes are required from your development version:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>server <span class="op">=</span> app.server   <span class="co"># expose the Flask server object — gunicorn needs this to start the app</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    app.run(debug<span class="op">=</span><span class="va">False</span>)   <span class="co"># debug=False for production security</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>server <span class="op">=</span> app.server   <span class="co"># expose the Flask server object — gunicorn needs this to start the app</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    app.run(debug<span class="op">=</span><span class="va">False</span>)   <span class="co"># debug=False for production security</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="note">
 <p><code>app.run_server()</code> is deprecated in recent versions of Dash. Use <code>app.run()</code> instead. Always set <code>debug=False</code> before deploying — leaving debug mode on exposes internal error details and is a security risk in a live environment.</p>
@@ -460,14 +569,14 @@ gunicorn</code></pre>
 <section id="render.yaml-optional-but-recommended" class="level4">
 <h4 class="anchored" data-anchor-id="render.yaml-optional-but-recommended"><code>render.yaml</code> (optional but recommended)</h4>
 <p>This file gives Render explicit, version-controlled instructions for how to build and start your app.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">type</span><span class="kw">:</span><span class="at"> web</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> my-dash-app</span><span class="co">           # replace with your app's name</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">env</span><span class="kw">:</span><span class="at"> python</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">buildCommand</span><span class="kw">:</span><span class="at"> </span><span class="st">"pip install -r requirements.txt"</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">startCommand</span><span class="kw">:</span><span class="at"> </span><span class="st">"gunicorn app:server"</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">                                # "app" = your filename (app.py)</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">                                # "server" = the variable name from server = app.server</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">type</span><span class="kw">:</span><span class="at"> web</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> my-dash-app</span><span class="co">           # replace with your app's name</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">env</span><span class="kw">:</span><span class="at"> python</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">buildCommand</span><span class="kw">:</span><span class="at"> </span><span class="st">"pip install -r requirements.txt"</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">startCommand</span><span class="kw">:</span><span class="at"> </span><span class="st">"gunicorn app:server"</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">                                # "app" = your filename (app.py)</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">                                # "server" = the variable name from server = app.server</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="deployment-checklist" class="level4">
 <h4 class="anchored" data-anchor-id="deployment-checklist">Deployment Checklist</h4>
@@ -479,9 +588,137 @@ gunicorn</code></pre>
 <li><span style="background-color: yellow;"><strong>Your repository is linked to Render</strong></span> and auto-deploy is enabled on the correct branch.</li>
 <li><span style="background-color: yellow;"><strong>No secrets or API keys are hardcoded</strong></span> — store them in Render’s <strong>Environment Variables</strong> settings and access them in Python with <code>os.environ["KEY_NAME"]</code>.</li>
 </ul>
-
-
 </section>
+</section>
+</section>
+<section id="deployment-with-render.com-lab" class="level2">
+<h2 class="anchored" data-anchor-id="deployment-with-render.com-lab">Deployment with Render.com Lab</h2>
+<p><strong>1.</strong> Explain what gunicorn does and why it is required for a Render deployment but not needed when running a Dash app locally with <code>app.run()</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>When you run <code>app.run()</code> locally, Dash uses a lightweight development server built into Flask — it is designed for a single developer, runs in debug mode, and is not suitable for handling concurrent requests from multiple users. <strong>Gunicorn</strong> is a production-grade WSGI server: it manages multiple worker processes, handles concurrent HTTP requests efficiently, and is the standard way to serve Python web applications in hosted environments. Render does not know which command to use to start your app unless you tell it — <code>gunicorn app:server</code> says “use gunicorn, find the file <code>app.py</code>, and look for the variable named <code>server</code> as the entry point.” Without gunicorn in <code>requirements.txt</code> and the correct start command, Render has no way to launch your application.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> A student deploys their Dash app to Render but left <code>debug=True</code> in <code>app.run()</code>. What security risk does this introduce, and what else in the deployment checklist protects against exposed secrets?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>debug=True</code> enables Flask’s interactive debugger — when an unhandled exception occurs, it displays a full interactive traceback in the browser, including local variable values, file paths, and internal application state. In a production environment accessible to the public, this exposes your code structure, data, and potentially credentials to anyone who can trigger an error. Always set <code>debug=False</code> before deploying. The complementary protection for secrets is <strong>Render’s Environment Variables settings</strong>: API keys, database passwords, and other sensitive values should never be hardcoded in <code>app.py</code> — store them as environment variables in the Render dashboard and retrieve them in Python with <code>os.environ["KEY_NAME"]</code>. This way, secrets never appear in your GitHub repository or in error output.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> Describe what happens automatically on Render after you push a new commit to your linked GitHub repository. What is the advantage of this workflow over manually uploading updated files to a hosting server?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>When you push to the linked branch, Render detects the new commit via a GitHub webhook, pulls the updated code, runs <code>pip install -r requirements.txt</code> to install any new or updated dependencies, and then restarts the application using the configured start command — all without any manual intervention. <strong>Advantages over manual upload:</strong> (1) <strong>Consistency</strong> — every deployment follows the same automated process, eliminating the risk of forgetting a step or uploading an outdated file. (2) <strong>Speed</strong> — the cycle from <code>git push</code> to live update takes seconds to minutes rather than the minutes-to-hours of manual FTP or file upload workflows. (3) <strong>Traceability</strong> — every deployment is tied to a specific Git commit, so you can see exactly which code version is live and roll back to a previous commit if the new version breaks something.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="summary-and-review" class="level1">
+<h1>Summary and Review</h1>
+<section id="using-ai" class="level2">
+<h2 class="anchored" data-anchor-id="using-ai">Using AI</h2>
+<p>Use the following prompts with a generative AI tool to explore Git, GitHub, and deployment further.</p>
+<ul>
+<li>What is the difference between Git and GitHub? Could you use Git without GitHub, and what would that look like in practice?</li>
+<li>Explain the Git staging area. Why does Git require you to <code>add</code> files before you <code>commit</code> them, rather than committing all changes at once?</li>
+<li>What is a merge conflict, how does it arise, and what is the correct process for resolving one? Why does Git not resolve conflicts automatically?</li>
+<li>Why should secrets like API keys never be committed to a Git repository, even a private one? What are the correct alternatives?</li>
+<li>What does gunicorn do, and why is a production web server necessary for deploying a Python web application when the Flask development server already works locally?</li>
+<li>What is the Git branching model, and how does working on a feature branch protect the stability of the <code>main</code> branch in a team project?</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>This chapter introduced Git and GitHub for version control, collaboration, and deployment — foundational skills for any analytics or development project.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>Key concepts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Git</td>
+<td>Decentralized VCS; tracks changes locally; works offline; best for plain text files</td>
+</tr>
+<tr class="even">
+<td>GitHub vs.&nbsp;GitLab</td>
+<td>GitHub: cloud-hosted, most popular; GitLab: open-source, self-hostable for compliance</td>
+</tr>
+<tr class="odd">
+<td>Core Git workflow</td>
+<td><code>git init</code> → <code>git add</code> → <code>git commit</code> → <code>git push</code> → <code>git pull</code></td>
+</tr>
+<tr class="even">
+<td>Key concepts</td>
+<td>Repository, commit, branch, merge, pull request, staging area</td>
+</tr>
+<tr class="odd">
+<td>Best practices</td>
+<td>Pull before pushing; write clear commit messages; use <code>.gitignore</code>; keep <code>main</code> stable</td>
+</tr>
+<tr class="even">
+<td>Troubleshooting</td>
+<td>Merge conflicts, authentication errors, accidental commits (<code>reset</code>, <code>revert</code>)</td>
+</tr>
+<tr class="odd">
+<td>GitHub Copilot</td>
+<td>AI code completion in VS Code; inline suggestions; Tab to accept</td>
+</tr>
+<tr class="even">
+<td>Render.com</td>
+<td>Git-based automatic deployment; rebuilds on every push to linked branch</td>
+</tr>
+<tr class="odd">
+<td>Required deploy files</td>
+<td><code>requirements.txt</code> (with gunicorn), <code>app.py</code> (with <code>server = app.server</code>, <code>debug=False</code>), <code>render.yaml</code></td>
+</tr>
+<tr class="even">
+<td>Secrets in production</td>
+<td>Store in Render Environment Variables; access with <code>os.environ["KEY_NAME"]</code>; never hardcode</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What comes next:</strong> The Writing Callbacks and Accessing APIs chapter builds on this deployment foundation — adding interactivity to your Dash applications through callback functions and connecting them to live data via API calls.</p>
+
+
 </section>
 </section>
 

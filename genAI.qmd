@@ -19,10 +19,10 @@ Chapters 1 and 3 of *Multimodal Generative AI* present an overview of the founda
 
 **Generative AI** refers to a category of AI that creates new content — text, audio, images, video, and code — based on patterns learned from training data. It contrasts with **predictive AI**, which forecasts outcomes from historical data without creating new content.
 
-| Type | Goal | Example |
-|---|---|---|
-| Generative AI | Create new content | ChatGPT, DALL·E, Copilot |
-| Predictive AI | Forecast outcomes | Churn models, demand forecasts |
+| Type          | Goal               | Example                        |
+|---------------|--------------------|--------------------------------|
+| Generative AI | Create new content | ChatGPT, DALL·E, Copilot       |
+| Predictive AI | Forecast outcomes  | Churn models, demand forecasts |
 
 Notable generative AI tools include **ChatGPT** (conversational text generation), **Codex and GitHub Copilot** (code generation and completion), **DALL·E** (image generation from text prompts), and **Perplexity AI** (conversational search combined with generative synthesis).
 
@@ -60,8 +60,8 @@ Game theory inspires generative AI by modeling competition, cooperation, and str
 
 The clearest example is the **Generative Adversarial Network (GAN)**, in which two neural networks compete:
 
-- The **generator** tries to create realistic synthetic data (e.g., a fake photograph).
-- The **discriminator** tries to distinguish that synthetic data from real examples.
+-   The **generator** tries to create realistic synthetic data (e.g., a fake photograph).
+-   The **discriminator** tries to distinguish that synthetic data from real examples.
 
 This mirrors a non-cooperative game in which both players improve iteratively through feedback. Equilibrium is reached when the generator fools the discriminator perfectly — at which point the synthetic output is indistinguishable from real data.
 
@@ -79,8 +79,8 @@ The rise of statistical AI in the 1990s introduced machine learning for pattern 
 
 The pivotal shift came around 2017 with the introduction of the **transformer architecture**: a neural network design that processes sequences using attention mechanisms, enabling context-aware and parallelized language generation. Two foundational concepts underpin transformers:
 
-- [**Tokenization**]{style="background-color: yellow;"} — the process of breaking text into tokens (subwords or characters) that serve as inputs for the model. For example, the word "unbelievable" might be split into `["un", "believ", "able"]`.
-- [**Attention mechanisms**]{style="background-color: yellow;"} — allow the model to assign different weights to different parts of an input when generating outputs, focusing on the most relevant context regardless of position. This is what allows a model to understand that "bank" means something different in "river bank" vs. "savings bank."
+-   [**Tokenization**]{style="background-color: yellow;"} — the process of breaking text into tokens (subwords or characters) that serve as inputs for the model. For example, the word "unbelievable" might be split into `["un", "believ", "able"]`.
+-   [**Attention mechanisms**]{style="background-color: yellow;"} — allow the model to assign different weights to different parts of an input when generating outputs, focusing on the most relevant context regardless of position. This is what allows a model to understand that "bank" means something different in "river bank" vs. "savings bank."
 
 These advances powered tools like ChatGPT and Bing Chat (from 2020), capable of multi-turn conversations and creative output.
 
@@ -98,6 +98,32 @@ The **Generative Open-Source Index (GenOS)** is a comprehensive tracker that ran
 
 GPUs alone do not create value — they require systems to organize, orchestrate, and scale AI capabilities across applications. A **Generative AI Operating System (GenOS)** provides exactly this: a layer that manages foundation models, prompt engineering, data pipelines, safety mechanisms, and deployment. If GPUs are the engines, GenOS is the driver's dashboard — turning raw compute into usable, business-ready intelligence.
 
+## How Generative AI Works Lab
+
+**1.** What is the fundamental difference between generative AI and predictive AI? Give one business example of each that a marketing team might use.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Predictive AI** forecasts outcomes from historical data without creating new content — for example, a churn model that scores each customer's probability of canceling a subscription within 30 days. **Generative AI** creates new content based on learned patterns — for example, a tool that drafts personalized email copy for each customer segment based on their purchase history and preferences. The marketing team uses the predictive model to decide *who* to target and the generative model to decide *what* to say to them.
+:::
+
+**2.** Explain how a Generative Adversarial Network (GAN) works using the generator-discriminator dynamic. Why does this adversarial setup produce more realistic outputs than a model trained without a critic?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+A GAN pits two networks against each other: the **generator** creates synthetic content (images, audio, data) trying to fool a **discriminator**, which is trained to tell real from fake. As the discriminator gets better at detecting fakes, the generator must improve to stay convincing — and vice versa. This arms-race dynamic forces the generator toward outputs that are statistically indistinguishable from real data, far beyond what a model simply trained to minimize reconstruction error would achieve. The key insight from game theory is that competition drives quality: neither network can stop improving as long as the other is getting better.
+:::
+
+**3.** What role did GPU innovation play in enabling the current generation of large language models? Why could the same transformer architectures not have been trained on CPUs alone?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+Training a large language model requires performing billions of matrix multiplications simultaneously — the core arithmetic of neural network forward and backward passes. CPUs are optimized for sequential tasks with complex control logic; they have a small number of powerful cores. **GPUs** have thousands of smaller, simpler cores designed for massive parallelism, making them orders of magnitude faster at the specific type of floating-point arithmetic that neural network training requires. Without GPUs (and later specialized chips like TPUs and H100s), training a model like GPT-3 — which required roughly 3.14 × 10²³ floating-point operations — would have taken decades on CPU clusters rather than weeks.
+:::
+
 ## Training Methodologies for LLMs
 
 ### Data Collection and Pretraining
@@ -106,8 +132,8 @@ Training begins with collecting massive, diverse, high-quality datasets from sou
 
 In **masked word prediction**, certain words are hidden and the model learns to recover them from context:
 
-- Input: "The cat sat on the `[MASK]`."
-- The model learns to predict: "mat"
+-   Input: "The cat sat on the `[MASK]`."
+-   The model learns to predict: "mat"
 
 This forces the model to develop deep contextual understanding rather than simply memorizing sequences.
 
@@ -119,8 +145,8 @@ Fine-tuning uses supervised learning — providing input–output pairs (e.g., a
 
 Variants include:
 
-- **Full fine-tuning** — all parameters are updated (expensive but thorough).
-- **Parameter-efficient fine-tuning** (e.g., LoRA or adapters) — only a small fraction of parameters change (faster and cheaper; widely used in practice).
+-   **Full fine-tuning** — all parameters are updated (expensive but thorough).
+-   **Parameter-efficient fine-tuning** (e.g., LoRA or adapters) — only a small fraction of parameters change (faster and cheaper; widely used in practice).
 
 ### Reinforcement Learning with Human Feedback (RLHF)
 
@@ -134,16 +160,42 @@ RLHF is the technique behind assistant models like GPT-3.5-turbo and ChatGPT. Wi
 
 This enables powerful applications:
 
-- Search for images using text queries ("golden retriever playing frisbee").
-- Generate captions from images automatically.
-- Cross-lingual video search (find a video in English using a French query).
-- Multimodal reasoning (answer questions about an image using natural language).
+-   Search for images using text queries ("golden retriever playing frisbee").
+-   Generate captions from images automatically.
+-   Cross-lingual video search (find a video in English using a French query).
+-   Multimodal reasoning (answer questions about an image using natural language).
 
 ### LLMs vs. Rule-Based Systems
 
 A key question in deploying LLMs is how they handle unstructured, messy web data differently than traditional rule-based systems.
 
 ![LLMs vs Rule-based systems](images/LLM_vs_Rule.png)
+
+## Training Methodologies Lab
+
+**1.** What is the difference between pretraining and fine-tuning? Why does a base pretrained model require fine-tuning before it is safe and useful as a conversational assistant?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Pretraining** trains the model on massive, diverse text corpora using self-supervised objectives (next-word or masked-word prediction) — it builds broad language understanding but has no instruction-following behavior and will reproduce whatever patterns exist in training data, including harmful content. **Fine-tuning** then adapts the pretrained model to a specific task or behavior using a smaller labeled dataset. Without fine-tuning, a base model asked "How do I make my team more productive?" might respond with a continuation of whatever text pattern follows that phrase in training data — not a helpful answer. Fine-tuning (especially with RLHF) shapes the model to respond helpfully, safely, and in a conversational register appropriate for an assistant.
+:::
+
+**2.** Why is RLHF described as a "fine-tuning methodology" rather than a training methodology? What specific problem does it solve that supervised fine-tuning alone cannot?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+RLHF is applied *after* pretraining (and often after initial supervised fine-tuning) — it is a refinement step, not the primary training. The specific problem it solves is **alignment**: supervised fine-tuning teaches the model to produce correct outputs on labeled examples, but it cannot capture subtle human preferences about tone, safety, helpfulness, and appropriate refusals. RLHF uses human raters who compare model outputs and indicate which is better, generating a reward signal that steers the model toward responses humans actually prefer — even on prompts not represented in the supervised training set. Without RLHF, a base model trained only on internet text would also learn to reproduce harmful, biased, or incoherent content at the same rate it appeared in training data.
+:::
+
+**3.** Cross-modal embeddings place images, text, and audio in a shared vector space. Explain how this enables a use case like "search for images using a text query" — what is actually happening mathematically?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+Cross-modal embeddings are learned representations where semantically related content from different modalities is mapped to nearby points in a high-dimensional vector space, regardless of format. A model like CLIP is trained on millions of (image, caption) pairs — learning to produce similar embeddings for matching pairs and dissimilar embeddings for non-matching pairs. When a user searches "golden retriever playing frisbee," the text query is encoded into a vector, and the system finds the images whose embeddings are closest (smallest cosine distance) to that query vector. The model is not pattern-matching pixels to words — it has learned a shared semantic geometry where meaning, not format, determines proximity.
+:::
 
 ## Prompting and Prompt Engineering
 
@@ -155,8 +207,8 @@ For additional information, review the O'Reilly Video on Prompt Engineering: <ht
 
 RLHF and prompt engineering operate at different layers of the AI stack:
 
-- **RLHF** is part of model training — it shapes how a model responds by making it more instruction-following and aligned with human intent. It happens before the model is deployed.
-- **Prompt engineering** is how users leverage that alignment in real-world queries, after the model has already been trained.
+-   **RLHF** is part of model training — it shapes how a model responds by making it more instruction-following and aligned with human intent. It happens before the model is deployed.
+-   **Prompt engineering** is how users leverage that alignment in real-world queries, after the model has already been trained.
 
 Using a driving analogy: RLHF tunes the car's steering system so it follows directions well; prompt engineering is how the driver actually steers with the wheel.
 
@@ -172,8 +224,8 @@ The core principle is **"garbage in, garbage out"**: the quality of the prompt d
 
 The **prompting paradigm** refers to the method of adapting LLMs through natural language instructions rather than retraining. This is a fundamentally new way of programming:
 
-- **Base models** (such as GPT-3 or LLaMA-2), pretrained on massive text corpora, can perform a wide variety of tasks from prompting alone — no fine-tuning required.
-- **Assistant models** (such as ChatGPT or Claude) take this further: they are fine-tuned using RLHF, shaping the model to respond in a more conversational and task-specific way.
+-   **Base models** (such as GPT-3 or LLaMA-2), pretrained on massive text corpora, can perform a wide variety of tasks from prompting alone — no fine-tuning required.
+-   **Assistant models** (such as ChatGPT or Claude) take this further: they are fine-tuned using RLHF, shaping the model to respond in a more conversational and task-specific way.
 
 Better prompts consistently produce better outcomes across virtually every industry and use case.
 
@@ -181,8 +233,8 @@ Better prompts consistently produce better outcomes across virtually every indus
 
 Prompting is foundational to **in-context learning**, where the model draws on examples provided directly in the prompt to infer new tasks dynamically — without any additional training. Two key strategies build on this:
 
-- [**Chain-of-thought prompting**]{style="background-color: yellow;"} — encourages the model to generate step-by-step reasoning before arriving at a conclusion. *Example: "Think through this step by step before answering: if a train travels at 60 mph for 2.5 hours..."* This significantly improves accuracy on logic, math, and multi-step reasoning tasks.
-- [**Few-shot in-context learning**]{style="background-color: yellow;"} — provides a small number of input–output examples directly in the prompt, enabling the model to infer the target pattern without retraining. *Example: providing three labeled sentiment examples before asking the model to classify a fourth.*
+-   [**Chain-of-thought prompting**]{style="background-color: yellow;"} — encourages the model to generate step-by-step reasoning before arriving at a conclusion. *Example: "Think through this step by step before answering: if a train travels at 60 mph for 2.5 hours..."* This significantly improves accuracy on logic, math, and multi-step reasoning tasks.
+-   [**Few-shot in-context learning**]{style="background-color: yellow;"} — provides a small number of input–output examples directly in the prompt, enabling the model to infer the target pattern without retraining. *Example: providing three labeled sentiment examples before asking the model to classify a fourth.*
 
 Prompting is increasingly used as an interface layer between users and LLMs, minimizing the need for expensive retraining while enabling flexible task execution.
 
@@ -204,11 +256,7 @@ One of the most effective prompting strategies is decomposing a complex request 
 
 **Meta prompt:**
 
-> You are an AI assistant that explains prompting paradigms, specifically: instructional, role-based, chain-of-thought, few-shot, and zero-shot. Follow these steps:
-> 1. Identify which prompting paradigm is relevant to the user's request.
-> 2. Explain the purpose of that paradigm and how it improves responses.
-> 3. Provide a short illustrative example showing the paradigm in action.
-> 4. If asked, find a related article and summarize it concisely in 3–4 sentences.
+> You are an AI assistant that explains prompting paradigms, specifically: instructional, role-based, chain-of-thought, few-shot, and zero-shot. Follow these steps: 1. Identify which prompting paradigm is relevant to the user's request. 2. Explain the purpose of that paradigm and how it improves responses. 3. Provide a short illustrative example showing the paradigm in action. 4. If asked, find a related article and summarize it concisely in 3–4 sentences.
 
 **User:** Can you find an article about the chain-of-thought prompting paradigm and summarize it in 3 sentences with a reference link?
 
@@ -250,6 +298,38 @@ Justification: The passage references an experimental design ("randomized contro
 Decision: Unclear.\
 Justification: The passage makes a comparative statement ("recovered more often") but provides no statistical details — neither sample size nor effect magnitude is given. Without these, it is impossible to confirm whether statistical reasoning was applied; the authors make only a descriptive claim rather than presenting inferential evidence.
 
+## The Prompting Paradigm Lab
+
+**1.** What is the difference between zero-shot, few-shot, and chain-of-thought prompting? For each, write a one-sentence example prompt that a business analyst might use to classify customer feedback as positive, negative, or neutral.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Zero-shot:** "Classify the following customer feedback as positive, negative, or neutral: 'The delivery was two days late and the packaging was damaged.'" — No examples provided; the model infers the task from the instruction alone.
+
+**Few-shot:** "Classify each as positive, negative, or neutral. 'Great service, arrived early' → positive. 'Wrong item sent' → negative. 'Package arrived on time' → \_\_\_" — A small number of labeled examples precede the target, allowing the model to infer the pattern.
+
+**Chain-of-thought:** "Classify the following as positive, negative, or neutral. Think step by step: first identify the key sentiment signals in the text, then determine whether the overall tone is favorable, unfavorable, or neither, then give your classification. Feedback: 'The product quality is fine but customer support never responded to my three emails.'" — The model is prompted to reason through intermediate steps before producing an answer, improving accuracy on ambiguous cases.
+:::
+
+**2.** The chapter introduces the meta prompt as a technique for splitting complex tasks into subtasks. Write a meta prompt that would instruct an LLM to act as a data quality auditor — reviewing a description of a dataset and identifying potential data bias issues.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+> You are an AI data quality auditor specializing in identifying bias risks in analytics datasets. When a user describes a dataset, follow these steps: 1. Identify the population the dataset is intended to represent. 2. Flag any groups that may be underrepresented or overrepresented based on the description. 3. Identify the data collection method and note any sources of selection, measurement, or labeling bias it may introduce. 4. For each bias identified, describe the likely effect on a model trained on this data. 5. Recommend one concrete remediation step for each bias identified.
+
+This meta prompt assigns a role, defines a structured multi-step process, and ensures the output is actionable — not just descriptive.
+:::
+
+**3.** Explain the RLHF vs. prompt engineering distinction using the chapter's driving analogy. Then extend the analogy: what would "fine-tuning" correspond to in the same driving metaphor?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+The chapter's analogy: **RLHF** tunes the car's steering system so it follows directions well (happens before deployment, during training). **Prompt engineering** is how the driver actually steers with the wheel (happens at runtime, by the user). **Fine-tuning** would correspond to taking the car to a specialist mechanic who modifies the engine and transmission specifically for a new context — say, converting a highway sedan for off-road use. Like fine-tuning, this happens before the car is handed to the driver, requires access to the car's internals (the model weights), and produces a purpose-built variant better suited to a specific task than the general-purpose original.
+:::
+
 ## LLM Hallucinations
 
 **LLM hallucinations** occur when a model generates plausible-sounding but false or fabricated content, typically due to gaps in training data or the probabilistic nature of text prediction. The model does not "know" it is wrong — it produces the most statistically likely continuation of the prompt, which can be entirely fictitious.
@@ -272,7 +352,7 @@ No such case exists. The model fabricated a plausible-sounding court ruling — 
 
 Hallucinations are factually incorrect responses delivered with unwarranted confidence. Watch for these warning signs:
 
--   [**Unverified specificity**]{style="background-color: yellow;"} — highly precise claims without a cited source (e.g., "The GDP of Argentina in Q3 2023 was exactly $347.2 billion").
+-   [**Unverified specificity**]{style="background-color: yellow;"} — highly precise claims without a cited source (e.g., "The GDP of Argentina in Q3 2023 was exactly \$347.2 billion").
 -   [**Invented sources**]{style="background-color: yellow;"} — fake articles, court cases, or journal titles that do not exist. Always verify citations independently.
 -   [**Internal contradictions**]{style="background-color: yellow;"} — statements within the same response that conflict with each other.
 -   [**Overconfident language**]{style="background-color: yellow;"} — definitive framing on uncertain or speculative topics ("This is definitely true," "There is no doubt that...").
@@ -284,10 +364,10 @@ Even a well-crafted prompt cannot make a generative AI model reliably solve math
 
 Consequences:
 
-- Fluency in expressing mathematical notation does not equate to mathematical accuracy.
-- LLMs approximate math rules from training examples rather than applying verified algorithms.
-- They do not self-check answers unless explicitly prompted with "verify your work step by step."
-- Errors compound as problem complexity increases — a small mistake in step 2 cascades through all subsequent steps.
+-   Fluency in expressing mathematical notation does not equate to mathematical accuracy.
+-   LLMs approximate math rules from training examples rather than applying verified algorithms.
+-   They do not self-check answers unless explicitly prompted with "verify your work step by step."
+-   Errors compound as problem complexity increases — a small mistake in step 2 cascades through all subsequent steps.
 
 For reliable computation, use a proper calculator, Python, or a tool-augmented LLM that can call a code interpreter.
 
@@ -296,6 +376,32 @@ For reliable computation, use a proper calculator, Python, or a tool-augmented L
 A structured evaluation rubric helps assess prompt quality and model output consistency before deploying prompts in production workflows.
 
 ![Evaluation Rubric](images/evaluation_rubric.png)
+
+## LLM Hallucinations Lab
+
+**1.** A lawyer submitted AI-generated legal citations to a federal court — none of the cases existed. Using the five hallucination warning signs from this section, which signals were most likely present in those responses, and what verification step would have caught the error?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+The most relevant signals: **invented sources** (fabricated case names, courts, and years) and **unverified specificity** (precise docket numbers, quoted rulings, and legal reasoning delivered with complete confidence). **Overconfident language** was also likely present — the model presented the citations as established fact rather than hedged estimates. The verification step that would have caught it: search each case name and citation in an authoritative legal database (Westlaw, LexisNexis, or the federal court's PACER system) before including it in any filing. If the case does not appear, it does not exist — regardless of how authoritative the model's output looks.
+:::
+
+**2.** Why does a well-crafted prompt not guarantee mathematical accuracy from an LLM? What is the root cause, and what is the correct tool to use when a calculation must be reliable?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+The root cause is architectural: LLMs are **language predictors**, not calculators. When an LLM writes "2 + 2 = 4" it is not computing — it is recognizing that this string statistically follows arithmetic prompts in training data. For simple arithmetic this works; for multi-step calculations, compound interest, statistical formulas, or any problem where one error compounds through subsequent steps, the model approximates rather than computes. Errors are often subtle and delivered with the same fluency as correct answers. The correct approach: use Python (or a tool-augmented LLM that can call a code interpreter) for any calculation where accuracy matters. Asking the model to "verify your work step by step" improves but does not guarantee correctness.
+:::
+
+**3.** A colleague argues that hallucinations are just a temporary bug that will be fixed in the next model version. Construct a counter-argument explaining why hallucinations are a structural property of how LLMs work, not merely an engineering defect.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+Hallucinations are not a bug in the conventional sense — they are a **predictable consequence of the architecture**. LLMs generate the most statistically probable continuation of a prompt given their training data. When the correct answer is absent from or rare in training data, the model does not return "I don't know" — it produces whatever token sequence is most likely given the context, which may be plausible-sounding fiction. The model has no internal truth-verification mechanism; it has no model of the world, only a model of language. Better training data, RLHF, and retrieval augmentation reduce hallucination rates — but as long as the underlying mechanism is probabilistic text prediction over a finite training corpus, some hallucination is irreducible. This is why human verification of high-stakes AI outputs remains essential regardless of model version.
+:::
 
 ## Paths Forward in Generative AI
 
@@ -317,3 +423,39 @@ Harvard Business Review. (2025, August). Beware the AI Experimentation Trap. Ret
 Recent evidence from the MIT Media Lab's Project NANDA report indicates that 95% of generative AI investments have yet to produce measurable returns, reflecting growing skepticism about AI's real-world impact. Gartner's latest Hype Cycle places generative AI in the "trough of disillusionment," and early reactions to OpenAI's GPT-5 have further tempered expectations — signaling a broader shift from hype to pragmatic reassessment of AI's business value.
 
 > **Discussion:** What would it take for an organization to move a generative AI pilot from experimentation to measurable business return? What metrics would you use to evaluate success?
+
+# Summary and Review
+
+## Using AI
+
+Use the following prompts with a generative AI tool to explore generative AI foundations further.
+
+-   What is the difference between a language model, a large language model, and a multimodal large language model? At what point does scale produce qualitatively new capabilities?
+-   Explain how RLHF shapes model behavior after pretraining. What would a base GPT model respond like without it, and why does that matter for business deployment?
+-   Why do LLMs hallucinate, and what does that tell us about the fundamental difference between language prediction and reasoning? What technical approaches reduce hallucination rates?
+-   Compare zero-shot, few-shot, and chain-of-thought prompting. When would you use each, and what does each assume about the model's capabilities?
+-   What is cross-modal embedding, and how does it enable a system to search images using a text query? What does this imply about how meaning is represented internally in these models?
+-   A company wants to deploy a generative AI tool for customer service. What governance guardrails — from this chapter — would you recommend before going live?
+
+## Summary
+
+This chapter introduced generative AI from foundations through deployment, covering architectures, training methods, prompting strategies, and responsible use.
+
+| Topic | Key concepts |
+|------------------------------------|------------------------------------|
+| Generative vs. predictive AI | Generative creates new content; predictive forecasts outcomes from historical data |
+| LM → LLM → MLLM | Scale enables emergent behavior; multimodal models extend across text, image, audio, video |
+| GANs | Generator vs. discriminator adversarial dynamic; game theory drives output quality |
+| GPU innovation | Massive parallelism enables the matrix arithmetic of neural network training at scale |
+| Pretraining | Next-word / masked-word prediction on massive diverse corpora; builds broad language understanding |
+| Fine-tuning | Supervised adaptation on smaller labeled datasets for specific tasks or domains |
+| RLHF | Human feedback reward signal aligns model behavior with safety and helpfulness post-training |
+| Cross-modal embeddings | Shared vector space connects modalities by semantic meaning; enables multimodal search and reasoning |
+| Prompt engineering | Input design to elicit reliable outputs; "garbage in, garbage out" |
+| Prompting paradigm | Zero-shot, few-shot, chain-of-thought, meta prompts, role-based prompts |
+| In-context learning | Model infers tasks from examples in the prompt without retraining |
+| LLM hallucinations | Probabilistic text prediction produces plausible falsehoods; structural, not just a bug |
+| Hallucination mitigation | Verify sources independently; use Python for calculations; retrieval augmentation; evaluation rubrics |
+| Paths forward | Fine-tuning, hybrid approaches, regulation (EU AI Act), open collaboration |
+
+**What comes next:** The Modern Data Acquisition chapter examines how organizations collect the raw data that feeds these models — covering primary and secondary sources, APIs, web scraping, Beautiful Soup, and the legal and practical considerations of large-scale data collection.

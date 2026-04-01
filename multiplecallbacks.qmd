@@ -8,6 +8,10 @@ execute:
     executable: "C:/Users/pamel/anaconda3/envs/CTBA/python.exe"
 ---
 
+This section introduces how to work with multiple inputs and outputs in Dash callbacks, enabling you to build more interactive and coordinated applications. Rather than linking each input to a single output, you will learn how to design callbacks that respond to several user inputs at once and update multiple components simultaneously. This approach is essential for creating scalable, efficient dashboards where different elements stay synchronized and react together to user behavior.
+
+# Callback
+
 Callbacks can have **multiple inputs and outputs**, allowing you to update several components in response to a single input event — or to wire several independent interactions into one coordinated function. The general pattern: declare all Outputs first, then all Inputs, then write the function whose arguments correspond to the Inputs and whose return values correspond to the Outputs.
 
 ```{python}
@@ -84,6 +88,24 @@ def update_outputs(num1, num2, text):
 if __name__ == '__main__':
     app.run(debug=True)
 ```
+
+## Multiple Callbacks Lab
+
+**1.** In the three-callback example, what happens if the user fills in `input1` and `input2` but leaves `input3` empty? Walk through the `None` guard logic and state exactly what each output will display.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+`input3` is empty, so Dash passes `None` as the third argument (`text`). The guard `text = text or ""` substitutes an empty string. **Output 1** (`result1`): `num1` and `num2` each have values (say `5` and `3`), so `num1 = 5 or 0` → `5`, `num2 = 3 or 0` → `3`. Result: `"Sum of the two numbers: 8"`. **Output 2** (`result2`): `"Product of the two numbers: 15"`. **Output 3** (`result3`): `text[::-1]` on an empty string `""` returns `""`. Result: `"Reversed text: "` (the label appears with nothing after it). The callback completes successfully — no error — because every `None` was replaced before any operation was attempted.
+:::
+
+**2.** The three-callback app declares all three `Input` components before the `@app.callback` decorator, not inside a separate layout function. What problem would arise if two Input components were given the same `id`, and how does Dash catch it?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+Dash component `id` values must be unique across the entire app. If two components share the same `id` (e.g., two `dcc.Input` boxes both with `id='input1'`), Dash raises a `DuplicateIdError` at startup — before the server even starts — describing which `id` is duplicated. This is caught at initialization because Dash builds an internal component registry keyed by `id` when the layout is first set. The callback system uses these `id` strings to route data, so ambiguity in `id` would make it impossible to determine which component's value to send to which callback argument.
+:::
 
 ## The World Happiness App
 
@@ -282,3 +304,75 @@ The `if __name__ == '__main__'` guard ensures the server only starts when the sc
 DataLab provides tools for collaborative data exploration, allowing teams to work with and analyze grouped data across shared notebooks and dashboards.
 
 ![](images/datalabs.png)
+
+## World Happiness App Lab
+
+**1.** The World Happiness callback filters `df` inside the function using `filtered_df = df[df['Year'] == selected_year]`. Why is `df` defined at the module level (outside the callback) rather than loaded fresh on every callback call, and what risk does reading from a global DataFrame introduce in a multi-user production environment?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+`df` is loaded once at startup because reading a CSV file and parsing it into a DataFrame is a relatively expensive operation — doing it on every callback call would add hundreds of milliseconds of latency to every user interaction, especially for larger datasets. Loading once and filtering inside the callback is the standard pattern: the global `df` is read-only (the callback never writes to it), so concurrent reads from multiple users are safe. **Risk in multi-user production:** if the callback ever *modified* the global `df` (e.g., `df.drop(...)` in place), simultaneous requests from different users could corrupt each other's data — a race condition. The safe rule is: global DataFrames are read-only; any transformation produces a new local variable (`filtered_df`) that lives only for the duration of that callback invocation.
+:::
+
+**2.** The choropleth map uses `locationmode="country names"` to match data to geographies. What would happen if a country name in the dataset did not exactly match Plotly's built-in country name list (e.g., "United States" vs. "United States of America"), and how would you detect and fix it?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+Plotly would silently drop any row whose `Country` value does not match its internal name list — the country simply would not appear on the map, with no error or warning. **Detection:** after rendering, visually inspect the map for missing countries you expect to see. Programmatically, compare `df['Country'].unique()` against Plotly's accepted country names (available in the Plotly documentation or via `import plotly.express as px; px.data.gapminder()['country'].unique()`). **Fix:** use a dictionary to remap non-standard names before passing to `px.choropleth`:
+
+``` python
+name_fixes = {"United States": "United States of America", "South Korea": "Korea, South"}
+df['Country'] = df['Country'].replace(name_fixes)
+```
+
+Always apply the fix to the DataFrame once at load time (before the callback) so it does not re-run on every user interaction.
+:::
+
+**3.** The bar chart uses `pd.concat([filtered_df.nlargest(10, 'Happiness Score'), filtered_df.nsmallest(10, 'Happiness Score')])`. What does `pd.concat` do here, and what would the chart look like if the year selected had fewer than 20 countries in the dataset?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+`pd.concat` **stacks two DataFrames vertically** — it takes the 10-row "top" DataFrame and the 10-row "bottom" DataFrame and produces a single 20-row DataFrame with all rows from both. The bar chart then visualizes all 20 countries ranked by happiness score. **If fewer than 20 countries exist for the selected year:** `nlargest(10, ...)` and `nsmallest(10, ...)` will return however many rows are available — if only 15 countries have data, you get at most 10 from the top and 5 from the bottom (or overlapping rows if some countries appear in both). `pd.concat` handles this gracefully — it produces a smaller DataFrame without errors. The chart renders with fewer bars, which is correct behavior. No code change is needed to handle this edge case.
+:::
+
+# Summary and Review
+
+## Using AI
+
+Use the following prompts with a generative AI tool to explore multiple callbacks and data visualization further.
+
+-   What is the general pattern for a Dash callback with multiple inputs and outputs? How must the function arguments and return values correspond to the declared Inputs and Outputs?
+-   Why must all component `id` values be unique in a Dash app? What error occurs if two components share the same `id`?
+-   What is the `None` guard pattern in Dash callbacks, and why does an empty `dcc.Input` box pass `None` rather than an empty string?
+-   Why is a global DataFrame loaded once at module level rather than inside the callback function? What rule must you follow to keep it safe in a multi-user environment?
+-   What is a choropleth map, and what does `locationmode="country names"` do? What happens when a country name in the data does not match Plotly's built-in list?
+-   What does `pd.concat` do, and how is it used to combine the top and bottom 10 countries into a single bar chart DataFrame?
+-   What does `yaxis={'categoryorder': 'total ascending'}` do to a horizontal bar chart? Why is this important for readability?
+
+## Summary
+
+This chapter demonstrated advanced callback patterns — multiple inputs and outputs in a single callback — and built a full World Happiness data visualization dashboard.
+
+| Topic | Key concepts |
+|------------------------------------|------------------------------------|
+| Multiple outputs pattern | Declare all Outputs, then all Inputs; return values must match Output order exactly |
+| Multiple inputs | Any input change triggers the callback; arguments match Input declaration order |
+| `None` guards | `value or 0` / `value or ""` — protect against empty inputs passing `None` |
+| Duplicate `id` error | `DuplicateIdError` raised at startup; all component IDs must be unique |
+| `text[::-1]` | Python slice notation for reversing a string |
+| `html.A()` | Dash hyperlink component; `href=` sets URL; `target="_blank"` opens new tab |
+| camelCase in `style={}` | `textDecoration` not `text-decoration`; all values are strings |
+| Global DataFrame | Load once at module level; read-only in callbacks; transformations create local copies |
+| `filtered_df` pattern | Filter global `df` inside callback; never modify the global in place |
+| `px.choropleth` | Geographic map shaded by variable; `locationmode="country names"` matches to geography |
+| `pd.concat` | Stacks DataFrames vertically; used to combine top + bottom 10 countries |
+| `nlargest` / `nsmallest` | Pandas methods returning top/bottom N rows by a column value |
+| `sort_values` + `orientation='h'` | Horizontal bar chart; sort before plotting for visual order |
+| `categoryorder: 'total ascending'` | Ensures bar chart renders in value order, not alphabetical |
+| `if __name__ == '__main__'` | Standard guard; ensures `app.run()` only fires when script is run directly |
+| DataLab | Collaborative data exploration tool for grouped data analysis across shared notebooks |
+
+**What comes next:** The course summary ties all the technical and strategic threads together — from platform competition and AI ethics through data acquisition, dashboard development, and deployment — preparing you for the final project.

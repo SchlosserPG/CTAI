@@ -263,6 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#step-1-inspect-your-data-source" id="toc-step-1-inspect-your-data-source" class="nav-link" data-scroll-target="#step-1-inspect-your-data-source">Step 1: Inspect Your Data Source</a></li>
   <li><a href="#web-scraping-example" id="toc-web-scraping-example" class="nav-link" data-scroll-target="#web-scraping-example">Web Scraping Example</a></li>
   <li><a href="#extracting-data-from-each-event" id="toc-extracting-data-from-each-event" class="nav-link" data-scroll-target="#extracting-data-from-each-event">Extracting Data from Each Event</a></li>
+  <li><a href="#web-scraping-lab" id="toc-web-scraping-lab" class="nav-link" data-scroll-target="#web-scraping-lab">Web Scraping Lab</a></li>
   </ul></li>
   <li><a href="#apis" id="toc-apis" class="nav-link" data-scroll-target="#apis">APIs</a>
   <ul class="collapse">
@@ -279,10 +280,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#building-the-request-step-by-step" id="toc-building-the-request-step-by-step" class="nav-link" data-scroll-target="#building-the-request-step-by-step">Building the Request Step by Step</a></li>
   <li><a href="#complete-script" id="toc-complete-script" class="nav-link" data-scroll-target="#complete-script">Complete Script</a></li>
+  <li><a href="#apis-lab" id="toc-apis-lab" class="nav-link" data-scroll-target="#apis-lab">APIs Lab</a></li>
   </ul></li>
   <li><a href="#web-scraping-with-pandas" id="toc-web-scraping-with-pandas" class="nav-link" data-scroll-target="#web-scraping-with-pandas">Web Scraping with pandas</a></li>
   <li><a href="#api-vs.-web-scraping-comparison" id="toc-api-vs.-web-scraping-comparison" class="nav-link" data-scroll-target="#api-vs.-web-scraping-comparison">API vs.&nbsp;Web Scraping: Comparison</a></li>
-  <li><a href="#ethics-and-legal-considerations" id="toc-ethics-and-legal-considerations" class="nav-link" data-scroll-target="#ethics-and-legal-considerations">Ethics and Legal Considerations</a></li>
+  <li><a href="#ethics-and-legal-considerations" id="toc-ethics-and-legal-considerations" class="nav-link" data-scroll-target="#ethics-and-legal-considerations">Ethics and Legal Considerations</a>
+  <ul class="collapse">
+  <li><a href="#ethics-and-legal-considerations-lab" id="toc-ethics-and-legal-considerations-lab" class="nav-link" data-scroll-target="#ethics-and-legal-considerations-lab">Ethics and Legal Considerations Lab</a></li>
+  </ul></li>
+  <li><a href="#summary-and-review" id="toc-summary-and-review" class="nav-link" data-scroll-target="#summary-and-review">Summary and Review</a>
+  <ul class="collapse">
+  <li><a href="#using-ai" id="toc-using-ai" class="nav-link" data-scroll-target="#using-ai">Using AI</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -393,6 +403,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"-"</span> <span class="op">*</span> <span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="web-scraping-lab" class="level3">
+<h3 class="anchored" data-anchor-id="web-scraping-lab">Web Scraping Lab</h3>
+<p><strong>1.</strong> In the python.org scraper, the location is extracted with <code>.find('span', {'class': 'event-location'})</code>. Explain what the dictionary <code>{'class': 'event-location'}</code> does in this context, and why it is necessary rather than just calling <code>.find('span')</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The dictionary passed to <code>.find()</code> specifies <strong>HTML attribute filters</strong> — it narrows the search to only those <code>&lt;span&gt;</code> tags whose <code>class</code> attribute equals <code>"event-location"</code>. Without the filter, <code>.find('span')</code> would return the first <code>&lt;span&gt;</code> tag on the entire page — which could be a navigation element, a date badge, a social media icon, or any other element that happens to use a <code>&lt;span&gt;</code> tag. Web pages typically contain dozens or hundreds of <code>&lt;span&gt;</code> tags. The CSS class <code>"event-location"</code> is a reliable selector because it was deliberately applied by the page’s developers to mark location data specifically. Attribute filters are how you tell BeautifulSoup to find a semantically meaningful element, not just the first occurrence of a tag type.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> The scraper would break silently if <code>event.find('h3')</code> returned <code>None</code> (because an event entry had no <code>&lt;h3&gt;</code> tag) and the code then called <code>.get_text()</code> on it. Write the one-line defensive check you would add inside the loop to skip any event that is missing a title, and explain why “silent breakage” is more dangerous than a visible error.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> event <span class="kw">in</span> events:</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    title_tag <span class="op">=</span> event.find(<span class="st">'h3'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> title_tag <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span>                            <span class="co"># skip this event — no title found</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> title_tag.get_text(strip<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Why silent breakage is more dangerous:</strong> a visible error (like an <code>AttributeError: 'NoneType' object has no attribute 'get_text'</code>) crashes the script immediately and tells you exactly where the problem is. Silent breakage — returning an empty list, skipping records, or producing <code>None</code> values — allows the script to run to completion and produce output that <em>looks</em> correct but is missing data. You may not discover the problem until you rely on the output for a decision and someone notices that certain events are absent. In data pipelines, silent failures are especially hazardous because they can propagate undetected through downstream analyses.</p>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="apis" class="level2">
 <h2 class="anchored" data-anchor-id="apis">APIs</h2>
@@ -458,10 +511,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>All APIs follow the same basic pattern: you make a <strong>request</strong>, and the API returns a <strong>response</strong>. Every time you open a social media feed, check a weather app, or get directions, your device is calling an API and displaying the response. This is also called <em>calling an API</em> or <em>making an API call</em>.</p>
 <p>In Python, the <code>requests</code> library is the standard tool for this. A typical call looks like:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">"https://api.example.com/data"</span>, params<span class="op">=</span>{<span class="st">"key"</span>: <span class="st">"value"</span>})</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> response.json()   <span class="co"># converts the JSON response into a Python dictionary</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">"https://api.example.com/data"</span>, params<span class="op">=</span>{<span class="st">"key"</span>: <span class="st">"value"</span>})</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> response.json()   <span class="co"># converts the JSON response into a Python dictionary</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="api-formats" class="level3">
@@ -494,16 +547,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="json-the-language-of-apis">JSON — The Language of APIs</h3>
 <p><strong>JSON (JavaScript Object Notation)</strong> is the most common data format returned by APIs. It is organized as <strong>key–value pairs</strong> (exactly like a Python dictionary) and <strong>arrays</strong> (exactly like a Python list). This makes it trivial to work with: <code>.json()</code> from the <code>requests</code> library converts the raw response text directly into Python objects.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example JSON response from a weather API:</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># {</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   "city": "Williamsburg",</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   "temperature": 22.5,</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   "conditions": "Partly cloudy"</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> response.json()</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[<span class="st">"city"</span>])          <span class="co"># "Williamsburg"</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[<span class="st">"temperature"</span>])   <span class="co"># 22.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example JSON response from a weather API:</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># {</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   "city": "Williamsburg",</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   "temperature": 22.5,</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   "conditions": "Partly cloudy"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> response.json()</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[<span class="st">"city"</span>])          <span class="co"># "Williamsburg"</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[<span class="st">"temperature"</span>])   <span class="co"># 22.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -517,107 +570,163 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="building-the-request-step-by-step">Building the Request Step by Step</h3>
 <p>Import the two libraries needed:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests   <span class="co"># for making HTTP requests to the API</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd  <span class="co"># for organizing results into a table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests   <span class="co"># for making HTTP requests to the API</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd  <span class="co"># for organizing results into a table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Store city coordinates in a dictionary. Using a dictionary allows us to loop cleanly — one iteration per city.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5 sample cities in Virginia with (latitude, longitude)</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>cities_va <span class="op">=</span> {</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Williamsburg"</span>:    (<span class="fl">37.2707</span>,  <span class="op">-</span><span class="fl">76.7075</span>),</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Richmond"</span>:        (<span class="fl">37.5407</span>,  <span class="op">-</span><span class="fl">77.4360</span>),</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Virginia Beach"</span>:  (<span class="fl">36.8529</span>,  <span class="op">-</span><span class="fl">75.9780</span>),</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Roanoke"</span>:         (<span class="fl">37.27097</span>, <span class="op">-</span><span class="fl">79.94143</span>),</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Charlottesville"</span>: (<span class="fl">38.0293</span>,  <span class="op">-</span><span class="fl">78.4767</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5 sample cities in Virginia with (latitude, longitude)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>cities_va <span class="op">=</span> {</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Williamsburg"</span>:    (<span class="fl">37.2707</span>,  <span class="op">-</span><span class="fl">76.7075</span>),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Richmond"</span>:        (<span class="fl">37.5407</span>,  <span class="op">-</span><span class="fl">77.4360</span>),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Virginia Beach"</span>:  (<span class="fl">36.8529</span>,  <span class="op">-</span><span class="fl">75.9780</span>),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Roanoke"</span>:         (<span class="fl">37.27097</span>, <span class="op">-</span><span class="fl">79.94143</span>),</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Charlottesville"</span>: (<span class="fl">38.0293</span>,  <span class="op">-</span><span class="fl">78.4767</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The base URL is the <strong>endpoint</strong> — the specific address of the resource we want. Query parameters (latitude, longitude, etc.) are appended separately via <code>params=</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://api.open-meteo.com/v1/forecast"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://api.open-meteo.com/v1/forecast"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>An empty list will collect one dictionary of results per city.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Loop through each city. <code>.items()</code> returns <code>(key, value)</code> pairs; <code>(lat, lon)</code> unpacks the coordinate tuple in one step.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> city, (lat, lon) <span class="kw">in</span> cities_va.items():</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> city, (lat, lon) <span class="kw">in</span> cities_va.items():</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Build the <code>params</code> dictionary. The API uses these as URL query parameters (e.g., <code>?latitude=37.27&amp;longitude=-76.71&amp;current_weather=true</code>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>    params <span class="op">=</span> {</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>        <span class="st">"latitude"</span>:        lat,</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"longitude"</span>:       lon,   <span class="co"># note: spelled correctly — a common typo is "longtitude"</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"current_weather"</span>: <span class="va">True</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>    params <span class="op">=</span> {</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>        <span class="st">"latitude"</span>:        lat,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"longitude"</span>:       lon,   <span class="co"># note: spelled correctly — a common typo is "longtitude"</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"current_weather"</span>: <span class="va">True</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Send the GET request. <code>raise_for_status()</code> immediately raises a <code>requests.HTTPError</code> if the server returns an error code (e.g., 404 Not Found, 429 Too Many Requests). Without it, a failed request would silently proceed to <code>.json()</code> and produce a confusing error or corrupt data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(url, params<span class="op">=</span>params)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    response.raise_for_status()   <span class="co"># raise immediately if the server returned an error</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> response.json()        <span class="co"># parse JSON into a Python dictionary</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(url, params<span class="op">=</span>params)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    response.raise_for_status()   <span class="co"># raise immediately if the server returned an error</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> response.json()        <span class="co"># parse JSON into a Python dictionary</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Extract the weather fields if present; use <code>None</code> as a safe placeholder if the key is missing.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"current_weather"</span> <span class="kw">in</span> data:</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>        weather <span class="op">=</span> data[<span class="st">"current_weather"</span>]</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        results.append({</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">"City"</span>:             city,</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Temperature (C)"</span>:  weather[<span class="st">"temperature"</span>],</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Wind Speed (m/s)"</span>: weather[<span class="st">"windspeed"</span>],</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Time"</span>:             weather[<span class="st">"time"</span>]</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        })</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># API did not return current_weather for this location</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>        results.append({</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">"City"</span>:             city,</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Temperature (C)"</span>:  <span class="va">None</span>,</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Wind Speed (m/s)"</span>: <span class="va">None</span>,</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Time"</span>:             <span class="va">None</span></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>        })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"current_weather"</span> <span class="kw">in</span> data:</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>        weather <span class="op">=</span> data[<span class="st">"current_weather"</span>]</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        results.append({</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">"City"</span>:             city,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Temperature (C)"</span>:  weather[<span class="st">"temperature"</span>],</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Wind Speed (m/s)"</span>: weather[<span class="st">"windspeed"</span>],</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Time"</span>:             weather[<span class="st">"time"</span>]</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># API did not return current_weather for this location</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>        results.append({</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">"City"</span>:             city,</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Temperature (C)"</span>:  <span class="va">None</span>,</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Wind Speed (m/s)"</span>: <span class="va">None</span>,</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Time"</span>:             <span class="va">None</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>        })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Convert the list of dictionaries into a DataFrame and print.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(results)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(results)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="complete-script" class="level3">
 <h3 class="anchored" data-anchor-id="complete-script">Complete Script</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>cities_va <span class="op">=</span> {</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Williamsburg"</span>:    (<span class="fl">37.2707</span>,  <span class="op">-</span><span class="fl">76.7075</span>),</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Richmond"</span>:        (<span class="fl">37.5407</span>,  <span class="op">-</span><span class="fl">77.4360</span>),</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Virginia Beach"</span>:  (<span class="fl">36.8529</span>,  <span class="op">-</span><span class="fl">75.9780</span>),</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Roanoke"</span>:         (<span class="fl">37.27097</span>, <span class="op">-</span><span class="fl">79.94143</span>),</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Charlottesville"</span>: (<span class="fl">38.0293</span>,  <span class="op">-</span><span class="fl">78.4767</span>)</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>url     <span class="op">=</span> <span class="st">"https://api.open-meteo.com/v1/forecast"</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> city, (lat, lon) <span class="kw">in</span> cities_va.items():</span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    params   <span class="op">=</span> {<span class="st">"latitude"</span>: lat, <span class="st">"longitude"</span>: lon, <span class="st">"current_weather"</span>: <span class="va">True</span>}</span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(url, params<span class="op">=</span>params)</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    data     <span class="op">=</span> response.json()</span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"current_weather"</span> <span class="kw">in</span> data:</span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>        w <span class="op">=</span> data[<span class="st">"current_weather"</span>]</span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>        results.append({<span class="st">"City"</span>: city,</span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Temperature (C)"</span>:  w[<span class="st">"temperature"</span>],</span>
-<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Wind Speed (m/s)"</span>: w[<span class="st">"windspeed"</span>],</span>
-<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Time"</span>:             w[<span class="st">"time"</span>]})</span>
-<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>        results.append({<span class="st">"City"</span>: city,</span>
-<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Temperature (C)"</span>:  <span class="va">None</span>,</span>
-<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Wind Speed (m/s)"</span>: <span class="va">None</span>,</span>
-<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Time"</span>:             <span class="va">None</span>})</span>
-<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(results)</span>
-<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>cities_va <span class="op">=</span> {</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Williamsburg"</span>:    (<span class="fl">37.2707</span>,  <span class="op">-</span><span class="fl">76.7075</span>),</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Richmond"</span>:        (<span class="fl">37.5407</span>,  <span class="op">-</span><span class="fl">77.4360</span>),</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Virginia Beach"</span>:  (<span class="fl">36.8529</span>,  <span class="op">-</span><span class="fl">75.9780</span>),</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Roanoke"</span>:         (<span class="fl">37.27097</span>, <span class="op">-</span><span class="fl">79.94143</span>),</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Charlottesville"</span>: (<span class="fl">38.0293</span>,  <span class="op">-</span><span class="fl">78.4767</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>url     <span class="op">=</span> <span class="st">"https://api.open-meteo.com/v1/forecast"</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> city, (lat, lon) <span class="kw">in</span> cities_va.items():</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    params   <span class="op">=</span> {<span class="st">"latitude"</span>: lat, <span class="st">"longitude"</span>: lon, <span class="st">"current_weather"</span>: <span class="va">True</span>}</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(url, params<span class="op">=</span>params)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    data     <span class="op">=</span> response.json()</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"current_weather"</span> <span class="kw">in</span> data:</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>        w <span class="op">=</span> data[<span class="st">"current_weather"</span>]</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>        results.append({<span class="st">"City"</span>: city,</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Temperature (C)"</span>:  w[<span class="st">"temperature"</span>],</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Wind Speed (m/s)"</span>: w[<span class="st">"windspeed"</span>],</span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Time"</span>:             w[<span class="st">"time"</span>]})</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>        results.append({<span class="st">"City"</span>: city,</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Temperature (C)"</span>:  <span class="va">None</span>,</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Wind Speed (m/s)"</span>: <span class="va">None</span>,</span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Time"</span>:             <span class="va">None</span>})</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(results)</span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="apis-lab" class="level3">
+<h3 class="anchored" data-anchor-id="apis-lab">APIs Lab</h3>
+<p><strong>1.</strong> The weather script builds <code>params</code> as a dictionary and passes it to <code>requests.get(url, params=params)</code>. Explain what this does compared to manually constructing the URL string, and show what the equivalent URL string would look like for Williamsburg’s coordinates.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Passing <code>params=</code> tells <code>requests</code> to <strong>URL-encode the dictionary and append it as a query string</strong> automatically — handling special characters, spaces, and formatting correctly. This is safer and more readable than string concatenation. The equivalent manually-constructed URL for Williamsburg would be:</p>
+<pre><code>https://api.open-meteo.com/v1/forecast?latitude=37.2707&amp;longitude=-76.7075&amp;current_weather=True</code></pre>
+<p>Query parameters follow the <code>?</code> separator; each <code>key=value</code> pair is joined by <code>&amp;</code>. Using <code>params=</code> means you never need to handle URL encoding by hand — for example, if a parameter value contained a space or a special character, <code>requests</code> would encode it as <code>%20</code> or <code>%26</code> automatically. Manual string concatenation would silently produce an invalid URL in those cases.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> An API key is described as similar to a library card. What three things should you never do with an API key, and what is the correct storage approach for a Python project?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Never:</strong> (1) <strong>Hardcode it in your script</strong> — anyone who sees your code can use your key and exhaust your rate limits or incur charges on your account. (2) <strong>Upload it to a public GitHub repository</strong> — once pushed to a public repo, the key is exposed to automated scanners that harvest credentials within minutes. Treat any pushed key as immediately compromised and regenerate it. (3) <strong>Share it in a Slack message, email, or screenshot</strong> — keys shared in communication tools can be seen by unintended recipients and are rarely revoked. <strong>Correct storage:</strong> store the key in a <code>.env</code> file (a plain text file listing <code>API_KEY=yourkey</code>) that is listed in <code>.gitignore</code> so it is never committed. Access it in Python with the <code>python-dotenv</code> library (<code>from dotenv import load_dotenv; load_dotenv(); key = os.environ["API_KEY"]</code>). For deployed applications, store secrets in the hosting platform’s environment variables (e.g., Render.com’s Environment Variables settings) rather than in any file.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> Trace through the weather script for a city where the API returns a <code>200 OK</code> status but the JSON response does not contain a <code>"current_weather"</code> key. What does the script do, what does the resulting DataFrame row look like, and is this good defensive programming?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>response.raise_for_status()</code> passes without error because the HTTP status is <code>200</code>. <code>response.json()</code> successfully parses the response. The <code>if "current_weather" in data:</code> check is <code>False</code>, so the <code>else</code> branch executes — appending a dictionary with <code>None</code> for Temperature, Wind Speed, and Time. The resulting DataFrame row contains the city name and three <code>None</code> values. <strong>Is this good defensive programming?</strong> Yes — it handles a structurally valid but content-incomplete API response gracefully, allowing the loop to continue for the remaining cities rather than crashing. The downstream analyst can see which cities returned <code>None</code> and investigate whether the API endpoint changed, the coordinates were invalid, or the service was temporarily unavailable for that location. A crash on <code>None</code> would give less information and would fail the entire batch if even one city’s response was missing the expected field.</p>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -626,60 +735,60 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Sometimes the data you want is already in an HTML table — neatly structured rows and columns. In that case, <code>pandas.read_html()</code> is a faster alternative to manually parsing with BeautifulSoup: it finds all <code>&lt;table&gt;</code> elements on a page and returns them as a list of DataFrames.</p>
 <p>The example below scrapes the Wikipedia list of countries by population.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population"</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch the raw HTML with a browser-like User-Agent header</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># (some sites block requests without one)</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>headers  <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"Mozilla/5.0"</span>}</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>response.raise_for_status()   <span class="co"># raises an HTTPError if the request failed</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Parse every &lt;table&gt; on the page into a list of DataFrames</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>tables <span class="op">=</span> pd.read_html(response.text)</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the table that contains both a "location" and "population" column</span></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>candidate <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> tables:</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    cols <span class="op">=</span> [c.lower() <span class="cf">for</span> c <span class="kw">in</span> t.columns.astype(<span class="bu">str</span>)]</span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">any</span>(<span class="st">"location"</span> <span class="kw">in</span> c <span class="cf">for</span> c <span class="kw">in</span> cols) <span class="kw">and</span> <span class="bu">any</span>(<span class="st">"population"</span> <span class="kw">in</span> c <span class="cf">for</span> c <span class="kw">in</span> cols):</span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>        candidate <span class="op">=</span> t</span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> candidate <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Could not find a suitable table on the page."</span>)</span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardize column names to "Location" and "Population"</span></span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>col_map <span class="op">=</span> {}</span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> candidate.columns:</span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>    cl <span class="op">=</span> <span class="bu">str</span>(c).lower()</span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"location"</span>   <span class="kw">in</span> cl: col_map[c] <span class="op">=</span> <span class="st">"Location"</span></span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="st">"population"</span> <span class="kw">in</span> cl: col_map[c] <span class="op">=</span> <span class="st">"Population"</span></span>
-<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>df_scrape <span class="op">=</span> candidate.rename(columns<span class="op">=</span>col_map)[[<span class="st">"Location"</span>, <span class="st">"Population"</span>]].copy()</span>
-<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean the Population column:</span></span>
-<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Wikipedia includes footnote markers like [1] and comma separators</span></span>
-<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>df_scrape[<span class="st">"Population"</span>] <span class="op">=</span> (</span>
-<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>    df_scrape[<span class="st">"Population"</span>]</span>
-<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>    .astype(<span class="bu">str</span>)</span>
-<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">str</span>.replace(<span class="vs">r"\[.*?\]"</span>, <span class="st">""</span>, regex<span class="op">=</span><span class="va">True</span>)   <span class="co"># remove footnotes: [1], [a], etc.</span></span>
-<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">str</span>.replace(<span class="st">","</span>, <span class="st">""</span>, regex<span class="op">=</span><span class="va">False</span>)          <span class="co"># remove thousands separators</span></span>
-<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">str</span>.extract(<span class="vs">r"(\d+)"</span>, expand<span class="op">=</span><span class="va">False</span>)        <span class="co"># keep only the leading digits</span></span>
-<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>    .astype(<span class="st">"Int64"</span>)                            <span class="co"># convert to nullable integer</span></span>
-<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort and take the top 10 most populous countries</span></span>
-<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>df_scrape <span class="op">=</span> (</span>
-<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a>    df_scrape.dropna(subset<span class="op">=</span>[<span class="st">"Population"</span>])</span>
-<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a>             .sort_values(<span class="st">"Population"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>             .head(<span class="dv">10</span>)</span>
-<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a>             .reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_scrape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population"</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch the raw HTML with a browser-like User-Agent header</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># (some sites block requests without one)</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>headers  <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"Mozilla/5.0"</span>}</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>response.raise_for_status()   <span class="co"># raises an HTTPError if the request failed</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Parse every &lt;table&gt; on the page into a list of DataFrames</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>tables <span class="op">=</span> pd.read_html(response.text)</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the table that contains both a "location" and "population" column</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>candidate <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> tables:</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    cols <span class="op">=</span> [c.lower() <span class="cf">for</span> c <span class="kw">in</span> t.columns.astype(<span class="bu">str</span>)]</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">any</span>(<span class="st">"location"</span> <span class="kw">in</span> c <span class="cf">for</span> c <span class="kw">in</span> cols) <span class="kw">and</span> <span class="bu">any</span>(<span class="st">"population"</span> <span class="kw">in</span> c <span class="cf">for</span> c <span class="kw">in</span> cols):</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>        candidate <span class="op">=</span> t</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> candidate <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Could not find a suitable table on the page."</span>)</span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardize column names to "Location" and "Population"</span></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>col_map <span class="op">=</span> {}</span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> candidate.columns:</span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>    cl <span class="op">=</span> <span class="bu">str</span>(c).lower()</span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"location"</span>   <span class="kw">in</span> cl: col_map[c] <span class="op">=</span> <span class="st">"Location"</span></span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="st">"population"</span> <span class="kw">in</span> cl: col_map[c] <span class="op">=</span> <span class="st">"Population"</span></span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>df_scrape <span class="op">=</span> candidate.rename(columns<span class="op">=</span>col_map)[[<span class="st">"Location"</span>, <span class="st">"Population"</span>]].copy()</span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean the Population column:</span></span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Wikipedia includes footnote markers like [1] and comma separators</span></span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a>df_scrape[<span class="st">"Population"</span>] <span class="op">=</span> (</span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a>    df_scrape[<span class="st">"Population"</span>]</span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a>    .astype(<span class="bu">str</span>)</span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">str</span>.replace(<span class="vs">r"\[.*?\]"</span>, <span class="st">""</span>, regex<span class="op">=</span><span class="va">True</span>)   <span class="co"># remove footnotes: [1], [a], etc.</span></span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">str</span>.replace(<span class="st">","</span>, <span class="st">""</span>, regex<span class="op">=</span><span class="va">False</span>)          <span class="co"># remove thousands separators</span></span>
+<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">str</span>.extract(<span class="vs">r"(\d+)"</span>, expand<span class="op">=</span><span class="va">False</span>)        <span class="co"># keep only the leading digits</span></span>
+<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a>    .astype(<span class="st">"Int64"</span>)                            <span class="co"># convert to nullable integer</span></span>
+<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-45"><a href="#cb22-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort and take the top 10 most populous countries</span></span>
+<span id="cb22-47"><a href="#cb22-47" aria-hidden="true" tabindex="-1"></a>df_scrape <span class="op">=</span> (</span>
+<span id="cb22-48"><a href="#cb22-48" aria-hidden="true" tabindex="-1"></a>    df_scrape.dropna(subset<span class="op">=</span>[<span class="st">"Population"</span>])</span>
+<span id="cb22-49"><a href="#cb22-49" aria-hidden="true" tabindex="-1"></a>             .sort_values(<span class="st">"Population"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb22-50"><a href="#cb22-50" aria-hidden="true" tabindex="-1"></a>             .head(<span class="dv">10</span>)</span>
+<span id="cb22-51"><a href="#cb22-51" aria-hidden="true" tabindex="-1"></a>             .reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb22-52"><a href="#cb22-52" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-53"><a href="#cb22-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-54"><a href="#cb22-54" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_scrape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Why this counts as scraping:</strong></p>
 <ul>
@@ -705,8 +814,152 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><span style="background-color: yellow;"><strong>Discussion: What are the ethical and legal boundaries of scraping data for training AI models?</strong></span></p>
 </blockquote>
+<section id="ethics-and-legal-considerations-lab" class="level3">
+<h3 class="anchored" data-anchor-id="ethics-and-legal-considerations-lab">Ethics and Legal Considerations Lab</h3>
+<p><strong>1.</strong> You want to scrape product prices and reviews from a major e-commerce site to train a price comparison model. Describe the three compliance steps you would take before writing a single line of code, and explain what you would do if the Terms of Service explicitly prohibited automated data collection.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Step 1 — Check <code>robots.txt</code>:</strong> navigate to <code>https://www.example.com/robots.txt</code> and look for <code>Disallow</code> rules covering the paths you want to scrape (e.g., <code>/products/</code>, <code>/reviews/</code>). If your target paths are disallowed for all user agents (<code>User-agent: *</code>), automated crawling is technically prohibited by the standard even if not legally enforceable in all jurisdictions. <strong>Step 2 — Read the Terms of Service:</strong> search for sections on “automated access,” “scraping,” “crawling,” “data collection,” or “commercial use.” Pay specific attention to whether the ToS prohibits commercial use of scraped data — training a price model for commercial deployment is clearly commercial. <strong>Step 3 — Assess copyright and data ownership:</strong> product descriptions, images, and user reviews may be protected by copyright. Bulk collection for model training is specifically the category of use that is currently being litigated in cases like NYT v. OpenAI. <strong>If the ToS explicitly prohibits automated collection:</strong> stop. Using the site’s data in violation of ToS exposes your organization to breach-of-contract claims and potentially worse depending on jurisdiction and scale. Contact the company to negotiate a data licensing agreement, or find a legal alternative data source (a competitor with permissive ToS, a licensed data provider, or a public API).</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> Explain the difference between scraping being technically legal and it being ethically responsible. Give an example where something could be technically permitted but still ethically problematic.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Technical legality</strong> addresses whether an action violates law or contract — copyright statutes, computer fraud laws, Terms of Service as a contract. <strong>Ethical responsibility</strong> addresses whether the action is right even when permitted — respecting the intent of content creators, not overloading servers, considering harms to affected parties. <strong>Example — social media profile scraping:</strong> scraping publicly visible social media profiles is often technically permitted (public data, no ToS violation for personal viewing). Aggregating millions of those profiles to build a behavioral inference model — predicting mental health status, political views, or creditworthiness — may be technically legal but is ethically problematic. The individuals who posted publicly did not consent to their data being used for automated profiling, the inferences may be inaccurate and harmful, and the power asymmetry between the aggregator and the individuals is significant. Legal permission is a floor, not a ceiling, on responsible behavior.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="summary-and-review" class="level1">
+<h1>Summary and Review</h1>
+<section id="using-ai" class="level2">
+<h2 class="anchored" data-anchor-id="using-ai">Using AI</h2>
+<p>Use the following prompts with a generative AI tool to explore web scraping and APIs further.</p>
+<ul>
+<li>What is the difference between web scraping and calling an API? When is each the appropriate choice, and what are the key risks of relying on scraping for a production pipeline?</li>
+<li>What does BeautifulSoup’s <code>.find()</code> method do, and why would you pass a dictionary of attributes alongside the tag name?</li>
+<li>What is <code>r.raise_for_status()</code>, and why is it important to call it immediately after every API request rather than relying on <code>.json()</code> to detect errors?</li>
+<li>What is JSON, and why does it map so naturally to Python data structures? Give an example of a nested JSON response and show how you would access a deeply nested value.</li>
+<li>What is an API key, and what are the three things you should never do with one? What is the correct way to store a key in a Python project?</li>
+<li>What is <code>pandas.read_html()</code>, and when is it a better choice than BeautifulSoup? What are its limitations?</li>
+<li>What are the three compliance steps you should take before scraping a site at scale? What does <code>robots.txt</code> tell you, and where do you find it?</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>This chapter covered the two primary methods for acquiring web data — scraping and APIs — with end-to-end Python implementations and an ethics framework for responsible use.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>Key concepts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Web scraping</td>
+<td>Programmatically fetching and parsing HTML; right choice when no API exists</td>
+</tr>
+<tr class="even">
+<td>URL anatomy</td>
+<td>Protocol (<code>https://</code>), domain, path</td>
+</tr>
+<tr class="odd">
+<td>Browser DevTools</td>
+<td>Ctrl+Shift+I → Elements tab; identify HTML tags and CSS classes for target data</td>
+</tr>
+<tr class="even">
+<td><code>requests.get()</code></td>
+<td>Sends HTTP GET request; <code>.text</code> = raw HTML; <code>.json()</code> = parsed JSON dict</td>
+</tr>
+<tr class="odd">
+<td>BeautifulSoup</td>
+<td>Parses HTML into a navigable tree; <code>.find()</code> = first match; <code>.find_all()</code> = all matches</td>
+</tr>
+<tr class="even">
+<td>Attribute filtering</td>
+<td><code>.find('tag', {'class': 'name'})</code> — narrows search to specific CSS class</td>
+</tr>
+<tr class="odd">
+<td><code>.get_text(strip=True)</code></td>
+<td>Extracts plain text from a tag; <code>strip=True</code> removes surrounding whitespace</td>
+</tr>
+<tr class="even">
+<td>Defensive scraping</td>
+<td>Check for <code>None</code> before calling methods; use <code>continue</code> to skip broken elements</td>
+</tr>
+<tr class="odd">
+<td>APIs</td>
+<td>Structured contract; JSON or XML response; versioned and documented</td>
+</tr>
+<tr class="even">
+<td>REST</td>
+<td>Most common API style for public data; HTTP GET with <code>params=</code></td>
+</tr>
+<tr class="odd">
+<td>API key</td>
+<td>Unique identifier; store in <code>.env</code>/environment variables; never hardcode or push to GitHub</td>
+</tr>
+<tr class="even">
+<td>JSON</td>
+<td>Key-value pairs (dict) and arrays (list); <code>.json()</code> converts to Python objects</td>
+</tr>
+<tr class="odd">
+<td><code>raise_for_status()</code></td>
+<td>Raises exception on 4xx/5xx errors; always call immediately after <code>requests.get()</code></td>
+</tr>
+<tr class="even">
+<td><code>params=</code> dictionary</td>
+<td><code>requests</code> URL-encodes and appends as query string automatically</td>
+</tr>
+<tr class="odd">
+<td><code>pandas.read_html()</code></td>
+<td>Parses all <code>&lt;table&gt;</code> elements into a list of DataFrames; faster than BS4 for table data</td>
+</tr>
+<tr class="even">
+<td>Data cleaning</td>
+<td>Remove footnotes (<code>str.replace(regex)</code>), commas, non-numeric characters; convert types</td>
+</tr>
+<tr class="odd">
+<td>Ethics compliance</td>
+<td>Check <code>robots.txt</code>; read Terms of Service; limit request rate; respect copyright</td>
+</tr>
+<tr class="even">
+<td>Legal vs.&nbsp;ethical</td>
+<td>Technical permission is a floor, not a ceiling — ethically responsible use goes further</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What comes next:</strong> The course summary ties together all technical and strategic threads — from platform competition and AI ethics through data acquisition, visualization, dashboard development, and deployment.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

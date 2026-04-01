@@ -1,0 +1,229 @@
+---
+title: "Capstone Syllabus"
+author: "BUAD 5792"
+date: "Spring 2026"
+output:
+  word_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Overview
+
+Each student must satisfactorily take part in and complete a capstone project as a requirement for graduation. These capstones require a significant modeling and business analytics effort with the unpaid sponsorship of an external agency, and under the direction of an MSBA faculty member.
+
+Through our network of employers, board members, affiliates, and faculty research contacts, the program has identified a number of companies willing to take part in your final educational experience in the MSBA. The projects have each been vetted by the faculty to meet curricular requirements, yield a deliverable in the allotted time frame, include a significant modeling effort, and expose students to real-world data and problem development.
+
+Ultimately, you will have an opportunity to produce clarity from ambiguity, create real value for an organization, and gain a learning experience you can reflect on for years to come.
+
+## Preliminaries
+
+As part of the planning process, the faculty director will present a vetted list of capstone projects for the 2026 cycle. Vignettes of each project will be provided, and preferences will be collected via a survey.
+
+Two deliverables will be administered prior to the capstone.
+
+1. Preference Survey: A teamwork project survey will be administered in February 2026.
+Please read each project carefully. While each project has a similar level of difficulty, you should rank them based on your interest in the activity, related activities, or industry. This will help drive curiosity and intrinsic motivation.
+
+2. NDA (Non-Disclosure Agreement) and/or DUA (Data Use Agreement): Each student will sign an NDA at the company's recommendation. NDA's to be administered beforehand and signed by end of March 2026. 
+
+
+## Capstone Timeline
+- **Start Date:** Friday, April 17  
+- **Project Duration:** ~22 days  
+- **Final Presentations:** May 8 (tentative)  
+- **Deliverables Due:** May 8 (11:59 PM via Blackboard)  
+- **Final Updates (if needed):** May 11 
+
+Initial data delivery will occur on or before April 20 in coordination with the sponsor and faculty advisor.
+
+
+## Grading and Evaluation
+
+Grades will be assigned by your faculty advisor based on:
+
+- Submitted artifacts  
+- Final presentation  
+- Group report  
+- Individual reflections  
+
+Individual grades may be adjusted based on:
+
+- Faculty/Director observations  
+- Group evaluations  
+
+# Deliverables
+1. Group final report (PDF via Blackboard)  
+2. Modeling artifacts (.ZIP via Blackboard)  
+3. Group presentation (20-30 minutes + Q&A)  
+4. Individual reflections paper  
+5. Final Response Survey
+
+## 1. Group Final Report (Team)
+The group final report is the primary written deliverable of your capstone project. It should clearly communicate your team’s work, findings, and recommendations, while also enabling the sponsor (or another analyst) to understand and replicate your approach.
+
+Submission: One PDF per team (submitted via Blackboard)
+Include: Project title and all team member names on the first page
+
+### Goals
+* Clearly document your team’s problem-solving process and analytical work
+* Communicate actionable insights to a business audience
+* Provide sufficient detail for replication of your analysis
+
+### Required Structure
+
+Your report must include the following sections. Use these as headings in your document.
+
+1. Background: Provide context on the organization and business setting. Briefly describe the motivation for the project and why the problem is important.
+
+2. Problem: Clearly define the business problem or question being addressed. Specify the scope of the project, including what is included and excluded.
+
+3. Data: Describe the data used in your analysis, including sources, structure, and key variables. Discuss any data limitations, assumptions, or preprocessing steps.
+
+4. Methodology: Explain your analytical approach. Justify why your selected methods are appropriate for the problem. This should be understandable to a business audience while still technically sound.
+
+5. Model Details: Provide the technical details of your models or analyses. This may include model specifications, parameter choices, evaluation metrics, and validation approaches. 
+
+6. Results: Present your findings clearly and logically. Use tables, figures, and visualizations where appropriate. Focus on insights rather than raw output.  
+
+7. Conclusion: Summarize key takeaways and provide actionable recommendations for the sponsor. Clearly connect your results to business decisions.
+
+* Strong reports will:
+     + Be clearly written, well-organized, and professionally formatted
+     + Balance technical rigor with business clarity
+     + Use visuals effectively to support insights
+     + Demonstrate a clear connection between analysis and recommendations
+     + Be reproducible based on the information provided
+
+## 2. Modeling Artifacts
+
+Submit a `.zip` file with the following structure:
+```{text}
+Code/           # R, Python, Excel models
+Data/           # datasets, files
+Documentation/  # final report (PDF)
+Presentation/   # slides
+Video/          # optional recorded presentation
+```
+Note: In some cases, clients may require work to be conducted within a secure or closed environment that restricts file export. In these situations, submission of a .zip file may not be feasible. When this occurs, the faculty supervisor may approve the modeling artifacts through an alternative review process in lieu of the standard submission format.
+
+
+## 3. Group Presentation
+**Length:** 20–30 minutes + Q&A  
+
+* Presentations should be tailored to your specific project, recognizing that problem statements, data, and requirements will differ across teams
+
+* Prioritize the needs of your client—focus on delivering clear, actionable business insights that directly address the sponsor’s problem
+
+* The structure, depth of technical detail, and emphasis of your presentation should be guided by what is most valuable to your client audience
+Additional guidance will be provided by your faculty advisor and/or your capstone client throughout the project.
+
+## 4. Individual Reflections Paper
+
+**Length:** 1500–2000 words (approximately 1.5–3 pages)  
+**Format:** Paragraph-based (not Q&A), with introduction and conclusion  
+**Due:** By May 8th (11:59 PM EST), or as specified  
+The individual reflection is an opportunity to thoughtfully assess your personal contributions, learning, and growth throughout the capstone experience. This should go beyond a summary of the project and instead focus on how you approached the work, what you learned, and how the experience has shaped your development as an analytics professional.
+
+### Required Components
+Your reflection should address the following areas in a cohesive narrative:
+
+- **Critical Thinking:** Describe your approach to the project from start to finish. How did you structure the problem, evaluate alternatives, and make decisions under uncertainty? If applicable, reference any frameworks or strategies that guided your thinking.
+- **Communication:** Explain how you translated your analysis into clear, actionable insights. How did you tailor your communication for your audience (e.g., technical vs. non-technical stakeholders)? Discuss any challenges and how you addressed them.
+- **Principled Mindset:** Reflect on any ethical considerations related to your data, modeling choices, or recommendations. How did you ensure responsible and appropriate use of data and analytics?
+- **Business Analytics:** Describe the analytical approach you used. Why were your methods appropriate for the problem? What were your key findings, and how did they support decision-making?
+
+### Additional Reflection
+
+Incorporate the following elements where appropriate:
+
+* Tools, techniques, or methodologies you applied
+* How prior coursework supported your work
+* How you integrated multiple skills or approaches
+* Challenges you encountered and how you addressed them
+* What you would do differently in a future project
+* How this experience contributed to your professional development
+
+
+## 5. MSBA Capstone Project Feedback
+Each student will fill out the following survey. 
+
+Thank you for attending this capstone presentation. Your feedback helps us assess both the quality of the project and the effectiveness of the MSBA program. This feedback is used for program improvement and student development.
+
+Project Information: ______________________
+
+Project / Team Name: ____________________________________________
+
+Date: ____________________
+
+### Overall Evaluation
+
+Please rate the following aspects of the project and presentation.
+Scale:
+1 = Poor, 2 = Fair, 3 = Good, 4 = Very Good, 5 = Excellent
+
+|                                                             | 1 | 2 | 3 | 4 | 5 |
+| ----------------------------------------------------------- | - | - | - | - | - |
+| Our team clearly understood the business problem            | ○ | ○ | ○ | ○ | ○ |
+| Our approach appropriately addressed the project objectives | ○ | ○ | ○ | ○ | ○ |
+| The methodology we used was appropriate for the problem     | ○ | ○ | ○ | ○ | ○ |
+| Our analysis led to meaningful insights                     | ○ | ○ | ○ | ○ | ○ |
+| Our final deliverables were clear and professional          | ○ | ○ | ○ | ○ | ○ |
+
+
+|                                                     | 1 | 2 | 3 | 4 | 5 |
+| --------------------------------------------------- | - | - | - | - | - |
+| Our team collaborated effectively                   | ○ | ○ | ○ | ○ | ○ |
+| Workload was distributed fairly across team members | ○ | ○ | ○ | ○ | ○ |
+| Communication within the team was effective         | ○ | ○ | ○ | ○ | ○ |
+| Our team managed time and deadlines effectively     | ○ | ○ | ○ | ○ | ○ |
+
+
+|                                                               | 1 | 2 | 3 | 4 | 5 |
+| ------------------------------------------------------------- | - | - | - | - | - |
+| This project improved my technical analytics skills           | ○ | ○ | ○ | ○ | ○ |
+| This project improved my ability to communicate insights      | ○ | ○ | ○ | ○ | ○ |
+| This project improved my ability to work with real-world data | ○ | ○ | ○ | ○ | ○ |
+| This project improved my ability to solve open-ended problems | ○ | ○ | ○ | ○ | ○ |
+
+### Reflection
+What did the team do particularly well?
+
+What would you do differently if you could repeat this project?
+
+What was the most challenging aspect of this project?
+
+### Program Feedback
+
+What aspects of the capstone experience were most valuable?
+
+What improvements would you suggest for future capstone projects?
+
+Note: This feedback is not used as the sole basis for grading, but may be used to support program assessment and continuous improvement.
+
+
+## Policy for Artificial Intelligence (AI) Use
+
+Under no circumstances should proprietary or confidential data provided by the sponsor be entered into public AI tools.
+If AI tools are used:
+- Ensure data is not used for training
+- Ensure outputs cannot be traced to the company
+- Ensure compliance with all confidentiality agreements
+
+AI tools may be used for:
+- Understanding concepts  
+- Troubleshooting  
+- Enhancing learning  
+
+However:
+- Analysis and conclusions must be your own work  
+- All AI use must be disclosed  
+- Students must evaluate AI outputs critically  
+
+::: warning
+For generative AI tools (e.g., ChatGPT), logs of all chats (including prompts) must be exported to PDF and submitted, regardless of whether they were used.
+:::

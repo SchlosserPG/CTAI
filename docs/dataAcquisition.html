@@ -267,17 +267,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#common-sources-for-acquisition" id="toc-common-sources-for-acquisition" class="nav-link" data-scroll-target="#common-sources-for-acquisition">Common Sources for Acquisition</a></li>
   <li><a href="#challenges" id="toc-challenges" class="nav-link" data-scroll-target="#challenges">Challenges</a></li>
   </ul></li>
+  <li><a href="#data-acquisition-theory-and-methods-lab" id="toc-data-acquisition-theory-and-methods-lab" class="nav-link" data-scroll-target="#data-acquisition-theory-and-methods-lab">Data Acquisition: Theory and Methods Lab</a></li>
   <li><a href="#acquiring-data-from-the-web" id="toc-acquiring-data-from-the-web" class="nav-link" data-scroll-target="#acquiring-data-from-the-web">Acquiring Data from the Web</a>
   <ul class="collapse">
   <li><a href="#apis-vs.-web-scraping" id="toc-apis-vs.-web-scraping" class="nav-link" data-scroll-target="#apis-vs.-web-scraping">APIs vs.&nbsp;Web Scraping</a></li>
   <li><a href="#web-scraping" id="toc-web-scraping" class="nav-link" data-scroll-target="#web-scraping">Web Scraping</a></li>
   <li><a href="#challenges-of-web-scraping" id="toc-challenges-of-web-scraping" class="nav-link" data-scroll-target="#challenges-of-web-scraping">Challenges of Web Scraping</a></li>
   </ul></li>
+  <li><a href="#acquiring-data-from-the-web-lab" id="toc-acquiring-data-from-the-web-lab" class="nav-link" data-scroll-target="#acquiring-data-from-the-web-lab">Acquiring Data from the Web Lab</a></li>
   <li><a href="#beautiful-soup" id="toc-beautiful-soup" class="nav-link" data-scroll-target="#beautiful-soup">Beautiful Soup</a>
   <ul class="collapse">
   <li><a href="#web-scraping-basics" id="toc-web-scraping-basics" class="nav-link" data-scroll-target="#web-scraping-basics">Web Scraping Basics</a></li>
   <li><a href="#practical-applications-of-beautiful-soup" id="toc-practical-applications-of-beautiful-soup" class="nav-link" data-scroll-target="#practical-applications-of-beautiful-soup">Practical Applications of Beautiful Soup</a></li>
   <li><a href="#integrating-beautiful-soup-with-other-tools" id="toc-integrating-beautiful-soup-with-other-tools" class="nav-link" data-scroll-target="#integrating-beautiful-soup-with-other-tools">Integrating Beautiful Soup with Other Tools</a></li>
+  </ul></li>
+  <li><a href="#beautiful-soup-lab" id="toc-beautiful-soup-lab" class="nav-link" data-scroll-target="#beautiful-soup-lab">Beautiful Soup Lab</a></li>
+  <li><a href="#summary-and-review" id="toc-summary-and-review" class="nav-link" data-scroll-target="#summary-and-review">Summary and Review</a>
+  <ul class="collapse">
+  <li><a href="#using-ai" id="toc-using-ai" class="nav-link" data-scroll-target="#using-ai">Using AI</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -441,6 +449,62 @@ O’Reilly Media. ISBN: 9781098145354.</p>
 </ul>
 </section>
 </section>
+<section id="data-acquisition-theory-and-methods-lab" class="level2">
+<h2 class="anchored" data-anchor-id="data-acquisition-theory-and-methods-lab">Data Acquisition: Theory and Methods Lab</h2>
+<p><strong>1.</strong> A logistics company wants to improve its delivery time predictions. Walk through each of the five steps in the data acquisition pipeline — sensing through analysis — using a specific example from that company’s operations at each step.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>Sensing:</strong> GPS devices and weight sensors on delivery trucks measure location, speed, and load continuously. 2. <strong>Signal conditioning:</strong> raw GPS coordinates are filtered to remove noise from tunnels or signal dropout; timestamps are synchronized across devices. 3. <strong>Data conversion:</strong> analog sensor outputs are digitized and packaged into structured records with vehicle ID, timestamp, coordinates, and load weight. 4. <strong>Data collection:</strong> a fleet management platform logs each record to a cloud database in real time, with every vehicle reporting every 30 seconds. 5. <strong>Data analysis:</strong> a predictive model ingests historical trip records alongside traffic, weather, and route data to estimate delivery windows — surfacing alerts when a driver is running behind schedule.</li>
+</ol>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> You are building an analytics pipeline for a hospital. Identify which of the seven data acquisition challenges would most severely affect (a) a real-time patient monitoring system and (b) a retrospective research study on 10-year readmission trends. Explain why the dominant challenge differs between the two.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(a) Real-time monitoring:</strong> <strong>Scalability</strong> and <strong>Data quality</strong> are paramount. Thousands of sensors stream continuously — the pipeline must handle peak loads without degradation, and a single faulty reading could trigger a false alarm or miss a critical event. <strong>Data governance</strong> is also acute: real-time systems must enforce access controls at the moment of collection, not retroactively. <strong>(b) Retrospective study:</strong> <strong>Data integration</strong> dominates — a patient over 10 years may appear in the EHR, billing system, pharmacy system, and three different acquired facilities under different IDs. Merging these into a coherent longitudinal record requires entity resolution that is organizationally and technically complex. <strong>Data variety</strong> is also significant: structured vitals data must be reconciled with free-text clinical notes. The challenges differ because real-time systems battle throughput and freshness; retrospective systems battle completeness and consistency across fragmented historical records.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> The “data as oil” analogy is commonly used but also criticized. Based on the properties described in this chapter, identify two ways data behaves like oil and two important ways it does not.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Like oil:</strong> (1) Both are raw materials that must be “refined” — cleaned, integrated, and governed — before they become useful; raw data, like crude oil, has limited direct value. (2) Both are strategic assets that confer competitive advantage to organizations that control large quantities of high-quality supply. <strong>Unlike oil:</strong> (1) Data is not consumed when used — the same dataset can be analyzed repeatedly by multiple teams simultaneously without depletion. (2) Data increases in value as more of it is combined — merging customer purchase data with demographic and behavioral data creates richer insight than either dataset alone, whereas combining barrels of different crude grades often lowers quality.</p>
+</div>
+</div>
+</div>
+</section>
 <section id="acquiring-data-from-the-web" class="level2">
 <h2 class="anchored" data-anchor-id="acquiring-data-from-the-web">Acquiring Data from the Web</h2>
 <p>Data acquisition is the foundation of all analytics — you cannot analyze data you have not collected. <strong>APIs</strong> and <strong>web scraping</strong> are the two primary techniques for acquiring data from the web, and choosing between them correctly has significant implications for reliability, compliance, and maintenance cost.</p>
@@ -471,6 +535,43 @@ O’Reilly Media. ISBN: 9781098145354.</p>
 <li>The output requires <strong>cleanup</strong> — footnotes, encoding artifacts, extra whitespace, and inconsistent capitalization are typical.</li>
 </ul>
 </section>
+</section>
+<section id="acquiring-data-from-the-web-lab" class="level2">
+<h2 class="anchored" data-anchor-id="acquiring-data-from-the-web-lab">Acquiring Data from the Web Lab</h2>
+<p><strong>1.</strong> A competitor analysis project requires pricing data from five e-commerce websites. Three have public APIs; two do not. Describe how you would approach each group, including at least two compliance checks you would perform before scraping the two sites without APIs.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>For the three sites with APIs:</strong> register for API credentials, read the documentation, confirm rate limits and terms of service, then query the pricing endpoints directly. API data arrives structured, is more reliable, and carries clear legal standing from the terms. <strong>For the two sites without APIs:</strong> (1) check <code>robots.txt</code> (e.g., <code>https://example.com/robots.txt</code>) to confirm the pricing pages are not disallowed for crawlers; (2) read the Terms of Service for explicit prohibitions on automated access or commercial data use. If both checks pass, write a scraper with deliberate delays between requests to avoid overloading the server, handle missing elements defensively, and plan for breakage when the page layout changes. If either check raises concerns, seek legal guidance before proceeding.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> Explain why web scraping is considered more fragile than using an API. Give a specific example of a page change that would silently break a scraper without throwing any errors.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>APIs are structured contracts — the provider commits to a stable, documented format and notifies users of breaking changes. Web pages are designed for human readers and change whenever the design or CMS template changes, with no obligation to notify scrapers. <strong>Example of silent breakage:</strong> a scraper extracts product prices by finding all <code>&lt;span class="price"&gt;</code> elements on the page. The site redesigns and renames the class to <code>&lt;span class="product-price"&gt;</code>. The scraper still runs successfully — it finds zero matching elements, returns an empty list, and writes nothing to the database. No exception is raised. The analyst discovers weeks later that the pricing table has been empty since the redesign date.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="beautiful-soup" class="level2">
 <h2 class="anchored" data-anchor-id="beautiful-soup">Beautiful Soup</h2>
@@ -524,6 +625,186 @@ O’Reilly Media. ISBN: 9781098145354.</p>
 <li><strong>requests</strong> — handles the HTTP request to fetch the raw HTML before Beautiful Soup processes it.</li>
 </ul>
 <p>A typical pipeline looks like: <code>requests</code> fetches → <code>BeautifulSoup</code> parses → <code>pandas</code> cleans and stores.</p>
+</section>
+</section>
+<section id="beautiful-soup-lab" class="level2">
+<h2 class="anchored" data-anchor-id="beautiful-soup-lab">Beautiful Soup Lab</h2>
+<p><strong>1.</strong> Beautiful Soup is described as well-suited for static content but not dynamic content. What is the difference between the two, and what tool would you add to the pipeline when the target site renders content with JavaScript?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Static content</strong> is fully present in the HTML returned by the server’s HTTP response — the page source contains all the data you need, and Beautiful Soup can parse it directly. <strong>Dynamic content</strong> is generated client-side by JavaScript after the initial page load — product prices, search results, or infinite-scroll feeds are common examples. When you fetch the URL with <code>requests</code>, the response contains only the JavaScript skeleton, not the rendered data. <strong>Solution:</strong> add <strong>Selenium</strong> (or Playwright) to the pipeline. Selenium automates a real browser, executes the JavaScript, and waits for the page to fully render before exposing the final HTML. You then pass that rendered HTML to Beautiful Soup for parsing: Selenium renders → Beautiful Soup parses → pandas stores.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> Describe the three-step Beautiful Soup workflow — parse, navigate, extract — and explain what a “parse tree” is and why it is useful for locating specific elements on a page.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>Parse:</strong> Beautiful Soup reads the raw HTML string and constructs a <strong>parse tree</strong> — a hierarchical Python object that mirrors the nesting structure of the HTML tags. A <code>&lt;div&gt;</code> containing a <code>&lt;p&gt;</code> containing a <code>&lt;span&gt;</code> becomes a tree with those elements as parent-child nodes. 2. <strong>Navigate:</strong> you traverse the tree using tag names (<code>soup.find("h1")</code>), attributes (<code>soup.find_all("span", class_="price")</code>), or CSS selectors — locating the specific elements that contain the data you want. The tree structure is useful because it preserves the relationships between elements, letting you navigate from a container tag down to its children rather than scanning the entire HTML string. 3. <strong>Extract:</strong> once you have located the target element, <code>.get_text()</code> returns its text content and attribute access (e.g., <code>tag["href"]</code>) returns attribute values like URLs.</li>
+</ol>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> A typical Beautiful Soup pipeline is described as: <code>requests</code> fetches → <code>BeautifulSoup</code> parses → <code>pandas</code> cleans and stores. For each step in that pipeline, state what the input and output are — in terms of data type — so the handoff between tools is explicit.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Tool</th>
+<th>Input</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Fetch</td>
+<td><code>requests</code></td>
+<td>URL (string)</td>
+<td>HTTP response object → <code>.text</code> is a raw HTML string</td>
+</tr>
+<tr class="even">
+<td>Parse</td>
+<td><code>BeautifulSoup</code></td>
+<td>Raw HTML string</td>
+<td>BeautifulSoup parse tree (navigable Python object)</td>
+</tr>
+<tr class="odd">
+<td>Extract</td>
+<td>BeautifulSoup methods</td>
+<td>Parse tree</td>
+<td>Python list of strings or tag objects</td>
+</tr>
+<tr class="even">
+<td>Clean and store</td>
+<td><code>pandas</code></td>
+<td>List of strings / dicts</td>
+<td>DataFrame → <code>.to_csv()</code> or database write</td>
+</tr>
+</tbody>
+</table>
+<p>The explicit handoff matters because each tool expects a specific input type. Passing a response object directly to BeautifulSoup instead of <code>.text</code>, or passing a tag object instead of a string to pandas, are common beginner errors.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="summary-and-review" class="level1">
+<h1>Summary and Review</h1>
+<section id="using-ai" class="level2">
+<h2 class="anchored" data-anchor-id="using-ai">Using AI</h2>
+<p>Use the following prompts with a generative AI tool to explore data acquisition further.</p>
+<ul>
+<li>What are the key differences between primary data, secondary data, and streaming data? Give one analytics use case where each type would be the most appropriate source.</li>
+<li>The “data as oil” analogy is widely used but also criticized. What does it get right, and what does it miss about how data actually behaves as a strategic resource?</li>
+<li>When should you use an API instead of web scraping? What factors — technical, legal, and practical — influence the decision?</li>
+<li>Why is web scraping considered fragile compared to API access? What defensive coding practices reduce the risk of silent failures when a site’s HTML structure changes?</li>
+<li>What is Beautiful Soup, and where does it fit in the broader data collection pipeline? When is it insufficient on its own, and what tools complement it?</li>
+<li>A company wants to build a real-time competitor pricing dashboard. Sketch the data pipeline from collection to display, naming the tool or method you would use at each step and why.</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>This chapter surveyed the theory and practice of data acquisition — from physical sensing to web-based collection tools.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>Key concepts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Data source types</td>
+<td>Primary, secondary, streaming, public vs.&nbsp;private</td>
+</tr>
+<tr class="even">
+<td>Acquisition pipeline</td>
+<td>Sensing → signal conditioning → data conversion → collection → analysis</td>
+</tr>
+<tr class="odd">
+<td>Data formats</td>
+<td>Continuous, discrete, unstructured text, structured text, audio, video, sensor time series</td>
+</tr>
+<tr class="even">
+<td>Methods</td>
+<td>Manual entry, automated sensors, APIs, web scraping, database queries, open data portals</td>
+</tr>
+<tr class="odd">
+<td>Common sources</td>
+<td>Government portals, commercial providers, IoT sensors, social media APIs, internal systems</td>
+</tr>
+<tr class="even">
+<td>Seven challenges</td>
+<td>Quality, volume, variety, integration, cost, scalability, data governance</td>
+</tr>
+<tr class="odd">
+<td>APIs vs.&nbsp;web scraping</td>
+<td>APIs: structured, reliable, governed; scraping: flexible but fragile and compliance-sensitive</td>
+</tr>
+<tr class="even">
+<td>Scraping compliance</td>
+<td>Check <code>robots.txt</code>; read Terms of Service; respect rate limits</td>
+</tr>
+<tr class="odd">
+<td>Why scraping breaks</td>
+<td>Pages change without notice; silent failures when CSS classes or HTML structure shifts</td>
+</tr>
+<tr class="even">
+<td>Beautiful Soup</td>
+<td>Python HTML parser; transforms raw HTML into a navigable parse tree</td>
+</tr>
+<tr class="odd">
+<td>BS4 workflow</td>
+<td><code>requests</code> fetches → <code>BeautifulSoup</code> parses → <code>pandas</code> cleans and stores</td>
+</tr>
+<tr class="even">
+<td>Dynamic content</td>
+<td>Static HTML: BS4 alone; JavaScript-rendered pages: Selenium or Playwright + BS4</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What comes next:</strong> The Web Scraping and APIs chapter builds directly on these foundations with hands-on Python code — writing your first scraper, making API calls, and handling real-world data cleaning challenges.</p>
 
 
 </section>

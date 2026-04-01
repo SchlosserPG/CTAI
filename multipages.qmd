@@ -23,7 +23,7 @@ By the end, students can design organized, scalable Dash apps with multiple page
 
 Before writing any Dash code, set up a clean and organized project structure. A well-organized project makes the application easier to maintain, extend, and style as it grows.
 
-```
+```         
 my_dash_app/
 │
 ├── app.py           ← main entry point; run this file to start the app
@@ -113,11 +113,37 @@ The original code used `__name_` (single trailing underscore). `__name__` (doubl
 
 Key arguments to `dash.register_page()`:
 
-| Argument | Purpose | Example |
-|---|---|---|
-| `__name__` | Uniquely identifies the page by its module | `__name__` |
-| `path` | Sets the URL for this page | `path="/page1"` |
-| `name` | Sets the display name for navigation links | `name="Page 1"` |
+| Argument   | Purpose                                    | Example         |
+|------------|--------------------------------------------|-----------------|
+| `__name__` | Uniquely identifies the page by its module | `__name__`      |
+| `path`     | Sets the URL for this page                 | `path="/page1"` |
+| `name`     | Sets the display name for navigation links | `name="Page 1"` |
+
+## Multi-Page App Structure Lab
+
+**1.** What does `use_pages=True` do in `dash.Dash()`, and what would happen if you forgot `suppress_callback_exceptions=True` in a multi-page app with callbacks on Page 2?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+`use_pages=True` tells Dash to automatically scan the `pages/` folder, discover all files that call `dash.register_page()`, and register them as navigable pages. Without it, Dash is a single-page app and ignores the `pages/` folder entirely. **`suppress_callback_exceptions=True`:** in a multi-page app, when the user is on Page 1, the DOM components defined in Page 2's layout do not exist. If Page 2 has a callback whose Output targets a component that is not currently rendered (because Page 2 is not active), Dash raises a `NonExistentIdException` at startup. `suppress_callback_exceptions=True` silences this — Dash trusts that the missing component will appear when the user navigates to that page, and defers validation until the callback is actually triggered.
+:::
+
+**2.** Explain the role of `dash.page_container` in `app.py`. What does it render, and what would happen if you removed it from the layout?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+`dash.page_container` is a special Dash component that acts as a **dynamic slot**: it renders the `layout` variable of whatever page matches the current URL. When the user clicks a nav link, the URL changes and `page_container` automatically swaps in the layout of the corresponding page — without a full browser reload. If you removed it, the navigation bar would still appear and the URL would change when links are clicked, but **no page content would ever be displayed** — the area below the navbar would be permanently empty regardless of which page is selected.
+:::
+
+**3.** What is the difference between `dbc.NavLink(active="exact")` and `dbc.NavLink(active="partial")`, and why does it matter for the Home link at path `"/"`?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+`active="exact"` highlights the nav link only when the URL matches the link's `href` **exactly**. `active="partial"` highlights it whenever the current URL **starts with** the `href`. For the Home link at `href="/"`, `active="partial"` would cause it to appear highlighted on **every page** — because all URLs start with `/`. With `active="exact"`, the Home link is highlighted only when the URL is exactly `"/"`, and Page 1 and Page 2 links are highlighted only on their respective pages. This distinction is invisible for non-root paths (`/page1`, `/page2`) but critical for the root path.
+:::
 
 ## The App Layout (`app.py`)
 
@@ -361,3 +387,65 @@ ID selectors (`#id`) are used here because these are **unique elements** — the
     min-height: 72px;   /* prevents layout shift when the box is empty */
 }
 ```
+
+## Page Design and Callbacks Lab
+
+**1.** Page 2 uses `prevent_initial_call=True` on its callback. What would happen without it, and why is this especially important for a callback that calls an external API?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+Without `prevent_initial_call=True`, Dash fires the callback immediately when the page loads with `n_clicks=0` — before the user has clicked anything. For a button that fetches a cat fact, this means the API is called on every page load rather than on demand. **Why this matters for external APIs:** (1) it consumes rate-limited API quota on every page navigation, not just on explicit user actions; (2) it creates a visible loading spinner on page load before the user has expressed any intent; (3) if the API is slow or unavailable, it degrades initial page performance. `prevent_initial_call=True` ensures the callback only runs on real user interactions.
+:::
+
+**2.** The `assets/style.css` file uses `!important` on the `background-color` property. Explain what `!important` does, when it is necessary, and why it should be used sparingly.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+`!important` forces a CSS declaration to override any other conflicting rule, regardless of selector specificity or declaration order. It is necessary here because Bootstrap's stylesheet — loaded via `external_stylesheets` — includes its own `body` background color with high specificity. Without `!important`, Bootstrap's rule wins and the custom background is ignored. **Why use it sparingly:** `!important` bypasses the normal cascade, making stylesheets harder to reason about. If you override a rule with `!important` and later need to override that rule again, you need another `!important` in a more specific selector — leading to specificity wars that make styles unpredictable and difficult to maintain. The correct long-term fix is to understand why the original rule wins and write a more specific selector rather than using `!important`.
+:::
+
+**3.** Only `app.py` should contain `app.run(...)` — page files must never include it. What would happen if you added `app.run(debug=True)` to the bottom of `page1.py`?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+When Dash loads a multi-page app, it imports all files in the `pages/` folder to discover their `layout` variables and registered paths. If `page1.py` contains `app.run(debug=True)`, that line executes **at import time** — starting a second development server on port 8050 while the main server from `app.py` is already running. This produces a `OSError: [Errno 98] Address already in use` crash, or in some environments two conflicting servers that interfere with each other. The `if __name__ == "__main__":` guard in `app.py` prevents this — `app.run()` only executes when the file is run directly, not when it is imported. Page files are always imported, never run directly, so they must never contain a run call.
+:::
+
+# Summary and Review
+
+## Using AI
+
+Use the following prompts with a generative AI tool to explore multi-page Dash apps further.
+
+-   What is the purpose of `use_pages=True` in a Dash app? How does Dash discover and register pages automatically?
+-   What does `suppress_callback_exceptions=True` do in a multi-page app, and why is it required when pages have callbacks?
+-   What is `dash.page_container`, and what would happen if it were removed from the app layout?
+-   What is the difference between `active="exact"` and `active="partial"` on a `dbc.NavLink`? Why does this matter specifically for the root path?
+-   What does `prevent_initial_call=True` do on a callback, and when is it especially important for API-calling callbacks?
+-   Why must `app.run()` only appear in `app.py` and never in a page file? What goes wrong if a page file calls `app.run()`?
+-   What is the CSS `!important` keyword, and why should it be used sparingly even when it solves an immediate styling problem?
+
+## Summary
+
+This chapter introduced multi-page Dash application structure — organizing pages, navigation, shared styling, and page-specific layouts and callbacks.
+
+| Topic | Key concepts |
+|------------------------------------|------------------------------------|
+| Project structure | `app.py` at root; `pages/` for page files; `assets/` for shared CSS |
+| `use_pages=True` | Tells Dash to auto-discover and register all files in `pages/` |
+| `suppress_callback_exceptions=True` | Prevents errors when page components are not yet in the DOM |
+| `server = app.server` | Exposes Flask server for gunicorn/Render deployment |
+| `dash.register_page()` | Declares a file as a page; sets `path` and `name` |
+| `dash.page_container` | Dynamic slot that renders the active page's `layout` |
+| `dbc.NavbarSimple` | Top navigation bar with `brand=` and `dbc.NavLink` items |
+| `active="exact"` | Highlights nav link only on exact URL match (critical for `"/"`) |
+| CSS `!important` | Forces rule override; use sparingly to avoid specificity conflicts |
+| Page 1 layout | Flexbox (vertical) + CSS Grid (two-column middle) |
+| `@media` queries | Responsive breakpoint — collapse to single column on narrow screens |
+| Page 2 callback | `prevent_initial_call=True`; `requests.get` + `r.raise_for_status()` |
+| `app.run()` in page files | Never — page files are imported, not run directly |
+
+**What comes next:** The Using Multiple Callbacks chapter extends these apps with more complex callback patterns — multiple inputs and outputs in a single callback and a full World Happiness data visualization dashboard.

@@ -34,10 +34,10 @@ Source code for class examples: <https://github.com/SchlosserPG/ForClass>
 
 The script below scrapes upcoming Python events from python.org. It follows four steps:
 
-1. Import `requests` (for fetching the page) and `BeautifulSoup` (for parsing HTML).
-2. Send a **GET** request to the URL and retrieve the raw HTML.
-3. Create a `BeautifulSoup` object to parse the HTML into a navigable tree.
-4. Locate the event list and collect all individual event entries.
+1.  Import `requests` (for fetching the page) and `BeautifulSoup` (for parsing HTML).
+2.  Send a **GET** request to the URL and retrieve the raw HTML.
+3.  Create a `BeautifulSoup` object to parse the HTML into a navigable tree.
+4.  Locate the event list and collect all individual event entries.
 
 ```{python}
 import requests
@@ -109,6 +109,33 @@ for event in events:
     print("-" * 40)
 ```
 
+### Web Scraping Lab
+
+**1.** In the python.org scraper, the location is extracted with `.find('span', {'class': 'event-location'})`. Explain what the dictionary `{'class': 'event-location'}` does in this context, and why it is necessary rather than just calling `.find('span')`.
+
+::: {.callout-note collapse="true"}
+#### Show Answer
+
+The dictionary passed to `.find()` specifies **HTML attribute filters** — it narrows the search to only those `<span>` tags whose `class` attribute equals `"event-location"`. Without the filter, `.find('span')` would return the first `<span>` tag on the entire page — which could be a navigation element, a date badge, a social media icon, or any other element that happens to use a `<span>` tag. Web pages typically contain dozens or hundreds of `<span>` tags. The CSS class `"event-location"` is a reliable selector because it was deliberately applied by the page's developers to mark location data specifically. Attribute filters are how you tell BeautifulSoup to find a semantically meaningful element, not just the first occurrence of a tag type.
+:::
+
+**2.** The scraper would break silently if `event.find('h3')` returned `None` (because an event entry had no `<h3>` tag) and the code then called `.get_text()` on it. Write the one-line defensive check you would add inside the loop to skip any event that is missing a title, and explain why "silent breakage" is more dangerous than a visible error.
+
+::: {.callout-note collapse="true"}
+#### Show Answer
+
+``` python
+for event in events:
+    title_tag = event.find('h3')
+    if title_tag is None:
+        continue                            # skip this event — no title found
+    title = title_tag.get_text(strip=True)
+    ...
+```
+
+**Why silent breakage is more dangerous:** a visible error (like an `AttributeError: 'NoneType' object has no attribute 'get_text'`) crashes the script immediately and tells you exactly where the problem is. Silent breakage — returning an empty list, skipping records, or producing `None` values — allows the script to run to completion and produce output that *looks* correct but is missing data. You may not discover the problem until you rely on the output for a decision and someone notices that certain events are absent. In data pipelines, silent failures are especially hazardous because they can propagate undetected through downstream analyses.
+:::
+
 ## APIs
 
 ### What Is an API?
@@ -119,8 +146,8 @@ Think of an API like ordering at a restaurant: you do not walk into the kitchen 
 
 ### APIs vs. Web Scraping
 
-| | **API** | **Web Scraping** |
-|---|---|---|
+|   | **API** | **Web Scraping** |
+|------------------------|------------------------|------------------------|
 | Data format | Structured JSON or XML | Unstructured HTML |
 | Stability | Versioned, documented | Breaks when page layout changes |
 | Authentication | Often required | Rarely required |
@@ -165,10 +192,10 @@ An **API key** is a unique string — typically a long sequence of letters and n
 
 To obtain an API key:
 
-1. Create a free account with the data provider.
-2. Navigate to the **API**, **Developers**, or **Account Settings** section.
-3. Click **Generate API Key** or **Create Access Token**.
-4. Copy the key and store it somewhere safe — such as a `.env` file or environment variable — so it is **never** hardcoded in your script or uploaded to GitHub.
+1.  Create a free account with the data provider.
+2.  Navigate to the **API**, **Developers**, or **Account Settings** section.
+3.  Click **Generate API Key** or **Create Access Token**.
+4.  Copy the key and store it somewhere safe — such as a `.env` file or environment variable — so it is **never** hardcoded in your script or uploaded to GitHub.
 
 ::: note
 If you accidentally push an API key to a public GitHub repository, treat it as compromised. Delete or regenerate it immediately through the provider's website, then remove it from your git history.
@@ -321,6 +348,38 @@ df = pd.DataFrame(results)
 print(df)
 ```
 
+### APIs Lab
+
+**1.** The weather script builds `params` as a dictionary and passes it to `requests.get(url, params=params)`. Explain what this does compared to manually constructing the URL string, and show what the equivalent URL string would look like for Williamsburg's coordinates.
+
+::: {.callout-note collapse="true"}
+#### Show Answer
+
+Passing `params=` tells `requests` to **URL-encode the dictionary and append it as a query string** automatically — handling special characters, spaces, and formatting correctly. This is safer and more readable than string concatenation. The equivalent manually-constructed URL for Williamsburg would be:
+
+```         
+https://api.open-meteo.com/v1/forecast?latitude=37.2707&longitude=-76.7075&current_weather=True
+```
+
+Query parameters follow the `?` separator; each `key=value` pair is joined by `&`. Using `params=` means you never need to handle URL encoding by hand — for example, if a parameter value contained a space or a special character, `requests` would encode it as `%20` or `%26` automatically. Manual string concatenation would silently produce an invalid URL in those cases.
+:::
+
+**2.** An API key is described as similar to a library card. What three things should you never do with an API key, and what is the correct storage approach for a Python project?
+
+::: {.callout-note collapse="true"}
+#### Show Answer
+
+**Never:** (1) **Hardcode it in your script** — anyone who sees your code can use your key and exhaust your rate limits or incur charges on your account. (2) **Upload it to a public GitHub repository** — once pushed to a public repo, the key is exposed to automated scanners that harvest credentials within minutes. Treat any pushed key as immediately compromised and regenerate it. (3) **Share it in a Slack message, email, or screenshot** — keys shared in communication tools can be seen by unintended recipients and are rarely revoked. **Correct storage:** store the key in a `.env` file (a plain text file listing `API_KEY=yourkey`) that is listed in `.gitignore` so it is never committed. Access it in Python with the `python-dotenv` library (`from dotenv import load_dotenv; load_dotenv(); key = os.environ["API_KEY"]`). For deployed applications, store secrets in the hosting platform's environment variables (e.g., Render.com's Environment Variables settings) rather than in any file.
+:::
+
+**3.** Trace through the weather script for a city where the API returns a `200 OK` status but the JSON response does not contain a `"current_weather"` key. What does the script do, what does the resulting DataFrame row look like, and is this good defensive programming?
+
+::: {.callout-note collapse="true"}
+#### Show Answer
+
+`response.raise_for_status()` passes without error because the HTTP status is `200`. `response.json()` successfully parses the response. The `if "current_weather" in data:` check is `False`, so the `else` branch executes — appending a dictionary with `None` for Temperature, Wind Speed, and Time. The resulting DataFrame row contains the city name and three `None` values. **Is this good defensive programming?** Yes — it handles a structurally valid but content-incomplete API response gracefully, allowing the loop to continue for the remaining cities rather than crashing. The downstream analyst can see which cities returned `None` and investigate whether the API endpoint changed, the coordinates were invalid, or the service was temporarily unavailable for that location. A crash on `None` would give less information and would fail the entire batch if even one city's response was missing the expected field.
+:::
+
 ## Web Scraping with pandas
 
 Sometimes the data you want is already in an HTML table — neatly structured rows and columns. In that case, `pandas.read_html()` is a faster alternative to manually parsing with BeautifulSoup: it finds all `<table>` elements on a page and returns them as a list of DataFrames.
@@ -402,8 +461,67 @@ Much online content — text, images, and code — is protected by copyright. Sc
 
 Before scraping any site at scale, always:
 
-1. Read the site's `robots.txt` file (e.g., `https://www.example.com/robots.txt`) to see what crawlers are allowed to access.
-2. Review the site's Terms of Service for explicit scraping policies.
-3. Avoid overloading servers — add delays between requests and limit your request rate.
+1.  Read the site's `robots.txt` file (e.g., `https://www.example.com/robots.txt`) to see what crawlers are allowed to access.
+2.  Review the site's Terms of Service for explicit scraping policies.
+3.  Avoid overloading servers — add delays between requests and limit your request rate.
 
 > [**Discussion: What are the ethical and legal boundaries of scraping data for training AI models?**]{style="background-color: yellow;"}
+
+### Ethics and Legal Considerations Lab
+
+**1.** You want to scrape product prices and reviews from a major e-commerce site to train a price comparison model. Describe the three compliance steps you would take before writing a single line of code, and explain what you would do if the Terms of Service explicitly prohibited automated data collection.
+
+::: {.callout-note collapse="true"}
+#### Show Answer
+
+**Step 1 — Check `robots.txt`:** navigate to `https://www.example.com/robots.txt` and look for `Disallow` rules covering the paths you want to scrape (e.g., `/products/`, `/reviews/`). If your target paths are disallowed for all user agents (`User-agent: *`), automated crawling is technically prohibited by the standard even if not legally enforceable in all jurisdictions. **Step 2 — Read the Terms of Service:** search for sections on "automated access," "scraping," "crawling," "data collection," or "commercial use." Pay specific attention to whether the ToS prohibits commercial use of scraped data — training a price model for commercial deployment is clearly commercial. **Step 3 — Assess copyright and data ownership:** product descriptions, images, and user reviews may be protected by copyright. Bulk collection for model training is specifically the category of use that is currently being litigated in cases like NYT v. OpenAI. **If the ToS explicitly prohibits automated collection:** stop. Using the site's data in violation of ToS exposes your organization to breach-of-contract claims and potentially worse depending on jurisdiction and scale. Contact the company to negotiate a data licensing agreement, or find a legal alternative data source (a competitor with permissive ToS, a licensed data provider, or a public API).
+:::
+
+**2.** Explain the difference between scraping being technically legal and it being ethically responsible. Give an example where something could be technically permitted but still ethically problematic.
+
+::: {.callout-note collapse="true"}
+#### Show Answer
+
+**Technical legality** addresses whether an action violates law or contract — copyright statutes, computer fraud laws, Terms of Service as a contract. **Ethical responsibility** addresses whether the action is right even when permitted — respecting the intent of content creators, not overloading servers, considering harms to affected parties. **Example — social media profile scraping:** scraping publicly visible social media profiles is often technically permitted (public data, no ToS violation for personal viewing). Aggregating millions of those profiles to build a behavioral inference model — predicting mental health status, political views, or creditworthiness — may be technically legal but is ethically problematic. The individuals who posted publicly did not consent to their data being used for automated profiling, the inferences may be inaccurate and harmful, and the power asymmetry between the aggregator and the individuals is significant. Legal permission is a floor, not a ceiling, on responsible behavior.
+:::
+
+# Summary and Review
+
+## Using AI
+
+Use the following prompts with a generative AI tool to explore web scraping and APIs further.
+
+-   What is the difference between web scraping and calling an API? When is each the appropriate choice, and what are the key risks of relying on scraping for a production pipeline?
+-   What does BeautifulSoup's `.find()` method do, and why would you pass a dictionary of attributes alongside the tag name?
+-   What is `r.raise_for_status()`, and why is it important to call it immediately after every API request rather than relying on `.json()` to detect errors?
+-   What is JSON, and why does it map so naturally to Python data structures? Give an example of a nested JSON response and show how you would access a deeply nested value.
+-   What is an API key, and what are the three things you should never do with one? What is the correct way to store a key in a Python project?
+-   What is `pandas.read_html()`, and when is it a better choice than BeautifulSoup? What are its limitations?
+-   What are the three compliance steps you should take before scraping a site at scale? What does `robots.txt` tell you, and where do you find it?
+
+## Summary
+
+This chapter covered the two primary methods for acquiring web data — scraping and APIs — with end-to-end Python implementations and an ethics framework for responsible use.
+
+| Topic | Key concepts |
+|------------------------------------|------------------------------------|
+| Web scraping | Programmatically fetching and parsing HTML; right choice when no API exists |
+| URL anatomy | Protocol (`https://`), domain, path |
+| Browser DevTools | Ctrl+Shift+I → Elements tab; identify HTML tags and CSS classes for target data |
+| `requests.get()` | Sends HTTP GET request; `.text` = raw HTML; `.json()` = parsed JSON dict |
+| BeautifulSoup | Parses HTML into a navigable tree; `.find()` = first match; `.find_all()` = all matches |
+| Attribute filtering | `.find('tag', {'class': 'name'})` — narrows search to specific CSS class |
+| `.get_text(strip=True)` | Extracts plain text from a tag; `strip=True` removes surrounding whitespace |
+| Defensive scraping | Check for `None` before calling methods; use `continue` to skip broken elements |
+| APIs | Structured contract; JSON or XML response; versioned and documented |
+| REST | Most common API style for public data; HTTP GET with `params=` |
+| API key | Unique identifier; store in `.env`/environment variables; never hardcode or push to GitHub |
+| JSON | Key-value pairs (dict) and arrays (list); `.json()` converts to Python objects |
+| `raise_for_status()` | Raises exception on 4xx/5xx errors; always call immediately after `requests.get()` |
+| `params=` dictionary | `requests` URL-encodes and appends as query string automatically |
+| `pandas.read_html()` | Parses all `<table>` elements into a list of DataFrames; faster than BS4 for table data |
+| Data cleaning | Remove footnotes (`str.replace(regex)`), commas, non-numeric characters; convert types |
+| Ethics compliance | Check `robots.txt`; read Terms of Service; limit request rate; respect copyright |
+| Legal vs. ethical | Technical permission is a floor, not a ceiling — ethically responsible use goes further |
+
+**What comes next:** The course summary ties together all technical and strategic threads — from platform competition and AI ethics through data acquisition, visualization, dashboard development, and deployment.

@@ -30,14 +30,14 @@ This is useful for dashboards where content is consumed in a specific order (fil
 Component 1 | Component 2 | Component 3
 ```
 
-### What Is Bootstrap?
+# Bootstrap
 
 **Bootstrap** is a popular front-end framework that provides a responsive grid layout, prebuilt UI components, and utility classes. **Dash Bootstrap Components** (`dash-bootstrap-components`, imported as `dbc`) makes Bootstrap available inside Dash apps.
 
 Bootstrap's grid system is built on **12 equal units per row**. You control each column's width with `md=N`, where `N` is the number of units that column occupies:
 
 | `md=` value | Width                   | Common use                            |
-|-------------|-------------------------|---------------------------------------|
+|-----------------|----------------------|----------------------------------|
 | `md=12`     | Full width (100%)       | Title rows, footers                   |
 | `md=6`      | Half width (50%)        | Two equal columns                     |
 | `md=4`      | One-third width (33%)   | Three equal columns (e.g., KPI cards) |
@@ -48,7 +48,7 @@ The two core layout components are:
 -   [**`dbc.Row()`**]{style="background-color: yellow;"} — a horizontal container. Only `dbc.Col()` components should be its direct children.
 -   [**`dbc.Col()`**]{style="background-color: yellow;"} — where content actually lives. Its `md=N` parameter controls its share of the 12-column grid.
 
-### Top Components in `dbc`
+## Top Components in `dbc`
 
 ![](images/dbc.png)
 
@@ -144,9 +144,9 @@ if __name__ == "__main__":
 `dbc.Container(fluid=True)` makes the layout span the full browser width. Without `fluid=True`, Bootstrap applies a fixed maximum width with padding on both sides — appropriate for text-heavy pages but not for dashboards that should fill the screen.
 :::
 
-## Multi-Layout Weather App
+# Multi-Layout Weather App
 
-### Imports and City Coordinates
+## Imports and City Coordinates
 
 ```{python}
 # MultiLayoutWeather.py
@@ -168,7 +168,7 @@ CITY_COORDS = {
 
 ![](images/weatherapi.png)
 
-### Fetching the Hourly Temperature
+## Fetching the Hourly Temperature
 
 `fetch_hourly_temp(lat, lon)` returns a 48-row DataFrame — one row per hour — of forecast temperature data for a given location.
 
@@ -191,15 +191,67 @@ def fetch_hourly_temp(lat: float, lon: float) -> pd.DataFrame:
     return df
 ```
 
-## Theme, Navbar, and CSS
+## Bootstrap Grid Layout Lab
 
-### Theme Explorer
+**1.** Bootstrap's grid is based on 12 units per row. Write the `dbc.Row` and `dbc.Col` structure for a layout with: a full-width header row, then a row with a narrow left sidebar (3 units), a wide center chart area (6 units), and a narrow right panel (3 units). What must the column widths in any row sum to?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+Column widths must sum to **12** (or be left unset for equal auto-distribution).
+
+``` python
+dbc.Container([
+    dbc.Row(
+        dbc.Col(html.Div("Header"), width=12)
+    ),
+    dbc.Row([
+        dbc.Col(html.Div("Sidebar"),    md=3),
+        dbc.Col(html.Div("Chart"),      md=6),
+        dbc.Col(html.Div("Right Panel"), md=3),
+    ])
+], fluid=True)
+```
+
+3 + 6 + 3 = 12. If the columns do not sum to 12, Bootstrap either truncates the last column or leaves empty space. Using `md=` sets the width at medium screen sizes and above; on smaller screens Bootstrap may stack them vertically depending on the theme configuration.
+:::
+
+**2.** What is the difference between `dbc.Container(fluid=True)` and `dbc.Container()` (without `fluid`)? When would you choose each in a dashboard context?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+`dbc.Container()` without `fluid` applies a **fixed maximum width** with automatic padding on both sides — the content is centered and does not stretch beyond a defined breakpoint (typically around 1140px on large screens). This is appropriate for text-heavy pages or content where readability is the priority. `dbc.Container(fluid=True)` makes the layout **span the full browser width** — the content fills the entire viewport regardless of screen size. This is the standard choice for dashboards, where charts and tables should use all available horizontal space. Most Dash dashboards use `fluid=True`.
+:::
+
+**3.** The weather app's `fetch_hourly_temp` function uses `r.raise_for_status()` and returns a pandas DataFrame. If the Open-Meteo API is temporarily unavailable and returns a `503 Service Unavailable` error, what happens in the current code, and how would you modify the callback to handle this gracefully?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+In the current code, `r.raise_for_status()` raises a `requests.HTTPError`, which propagates up through `fetch_hourly_temp` and crashes the callback — the user sees a "Callback error updating..." message in Dash's debug mode, or a blank output. To handle this gracefully, wrap the `fetch_hourly_temp` call inside the callback in a `try/except` block:
+
+``` python
+try:
+    df = fetch_hourly_temp(lat, lon)
+except requests.RequestException as e:
+    error_msg = html.Div(f"Unable to fetch weather data: {e}",
+                         style={"color": "red"})
+    return {}, "--", "--", "--", error_msg
+```
+
+This returns a blank figure, placeholder KPI values, and a visible error message in the table area — far better than a silent crash. Always wrap external API calls in callbacks with error handling so users receive informative feedback rather than a broken dashboard.
+:::
+
+# Theme, Navbar, and CSS
+
+## Theme Explorer
 
 Browse available Bootstrap themes at [dash-bootstrap-components.com/docs/themes/explorer](https://www.dash-bootstrap-components.com/docs/themes/explorer/). Use **Ctrl + I** (browser inspector) to identify specific Bootstrap class names or CSS values you want to apply or override.
 
 ![](images/externalstyle.png)
 
-### CSS: IDs vs. Classes
+## CSS: IDs vs. Classes
 
 A single external stylesheet in `assets/` is best practice for multi-page apps: centralized, consistent, and updated in one place.
 
@@ -212,7 +264,7 @@ A single external stylesheet in `assets/` is best practice for multi-page apps: 
 
 Prefer **classes** for reusable styles; reserve **IDs** for unique elements or callback targets.
 
-### Building the Navbar
+## Building the Navbar
 
 Bootstrap utility classes let you style elements without writing custom CSS:
 
@@ -230,9 +282,9 @@ navbar = html.Div(
 )
 ```
 
-## Building Dashboard Components
+# Building Dashboard Components
 
-### Controls Panel
+## Controls Panel
 
 ```{python}
 controls = dbc.Card([
@@ -258,7 +310,7 @@ controls = dbc.Card([
 ], className="mb-3")   # mb-3 = Bootstrap margin-bottom spacing utility
 ```
 
-### KPI Cards and Chart
+## KPI Cards and Chart
 
 A **KPI card** is a small Bootstrap card that displays a single summary metric — a label and a large number. Each card's `id_` is updated by the callback.
 
@@ -292,7 +344,7 @@ chart_card = dbc.Card([
 ])
 ```
 
-### Stats Table and Full Layout
+## Stats Table and Full Layout
 
 ```{python}
 table_card = dbc.Card([
@@ -385,3 +437,57 @@ def update(city, _):
 if __name__ == "__main__":
     app.run(debug=True)
 ```
+
+## Dashboard Components and Callbacks Lab
+
+**1.** The weather app callback returns five values in a specific order. What would happen if you accidentally swapped the `kpi-min` and `kpi-max` return values, and how would you debug it?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+The KPI cards would display incorrect values — the card labeled "Min (°C/48h)" would show the maximum temperature and vice versa. The dashboard would still run without errors because the data types match (both are formatted strings), making this a **silent logic error** — one of the hardest bugs to catch. **How to debug:** compare the KPI card labels to the Output order in the `@app.callback` decorator. The Output declarations are `kpi-now`, `kpi-min`, `kpi-max`, `stats-table` — the return statement must match exactly: `return fig, fmt(now), fmt(tmin), fmt(tmax), table`. Adding a print statement inside the callback (`print(tmin, tmax)`) and comparing to what the cards display quickly isolates the swap.
+:::
+
+**2.** The `kpi_card` function is defined outside the app layout and called three times to build the KPI row. What is the advantage of this pattern over writing three separate `dbc.Card` components inline in the layout?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+The function pattern follows the **DRY (Don't Repeat Yourself)** principle. Writing three `dbc.Card` blocks inline means any change to the card style or structure (adding a unit label, changing the class, adjusting padding) must be made in three places — and it is easy to make the change in two but miss the third, introducing inconsistency. With a function, the structure is defined once, tested once, and updated in one place. The function also makes the layout code more readable — `kpi_card("Current Temp (°C)", "kpi-now")` is self-documenting, while a full inline `dbc.Card([dbc.CardBody([...])])` block obscures intent with boilerplate.
+:::
+
+# Summary and Review
+
+## Using AI
+
+Use the following prompts with a generative AI tool to explore grid layouts and Bootstrap further.
+
+-   How does Bootstrap's 12-column grid work? What happens when column widths in a row do not sum to 12?
+-   What is the difference between `dbc.Container(fluid=True)` and a fixed-width container? When would you use each?
+-   What is a Bootstrap theme, and how do you apply one to a Dash app? How do Bootstrap utility classes (like `text-muted`, `mb-3`, `w-100`) differ from custom CSS?
+-   What is a KPI card, and why is it a common pattern in business dashboards? How do you wire one to a callback?
+-   Explain the `lambda` function used in the weather app: `fmt = lambda x: f"{x:.1f}"`. What does it do, and when is a lambda appropriate versus a full `def` function?
+-   Why is error handling inside API-calling callbacks important? What should a well-handled API error look like from the user's perspective?
+
+## Summary
+
+This chapter introduced responsive grid layouts using Dash Bootstrap Components and built a full multi-column weather dashboard with live API data.
+
+| Topic | Key concepts |
+|------------------------------------|------------------------------------|
+| Default vs. grid layout | Default: vertical stacking; Bootstrap grid: rows and columns |
+| Bootstrap 12-column grid | `dbc.Row()` and `dbc.Col(md=N)`; columns in a row should sum to 12 |
+| Common `md=` values | 12 = full, 6 = half, 4 = one-third, 3 = one-quarter |
+| `dbc.Container` | `fluid=True` = full browser width; default = fixed max-width centered |
+| Bootstrap themes | Applied via `external_stylesheets=[dbc.themes.THEME]`; swap for different visual style |
+| CSS IDs vs. classes | `#id` = unique element + callback target; `.class` = reusable shared styles |
+| Bootstrap utility classes | `text-muted`, `mb-3`, `w-100`, `g-3`, `h-100` — styling without custom CSS |
+| Navbar | `html.Div(className="navbar navbar-dark bg-dark")` — Bootstrap utility class styling |
+| KPI cards | `dbc.Card` + `dbc.CardBody`; `id=` wired to callback Output |
+| `dbc.Table.from_dataframe` | Converts pandas DataFrame to a Bootstrap-styled HTML table |
+| Open-Meteo API | Free weather API; no key required; returns hourly temperature forecast |
+| `fetch_hourly_temp` | Calls API, parses JSON, returns 48-row DataFrame with time and temp_C |
+| Callback with 5 outputs | Return order must match Output declaration order exactly |
+| `lambda` formatter | `fmt = lambda x: f"{x:.1f}"` — concise single-use formatting function |
+
+**What comes next:** The Setting Up Multiple Pages chapter extends the single-page dashboard into a multi-page application — adding navigation, shared styling, and per-page layouts and callbacks.

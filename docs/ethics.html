@@ -235,6 +235,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#data-and-labeling-bias" id="toc-data-and-labeling-bias" class="nav-link" data-scroll-target="#data-and-labeling-bias">Data and Labeling Bias</a></li>
   <li><a href="#algorithm-and-human-bias" id="toc-algorithm-and-human-bias" class="nav-link" data-scroll-target="#algorithm-and-human-bias">Algorithm and Human Bias</a></li>
   </ul></li>
+  <li><a href="#ethics-and-cybersecurity-lab" id="toc-ethics-and-cybersecurity-lab" class="nav-link" data-scroll-target="#ethics-and-cybersecurity-lab">Ethics and Cybersecurity Lab</a></li>
   <li><a href="#security-abuse-and-misuse-of-ai" id="toc-security-abuse-and-misuse-of-ai" class="nav-link" data-scroll-target="#security-abuse-and-misuse-of-ai">Security: Abuse and Misuse of AI</a>
   <ul class="collapse">
   <li><a href="#deepfakes" id="toc-deepfakes" class="nav-link" data-scroll-target="#deepfakes">Deepfakes</a></li>
@@ -245,6 +246,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#ai-driven-fraud" id="toc-ai-driven-fraud" class="nav-link" data-scroll-target="#ai-driven-fraud">AI-Driven Fraud</a></li>
   <li><a href="#intelligent-warfare" id="toc-intelligent-warfare" class="nav-link" data-scroll-target="#intelligent-warfare">Intelligent Warfare</a></li>
   </ul></li>
+  <li><a href="#security-abuse-and-misuse-lab" id="toc-security-abuse-and-misuse-lab" class="nav-link" data-scroll-target="#security-abuse-and-misuse-lab">Security: Abuse and Misuse Lab</a></li>
   <li><a href="#ai-governance" id="toc-ai-governance" class="nav-link" data-scroll-target="#ai-governance">AI Governance</a>
   <ul class="collapse">
   <li><a href="#making-the-black-box-transparent" id="toc-making-the-black-box-transparent" class="nav-link" data-scroll-target="#making-the-black-box-transparent">Making the Black Box Transparent</a></li>
@@ -252,10 +254,16 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#security-that-thinks" id="toc-security-that-thinks" class="nav-link" data-scroll-target="#security-that-thinks">Security That Thinks</a></li>
   <li><a href="#designing-ethical-human-centered-ai-systems" id="toc-designing-ethical-human-centered-ai-systems" class="nav-link" data-scroll-target="#designing-ethical-human-centered-ai-systems">Designing Ethical, Human-Centered AI Systems</a></li>
   </ul></li>
+  <li><a href="#ai-governance-lab" id="toc-ai-governance-lab" class="nav-link" data-scroll-target="#ai-governance-lab">AI Governance Lab</a></li>
   <li><a href="#citing-ai-and-verifying-sources" id="toc-citing-ai-and-verifying-sources" class="nav-link" data-scroll-target="#citing-ai-and-verifying-sources">Citing AI and Verifying Sources</a>
   <ul class="collapse">
   <li><a href="#citing-chatgpt-in-apa-style" id="toc-citing-chatgpt-in-apa-style" class="nav-link" data-scroll-target="#citing-chatgpt-in-apa-style">Citing ChatGPT in APA Style</a></li>
   <li><a href="#trimming-a-url-for-apa-style" id="toc-trimming-a-url-for-apa-style" class="nav-link" data-scroll-target="#trimming-a-url-for-apa-style">Trimming a URL for APA Style</a></li>
+  </ul></li>
+  <li><a href="#summary-and-review" id="toc-summary-and-review" class="nav-link" data-scroll-target="#summary-and-review">Summary and Review</a>
+  <ul class="collapse">
+  <li><a href="#using-ai" id="toc-using-ai" class="nav-link" data-scroll-target="#using-ai">Using AI</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -379,6 +387,66 @@ Available via <a href="https://ebookcentral.proquest.com/lib/cwm/detail.action?d
 <p><strong>Human or cognitive bias</strong> enters through the choices made by developers, data labelers, and end users. Choices about which features to include, how to define the target variable, which metrics to optimize, and how to interpret results are all value-laden decisions that can introduce systematic distortion. AI does not eliminate human judgment — it encodes it.</p>
 </section>
 </section>
+<section id="ethics-and-cybersecurity-lab" class="level2">
+<h2 class="anchored" data-anchor-id="ethics-and-cybersecurity-lab">Ethics and Cybersecurity Lab</h2>
+<p><strong>1.</strong> Apply the five core ethical principles to a real scenario: a hospital is deploying an AI model that recommends which patients to prioritize for follow-up calls after discharge. Identify a potential failure for each of the five principles.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Autonomy:</strong> patients are not informed that an AI is influencing their care prioritization or given a way to opt out.</li>
+<li><strong>Justice:</strong> if the training data underrepresents certain ethnic groups, the model may systematically rank those patients lower for follow-up.</li>
+<li><strong>Beneficence:</strong> the model could reduce readmission rates — but only if it is actually more accurate than clinical judgment.</li>
+<li><strong>Non-maleficence:</strong> a patient ranked low by the model is not called, deteriorates at home, and is readmitted in critical condition.</li>
+<li><strong>Explicability:</strong> the clinical team cannot explain to a patient or a regulator why they were deprioritized — the model is a black box.</li>
+</ul>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> The Equifax breach is described as both a technical failure and an ethical failure. What made it an ethical failure, and which pillar of the CIA+A triad did each failure most directly violate?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The <strong>technical failure</strong> was leaving a known vulnerability unpatched — a <strong>Confidentiality</strong> failure (unauthorized access to 147 million records). The <strong>ethical failure</strong> was delayed public disclosure — an <strong>Accountability</strong> failure (no traceable response, no timely warning to affected individuals). Executives selling stock before disclosure added a further dimension: the people responsible for protecting user data used their inside knowledge for personal gain while the public remained uninformed.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> Describe a scenario where all three types of bias — data bias, labeling bias, and algorithm bias — could compound each other in a hiring AI system. What would be the aggregate effect on job applicants?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A company trains a hiring model on 10 years of historical hires. <strong>Data bias:</strong> the historical hires are 80% male because of past discriminatory practices — the model learns male-coded patterns as signals of success. <strong>Labeling bias:</strong> human reviewers who labeled “successful employee” in the training data applied gendered assumptions — women who left for caregiving reasons were labeled failures. <strong>Algorithm bias:</strong> the model is optimized to replicate past promotions, baking in historical inequity as the definition of merit. <strong>Aggregate effect:</strong> qualified women are consistently scored lower, never reach an interview, and the pattern compounds each year as new biased hires generate more biased training data.</p>
+</div>
+</div>
+</div>
+</section>
 <section id="security-abuse-and-misuse-of-ai" class="level2">
 <h2 class="anchored" data-anchor-id="security-abuse-and-misuse-of-ai">Security: Abuse and Misuse of AI</h2>
 <section id="deepfakes" class="level3">
@@ -389,7 +457,7 @@ Available via <a href="https://ebookcentral.proquest.com/lib/cwm/detail.action?d
 <li><strong>Entertainment face swaps</strong> — Jim Carrey’s face digitally inserted into <em>The Shining</em> and the viral Tom Cruise TikTok deepfakes are widely cited examples. Many such creations are made without the subject’s consent, raising serious questions about dignity and intellectual property.</li>
 <li><strong>Political disinformation</strong> — a <a href="https://www.euronews.com/my-europe/2022/03/16/deepfake-zelenskyy-surrender-video-is-the-first-intentionally-used-in-ukraine-war?">deepfake of Ukrainian President Volodymyr Zelenskyy</a> in 2022 falsely depicted him calling for military surrender — one of the first confirmed uses of a deepfake as a weapon in an active conflict.</li>
 <li><strong>Synthetic audio of public figures</strong> — Buzzfeed and director Jordan Peele created a deepfake video of Barack Obama to demonstrate how convincingly the technology could fabricate statements a real person never made.</li>
-<li><strong><a href="https://www.ic3.gov/PSA/2024/PSA241203">Financial fraud</a></strong> — criminals used AI-cloned audio to impersonate the CEO of a German company, convincing a UK CFO to transfer €220,000 to a fraudulent account. Voice-cloning fraud has since become a common attack vector targeting finance teams.</li>
+<li><a href="https://www.ic3.gov/PSA/2024/PSA241203"><strong>Financial fraud</strong></a> — criminals used AI-cloned audio to impersonate the CEO of a German company, convincing a UK CFO to transfer €220,000 to a fraudulent account. Voice-cloning fraud has since become a common attack vector targeting finance teams.</li>
 </ul>
 </section>
 <section id="misuse-of-ai-in-autonomous-vehicles" class="level3">
@@ -401,9 +469,9 @@ Available via <a href="https://ebookcentral.proquest.com/lib/cwm/detail.action?d
 </ul>
 <p>Real-world incidents that have shaped the regulatory conversation:</p>
 <ul>
-<li><strong><a href="https://www.wired.com/story/safety-board-faults-tesla-regulators-fatal-2018-crash/">Tesla Autopilot misuse</a></strong> — drivers filmed sleeping or using their phones while Autopilot was engaged, despite clear warnings that the system requires hands on the wheel at all times. Several incidents resulted in crashes and fatalities; the NTSB found fault with both Tesla and regulators.</li>
-<li><strong><a href="https://etsc.eu/inadequate-safety-culture-contributed-to-fatal-uber-automated-test-vehicle-crash/">Uber AV fatality (2018)</a></strong> — a pedestrian was killed when Uber’s test vehicle failed to correctly classify her as a person in the road. The backup safety driver was watching a video at the time. The incident raised fundamental questions about whether the technology was ready for public road testing.</li>
-<li><strong><a href="https://spectrum.ieee.org/self-driving-cars-2662494269">Phantom braking</a></strong> — multiple self-driving systems have been documented braking unexpectedly for non-existent obstacles, creating rear-end collision risks for following vehicles.</li>
+<li><a href="https://www.wired.com/story/safety-board-faults-tesla-regulators-fatal-2018-crash/"><strong>Tesla Autopilot misuse</strong></a> — drivers filmed sleeping or using their phones while Autopilot was engaged, despite clear warnings that the system requires hands on the wheel at all times. Several incidents resulted in crashes and fatalities; the NTSB found fault with both Tesla and regulators.</li>
+<li><a href="https://etsc.eu/inadequate-safety-culture-contributed-to-fatal-uber-automated-test-vehicle-crash/"><strong>Uber AV fatality (2018)</strong></a> — a pedestrian was killed when Uber’s test vehicle failed to correctly classify her as a person in the road. The backup safety driver was watching a video at the time. The incident raised fundamental questions about whether the technology was ready for public road testing.</li>
+<li><a href="https://spectrum.ieee.org/self-driving-cars-2662494269"><strong>Phantom braking</strong></a> — multiple self-driving systems have been documented braking unexpectedly for non-existent obstacles, creating rear-end collision risks for following vehicles.</li>
 </ul>
 </section>
 <section id="lack-of-control-regulatory-and-design-issues-with-autonomous-vehicles" class="level3">
@@ -416,10 +484,10 @@ Available via <a href="https://ebookcentral.proquest.com/lib/cwm/detail.action?d
 <p>Platform owners such as Meta, Google, and TikTok bear ethical responsibility for how their technologies are used — yet preventing misuse at scale is genuinely difficult. Two structural challenges dominate: the <strong>absence of robust governance mechanisms</strong> over third-party use, and the <strong>practical impossibility of reviewing every interaction</strong> at the scale these platforms operate.</p>
 <p>Notable cases that illustrate the problem:</p>
 <ul>
-<li>The <strong><a href="https://www.nytimes.com/2018/04/04/us/politics/cambridge-analytica-scandal-fallout.html">Cambridge Analytica scandal</a></strong> — a third-party app harvested the data of 87 million Facebook users without their knowledge and used it for targeted political advertising. Facebook’s platform architecture made this possible.</li>
-<li>The <strong><a href="https://www.forbes.com/sites/kateoflahertyuk/2018/10/09/google-plus-breach-what-happened-who-was-impacted-and-how-to-delete-your-account/">Google+ 2018 API breach</a></strong> — a bug exposed user data to third-party developers; Google delayed disclosure for months.</li>
-<li>The <strong><a href="https://ctc.westpoint.edu/christchurch-attacks-livestream-terror-viral-video-age/">Christchurch attack</a></strong> — Facebook’s platform was used to livestream the massacre in real time; copies spread across the internet faster than platforms could remove them.</li>
-<li><strong><a href="https://www.npr.org/2024/09/04/nx-s1-5100329/us-russia-election-interference-bots-2024">Russian bot-driven election interference</a></strong> — coordinated inauthentic behavior campaigns used platform infrastructure to spread political disinformation at scale.</li>
+<li>The <a href="https://www.nytimes.com/2018/04/04/us/politics/cambridge-analytica-scandal-fallout.html"><strong>Cambridge Analytica scandal</strong></a> — a third-party app harvested the data of 87 million Facebook users without their knowledge and used it for targeted political advertising. Facebook’s platform architecture made this possible.</li>
+<li>The <a href="https://www.forbes.com/sites/kateoflahertyuk/2018/10/09/google-plus-breach-what-happened-who-was-impacted-and-how-to-delete-your-account/"><strong>Google+ 2018 API breach</strong></a> — a bug exposed user data to third-party developers; Google delayed disclosure for months.</li>
+<li>The <a href="https://ctc.westpoint.edu/christchurch-attacks-livestream-terror-viral-video-age/"><strong>Christchurch attack</strong></a> — Facebook’s platform was used to livestream the massacre in real time; copies spread across the internet faster than platforms could remove them.</li>
+<li><a href="https://www.npr.org/2024/09/04/nx-s1-5100329/us-russia-election-interference-bots-2024"><strong>Russian bot-driven election interference</strong></a> — coordinated inauthentic behavior campaigns used platform infrastructure to spread political disinformation at scale.</li>
 </ul>
 <p>These cases collectively demonstrate that <strong>scale amplifies harm</strong>: the same openness and network effects that make platforms valuable also make them difficult to police.</p>
 </section>
@@ -451,6 +519,60 @@ Available via <a href="https://ebookcentral.proquest.com/lib/cwm/detail.action?d
 <li><strong>Dual-use risk</strong> — AI tools designed for legitimate research (including in chemistry and biology) lower the barrier to developing dangerous weapons.</li>
 </ul>
 </section>
+</section>
+<section id="security-abuse-and-misuse-lab" class="level2">
+<h2 class="anchored" data-anchor-id="security-abuse-and-misuse-lab">Security: Abuse and Misuse Lab</h2>
+<p><strong>1.</strong> A CFO at a European company received an urgent voice call from what sounded exactly like the CEO, instructing her to wire €220,000 to a new supplier account. She complied. What AI technique made this attack possible, and what organizational safeguard could have prevented the transfer?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>AI technique:</strong> voice cloning — a deepfake audio attack that uses generative AI to synthesize a convincing replica of a real person’s voice from a small sample of recordings. <strong>Organizational safeguard:</strong> a callback verification protocol requiring that any wire transfer above a threshold be confirmed via a second, independently initiated channel (e.g., calling the CEO back on a known direct line, not the number that called in). Multi-factor authorization for large transfers and a code-word system for high-urgency requests are additional controls.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> The chapter describes data poisoning as a threat where an attacker manipulates a model’s training data to corrupt its predictions. Give a specific example of how this attack could be executed against a fraud detection model at a bank, and explain why it would be difficult to detect.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Attack:</strong> the attacker gradually introduces fraudulent transactions that are carefully engineered to resemble legitimate ones — low amounts, plausible merchant categories, normal geolocation — into the data stream that feeds the model’s retraining pipeline. Over weeks, the model learns to classify this transaction pattern as legitimate. When the attacker eventually executes the real fraud at scale using the same pattern, the model flags nothing. <strong>Why hard to detect:</strong> the poisoned samples are individually indistinguishable from normal transactions; the model’s aggregate accuracy metrics may not change significantly during the poisoning phase; and without data versioning or anomaly detection on the training pipeline itself, the manipulation goes unnoticed until large-scale fraud is already underway.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> Compare the ethical responsibilities of an AI platform company (like Facebook or TikTok) to those of a government regulator when it comes to preventing AI-enabled harms like deepfakes and coordinated disinformation. Who bears more responsibility, and why?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is a genuine debate with defensible positions on both sides. <strong>Platform responsibility</strong> is strong: these companies designed and profit from systems with known amplification effects; they have technical access to detection tools; and they have historically acted only under regulatory or public pressure. <strong>Government responsibility</strong> is also strong: private companies have conflicting profit incentives (engagement drives revenue); self-regulation has demonstrably failed; and the scale of harms (election interference, violence) affects public goods that only governments are mandated to protect. A balanced answer notes that both must act simultaneously — platforms through architecture and moderation, governments through binding standards and enforcement — and that neither can solve the problem alone.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="ai-governance" class="level2">
 <h2 class="anchored" data-anchor-id="ai-governance">AI Governance</h2>
@@ -496,6 +618,60 @@ Available via <a href="https://ebookcentral.proquest.com/lib/cwm/detail.action?d
 </ul>
 </section>
 </section>
+<section id="ai-governance-lab" class="level2">
+<h2 class="anchored" data-anchor-id="ai-governance-lab">AI Governance Lab</h2>
+<p><strong>1.</strong> An insurance company uses a black-box deep learning model to set premiums. A regulator asks for an explanation of why one specific customer was charged 40% more than a comparable customer. What problem does this create, and how does Explainable AI address it?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The black-box model produces outputs without human-understandable reasoning — the insurer cannot explain the premium difference to the customer or the regulator, which in many jurisdictions is a legal violation (e.g., the EU’s GDPR right to explanation). <strong>XAI solution:</strong> apply a post-hoc method like <strong>SHAP values</strong> to identify which input features (e.g., credit score, ZIP code, claims history) drove the premium for that specific customer, and by how much. The explanation must meet the four properties: it must be <em>accurate</em> (reflect the actual model), <em>meaningful</em> (understandable to a non-technical regulator), supported by <em>evidence</em> for each output, and honest about <em>knowledge limits</em> when the model is extrapolating.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> A zero-trust security architecture is described as verifying “every request continuously.” How does this differ from traditional perimeter-based security, and why does AI make zero-trust more effective?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Traditional perimeter security</strong> trusts any user or device already inside the network — once authenticated at the edge, you are treated as legitimate. This assumption breaks down when insiders are malicious, credentials are stolen, or a device is compromised after login. <strong>Zero-trust</strong> verifies every request individually, regardless of origin — each action requires its own authentication and authorization check. <strong>AI enhances zero-trust</strong> by incorporating behavioral signals (device fingerprint, location, typing cadence, time-of-day patterns) into continuous risk scoring — so even a correctly authenticated user triggers re-verification if their behavior deviates from baseline. AI also enables real-time anomaly detection that no human analyst team could match at scale.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> When is it ethically justified to use a less accurate but more interpretable model instead of a higher-performing black-box model? Give two concrete examples from different industries.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Justification:</strong> when the stakes of an incorrect or unexplainable decision are high enough that accountability, trust, and recourse outweigh the marginal accuracy gain. <strong>Example 1 — Criminal justice (recidivism scoring):</strong> a logistic regression model that explains exactly which factors drove a risk score is preferable to a neural network with 2% better AUC, because the defendant has a right to contest the factors and the judge needs to exercise independent judgment. <strong>Example 2 — Medical diagnosis (cancer screening):</strong> a decision tree that flags which biomarkers triggered a recommendation is preferable to a black-box ensemble when the oncologist must decide whether to recommend biopsy — the physician’s professional responsibility requires understanding, not just following, the AI’s suggestion.</p>
+</div>
+</div>
+</div>
+</section>
 <section id="citing-ai-and-verifying-sources" class="level2">
 <h2 class="anchored" data-anchor-id="citing-ai-and-verifying-sources">Citing AI and Verifying Sources</h2>
 <section id="citing-chatgpt-in-apa-style" class="level3">
@@ -522,6 +698,89 @@ Available via <a href="https://ebookcentral.proquest.com/lib/cwm/detail.action?d
 <li><strong>After:</strong> <code>https://www.journal.com/article/12345</code></li>
 </ul>
 <p>Before trimming, always test the shortened URL in a browser to confirm it still resolves correctly. If the full tagged URL is the only one that works (rare), keep it but note the unusual format.</p>
+</section>
+</section>
+<section id="summary-and-review" class="level1">
+<h1>Summary and Review</h1>
+<section id="using-ai" class="level2">
+<h2 class="anchored" data-anchor-id="using-ai">Using AI</h2>
+<p>Use the following prompts with a generative AI tool to explore AI ethics, security, and governance further.</p>
+<ul>
+<li>Apply all five core ethical principles (autonomy, justice, beneficence, non-maleficence, explicability) to a single AI use case of your choice. Where are the tensions between principles?</li>
+<li>What makes the CIA+A triad both a technical and an ethical framework? Give an example where a security failure is simultaneously an ethical failure.</li>
+<li>How do data bias, labeling bias, and algorithm bias each enter an AI system at different stages? Can you fix one without addressing the others?</li>
+<li>Deepfakes exist on a spectrum from harmless entertainment to weapons of war. Where should the legal and ethical line be drawn, and who should draw it?</li>
+<li>What is the difference between explainability and accuracy in an AI model? When is a less accurate but more interpretable model the right choice?</li>
+<li>How does zero-trust architecture change the assumptions of traditional network security, and why does AI make it more effective in practice?</li>
+<li>What obligations does an academic researcher have when using generative AI in their work? How do those obligations differ from a business analyst using the same tool?</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>This chapter examined the ethical foundations, security risks, governance frameworks, and scholarly responsibilities that accompany AI deployment.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>Key concepts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Core ethical principles</td>
+<td>Autonomy, justice, beneficence, non-maleficence, explicability</td>
+</tr>
+<tr class="even">
+<td>CIA+A triad</td>
+<td>Confidentiality, integrity, accountability, availability — technical and ethical obligations</td>
+</tr>
+<tr class="odd">
+<td>Challenges in AI ethics</td>
+<td>Amplification, bias, security, control, inequality</td>
+</tr>
+<tr class="even">
+<td>Bias types</td>
+<td>Data bias, labeling bias, algorithm bias, human/cognitive bias</td>
+</tr>
+<tr class="odd">
+<td>Echo chambers</td>
+<td>Engagement-optimized algorithms amplify divisive content; filter bubbles distort perception</td>
+</tr>
+<tr class="even">
+<td>Deepfakes</td>
+<td>Face-swap, voice cloning, full-body synthesis; political disinformation and financial fraud</td>
+</tr>
+<tr class="odd">
+<td>Autonomous vehicles</td>
+<td>Liability gaps, phantom braking, regulatory fragmentation, trolley-problem dilemmas</td>
+</tr>
+<tr class="even">
+<td>AI vs.&nbsp;AI security</td>
+<td>Data poisoning, model theft, adversarial inputs; AI-enabled phishing and synthetic identity fraud</td>
+</tr>
+<tr class="odd">
+<td>Explainable AI (XAI)</td>
+<td>Explanation, meaningfulness, accuracy, knowledge limits; SHAP, LIME, decision trees</td>
+</tr>
+<tr class="even">
+<td>Zero-trust architecture</td>
+<td>Continuous verification, behavioral signals, real-time anomaly detection</td>
+</tr>
+<tr class="odd">
+<td>Ethical design</td>
+<td>Diverse stakeholders, interpretable models for high stakes, human-in-the-loop, subgroup auditing</td>
+</tr>
+<tr class="even">
+<td>Citing AI (APA)</td>
+<td>Cite if used; verify all AI-suggested sources independently; trim URLs before publishing</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What comes next:</strong> The Modern Data Acquisition chapter examines how organizations collect the data that feeds these AI systems — covering APIs, web scraping, Beautiful Soup, and the practical and legal considerations of large-scale data collection.</p>
 
 
 </section>

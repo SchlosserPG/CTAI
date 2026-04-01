@@ -30,7 +30,7 @@ Interactivity is powered by **callback functions**, which automatically update o
 The right tool depends on your goal:
 
 | Tool | Best for | Output |
-|----|----|----|
+|------------------------|------------------------|------------------------|
 | **Matplotlib** | Quick, static charts for reports or PDFs | Static image |
 | **Plotly** | Interactive browser-based charts without a full app | Standalone chart |
 | **Dash** | Full web apps with controls, dropdowns, and callbacks | Hosted application |
@@ -137,7 +137,7 @@ Dash components are organized in a **hierarchical tree** — containers hold oth
 Common HTML elements available in `dash.html`:
 
 | Python                       | HTML equivalent          | Purpose            |
-|------------------------------|--------------------------|--------------------|
+|----------------------------|-------------------------|-------------------|
 | `html.H1("text")`            | `<h1>text</h1>`          | Largest heading    |
 | `html.P("text")`             | `<p>text</p>`            | Paragraph          |
 | `html.Div([...])`            | `<div>...</div>`         | Container/grouping |
@@ -178,6 +178,45 @@ from dash import html
 ```
 
 ![](images/html_elements.png)
+
+## Dash Layout and HTML Lab
+
+**1.** What is the difference between `app.title` and `html.H1()` in a Dash app? Where does each appear, and why do you need both?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+`app.title` sets the **browser tab title** — the text that appears in the tab at the top of Chrome or Firefox. It corresponds to the HTML `<title>` tag inside the `<head>` of the page and is not visible in the page content itself. `html.H1()` creates a **visible heading** inside the page body — the large text the user actually reads. You need both because they serve different audiences: `app.title` helps users identify the tab when many are open, while `html.H1` provides the on-screen heading that anchors the page content. Setting only one leaves a gap — either the tab shows a default "Dash" title or the page has no visible heading.
+:::
+
+**2.** Write the Dash Python code to build a layout that contains: a large heading saying "Sales Dashboard", a paragraph saying "Q3 2024 Results", a line break, and a hyperlink labeled "Download Report" that opens `https://example.com/report.pdf` in a new tab.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+``` python
+from dash import html
+
+app.layout = html.Div([
+    html.H1("Sales Dashboard"),
+    html.P("Q3 2024 Results"),
+    html.Br(),
+    html.A("Download Report",
+           href="https://example.com/report.pdf",
+           target="_blank")
+])
+```
+
+`html.Br()` takes no arguments — it is a self-closing tag. `target="_blank"` opens the link in a new tab; omitting it would navigate away from the Dash app in the same tab. The components are passed as a list to `html.Div()`, which groups them in a container `<div>`.
+:::
+
+**3.** Explain when you would use `debug=True` versus `debug=False` when running a Dash app, and what risk `debug=True` introduces if left on in a live deployment.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+Use `debug=True` during **development**: it enables hot reloading (code changes appear in the browser without restarting the server) and displays a debug menu in the bottom-right corner with detailed error tracebacks. Use `debug=False` in **production**: the debug menu exposes internal code structure, file paths, and local variable values to anyone who can trigger an error — a serious security vulnerability in a publicly accessible app. The hot reloader also runs an extra subprocess that can cause instability on some hosting environments (like Render.com). Always set `debug=False` before deploying.
+:::
 
 ## Styling in Dash
 
@@ -252,7 +291,7 @@ If you create an `assets/` folder in your working directory and place a `.css` f
 **When to use each approach:**
 
 | Approach | Best for |
-|----|----|
+|------------------------------------|------------------------------------|
 | Inline `style={}` | Small, one-off overrides on a single component |
 | External CSS in `assets/` | Consistent styling across the whole app or multiple pages |
 
@@ -317,3 +356,92 @@ CSS offers four **link pseudo-classes** that let you style an anchor element at 
 -   [**`:visited`**]{style="background-color: yellow;"} — style for a link the user has already clicked (stored in browser history).
 -   [**`:hover`**]{style="background-color: yellow;"} — applied while the pointer is over the element. This is the most commonly used.
 -   [**`:active`**]{style="background-color: yellow;"} — applied at the instant the element is being clicked (mouse button pressed but not yet released). Useful for visual "press" feedback.
+
+## Styling and CSS Lab
+
+**1.** Write the inline `style` dictionary for an `html.H2` component that sets the text color to `#2c3e50`, font size to `24px`, adds `10px` padding on all sides, and gives it a `2px solid #cccccc` border with `8px` rounded corners.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+``` python
+html.H2("Section Title", style={
+    'color':        '#2c3e50',
+    'fontSize':     '24px',
+    'padding':      '10px',
+    'border':       '2px solid #cccccc',
+    'borderRadius': '8px'
+})
+```
+
+CSS property names are written in **camelCase** in Python dictionaries: `fontSize` not `font-size`, `borderRadius` not `border-radius`. All values are strings. Forgetting a comma between any two key-value pairs will raise a `SyntaxError`.
+:::
+
+**2.** Explain the difference between padding and margin using the box model. If you want to increase the space between two stacked `html.P` components, which property do you change, and on which element?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Padding** is the space *inside* an element, between its content and its border — adding padding makes the element itself larger while keeping its border in the same position relative to neighbors. **Margin** is the space *outside* an element, between its border and the surrounding elements — adding margin pushes the element away from its neighbors without changing the element's own size. To increase space between two stacked `html.P` components, add `marginBottom` to the first paragraph (or `marginTop` to the second). Changing padding would add space inside each paragraph — between the text and any border — but would not increase the gap between them.
+:::
+
+**3.** When should you use an inline `style={}` dictionary versus an external CSS file in `assets/`? Give one scenario where each approach is clearly correct.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+Use **inline `style={}`** for small, one-off overrides on a single component — for example, centering one specific `html.H1` title: `html.H1("Dashboard", style={'textAlign': 'center'})`. The style applies only to that element and does not need to be reused anywhere else. Use an **external CSS file in `assets/`** for consistent app-wide styling — for example, setting the background color, font family, and base font size for the entire app, or styling all `<p>` elements the same way. Putting these in `assets/style.css` means you change them in one place, and every page of the app updates automatically. Scattering the same style across dozens of inline dictionaries makes the app hard to update and inconsistent.
+:::
+
+**4.** What is the LVHA order for CSS link pseudo-classes, and why does the order matter? Write the CSS for a link that is blue by default, purple when visited, and dark gray on hover.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+LVHA stands for `:link`, `:visited`, `:hover`, `:active` — the order pseudo-classes must be defined to work correctly. CSS applies rules in source order, and later rules override earlier ones when specificity is equal. If `:hover` is defined before `:visited`, hovering over a visited link would apply the unvisited color instead of the hover color, because `:visited` appears later and overrides it.
+
+``` css
+a:link    { color: #3b82f6; }          /* blue — unvisited */
+a:visited { color: #7c3aed; }          /* purple — visited */
+a:hover   { color: #374151; }          /* dark gray — on hover */
+a:active  { color: #111827; }          /* near-black — while clicking */
+```
+:::
+
+# Summary and Review
+
+## Using AI
+
+Use the following prompts with a generative AI tool to explore Dash and HTML styling further.
+
+-   What is the difference between `dash.html` and `dash.dcc`? Give two examples of components from each module and describe when you would use them.
+-   Explain the Dash callback data flow in plain language. What is a decorator, and what does `@app.callback()` actually tell Dash to do?
+-   What is the difference between static and dynamic content in a Dash app? Give one example of each that a business analyst might build.
+-   Explain the CSS box model: what are content, padding, border, and margin, and how do they relate to each other spatially?
+-   When should you use inline `style={}` dictionaries versus an external CSS file in `assets/`? What maintenance problems arise from overusing inline styles?
+-   What is the difference between an ID selector (`#id`) and a class selector (`.class`) in CSS? When would you use each in a Dash app?
+
+## Summary
+
+This chapter introduced Dash as a Python framework for building interactive web dashboards and covered HTML structure and CSS styling.
+
+| Topic | Key concepts |
+|------------------------------------|------------------------------------|
+| Dash | Python library by Plotly; built on Flask + React; no JavaScript required |
+| Two core modules | `dash.html` — page structure; `dash.dcc` — interactive components |
+| Callbacks | Decorator-driven functions that link inputs to outputs; power all interactivity |
+| Visualization tool choice | Matplotlib: static; Plotly: standalone charts; Dash: full interactive apps |
+| Static vs. dynamic content | Static: files served once; dynamic: updated via callbacks, APIs, or live streams |
+| First dashboard | `Dash()`, `app.layout`, `app.run(debug=True)` |
+| debug=True vs. False | Development: hot reload + error detail; Production: always False |
+| Layout components | `html.Div` (container), `html.H1`–`H6` (headings), `html.P` (paragraph) |
+| Hyperlinks and breaks | `html.A(href=, target="_blank")`, `html.Br()` |
+| Inline styling | `style={}` Python dict; CSS property names in camelCase; values as strings |
+| CSS box model | Content → padding (inside) → border → margin (outside) |
+| Borders | `border`, `borderWidth`, `borderStyle`, `borderColor`, `borderRadius` |
+| Padding and margin | `padding`, `paddingTop/Bottom/Left/Right`; `margin`, `marginLeft/Right/Top/Bottom` |
+| External CSS | Place `.css` in `assets/`; Dash loads automatically; prefer for app-wide styles |
+| CSS selectors | ID (`#id`): unique elements; class (`.class`): reusable styles |
+| Link pseudo-classes | LVHA order: `:link`, `:visited`, `:hover`, `:active` |
+
+**What comes next:** The Writing Callbacks and Accessing APIs chapter adds interactivity — connecting user inputs to live data sources through callback functions and external API calls.

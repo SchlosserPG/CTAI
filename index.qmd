@@ -56,9 +56,9 @@ This chapter introduces how organizations evolve from competing through business
 Chapter 6 from **Iansiti, M., & Lakhani, K. R. (2020)** in *Competing in the Age of AI* explains how **artificial intelligence transforms firms** by digitizing activities into **scalable, connectable, and self-improving systems**. The chapter outlines a **strategic framework for AI-driven businesses** that leverages **network and learning effects** while addressing key concepts such as **multihoming, disintermediation, and network bridging**, using real-world examples like **Uber** and **Airbnb**.
 :::
 
-## Competing Through Business Analytics (CTBA)
+## Competitive Business Analytics
 
-**Competing through business analytics (CTBA)** means using data, statistical analysis, and predictive modeling to gain a strategic advantage over competitors. It involves making better, faster, and more informed decisions by systematically analyzing data across all areas of the business.
+**Competitive Business Analytics** means using data, statistical analysis, and predictive modeling to gain a strategic advantage over competitors. It involves making better, faster, and more informed decisions by systematically analyzing data across all areas of the business.
 
 Firms that compete through analytics build capabilities in data collection, storage, analysis, and interpretation, making **data a strategic asset**. These firms develop a culture of testing, learning, and optimization across the entire organization, expressed through four core capabilities:
 
@@ -67,9 +67,9 @@ Firms that compete through analytics build capabilities in data collection, stor
 -   [**Predictive power**]{style="background-color: yellow;"} — forecasting future trends or behaviors (e.g., customer churn, sales, demand).
 -   [**Competitive differentiation**]{style="background-color: yellow;"} — gaining an edge through smarter operations, marketing, customer targeting, or innovation.
 
-## Where Is the AI in CTBA?
+## Where Is the AI in Business Analytics?
 
-CTBA traditionally relies on a hierarchy of analytics types, each answering a progressively more actionable question:
+Traditional Business Analytics traditionally relies on a hierarchy of analytics types, each answering a progressively more actionable question:
 
 | Analytics Type | Question Answered  | Example                         |
 |----------------|--------------------|---------------------------------|
@@ -112,6 +112,32 @@ AI is reshaping decision-making across every major business function:
 
 -   **Healthcare** — diagnostic tools, patient risk prediction.
 
+## Competitive Analytics and AI Impact Lab
+
+**1.** A retail company uses weekly sales reports to track performance and adjusts inventory monthly. Using the four analytics types (descriptive, diagnostic, predictive, prescriptive), explain what each would look like for this company — and then describe how AI supercharges each type.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Descriptive:** the weekly sales report itself — what sold, in what volume, in which store. AI supercharges this by generating real-time dashboards and natural language summaries automatically. **Diagnostic:** investigating why a specific store underperformed last month — correlating weather, promotions, local events, and foot traffic. AI supercharges this by running root-cause analysis across hundreds of variables simultaneously. **Predictive:** forecasting which products will run out of stock in the next two weeks. AI supercharges this by learning from seasonal patterns, promotions, and supply disruptions continuously. **Prescriptive:** recommending exactly how much of each product to reorder, from which supplier, delivered by when. AI supercharges this by optimizing the full supply chain automatically, not just one store at a time.
+:::
+
+**2.** AI is said to bring "automation, scale, and adaptability" to analytics. For each of these three properties, identify a specific business scenario in finance or healthcare where that property is the critical differentiator — and explain what would happen without it.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Automation — fraud detection at a bank:** a bank processes millions of transactions per day. An AI model flags suspicious patterns in real time without any analyst involvement. Without automation, the bank would need thousands of analysts watching transactions and most fraud would go undetected until the daily report. **Scale — personalized drug dosing in healthcare:** an AI system recommends individualized dosing for ICU patients based on weight, kidney function, current medications, and real-time vitals — for every patient simultaneously. Without scale, a clinical pharmacist can review a handful of complex cases per day, not an entire hospital. **Adaptability — algorithmic trading:** a trading model continuously updates its strategies as market microstructure shifts, learning from new data without being manually reprogrammed. Without adaptability, a fixed-rule model would decay as market conditions change, generating losses when the rules no longer fit reality.
+:::
+
+**3.** Choose one business domain (marketing, operations, finance, HR, or healthcare) and trace how AI changes the decision-making process from beginning to end — starting with raw data and ending with an automated or augmented action.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Operations — demand forecasting for a grocery chain:** Raw data collected: point-of-sale transactions, historical inventory levels, supplier lead times, weather forecasts, local event calendars, competitor promotions. AI processes this data to generate a 7-day SKU-level demand forecast for every store. The system automatically generates purchase orders and routes them to the appropriate supplier when predicted stock will fall below threshold. Store managers receive a daily alert showing only the exceptions — items where the AI's confidence is low or where a human override is recommended. The loop closes when actual sales data flows back to retrain the model weekly. Without AI, demand planners manually review reports and make judgment calls — slower, less granular, and more prone to human bias.
+:::
+
 ## How AI-Driven Decision-Making Is Transforming Industries
 
 AI-driven decision-making is transforming industries by **enabling faster, more accurate, and more scalable decisions** than were previously possible with traditional methods. AI transforms how firms compete on speed and scale, create personalized experiences, operate with greater efficiency and agility, and continuously learn and improve from data.
@@ -152,6 +178,32 @@ AI-driven firms gain structural advantage through three interconnected shifts:
 ##### The collision between traditional and digital operating models
 
 ![Digital vs Traditional](images/Digital_vs_traditional.png)
+
+## Strong AI, Weak AI, and Competitive Transformation Lab
+
+**1.** All AI in widespread use today is weak AI. Why does this not prevent transformative business impact? Use two specific examples from different industries to support your argument.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+Weak AI performs specific, narrow tasks — but those tasks, done at scale and speed, are precisely what generates transformative business value. General intelligence is not the requirement; superior performance on a specific high-value task is. **Example 1 — Netflix recommendation engine:** a narrow model that predicts which content a specific user will watch next. It does not understand storytelling, it does not know what "good" means, and it cannot hold a conversation about the show — but it retains subscribers and reduces churn at a scale no human programming team could match. **Example 2 — JPMorgan's COIN (Contract Intelligence):** a document review system that analyzes loan agreements and extracts key clauses. It does not understand law in any general sense, but it performs in seconds a task that previously took 360,000 hours of lawyer time per year — with fewer errors.
+:::
+
+**2.** The Kodak analogy illustrates that AI-driven disruption often comes from firms operating on entirely different rules, not better versions of the incumbent. Identify a current industry where an AI-first entrant could displace an incumbent without competing directly on the incumbent's core product. Explain the mechanism.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+Answers will vary. **Example — insurance:** an AI-first insurer like Lemonade does not compete with State Farm by selling better-designed policies. It competes by eliminating the claims adjuster entirely through AI-processed claims, dramatically lowering operating costs, pricing risk more precisely through behavioral data, and settling claims in seconds rather than days. The incumbent's advantage (agent relationships, brand recognition, state licenses) is not meaningless — but the AI-first firm's near-zero marginal cost per policy and superior loss prediction erode profitability across the industry over time, not by beating the incumbent at its own game but by making the game economics fundamentally different.
+:::
+
+**3.** The three strategic implications of AI-driven firms are value creation shift, operating model advantage, and competitive collision. For a traditional bank facing a fintech challenger, give a specific example of each implication playing out.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Value creation shift:** the fintech (e.g., Chime, Revolut) generates value from transaction data — learning spending patterns, predicting credit risk, and personalizing offers — rather than from lending margins alone. The bank generates value primarily from net interest margin; its data is underutilized. **Operating model advantage:** the fintech has no branch network, no legacy core banking system, and no human loan underwriting process — it can add a million users without proportional cost increases. The bank's cost-to-income ratio is structurally higher. **Competitive collision:** the bank faces a challenger that was never a bank — it is a software company with a banking license, designed from the ground up around algorithms. The bank cannot replicate this by upgrading its mobile app; the entire organizational architecture and cost structure would need to change.
+:::
 
 ## Business Strategy and Competitive Advantage
 
@@ -243,3 +295,65 @@ Disintermediation affects appropriability in three ways. First, it threatens **c
 -   **LinkedIn** bridges professional networks across industries, enabling recruiters, job seekers, and companies to interact in ways that no single firm's internal HR system could facilitate. A recruiter in finance can find a software engineer in healthcare because LinkedIn spans both networks.
 -   **Amazon Marketplace** bridges sellers from diverse industries with millions of global buyers, transforming a retail platform into a multi-industry ecosystem. Sellers gain distribution; buyers gain selection; Amazon captures value from both sides.
 -   **Apple's App Store** bridges app developers and iPhone users, creating cross-side network effects that amplify the value of both groups simultaneously. More developers mean more apps; more apps mean more valuable iPhones.
+
+## Platform Strategy Lab
+
+**1.** Using Porter's Five Forces, analyze the competitive position of a grocery delivery platform (like Instacart). For each force, state whether it is high, medium, or low, and explain why.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Competitive rivalry — high:** multiple well-funded players (DoorDash, Uber Eats, Amazon Fresh, retailer-owned delivery) compete on speed, price, and selection with no clear single dominant player. **Threat of new entrants — medium:** capital requirements are significant (logistics, tech, retailer partnerships), but platform infrastructure is commoditizing — a well-funded startup can enter specific markets. **Bargaining power of suppliers — medium:** large grocery chains (Kroger, Costco, Walmart) have leverage because they can build their own delivery infrastructure — Walmart and Amazon already have. Smaller regional grocers have much less power. **Bargaining power of buyers — high:** consumers multihome freely — they use whichever app is cheapest or fastest for each order, with zero switching cost. **Threat of substitutes — high:** consumers can drive to a store, use a different delivery app, or shift to subscription-based meal kits. No single platform has made itself indispensable to buyers.
+:::
+
+**2.** Explain the difference between direct and indirect network effects using two platform examples. For each, describe what would happen to the platform's value if one side of the network suddenly shrank by 50%.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Direct network effects — WhatsApp:** value comes from users on the *same* side. If 50% of users leave, the remaining users lose contact with half their connections — value plummets nonlinearly. The platform could enter a death spiral: fewer users make it less valuable, causing more users to leave, accelerating decline. **Indirect network effects — Apple App Store:** value crosses between sides (developers ↔ users). If 50% of developers left, iPhone users would lose access to half the apps available, reducing the appeal of buying an iPhone. Fewer iPhone users would then reduce revenue for the remaining developers, pressuring more to leave — a cross-side collapse. The key difference: direct effects are within-side (more of *us* is better for *us*), while indirect effects are cross-side (more of *them* is better for *us*).
+:::
+
+**3.** A media company generates significant value — millions of readers, award-winning journalism — but struggles to appropriate that value because readers use news aggregators and social media to access content for free. Using the three factors affecting appropriability, diagnose the problem and recommend one strategic response for each factor.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Control of key assets — weak:** the media company's content is immediately redistributed by aggregators (Google News, Apple News) and social sharing, so it does not control access to its own audience. **Recommendation:** build a direct subscriber relationship through a paywall or newsletter — forcing readers to engage with the brand directly and generating first-party data the aggregators do not have. **Switching and multihoming costs — very low:** readers can access equivalent news from dozens of sources at zero cost. **Recommendation:** invest in proprietary analysis, investigative journalism, or niche expertise that cannot be easily replicated — differentiation that makes multihoming less satisfying. **Regulation and bargaining power — weak but improving:** platforms have historically distributed news for free while capturing advertising revenue. **Recommendation:** advocate for and participate in frameworks like the Australian News Media Bargaining Code or EU copyright directive that require platforms to compensate publishers, restoring some appropriability through regulation.
+:::
+
+# Summary and Review
+
+## Using AI
+
+Use the following prompts with a generative AI tool to explore competitive strategy and AI further.
+
+-   What is the difference between descriptive, diagnostic, predictive, and prescriptive analytics? How does AI change what is possible at each level?
+-   Why is weak AI sufficient for most business transformations? What would strong AI (AGI) actually add — and why does it not yet exist?
+-   How do direct and indirect network effects differ? Give an example of a platform where both types operate simultaneously.
+-   Apply Porter's Five Forces to an industry of your choice. Which force is currently most disruptive, and why?
+-   What is the difference between value creation and value appropriation in platform economics? Can a platform create enormous value while appropriating very little of it?
+-   How do multihoming and switching costs affect a platform's ability to capture value? Give one example where low multihoming costs severely limited a platform's pricing power.
+-   What is network bridging, and why do platforms that bridge separate networks often grow faster than those that deepen a single network?
+
+## Summary
+
+This chapter introduced how organizations compete through business analytics and AI, and the platform dynamics that determine who captures value in digital markets.
+
+| Topic | Key concepts |
+|------------------------------------|------------------------------------|
+| Competitive business analytics | Data-driven decisions, performance improvement, predictive power, competitive differentiation |
+| Analytics hierarchy | Descriptive, diagnostic, predictive, prescriptive, KPIs |
+| AI's additions | Automation, scale, adaptability; continuous learning, real-time decisions, personalization |
+| Strong vs. weak AI | AGI (hypothetical); narrow AI (all current systems); weak AI is sufficient for most business value |
+| Transforming competition | Disruption vs. reinvention; digital operating models at near-zero marginal cost; new breed of competitors |
+| Strategic implications | Value creation shift; operating model advantage; competitive collision |
+| Porter's Five Forces | Rivalry, new entrants, substitutes, buyer power, supplier power |
+| Network effects | Direct (same-side); indirect (cross-side); learning effects; complementor contributions |
+| Value capture | Appropriability: who keeps the value created by the platform |
+| Appropriability factors | Control of key assets; switching and multihoming costs; regulation and bargaining power |
+| Multihoming | Participating in multiple platforms; low costs intensify competition and weaken appropriation |
+| Disintermediation | Platforms bypass middlemen; reduces switching costs; can be forced by regulation |
+| Network bridging | Connecting separate networks creates cross-side growth loops |
+
+**What comes next:** The Rethinking the Firm chapter examines how AI changes organizational boundaries, operating models, and the nature of competitive advantage in more depth — building on these platform concepts with firm-level strategy.

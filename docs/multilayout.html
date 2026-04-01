@@ -261,9 +261,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#dash-layout-and-bootstrap" id="toc-dash-layout-and-bootstrap" class="nav-link active" data-scroll-target="#dash-layout-and-bootstrap">Dash Layout and Bootstrap</a>
   <ul class="collapse">
   <li><a href="#default-vs.-grid-layouts" id="toc-default-vs.-grid-layouts" class="nav-link" data-scroll-target="#default-vs.-grid-layouts">Default vs.&nbsp;Grid Layouts</a></li>
-  <li><a href="#what-is-bootstrap" id="toc-what-is-bootstrap" class="nav-link" data-scroll-target="#what-is-bootstrap">What Is Bootstrap?</a></li>
-  <li><a href="#top-components-in-dbc" id="toc-top-components-in-dbc" class="nav-link" data-scroll-target="#top-components-in-dbc">Top Components in <code>dbc</code></a></li>
   </ul></li>
+  <li><a href="#bootstrap" id="toc-bootstrap" class="nav-link" data-scroll-target="#bootstrap">Bootstrap</a>
+  <ul class="collapse">
+  <li><a href="#top-components-in-dbc" id="toc-top-components-in-dbc" class="nav-link" data-scroll-target="#top-components-in-dbc">Top Components in <code>dbc</code></a></li>
   <li><a href="#grid-layout-examples" id="toc-grid-layout-examples" class="nav-link" data-scroll-target="#grid-layout-examples">Grid Layout Examples</a>
   <ul class="collapse">
   <li><a href="#example-1-two-equal-columns" id="toc-example-1-two-equal-columns" class="nav-link" data-scroll-target="#example-1-two-equal-columns">Example 1 — Two Equal Columns</a></li>
@@ -275,10 +276,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#embedded-styles" id="toc-embedded-styles" class="nav-link" data-scroll-target="#embedded-styles">Embedded Styles</a></li>
   <li><a href="#full-two-column-layout" id="toc-full-two-column-layout" class="nav-link" data-scroll-target="#full-two-column-layout">Full Two-Column Layout</a></li>
   </ul></li>
+  </ul></li>
   <li><a href="#multi-layout-weather-app" id="toc-multi-layout-weather-app" class="nav-link" data-scroll-target="#multi-layout-weather-app">Multi-Layout Weather App</a>
   <ul class="collapse">
   <li><a href="#imports-and-city-coordinates" id="toc-imports-and-city-coordinates" class="nav-link" data-scroll-target="#imports-and-city-coordinates">Imports and City Coordinates</a></li>
   <li><a href="#fetching-the-hourly-temperature" id="toc-fetching-the-hourly-temperature" class="nav-link" data-scroll-target="#fetching-the-hourly-temperature">Fetching the Hourly Temperature</a></li>
+  <li><a href="#bootstrap-grid-layout-lab" id="toc-bootstrap-grid-layout-lab" class="nav-link" data-scroll-target="#bootstrap-grid-layout-lab">Bootstrap Grid Layout Lab</a></li>
   </ul></li>
   <li><a href="#theme-navbar-and-css" id="toc-theme-navbar-and-css" class="nav-link" data-scroll-target="#theme-navbar-and-css">Theme, Navbar, and CSS</a>
   <ul class="collapse">
@@ -291,11 +294,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#controls-panel" id="toc-controls-panel" class="nav-link" data-scroll-target="#controls-panel">Controls Panel</a></li>
   <li><a href="#kpi-cards-and-chart" id="toc-kpi-cards-and-chart" class="nav-link" data-scroll-target="#kpi-cards-and-chart">KPI Cards and Chart</a></li>
   <li><a href="#stats-table-and-full-layout" id="toc-stats-table-and-full-layout" class="nav-link" data-scroll-target="#stats-table-and-full-layout">Stats Table and Full Layout</a></li>
-  </ul></li>
   <li><a href="#callbacks-and-data" id="toc-callbacks-and-data" class="nav-link" data-scroll-target="#callbacks-and-data">Callbacks and Data</a>
   <ul class="collapse">
   <li><a href="#the-update-callback" id="toc-the-update-callback" class="nav-link" data-scroll-target="#the-update-callback">The Update Callback</a></li>
   <li><a href="#building-the-stats-table-and-returning-results" id="toc-building-the-stats-table-and-returning-results" class="nav-link" data-scroll-target="#building-the-stats-table-and-returning-results">Building the Stats Table and Returning Results</a></li>
+  </ul></li>
+  <li><a href="#dashboard-components-and-callbacks-lab" id="toc-dashboard-components-and-callbacks-lab" class="nav-link" data-scroll-target="#dashboard-components-and-callbacks-lab">Dashboard Components and Callbacks Lab</a></li>
+  </ul></li>
+  <li><a href="#summary-and-review" id="toc-summary-and-review" class="nav-link" data-scroll-target="#summary-and-review">Summary and Review</a>
+  <ul class="collapse">
+  <li><a href="#using-ai" id="toc-using-ai" class="nav-link" data-scroll-target="#using-ai">Using AI</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -336,15 +345,16 @@ Component 3</code></pre>
 <p>This is useful for dashboards where content is consumed in a specific order (filters → charts → details). For side-by-side layouts, you need a grid system:</p>
 <pre><code>Component 1 | Component 2 | Component 3</code></pre>
 </section>
-<section id="what-is-bootstrap" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-bootstrap">What Is Bootstrap?</h3>
+</section>
+<section id="bootstrap" class="level1">
+<h1>Bootstrap</h1>
 <p><strong>Bootstrap</strong> is a popular front-end framework that provides a responsive grid layout, prebuilt UI components, and utility classes. <strong>Dash Bootstrap Components</strong> (<code>dash-bootstrap-components</code>, imported as <code>dbc</code>) makes Bootstrap available inside Dash apps.</p>
 <p>Bootstrap’s grid system is built on <strong>12 equal units per row</strong>. You control each column’s width with <code>md=N</code>, where <code>N</code> is the number of units that column occupies:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 32%">
-<col style="width: 50%">
+<col style="width: 23%">
+<col style="width: 30%">
+<col style="width: 46%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -381,11 +391,9 @@ Component 3</code></pre>
 <li><span style="background-color: yellow;"><strong><code>dbc.Row()</code></strong></span> — a horizontal container. Only <code>dbc.Col()</code> components should be its direct children.</li>
 <li><span style="background-color: yellow;"><strong><code>dbc.Col()</code></strong></span> — where content actually lives. Its <code>md=N</code> parameter controls its share of the 12-column grid.</li>
 </ul>
-</section>
-<section id="top-components-in-dbc" class="level3">
-<h3 class="anchored" data-anchor-id="top-components-in-dbc">Top Components in <code>dbc</code></h3>
+<section id="top-components-in-dbc" class="level2">
+<h2 class="anchored" data-anchor-id="top-components-in-dbc">Top Components in <code>dbc</code></h2>
 <p><img src="images/dbc.png" class="img-fluid"></p>
-</section>
 </section>
 <section id="grid-layout-examples" class="level2">
 <h2 class="anchored" data-anchor-id="grid-layout-examples">Grid Layout Examples</h2>
@@ -484,10 +492,11 @@ Component 3</code></pre>
 </div>
 </section>
 </section>
-<section id="multi-layout-weather-app" class="level2">
-<h2 class="anchored" data-anchor-id="multi-layout-weather-app">Multi-Layout Weather App</h2>
-<section id="imports-and-city-coordinates" class="level3">
-<h3 class="anchored" data-anchor-id="imports-and-city-coordinates">Imports and City Coordinates</h3>
+</section>
+<section id="multi-layout-weather-app" class="level1">
+<h1>Multi-Layout Weather App</h1>
+<section id="imports-and-city-coordinates" class="level2">
+<h2 class="anchored" data-anchor-id="imports-and-city-coordinates">Imports and City Coordinates</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MultiLayoutWeather.py</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
@@ -507,8 +516,8 @@ Component 3</code></pre>
 </div>
 <p><img src="images/weatherapi.png" class="img-fluid"></p>
 </section>
-<section id="fetching-the-hourly-temperature" class="level3">
-<h3 class="anchored" data-anchor-id="fetching-the-hourly-temperature">Fetching the Hourly Temperature</h3>
+<section id="fetching-the-hourly-temperature" class="level2">
+<h2 class="anchored" data-anchor-id="fetching-the-hourly-temperature">Fetching the Hourly Temperature</h2>
 <p><code>fetch_hourly_temp(lat, lon)</code> returns a 48-row DataFrame — one row per hour — of forecast temperature data for a given location.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fetch_hourly_temp(lat: <span class="bu">float</span>, lon: <span class="bu">float</span>) <span class="op">-&gt;</span> pd.DataFrame:</span>
@@ -529,16 +538,88 @@ Component 3</code></pre>
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="bootstrap-grid-layout-lab" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrap-grid-layout-lab">Bootstrap Grid Layout Lab</h2>
+<p><strong>1.</strong> Bootstrap’s grid is based on 12 units per row. Write the <code>dbc.Row</code> and <code>dbc.Col</code> structure for a layout with: a full-width header row, then a row with a narrow left sidebar (3 units), a wide center chart area (6 units), and a narrow right panel (3 units). What must the column widths in any row sum to?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Column widths must sum to <strong>12</strong> (or be left unset for equal auto-distribution).</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dbc.Container([</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    dbc.Row(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        dbc.Col(html.Div(<span class="st">"Header"</span>), width<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    dbc.Row([</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        dbc.Col(html.Div(<span class="st">"Sidebar"</span>),    md<span class="op">=</span><span class="dv">3</span>),</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        dbc.Col(html.Div(<span class="st">"Chart"</span>),      md<span class="op">=</span><span class="dv">6</span>),</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        dbc.Col(html.Div(<span class="st">"Right Panel"</span>), md<span class="op">=</span><span class="dv">3</span>),</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    ])</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>], fluid<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>3 + 6 + 3 = 12. If the columns do not sum to 12, Bootstrap either truncates the last column or leaves empty space. Using <code>md=</code> sets the width at medium screen sizes and above; on smaller screens Bootstrap may stack them vertically depending on the theme configuration.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> What is the difference between <code>dbc.Container(fluid=True)</code> and <code>dbc.Container()</code> (without <code>fluid</code>)? When would you choose each in a dashboard context?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>dbc.Container()</code> without <code>fluid</code> applies a <strong>fixed maximum width</strong> with automatic padding on both sides — the content is centered and does not stretch beyond a defined breakpoint (typically around 1140px on large screens). This is appropriate for text-heavy pages or content where readability is the priority. <code>dbc.Container(fluid=True)</code> makes the layout <strong>span the full browser width</strong> — the content fills the entire viewport regardless of screen size. This is the standard choice for dashboards, where charts and tables should use all available horizontal space. Most Dash dashboards use <code>fluid=True</code>.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> The weather app’s <code>fetch_hourly_temp</code> function uses <code>r.raise_for_status()</code> and returns a pandas DataFrame. If the Open-Meteo API is temporarily unavailable and returns a <code>503 Service Unavailable</code> error, what happens in the current code, and how would you modify the callback to handle this gracefully?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>In the current code, <code>r.raise_for_status()</code> raises a <code>requests.HTTPError</code>, which propagates up through <code>fetch_hourly_temp</code> and crashes the callback — the user sees a “Callback error updating…” message in Dash’s debug mode, or a blank output. To handle this gracefully, wrap the <code>fetch_hourly_temp</code> call inside the callback in a <code>try/except</code> block:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> fetch_hourly_temp(lat, lon)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> requests.RequestException <span class="im">as</span> e:</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    error_msg <span class="op">=</span> html.Div(<span class="ss">f"Unable to fetch weather data: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                         style<span class="op">=</span>{<span class="st">"color"</span>: <span class="st">"red"</span>})</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {}, <span class="st">"--"</span>, <span class="st">"--"</span>, <span class="st">"--"</span>, error_msg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This returns a blank figure, placeholder KPI values, and a visible error message in the table area — far better than a silent crash. Always wrap external API calls in callbacks with error handling so users receive informative feedback rather than a broken dashboard.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="theme-navbar-and-css" class="level2">
-<h2 class="anchored" data-anchor-id="theme-navbar-and-css">Theme, Navbar, and CSS</h2>
-<section id="theme-explorer" class="level3">
-<h3 class="anchored" data-anchor-id="theme-explorer">Theme Explorer</h3>
+</section>
+<section id="theme-navbar-and-css" class="level1">
+<h1>Theme, Navbar, and CSS</h1>
+<section id="theme-explorer" class="level2">
+<h2 class="anchored" data-anchor-id="theme-explorer">Theme Explorer</h2>
 <p>Browse available Bootstrap themes at <a href="https://www.dash-bootstrap-components.com/docs/themes/explorer/">dash-bootstrap-components.com/docs/themes/explorer</a>. Use <strong>Ctrl + I</strong> (browser inspector) to identify specific Bootstrap class names or CSS values you want to apply or override.</p>
 <p><img src="images/externalstyle.png" class="img-fluid"></p>
 </section>
-<section id="css-ids-vs.-classes" class="level3">
-<h3 class="anchored" data-anchor-id="css-ids-vs.-classes">CSS: IDs vs.&nbsp;Classes</h3>
+<section id="css-ids-vs.-classes" class="level2">
+<h2 class="anchored" data-anchor-id="css-ids-vs.-classes">CSS: IDs vs.&nbsp;Classes</h2>
 <p>A single external stylesheet in <code>assets/</code> is best practice for multi-page apps: centralized, consistent, and updated in one place.</p>
 <table class="caption-top table">
 <thead>
@@ -573,179 +654,306 @@ Component 3</code></pre>
 </table>
 <p>Prefer <strong>classes</strong> for reusable styles; reserve <strong>IDs</strong> for unique elements or callback targets.</p>
 </section>
-<section id="building-the-navbar" class="level3">
-<h3 class="anchored" data-anchor-id="building-the-navbar">Building the Navbar</h3>
+<section id="building-the-navbar" class="level2">
+<h2 class="anchored" data-anchor-id="building-the-navbar">Building the Navbar</h2>
 <p>Bootstrap utility classes let you style elements without writing custom CSS:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Dash(<span class="va">__name__</span>, external_stylesheets<span class="op">=</span>[dbc.themes.BOOTSTRAP])</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>app.title <span class="op">=</span> <span class="st">"Open-Meteo Dashboard"</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>navbar <span class="op">=</span> html.Div(</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    [</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        html.H3(<span class="st">"Open-Meteo Dashboard"</span>, className<span class="op">=</span><span class="st">"text-white"</span>),</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        html.Span(<span class="st">"Public API – Multi-column layout"</span>, className<span class="op">=</span><span class="st">"text-white"</span>),</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    ],</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    className<span class="op">=</span><span class="st">"navbar navbar-dark bg-dark mb-4 px-3"</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#          ↑ base     ↑ light text  ↑ dark bg ↑ bottom margin ↑ horizontal padding</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Dash(<span class="va">__name__</span>, external_stylesheets<span class="op">=</span>[dbc.themes.BOOTSTRAP])</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>app.title <span class="op">=</span> <span class="st">"Open-Meteo Dashboard"</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>navbar <span class="op">=</span> html.Div(</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        html.H3(<span class="st">"Open-Meteo Dashboard"</span>, className<span class="op">=</span><span class="st">"text-white"</span>),</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        html.Span(<span class="st">"Public API – Multi-column layout"</span>, className<span class="op">=</span><span class="st">"text-white"</span>),</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    className<span class="op">=</span><span class="st">"navbar navbar-dark bg-dark mb-4 px-3"</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#          ↑ base     ↑ light text  ↑ dark bg ↑ bottom margin ↑ horizontal padding</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="building-dashboard-components" class="level2">
-<h2 class="anchored" data-anchor-id="building-dashboard-components">Building Dashboard Components</h2>
-<section id="controls-panel" class="level3">
-<h3 class="anchored" data-anchor-id="controls-panel">Controls Panel</h3>
+<section id="building-dashboard-components" class="level1">
+<h1>Building Dashboard Components</h1>
+<section id="controls-panel" class="level2">
+<h2 class="anchored" data-anchor-id="controls-panel">Controls Panel</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>controls <span class="op">=</span> dbc.Card([</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    dbc.CardHeader(<span class="st">"Controls"</span>),</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    dbc.CardBody([</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        dbc.Label(<span class="st">"City"</span>),</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        dcc.Dropdown(</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span><span class="st">"city-dd"</span>,</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>            options<span class="op">=</span>[{<span class="st">"label"</span>: k, <span class="st">"value"</span>: k} <span class="cf">for</span> k <span class="kw">in</span> CITY_COORDS.keys()],</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>            <span class="co"># "label" = what the user sees; "value" = what the callback receives</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>            value<span class="op">=</span><span class="st">"Williamsburg"</span>,</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>            clearable<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        ),</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        html.Br(),</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        dbc.Button(<span class="st">"Refresh"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">"refresh"</span>, n_clicks<span class="op">=</span><span class="dv">0</span>, className<span class="op">=</span><span class="st">"w-100"</span>),</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># w-100 = Bootstrap class: full width within the parent container</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        html.Hr(),</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        html.Small(</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Data source: open-meteo.com (no API key required)."</span>,</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>            className<span class="op">=</span><span class="st">"text-muted"</span>,</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        ),</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    ])</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>], className<span class="op">=</span><span class="st">"mb-3"</span>)   <span class="co"># mb-3 = Bootstrap margin-bottom spacing utility</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>controls <span class="op">=</span> dbc.Card([</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    dbc.CardHeader(<span class="st">"Controls"</span>),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    dbc.CardBody([</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        dbc.Label(<span class="st">"City"</span>),</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        dcc.Dropdown(</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span><span class="st">"city-dd"</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>            options<span class="op">=</span>[{<span class="st">"label"</span>: k, <span class="st">"value"</span>: k} <span class="cf">for</span> k <span class="kw">in</span> CITY_COORDS.keys()],</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>            <span class="co"># "label" = what the user sees; "value" = what the callback receives</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>            value<span class="op">=</span><span class="st">"Williamsburg"</span>,</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>            clearable<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        html.Br(),</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        dbc.Button(<span class="st">"Refresh"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">"refresh"</span>, n_clicks<span class="op">=</span><span class="dv">0</span>, className<span class="op">=</span><span class="st">"w-100"</span>),</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># w-100 = Bootstrap class: full width within the parent container</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        html.Hr(),</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>        html.Small(</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Data source: open-meteo.com (no API key required)."</span>,</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>            className<span class="op">=</span><span class="st">"text-muted"</span>,</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    ])</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>], className<span class="op">=</span><span class="st">"mb-3"</span>)   <span class="co"># mb-3 = Bootstrap margin-bottom spacing utility</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="kpi-cards-and-chart" class="level3">
-<h3 class="anchored" data-anchor-id="kpi-cards-and-chart">KPI Cards and Chart</h3>
+<section id="kpi-cards-and-chart" class="level2">
+<h2 class="anchored" data-anchor-id="kpi-cards-and-chart">KPI Cards and Chart</h2>
 <p>A <strong>KPI card</strong> is a small Bootstrap card that displays a single summary metric — a label and a large number. Each card’s <code>id_</code> is updated by the callback.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> kpi_card(title, id_):</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Creates a Bootstrap Card to display a single KPI value."""</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dbc.Card(</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        dbc.CardBody([</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>            html.H6(title, className<span class="op">=</span><span class="st">"text-muted mb-1"</span>),   <span class="co"># muted label text</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>            html.H3(<span class="bu">id</span><span class="op">=</span>id_, className<span class="op">=</span><span class="st">"mb-0"</span>),              <span class="co"># large value updated by callback</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        ]),</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        className<span class="op">=</span><span class="st">"h-100"</span>,   <span class="co"># stretch to match the tallest card in the row</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>kpi_row <span class="op">=</span> dbc.Row(</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    [</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        dbc.Col(kpi_card(<span class="st">"Current Temp (°C)"</span>, <span class="st">"kpi-now"</span>), md<span class="op">=</span><span class="dv">4</span>),</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        dbc.Col(kpi_card(<span class="st">"Min (°C/48h)"</span>,      <span class="st">"kpi-min"</span>), md<span class="op">=</span><span class="dv">4</span>),</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>        dbc.Col(kpi_card(<span class="st">"Max (°C/48h)"</span>,      <span class="st">"kpi-max"</span>), md<span class="op">=</span><span class="dv">4</span>),</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    ],</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    className<span class="op">=</span><span class="st">"g-3 mb-3"</span>,</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># g-3 = gutter spacing between columns; mb-3 = margin below this row</span></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>chart_card <span class="op">=</span> dbc.Card([</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    dbc.CardHeader(<span class="st">"Hourly Temperature (next 48h)"</span>),</span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    dbc.CardBody(dcc.Graph(</span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>        <span class="bu">id</span><span class="op">=</span><span class="st">"temp-chart"</span>,</span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>        config<span class="op">=</span>{<span class="st">"displayModeBar"</span>: <span class="va">False</span>}   <span class="co"># hide the Plotly modebar toolbar</span></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>    )),</span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> kpi_card(title, id_):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Creates a Bootstrap Card to display a single KPI value."""</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dbc.Card(</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        dbc.CardBody([</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>            html.H6(title, className<span class="op">=</span><span class="st">"text-muted mb-1"</span>),   <span class="co"># muted label text</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>            html.H3(<span class="bu">id</span><span class="op">=</span>id_, className<span class="op">=</span><span class="st">"mb-0"</span>),              <span class="co"># large value updated by callback</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        ]),</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>        className<span class="op">=</span><span class="st">"h-100"</span>,   <span class="co"># stretch to match the tallest card in the row</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>kpi_row <span class="op">=</span> dbc.Row(</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        dbc.Col(kpi_card(<span class="st">"Current Temp (°C)"</span>, <span class="st">"kpi-now"</span>), md<span class="op">=</span><span class="dv">4</span>),</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>        dbc.Col(kpi_card(<span class="st">"Min (°C/48h)"</span>,      <span class="st">"kpi-min"</span>), md<span class="op">=</span><span class="dv">4</span>),</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        dbc.Col(kpi_card(<span class="st">"Max (°C/48h)"</span>,      <span class="st">"kpi-max"</span>), md<span class="op">=</span><span class="dv">4</span>),</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    className<span class="op">=</span><span class="st">"g-3 mb-3"</span>,</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># g-3 = gutter spacing between columns; mb-3 = margin below this row</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>chart_card <span class="op">=</span> dbc.Card([</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    dbc.CardHeader(<span class="st">"Hourly Temperature (next 48h)"</span>),</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    dbc.CardBody(dcc.Graph(</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>        <span class="bu">id</span><span class="op">=</span><span class="st">"temp-chart"</span>,</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>        config<span class="op">=</span>{<span class="st">"displayModeBar"</span>: <span class="va">False</span>}   <span class="co"># hide the Plotly modebar toolbar</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    )),</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="stats-table-and-full-layout" class="level3">
-<h3 class="anchored" data-anchor-id="stats-table-and-full-layout">Stats Table and Full Layout</h3>
+<section id="stats-table-and-full-layout" class="level2">
+<h2 class="anchored" data-anchor-id="stats-table-and-full-layout">Stats Table and Full Layout</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>table_card <span class="op">=</span> dbc.Card([</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    dbc.CardHeader(<span class="st">"Summary Stats"</span>),</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    dbc.CardBody(html.Div(<span class="bu">id</span><span class="op">=</span><span class="st">"stats-table"</span>)),   <span class="co"># filled dynamically by the callback</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> dbc.Container(</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    [</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        navbar,</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        dbc.Row(</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>            [</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                dbc.Col(controls,              md<span class="op">=</span><span class="dv">3</span>),   <span class="co"># left:   3/12</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>                dbc.Col([kpi_row, chart_card], md<span class="op">=</span><span class="dv">6</span>),   <span class="co"># center: 6/12 (KPIs above chart)</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>                dbc.Col(table_card,            md<span class="op">=</span><span class="dv">3</span>),   <span class="co"># right:  3/12</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>            ],</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>            <span class="co"># 3 + 6 + 3 = 12 — columns must sum to 12 (or leave unset for auto-equal split)</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>            className<span class="op">=</span><span class="st">"g-3"</span>,</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>        ),</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>        html.Footer(</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>            html.Small(</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Built with Dash + dash-bootstrap-components • Layout uses Row/Col grid"</span>,</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>                className<span class="op">=</span><span class="st">"text-muted"</span>,</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>            ),</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>            className<span class="op">=</span><span class="st">"mt-4"</span>,   <span class="co"># top margin separating footer from content</span></span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>        ),</span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>    ],</span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>    fluid<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>table_card <span class="op">=</span> dbc.Card([</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    dbc.CardHeader(<span class="st">"Summary Stats"</span>),</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    dbc.CardBody(html.Div(<span class="bu">id</span><span class="op">=</span><span class="st">"stats-table"</span>)),   <span class="co"># filled dynamically by the callback</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> dbc.Container(</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        navbar,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        dbc.Row(</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>            [</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>                dbc.Col(controls,              md<span class="op">=</span><span class="dv">3</span>),   <span class="co"># left:   3/12</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>                dbc.Col([kpi_row, chart_card], md<span class="op">=</span><span class="dv">6</span>),   <span class="co"># center: 6/12 (KPIs above chart)</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>                dbc.Col(table_card,            md<span class="op">=</span><span class="dv">3</span>),   <span class="co"># right:  3/12</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>            ],</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>            <span class="co"># 3 + 6 + 3 = 12 — columns must sum to 12 (or leave unset for auto-equal split)</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>            className<span class="op">=</span><span class="st">"g-3"</span>,</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>        html.Footer(</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>            html.Small(</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Built with Dash + dash-bootstrap-components • Layout uses Row/Col grid"</span>,</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>                className<span class="op">=</span><span class="st">"text-muted"</span>,</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>            ),</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>            className<span class="op">=</span><span class="st">"mt-4"</span>,   <span class="co"># top margin separating footer from content</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>    fluid<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
 </section>
 <section id="callbacks-and-data" class="level2">
 <h2 class="anchored" data-anchor-id="callbacks-and-data">Callbacks and Data</h2>
 <section id="the-update-callback" class="level3">
 <h3 class="anchored" data-anchor-id="the-update-callback">The Update Callback</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    [</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        Output(<span class="st">"temp-chart"</span>,  <span class="st">"figure"</span>),    <span class="co"># 1. line chart figure</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        Output(<span class="st">"kpi-now"</span>,     <span class="st">"children"</span>),  <span class="co"># 2. current temp text</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        Output(<span class="st">"kpi-min"</span>,     <span class="st">"children"</span>),  <span class="co"># 3. min temp text</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        Output(<span class="st">"kpi-max"</span>,     <span class="st">"children"</span>),  <span class="co"># 4. max temp text</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        Output(<span class="st">"stats-table"</span>, <span class="st">"children"</span>),  <span class="co"># 5. daily summary table</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    ],</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    [Input(<span class="st">"city-dd"</span>, <span class="st">"value"</span>), Input(<span class="st">"refresh"</span>, <span class="st">"n_clicks"</span>)],</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update(city, _):</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># _ is the Python convention for "I receive this argument but don't use it"</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The refresh button triggers a re-run, but the click count itself is not needed</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    lat, lon <span class="op">=</span> CITY_COORDS[city]</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> fetch_hourly_temp(lat, lon)</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># KPI values extracted from the DataFrame</span></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    now  <span class="op">=</span> df.iloc[<span class="dv">0</span>][<span class="st">"temp_C"</span>]     <span class="co"># first row = current hour's temperature</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    tmin <span class="op">=</span> df[<span class="st">"temp_C"</span>].<span class="bu">min</span>()       <span class="co"># minimum over the full 48-hour forecast</span></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    tmax <span class="op">=</span> df[<span class="st">"temp_C"</span>].<span class="bu">max</span>()       <span class="co"># maximum over the full 48-hour forecast</span></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Line chart</span></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> px.line(df, x<span class="op">=</span><span class="st">"time"</span>, y<span class="op">=</span><span class="st">"temp_C"</span>, markers<span class="op">=</span><span class="va">True</span>, title<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    fig.update_layout(</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>        margin<span class="op">=</span><span class="bu">dict</span>(l<span class="op">=</span><span class="dv">10</span>, r<span class="op">=</span><span class="dv">10</span>, t<span class="op">=</span><span class="dv">10</span>, b<span class="op">=</span><span class="dv">10</span>),</span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>        yaxis_title<span class="op">=</span><span class="st">"°C"</span>,</span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>        xaxis_title<span class="op">=</span><span class="st">"Time"</span></span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        Output(<span class="st">"temp-chart"</span>,  <span class="st">"figure"</span>),    <span class="co"># 1. line chart figure</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        Output(<span class="st">"kpi-now"</span>,     <span class="st">"children"</span>),  <span class="co"># 2. current temp text</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        Output(<span class="st">"kpi-min"</span>,     <span class="st">"children"</span>),  <span class="co"># 3. min temp text</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        Output(<span class="st">"kpi-max"</span>,     <span class="st">"children"</span>),  <span class="co"># 4. max temp text</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        Output(<span class="st">"stats-table"</span>, <span class="st">"children"</span>),  <span class="co"># 5. daily summary table</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    [Input(<span class="st">"city-dd"</span>, <span class="st">"value"</span>), Input(<span class="st">"refresh"</span>, <span class="st">"n_clicks"</span>)],</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update(city, _):</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># _ is the Python convention for "I receive this argument but don't use it"</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The refresh button triggers a re-run, but the click count itself is not needed</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    lat, lon <span class="op">=</span> CITY_COORDS[city]</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> fetch_hourly_temp(lat, lon)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># KPI values extracted from the DataFrame</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    now  <span class="op">=</span> df.iloc[<span class="dv">0</span>][<span class="st">"temp_C"</span>]     <span class="co"># first row = current hour's temperature</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    tmin <span class="op">=</span> df[<span class="st">"temp_C"</span>].<span class="bu">min</span>()       <span class="co"># minimum over the full 48-hour forecast</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    tmax <span class="op">=</span> df[<span class="st">"temp_C"</span>].<span class="bu">max</span>()       <span class="co"># maximum over the full 48-hour forecast</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Line chart</span></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> px.line(df, x<span class="op">=</span><span class="st">"time"</span>, y<span class="op">=</span><span class="st">"temp_C"</span>, markers<span class="op">=</span><span class="va">True</span>, title<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    fig.update_layout(</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>        margin<span class="op">=</span><span class="bu">dict</span>(l<span class="op">=</span><span class="dv">10</span>, r<span class="op">=</span><span class="dv">10</span>, t<span class="op">=</span><span class="dv">10</span>, b<span class="op">=</span><span class="dv">10</span>),</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>        yaxis_title<span class="op">=</span><span class="st">"°C"</span>,</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>        xaxis_title<span class="op">=</span><span class="st">"Time"</span></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="building-the-stats-table-and-returning-results" class="level3">
 <h3 class="anchored" data-anchor-id="building-the-stats-table-and-returning-results">Building the Stats Table and Returning Results</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Aggregate hourly data into a daily summary table</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    summary <span class="op">=</span> (</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        df.assign(Date<span class="op">=</span>df[<span class="st">"time"</span>].dt.date)    <span class="co"># extract just the date from each datetime</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        .groupby(<span class="st">"Date"</span>)[<span class="st">"temp_C"</span>]</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        .agg([<span class="st">"min"</span>, <span class="st">"max"</span>, <span class="st">"mean"</span>])</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">round</span>(<span class="dv">1</span>)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>        .rename(columns<span class="op">=</span>{<span class="st">"min"</span>: <span class="st">"Min °C"</span>, <span class="st">"max"</span>: <span class="st">"Max °C"</span>, <span class="st">"mean"</span>: <span class="st">"Avg °C"</span>})</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        .reset_index()</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    table <span class="op">=</span> dbc.Table.from_dataframe(</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        summary,</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        striped<span class="op">=</span><span class="va">True</span>,    <span class="co"># alternating row shading for readability</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        bordered<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>        hover<span class="op">=</span><span class="va">True</span>       <span class="co"># highlight row on mouse hover</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    fmt <span class="op">=</span> <span class="kw">lambda</span> x: <span class="ss">f"</span><span class="sc">{</span>x<span class="sc">:.1f}</span><span class="ss">"</span>   <span class="co"># format a float to 1 decimal place (e.g., 22.3456 → "22.3")</span></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fig, fmt(now), fmt(tmin), fmt(tmax), table</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Return order must match Output order: chart, kpi-now, kpi-min, kpi-max, stats-table</span></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>    app.run(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Aggregate hourly data into a daily summary table</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    summary <span class="op">=</span> (</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        df.assign(Date<span class="op">=</span>df[<span class="st">"time"</span>].dt.date)    <span class="co"># extract just the date from each datetime</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        .groupby(<span class="st">"Date"</span>)[<span class="st">"temp_C"</span>]</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        .agg([<span class="st">"min"</span>, <span class="st">"max"</span>, <span class="st">"mean"</span>])</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">round</span>(<span class="dv">1</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        .rename(columns<span class="op">=</span>{<span class="st">"min"</span>: <span class="st">"Min °C"</span>, <span class="st">"max"</span>: <span class="st">"Max °C"</span>, <span class="st">"mean"</span>: <span class="st">"Avg °C"</span>})</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        .reset_index()</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    table <span class="op">=</span> dbc.Table.from_dataframe(</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>        summary,</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>        striped<span class="op">=</span><span class="va">True</span>,    <span class="co"># alternating row shading for readability</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>        bordered<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>        hover<span class="op">=</span><span class="va">True</span>       <span class="co"># highlight row on mouse hover</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    fmt <span class="op">=</span> <span class="kw">lambda</span> x: <span class="ss">f"</span><span class="sc">{</span>x<span class="sc">:.1f}</span><span class="ss">"</span>   <span class="co"># format a float to 1 decimal place (e.g., 22.3456 → "22.3")</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fig, fmt(now), fmt(tmin), fmt(tmax), table</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Return order must match Output order: chart, kpi-now, kpi-min, kpi-max, stats-table</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>    app.run(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+</section>
+<section id="dashboard-components-and-callbacks-lab" class="level2">
+<h2 class="anchored" data-anchor-id="dashboard-components-and-callbacks-lab">Dashboard Components and Callbacks Lab</h2>
+<p><strong>1.</strong> The weather app callback returns five values in a specific order. What would happen if you accidentally swapped the <code>kpi-min</code> and <code>kpi-max</code> return values, and how would you debug it?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The KPI cards would display incorrect values — the card labeled “Min (°C/48h)” would show the maximum temperature and vice versa. The dashboard would still run without errors because the data types match (both are formatted strings), making this a <strong>silent logic error</strong> — one of the hardest bugs to catch. <strong>How to debug:</strong> compare the KPI card labels to the Output order in the <code>@app.callback</code> decorator. The Output declarations are <code>kpi-now</code>, <code>kpi-min</code>, <code>kpi-max</code>, <code>stats-table</code> — the return statement must match exactly: <code>return fig, fmt(now), fmt(tmin), fmt(tmax), table</code>. Adding a print statement inside the callback (<code>print(tmin, tmax)</code>) and comparing to what the cards display quickly isolates the swap.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> The <code>kpi_card</code> function is defined outside the app layout and called three times to build the KPI row. What is the advantage of this pattern over writing three separate <code>dbc.Card</code> components inline in the layout?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The function pattern follows the <strong>DRY (Don’t Repeat Yourself)</strong> principle. Writing three <code>dbc.Card</code> blocks inline means any change to the card style or structure (adding a unit label, changing the class, adjusting padding) must be made in three places — and it is easy to make the change in two but miss the third, introducing inconsistency. With a function, the structure is defined once, tested once, and updated in one place. The function also makes the layout code more readable — <code>kpi_card("Current Temp (°C)", "kpi-now")</code> is self-documenting, while a full inline <code>dbc.Card([dbc.CardBody([...])])</code> block obscures intent with boilerplate.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="summary-and-review" class="level1">
+<h1>Summary and Review</h1>
+<section id="using-ai" class="level2">
+<h2 class="anchored" data-anchor-id="using-ai">Using AI</h2>
+<p>Use the following prompts with a generative AI tool to explore grid layouts and Bootstrap further.</p>
+<ul>
+<li>How does Bootstrap’s 12-column grid work? What happens when column widths in a row do not sum to 12?</li>
+<li>What is the difference between <code>dbc.Container(fluid=True)</code> and a fixed-width container? When would you use each?</li>
+<li>What is a Bootstrap theme, and how do you apply one to a Dash app? How do Bootstrap utility classes (like <code>text-muted</code>, <code>mb-3</code>, <code>w-100</code>) differ from custom CSS?</li>
+<li>What is a KPI card, and why is it a common pattern in business dashboards? How do you wire one to a callback?</li>
+<li>Explain the <code>lambda</code> function used in the weather app: <code>fmt = lambda x: f"{x:.1f}"</code>. What does it do, and when is a lambda appropriate versus a full <code>def</code> function?</li>
+<li>Why is error handling inside API-calling callbacks important? What should a well-handled API error look like from the user’s perspective?</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>This chapter introduced responsive grid layouts using Dash Bootstrap Components and built a full multi-column weather dashboard with live API data.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>Key concepts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Default vs.&nbsp;grid layout</td>
+<td>Default: vertical stacking; Bootstrap grid: rows and columns</td>
+</tr>
+<tr class="even">
+<td>Bootstrap 12-column grid</td>
+<td><code>dbc.Row()</code> and <code>dbc.Col(md=N)</code>; columns in a row should sum to 12</td>
+</tr>
+<tr class="odd">
+<td>Common <code>md=</code> values</td>
+<td>12 = full, 6 = half, 4 = one-third, 3 = one-quarter</td>
+</tr>
+<tr class="even">
+<td><code>dbc.Container</code></td>
+<td><code>fluid=True</code> = full browser width; default = fixed max-width centered</td>
+</tr>
+<tr class="odd">
+<td>Bootstrap themes</td>
+<td>Applied via <code>external_stylesheets=[dbc.themes.THEME]</code>; swap for different visual style</td>
+</tr>
+<tr class="even">
+<td>CSS IDs vs.&nbsp;classes</td>
+<td><code>#id</code> = unique element + callback target; <code>.class</code> = reusable shared styles</td>
+</tr>
+<tr class="odd">
+<td>Bootstrap utility classes</td>
+<td><code>text-muted</code>, <code>mb-3</code>, <code>w-100</code>, <code>g-3</code>, <code>h-100</code> — styling without custom CSS</td>
+</tr>
+<tr class="even">
+<td>Navbar</td>
+<td><code>html.Div(className="navbar navbar-dark bg-dark")</code> — Bootstrap utility class styling</td>
+</tr>
+<tr class="odd">
+<td>KPI cards</td>
+<td><code>dbc.Card</code> + <code>dbc.CardBody</code>; <code>id=</code> wired to callback Output</td>
+</tr>
+<tr class="even">
+<td><code>dbc.Table.from_dataframe</code></td>
+<td>Converts pandas DataFrame to a Bootstrap-styled HTML table</td>
+</tr>
+<tr class="odd">
+<td>Open-Meteo API</td>
+<td>Free weather API; no key required; returns hourly temperature forecast</td>
+</tr>
+<tr class="even">
+<td><code>fetch_hourly_temp</code></td>
+<td>Calls API, parses JSON, returns 48-row DataFrame with time and temp_C</td>
+</tr>
+<tr class="odd">
+<td>Callback with 5 outputs</td>
+<td>Return order must match Output declaration order exactly</td>
+</tr>
+<tr class="even">
+<td><code>lambda</code> formatter</td>
+<td><code>fmt = lambda x: f"{x:.1f}"</code> — concise single-use formatting function</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What comes next:</strong> The Setting Up Multiple Pages chapter extends the single-page dashboard into a multi-page application — adding navigation, shared styling, and per-page layouts and callbacks.</p>
 
 
 </section>

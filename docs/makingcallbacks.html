@@ -258,14 +258,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of Contents</h2>
    
   <ul>
-  <li><a href="#callbacks" id="toc-callbacks" class="nav-link active" data-scroll-target="#callbacks">Callbacks</a></li>
-  <li><a href="#callbacks-in-dash-the-basics" id="toc-callbacks-in-dash-the-basics" class="nav-link" data-scroll-target="#callbacks-in-dash-the-basics">Callbacks in Dash: The Basics</a></li>
+  <li><a href="#callback-functions" id="toc-callback-functions" class="nav-link active" data-scroll-target="#callback-functions">Callback Functions</a></li>
+  <li><a href="#callbacks-in-dash-the-basics" id="toc-callbacks-in-dash-the-basics" class="nav-link" data-scroll-target="#callbacks-in-dash-the-basics">Callbacks in Dash: The Basics</a>
+  <ul class="collapse">
   <li><a href="#the-callback-function" id="toc-the-callback-function" class="nav-link" data-scroll-target="#the-callback-function">The Callback Function</a></li>
   <li><a href="#multiple-inputs-and-outputs" id="toc-multiple-inputs-and-outputs" class="nav-link" data-scroll-target="#multiple-inputs-and-outputs">Multiple Inputs and Outputs</a></li>
   <li><a href="#dash-core-components-dcc" id="toc-dash-core-components-dcc" class="nav-link" data-scroll-target="#dash-core-components-dcc">Dash Core Components (<code>dcc</code>)</a></li>
   <li><a href="#callback-example" id="toc-callback-example" class="nav-link" data-scroll-target="#callback-example">Callback Example</a></li>
   <li><a href="#dcc.input" id="toc-dcc.input" class="nav-link" data-scroll-target="#dcc.input"><code>dcc.Input</code></a></li>
   <li><a href="#connecting-the-dcc-to-the-callback" id="toc-connecting-the-dcc-to-the-callback" class="nav-link" data-scroll-target="#connecting-the-dcc-to-the-callback">Connecting the <code>dcc</code> to the Callback</a></li>
+  <li><a href="#callbacks-lab" id="toc-callbacks-lab" class="nav-link" data-scroll-target="#callbacks-lab">Callbacks Lab</a></li>
+  </ul></li>
   <li><a href="#making-a-callback-using-nasas-api" id="toc-making-a-callback-using-nasas-api" class="nav-link" data-scroll-target="#making-a-callback-using-nasas-api">Making a Callback Using NASA’s API</a>
   <ul class="collapse">
   <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
@@ -274,6 +277,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#making-the-callback" id="toc-making-the-callback" class="nav-link" data-scroll-target="#making-the-callback">Making the Callback</a></li>
   <li><a href="#the-show_apod-function" id="toc-the-show_apod-function" class="nav-link" data-scroll-target="#the-show_apod-function">The <code>show_apod</code> Function</a></li>
   <li><a href="#rendering-the-media" id="toc-rendering-the-media" class="nav-link" data-scroll-target="#rendering-the-media">Rendering the Media</a></li>
+  <li><a href="#nasa-api-callback-lab" id="toc-nasa-api-callback-lab" class="nav-link" data-scroll-target="#nasa-api-callback-lab">NASA API Callback Lab</a></li>
+  </ul></li>
+  <li><a href="#summary-and-review" id="toc-summary-and-review" class="nav-link" data-scroll-target="#summary-and-review">Summary and Review</a>
+  <ul class="collapse">
+  <li><a href="#using-ai" id="toc-using-ai" class="nav-link" data-scroll-target="#using-ai">Using AI</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -300,10 +309,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This module explains how callbacks make Dash apps interactive and how to connect them to external APIs. A callback function automatically runs when a user changes an input — such as typing text or selecting a date — and updates outputs like graphs or images in real time. Using the <code>@app.callback()</code> decorator, students learn to link inputs and outputs, handle multiple components, and structure interactive workflows with Dash Core Components such as <code>dcc.Input</code> and <code>dcc.DatePickerSingle</code>.</p>
+<p>This section explains how callbacks make Dash apps interactive and how to connect them to external APIs. A callback function automatically runs when a user changes an input — such as typing text or selecting a date — and updates outputs like graphs or images in real time. Using the <code>@app.callback()</code> decorator, students learn to link inputs and outputs, handle multiple components, and structure interactive workflows with Dash Core Components such as <code>dcc.Input</code> and <code>dcc.DatePickerSingle</code>.</p>
 <p>The lesson concludes with a hands-on example using NASA’s Astronomy Picture of the Day (APOD) API. Students build a Dash app that lets users select a date, retrieves NASA’s image or video for that day using the <code>requests</code> library, and displays the title, media, and explanation. Through this exercise, students learn how to combine callbacks, APIs, and conditional logic to create dynamic, data-driven dashboards.</p>
-<section id="callbacks" class="level2">
-<h2 class="anchored" data-anchor-id="callbacks">Callbacks</h2>
+<section id="callback-functions" class="level2">
+<h2 class="anchored" data-anchor-id="callback-functions">Callback Functions</h2>
 <p>A <strong>callback function</strong> in Python is a function that is automatically executed in response to a specific event or change. In Dash, callback functions link inputs and outputs — when an input component’s property changes (for example, a dropdown selection or slider value), the callback runs automatically to update the output component (such as a graph or text display).</p>
 <p>Think of callbacks as the nervous system of your Dash app: the layout defines what the user sees; callbacks define how the app responds to what the user does.</p>
 <blockquote class="blockquote">
@@ -318,8 +327,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The data flow is always:</p>
 <p><span style="background-color: yellow;"><strong>Input component property</strong></span> → <strong>callback function runs</strong> → <span style="background-color: yellow;"><strong>Output component property updated</strong></span></p>
 </section>
-<section id="callbacks-in-dash-the-basics" class="level2">
-<h2 class="anchored" data-anchor-id="callbacks-in-dash-the-basics">Callbacks in Dash: The Basics</h2>
+<section id="callbacks-in-dash-the-basics" class="level1">
+<h1>Callbacks in Dash: The Basics</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Callback syntax template</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> Input, Output</span>
@@ -340,7 +349,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><span style="background-color: yellow;"><strong><code>component_id</code></strong></span> — the <code>id</code> string you assigned to a layout component (e.g., <code>id="my-dropdown"</code>).</li>
 <li><span style="background-color: yellow;"><strong><code>component_property</code></strong></span> — a specific property of that component (e.g., <code>"value"</code> for a dropdown, <code>"children"</code> for a Div, <code>"figure"</code> for a Graph).</li>
 </ul>
-</section>
 <section id="the-callback-function" class="level2">
 <h2 class="anchored" data-anchor-id="the-callback-function">The Callback Function</h2>
 <div class="quarto-figure quarto-figure-center">
@@ -384,6 +392,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="dash-core-components-dcc">Dash Core Components (<code>dcc</code>)</h2>
 <p><strong><code>dcc</code></strong> (Dash Core Components) is a module providing interactive UI elements that users can manipulate to trigger callbacks. Common components include:</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 43%">
+<col style="width: 21%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Component</th>
@@ -502,8 +515,71 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You do not need to write <code>component_id=</code> and <code>component_property=</code> explicitly. Dash accepts positional arguments: <code>Output("text-out", "children")</code> is equivalent to <code>Output(component_id="text-out", component_property="children")</code>. Positional syntax is more concise and more commonly seen in practice.</p>
 </div>
 </section>
-<section id="making-a-callback-using-nasas-api" class="level2">
-<h2 class="anchored" data-anchor-id="making-a-callback-using-nasas-api">Making a Callback Using NASA’s API</h2>
+<section id="callbacks-lab" class="level2">
+<h2 class="anchored" data-anchor-id="callbacks-lab">Callbacks Lab</h2>
+<p><strong>1.</strong> What is a decorator in Python, and what does <code>@app.callback()</code> specifically tell Dash to do? Explain the data flow in plain language from the moment a user changes an input to the moment the output updates.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A <strong>decorator</strong> is a function that wraps another function to extend or modify its behavior — the <code>@</code> syntax is Python shorthand for applying it. <code>@app.callback()</code> registers the function below it with Dash’s reactive framework. In plain language: when Dash starts, it reads all decorated callback functions and builds an internal map of which inputs are connected to which outputs. When a user changes an input component (e.g., types in a text box), Dash detects the change, collects the current values of all declared <code>Input</code> properties, calls the decorated function with those values as arguments, and takes the return value(s) and assigns them to the declared <code>Output</code> property or properties — updating the page immediately without a full browser reload.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> A callback has two <code>Input</code> components and two <code>Output</code> components. Write the decorator and function signature only (no body) to wire: Input 1 = <code>dcc.Dropdown</code> with <code>id="region-dd"</code> and property <code>"value"</code>; Input 2 = <code>dcc.Slider</code> with <code>id="year-slider"</code> and property <code>"value"</code>; Output 1 = <code>dcc.Graph</code> with <code>id="sales-chart"</code> and property <code>"figure"</code>; Output 2 = <code>html.Div</code> with <code>id="summary-text"</code> and property <code>"children"</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">"sales-chart"</span>,  <span class="st">"figure"</span>),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">"summary-text"</span>, <span class="st">"children"</span>),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    Input(<span class="st">"region-dd"</span>,    <span class="st">"value"</span>),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    Input(<span class="st">"year-slider"</span>,  <span class="st">"value"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_dashboard(selected_region, selected_year):</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The function receives two arguments in the same order as the <code>Input</code> declarations: <code>selected_region</code> ← <code>"region-dd"</code>, <code>selected_year</code> ← <code>"year-slider"</code>. It must return two values in the same order as the <code>Output</code> declarations: <code>figure</code> first, <code>children</code> second. Returning them in the wrong order will silently assign the wrong value to the wrong component.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> Why does the pattern <code>value or ""</code> (or <code>value or 0</code>) appear so often in Dash callback functions? What happens if you skip this guard and call <code>.upper()</code> on a <code>None</code> value?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>When a <code>dcc.Input</code> box is empty, Dash passes <code>None</code> as the argument — not an empty string or zero. <code>None</code> is not a string or a number, so any string or arithmetic operation on it raises an error. <code>value or ""</code> uses Python’s short-circuit evaluation: if <code>value</code> is <code>None</code> (falsy), the expression evaluates to <code>""</code> (the right-hand side). If <code>value</code> is a non-empty string (truthy), the expression evaluates to <code>value</code> unchanged. Without this guard, calling <code>None.upper()</code> raises <code>AttributeError: 'NoneType' object has no attribute 'upper'</code> — crashing the callback and causing the output component to display a generic “Callback error” message in the browser rather than updating correctly.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="making-a-callback-using-nasas-api" class="level1">
+<h1>Making a Callback Using NASA’s API</h1>
 <section id="overview" class="level3">
 <h3 class="anchored" data-anchor-id="overview">Overview</h3>
 <p>The goal is to build a Dash app that connects to <strong>NASA’s Astronomy Picture of the Day (APOD) API</strong>, letting users pick a date and instantly see the image or video NASA published for that day, along with its title and description.</p>
@@ -512,14 +588,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="imports-and-constants" class="level3">
 <h3 class="anchored" data-anchor-id="imports-and-constants">Imports and Constants</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime <span class="im">as</span> dt</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> Dash, html, dcc, Input, Output, exceptions</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>API_KEY  <span class="op">=</span> <span class="st">"DEMO_KEY"</span>                           <span class="co"># replace with your own for higher rate limits</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>APOD_URL <span class="op">=</span> <span class="st">"https://api.nasa.gov/planetary/apod"</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>MIN_DATE <span class="op">=</span> dt.date(<span class="dv">1995</span>, <span class="dv">6</span>, <span class="dv">16</span>)                 <span class="co"># first APOD was published June 16, 1995</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>TODAY    <span class="op">=</span> dt.date.today()                      <span class="co"># computed at runtime, not hardcoded</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime <span class="im">as</span> dt</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> Dash, html, dcc, Input, Output, exceptions</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>API_KEY  <span class="op">=</span> <span class="st">"DEMO_KEY"</span>                           <span class="co"># replace with your own for higher rate limits</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>APOD_URL <span class="op">=</span> <span class="st">"https://api.nasa.gov/planetary/apod"</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>MIN_DATE <span class="op">=</span> dt.date(<span class="dv">1995</span>, <span class="dv">6</span>, <span class="dv">16</span>)                 <span class="co"># first APOD was published June 16, 1995</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>TODAY    <span class="op">=</span> dt.date.today()                      <span class="co"># computed at runtime, not hardcoded</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/nasa_example.png" class="img-fluid"></p>
 </section>
@@ -527,32 +603,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="setting-the-layout">Setting the Layout</h3>
 <p>The layout defines what the user sees. Static in structure but contains placeholder components (identified by <code>id</code>) that callbacks will populate with live data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Dash(<span class="va">__name__</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>app.title <span class="op">=</span> <span class="st">"NASA APOD"</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> html.Div(</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    style<span class="op">=</span>{<span class="st">"margin"</span>: <span class="st">"0 auto"</span>, <span class="st">"padding"</span>: <span class="dv">20</span>},</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    children<span class="op">=</span>[</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        html.H1(<span class="st">"NASA Astronomy Picture of the Day"</span>),</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Date picker: user selects which date to view</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        dcc.DatePickerSingle(</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span><span class="st">"apod-date"</span>,</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>            min_date_allowed<span class="op">=</span>MIN_DATE,       <span class="co"># earliest valid date</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>            max_date_allowed<span class="op">=</span>TODAY,          <span class="co"># cannot pick a future date</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>            date<span class="op">=</span>TODAY,                      <span class="co"># default selection: today</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>            display_format<span class="op">=</span><span class="st">"YYYY-MM-DD"</span>,</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>            clearable<span class="op">=</span><span class="va">False</span>,                 <span class="co"># prevent the user from clearing the date</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        ),</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Spinner shown while media is loading; wraps the image/video placeholder</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>        dcc.Loading(html.Div(<span class="bu">id</span><span class="op">=</span><span class="st">"media"</span>,</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>                             style<span class="op">=</span>{<span class="st">"marginTop"</span>: <span class="dv">16</span>, <span class="st">"textAlign"</span>: <span class="st">"center"</span>})),</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Placeholder for the text description</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>        html.Div(<span class="bu">id</span><span class="op">=</span><span class="st">"caption"</span>),</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    ],</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Dash(<span class="va">__name__</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>app.title <span class="op">=</span> <span class="st">"NASA APOD"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> html.Div(</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    style<span class="op">=</span>{<span class="st">"margin"</span>: <span class="st">"0 auto"</span>, <span class="st">"padding"</span>: <span class="dv">20</span>},</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    children<span class="op">=</span>[</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        html.H1(<span class="st">"NASA Astronomy Picture of the Day"</span>),</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Date picker: user selects which date to view</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        dcc.DatePickerSingle(</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span><span class="st">"apod-date"</span>,</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>            min_date_allowed<span class="op">=</span>MIN_DATE,       <span class="co"># earliest valid date</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>            max_date_allowed<span class="op">=</span>TODAY,          <span class="co"># cannot pick a future date</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>            date<span class="op">=</span>TODAY,                      <span class="co"># default selection: today</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>            display_format<span class="op">=</span><span class="st">"YYYY-MM-DD"</span>,</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>            clearable<span class="op">=</span><span class="va">False</span>,                 <span class="co"># prevent the user from clearing the date</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Spinner shown while media is loading; wraps the image/video placeholder</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>        dcc.Loading(html.Div(<span class="bu">id</span><span class="op">=</span><span class="st">"media"</span>,</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>                             style<span class="op">=</span>{<span class="st">"marginTop"</span>: <span class="dv">16</span>, <span class="st">"textAlign"</span>: <span class="st">"center"</span>})),</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Placeholder for the text description</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>        html.Div(<span class="bu">id</span><span class="op">=</span><span class="st">"caption"</span>),</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Key layout components:</p>
 <ul>
@@ -564,36 +640,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="making-the-callback" class="level3">
 <h3 class="anchored" data-anchor-id="making-the-callback">Making the Callback</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    [Output(<span class="st">"media"</span>,   <span class="st">"children"</span>),   <span class="co"># will receive the image or video component</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>     Output(<span class="st">"caption"</span>, <span class="st">"children"</span>)],  <span class="co"># will receive the explanation text</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    Input(<span class="st">"apod-date"</span>, <span class="st">"date"</span>),        <span class="co"># triggers when the selected date changes</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    [Output(<span class="st">"media"</span>,   <span class="st">"children"</span>),   <span class="co"># will receive the image or video component</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>     Output(<span class="st">"caption"</span>, <span class="st">"children"</span>)],  <span class="co"># will receive the explanation text</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    Input(<span class="st">"apod-date"</span>, <span class="st">"date"</span>),        <span class="co"># triggers when the selected date changes</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="the-show_apod-function" class="level3">
 <h3 class="anchored" data-anchor-id="the-show_apod-function">The <code>show_apod</code> Function</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_apod(date_str):</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Guard: if no date is selected, do nothing</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> date_str:</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> exceptions.PreventUpdate</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert the date string to a Python date object</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># [:10] slices "2024-01-15T00:00:00" down to "2024-01-15"</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        date_obj <span class="op">=</span> dt.date.fromisoformat(date_str[:<span class="dv">10</span>])</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span>:</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Invalid date."</span>, <span class="st">""</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Build query parameters and call the API</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    params <span class="op">=</span> {<span class="st">"api_key"</span>: API_KEY, <span class="st">"date"</span>: date_obj.isoformat()}</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> requests.get(APOD_URL, params<span class="op">=</span>params, timeout<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        r.raise_for_status()   <span class="co"># raises an exception if status code is not 200</span></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> r.json()        <span class="co"># parse JSON response into a Python dictionary</span></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> requests.RequestException <span class="im">as</span> e:</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"API error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>, <span class="st">""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_apod(date_str):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Guard: if no date is selected, do nothing</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> date_str:</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> exceptions.PreventUpdate</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert the date string to a Python date object</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># [:10] slices "2024-01-15T00:00:00" down to "2024-01-15"</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        date_obj <span class="op">=</span> dt.date.fromisoformat(date_str[:<span class="dv">10</span>])</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span>:</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Invalid date."</span>, <span class="st">""</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Build query parameters and call the API</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    params <span class="op">=</span> {<span class="st">"api_key"</span>: API_KEY, <span class="st">"date"</span>: date_obj.isoformat()}</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> requests.get(APOD_URL, params<span class="op">=</span>params, timeout<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        r.raise_for_status()   <span class="co"># raises an exception if status code is not 200</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> r.json()        <span class="co"># parse JSON response into a Python dictionary</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> requests.RequestException <span class="im">as</span> e:</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"API error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>, <span class="st">""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>What each part does:</p>
 <ul>
@@ -606,38 +682,182 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="rendering-the-media" class="level3">
 <h3 class="anchored" data-anchor-id="rendering-the-media">Rendering the Media</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract fields safely using .get() with defaults</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    media_type  <span class="op">=</span> data.get(<span class="st">"media_type"</span>, <span class="st">""</span>)   <span class="co"># "image" or "video"</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    url         <span class="op">=</span> data.get(<span class="st">"url"</span>, <span class="st">""</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    title       <span class="op">=</span> data.get(<span class="st">"title"</span>, <span class="st">"APOD"</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    explanation <span class="op">=</span> data.get(<span class="st">"explanation"</span>, <span class="st">""</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Render the appropriate component based on media type</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> media_type <span class="op">==</span> <span class="st">"image"</span>:</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        media <span class="op">=</span> html.Img(</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>            src<span class="op">=</span>url,</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>            style<span class="op">=</span>{<span class="st">"maxWidth"</span>: <span class="st">"100%"</span>, <span class="st">"borderRadius"</span>: <span class="dv">8</span>},</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>            alt<span class="op">=</span>title   <span class="co"># alt text for accessibility</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> media_type <span class="op">==</span> <span class="st">"video"</span>:</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>        media <span class="op">=</span> html.Iframe(</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>            src<span class="op">=</span>url,</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>            style<span class="op">=</span>{<span class="st">"width"</span>: <span class="st">"100%"</span>, <span class="st">"height"</span>: <span class="dv">500</span>, <span class="st">"border"</span>: <span class="dv">0</span>}</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>        media <span class="op">=</span> html.Div(<span class="st">"Unsupported media type."</span>)</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    header <span class="op">=</span> html.H3(<span class="ss">f"</span><span class="sc">{</span>title<span class="sc">}</span><span class="ss"> — </span><span class="sc">{</span>date_obj<span class="sc">.</span>isoformat()<span class="sc">}</span><span class="ss">"</span>,</span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>                     style<span class="op">=</span>{<span class="st">"marginBottom"</span>: <span class="dv">8</span>})</span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Return TWO values — one for each Output in the callback</span></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> html.Div([header, media]), explanation</span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    app.run(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract fields safely using .get() with defaults</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    media_type  <span class="op">=</span> data.get(<span class="st">"media_type"</span>, <span class="st">""</span>)   <span class="co"># "image" or "video"</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    url         <span class="op">=</span> data.get(<span class="st">"url"</span>, <span class="st">""</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    title       <span class="op">=</span> data.get(<span class="st">"title"</span>, <span class="st">"APOD"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    explanation <span class="op">=</span> data.get(<span class="st">"explanation"</span>, <span class="st">""</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Render the appropriate component based on media type</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> media_type <span class="op">==</span> <span class="st">"image"</span>:</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        media <span class="op">=</span> html.Img(</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>            src<span class="op">=</span>url,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>            style<span class="op">=</span>{<span class="st">"maxWidth"</span>: <span class="st">"100%"</span>, <span class="st">"borderRadius"</span>: <span class="dv">8</span>},</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>            alt<span class="op">=</span>title   <span class="co"># alt text for accessibility</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> media_type <span class="op">==</span> <span class="st">"video"</span>:</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        media <span class="op">=</span> html.Iframe(</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>            src<span class="op">=</span>url,</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>            style<span class="op">=</span>{<span class="st">"width"</span>: <span class="st">"100%"</span>, <span class="st">"height"</span>: <span class="dv">500</span>, <span class="st">"border"</span>: <span class="dv">0</span>}</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>        media <span class="op">=</span> html.Div(<span class="st">"Unsupported media type."</span>)</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>    header <span class="op">=</span> html.H3(<span class="ss">f"</span><span class="sc">{</span>title<span class="sc">}</span><span class="ss"> — </span><span class="sc">{</span>date_obj<span class="sc">.</span>isoformat()<span class="sc">}</span><span class="ss">"</span>,</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>                     style<span class="op">=</span>{<span class="st">"marginBottom"</span>: <span class="dv">8</span>})</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Return TWO values — one for each Output in the callback</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> html.Div([header, media]), explanation</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>    app.run(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Why <code>.get()</code> with defaults? The NASA API may not include every field for every date (especially very early APOD entries). Using <code>.get("key", default)</code> prevents <code>KeyError</code> exceptions when a field is absent — a form of <strong>defensive programming</strong> essential for any code calling external APIs.</p>
 <p>The function returns <strong>two values</strong> separated by a comma, matching the two <code>Output</code>s declared in <code>@app.callback</code>. The order matters: the first return value goes to <code>"media"</code>, the second to <code>"caption"</code>.</p>
+</section>
+<section id="nasa-api-callback-lab" class="level2">
+<h2 class="anchored" data-anchor-id="nasa-api-callback-lab">NASA API Callback Lab</h2>
+<p><strong>1.</strong> The NASA APOD callback uses <code>exceptions.PreventUpdate</code> instead of returning <code>None</code> when no date is selected. What is the difference between the two approaches, and why does <code>PreventUpdate</code> produce better user experience?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Returning <code>None</code> from a callback tells Dash to update the output component with the value <code>None</code> — which typically clears it or displays nothing, causing a visible blank flash or layout shift. <code>PreventUpdate</code> is a special Dash exception that tells Dash: “stop processing this callback entirely and leave all output components exactly as they are.” For the APOD app, this means the media and caption areas stay populated with whatever was last displayed while no date is selected, rather than going blank. <code>PreventUpdate</code> is the correct tool whenever a callback detects that it has nothing meaningful to return — for example, when a required input has not yet been filled in or when the user’s action does not actually require an update.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> The callback uses <code>r.raise_for_status()</code> after the API call. What does this method do, and what would happen if you omitted it and the NASA API returned a <code>403 Forbidden</code> error?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>r.raise_for_status()</code> inspects the HTTP response status code and raises a <code>requests.HTTPError</code> exception if the code indicates failure (4xx client errors or 5xx server errors). Without it, <code>requests.get()</code> returns successfully even when the server responded with an error — because the HTTP transaction itself completed. If you omit it and the API returns <code>403 Forbidden</code> (e.g., because the demo key has hit its rate limit), <code>r.json()</code> would either raise a <code>JSONDecodeError</code> (if the error response is not valid JSON) or silently return an error dictionary that does not contain <code>media_type</code>, <code>url</code>, or <code>title</code>. The <code>.get()</code> calls would return empty defaults, and the app would display a blank image area with no explanation — a confusing user experience with no visible error message.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> The media rendering uses <code>data.get("media_type", "")</code> with a default rather than <code>data["media_type"]</code>. Explain why defensive <code>.get()</code> calls are especially important when consuming external APIs compared to data you control internally.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>When you access a dictionary key directly with <code>data["key"]</code>, Python raises a <code>KeyError</code> if the key is absent — crashing the callback with no output to the user. External APIs introduce field absence as a routine condition, not an edge case: API responses evolve over time (fields are added, deprecated, or conditionally omitted); early historical records in an API may not include fields added later (the first APOD in 1995 predates fields like <code>copyright</code> added in later API versions); and error responses often return entirely different JSON structures than success responses. Using <code>.get("key", default)</code> returns a safe fallback silently, allowing the function to continue and render a degraded but functional result. With internal data you control, you can enforce a schema — every record is guaranteed to have certain fields. With external APIs, you can only request; the server decides what it returns.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="summary-and-review" class="level1">
+<h1>Summary and Review</h1>
+<section id="using-ai" class="level2">
+<h2 class="anchored" data-anchor-id="using-ai">Using AI</h2>
+<p>Use the following prompts with a generative AI tool to explore callbacks and API integration further.</p>
+<ul>
+<li>What is a Python decorator, and how does <code>@app.callback()</code> use it to register reactive functions in Dash?</li>
+<li>Explain the Input → callback → Output data flow. What happens inside Dash between the moment a user changes a dropdown and the moment the chart updates?</li>
+<li>What is <code>exceptions.PreventUpdate</code>, and when should you use it instead of returning a default value from a callback?</li>
+<li>Why do callback functions need to guard against <code>None</code> inputs? What Python pattern handles this, and why does <code>None</code> appear at all?</li>
+<li>What is <code>r.raise_for_status()</code>, and why is it important when calling external APIs inside a callback?</li>
+<li>What is defensive programming with <code>.get()</code> on API responses, and why is it more important for external APIs than for internal data?</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>This chapter introduced Dash callbacks and showed how to connect them to external APIs for live, data-driven dashboards.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>Key concepts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Callback concept</td>
+<td>Function that runs automatically when an input property changes</td>
+</tr>
+<tr class="even">
+<td>Data flow</td>
+<td>Input property changes → callback runs → return value sent to Output property</td>
+</tr>
+<tr class="odd">
+<td><code>@app.callback()</code> decorator</td>
+<td>Registers the function; declares all Inputs and Outputs</td>
+</tr>
+<tr class="even">
+<td><code>Input</code> / <code>Output</code></td>
+<td>Specify component id and property to watch or update</td>
+</tr>
+<tr class="odd">
+<td>Argument and return order</td>
+<td>Args match Input order; return values match Output order</td>
+</tr>
+<tr class="even">
+<td>Multiple inputs/outputs</td>
+<td>Any input change triggers the callback; return one value per Output</td>
+</tr>
+<tr class="odd">
+<td><code>dcc</code> components</td>
+<td><code>dcc.Input</code>, <code>dcc.Dropdown</code>, <code>dcc.Slider</code>, <code>dcc.DatePickerSingle</code>, <code>dcc.Graph</code>, <code>dcc.Interval</code></td>
+</tr>
+<tr class="even">
+<td><code>None</code> guard</td>
+<td><code>value or ""</code> / <code>value or 0</code> — protects against empty inputs passing <code>None</code></td>
+</tr>
+<tr class="odd">
+<td><code>PreventUpdate</code></td>
+<td>Stops the callback without changing any output; better than returning <code>None</code></td>
+</tr>
+<tr class="even">
+<td><code>dcc.Loading</code></td>
+<td>Wraps a component; shows a spinner while its callback is running</td>
+</tr>
+<tr class="odd">
+<td>API calls in callbacks</td>
+<td><code>requests.get()</code>, <code>r.raise_for_status()</code>, <code>r.json()</code></td>
+</tr>
+<tr class="even">
+<td>Defensive <code>.get()</code></td>
+<td><code>data.get("key", default)</code> — safe key access when external API fields may be absent</td>
+</tr>
+<tr class="odd">
+<td><code>date_str[:10]</code></td>
+<td>Strips time component from ISO datetime strings returned by <code>dcc.DatePickerSingle</code></td>
+</tr>
+<tr class="even">
+<td>Conditional rendering</td>
+<td><code>if media_type == "image"</code> / <code>elif "video"</code> — render appropriate component per API response</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What comes next:</strong> The Creating a Grid Layout in Dash chapter introduces Bootstrap-based responsive layouts — arranging multiple charts, KPI cards, and controls side by side in a professional multi-column dashboard.</p>
 
 
 </section>

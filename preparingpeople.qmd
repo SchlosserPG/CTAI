@@ -70,6 +70,24 @@ Three structural models exist, each suited to a different stage of organizationa
 
 **Federated approach** — a hybrid that balances centralized expertise with decentralized ownership. The CoE starts as a strong driver, then gradually shifts routine analytics responsibility to business units as data literacy grows, while retaining a center for advanced challenges, governance, and standards. This model builds a stronger data culture and faster responsiveness, but requires strong governance and patience. It is the most effective path to **Data Progressive** (stage 3) maturity.
 
+## People, Personas, and the Center of Excellence Lab
+
+**1.** A regional hospital system wants to improve its use of analytics. For each of the four analytics personas, describe one concrete skill gap they would need to close and one program type from the enablement table that would address it.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Analytics Leader** — skill gap: understanding what AI-driven diagnostics can and cannot do, so they can sponsor the right projects without setting unrealistic expectations. Program: executive roundtable with peer leaders from other health systems who have deployed similar tools. **Analytics Translator** — skill gap: translating clinical workflow problems into well-scoped data problems that a data scientist can actually model. Program: ThinkLab workshop pairing translators with data scientists on a live use case. **Analytics User** — skill gap: enough awareness to trust and act on a risk score surfaced in their EHR, rather than ignoring it or overriding it reflexively. Program: short e-learning module embedded in onboarding explaining what the model does and does not predict. **Analytics Professional** — skill gap: clinical domain knowledge to understand why a feature (e.g., lab value trend) matters for the target outcome. Program: ongoing cross-functional training sessions with clinical staff.
+:::
+
+**2.** A manufacturing company is Data Reactive — most analytics is done ad hoc in Excel by whoever has time. The CEO has just endorsed a data strategy initiative. Which CoE structure would you recommend as a starting point, and why? When should the company transition to a different model?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+Start with a **centralized CoE**: the organization has no shared infrastructure, no data standards, and no analytics culture. A centralized team can establish governance, build a shared data platform, define common metrics, and deliver early wins (lighthouse projects) that demonstrate value quickly. The CEO's endorsement provides the executive sponsorship without which a CoE cannot function. **Transition point:** once business units have built enough data literacy to own their own analytics use cases, and once the CoE has established the governance frameworks they can follow, gradually move to a **federated model** — the CoE becomes a center of expertise and standards rather than a central delivery team. This typically happens during the move from Data Active to Data Progressive maturity.
+:::
+
 ## Human Barriers to Analytics Adoption
 
 Three psychological barriers consistently slow analytics adoption — and they cannot be solved by better technology alone:
@@ -102,6 +120,24 @@ Different roles require different levels of investment in data literacy:
 | Analytics leader | Awareness + storytelling + leadership AI | Executive roundtables, leadership summits, peer learning |
 | Analytics professional | Full technical competency | SQL, Python, R, statistics, ML, ongoing technical training |
 
+## Human Barriers and Data Literacy Lab
+
+**1.** A data science team presents a churn prediction model to the sales leadership team. The VP of Sales says "the model shows 72% of at-risk customers are in the West region, but I know from experience that's wrong — the real issue is pricing." Using the three human barriers, diagnose what psychological dynamic is most likely at work, and explain how the organization should respond.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+The most likely barrier is a combination of **confirmation bias** (the VP is dismissing data that contradicts a pre-existing belief about pricing) and **inherent bias** (Dunning-Kruger: high confidence in a domain-knowledge-based intuition without recognizing what the data can see that intuition cannot). The VP is not necessarily wrong — pricing may be a contributing factor — but rejecting the model entirely based on gut feel rather than evidence is exactly the pattern augmented analytics must overcome. **Organizational response:** do not argue with the VP's experience; validate it. Ask the data science team to test whether pricing is a significant predictor in the model — it may be, and the VP's insight could improve the model. This converts the VP from a critic to a collaborator. Demonstrating that the model can incorporate their knowledge (rather than replace it) is the practical path to adoption.
+:::
+
+**2.** The four data literacy competencies are analytics awareness, storytelling with data, data-driven management, and leading in the age of AI. A chief marketing officer announces that her team will launch a personalization campaign powered by a machine learning model — but when the model recommends a different audience segment than expected, she overrides it without investigating. Which competency is most underdeveloped, and what would building that competency look like?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Data-driven management** is most underdeveloped. A manager with strong data-driven management skills commits to analytics strategy, ensures data integrity, and integrates model recommendations into decision-making rather than overriding them with intuition when they produce surprising results. Building this competency means: (1) establishing a norm that overrides require a documented rationale and a review of the model's reasoning; (2) creating feedback loops so the CMO can see over time whether her overrides improved or worsened campaign outcomes; (3) involving the CMO in model reviews so she understands what the model was trained on and why it segmented the audience as it did — building confidence through transparency rather than demanding blind trust.
+:::
+
 ## Workflow Augmentation
 
 ### What Augmented Workflows Are
@@ -127,7 +163,7 @@ The five types represent a progression from simple rule-following to sophisticat
 Use the **Analytics Use-Case Approach**: a structured pipeline that moves an initiative from idea to production, with formal evaluation gates at each stage:
 
 | Stage            | Purpose                                                  |
-|------------------|----------------------------------------------------------|
+|------------------|------------------------------------------------------|
 | Idea             | Identify the opportunity and business problem            |
 | Concept          | Define scope, stakeholders, and expected value           |
 | Proof of concept | Test the approach on a small scale with real data        |
@@ -144,6 +180,24 @@ Workflows also vary along two dimensions — the degree of **automation** (how m
 ![Four Categories of AI Workflow Augmentation](images/AI_types.png)
 
 The recommended approach is to start with **assistants and copilots** — which support humans without replacing them — before scaling to autopilots and fully autonomous agents. This builds organizational trust and allows time to validate the AI's judgment before increasing its autonomy.
+
+## Workflow Augmentation and Use Cases Lab
+
+**1.** A financial services firm wants to augment its loan underwriting process. Map this workflow to the most appropriate type of augmentation from the five types, and explain why you would not start with full automation.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Best fit — idea and insight enrichment (copilot):** the underwriter receives an AI-generated risk score, comparable loan performance benchmarks, and flagged anomalies in the application alongside the case — but makes the final lending decision themselves. This is appropriate because loan decisions have legal, ethical, and regulatory dimensions that require explainability and human accountability. **Why not start with full automation (fixed-rule):** automated approval/rejection in lending requires demonstrable fairness across demographic groups and regulatory approval in most jurisdictions — the firm needs to validate model performance, build audit trails, and earn regulator trust before removing the human from the loop. Starting with a copilot allows the firm to measure model accuracy against underwriter decisions, build the evidence base, and gradually increase automation as confidence grows.
+:::
+
+**2.** Using the six-stage Analytics Use-Case Approach (Idea → Concept → Proof of Concept → Prototype → Pilot → Product), explain what would happen if an organization skipped directly from Concept to Pilot for a new AI-powered customer service chatbot.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+Skipping the PoC and Prototype stages means the organization deploys to a live customer audience without having validated the model on real data at small scale (PoC) or tested the interface with a limited user group (Prototype). **Likely consequences:** the chatbot handles common queries adequately but fails on edge cases that were never tested — generating wrong answers or frustrating responses that damage customer trust before the team has had the opportunity to fix them. Without a Prototype stage, the UX has not been tested with actual agents or customers, so the interface may be confusing, the handoff to a human agent may be broken, and the tone may be inappropriate for the brand. These failures at scale are far more costly — in customer churn and remediation effort — than catching them in a controlled PoC with a small dataset. The stage gates exist precisely to surface these problems cheaply before broad exposure.
+:::
 
 ## The Use-Case Library
 
@@ -171,3 +225,39 @@ Common implementation challenges include:
 -   **Regulatory compliance** — particularly in healthcare and finance, data cannot flow freely between systems.
 
 To address these, Weber and Zwingmann propose **analytics contracts** — formal agreements, similar to data contracts, that define how an analytics capability can be discovered, accessed, consumed, and trusted. They bring the discipline of software engineering (versioning, documentation, SLAs) to analytics integrations.
+
+# Summary and Review
+
+## Using AI
+
+Use the following prompts with a generative AI tool to explore preparing people and organizations for analytics further.
+
+-   What is the difference between the four analytics personas — leader, translator, user, and professional? Why is the translator often described as the hardest role to develop?
+-   What are the three CoE structural models, and what conditions determine which is most appropriate at each stage of analytics maturity?
+-   How do the three human barriers to analytics adoption — inherent bias, perceived solvability, and learned helplessness — interact with each other? Can solving one make another worse?
+-   What is the difference between a data-driven and an insight-driven organization? What specific design choices close that gap?
+-   How do the five types of workflow augmentation differ in terms of human involvement? What organizational conditions must be in place before an organization can safely deploy fixed-rule automation?
+-   What is the purpose of the Analytics Use-Case Approach's stage gates? What risk does each gate address, and what is the cost of skipping them?
+-   Why do Weber and Zwingmann recommend REST APIs and analytics contracts for augmented workflow integration? What does "decoupling" mean in this context and why does it matter for scalability?
+
+## Summary
+
+This chapter examined how organizations prepare people and build the structures needed to make augmented analytics succeed in practice.
+
+| Topic | Key concepts |
+|------------------------------------|------------------------------------|
+| Three preparation principles | Roles and personas; technical + human readiness; Center of Excellence |
+| Four analytics personas | Leader, translator, user, professional — each needs different skills and enablement |
+| CoE structures | Decentralized (early stage), centralized (consistent but bottlenecked), federated (best long-term path) |
+| CoE responsibilities | Data literacy promotion, lighthouse projects, governance, cross-unit coordination |
+| Human barriers | Inherent bias (Dunning-Kruger), perceived solvability, learned helplessness |
+| Four literacy competencies | Analytics awareness, storytelling with data, data-driven management, leading in the age of AI |
+| Enablement by role | Users: e-learning; translators: ThinkLabs and mentoring; leaders: roundtables; professionals: technical training |
+| Five augmentation types | Fixed-rule, idea/insight enrichment (copilot), conversational, contextual/adaptive, collaborative |
+| Use-Case Approach | Idea → Concept → PoC → Prototype → Pilot → Product; gates evaluate risk, ROI, and maturity |
+| Automation vs. integration axes | Determines whether AI assists, augments, or replaces human decision-making |
+| Use-case library | Organizational memory; Kanban tracking; evaluation matrices; documentation templates |
+| REST APIs | Decoupled, modular, reusable; analytics capabilities consumed by any front end |
+| Analytics contracts | Formal agreements governing discoverability, access, consumption, and trust of analytics capabilities |
+
+**What comes next:** The Intro to Dash and HTML chapter begins the practical Python development work — building the interactive dashboards that deliver augmented analytics to end users.

@@ -61,6 +61,66 @@ my_variable += 5      # += means "add 5 to the current value"
 print(my_variable)    # → 15  (after adding 5)
 ```
 
+## Python Fundamentals Lab
+
+**1.** Predict the output of the following code block without running it. Then explain why division behaves differently from the other operators.
+
+``` python
+print(10 + 3)
+print(10 - 3)
+print(10 * 3)
+print(10 / 3)
+print(10 // 3)
+print(10 ** 3)
+```
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+```         
+13
+7
+30
+3.3333333333333335
+3
+1000
+```
+
+`10 / 3` returns a float (`3.333...`) because in Python 3, `/` always performs true division — it never truncates, even when dividing two integers. `10 // 3` performs floor (integer) division, discarding the remainder and returning `3`. This distinction matters in analytics code: using `/` when you expect a whole number can propagate unexpected floats through downstream calculations.
+:::
+
+**2.** What is wrong with each of the following variable names, and how would you fix them?
+
+``` python
+my variable = 5
+2sales = 100
+first-name = "Alice"
+```
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+-   `my variable` — contains a space, which Python interprets as two separate tokens. Fix: `my_variable = 5`.
+-   `2sales` — starts with a digit, which is not allowed. Fix: `sales_2 = 100` or `sales2 = 100`.
+-   `first-name` — the hyphen is the subtraction operator; Python parses this as `first` minus `name`. Fix: `first_name = "Alice"`.
+
+All three follow from the same rule: variable names may only contain letters, digits, and underscores, and must begin with a letter or underscore.
+:::
+
+**3.** Write three lines of code that (a) assign the integer `42` to a variable called `answer`, (b) add `8` to it using `+=`, and (c) print the result with an f-string that reads: `The answer is 50`.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+``` python
+answer = 42
+answer += 8
+print(f"The answer is {answer}")
+```
+
+`+=` is shorthand for `answer = answer + 8`. The f-string evaluates `{answer}` at runtime and inserts the current value — `50` — directly into the string without concatenation.
+:::
+
 ## Strings
 
 ### Working with Strings
@@ -170,6 +230,64 @@ print(f"Hello, I am {name}. I have been teaching at WM since 2020.")
 An f-string is prefixed with the letter `f` before the opening quote. Any expression inside `{}` is evaluated and inserted directly into the string. You can also do math: `f"Two plus two is {2 + 2}"` → `"Two plus two is 4"`.
 :::
 
+## Strings Lab
+
+**1.** Given `s = "Business Analytics"`, write expressions to produce each of the following outputs — one expression per line, using indexing, slicing, or a string method.
+
+```         
+B
+s
+Business
+BUSINESS ANALYTICS
+business analytics
+True
+```
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+``` python
+s = "Business Analytics"
+print(s[0])          # → B        (first character, index 0)
+print(s[-1])         # → s        (last character, negative index)
+print(s[:8])         # → Business (slice from start up to index 8)
+print(s.upper())     # → BUSINESS ANALYTICS
+print(s.lower())     # → business analytics
+print(s.startswith("Business"))  # → True
+```
+:::
+
+**2.** A data file contains customer names with inconsistent formatting: `"  alice SMITH  "`. Write the chain of string methods needed to produce `"Alice Smith"` — properly capitalized with no leading or trailing whitespace.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+``` python
+name = "  alice SMITH  "
+clean = name.strip().title()
+print(clean)   # → Alice Smith
+```
+
+`.strip()` removes the leading and trailing spaces first. `.title()` then capitalizes the first letter of each word and lowercases the rest. Order matters: calling `.title()` before `.strip()` still works here, but stripping first is a good habit — whitespace can interfere with pattern matching and comparisons if left in place.
+:::
+
+**3.** An analytics script receives a raw product code as a string: `code = "  SKU-2024-AB  "`. Write code to (a) strip whitespace, (b) extract just the year portion `"2024"` using slicing on the cleaned string, and (c) check whether the code contains `"AB"` — printing `True` or `False`.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+``` python
+code = "  SKU-2024-AB  "
+clean = code.strip()          # → "SKU-2024-AB"
+year = clean[4:8]             # → "2024"  (characters at index 4, 5, 6, 7)
+has_ab = "AB" in clean        # → True
+print(year)
+print(has_ab)
+```
+
+The slice `[4:8]` works because after stripping, the string is `"SKU-2024-AB"`: S=0, K=1, U=2, -=3, 2=4, 0=5, 2=6, 4=7. The `in` operator checks for substring membership and returns a boolean.
+:::
+
 ## Data Structures
 
 ### Lists
@@ -253,6 +371,53 @@ distances = {
 print(distances["A"]["B"])   # → 10  (distance from A to B)
 ```
 
+## Data Structures Lab
+
+**1.** You have a list `scores = [88, 74, 95, 61, 82, 55, 91]`. Write code to (a) add the value `79` to the end, (b) remove the value `61`, and (c) print only the first three elements using slicing.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+``` python
+scores = [88, 74, 95, 61, 82, 55, 91]
+scores.append(79)        # (a) add 79 to the end
+scores.remove(61)        # (b) remove the value 61
+print(scores[:3])        # (c) → [88, 74, 95]
+```
+
+`.append()` adds to the end in place. `.remove()` finds and deletes the first occurrence of the value — not by index. `scores[:3]` returns a new list with elements at indices 0, 1, and 2 without modifying the original.
+:::
+
+**2.** Why can't you change a value in a tuple after it is created? Give one practical scenario in analytics where a tuple is the better choice over a list.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+Tuples are **immutable** — Python does not allow item assignment after creation. Attempting `t[0] = 99` raises a `TypeError`. **Practical scenario:** storing geographic coordinates for a fixed location, such as `coordinates = (37.2707, -76.7075)` for Williamsburg, VA. The latitude and longitude should never change once defined — using a tuple instead of a list signals to anyone reading the code that these values are fixed, and prevents accidental modification by downstream functions that might otherwise append or reassign elements.
+:::
+
+**3.** Create a dictionary that stores three employees: Alice (salary 62000), Bob (salary 95000), and Carol (salary 67000). Then write code to (a) print Bob's salary, (b) add a new employee Diana with salary 71000, and (c) print all employee names using a loop.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+``` python
+employees = {
+    "Alice": 62000,
+    "Bob":   95000,
+    "Carol": 67000
+}
+
+print(employees["Bob"])          # (a) → 95000
+employees["Diana"] = 71000       # (b) add Diana
+
+for name in employees:           # (c) print all names
+    print(name)
+```
+
+Dictionary keys are accessed with `[]`. Assigning to a new key (`employees["Diana"] = 71000`) creates the entry if it does not exist. Iterating over a dictionary with `for name in employees` yields keys by default; use `.items()` if you need both keys and values.
+:::
+
 ## Control Flow
 
 Control flow structures let you make decisions and repeat actions — two of the most fundamental programming patterns.
@@ -328,6 +493,81 @@ while x < 5:
     x += 1   # critical: without this line, x never changes and the loop runs forever
 ```
 
+### Control Flow Lab
+
+**1.** Write an `if`/`elif`/`else` block that takes a variable `score` and prints a letter grade: `"A"` for 90 and above, `"B"` for 80–89, `"C"` for 70–79, and `"F"` for anything below. Test it with `score = 83`.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+``` python
+score = 83
+
+if score >= 90:
+    print("A")
+elif score >= 80:
+    print("B")
+elif score >= 70:
+    print("C")
+else:
+    print("F")
+# → B
+```
+
+Python evaluates conditions top to bottom and executes the first branch that is `True`. Because `83 >= 80` is `True`, `"B"` is printed and the remaining branches are skipped without evaluation.
+:::
+
+**2.** Use a `for` loop to iterate over `prices = [10.99, 24.50, 5.75, 18.00, 32.99]` and print only the prices above `$15.00`. Then use a second loop to calculate and print the total of all prices.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+``` python
+prices = [10.99, 24.50, 5.75, 18.00, 32.99]
+
+# Prices above $15
+for p in prices:
+    if p > 15:
+        print(p)
+# → 24.5, 18.0, 32.99
+
+# Total
+total = 0
+for p in prices:
+    total += p
+print(f"Total: ${total:.2f}")
+# → Total: $92.23
+```
+
+The `if` inside the loop acts as a filter — it does not stop the loop, it just controls whether the print runs for each iteration. `total += p` is shorthand for `total = total + p`, accumulating the running sum one value at a time.
+:::
+
+**3.** The following `while` loop is broken — it runs forever. Identify the bug, explain why it causes an infinite loop, and write the corrected version.
+
+``` python
+x = 1
+while x <= 5:
+    print(x)
+```
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Bug:** `x` is never incremented inside the loop. The condition `x <= 5` is checked at the start of every iteration — but since `x` stays `1` forever, the condition is always `True` and the loop never terminates.
+
+**Corrected version:**
+
+``` python
+x = 1
+while x <= 5:
+    print(x)
+    x += 1   # increment x so the condition eventually becomes False
+# → 1, 2, 3, 4, 5
+```
+
+Every `while` loop must contain logic that eventually makes its condition `False`. The most common cause of an accidental infinite loop is forgetting to update the variable being tested.
+:::
+
 ## Functions
 
 ### Defining Functions
@@ -397,6 +637,71 @@ print(abs_value(-5))   # → 5
 print(abs_value(5))    # → 5
 print(abs_value(0))    # → 0
 ```
+
+## Functions Lab
+
+**1.** Write a function called `apply_tax(price, rate=0.08)` that returns a price with tax applied. The tax rate should default to 8% if not provided. Call it twice — once with the default rate and once with a 12% rate — on a price of `$49.99`.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+``` python
+def apply_tax(price, rate=0.08):
+    return price * (1 + rate)
+
+print(f"${apply_tax(49.99):.2f}")         # → $53.99  (8% default)
+print(f"${apply_tax(49.99, 0.12):.2f}")   # → $55.99  (12% override)
+```
+
+The default parameter `rate=0.08` is used when the caller provides no second argument. Passing `0.12` explicitly overrides it. The f-string formats the result to two decimal places with a `$` prefix.
+:::
+
+**2.** Write a function called `summarize(numbers)` that returns the minimum, maximum, and average of a list as three separate values. Unpack the return values into variables and print each with a label.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+``` python
+def summarize(numbers):
+    low  = min(numbers)
+    high = max(numbers)
+    avg  = sum(numbers) / len(numbers)
+    return low, high, avg
+
+data = [88, 74, 95, 61, 82, 55, 91]
+low, high, avg = summarize(data)
+
+print(f"Min: {low}")
+print(f"Max: {high}")
+print(f"Avg: {avg:.1f}")
+# → Min: 55 | Max: 95 | Avg: 78.0
+```
+
+A function can return multiple values as a tuple. The unpacking syntax `low, high, avg = summarize(data)` assigns each returned value to a named variable in one line.
+:::
+
+**3.** What is the difference between a function that prints a result and one that returns it? Rewrite the broken version below so it works correctly in the expression `total = add(3, 4) * 2`.
+
+``` python
+def add(a, b):
+    print(a + b)
+```
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+A function that **prints** sends output to the console but returns `None` — the result is not available for further computation. A function that **returns** sends the value back to the caller, where it can be assigned, passed to another function, or used in an expression.
+
+``` python
+def add(a, b):
+    return a + b          # return, not print
+
+total = add(3, 4) * 2    # → 14
+print(total)
+```
+
+With the original `print` version, `add(3, 4)` returns `None`, so `None * 2` raises a `TypeError`. The `return` version passes `7` back to the caller, making `7 * 2 = 14` work correctly.
+:::
 
 ## NumPy
 
@@ -486,3 +791,84 @@ print(arr3)          # → [ 3  6  9 12 15]
 ```
 
 This vectorized behavior is what makes NumPy dramatically faster than equivalent Python loops for large numerical datasets.
+
+## NumPy Lab
+
+**1.** Create a NumPy array from `[4, 8, 15, 16, 23, 42]`. Without a loop, write one expression each to (a) multiply every element by 3, (b) find the sum of all elements, and (c) return only elements greater than 15 using Boolean indexing.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+``` python
+import numpy as np
+
+arr = np.array([4, 8, 15, 16, 23, 42])
+
+print(arr * 3)          # (a) → [12 24 45 48 69 126]
+print(arr.sum())        # (b) → 108
+print(arr[arr > 15])    # (c) → [16 23 42]
+```
+
+All three operations are **vectorized** — they apply to the entire array simultaneously with no loop. `arr * 3` broadcasts the scalar across every element. `arr.sum()` is an aggregate function. `arr[arr > 15]` creates a Boolean mask (`[F F F T T T]`) and uses it to filter, returning only the `True` positions.
+:::
+
+**2.** Explain why `[1, 2, 3] + [1, 2, 3]` and `np.array([1, 2, 3]) + np.array([1, 2, 3])` produce different results. Which behavior would you want when computing element-wise revenue totals across two quarters?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+`[1, 2, 3] + [1, 2, 3]` uses Python's list `+` operator, which means **concatenation** — it joins the two lists end-to-end, producing `[1, 2, 3, 1, 2, 3]`. `np.array([1, 2, 3]) + np.array([1, 2, 3])` performs **element-wise addition**, adding corresponding positions: `[2, 4, 6]`. For computing revenue totals across two quarters — e.g., Q1 = `[50000, 62000, 47000]` and Q2 = `[54000, 58000, 51000]` — you want element-wise addition to get the combined total per region: `[104000, 120000, 98000]`. Plain Python lists would produce a six-element list instead of the three-element total, which is wrong.
+:::
+
+**3.** NumPy arrays do not have an `.append()` method. Write the correct way to add the value `99` to the end of `arr = np.array([10, 20, 30])`, and explain why NumPy works this way instead of modifying the array in place like a list would.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+``` python
+import numpy as np
+arr = np.array([10, 20, 30])
+arr = np.append(arr, 99)
+print(arr)   # → [10 20 30 99]
+```
+
+`np.append()` returns a **new array** — it does not modify `arr` in place. NumPy works this way because arrays are stored as contiguous blocks of memory with a fixed size. Appending in place would require reallocating that memory block and copying all existing data every time, which would be expensive for large arrays. The design trade-off is that NumPy arrays are better suited for fixed-size, math-heavy operations, while Python lists are better suited for dynamic collections that grow and shrink frequently.
+:::
+
+# Summary and Review
+
+## Using AI
+
+Use the following prompts with a generative AI tool to explore Python fundamentals further.
+
+-   What is the difference between a Python list, a tuple, and a dictionary? When would you choose each one, and what happens if you try to modify a tuple?
+-   Explain the difference between `print()` and `return` inside a function. Why does it matter when you want to use a function's result in a larger expression?
+-   What is a default parameter value in a Python function? Give an example where a default makes the function more flexible and easier to call.
+-   Why does Python's `/` operator always return a float? When would you use `//` instead, and what is the practical difference in an analytics context?
+-   What is the difference between a `for` loop and a `while` loop? What makes a `while` loop dangerous, and what must every `while` loop contain to avoid running forever?
+-   What is vectorization in NumPy, and why is it faster than a Python `for` loop for numerical computation? Give a concrete example with numbers.
+
+## Summary
+
+This chapter introduced the core Python syntax and data structures needed for analytics and dashboard development.
+
+| Topic | Key concepts |
+|------------------------------------|------------------------------------|
+| Basic math | `+`, `-`, `*`, `/` (float), `//` (integer), `**` (exponent) |
+| Variables | Named containers; `=` assignment; `+=` shorthand; case-sensitive naming rules |
+| Strings | Indexing (`s[0]`, `s[-1]`), slicing (`s[1:4]`), methods (`.upper()`, `.strip()`, `.find()`) |
+| F-strings | `f"Hello {name}"` — expressions inside `{}` evaluated at runtime |
+| Lists | Ordered, mutable; `.append()`, `.remove()`, slicing; zero-indexed |
+| Tuples | Ordered, immutable; use for fixed collections like coordinates |
+| Dictionaries | Key–value pairs; `dict[key]` access; `.items()` for iteration |
+| Nested dicts | `dict[outer][inner]` — useful for relational data structures |
+| If / elif / else | Conditional branching; evaluated top-to-bottom; first `True` branch executes |
+| For loops | Iterate over any sequence; accumulate results; filter with `if` inside the loop |
+| While loops | Repeat while condition is `True`; must update the tested variable to avoid infinite loops |
+| Functions | `def name(params): return value`; default parameters; multiple return values |
+| Print vs. return | `print` displays; `return` passes the value back for further use |
+| NumPy arrays | Fixed-type, vectorized math; faster than lists for numerical operations |
+| Vectorization | Element-wise operations with no loop; `arr * 3`, `arr.sum()`, Boolean indexing |
+| `np.append()` | Returns a new array — does not modify in place |
+
+**What comes next:** The Intro to Dash and HTML chapter applies these Python fundamentals directly — you will use variables, functions, lists, and dictionaries to build the layout and callbacks of your first interactive analytics dashboard.

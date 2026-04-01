@@ -267,6 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#dash.register_page" id="toc-dash.register_page" class="nav-link" data-scroll-target="#dash.register_page"><code>dash.register_page()</code></a></li>
   </ul></li>
+  <li><a href="#multi-page-app-structure-lab" id="toc-multi-page-app-structure-lab" class="nav-link" data-scroll-target="#multi-page-app-structure-lab">Multi-Page App Structure Lab</a></li>
   <li><a href="#the-app-layout-app.py" id="toc-the-app-layout-app.py" class="nav-link" data-scroll-target="#the-app-layout-app.py">The App Layout (<code>app.py</code>)</a>
   <ul class="collapse">
   <li><a href="#navigation-and-page-container" id="toc-navigation-and-page-container" class="nav-link" data-scroll-target="#navigation-and-page-container">Navigation and Page Container</a></li>
@@ -285,6 +286,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#layout-and-callback" id="toc-layout-and-callback" class="nav-link" data-scroll-target="#layout-and-callback">Layout and Callback</a></li>
   <li><a href="#page-2-css" id="toc-page-2-css" class="nav-link" data-scroll-target="#page-2-css">Page 2 CSS</a></li>
   <li><a href="#styling-the-button-and-result-area" id="toc-styling-the-button-and-result-area" class="nav-link" data-scroll-target="#styling-the-button-and-result-area">Styling the Button and Result Area</a></li>
+  </ul></li>
+  <li><a href="#page-design-and-callbacks-lab" id="toc-page-design-and-callbacks-lab" class="nav-link" data-scroll-target="#page-design-and-callbacks-lab">Page Design and Callbacks Lab</a></li>
+  <li><a href="#summary-and-review" id="toc-summary-and-review" class="nav-link" data-scroll-target="#summary-and-review">Summary and Review</a>
+  <ul class="collapse">
+  <li><a href="#using-ai" id="toc-using-ai" class="nav-link" data-scroll-target="#using-ai">Using AI</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -408,9 +415,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Key arguments to <code>dash.register_page()</code>:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 16%">
+<col style="width: 60%">
+<col style="width: 23%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -438,6 +445,60 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
+</section>
+<section id="multi-page-app-structure-lab" class="level2">
+<h2 class="anchored" data-anchor-id="multi-page-app-structure-lab">Multi-Page App Structure Lab</h2>
+<p><strong>1.</strong> What does <code>use_pages=True</code> do in <code>dash.Dash()</code>, and what would happen if you forgot <code>suppress_callback_exceptions=True</code> in a multi-page app with callbacks on Page 2?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>use_pages=True</code> tells Dash to automatically scan the <code>pages/</code> folder, discover all files that call <code>dash.register_page()</code>, and register them as navigable pages. Without it, Dash is a single-page app and ignores the <code>pages/</code> folder entirely. <strong><code>suppress_callback_exceptions=True</code>:</strong> in a multi-page app, when the user is on Page 1, the DOM components defined in Page 2’s layout do not exist. If Page 2 has a callback whose Output targets a component that is not currently rendered (because Page 2 is not active), Dash raises a <code>NonExistentIdException</code> at startup. <code>suppress_callback_exceptions=True</code> silences this — Dash trusts that the missing component will appear when the user navigates to that page, and defers validation until the callback is actually triggered.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> Explain the role of <code>dash.page_container</code> in <code>app.py</code>. What does it render, and what would happen if you removed it from the layout?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>dash.page_container</code> is a special Dash component that acts as a <strong>dynamic slot</strong>: it renders the <code>layout</code> variable of whatever page matches the current URL. When the user clicks a nav link, the URL changes and <code>page_container</code> automatically swaps in the layout of the corresponding page — without a full browser reload. If you removed it, the navigation bar would still appear and the URL would change when links are clicked, but <strong>no page content would ever be displayed</strong> — the area below the navbar would be permanently empty regardless of which page is selected.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> What is the difference between <code>dbc.NavLink(active="exact")</code> and <code>dbc.NavLink(active="partial")</code>, and why does it matter for the Home link at path <code>"/"</code>?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>active="exact"</code> highlights the nav link only when the URL matches the link’s <code>href</code> <strong>exactly</strong>. <code>active="partial"</code> highlights it whenever the current URL <strong>starts with</strong> the <code>href</code>. For the Home link at <code>href="/"</code>, <code>active="partial"</code> would cause it to appear highlighted on <strong>every page</strong> — because all URLs start with <code>/</code>. With <code>active="exact"</code>, the Home link is highlighted only when the URL is exactly <code>"/"</code>, and Page 1 and Page 2 links are highlighted only on their respective pages. This distinction is invisible for non-root paths (<code>/page1</code>, <code>/page2</code>) but critical for the root path.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="the-app-layout-app.py" class="level2">
 <h2 class="anchored" data-anchor-id="the-app-layout-app.py">The App Layout (<code>app.py</code>)</h2>
@@ -677,6 +738,147 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">min-height</span><span class="ch">:</span> <span class="dv">72</span><span class="dt">px</span><span class="op">;</span>   <span class="co">/* prevents layout shift when the box is empty */</span></span>
 <span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+</section>
+<section id="page-design-and-callbacks-lab" class="level2">
+<h2 class="anchored" data-anchor-id="page-design-and-callbacks-lab">Page Design and Callbacks Lab</h2>
+<p><strong>1.</strong> Page 2 uses <code>prevent_initial_call=True</code> on its callback. What would happen without it, and why is this especially important for a callback that calls an external API?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Without <code>prevent_initial_call=True</code>, Dash fires the callback immediately when the page loads with <code>n_clicks=0</code> — before the user has clicked anything. For a button that fetches a cat fact, this means the API is called on every page load rather than on demand. <strong>Why this matters for external APIs:</strong> (1) it consumes rate-limited API quota on every page navigation, not just on explicit user actions; (2) it creates a visible loading spinner on page load before the user has expressed any intent; (3) if the API is slow or unavailable, it degrades initial page performance. <code>prevent_initial_call=True</code> ensures the callback only runs on real user interactions.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> The <code>assets/style.css</code> file uses <code>!important</code> on the <code>background-color</code> property. Explain what <code>!important</code> does, when it is necessary, and why it should be used sparingly.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>!important</code> forces a CSS declaration to override any other conflicting rule, regardless of selector specificity or declaration order. It is necessary here because Bootstrap’s stylesheet — loaded via <code>external_stylesheets</code> — includes its own <code>body</code> background color with high specificity. Without <code>!important</code>, Bootstrap’s rule wins and the custom background is ignored. <strong>Why use it sparingly:</strong> <code>!important</code> bypasses the normal cascade, making stylesheets harder to reason about. If you override a rule with <code>!important</code> and later need to override that rule again, you need another <code>!important</code> in a more specific selector — leading to specificity wars that make styles unpredictable and difficult to maintain. The correct long-term fix is to understand why the original rule wins and write a more specific selector rather than using <code>!important</code>.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> Only <code>app.py</code> should contain <code>app.run(...)</code> — page files must never include it. What would happen if you added <code>app.run(debug=True)</code> to the bottom of <code>page1.py</code>?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>When Dash loads a multi-page app, it imports all files in the <code>pages/</code> folder to discover their <code>layout</code> variables and registered paths. If <code>page1.py</code> contains <code>app.run(debug=True)</code>, that line executes <strong>at import time</strong> — starting a second development server on port 8050 while the main server from <code>app.py</code> is already running. This produces a <code>OSError: [Errno 98] Address already in use</code> crash, or in some environments two conflicting servers that interfere with each other. The <code>if __name__ == "__main__":</code> guard in <code>app.py</code> prevents this — <code>app.run()</code> only executes when the file is run directly, not when it is imported. Page files are always imported, never run directly, so they must never contain a run call.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="summary-and-review" class="level1">
+<h1>Summary and Review</h1>
+<section id="using-ai" class="level2">
+<h2 class="anchored" data-anchor-id="using-ai">Using AI</h2>
+<p>Use the following prompts with a generative AI tool to explore multi-page Dash apps further.</p>
+<ul>
+<li>What is the purpose of <code>use_pages=True</code> in a Dash app? How does Dash discover and register pages automatically?</li>
+<li>What does <code>suppress_callback_exceptions=True</code> do in a multi-page app, and why is it required when pages have callbacks?</li>
+<li>What is <code>dash.page_container</code>, and what would happen if it were removed from the app layout?</li>
+<li>What is the difference between <code>active="exact"</code> and <code>active="partial"</code> on a <code>dbc.NavLink</code>? Why does this matter specifically for the root path?</li>
+<li>What does <code>prevent_initial_call=True</code> do on a callback, and when is it especially important for API-calling callbacks?</li>
+<li>Why must <code>app.run()</code> only appear in <code>app.py</code> and never in a page file? What goes wrong if a page file calls <code>app.run()</code>?</li>
+<li>What is the CSS <code>!important</code> keyword, and why should it be used sparingly even when it solves an immediate styling problem?</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>This chapter introduced multi-page Dash application structure — organizing pages, navigation, shared styling, and page-specific layouts and callbacks.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>Key concepts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Project structure</td>
+<td><code>app.py</code> at root; <code>pages/</code> for page files; <code>assets/</code> for shared CSS</td>
+</tr>
+<tr class="even">
+<td><code>use_pages=True</code></td>
+<td>Tells Dash to auto-discover and register all files in <code>pages/</code></td>
+</tr>
+<tr class="odd">
+<td><code>suppress_callback_exceptions=True</code></td>
+<td>Prevents errors when page components are not yet in the DOM</td>
+</tr>
+<tr class="even">
+<td><code>server = app.server</code></td>
+<td>Exposes Flask server for gunicorn/Render deployment</td>
+</tr>
+<tr class="odd">
+<td><code>dash.register_page()</code></td>
+<td>Declares a file as a page; sets <code>path</code> and <code>name</code></td>
+</tr>
+<tr class="even">
+<td><code>dash.page_container</code></td>
+<td>Dynamic slot that renders the active page’s <code>layout</code></td>
+</tr>
+<tr class="odd">
+<td><code>dbc.NavbarSimple</code></td>
+<td>Top navigation bar with <code>brand=</code> and <code>dbc.NavLink</code> items</td>
+</tr>
+<tr class="even">
+<td><code>active="exact"</code></td>
+<td>Highlights nav link only on exact URL match (critical for <code>"/"</code>)</td>
+</tr>
+<tr class="odd">
+<td>CSS <code>!important</code></td>
+<td>Forces rule override; use sparingly to avoid specificity conflicts</td>
+</tr>
+<tr class="even">
+<td>Page 1 layout</td>
+<td>Flexbox (vertical) + CSS Grid (two-column middle)</td>
+</tr>
+<tr class="odd">
+<td><code>@media</code> queries</td>
+<td>Responsive breakpoint — collapse to single column on narrow screens</td>
+</tr>
+<tr class="even">
+<td>Page 2 callback</td>
+<td><code>prevent_initial_call=True</code>; <code>requests.get</code> + <code>r.raise_for_status()</code></td>
+</tr>
+<tr class="odd">
+<td><code>app.run()</code> in page files</td>
+<td>Never — page files are imported, not run directly</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What comes next:</strong> The Using Multiple Callbacks chapter extends these apps with more complex callback patterns — multiple inputs and outputs in a single callback and a full World Happiness data visualization dashboard.</p>
 
 
 </section>

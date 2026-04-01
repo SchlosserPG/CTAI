@@ -272,6 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#html-components-overview" id="toc-html-components-overview" class="nav-link" data-scroll-target="#html-components-overview">HTML Components Overview</a></li>
   <li><a href="#adding-a-line-break-and-a-hyperlink" id="toc-adding-a-line-break-and-a-hyperlink" class="nav-link" data-scroll-target="#adding-a-line-break-and-a-hyperlink">Adding a Line Break and a Hyperlink</a></li>
   <li><a href="#html-elements" id="toc-html-elements" class="nav-link" data-scroll-target="#html-elements">HTML Elements</a></li>
+  <li><a href="#dash-layout-and-html-lab" id="toc-dash-layout-and-html-lab" class="nav-link" data-scroll-target="#dash-layout-and-html-lab">Dash Layout and HTML Lab</a></li>
   <li><a href="#styling-in-dash" id="toc-styling-in-dash" class="nav-link" data-scroll-target="#styling-in-dash">Styling in Dash</a></li>
   <li><a href="#borders" id="toc-borders" class="nav-link" data-scroll-target="#borders">Borders</a></li>
   <li><a href="#padding" id="toc-padding" class="nav-link" data-scroll-target="#padding">Padding</a></li>
@@ -281,6 +282,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#changing-the-paragraph-background-color" id="toc-changing-the-paragraph-background-color" class="nav-link" data-scroll-target="#changing-the-paragraph-background-color">Changing the Paragraph Background Color</a></li>
   <li><a href="#styling-the-hyperlink" id="toc-styling-the-hyperlink" class="nav-link" data-scroll-target="#styling-the-hyperlink">Styling the Hyperlink</a></li>
   <li><a href="#adding-a-hover-effect" id="toc-adding-a-hover-effect" class="nav-link" data-scroll-target="#adding-a-hover-effect">Adding a Hover Effect</a></li>
+  <li><a href="#styling-and-css-lab" id="toc-styling-and-css-lab" class="nav-link" data-scroll-target="#styling-and-css-lab">Styling and CSS Lab</a></li>
+  <li><a href="#summary-and-review" id="toc-summary-and-review" class="nav-link" data-scroll-target="#summary-and-review">Summary and Review</a>
+  <ul class="collapse">
+  <li><a href="#using-ai" id="toc-using-ai" class="nav-link" data-scroll-target="#using-ai">Using AI</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -458,7 +465,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Common HTML elements available in <code>dash.html</code>:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 39%">
+<col style="width: 38%">
 <col style="width: 34%">
 <col style="width: 26%">
 </colgroup>
@@ -527,15 +534,79 @@ Python: html.H1("This is a Heading")</code></pre>
 </div>
 <p><img src="images/html_elements.png" class="img-fluid"></p>
 </section>
+<section id="dash-layout-and-html-lab" class="level2">
+<h2 class="anchored" data-anchor-id="dash-layout-and-html-lab">Dash Layout and HTML Lab</h2>
+<p><strong>1.</strong> What is the difference between <code>app.title</code> and <code>html.H1()</code> in a Dash app? Where does each appear, and why do you need both?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>app.title</code> sets the <strong>browser tab title</strong> — the text that appears in the tab at the top of Chrome or Firefox. It corresponds to the HTML <code>&lt;title&gt;</code> tag inside the <code>&lt;head&gt;</code> of the page and is not visible in the page content itself. <code>html.H1()</code> creates a <strong>visible heading</strong> inside the page body — the large text the user actually reads. You need both because they serve different audiences: <code>app.title</code> helps users identify the tab when many are open, while <code>html.H1</code> provides the on-screen heading that anchors the page content. Setting only one leaves a gap — either the tab shows a default “Dash” title or the page has no visible heading.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> Write the Dash Python code to build a layout that contains: a large heading saying “Sales Dashboard”, a paragraph saying “Q3 2024 Results”, a line break, and a hyperlink labeled “Download Report” that opens <code>https://example.com/report.pdf</code> in a new tab.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> html.Div([</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    html.H1(<span class="st">"Sales Dashboard"</span>),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    html.P(<span class="st">"Q3 2024 Results"</span>),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    html.Br(),</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    html.A(<span class="st">"Download Report"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>           href<span class="op">=</span><span class="st">"https://example.com/report.pdf"</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>           target<span class="op">=</span><span class="st">"_blank"</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>html.Br()</code> takes no arguments — it is a self-closing tag. <code>target="_blank"</code> opens the link in a new tab; omitting it would navigate away from the Dash app in the same tab. The components are passed as a list to <code>html.Div()</code>, which groups them in a container <code>&lt;div&gt;</code>.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> Explain when you would use <code>debug=True</code> versus <code>debug=False</code> when running a Dash app, and what risk <code>debug=True</code> introduces if left on in a live deployment.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Use <code>debug=True</code> during <strong>development</strong>: it enables hot reloading (code changes appear in the browser without restarting the server) and displays a debug menu in the bottom-right corner with detailed error tracebacks. Use <code>debug=False</code> in <strong>production</strong>: the debug menu exposes internal code structure, file paths, and local variable values to anyone who can trigger an error — a serious security vulnerability in a publicly accessible app. The hot reloader also runs an extra subprocess that can cause instability on some hosting environments (like Render.com). Always set <code>debug=False</code> before deploying.</p>
+</div>
+</div>
+</div>
+</section>
 <section id="styling-in-dash" class="level2">
 <h2 class="anchored" data-anchor-id="styling-in-dash">Styling in Dash</h2>
 <p>In Dash apps, the <code>style</code> parameter applies CSS styling directly to a component using a <strong>Python dictionary</strong>. The keys are CSS property names written in <strong>camelCase</strong> (e.g., <code>fontSize</code> instead of <code>font-size</code>), and the values are strings.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>html.H1(<span class="st">"Hello Dash"</span>, style<span class="op">=</span>{</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'color'</span>: <span class="st">'#381D5C'</span>,          <span class="co"># hex color code for text</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'fontSize'</span>: <span class="st">'20px'</span>,          <span class="co"># font size</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'backgroundColor'</span>: <span class="st">'#E898AA'</span> <span class="co"># background color behind the heading</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>html.H1(<span class="st">"Hello Dash"</span>, style<span class="op">=</span>{</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'color'</span>: <span class="st">'#381D5C'</span>,          <span class="co"># hex color code for text</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'fontSize'</span>: <span class="st">'20px'</span>,          <span class="co"># font size</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'backgroundColor'</span>: <span class="st">'#E898AA'</span> <span class="co"># background color behind the heading</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>HTML color codes and hex values are available at <a href="https://htmlcolorcodes.com/">htmlcolorcodes.com</a>.</p>
 <p><img src="images/style.png" class="img-fluid"></p>
@@ -560,9 +631,9 @@ Python: html.H1("This is a Heading")</code></pre>
 <li><span style="background-color: yellow;"><strong><code>'paddingTop'</code>, <code>'paddingBottom'</code>, <code>'paddingLeft'</code>, <code>'paddingRight'</code></strong></span> — control each side individually.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>html.P(<span class="st">"This is a simple dashboard."</span>,</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>       style<span class="op">=</span>{<span class="st">'border'</span>: <span class="st">'1px solid black'</span>,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">'padding'</span>: <span class="st">'10px'</span>})   <span class="co"># adds space between the text and the border</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>html.P(<span class="st">"This is a simple dashboard."</span>,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>       style<span class="op">=</span>{<span class="st">'border'</span>: <span class="st">'1px solid black'</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">'padding'</span>: <span class="st">'10px'</span>})   <span class="co"># adds space between the text and the border</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/simple_dash.png" class="img-fluid"></p>
 <div class="note">
@@ -578,10 +649,10 @@ Python: html.H1("This is a Heading")</code></pre>
 <li><code>{'marginLeft': 'auto', 'marginRight': 'auto'}</code> — horizontally centers a block element within its parent container.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>html.P(<span class="st">"This is a simple dashboard."</span>,</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>       style<span class="op">=</span>{<span class="st">'border'</span>: <span class="st">'1px solid black'</span>,</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">'padding'</span>: <span class="st">'20px'</span>,   <span class="co"># space inside (between text and border)</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">'margin'</span>: <span class="st">'50px'</span>})   <span class="co"># space outside (between border and page edge)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>html.P(<span class="st">"This is a simple dashboard."</span>,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>       style<span class="op">=</span>{<span class="st">'border'</span>: <span class="st">'1px solid black'</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">'padding'</span>: <span class="st">'20px'</span>,   <span class="co"># space inside (between text and border)</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">'margin'</span>: <span class="st">'50px'</span>})   <span class="co"># space outside (between border and page edge)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -622,20 +693,20 @@ Python: html.H1("This is a Heading")</code></pre>
 <p>The CSS below sets global defaults for the entire page:</p>
 <p><img src="images/general_styled.png" class="img-fluid"></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>body<span class="op">,</span> html {</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>   <span class="kw">padding</span><span class="ch">:</span> <span class="dv">40</span><span class="dt">px</span><span class="op">;</span>                    <span class="co">/* breathing room around all content */</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>   <span class="kw">background</span><span class="ch">:</span> <span class="cn">#dfe9e1</span><span class="op">;</span>             <span class="co">/* light green-gray background */</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">color</span><span class="ch">:</span> <span class="cn">#1f1e1e</span><span class="op">;</span>                  <span class="co">/* dark text color */</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>   <span class="kw">font</span><span class="ch">:</span> <span class="dv">16</span><span class="dt">px</span> <span class="dv">Arial</span><span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span>    <span class="co">/* base font size and family */</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>body<span class="op">,</span> html {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>   <span class="kw">padding</span><span class="ch">:</span> <span class="dv">40</span><span class="dt">px</span><span class="op">;</span>                    <span class="co">/* breathing room around all content */</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>   <span class="kw">background</span><span class="ch">:</span> <span class="cn">#dfe9e1</span><span class="op">;</span>             <span class="co">/* light green-gray background */</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">color</span><span class="ch">:</span> <span class="cn">#1f1e1e</span><span class="op">;</span>                  <span class="co">/* dark text color */</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>   <span class="kw">font</span><span class="ch">:</span> <span class="dv">16</span><span class="dt">px</span> <span class="dv">Arial</span><span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span>    <span class="co">/* base font size and family */</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="changing-the-paragraph-background-color" class="level2">
 <h2 class="anchored" data-anchor-id="changing-the-paragraph-background-color">Changing the Paragraph Background Color</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p {</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>   <span class="kw">background-color</span><span class="ch">:</span> <span class="cn">#d4cece</span><span class="op">;</span>   <span class="co">/* applies to ALL &lt;p&gt; elements in the app */</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>p {</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>   <span class="kw">background-color</span><span class="ch">:</span> <span class="cn">#d4cece</span><span class="op">;</span>   <span class="co">/* applies to ALL &lt;p&gt; elements in the app */</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/adjusted_dash.png" class="img-fluid"></p>
 </section>
@@ -648,26 +719,26 @@ Python: html.H1("This is a Heading")</code></pre>
 </div>
 <p>The CSS below transforms a plain underlined link into a styled pill-shaped button:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* Rounded, colored hyperlink box */</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>a {</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>   <span class="kw">display</span><span class="ch">:</span> <span class="dv">inline-block</span><span class="op">;</span>           <span class="co">/* allows padding and width to apply */</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">padding</span><span class="ch">:</span> <span class="dv">25</span><span class="dt">px</span><span class="op">;</span>                   <span class="co">/* space inside the button */</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>   <span class="kw">border-radius</span><span class="ch">:</span> <span class="dv">9999</span><span class="dt">px</span><span class="op">;</span>           <span class="co">/* large value = pill/capsule shape */</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>   <span class="kw">background-color</span><span class="ch">:</span> <span class="cn">#3b82f6</span><span class="op">;</span>       <span class="co">/* blue background */</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>   <span class="kw">color</span><span class="ch">:</span> <span class="cn">#ffffff</span><span class="op">;</span>                  <span class="co">/* white text */</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>   <span class="kw">text-decoration</span><span class="ch">:</span> <span class="dv">none</span><span class="op">;</span>           <span class="co">/* removes the default underline */</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>   <span class="kw">font-size</span><span class="ch">:</span> <span class="dv">24</span><span class="dt">px</span><span class="op">;</span>                 <span class="co">/* larger text */</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* Rounded, colored hyperlink box */</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>a {</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>   <span class="kw">display</span><span class="ch">:</span> <span class="dv">inline-block</span><span class="op">;</span>           <span class="co">/* allows padding and width to apply */</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">padding</span><span class="ch">:</span> <span class="dv">25</span><span class="dt">px</span><span class="op">;</span>                   <span class="co">/* space inside the button */</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>   <span class="kw">border-radius</span><span class="ch">:</span> <span class="dv">9999</span><span class="dt">px</span><span class="op">;</span>           <span class="co">/* large value = pill/capsule shape */</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>   <span class="kw">background-color</span><span class="ch">:</span> <span class="cn">#3b82f6</span><span class="op">;</span>       <span class="co">/* blue background */</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>   <span class="kw">color</span><span class="ch">:</span> <span class="cn">#ffffff</span><span class="op">;</span>                  <span class="co">/* white text */</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>   <span class="kw">text-decoration</span><span class="ch">:</span> <span class="dv">none</span><span class="op">;</span>           <span class="co">/* removes the default underline */</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>   <span class="kw">font-size</span><span class="ch">:</span> <span class="dv">24</span><span class="dt">px</span><span class="op">;</span>                 <span class="co">/* larger text */</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>CSS comments use the <code>/* comment */</code> syntax. They are ignored by the browser and are useful for documenting your style choices.</p>
 </section>
 <section id="adding-a-hover-effect" class="level2">
 <h2 class="anchored" data-anchor-id="adding-a-hover-effect">Adding a Hover Effect</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* Change background color when the mouse hovers over the link */</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>a<span class="in">:hover</span> {</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>   <span class="kw">background-color</span><span class="ch">:</span> <span class="cn">#474d59</span><span class="op">;</span>   <span class="co">/* darker gray on hover */</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* Change background color when the mouse hovers over the link */</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>a<span class="in">:hover</span> {</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>   <span class="kw">background-color</span><span class="ch">:</span> <span class="cn">#474d59</span><span class="op">;</span>   <span class="co">/* darker gray on hover */</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>CSS offers four <strong>link pseudo-classes</strong> that let you style an anchor element at different interaction states. They should be defined in this order (the LVHA order) to work correctly:</p>
 <ul>
@@ -676,8 +747,188 @@ Python: html.H1("This is a Heading")</code></pre>
 <li><span style="background-color: yellow;"><strong><code>:hover</code></strong></span> — applied while the pointer is over the element. This is the most commonly used.</li>
 <li><span style="background-color: yellow;"><strong><code>:active</code></strong></span> — applied at the instant the element is being clicked (mouse button pressed but not yet released). Useful for visual “press” feedback.</li>
 </ul>
+</section>
+<section id="styling-and-css-lab" class="level2">
+<h2 class="anchored" data-anchor-id="styling-and-css-lab">Styling and CSS Lab</h2>
+<p><strong>1.</strong> Write the inline <code>style</code> dictionary for an <code>html.H2</code> component that sets the text color to <code>#2c3e50</code>, font size to <code>24px</code>, adds <code>10px</code> padding on all sides, and gives it a <code>2px solid #cccccc</code> border with <code>8px</code> rounded corners.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>html.H2(<span class="st">"Section Title"</span>, style<span class="op">=</span>{</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'color'</span>:        <span class="st">'#2c3e50'</span>,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'fontSize'</span>:     <span class="st">'24px'</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'padding'</span>:      <span class="st">'10px'</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'border'</span>:       <span class="st">'2px solid #cccccc'</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'borderRadius'</span>: <span class="st">'8px'</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>CSS property names are written in <strong>camelCase</strong> in Python dictionaries: <code>fontSize</code> not <code>font-size</code>, <code>borderRadius</code> not <code>border-radius</code>. All values are strings. Forgetting a comma between any two key-value pairs will raise a <code>SyntaxError</code>.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> Explain the difference between padding and margin using the box model. If you want to increase the space between two stacked <code>html.P</code> components, which property do you change, and on which element?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Padding</strong> is the space <em>inside</em> an element, between its content and its border — adding padding makes the element itself larger while keeping its border in the same position relative to neighbors. <strong>Margin</strong> is the space <em>outside</em> an element, between its border and the surrounding elements — adding margin pushes the element away from its neighbors without changing the element’s own size. To increase space between two stacked <code>html.P</code> components, add <code>marginBottom</code> to the first paragraph (or <code>marginTop</code> to the second). Changing padding would add space inside each paragraph — between the text and any border — but would not increase the gap between them.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> When should you use an inline <code>style={}</code> dictionary versus an external CSS file in <code>assets/</code>? Give one scenario where each approach is clearly correct.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Use <strong>inline <code>style={}</code></strong> for small, one-off overrides on a single component — for example, centering one specific <code>html.H1</code> title: <code>html.H1("Dashboard", style={'textAlign': 'center'})</code>. The style applies only to that element and does not need to be reused anywhere else. Use an <strong>external CSS file in <code>assets/</code></strong> for consistent app-wide styling — for example, setting the background color, font family, and base font size for the entire app, or styling all <code>&lt;p&gt;</code> elements the same way. Putting these in <code>assets/style.css</code> means you change them in one place, and every page of the app updates automatically. Scattering the same style across dozens of inline dictionaries makes the app hard to update and inconsistent.</p>
+</div>
+</div>
+</div>
+<p><strong>4.</strong> What is the LVHA order for CSS link pseudo-classes, and why does the order matter? Write the CSS for a link that is blue by default, purple when visited, and dark gray on hover.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>LVHA stands for <code>:link</code>, <code>:visited</code>, <code>:hover</code>, <code>:active</code> — the order pseudo-classes must be defined to work correctly. CSS applies rules in source order, and later rules override earlier ones when specificity is equal. If <code>:hover</code> is defined before <code>:visited</code>, hovering over a visited link would apply the unvisited color instead of the hover color, because <code>:visited</code> appears later and overrides it.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>a<span class="in">:link</span>    { <span class="kw">color</span><span class="ch">:</span> <span class="cn">#3b82f6</span><span class="op">;</span> }          <span class="co">/* blue — unvisited */</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>a<span class="in">:visited</span> { <span class="kw">color</span><span class="ch">:</span> <span class="cn">#7c3aed</span><span class="op">;</span> }          <span class="co">/* purple — visited */</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>a<span class="in">:hover</span>   { <span class="kw">color</span><span class="ch">:</span> <span class="cn">#374151</span><span class="op">;</span> }          <span class="co">/* dark gray — on hover */</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>a<span class="in">:active</span>  { <span class="kw">color</span><span class="ch">:</span> <span class="cn">#111827</span><span class="op">;</span> }          <span class="co">/* near-black — while clicking */</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="summary-and-review" class="level1">
+<h1>Summary and Review</h1>
+<section id="using-ai" class="level2">
+<h2 class="anchored" data-anchor-id="using-ai">Using AI</h2>
+<p>Use the following prompts with a generative AI tool to explore Dash and HTML styling further.</p>
+<ul>
+<li>What is the difference between <code>dash.html</code> and <code>dash.dcc</code>? Give two examples of components from each module and describe when you would use them.</li>
+<li>Explain the Dash callback data flow in plain language. What is a decorator, and what does <code>@app.callback()</code> actually tell Dash to do?</li>
+<li>What is the difference between static and dynamic content in a Dash app? Give one example of each that a business analyst might build.</li>
+<li>Explain the CSS box model: what are content, padding, border, and margin, and how do they relate to each other spatially?</li>
+<li>When should you use inline <code>style={}</code> dictionaries versus an external CSS file in <code>assets/</code>? What maintenance problems arise from overusing inline styles?</li>
+<li>What is the difference between an ID selector (<code>#id</code>) and a class selector (<code>.class</code>) in CSS? When would you use each in a Dash app?</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>This chapter introduced Dash as a Python framework for building interactive web dashboards and covered HTML structure and CSS styling.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>Key concepts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dash</td>
+<td>Python library by Plotly; built on Flask + React; no JavaScript required</td>
+</tr>
+<tr class="even">
+<td>Two core modules</td>
+<td><code>dash.html</code> — page structure; <code>dash.dcc</code> — interactive components</td>
+</tr>
+<tr class="odd">
+<td>Callbacks</td>
+<td>Decorator-driven functions that link inputs to outputs; power all interactivity</td>
+</tr>
+<tr class="even">
+<td>Visualization tool choice</td>
+<td>Matplotlib: static; Plotly: standalone charts; Dash: full interactive apps</td>
+</tr>
+<tr class="odd">
+<td>Static vs.&nbsp;dynamic content</td>
+<td>Static: files served once; dynamic: updated via callbacks, APIs, or live streams</td>
+</tr>
+<tr class="even">
+<td>First dashboard</td>
+<td><code>Dash()</code>, <code>app.layout</code>, <code>app.run(debug=True)</code></td>
+</tr>
+<tr class="odd">
+<td>debug=True vs.&nbsp;False</td>
+<td>Development: hot reload + error detail; Production: always False</td>
+</tr>
+<tr class="even">
+<td>Layout components</td>
+<td><code>html.Div</code> (container), <code>html.H1</code>–<code>H6</code> (headings), <code>html.P</code> (paragraph)</td>
+</tr>
+<tr class="odd">
+<td>Hyperlinks and breaks</td>
+<td><code>html.A(href=, target="_blank")</code>, <code>html.Br()</code></td>
+</tr>
+<tr class="even">
+<td>Inline styling</td>
+<td><code>style={}</code> Python dict; CSS property names in camelCase; values as strings</td>
+</tr>
+<tr class="odd">
+<td>CSS box model</td>
+<td>Content → padding (inside) → border → margin (outside)</td>
+</tr>
+<tr class="even">
+<td>Borders</td>
+<td><code>border</code>, <code>borderWidth</code>, <code>borderStyle</code>, <code>borderColor</code>, <code>borderRadius</code></td>
+</tr>
+<tr class="odd">
+<td>Padding and margin</td>
+<td><code>padding</code>, <code>paddingTop/Bottom/Left/Right</code>; <code>margin</code>, <code>marginLeft/Right/Top/Bottom</code></td>
+</tr>
+<tr class="even">
+<td>External CSS</td>
+<td>Place <code>.css</code> in <code>assets/</code>; Dash loads automatically; prefer for app-wide styles</td>
+</tr>
+<tr class="odd">
+<td>CSS selectors</td>
+<td>ID (<code>#id</code>): unique elements; class (<code>.class</code>): reusable styles</td>
+</tr>
+<tr class="even">
+<td>Link pseudo-classes</td>
+<td>LVHA order: <code>:link</code>, <code>:visited</code>, <code>:hover</code>, <code>:active</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>What comes next:</strong> The Writing Callbacks and Accessing APIs chapter adds interactivity — connecting user inputs to live data sources through callback functions and external API calls.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

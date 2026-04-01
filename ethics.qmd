@@ -51,18 +51,18 @@ Responsibility in AI development involves designing, deploying, and governing AI
 
 The CIA+A triad provides a framework for designing systems that are both technically secure and ethically responsible. Each pillar represents both a technical requirement and an ethical obligation:
 
-1. [**C**]{style="background-color: yellow;"}**onfidentiality** — sensitive data must be protected from unauthorized access. Only authorized parties should be able to view it. *Ethical dimension: respecting individuals' right to privacy.*
-2. [**I**]{style="background-color: yellow;"}**ntegrity** — data and systems must be accurate, consistent, and protected from unauthorized tampering. *Ethical dimension: ensuring that decisions are based on truthful information.*
-3. [**A**]{style="background-color: yellow;"}**ccountability** — actions must be traceable back to the individual or system responsible. *Ethical dimension: enabling consequences for misconduct and trust in the system.*
-4. [**A**]{style="background-color: yellow;"}**vailability** — systems must be resilient, redundant, and responsive so that users can access the data and tools they need. *Ethical dimension: ensuring equitable access, particularly for critical services like healthcare or emergency response.*
+1.  [**C**]{style="background-color: yellow;"}**onfidentiality** — sensitive data must be protected from unauthorized access. Only authorized parties should be able to view it. *Ethical dimension: respecting individuals' right to privacy.*
+2.  [**I**]{style="background-color: yellow;"}**ntegrity** — data and systems must be accurate, consistent, and protected from unauthorized tampering. *Ethical dimension: ensuring that decisions are based on truthful information.*
+3.  [**A**]{style="background-color: yellow;"}**ccountability** — actions must be traceable back to the individual or system responsible. *Ethical dimension: enabling consequences for misconduct and trust in the system.*
+4.  [**A**]{style="background-color: yellow;"}**vailability** — systems must be resilient, redundant, and responsive so that users can access the data and tools they need. *Ethical dimension: ensuring equitable access, particularly for critical services like healthcare or emergency response.*
 
 ### Cybersecurity as an Ethical Issue
 
 AI systems depend on massive datasets, making them prime targets for attack. A breach is not just a technical failure — it is an ethical one. Organizations bear three core ethical duties around data security:
 
-1. **Prevent breaches** through strong access controls, encryption, and security architecture.
-2. **Disclose quickly** when breaches occur — delayed disclosure compounds the harm to affected individuals.
-3. **Protect user trust** by treating security as a fundamental responsibility, not an afterthought.
+1.  **Prevent breaches** through strong access controls, encryption, and security architecture.
+2.  **Disclose quickly** when breaches occur — delayed disclosure compounds the harm to affected individuals.
+3.  **Protect user trust** by treating security as a fundamental responsibility, not an afterthought.
 
 The Equifax breach (2017) is a widely cited cautionary case: the personal data of 147 million people was exposed through a known, unpatched vulnerability. Worse, several executives sold stock before public disclosure was made — compounding the technical failure with a failure of accountability and ethics.
 
@@ -101,6 +101,36 @@ The scale of the problem is unprecedented. Algorithms operating at the scale of 
 
 **Human or cognitive bias** enters through the choices made by developers, data labelers, and end users. Choices about which features to include, how to define the target variable, which metrics to optimize, and how to interpret results are all value-laden decisions that can introduce systematic distortion. AI does not eliminate human judgment — it encodes it.
 
+## Ethics and Cybersecurity Lab
+
+**1.** Apply the five core ethical principles to a real scenario: a hospital is deploying an AI model that recommends which patients to prioritize for follow-up calls after discharge. Identify a potential failure for each of the five principles.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+-   **Autonomy:** patients are not informed that an AI is influencing their care prioritization or given a way to opt out.
+-   **Justice:** if the training data underrepresents certain ethnic groups, the model may systematically rank those patients lower for follow-up.
+-   **Beneficence:** the model could reduce readmission rates — but only if it is actually more accurate than clinical judgment.
+-   **Non-maleficence:** a patient ranked low by the model is not called, deteriorates at home, and is readmitted in critical condition.
+-   **Explicability:** the clinical team cannot explain to a patient or a regulator why they were deprioritized — the model is a black box.
+:::
+
+**2.** The Equifax breach is described as both a technical failure and an ethical failure. What made it an ethical failure, and which pillar of the CIA+A triad did each failure most directly violate?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+The **technical failure** was leaving a known vulnerability unpatched — a **Confidentiality** failure (unauthorized access to 147 million records). The **ethical failure** was delayed public disclosure — an **Accountability** failure (no traceable response, no timely warning to affected individuals). Executives selling stock before disclosure added a further dimension: the people responsible for protecting user data used their inside knowledge for personal gain while the public remained uninformed.
+:::
+
+**3.** Describe a scenario where all three types of bias — data bias, labeling bias, and algorithm bias — could compound each other in a hiring AI system. What would be the aggregate effect on job applicants?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+A company trains a hiring model on 10 years of historical hires. **Data bias:** the historical hires are 80% male because of past discriminatory practices — the model learns male-coded patterns as signals of success. **Labeling bias:** human reviewers who labeled "successful employee" in the training data applied gendered assumptions — women who left for caregiving reasons were labeled failures. **Algorithm bias:** the model is optimized to replicate past promotions, baking in historical inequity as the definition of merit. **Aggregate effect:** qualified women are consistently scored lower, never reach an interview, and the pattern compounds each year as new biased hires generate more biased training data.
+:::
+
 ## Security: Abuse and Misuse of AI
 
 ### Deepfakes
@@ -112,7 +142,7 @@ The threat is not hypothetical. Documented real-world examples include:
 -   **Entertainment face swaps** — Jim Carrey's face digitally inserted into *The Shining* and the viral Tom Cruise TikTok deepfakes are widely cited examples. Many such creations are made without the subject's consent, raising serious questions about dignity and intellectual property.
 -   **Political disinformation** — a [deepfake of Ukrainian President Volodymyr Zelenskyy](https://www.euronews.com/my-europe/2022/03/16/deepfake-zelenskyy-surrender-video-is-the-first-intentionally-used-in-ukraine-war?) in 2022 falsely depicted him calling for military surrender — one of the first confirmed uses of a deepfake as a weapon in an active conflict.
 -   **Synthetic audio of public figures** — Buzzfeed and director Jordan Peele created a deepfake video of Barack Obama to demonstrate how convincingly the technology could fabricate statements a real person never made.
--   **[Financial fraud](https://www.ic3.gov/PSA/2024/PSA241203)** — criminals used AI-cloned audio to impersonate the CEO of a German company, convincing a UK CFO to transfer €220,000 to a fraudulent account. Voice-cloning fraud has since become a common attack vector targeting finance teams.
+-   [**Financial fraud**](https://www.ic3.gov/PSA/2024/PSA241203) — criminals used AI-cloned audio to impersonate the CEO of a German company, convincing a UK CFO to transfer €220,000 to a fraudulent account. Voice-cloning fraud has since become a common attack vector targeting finance teams.
 
 ### Misuse of AI in Autonomous Vehicles
 
@@ -123,9 +153,9 @@ Autonomous vehicles (AVs) concentrate several AI ethics challenges in a single, 
 
 Real-world incidents that have shaped the regulatory conversation:
 
--   **[Tesla Autopilot misuse](https://www.wired.com/story/safety-board-faults-tesla-regulators-fatal-2018-crash/)** — drivers filmed sleeping or using their phones while Autopilot was engaged, despite clear warnings that the system requires hands on the wheel at all times. Several incidents resulted in crashes and fatalities; the NTSB found fault with both Tesla and regulators.
--   **[Uber AV fatality (2018)](https://etsc.eu/inadequate-safety-culture-contributed-to-fatal-uber-automated-test-vehicle-crash/)** — a pedestrian was killed when Uber's test vehicle failed to correctly classify her as a person in the road. The backup safety driver was watching a video at the time. The incident raised fundamental questions about whether the technology was ready for public road testing.
--   **[Phantom braking](https://spectrum.ieee.org/self-driving-cars-2662494269)** — multiple self-driving systems have been documented braking unexpectedly for non-existent obstacles, creating rear-end collision risks for following vehicles.
+-   [**Tesla Autopilot misuse**](https://www.wired.com/story/safety-board-faults-tesla-regulators-fatal-2018-crash/) — drivers filmed sleeping or using their phones while Autopilot was engaged, despite clear warnings that the system requires hands on the wheel at all times. Several incidents resulted in crashes and fatalities; the NTSB found fault with both Tesla and regulators.
+-   [**Uber AV fatality (2018)**](https://etsc.eu/inadequate-safety-culture-contributed-to-fatal-uber-automated-test-vehicle-crash/) — a pedestrian was killed when Uber's test vehicle failed to correctly classify her as a person in the road. The backup safety driver was watching a video at the time. The incident raised fundamental questions about whether the technology was ready for public road testing.
+-   [**Phantom braking**](https://spectrum.ieee.org/self-driving-cars-2662494269) — multiple self-driving systems have been documented braking unexpectedly for non-existent obstacles, creating rear-end collision risks for following vehicles.
 
 ### Lack of Control: Regulatory and Design Issues with Autonomous Vehicles
 
@@ -139,10 +169,10 @@ Platform owners such as Meta, Google, and TikTok bear ethical responsibility for
 
 Notable cases that illustrate the problem:
 
--   The **[Cambridge Analytica scandal](https://www.nytimes.com/2018/04/04/us/politics/cambridge-analytica-scandal-fallout.html)** — a third-party app harvested the data of 87 million Facebook users without their knowledge and used it for targeted political advertising. Facebook's platform architecture made this possible.
--   The **[Google+ 2018 API breach](https://www.forbes.com/sites/kateoflahertyuk/2018/10/09/google-plus-breach-what-happened-who-was-impacted-and-how-to-delete-your-account/)** — a bug exposed user data to third-party developers; Google delayed disclosure for months.
--   The **[Christchurch attack](https://ctc.westpoint.edu/christchurch-attacks-livestream-terror-viral-video-age/)** — Facebook's platform was used to livestream the massacre in real time; copies spread across the internet faster than platforms could remove them.
--   **[Russian bot-driven election interference](https://www.npr.org/2024/09/04/nx-s1-5100329/us-russia-election-interference-bots-2024)** — coordinated inauthentic behavior campaigns used platform infrastructure to spread political disinformation at scale.
+-   The [**Cambridge Analytica scandal**](https://www.nytimes.com/2018/04/04/us/politics/cambridge-analytica-scandal-fallout.html) — a third-party app harvested the data of 87 million Facebook users without their knowledge and used it for targeted political advertising. Facebook's platform architecture made this possible.
+-   The [**Google+ 2018 API breach**](https://www.forbes.com/sites/kateoflahertyuk/2018/10/09/google-plus-breach-what-happened-who-was-impacted-and-how-to-delete-your-account/) — a bug exposed user data to third-party developers; Google delayed disclosure for months.
+-   The [**Christchurch attack**](https://ctc.westpoint.edu/christchurch-attacks-livestream-terror-viral-video-age/) — Facebook's platform was used to livestream the massacre in real time; copies spread across the internet faster than platforms could remove them.
+-   [**Russian bot-driven election interference**](https://www.npr.org/2024/09/04/nx-s1-5100329/us-russia-election-interference-bots-2024) — coordinated inauthentic behavior campaigns used platform infrastructure to spread political disinformation at scale.
 
 These cases collectively demonstrate that **scale amplifies harm**: the same openness and network effects that make platforms valuable also make them difficult to police.
 
@@ -163,7 +193,7 @@ AI enables fraudsters to operate faster, at greater scale, and more covertly tha
 -   **Synthetic identity fraud** — AI creates entirely fictitious identities by combining real and fabricated personal data, bypassing traditional identity verification systems.
 -   **Account takeovers** — AI tools mimic legitimate user behavior to defeat behavioral security controls that flag unusual login patterns.
 
-The scale of the damage is substantial: [Visa alone prevented 80 million fraudulent transactions worth $40 billion in 2023](https://www.reuters.com/technology/cybersecurity/visa-prevented-40-bln-worth-fraudulent-transactions-2023-official-2024-07-23/).
+The scale of the damage is substantial: [Visa alone prevented 80 million fraudulent transactions worth \$40 billion in 2023](https://www.reuters.com/technology/cybersecurity/visa-prevented-40-bln-worth-fraudulent-transactions-2023-official-2024-07-23/).
 
 ### Intelligent Warfare
 
@@ -172,6 +202,32 @@ AI is transforming modern conflict through autonomous drones, real-time targetin
 -   **Untraceable cyberattacks** — AI-enabled offensive cyber tools can operate at machine speed, making attribution difficult and escalation harder to contain.
 -   **Satellite vulnerability** — space-based infrastructure supporting GPS, communications, and surveillance is increasingly a target.
 -   **Dual-use risk** — AI tools designed for legitimate research (including in chemistry and biology) lower the barrier to developing dangerous weapons.
+
+## Security: Abuse and Misuse Lab
+
+**1.** A CFO at a European company received an urgent voice call from what sounded exactly like the CEO, instructing her to wire €220,000 to a new supplier account. She complied. What AI technique made this attack possible, and what organizational safeguard could have prevented the transfer?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**AI technique:** voice cloning — a deepfake audio attack that uses generative AI to synthesize a convincing replica of a real person's voice from a small sample of recordings. **Organizational safeguard:** a callback verification protocol requiring that any wire transfer above a threshold be confirmed via a second, independently initiated channel (e.g., calling the CEO back on a known direct line, not the number that called in). Multi-factor authorization for large transfers and a code-word system for high-urgency requests are additional controls.
+:::
+
+**2.** The chapter describes data poisoning as a threat where an attacker manipulates a model's training data to corrupt its predictions. Give a specific example of how this attack could be executed against a fraud detection model at a bank, and explain why it would be difficult to detect.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Attack:** the attacker gradually introduces fraudulent transactions that are carefully engineered to resemble legitimate ones — low amounts, plausible merchant categories, normal geolocation — into the data stream that feeds the model's retraining pipeline. Over weeks, the model learns to classify this transaction pattern as legitimate. When the attacker eventually executes the real fraud at scale using the same pattern, the model flags nothing. **Why hard to detect:** the poisoned samples are individually indistinguishable from normal transactions; the model's aggregate accuracy metrics may not change significantly during the poisoning phase; and without data versioning or anomaly detection on the training pipeline itself, the manipulation goes unnoticed until large-scale fraud is already underway.
+:::
+
+**3.** Compare the ethical responsibilities of an AI platform company (like Facebook or TikTok) to those of a government regulator when it comes to preventing AI-enabled harms like deepfakes and coordinated disinformation. Who bears more responsibility, and why?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+This is a genuine debate with defensible positions on both sides. **Platform responsibility** is strong: these companies designed and profit from systems with known amplification effects; they have technical access to detection tools; and they have historically acted only under regulatory or public pressure. **Government responsibility** is also strong: private companies have conflicting profit incentives (engagement drives revenue); self-regulation has demonstrably failed; and the scale of harms (election interference, violence) affects public goods that only governments are mandated to protect. A balanced answer notes that both must act simultaneously — platforms through architecture and moderation, governments through binding standards and enforcement — and that neither can solve the problem alone.
+:::
 
 ## AI Governance
 
@@ -211,6 +267,32 @@ Building ethical AI is not a compliance checkbox — it requires deliberate desi
 -   [**Maintain human-in-the-loop oversight**]{style="background-color: yellow;"} — for high-stakes or ambiguous decisions, a human should review and authorize the AI's recommendation before it is acted upon. Automation should augment judgment, not replace it.
 -   [**Regularly audit for unintended harms**]{style="background-color: yellow;"} — models that perform well overall may perform poorly for specific demographic subgroups. Post-deployment monitoring across subgroups, combined with regular retraining, is essential for sustained ethical performance.
 
+## AI Governance Lab
+
+**1.** An insurance company uses a black-box deep learning model to set premiums. A regulator asks for an explanation of why one specific customer was charged 40% more than a comparable customer. What problem does this create, and how does Explainable AI address it?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+The black-box model produces outputs without human-understandable reasoning — the insurer cannot explain the premium difference to the customer or the regulator, which in many jurisdictions is a legal violation (e.g., the EU's GDPR right to explanation). **XAI solution:** apply a post-hoc method like **SHAP values** to identify which input features (e.g., credit score, ZIP code, claims history) drove the premium for that specific customer, and by how much. The explanation must meet the four properties: it must be *accurate* (reflect the actual model), *meaningful* (understandable to a non-technical regulator), supported by *evidence* for each output, and honest about *knowledge limits* when the model is extrapolating.
+:::
+
+**2.** A zero-trust security architecture is described as verifying "every request continuously." How does this differ from traditional perimeter-based security, and why does AI make zero-trust more effective?
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Traditional perimeter security** trusts any user or device already inside the network — once authenticated at the edge, you are treated as legitimate. This assumption breaks down when insiders are malicious, credentials are stolen, or a device is compromised after login. **Zero-trust** verifies every request individually, regardless of origin — each action requires its own authentication and authorization check. **AI enhances zero-trust** by incorporating behavioral signals (device fingerprint, location, typing cadence, time-of-day patterns) into continuous risk scoring — so even a correctly authenticated user triggers re-verification if their behavior deviates from baseline. AI also enables real-time anomaly detection that no human analyst team could match at scale.
+:::
+
+**3.** When is it ethically justified to use a less accurate but more interpretable model instead of a higher-performing black-box model? Give two concrete examples from different industries.
+
+::: {.callout-note collapse="true"}
+### Show Answer
+
+**Justification:** when the stakes of an incorrect or unexplainable decision are high enough that accountability, trust, and recourse outweigh the marginal accuracy gain. **Example 1 — Criminal justice (recidivism scoring):** a logistic regression model that explains exactly which factors drove a risk score is preferable to a neural network with 2% better AUC, because the defendant has a right to contest the factors and the judge needs to exercise independent judgment. **Example 2 — Medical diagnosis (cancer screening):** a decision tree that flags which biomarkers triggered a recommendation is preferable to a black-box ensemble when the oncologist must decide whether to recommend biopsy — the physician's professional responsibility requires understanding, not just following, the AI's suggestion.
+:::
+
 ## Citing AI and Verifying Sources
 
 ### Citing ChatGPT in APA Style
@@ -234,7 +316,42 @@ APA treats AI software similarly to other software tools (statistical packages, 
 
 For example:
 
-- **Before:** `https://www.journal.com/article/12345?utm_source=chat-gpt&session=abc`
-- **After:** `https://www.journal.com/article/12345`
+-   **Before:** `https://www.journal.com/article/12345?utm_source=chat-gpt&session=abc`
+-   **After:** `https://www.journal.com/article/12345`
 
 Before trimming, always test the shortened URL in a browser to confirm it still resolves correctly. If the full tagged URL is the only one that works (rare), keep it but note the unusual format.
+
+# Summary and Review
+
+## Using AI
+
+Use the following prompts with a generative AI tool to explore AI ethics, security, and governance further.
+
+-   Apply all five core ethical principles (autonomy, justice, beneficence, non-maleficence, explicability) to a single AI use case of your choice. Where are the tensions between principles?
+-   What makes the CIA+A triad both a technical and an ethical framework? Give an example where a security failure is simultaneously an ethical failure.
+-   How do data bias, labeling bias, and algorithm bias each enter an AI system at different stages? Can you fix one without addressing the others?
+-   Deepfakes exist on a spectrum from harmless entertainment to weapons of war. Where should the legal and ethical line be drawn, and who should draw it?
+-   What is the difference between explainability and accuracy in an AI model? When is a less accurate but more interpretable model the right choice?
+-   How does zero-trust architecture change the assumptions of traditional network security, and why does AI make it more effective in practice?
+-   What obligations does an academic researcher have when using generative AI in their work? How do those obligations differ from a business analyst using the same tool?
+
+## Summary
+
+This chapter examined the ethical foundations, security risks, governance frameworks, and scholarly responsibilities that accompany AI deployment.
+
+| Topic | Key concepts |
+|------------------------------------|------------------------------------|
+| Core ethical principles | Autonomy, justice, beneficence, non-maleficence, explicability |
+| CIA+A triad | Confidentiality, integrity, accountability, availability — technical and ethical obligations |
+| Challenges in AI ethics | Amplification, bias, security, control, inequality |
+| Bias types | Data bias, labeling bias, algorithm bias, human/cognitive bias |
+| Echo chambers | Engagement-optimized algorithms amplify divisive content; filter bubbles distort perception |
+| Deepfakes | Face-swap, voice cloning, full-body synthesis; political disinformation and financial fraud |
+| Autonomous vehicles | Liability gaps, phantom braking, regulatory fragmentation, trolley-problem dilemmas |
+| AI vs. AI security | Data poisoning, model theft, adversarial inputs; AI-enabled phishing and synthetic identity fraud |
+| Explainable AI (XAI) | Explanation, meaningfulness, accuracy, knowledge limits; SHAP, LIME, decision trees |
+| Zero-trust architecture | Continuous verification, behavioral signals, real-time anomaly detection |
+| Ethical design | Diverse stakeholders, interpretable models for high stakes, human-in-the-loop, subgroup auditing |
+| Citing AI (APA) | Cite if used; verify all AI-suggested sources independently; trim URLs before publishing |
+
+**What comes next:** The Modern Data Acquisition chapter examines how organizations collect the data that feeds these AI systems — covering APIs, web scraping, Beautiful Soup, and the practical and legal considerations of large-scale data collection.
