@@ -588,6 +588,202 @@ The key factors: **context window** (200 pages of text exceeds many models' limi
 
 **Option (b) — Local open-source model with RAG:** Data never leaves the organization's infrastructure — full control over privacy and compliance. The trade-offs are lower baseline model quality compared to frontier APIs, the need for internal ML infrastructure to host and maintain the model, and greater engineering effort to build the retrieval pipeline. For trade-secret content, this is often the only legally defensible option. The right choice depends on the organization's risk tolerance, infrastructure maturity, and the sensitivity classification of the documentation.
 :::
+## Interactive Question
+
+```{=html}
+<div id="model-cost-exercise" style="font-family: 'Georgia', serif; max-width: 860px; margin: 1.5rem 0; border: 1px solid #d1d5db; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.07);">
+
+  <!-- Header -->
+  <div style="background: #1e3a5f; color: white; padding: 1rem 1.4rem;">
+    <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.7; margin-bottom: 0.25rem;">Interactive Exercise</div>
+    <div style="font-size: 1.05rem; font-weight: 600;">Balancing model performance and cost</div>
+  </div>
+
+  <!-- Body -->
+  <div style="padding: 1.2rem 1.4rem; background: #f9fafb;">
+    <p style="margin: 0 0 1rem; font-size: 0.92rem; color: #374151; line-height: 1.6;">
+      Your AI workloads range from basic code autocompletion to complex enterprise refactoring. Faster, cheaper models handle simpler tasks well — but complex reasoning requires more capable ones. Classify each task into the correct bucket.
+    </p>
+
+    <!-- Drop zone -->
+    <div style="margin-bottom: 1.2rem;">
+      <div style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: #6b7280; margin-bottom: 0.5rem;">Drag items to sort:</div>
+      <div id="mc-source-zone"
+        ondragover="event.preventDefault()"
+        ondrop="mcDropToSource(event)"
+        style="min-height: 64px; background: #1e3a5f; border-radius: 8px; padding: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: flex-start;">
+      </div>
+    </div>
+
+    <!-- Two columns -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+
+      <!-- Can use regular -->
+      <div>
+        <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #166534; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
+          <span style="display:inline-block; width:10px; height:10px; background:#16a34a; border-radius:50%;"></span> Can use regular (cheaper) models
+        </div>
+        <div id="mc-regular-zone"
+          ondragover="event.preventDefault()"
+          ondrop="mcDropTo(event, 'regular')"
+          style="min-height: 140px; background: #f0fdf4; border: 2px dashed #86efac; border-radius: 8px; padding: 0.6rem; display: flex; flex-direction: column; gap: 0.5rem;">
+          <div style="color:#86efac; font-size:0.8rem; text-align:center; margin:auto; pointer-events:none;" class="mc-placeholder">Drop here</div>
+        </div>
+      </div>
+
+      <!-- Requires powerful -->
+      <div>
+        <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #92400e; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
+          <span style="display:inline-block; width:10px; height:10px; background:#d97706; border-radius:50%;"></span> Requires powerful models
+        </div>
+        <div id="mc-powerful-zone"
+          ondragover="event.preventDefault()"
+          ondrop="mcDropTo(event, 'powerful')"
+          style="min-height: 140px; background: #fffbeb; border: 2px dashed #fcd34d; border-radius: 8px; padding: 0.6rem; display: flex; flex-direction: column; gap: 0.5rem;">
+          <div style="color:#fcd34d; font-size:0.8rem; text-align:center; margin:auto; pointer-events:none;" class="mc-placeholder">Drop here</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div style="margin-top: 1rem; display: flex; gap: 0.6rem; flex-wrap: wrap;">
+      <button onclick="mcCheckAnswers()"
+        style="background:#1e3a5f; color:white; border:none; padding: 0.45rem 1.1rem; border-radius:6px; font-size:0.85rem; cursor:pointer; font-family:inherit;">
+        Check Answers
+      </button>
+      <button onclick="mcReset()"
+        style="background:white; color:#374151; border:1px solid #d1d5db; padding: 0.45rem 1.1rem; border-radius:6px; font-size:0.85rem; cursor:pointer; font-family:inherit;">
+        Reset
+      </button>
+    </div>
+
+    <!-- Feedback -->
+    <div id="mc-feedback" style="margin-top: 0.8rem; font-size: 0.88rem; display:none;"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const mcItems = [
+    { id: "mc1", text: "Adding docstrings to existing functions.",                          answer: "regular"  },
+    { id: "mc2", text: "Generating basic unit test templates.",                             answer: "regular"  },
+    { id: "mc3", text: "Autocomplete for regular Python functions.",                        answer: "regular"  },
+    { id: "mc4", text: "Translating a simple SQL query to pandas.",                         answer: "regular"  },
+    { id: "mc5", text: "Refactoring a legacy module across multiple interdependent files.", answer: "powerful" },
+    { id: "mc6", text: "Fixing a complex bug that spans multiple files.",                   answer: "powerful" },
+    { id: "mc7", text: "Explaining the time complexity of a recursive algorithm.",          answer: "powerful" },
+    { id: "mc8", text: "Designing a secure authentication flow with edge-case handling.",   answer: "powerful" },
+  ];
+
+  function mcShuffle(arr) {
+    return arr.map(v => [Math.random(), v]).sort((a,b) => a[0]-b[0]).map(v => v[1]);
+  }
+
+  function mcMakeTile(item) {
+    const div = document.createElement("div");
+    div.id = item.id;
+    div.draggable = true;
+    div.dataset.answer = item.answer;
+    div.textContent = item.text;
+    div.style.cssText = `
+      background: white;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      padding: 0.55rem 0.75rem;
+      font-size: 0.83rem;
+      line-height: 1.45;
+      cursor: grab;
+      color: #1f2937;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      user-select: none;
+    `;
+    div.addEventListener("dragstart", e => {
+      e.dataTransfer.setData("text/plain", item.id);
+      div.style.opacity = "0.5";
+    });
+    div.addEventListener("dragend", () => { div.style.opacity = "1"; });
+    return div;
+  }
+
+  function mcClearPlaceholders(zone) {
+    zone.querySelectorAll(".mc-placeholder").forEach(el => el.remove());
+  }
+
+  window.mcDropTo = function(event, target) {
+    event.preventDefault();
+    const id = event.dataTransfer.getData("text/plain");
+    const tile = document.getElementById(id);
+    if (!tile) return;
+    const zone = document.getElementById("mc-" + target + "-zone");
+    mcClearPlaceholders(zone);
+    zone.appendChild(tile);
+    tile.style.border = "1px solid #d1d5db";
+    tile.style.background = "white";
+    tile.style.color = "#1f2937";
+    document.getElementById("mc-feedback").style.display = "none";
+  };
+
+  window.mcDropToSource = function(event) {
+    event.preventDefault();
+    const id = event.dataTransfer.getData("text/plain");
+    const tile = document.getElementById(id);
+    if (!tile) return;
+    document.getElementById("mc-source-zone").appendChild(tile);
+    tile.style.border = "1px solid #d1d5db";
+    tile.style.background = "white";
+    tile.style.color = "#1f2937";
+    document.getElementById("mc-feedback").style.display = "none";
+  };
+
+  window.mcCheckAnswers = function() {
+    const regular = document.getElementById("mc-regular-zone");
+    const powerful = document.getElementById("mc-powerful-zone");
+    let correct = 0, total = 0;
+
+    [...regular.children, ...powerful.children].forEach(tile => {
+      if (!tile.dataset.answer) return;
+      total++;
+      const zone = tile.parentElement.id.replace("mc-", "").replace("-zone", "");
+      if (zone === tile.dataset.answer) {
+        tile.style.border = "2px solid #16a34a";
+        tile.style.background = "#f0fdf4";
+        correct++;
+      } else {
+        tile.style.border = "2px solid #dc2626";
+        tile.style.background = "#fff1f2";
+      }
+    });
+
+    const fb = document.getElementById("mc-feedback");
+    fb.style.display = "block";
+    if (total === 0) {
+      fb.innerHTML = `<span style="color:#6b7280;">Sort all items before checking.</span>`;
+    } else if (correct === mcItems.length) {
+      fb.innerHTML = `<span style="color:#166534; font-weight:600;">✓ All correct!</span> Routine, pattern-based tasks (docstrings, basic tests, autocomplete) are well-handled by lighter models. Tasks requiring multi-step reasoning, cross-file context, or security judgment need frontier-tier capability.`;
+    } else {
+      fb.innerHTML = `<span style="color:#991b1b; font-weight:600;">${correct} of ${mcItems.length} correct.</span> Red items are in the wrong bucket — consider whether the task requires multi-step reasoning or just pattern completion.`;
+    }
+  };
+
+  window.mcReset = function() {
+    const src = document.getElementById("mc-source-zone");
+    src.innerHTML = "";
+    document.getElementById("mc-regular-zone").innerHTML  = `<div style="color:#86efac; font-size:0.8rem; text-align:center; margin:auto; pointer-events:none;" class="mc-placeholder">Drop here</div>`;
+    document.getElementById("mc-powerful-zone").innerHTML = `<div style="color:#fcd34d; font-size:0.8rem; text-align:center; margin:auto; pointer-events:none;" class="mc-placeholder">Drop here</div>`;
+    document.getElementById("mc-feedback").style.display = "none";
+    mcShuffle(mcItems).forEach(item => src.appendChild(mcMakeTile(item)));
+  };
+
+  // Init on load
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", mcReset);
+  } else {
+    mcReset();
+  }
+})();
+</script>
+```
+
 
 ## AI-Assisted Coding
 

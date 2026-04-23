@@ -2632,5 +2632,16 @@
     "crumbs": [
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>References</span>"
     ]
+  },
+  {
+    "objectID": "genAI.html#interactive-question",
+    "href": "genAI.html#interactive-question",
+    "title": "Understanding Generative AI",
+    "section": "Interactive Question",
+    "text": "Interactive Question\n\n\n  \n  \n    Interactive Exercise\n    Balancing model performance and cost\n  \n\n  \n  \n    \n      Your AI workloads range from basic code autocompletion to complex enterprise refactoring. Faster, cheaper models handle simpler tasks well — but complex reasoning requires more capable ones. Classify each task into the correct bucket.\n    \n\n    \n    \n      Drag items to sort:\n      \n      \n    \n\n    \n    \n\n      \n      \n        \n           Can use regular (cheaper) models\n        \n        \n          Drop here\n        \n      \n\n      \n      \n        \n           Requires powerful models\n        \n        \n          Drop here\n        \n      \n    \n\n    \n    \n      \n        Check Answers\n      \n      \n        Reset",
+    "crumbs": [
+      "AI in Business",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Understanding Generative AI</span>"
+    ]
   }
 ]
