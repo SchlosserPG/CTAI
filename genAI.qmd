@@ -330,6 +330,7 @@ This meta prompt assigns a role, defines a structured multi-step process, and en
 The chapter's analogy: **RLHF** tunes the car's steering system so it follows directions well (happens before deployment, during training). **Prompt engineering** is how the driver actually steers with the wheel (happens at runtime, by the user). **Fine-tuning** would correspond to taking the car to a specialist mechanic who modifies the engine and transmission specifically for a new context — say, converting a highway sedan for off-road use. Like fine-tuning, this happens before the car is handed to the driver, requires access to the car's internals (the model weights), and produces a purpose-built variant better suited to a specific task than the general-purpose original.
 :::
 
+### Interactive Exercise
 ```{=html}
 <div id="drag-drop-exercise" style="font-family: 'Georgia', serif; max-width: 860px; margin: 1.5rem 0; border: 1px solid #d1d5db; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.07);">
 
