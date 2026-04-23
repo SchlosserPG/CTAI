@@ -264,6 +264,33 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#continuing-with-an-unclear-example" id="toc-continuing-with-an-unclear-example" class="nav-link" data-scroll-target="#continuing-with-an-unclear-example">Continuing with an Unclear Example</a></li>
   </ul></li>
   <li><a href="#the-prompting-paradigm-lab" id="toc-the-prompting-paradigm-lab" class="nav-link" data-scroll-target="#the-prompting-paradigm-lab">The Prompting Paradigm Lab</a></li>
+  <li><a href="#matching-ai-models-to-tasks" id="toc-matching-ai-models-to-tasks" class="nav-link" data-scroll-target="#matching-ai-models-to-tasks">Matching AI Models to Tasks</a>
+  <ul class="collapse">
+  <li><a href="#the-ai-tool-landscape" id="toc-the-ai-tool-landscape" class="nav-link" data-scroll-target="#the-ai-tool-landscape">The AI Tool Landscape</a></li>
+  <li><a href="#decision-factors" id="toc-decision-factors" class="nav-link" data-scroll-target="#decision-factors">Decision Factors</a></li>
+  <li><a href="#classifying-ai-workloads" id="toc-classifying-ai-workloads" class="nav-link" data-scroll-target="#classifying-ai-workloads">Classifying AI Workloads</a></li>
+  </ul></li>
+  <li><a href="#matching-ai-models-to-tasks-lab" id="toc-matching-ai-models-to-tasks-lab" class="nav-link" data-scroll-target="#matching-ai-models-to-tasks-lab">Matching AI Models to Tasks Lab</a></li>
+  <li><a href="#ai-assisted-coding" id="toc-ai-assisted-coding" class="nav-link" data-scroll-target="#ai-assisted-coding">AI-Assisted Coding</a>
+  <ul class="collapse">
+  <li><a href="#the-ai-assisted-coding-paradigm" id="toc-the-ai-assisted-coding-paradigm" class="nav-link" data-scroll-target="#the-ai-assisted-coding-paradigm">The AI-Assisted Coding Paradigm</a></li>
+  <li><a href="#prompting-for-code-adding-context" id="toc-prompting-for-code-adding-context" class="nav-link" data-scroll-target="#prompting-for-code-adding-context">Prompting for Code: Adding Context</a></li>
+  <li><a href="#prompts-for-effective-debugging" id="toc-prompts-for-effective-debugging" class="nav-link" data-scroll-target="#prompts-for-effective-debugging">Prompts for Effective Debugging</a></li>
+  <li><a href="#effective-role-definitions" id="toc-effective-role-definitions" class="nav-link" data-scroll-target="#effective-role-definitions">Effective Role Definitions</a></li>
+  <li><a href="#documenting-code-with-ai" id="toc-documenting-code-with-ai" class="nav-link" data-scroll-target="#documenting-code-with-ai">Documenting Code with AI</a></li>
+  <li><a href="#effective-commit-messages-with-ai" id="toc-effective-commit-messages-with-ai" class="nav-link" data-scroll-target="#effective-commit-messages-with-ai">Effective Commit Messages with AI</a></li>
+  <li><a href="#writing-tests-and-securing-code-with-ai" id="toc-writing-tests-and-securing-code-with-ai" class="nav-link" data-scroll-target="#writing-tests-and-securing-code-with-ai">Writing Tests and Securing Code with AI</a></li>
+  <li><a href="#spotting-gaps-in-ai-generated-tests" id="toc-spotting-gaps-in-ai-generated-tests" class="nav-link" data-scroll-target="#spotting-gaps-in-ai-generated-tests">Spotting Gaps in AI-Generated Tests</a></li>
+  </ul></li>
+  <li><a href="#ai-assisted-coding-lab" id="toc-ai-assisted-coding-lab" class="nav-link" data-scroll-target="#ai-assisted-coding-lab">AI-Assisted Coding Lab</a></li>
+  <li><a href="#prompt-refinement-and-iteration" id="toc-prompt-refinement-and-iteration" class="nav-link" data-scroll-target="#prompt-refinement-and-iteration">Prompt Refinement and Iteration</a>
+  <ul class="collapse">
+  <li><a href="#why-iteration-is-necessary" id="toc-why-iteration-is-necessary" class="nav-link" data-scroll-target="#why-iteration-is-necessary">Why Iteration Is Necessary</a></li>
+  <li><a href="#the-iteration-workflow" id="toc-the-iteration-workflow" class="nav-link" data-scroll-target="#the-iteration-workflow">The Iteration Workflow</a></li>
+  <li><a href="#prompt-refinement-patterns" id="toc-prompt-refinement-patterns" class="nav-link" data-scroll-target="#prompt-refinement-patterns">Prompt Refinement Patterns</a></li>
+  <li><a href="#progressive-context-addition" id="toc-progressive-context-addition" class="nav-link" data-scroll-target="#progressive-context-addition">Progressive Context Addition</a></li>
+  </ul></li>
+  <li><a href="#prompt-refinement-and-iteration-lab" id="toc-prompt-refinement-and-iteration-lab" class="nav-link" data-scroll-target="#prompt-refinement-and-iteration-lab">Prompt Refinement and Iteration Lab</a></li>
   <li><a href="#llm-hallucinations" id="toc-llm-hallucinations" class="nav-link" data-scroll-target="#llm-hallucinations">LLM Hallucinations</a>
   <ul class="collapse">
   <li><a href="#reducing-hallucination-with-prompt-engineering" id="toc-reducing-hallucination-with-prompt-engineering" class="nav-link" data-scroll-target="#reducing-hallucination-with-prompt-engineering">Reducing Hallucination with Prompt Engineering</a></li>
@@ -723,6 +750,571 @@ Show Answer
 </div>
 </div>
 </div>
+<div id="drag-drop-exercise" style="font-family: 'Georgia', serif; max-width: 860px; margin: 1.5rem 0; border: 1px solid #d1d5db; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.07);">
+
+  <!-- Header -->
+  <div style="background: #1e3a5f; color: white; padding: 1rem 1.4rem;">
+    <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.7; margin-bottom: 0.25rem;">Interactive Exercise</div>
+    <div style="font-size: 1.05rem; font-weight: 600;">Evaluating the trade-offs of reasoning models</div>
+  </div>
+
+  <!-- Body -->
+  <div style="padding: 1.2rem 1.4rem; background: #f9fafb;">
+    <p style="margin: 0 0 1rem; font-size: 0.92rem; color: #374151; line-height: 1.6;">
+      You decide to adopt a <strong>reasoning model</strong> for an application that requires traceability of AI-generated responses. As you implement it, you notice certain characteristics — some beneficial, some challenging in a production environment. Sort each item into the correct bucket.
+    </p>
+
+    <!-- Drop zone -->
+    <div style="margin-bottom: 1.2rem;">
+      <div style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: #6b7280; margin-bottom: 0.5rem;">Drag items to sort:</div>
+      <div id="source-zone" ondragover="event.preventDefault()" ondrop="dropToSource(event)" style="min-height: 64px; background: #1e3a5f; border-radius: 8px; padding: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: flex-start;">
+      </div>
+    </div>
+
+    <!-- Pros / Cons columns -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+
+      <!-- Pros -->
+      <div>
+        <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #166534; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
+          <span style="display:inline-block; width:10px; height:10px; background:#16a34a; border-radius:50%;"></span> Pros
+        </div>
+        <div id="pros-zone" ondragover="event.preventDefault()" ondrop="dropTo(event, 'pros')" style="min-height: 120px; background: #f0fdf4; border: 2px dashed #86efac; border-radius: 8px; padding: 0.6rem; display: flex; flex-direction: column; gap: 0.5rem;">
+          <div style="color:#86efac; font-size:0.8rem; text-align:center; margin: auto; pointer-events:none;" class="placeholder-text">Drop Pros here</div>
+        </div>
+      </div>
+
+      <!-- Cons -->
+      <div>
+        <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #991b1b; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
+          <span style="display:inline-block; width:10px; height:10px; background:#dc2626; border-radius:50%;"></span> Cons
+        </div>
+        <div id="cons-zone" ondragover="event.preventDefault()" ondrop="dropTo(event, 'cons')" style="min-height: 120px; background: #fff1f2; border: 2px dashed #fca5a5; border-radius: 8px; padding: 0.6rem; display: flex; flex-direction: column; gap: 0.5rem;">
+          <div style="color:#fca5a5; font-size:0.8rem; text-align:center; margin: auto; pointer-events:none;" class="placeholder-text">Drop Cons here</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Check / Reset buttons -->
+    <div style="margin-top: 1rem; display: flex; gap: 0.6rem; flex-wrap: wrap;">
+      <button onclick="checkAnswers()" style="background:#1e3a5f; color:white; border:none; padding: 0.45rem 1.1rem; border-radius:6px; font-size:0.85rem; cursor:pointer; font-family:inherit;">
+        Check Answers
+      </button>
+      <button onclick="resetExercise()" style="background:white; color:#374151; border:1px solid #d1d5db; padding: 0.45rem 1.1rem; border-radius:6px; font-size:0.85rem; cursor:pointer; font-family:inherit;">
+        Reset
+      </button>
+    </div>
+
+    <!-- Feedback -->
+    <div id="feedback" style="margin-top: 0.8rem; font-size: 0.88rem; display:none;"></div>
+  </div>
+</div>
+
+<script>
+const items = [
+  { id: "i1", text: "Encourages more accurate responses through the Chain-of-Thought (CoT) process.", answer: "pros" },
+  { id: "i2", text: "Provides a clear explanation that supports code transparency.", answer: "pros" },
+  { id: "i3", text: "Useful when auditability of AI reasoning is a compliance or governance requirement.", answer: "pros" },
+  { id: "i4", text: "Adds extra tokens due to reasoning, increasing overall cost.", answer: "cons" },
+  { id: "i5", text: "Increases response time slightly, as the model generates additional reasoning tokens.", answer: "cons" },
+  { id: "i6", text: "May be unnecessary overhead for simple, low-stakes tasks.", answer: "cons" },
+];
+
+// Shuffle helper
+function shuffle(arr) {
+  return arr.map(v => [Math.random(), v]).sort((a,b) => a[0]-b[0]).map(v => v[1]);
+}
+
+function makeTile(item) {
+  const div = document.createElement("div");
+  div.id = item.id;
+  div.draggable = true;
+  div.dataset.answer = item.answer;
+  div.textContent = item.text;
+  div.style.cssText = `
+    background: white;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.83rem;
+    line-height: 1.45;
+    cursor: grab;
+    color: #1f2937;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    user-select: none;
+    transition: box-shadow 0.15s;
+  `;
+  div.addEventListener("dragstart", e => {
+    e.dataTransfer.setData("text/plain", item.id);
+    div.style.opacity = "0.5";
+  });
+  div.addEventListener("dragend", () => { div.style.opacity = "1"; });
+  return div;
+}
+
+function clearPlaceholder(zone) {
+  zone.querySelectorAll(".placeholder-text").forEach(el => el.remove());
+}
+
+function dropTo(event, target) {
+  event.preventDefault();
+  const id = event.dataTransfer.getData("text/plain");
+  const tile = document.getElementById(id);
+  if (!tile) return;
+  const zone = document.getElementById(target + "-zone");
+  clearPlaceholder(zone);
+  zone.appendChild(tile);
+  // reset any check coloring
+  tile.style.border = "1px solid #d1d5db";
+  document.getElementById("feedback").style.display = "none";
+}
+
+function dropToSource(event) {
+  event.preventDefault();
+  const id = event.dataTransfer.getData("text/plain");
+  const tile = document.getElementById(id);
+  if (!tile) return;
+  document.getElementById("source-zone").appendChild(tile);
+  tile.style.border = "1px solid #d1d5db";
+  tile.style.background = "white";
+  tile.style.color = "#1f2937";
+  document.getElementById("feedback").style.display = "none";
+}
+
+function checkAnswers() {
+  const pros = document.getElementById("pros-zone");
+  const cons = document.getElementById("cons-zone");
+  let correct = 0, total = 0;
+
+  [...pros.children, ...cons.children].forEach(tile => {
+    if (!tile.dataset.answer) return;
+    total++;
+    const zone = tile.parentElement.id.replace("-zone", "");
+    if (zone === tile.dataset.answer) {
+      tile.style.border = "2px solid #16a34a";
+      tile.style.background = "#f0fdf4";
+      correct++;
+    } else {
+      tile.style.border = "2px solid #dc2626";
+      tile.style.background = "#fff1f2";
+    }
+  });
+
+  const fb = document.getElementById("feedback");
+  fb.style.display = "block";
+  if (total === 0) {
+    fb.innerHTML = `<span style="color:#6b7280;">Sort all items before checking.</span>`;
+  } else if (correct === items.length) {
+    fb.innerHTML = `<span style="color:#166534; font-weight:600;">✓ All correct!</span> Reasoning models improve accuracy and traceability but add latency and token cost — calibrate the trade-off to your task's stakes.`;
+  } else {
+    fb.innerHTML = `<span style="color:#991b1b; font-weight:600;">${correct} of ${items.length} correct.</span> Red items are in the wrong bucket — try moving them.`;
+  }
+}
+
+function resetExercise() {
+  const src = document.getElementById("source-zone");
+  src.innerHTML = "";
+  document.getElementById("pros-zone").innerHTML = `<div style="color:#86efac; font-size:0.8rem; text-align:center; margin:auto; pointer-events:none;" class="placeholder-text">Drop Pros here</div>`;
+  document.getElementById("cons-zone").innerHTML = `<div style="color:#fca5a5; font-size:0.8rem; text-align:center; margin:auto; pointer-events:none;" class="placeholder-text">Drop Cons here</div>`;
+  document.getElementById("feedback").style.display = "none";
+  shuffle(items).forEach(item => src.appendChild(makeTile(item)));
+}
+
+// Init
+resetExercise();
+</script>
+</section>
+<section id="matching-ai-models-to-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="matching-ai-models-to-tasks">Matching AI Models to Tasks</h2>
+<p>Not all generative AI tools are built for the same job. Selecting the wrong model for a task is one of the most common and costly mistakes in applied AI work — it leads to poor output quality, unnecessary expense, latency problems, or privacy exposure. The right selection framework treats AI models as specialized instruments, not a single interchangeable resource.</p>
+<section id="the-ai-tool-landscape" class="level3">
+<h3 class="anchored" data-anchor-id="the-ai-tool-landscape">The AI Tool Landscape</h3>
+<p>The generative AI ecosystem has diversified rapidly. At a high level, tools fall into a few functional categories:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Category</th>
+<th>Representative Tools</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>General-purpose LLMs</td>
+<td>GPT-4o, Claude 3.5, Gemini 1.5 Pro</td>
+<td>Reasoning, writing, summarization, multi-step tasks</td>
+</tr>
+<tr class="even">
+<td>Code-specialized models</td>
+<td>GitHub Copilot, Cursor, Claude Code</td>
+<td>Code completion, debugging, refactoring, test generation</td>
+</tr>
+<tr class="odd">
+<td>Image generation</td>
+<td>DALL·E 3, Midjourney, Stable Diffusion</td>
+<td>Visual content creation, mockups, creative assets</td>
+</tr>
+<tr class="even">
+<td>Conversational search</td>
+<td>Perplexity AI, ChatGPT with Search</td>
+<td>Real-time retrieval + synthesis</td>
+</tr>
+<tr class="odd">
+<td>Multimodal models</td>
+<td>GPT-4o, Gemini 1.5, Claude 3.5 Sonnet</td>
+<td>Tasks spanning text, image, audio, and document inputs</td>
+</tr>
+<tr class="even">
+<td>Open-source / local</td>
+<td>LLaMA 3, Mistral, Phi-3</td>
+<td>Privacy-sensitive workloads, on-premise deployment, customization</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="decision-factors" class="level3">
+<h3 class="anchored" data-anchor-id="decision-factors">Decision Factors</h3>
+<p>When selecting an AI model for a specific task, evaluate across five dimensions:</p>
+<ul>
+<li><span style="background-color: yellow;"><strong>Task type</strong></span> — Is the task primarily linguistic (summarization, drafting), logical (reasoning, code), visual (image interpretation), or retrieval-heavy (up-to-date facts)? Match the modality of the task to the modality of the model.</li>
+<li><span style="background-color: yellow;"><strong>Context window</strong></span> — Longer documents, codebases, or multi-turn conversations require a larger context window. GPT-4o and Gemini 1.5 Pro support up to 128K–1M tokens; smaller or older models may truncate critical context.</li>
+<li><span style="background-color: yellow;"><strong>Latency and cost</strong></span> — Frontier models (GPT-4o, Claude 3.5 Sonnet) offer the best reasoning quality but at higher cost and latency. Smaller models (GPT-4o-mini, Haiku) serve well for high-volume, lower-complexity tasks.</li>
+<li><span style="background-color: yellow;"><strong>Privacy and data sensitivity</strong></span> — Proprietary or regulated data (HIPAA, GDPR, PII) should not be sent to public APIs without legal review. On-premise or private-deployment options (local LLaMA, Azure OpenAI with data residency controls) address this.</li>
+<li><span style="background-color: yellow;"><strong>Tool integration</strong></span> — Some workflows require the model to call external tools, browse the web, execute code, or query a database. Not all models support tool use or function calling natively — verify capability before committing to a model.</li>
+</ul>
+</section>
+<section id="classifying-ai-workloads" class="level3">
+<h3 class="anchored" data-anchor-id="classifying-ai-workloads">Classifying AI Workloads</h3>
+<p>A useful mental model is to classify any task by two axes: <strong>complexity</strong> (how much multi-step reasoning is required) and <strong>sensitivity</strong> (how much risk attaches to an incorrect output).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Low Sensitivity</th>
+<th>High Sensitivity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Low Complexity</strong></td>
+<td>Fast, cheap model (e.g., GPT-4o-mini)</td>
+<td>Fast model + human review</td>
+</tr>
+<tr class="even">
+<td><strong>High Complexity</strong></td>
+<td>Frontier model (e.g., GPT-4o, Claude 3.5)</td>
+<td>Frontier model + verification + audit trail</td>
+</tr>
+</tbody>
+</table>
+<p>Low-complexity / low-sensitivity tasks include drafting social copy, generating boilerplate code, or summarizing meeting notes. High-complexity / high-sensitivity tasks include generating legal or medical summaries, financial projections, or security-critical code — where model errors have real consequences and require human validation regardless of model quality.</p>
+<div class="note">
+<p>A common mistake is applying a frontier model to every task because it “seems safer.” In practice, using an overpowered model for simple high-volume tasks drives up cost without improving output quality — and can introduce latency that degrades user experience. Calibrate the tool to the workload.</p>
+</div>
+</section>
+</section>
+<section id="matching-ai-models-to-tasks-lab" class="level2">
+<h2 class="anchored" data-anchor-id="matching-ai-models-to-tasks-lab">Matching AI Models to Tasks Lab</h2>
+<p><strong>1.</strong> A company wants to process 50,000 customer support tickets per day, tagging each as a billing issue, technical issue, or general inquiry. What type of model would you recommend, and why? What factors rule out a frontier model like GPT-4o for this use case?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is a high-volume, low-complexity classification task with low sensitivity. A smaller, faster model — such as GPT-4o-mini, a fine-tuned open-source classifier, or even a traditional ML classifier (if labels are consistent) — is the right choice. A frontier model like GPT-4o would be ruled out primarily by <strong>cost</strong> (processing 50K tickets/day at frontier pricing multiplies quickly), <strong>latency</strong> (slower inference would create a queue backlog), and <strong>necessity</strong> — the classification task does not require deep reasoning. Fine-tuning a smaller model on historical labeled tickets would further improve accuracy and reduce hallucination risk on domain-specific language.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> A law firm wants to use AI to draft initial summaries of 200-page contract documents, flagging unusual clauses for attorney review. What factors from the decision framework should drive model selection, and what governance step is non-negotiable before deploying this system?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The key factors: <strong>context window</strong> (200 pages of text exceeds many models’ limits — a model with at least 128K tokens is required); <strong>task complexity</strong> (identifying unusual clauses requires nuanced legal reasoning — a frontier model is appropriate); <strong>sensitivity</strong> (legal documents are confidential — a private API deployment or an enterprise agreement with data retention controls is needed, not a default consumer endpoint). The non-negotiable governance step is <strong>human review before any output is acted upon</strong>: AI summaries are a first draft to accelerate attorney work, not a substitute for legal judgment. The output is high-sensitivity; even a small hallucination about a contract clause could create material liability.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> You need to build an internal chatbot that answers questions about your company’s proprietary product documentation. The documentation contains trade secrets. Compare two architectural options: (a) sending documents to a public frontier model API, and (b) running a local open-source model with retrieval augmentation. What are the trade-offs?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Option (a) — Public API:</strong> Higher output quality, no infrastructure overhead, easy to iterate. The critical risk is <strong>data exposure</strong>: sending proprietary documentation to a third-party API may violate IP agreements, NDAs, or data governance policies. Mitigation requires reviewing the provider’s data retention and training policies (most major providers offer enterprise agreements that prevent training on customer data, but this must be verified explicitly).</p>
+<p><strong>Option (b) — Local open-source model with RAG:</strong> Data never leaves the organization’s infrastructure — full control over privacy and compliance. The trade-offs are lower baseline model quality compared to frontier APIs, the need for internal ML infrastructure to host and maintain the model, and greater engineering effort to build the retrieval pipeline. For trade-secret content, this is often the only legally defensible option. The right choice depends on the organization’s risk tolerance, infrastructure maturity, and the sensitivity classification of the documentation.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="ai-assisted-coding" class="level2">
+<h2 class="anchored" data-anchor-id="ai-assisted-coding">AI-Assisted Coding</h2>
+<p>Generative AI has transformed software development workflows. Rather than replacing developers, AI coding tools function as an always-available collaborator — one that can generate boilerplate, explain unfamiliar code, suggest fixes, write tests, and draft documentation instantly. Using these tools effectively requires the same prompting discipline that applies to any AI task: specificity, context, and iteration.</p>
+<section id="the-ai-assisted-coding-paradigm" class="level3">
+<h3 class="anchored" data-anchor-id="the-ai-assisted-coding-paradigm">The AI-Assisted Coding Paradigm</h3>
+<p>AI coding assistants — GitHub Copilot, Cursor, Claude Code, and similar tools — operate as context-aware autocomplete engines trained on large public code corpora. They predict what code is likely to come next given the file, function, and comment context visible in the editor. This means:</p>
+<ul>
+<li>The <strong>more context</strong> the assistant can see (existing functions, variable names, comments, imports), the more relevant its suggestions.</li>
+<li>Suggestions are <strong>probabilistic</strong>, not verified — the model does not run the code before suggesting it.</li>
+<li>AI assistants excel at <strong>pattern-based tasks</strong> (boilerplate, CRUD operations, standard algorithms) and struggle with <strong>highly novel logic</strong> or <strong>domain-specific constraints</strong> the model has never encountered.</li>
+</ul>
+<p>The practical implication: treat AI-generated code as a first draft written by a competent but inattentive junior developer. It will often be correct; it must always be reviewed.</p>
+</section>
+<section id="prompting-for-code-adding-context" class="level3">
+<h3 class="anchored" data-anchor-id="prompting-for-code-adding-context">Prompting for Code: Adding Context</h3>
+<p>The single most impactful improvement to code-generation prompts is providing explicit context. A context-rich prompt answers four questions before the model has to guess:</p>
+<ol type="1">
+<li><strong>What language and version?</strong> (Python 3.11, pandas 2.x, not pandas 1.x)</li>
+<li><strong>What libraries are in scope?</strong> (use only the standard library; use SQLAlchemy, not raw SQL)</li>
+<li><strong>What constraints apply?</strong> (must run in under 200ms; must handle nulls; no external API calls)</li>
+<li><strong>What already exists?</strong> (paste the relevant function signatures, data structures, or schema)</li>
+</ol>
+<p><strong>Weak prompt:</strong> &gt; “Write a function to clean my data.”</p>
+<p><strong>Strong prompt:</strong> &gt; “I’m using Python 3.11 and pandas 2.1. Write a function called <code>clean_revenue_df</code> that takes a DataFrame with columns <code>['date', 'revenue', 'region']</code>, drops rows where <code>revenue</code> is null or negative, converts <code>date</code> to <code>datetime</code> with format <code>%Y-%m-%d</code>, and returns the cleaned DataFrame. Add a docstring.”</p>
+<p>The strong prompt eliminates ambiguity about language, version, column names, business rules, and expected behavior — reducing the chance of a plausible-but-wrong implementation.</p>
+</section>
+<section id="prompts-for-effective-debugging" class="level3">
+<h3 class="anchored" data-anchor-id="prompts-for-effective-debugging">Prompts for Effective Debugging</h3>
+<p>Debugging with AI is most effective when the prompt includes three elements: the <strong>symptom</strong> (what the error message says), the <strong>context</strong> (the relevant code), and the <strong>expected behavior</strong> (what the code should do instead).</p>
+<p><strong>Debugging prompt template:</strong> &gt; “I’m getting the following error in Python 3.11: <code>[paste error message]</code>. Here is the relevant code: <code>[paste code block]</code>. The function is supposed to <code>[describe expected behavior]</code>. What is causing this error and how do I fix it?”</p>
+<p>Additional debugging strategies: - Ask the model to <strong>explain the error first</strong> before proposing a fix — this forces a diagnosis rather than a guess. - For complex bugs, ask the model to <strong>list possible causes in order of likelihood</strong> before selecting one. - Ask the model to <strong>identify edge cases</strong> the current code does not handle, not just the immediate error.</p>
+<div class="note">
+<p>AI debugging is most reliable for common, well-documented errors (type errors, index errors, import errors, API usage mistakes). For subtle logic errors — especially those that produce wrong results silently rather than raising exceptions — the model may propose a fix that resolves the symptom without addressing the underlying cause. Always verify that a proposed fix actually solves the right problem.</p>
+</div>
+</section>
+<section id="effective-role-definitions" class="level3">
+<h3 class="anchored" data-anchor-id="effective-role-definitions">Effective Role Definitions</h3>
+<p>A <strong>role definition</strong> (also called a system prompt in API contexts) assigns the AI assistant a specific persona and set of responsibilities. Role definitions are particularly effective in coding contexts because they implicitly constrain the model’s vocabulary, framework choices, and tone.</p>
+<p><strong>Generic prompt:</strong> &gt; “Fix this function.”</p>
+<p><strong>Role-defined prompt:</strong> &gt; “You are a senior Python developer specializing in data pipelines. Review the following function for correctness, efficiency, and adherence to PEP 8. Suggest improvements and explain your reasoning. Do not use external libraries beyond pandas and numpy.”</p>
+<p>Role definitions are especially useful for: - Enforcing <strong>coding style standards</strong> (e.g., “follow Google Python Style Guide”) - Locking in <strong>framework choices</strong> (e.g., “use FastAPI, not Flask”) - Requesting <strong>explanations alongside code</strong> (e.g., “always explain what each block does”) - Simulating a <strong>code reviewer</strong> rather than a code generator (e.g., “review this pull request and identify potential bugs, not just style issues”)</p>
+</section>
+<section id="documenting-code-with-ai" class="level3">
+<h3 class="anchored" data-anchor-id="documenting-code-with-ai">Documenting Code with AI</h3>
+<p>AI excels at generating code documentation because documentation is a well-structured pattern: it describes what a function does, its parameters, return values, and any exceptions. Prompting for documentation works best when you specify the docstring format expected.</p>
+<p><strong>Prompt template for docstring generation:</strong> &gt; “Write a NumPy-style docstring for the following Python function. Include: a one-line summary, a Parameters section with types and descriptions, a Returns section, and a Raises section if applicable. Here is the function: <code>[paste function]</code>”</p>
+<p><strong>Prompt template for inline comment generation:</strong> &gt; “Add inline comments to the following function explaining the logic of each non-obvious step. Keep comments concise — one line each. Do not comment obvious operations like variable assignments. Here is the function: <code>[paste function]</code>”</p>
+<p>For larger codebases, AI can also generate <strong>README sections</strong>, <strong>API documentation</strong>, and <strong>architecture overviews</strong> — provided sufficient context (file structure, key modules, design decisions) is included in the prompt.</p>
+</section>
+<section id="effective-commit-messages-with-ai" class="level3">
+<h3 class="anchored" data-anchor-id="effective-commit-messages-with-ai">Effective Commit Messages with AI</h3>
+<p>A well-structured commit message answers three questions: <em>what</em> changed, <em>why</em> it changed, and <em>what impact</em> it has. AI can generate consistent commit messages from a diff or a description of changes.</p>
+<p><strong>Prompt template:</strong> &gt; “Write a commit message for the following code change. Use the conventional commits format: a subject line starting with a type prefix (feat, fix, refactor, docs, test, chore) followed by a short imperative description, then a blank line, then a body paragraph explaining what changed and why. Here is the diff: <code>[paste diff or describe changes]</code>”</p>
+<p><strong>Example output:</strong></p>
+<pre><code>fix: handle null values in revenue aggregation
+
+Replaced direct sum() call with nansum() to prevent pipeline failure
+when revenue column contains NaN entries from incomplete data loads.
+Affects all monthly reporting jobs that ingest raw sales CSVs.</code></pre>
+<p>Consistent commit messages are particularly valuable in team environments: they make <code>git log</code> readable, automate changelog generation, and help reviewers understand intent without reading every line of code.</p>
+</section>
+<section id="writing-tests-and-securing-code-with-ai" class="level3">
+<h3 class="anchored" data-anchor-id="writing-tests-and-securing-code-with-ai">Writing Tests and Securing Code with AI</h3>
+<p>AI can significantly accelerate test authorship — but the quality of generated tests depends heavily on the specificity of the prompt. A vague “write tests for this function” prompt typically produces tests that cover only the happy path. A thorough prompt specifies what <em>types</em> of tests are needed.</p>
+<p><strong>Test generation prompt template:</strong> &gt; “Write pytest unit tests for the following Python function. Cover: (1) the expected happy-path behavior with typical inputs, (2) edge cases including empty input, null values, and boundary values, (3) at least one case that should raise an exception, and (4) a case with an unexpected input type. Here is the function: <code>[paste function]</code>”</p>
+<p>For <strong>security-focused code review</strong>, prompt the model explicitly for vulnerability analysis rather than general feedback:</p>
+<p><strong>Security review prompt:</strong> &gt; “Review the following Python function for security vulnerabilities. Check specifically for: SQL injection risks, improper input validation, hardcoded credentials, insecure use of <code>eval()</code> or <code>exec()</code>, and any exposure of sensitive data in logs or error messages. For each issue found, explain the risk and suggest a fix.”</p>
+</section>
+<section id="spotting-gaps-in-ai-generated-tests" class="level3">
+<h3 class="anchored" data-anchor-id="spotting-gaps-in-ai-generated-tests">Spotting Gaps in AI-Generated Tests</h3>
+<p>AI-generated test suites are often incomplete in predictable ways. Common gaps to audit manually:</p>
+<ul>
+<li><span style="background-color: yellow;"><strong>Happy-path bias</strong></span> — the model tests what the function <em>should</em> do but not what happens when it <em>fails</em>. Always check for negative cases, exception handling, and invalid inputs.</li>
+<li><span style="background-color: yellow;"><strong>Missing boundary conditions</strong></span> — off-by-one errors, empty collections, zero values, and maximum-size inputs are routinely omitted.</li>
+<li><span style="background-color: yellow;"><strong>No concurrency or state tests</strong></span> — if a function modifies shared state or is called from multiple threads, AI tests rarely cover race conditions or side effects.</li>
+<li><span style="background-color: yellow;"><strong>Shallow assertion depth</strong></span> — AI often asserts that a function <em>returns something</em> without asserting the correctness of the <em>value</em> in detail. Verify that assertions are specific, not just truthy.</li>
+<li><span style="background-color: yellow;"><strong>No integration tests</strong></span> — AI generates unit tests in isolation. Tests that verify the function interacts correctly with a database, API, or file system almost always require human authorship.</li>
+</ul>
+<p>A useful closing prompt after receiving AI-generated tests: &gt; “Review the tests you just wrote. What cases are <em>not</em> covered? List any edge cases, failure modes, or integration scenarios that a thorough test suite for this function should also include.”</p>
+<p>This forces the model to audit its own output — a reliable way to surface gaps it would not have covered unprompted.</p>
+</section>
+</section>
+<section id="ai-assisted-coding-lab" class="level2">
+<h2 class="anchored" data-anchor-id="ai-assisted-coding-lab">AI-Assisted Coding Lab</h2>
+<p><strong>1.</strong> Rewrite the following weak prompt as a context-rich prompt suitable for generating production-quality code. Weak prompt: <em>“Write a function to load data from a database.”</em></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A strong rewrite might read: <em>“I’m using Python 3.11 and SQLAlchemy 2.0 with a PostgreSQL database. Write a function called <code>load_orders</code> that accepts a <code>start_date</code> and <code>end_date</code> (both as <code>datetime.date</code> objects), queries the <code>orders</code> table for all rows where <code>order_date</code> is between those dates (inclusive), and returns a pandas DataFrame. Use parameterized queries — do not interpolate variables directly into the SQL string. Handle the case where no rows are returned by returning an empty DataFrame with the correct column names. Add a docstring in NumPy style.”</em></p>
+<p>This rewrite specifies language and library versions, function name, parameter types, business logic, the exact security requirement (parameterized queries), an edge case (empty result), and the documentation format — all of which the original prompt left to chance.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> You ask an AI to write tests for a data validation function and receive five tests that all pass valid inputs and check that the function returns <code>True</code>. What is wrong with this test suite, and what prompt would elicit a more complete set of tests?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The test suite has <strong>happy-path bias</strong>: it only tests the case where the function works as intended. A complete suite for a validation function must also test: invalid inputs that should return <code>False</code> or raise an exception, edge cases (empty string, null, zero-length list, maximum-length input), unexpected input types (integer passed where a string is expected), and the specific error message or exception type raised. A better prompt: <em>“Write pytest tests for this validation function. Cover: (1) valid inputs that should pass, (2) invalid inputs that should fail with a specific return value or exception, (3) boundary values at the edges of the valid range, (4) null and empty inputs, and (5) at least one wrong type. For each exception test, assert both the exception type and the message.”</em></p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> A colleague argues that AI-generated documentation is sufficient and that developers no longer need to write docstrings manually. Construct a counter-argument explaining when AI-generated documentation can be misleading and what the developer’s remaining responsibility is.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>AI-generated documentation describes <strong>what the code does</strong> based on its structure — but it cannot reliably document <strong>why</strong> a particular implementation was chosen, what <strong>business rules</strong> a parameter encodes, or what <strong>non-obvious constraints</strong> (performance, regulatory, architectural) apply. For example, a function that caps a value at 999 because of a legacy database column limit will have that cap documented as a fact but not its reason — and a future developer who removes the cap “as a cleanup” has no warning. Additionally, if the code itself is subtly wrong, the AI’s documentation faithfully describes the wrong behavior. The developer’s remaining responsibility: (1) verify that generated descriptions accurately reflect intent, not just structure; (2) add context that the model cannot infer (business rationale, known limitations, related tickets); and (3) flag any documented behavior that differs from the specification.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="prompt-refinement-and-iteration" class="level2">
+<h2 class="anchored" data-anchor-id="prompt-refinement-and-iteration">Prompt Refinement and Iteration</h2>
+<p>A first prompt rarely produces a production-ready output. <strong>Prompt iteration</strong> — the disciplined process of diagnosing weak outputs and refining the input — is what separates effective AI users from those who conclude the tool does not work.</p>
+<section id="why-iteration-is-necessary" class="level3">
+<h3 class="anchored" data-anchor-id="why-iteration-is-necessary">Why Iteration Is Necessary</h3>
+<p>AI models do not ask clarifying questions by default. When a prompt is ambiguous, the model fills the gap with assumptions drawn from its training distribution — which may not match what the user intended. Common sources of first-draft failure:</p>
+<ul>
+<li><strong>Underspecified task</strong> — the model chose a reasonable interpretation but not the right one.</li>
+<li><strong>Missing constraints</strong> — the output is technically correct but violates a rule the model did not know about (length, format, audience, tone).</li>
+<li><strong>Scope mismatch</strong> — the prompt asked for “a summary” without specifying length, level of detail, or target audience, so the model produced a generic one.</li>
+<li><strong>Wrong frame</strong> — the model solved the stated problem, not the underlying one. A prompt for “a function to filter data” may produce a filter when what was actually needed was a validation step before filtering.</li>
+</ul>
+</section>
+<section id="the-iteration-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="the-iteration-workflow">The Iteration Workflow</h3>
+<p>Effective prompt iteration follows a diagnostic loop, not random rewording:</p>
+<ol type="1">
+<li><strong>Identify the gap</strong> — be specific about what is wrong. “This is not quite right” is not actionable. “The output is too long,” “it uses the wrong framework,” or “it doesn’t handle the null case” all are.</li>
+<li><strong>Isolate the cause</strong> — is the gap due to a missing constraint, a vague instruction, or an incorrect assumption the model made?</li>
+<li><strong>Add, remove, or restructure</strong> — add the missing constraint, correct the false assumption explicitly, or restructure the prompt to reduce ambiguity.</li>
+<li><strong>Re-evaluate against criteria</strong> — compare the new output against the original goal, not just against the previous output.</li>
+</ol>
+</section>
+<section id="prompt-refinement-patterns" class="level3">
+<h3 class="anchored" data-anchor-id="prompt-refinement-patterns">Prompt Refinement Patterns</h3>
+<p>Several patterns reliably improve outputs on the second attempt:</p>
+<ul>
+<li><span style="background-color: yellow;"><strong>Add a negative constraint</strong></span> — “Do not use list formatting; respond in paragraphs.” / “Do not suggest external libraries.” Negative constraints are more reliable than hoping the model infers what you do not want.</li>
+<li><span style="background-color: yellow;"><strong>Narrow the scope explicitly</strong></span> — “Limit your response to three bullet points” / “Focus only on the error handling logic, not the full function.” Scope constraints prevent the model from over-generating.</li>
+<li><span style="background-color: yellow;"><strong>Provide a worked example</strong></span> — if the output format is non-standard, include one correct example. This is the few-shot pattern applied to format, not content.</li>
+<li><span style="background-color: yellow;"><strong>Ask for reasoning before output</strong></span> — “Before writing the code, explain your approach in one paragraph.” This surfaces flawed assumptions before they become embedded in a long code block.</li>
+<li><span style="background-color: yellow;"><strong>Request self-critique</strong></span> — “Review your previous response. What assumptions did you make that might be wrong? What cases does this not handle?” This is a structured way to elicit a second pass without rewriting the prompt.</li>
+</ul>
+</section>
+<section id="progressive-context-addition" class="level3">
+<h3 class="anchored" data-anchor-id="progressive-context-addition">Progressive Context Addition</h3>
+<p>For complex tasks — long documents, large codebases, multi-step analyses — providing all context at once can overwhelm the prompt or bury the key instruction. <strong>Progressive context addition</strong> builds up the prompt in stages:</p>
+<ol type="1">
+<li>Establish the role and task first.</li>
+<li>Provide the relevant context or data.</li>
+<li>Issue the specific instruction.</li>
+<li>Add constraints and output format last.</li>
+</ol>
+<p>This ordering mimics how a human expert would be briefed: first understand the role and goal, then receive the materials, then get the specific ask. Reversing this order (instruction first, context last) often produces responses that ignore context provided after the key request.</p>
+</section>
+</section>
+<section id="prompt-refinement-and-iteration-lab" class="level2">
+<h2 class="anchored" data-anchor-id="prompt-refinement-and-iteration-lab">Prompt Refinement and Iteration Lab</h2>
+<p><strong>1.</strong> The following prompt produced an output that was technically correct but written at a graduate level, used jargon the user’s audience would not understand, and was four times longer than needed. Rewrite the prompt to address all three problems. Original prompt: <em>“Explain how transformers work.”</em></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A revised prompt: <em>“Explain how transformer models work in plain language for a business audience with no machine learning background. Use an analogy if helpful. Limit your response to three short paragraphs. Do not use technical terms like ‘attention mechanism,’ ‘embedding,’ or ‘softmax’ without immediately defining them in plain English.”</em></p>
+<p>This revision adds: target audience (business, no ML background), length constraint (three paragraphs), a suggestion for an analogy, and explicit instructions about handling jargon — addressing all three failure modes of the original.</p>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> After asking an AI to generate a data cleaning script, you receive code that works correctly on the sample data you provided but fails on the real dataset because it does not handle missing values. Describe the diagnostic process for improving the prompt. What was the root cause of the gap, and what would you add to the prompt?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The root cause is a <strong>missing constraint</strong>: the prompt (or sample data) did not signal that missing values were possible, so the model generated code that assumes complete data. The diagnostic: the output was correct for the stated problem — the stated problem was incomplete. To fix it, add an explicit constraint describing the real data characteristics: <em>“The DataFrame may contain null values in any column. The function must handle nulls explicitly: drop rows where the primary key column is null, fill nulls in numeric columns with the column median, and fill nulls in string columns with the string ‘unknown’. Do not assume any column is guaranteed to be complete.”</em> Providing a small sample that actually contains nulls alongside the prompt would further reduce ambiguity.</p>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> When is it better to restructure a prompt from scratch rather than iteratively refining it? What signal tells you that incremental revision has reached its limit?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Incremental refinement has reached its limit when you are adding more and more constraints to compensate for a fundamentally wrong framing of the task — rather than improving a basically sound prompt. The signal: each revision fixes one problem but introduces another, or the prompt has grown so long with qualifications and negations that it is harder to read than the output. This usually indicates a <strong>frame mismatch</strong>: the original prompt asked for the wrong thing, and no amount of constraint-adding can fix that without restarting. The better approach is to step back and ask: what is the underlying task, and what is the clearest, simplest way to describe it? A fresh prompt built around the correct frame is often shorter, clearer, and more effective than a heavily patched version of a flawed original.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="llm-hallucinations" class="level2">
 <h2 class="anchored" data-anchor-id="llm-hallucinations">LLM Hallucinations</h2>
@@ -780,7 +1372,7 @@ Show Answer
 <h2 class="anchored" data-anchor-id="llm-hallucinations-lab">LLM Hallucinations Lab</h2>
 <p><strong>1.</strong> A lawyer submitted AI-generated legal citations to a federal court — none of the cases existed. Using the five hallucination warning signs from this section, which signals were most likely present in those responses, and what verification step would have caught the error?</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -789,7 +1381,7 @@ Show Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The most relevant signals: <strong>invented sources</strong> (fabricated case names, courts, and years) and <strong>unverified specificity</strong> (precise docket numbers, quoted rulings, and legal reasoning delivered with complete confidence). <strong>Overconfident language</strong> was also likely present — the model presented the citations as established fact rather than hedged estimates. The verification step that would have caught it: search each case name and citation in an authoritative legal database (Westlaw, LexisNexis, or the federal court’s PACER system) before including it in any filing. If the case does not appear, it does not exist — regardless of how authoritative the model’s output looks.</p>
 </div>
@@ -797,7 +1389,7 @@ Show Answer
 </div>
 <p><strong>2.</strong> Why does a well-crafted prompt not guarantee mathematical accuracy from an LLM? What is the root cause, and what is the correct tool to use when a calculation must be reliable?</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -806,7 +1398,7 @@ Show Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The root cause is architectural: LLMs are <strong>language predictors</strong>, not calculators. When an LLM writes “2 + 2 = 4” it is not computing — it is recognizing that this string statistically follows arithmetic prompts in training data. For simple arithmetic this works; for multi-step calculations, compound interest, statistical formulas, or any problem where one error compounds through subsequent steps, the model approximates rather than computes. Errors are often subtle and delivered with the same fluency as correct answers. The correct approach: use Python (or a tool-augmented LLM that can call a code interpreter) for any calculation where accuracy matters. Asking the model to “verify your work step by step” improves but does not guarantee correctness.</p>
 </div>
@@ -814,7 +1406,7 @@ Show Answer
 </div>
 <p><strong>3.</strong> A colleague argues that hallucinations are just a temporary bug that will be fixed in the next model version. Construct a counter-argument explaining why hallucinations are a structural property of how LLMs work, not merely an engineering defect.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -823,7 +1415,7 @@ Show Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Hallucinations are not a bug in the conventional sense — they are a <strong>predictable consequence of the architecture</strong>. LLMs generate the most statistically probable continuation of a prompt given their training data. When the correct answer is absent from or rare in training data, the model does not return “I don’t know” — it produces whatever token sequence is most likely given the context, which may be plausible-sounding fiction. The model has no internal truth-verification mechanism; it has no model of the world, only a model of language. Better training data, RLHF, and retrieval augmentation reduce hallucination rates — but as long as the underlying mechanism is probabilistic text prediction over a finite training corpus, some hallucination is irreducible. This is why human verification of high-stakes AI outputs remains essential regardless of model version.</p>
 </div>
@@ -863,6 +1455,10 @@ Show Answer
 <li>Compare zero-shot, few-shot, and chain-of-thought prompting. When would you use each, and what does each assume about the model’s capabilities?</li>
 <li>What is cross-modal embedding, and how does it enable a system to search images using a text query? What does this imply about how meaning is represented internally in these models?</li>
 <li>A company wants to deploy a generative AI tool for customer service. What governance guardrails — from this chapter — would you recommend before going live?</li>
+<li>You need to choose an AI model for a task involving 200-page confidential legal documents. Walk through the five decision factors and explain how each one shapes your selection.</li>
+<li>What makes a code-generation prompt “context-rich”? Write a weak prompt and then rewrite it as a strong one for a data engineering task of your choosing.</li>
+<li>Why do AI-generated test suites tend to have happy-path bias? What prompt strategy reliably surfaces the gaps?</li>
+<li>Describe the diagnostic loop for prompt iteration. What is the difference between a missing constraint and a frame mismatch, and how do you fix each?</li>
 </ul>
 </section>
 <section id="summary" class="level2">
@@ -935,6 +1531,38 @@ Show Answer
 <tr class="even">
 <td>Paths forward</td>
 <td>Fine-tuning, hybrid approaches, regulation (EU AI Act), open collaboration</td>
+</tr>
+<tr class="odd">
+<td>AI model selection</td>
+<td>Match tool to task type, context window, cost/latency, privacy, and tool integration needs</td>
+</tr>
+<tr class="even">
+<td>Workload classification</td>
+<td>Complexity × sensitivity matrix guides model tier and review requirements</td>
+</tr>
+<tr class="odd">
+<td>AI-assisted coding</td>
+<td>Context-rich prompts, role definitions, and iterative refinement drive code quality</td>
+</tr>
+<tr class="even">
+<td>Debugging with AI</td>
+<td>Symptom + context + expected behavior; diagnose before proposing a fix</td>
+</tr>
+<tr class="odd">
+<td>Code documentation</td>
+<td>Specify docstring format; AI documents structure but not intent — developer review required</td>
+</tr>
+<tr class="even">
+<td>Test generation</td>
+<td>Prompt for edge cases, exceptions, and boundary conditions; audit for happy-path bias</td>
+</tr>
+<tr class="odd">
+<td>Prompt iteration</td>
+<td>Diagnose the gap, isolate the cause, add/remove/restructure; distinguish missing constraint from frame mismatch</td>
+</tr>
+<tr class="even">
+<td>Progressive context</td>
+<td>Role → context → instruction → constraints; ordering shapes output quality</td>
 </tr>
 </tbody>
 </table>
